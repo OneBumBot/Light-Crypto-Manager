@@ -2,7 +2,7 @@
 
 > Исторический снимок этапа 1 (`76ca884`). Изменения этапа 2, PostgreSQL,
 > зависимости и фактический запуск описаны в [RUNTIME.md](RUNTIME.md),
-> [COMPOSE.md](COMPOSE.md) (этап 3) и
+> [COMPOSE.md](COMPOSE.md) (актуальный этап 4), [SECURITY.md](SECURITY.md) и
 > [DEVELOPMENT_STATUS.md](DEVELOPMENT_STATUS.md). Утверждения об отсутствующих
 > пакетах и MSSQL ниже относятся к состоянию до этапа 2.
 

@@ -1,8 +1,8 @@
 # Состояние разработки и план
 
-Дата: 2026-11-08. Выполнены этапы 0–3. По команде пользователя PostgreSQL
+Дата: 2026-11-08. Выполнены этапы 0–4. По команде пользователя PostgreSQL
 заменила MSSQL уже в этапе 2; переноса данных недоступной MSSQL нет.
-Этап 4 не начат. Push и merge в main не выполнялись.
+Этап 5 не начат. Push и merge в main не выполнялись.
 
 ## Сохранённые этапы
 
@@ -13,10 +13,11 @@
 | 1 — инвентаризация | Файлы, существующая архитектура, проблемы, статусы и план | `feature/component-inventory`, `76ca884` |
 | 2 — воспроизводимый runtime / PostgreSQL | Python/lock, module entrypoints, PostgreSQL вместо MSSQL, проверки | `feature/reproducible-postgres-runtime`, `fca2153` |
 | 3 — Compose/Mosquitto | Локальные сервисы, healthchecks, demo и реальный MQTT/DB smoke | `feature/local-mqtt-compose`, коммит `build: add local Mosquitto and component compose services` |
+| 4 — безопасность MQTT/web | TLS/auth/ACL, v2 validation, постоянный anti-replay и web hardening | `feature/security-hardening`, коммиты ниже |
 
 Точный хеш последнего коммита см. `git log -1` и итоговый отчёт. Хеш не
 вписывается в содержимое самого коммита. В main осталась безопасная база;
-ветка инвентаризации сохранена отдельно, этап 3 основан на коммите этапа 2.
+ветка инвентаризации сохранена отдельно, этап 4 основан на проверенном 5be5444 этапа 3.
 
 ## Статусы компонентов
 
@@ -27,16 +28,16 @@
 | Компонент / возможность | Статус | Доказательство / предел |
 |---|---|---|
 | Корневой Git и безопасная база | существует | Два коммита в main, приватный оригинал с manifest, чистое состояние после этапа 0 |
-| Publisher | проверено тестами | Реальный процесс demo отправляет MQTT через Mosquitto; пакет наблюдён и расшифрован. ARM64 не запускался |
+| Publisher | проверено тестами | TLS/ACL, v2, per-device key, persistent SQLite counter; приём подтверждён PG. ARM64 не запускался |
 | Запуск publisher на Raspberry Pi OS/ARM64 | не проверено | Dry-run готовых runtime wheels для ARM64/CPython 3.12 успешен; на устройстве не запускался |
-| Настоящий MQTT broker / Mosquitto | проверено тестами | Mosquitto 2.1.2 в Compose, QoS 1 healthcheck, loopback порт и volume |
+| Настоящий MQTT broker / Mosquitto | проверено тестами | TLS/8883, password_file/ACL, неверный пароль/CA/publish/read; plaintext listener отсутствует |
 | Receiver в brocker | частично реализовано | Аномалии пишутся через живой MQTT; SUBACK readiness и переподключение проверены. Отдельный worker, ML, persistence датчиков ещё впереди |
-| Сквозной MQTT обмен | проверено тестами | Реальный publisher/Mosquitto/receiver/PostgreSQL; повреждённые пакеты не ломают цикл; повторно после рестарта broker |
+| Сквозной MQTT обмен | проверено тестами | TLS/v2/Mosquitto/receiver/PG; tamper/replay и повтор после force-recreate receiver |
 | Notebook экспериментов | существует | 13 ячеек RF/IF, исторические метрики просмотрены, не воспроизведены |
 | Датасет, готовые модели и preprocessing artifacts | отсутствует | Есть только код загрузки CSV и joblib.dump |
 | Online ML / согласованные признаки | отсутствует | Сетевые признаки отличаются от temperature/humidity |
-| Flask, формы и роли | частично реализовано | Запуск и вход на PostgreSQL проверены; полный аудит ролей/socket впереди |
-| ORM предметной области | проверено тестами | 14 таблиц созданы на PostgreSQL из неизменённых моделей; составные PK/FK/migrations ещё требуют работы |
+| Flask, формы и роли | проверено тестами | CSRF активна, Socket.IO login/CSRF/same-origin, role/active проверки; live HTTP/socket logout и telemetry успешны |
+| ORM предметной области | проверено тестами | 14 исходных таблиц + 1 replay-таблица; additive init-db. FK/Alembic/composite CRUD впереди |
 | CRUD | частично реализовано | Простой PUT/DELETE проверен на PostgreSQL; POST/составные PK пока не реализованы |
 | Сохранение телеметрии | частично реализовано | save_sensor_data отключена и не завершает транзакцию |
 | Шаблоны, CSS, JS, realtime UI | частично реализовано | Макеты/графики/Socket.IO есть; браузер не запускался, обнаружены дефекты |
@@ -47,9 +48,10 @@
 | Синтаксис Python и notebook | проверено тестами | compile() успешен для 9 .py и 13 кодовых ячеек; без исполнения приложений |
 | FastAPI / Alembic | отсутствует | PostgreSQL перенесена в этап 2; API и миграции остаются последующими этапами |
 | Отдельный оформленный MQTT worker | частично реализовано | Receiver теперь отдельный Compose-сервис; выделение общего ingestion-кода, полная запись датчиков и жизненный цикл worker остаются этапом 5 |
-| Policy Engine / профили / anti-replay / защищённые команды | отсутствует | Алгоритмические справочники БД не являются движком политики |
+| Постоянный anti-replay | проверено тестами | Atomic PG state consumer/device/epoch, rollback, concurrency/restart; sender SQLite |
+| Policy Engine / защищённые команды | отсутствует | Anti-replay телеметрии реализован в этапе 4; динамическая политика не добавлялась |
 | «Магма» / проверенный профиль CRISP | отсутствует | Нет реализации или подтверждения требований |
-| Автоматические тесты | проверено тестами | 108 passed в Docker, 10 DB-тестов; 2 прежних Query.get предупреждения. CI ещё нет |
+| Автоматические тесты | проверено тестами | 177 passed без предупреждений; отдельно реальные TLS/ACL/restart/HTTP/socket/Chromium проверки. CI ещё нет |
 | Docker Compose | проверено тестами | Запуск с healthchecks, init-db, demo/web profiles, smoke и tests; volumes тестового контура удалены после проверки |
 | CI | отсутствует | Локальные тесты не заменяют CI |
 
@@ -174,7 +176,7 @@ Receiver сохраняет только аномалии, web — live данн
 ML/нагрузка не проверялись. Alembic, полноценный worker и sensor persistence —
 следующие этапы; этап 4 не начат.
 
-## Технический план с учётом выполненного этапа 3
+## Технический план с учётом выполненного этапа 4
 
 Перед каждым этапом: проверить чистый Git/сохранение предыдущего, создать отдельную
 ветку от согласованной базы, менять только нужные файлы, выполнить относящиеся
@@ -185,7 +187,7 @@ ML/нагрузка не проверялись. Alembic, полноценный
 |---|---|---|
 | 2 `feature/reproducible-postgres-runtime` | `feat: establish reproducible PostgreSQL runtime` | Выполнено с изменением по команде пользователя: Python 3.12.16, uv.lock и экспорты; импорты без соединений, единый Ascon, log/env; PostgreSQL вместо MSSQL, 103 теста. ARM64 — только проверка wheels, не выполнение |
 | 3 `feature/local-mqtt-compose` | `build: add local Mosquitto and component compose services` | Выполнено: конфигурация и healthchecks, demo/web profiles, временные smoke fixtures, 108 tests, реальный MQTT/DB обмен и повтор после broker restart. Только loopback, TLS/ACL впереди |
-| 4 `fix/telemetry-protocol-security` | `fix: close critical legacy SQL and web vulnerabilities`; `feat: define validated versioned telemetry envelopes`; `test: cover malformed and tampered telemetry` | SQL/транзакции/логгеры исправлены в этапе 2; здесь закрытые Socket.IO события, XSS/redirect/CSRF/debug; валидируемая схема, размеры, UTC, topic/device binding, crypto allowlist. До устранения критических проблем контур не открывать внешней сети |
+| 4 `feature/security-hardening` | Логические security/test коммиты перечислены ниже | Завершено: TLS/auth/ACL, v2 и persistent replay, web hardening, 177 tests и реальные MQTT/HTTP/Socket.IO/Chromium проверки |
 | 5 `feature/migrations-mqtt-worker` | `feat: add relational constraints and Alembic migrations`; `refactor: extract MQTT ingestion worker`; `test: verify transactional telemetry persistence` | Явные FK/индексы/составные ключи, seeds и миграции на чистой БД, worker lifecycle/reconnect, единая транзакция приёма, запись датчиков/аномалий, контракт истории; существующие шаблоны сохранены |
 | 6 `feature/ml-inference-pipeline` | `docs: define observable ML feature contract`; `feat: export versioned preprocessing and anomaly model`; `test: reproduce anomaly evaluation` | Решение: собирать сетевые признаки либо обучать новую модель по телеметрии. Версия/хеш датасета, train-only preprocessing, split по времени/группам, сохранение schema/encoder/model/versions, воспроизводимые метрики и inference. Выход ML — score/сигнал аномалии |
 | 7 `feature/adaptive-policy-engine` | `feat: enforce minimum crypto profiles and policy hysteresis`; `feat: authenticate profile commands and reject replays`; `test: verify policy transitions and command recovery` | Минимальный уровень защиты обязателен; устойчивые аномалии быстро усиливают профиль, снижение лишь после продолжительного стабильного окна; ML не выбирает алгоритм. Key/session/sequence, хранение replay-state, дедупликация, authenticated commands, подтверждение/повторы/rollback, restart tests; не ранжировать алгоритмы по названию без модели угроз |
@@ -200,10 +202,10 @@ Ascon и переход на PostgreSQL выполнены в этапе 2; бе
 Наличие «Магмы» само по себе не доказывает ни полноту CRISP, ни криптостойкость
 всей системы; сравнение профилей требует явной модели угроз и требований.
 
-Этап 3 завершён. Следующий шаг — этап 4: критические проблемы безопасности
-и валидируемый единый формат MQTT. Работа остановлена до отдельной команды пользователя.
+Этап 4 завершён. Следующий шаг — этап 5: миграции, структура связей и полноценный
+MQTT worker/persistence датчиков. Он не начат; требуется отдельная команда пользователя.
 
-## Этап 4 — в работе
+## Ход этапа 4 (исторические промежуточные записи)
 
 Создана feature/security-hardening от чистого 5be5444. Транспорт MQTT переведён
 на TLS/8883 с аутентификацией и ACL, отдельными материалами ролей вне Git/образов.
@@ -231,3 +233,36 @@ TLS/ACL (включая запрет publish у receiver), v2 tamper/replay smok
 
 Дополнительная проверка логирования: удалены browser console дампы decrypted
 MQTT и истории. Диагностические сообщения без содержимого телеметрии сохранены.
+
+## Итог этапа 4
+
+Только этап 4 завершён. База — 5be5444; main не менялась. Ветка
+feature/security-hardening. Изменения разделены на логические коммиты:
+
+| Хеш | Изменение |
+|---|---|
+| 53eadeb | MQTT authentication, TLS, role ACL, приватная генерация/установка |
+| 40be3e9 | Bounded v2 validation и atomic persistent anti-replay |
+| 60504c9 | Flask/Socket.IO/CSRF/DOM/API hardening и web проверки |
+| ef2e692 | Итоговые transport/replay регрессии и credential exclusions |
+| 3e8376e | Удалены browser console дампы decrypted telemetry/history |
+
+Финальная документация и audit helper сохранены следующим docs-коммитом; его
+хеш см. git log -1. Все 12 сценариев задачи сопоставлены с фактическими запусками
+в [reports/README.md](reports/README.md). 177 pytest passed без предупреждений;
+реальный TLS/ACL, MQTT/v2/PG, force-recreate receiver/replay, HTTP/Socket.IO,
+Chromium DOM XSS успешны. Протоколы содержат UTC, команды, вывод и EXIT CODE,
+включая исправленные CSRF fixture прогоны. Raw секретные выводы не публикуются.
+
+Проверены 0700/0600 материалов, non-root image, отсутствие ключей/credentials/Git/
+архивов в image, отдельные role mounts, current/legacy secret literals в history
+и рабочем дереве. Это локальная проверка известных литералов, не абсолютная
+гарантия или внешний аудит. Тестовый lcm-stage4 остановлен; volumes счётчиков,
+replay-state и материалов сохранены. Push/merge не выполнялись.
+
+Оставшиеся/непроверенные сценарии — KNOWN_ISSUES.md: sensor persistence,
+FK/Alembic, CREATE/composite CRUD, web process/outbox, manual key lifecycle,
+production HTTPS, ARM64/нагрузка/полный cryptographic audit. ML, Policy Engine,
+«Магма»/CRISP не реализовывались. Готова база к этапу 5, без автоматического перехода.
+Telemetry replay v2 следует переиспользовать; будущие управляющие команды
+потребуют собственной проверки ключей/счётчиков, не прямого выбора алгоритма ML.

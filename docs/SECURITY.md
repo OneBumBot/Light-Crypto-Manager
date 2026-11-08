@@ -1,4 +1,4 @@
-# Этап 4: защищённый контур (в работе)
+# Этап 4: защищённый контур
 
 Ветка: feature/security-hardening от 5be5444. Этап 5 не начат.
 
@@ -37,7 +37,7 @@ MQTT_INSECURE_TEST_MODE=1; Compose не содержит plaintext listener/over
 
 Очищенные протоколы с командами/кодами завершения: docs/reports/stage4-*.txt.
 Формат v2 и постоянный anti-replay реализованы: см. MQTT_PROTOCOL.md.
-Web-защита остаётся следующим блоком текущего этапа.
+Web-защита завершена; финальные результаты — reports/README.md.
 
 ## Web: проверено
 
@@ -58,9 +58,20 @@ SQL, exception text или stacktrace. Safe next разрешает только
 а не динамический HTML. Старый table_edit2 наследует защищённый основной шаблон,
 чтобы не сохранять второй опасный JS. Внешний вид и базовые сценарии сохранены.
 
-Проверки: 172 pytest прошли в Docker без отключения CSRF; сетевой HTTP/Socket.IO
+Проверки: финальные 177 pytest прошли в Docker без отключения CSRF; сетевой HTTP/Socket.IO
 smoke и реальный Chromium с 4 XSS payload прошли. В протоколе сохранены также
 два неуспешных CSRF прогона: изоляция тестовых HTTP-сеансов требовала очистки
 rendering-cache токена g в старой DB-фикстуре с внешним app context. Защита
 приложения не отключалась. Web остаётся локальным Flask dev server; production
 HTTPS/reverse proxy, внешний аудит и многопроцессный Socket.IO не заявляются.
+
+
+Итог: выполнен только этап 4. После проверки тестовый Compose остановлен без
+удаления state/security volumes. Push/merge не выполнялись. Ротация, полноценный
+worker/persistence датчиков и Alembic не добавлялись. Для воспроизведения и текущих
+ограничений используйте COMPOSE.md, MQTT_PROTOCOL.md и KNOWN_ISSUES.md.
+
+Источники API: [Mosquitto authentication](https://mosquitto.org/documentation/authentication-methods),
+[Flask-WTF CSRF](https://github.com/pallets-eco/flask-wtf/blob/main/docs/csrf.md),
+[SQLAlchemy PostgreSQL upsert](https://docs.sqlalchemy.org/en/20/dialects/postgresql.html#insert-on-conflict-upsert),
+[Playwright browsers](https://playwright.dev/python/docs/browsers).

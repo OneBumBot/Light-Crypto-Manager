@@ -1,5 +1,50 @@
 # Известные проблемы
 
+## Актуальное состояние после этапа 4
+
+**Устранено и проверено:**
+
+- S03/S06: Socket.IO требует login/CSRF и same-origin, отправка только проверенным
+  sid; MQTT использует TLS, password_file и минимальные ACL ролей.
+- S04/S08/S09/S10: DOM XSS закрыт DOM/textContent/value, локальный safe next,
+  явные поля/типы API, CSRF на изменяющих HTTP запросах, POST logout.
+- S07/S11: строго валидируемый v2, bound device/topic/key/active epoch, постоянный
+  sender sequence и атомарный PostgreSQL replay-state вместе с событием.
+- F03/F14: API использует Session.get и generic ошибки, tag failures не выводят
+  данные/traceback; browser/server не дампят decrypted payload.
+- F15: stub генератора больше не заявляет ложное создание данных; POST/admin/CSRF,
+  явный 501 до реализации настоящего генератора.
+- Неизвестная роль fail closed. Первичные ключи и служебные атрибуты нельзя
+  изменить массовым setattr. Диагностический endpoint ограничен admin.
+
+**Оставшиеся ограничения:**
+
+- F04/F05/F06: полная запись датчиков и CREATE API не реализованы; scalar API не
+  поддерживает составные PK и теперь явно отклоняет их вместо небезопасной догадки.
+- F12/F16: last 50 точек в памяти одного web-процесса; нет outbox, межпроцессного
+  fanout, FK/Alembic переработки. Crash после web replay commit до emit теряет UI
+  событие. Для БД-аномалий replay update и INSERT атомарны.
+- F17–F19: legacy дефекты нулевых значений/индикатора и неактивного dashboard.js
+  не объявляются устранёнными. table_edit2 теперь наследует защищённый шаблон.
+- S12/C01/C02: wrapper валидирует входы без assert, но pure Python reference Ascon
+  не объявляется constant-time или полностью независимо проверенным по стандарту.
+  Есть 4 внешних KAT и boundary/tamper tests. Nonce случайный; управление ротацией
+  ключей/provisioning ручные. Потеря/откат state требует новой эпохи/ключа.
+- Локальная CA на 30 дней, Flask dev HTTP только loopback. Внешний HTTPS deployment,
+  CA lifecycle, login rate limiting и внешний security audit не реализованы.
+- ML, Policy Engine, «Магма»/CRISP и защищённые команды — будущие этапы.
+
+**Не проверено:** реальная Raspberry Pi/ARM64, production HTTPS/reverse proxy,
+нагрузка, длительные сетевые отказы/lossless delivery, disaster recovery после
+потери БД/state, автоматическая ротация. Нет заявлений о полной криптостойкости.
+
+**Доказательства:** 177 pytest passed без отключения CSRF; реальные TLS/ACL,
+MQTT/PG/restart и HTTP/Socket.IO проверки; Chromium с 4 XSS payload.
+[Протоколы](reports/README.md) содержат и неуспешные CSRF fixture прогоны, и их
+исправление. Начальные промежуточные предупреждения/ошибки не скрыты.
+
+## Исторический аудит исходного состояния
+
 > Таблицы ниже — аудит безопасной базы этапа 1; номера строк исторические.
 > Исправления этапа 2 перечислены в конце документа.
 

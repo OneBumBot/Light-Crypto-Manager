@@ -1,98 +1,80 @@
-# Текущая архитектура
+# Текущая архитектура — после этапа 4
 
-Дата: 2026-11-08, обновлено после этапа 3. PostgreSQL и полный MQTT обмен проверены
-в локальном Docker Compose-контуре с Mosquitto. Исходная схема
-этапа 1 сохранена в коммите `76ca884`; native запуск — в RUNTIME.md, Compose — в COMPOSE.md.
+2026-11-08. База этапа 3 — 5be5444. Реальный Compose MQTT/PG обмен, отрицательные
+TLS/ACL проверки, replay после пересоздания receiver и HTTP/Socket.IO проверены.
+Команды — [COMPOSE.md](COMPOSE.md), формат — [MQTT_PROTOCOL.md](MQTT_PROTOCOL.md).
 
 ```mermaid
 flowchart LR
-    P["publisher/mqtt_pub.py: профиль demo, синтетические temperature/humidity"]
-    E["vendored web/ascon/ascon.py"]
-    B["Mosquitto 2.1.2: Compose broker, deploy/mosquitto"]
-    R["brocker/mqtt_brocker.py: subscriber + правила"]
-    A["vendored web/ascon/ascon.py"]
-    D[("PostgreSQL: 14 таблиц существующей ORM")]
-    W["Flask app.py: отдельный MQTT subscriber + HTTP + Socket.IO"]
-    M["latest_data: 50 точек в памяти процесса"]
-    U["браузер: Jinja, Bootstrap, Chart.js, Socket.IO"]
-    N["iot-test.ipynb: offline Edge-IIoT RF/IF"]
-    F["joblib.dump: pkl-файлы отсутствуют"]
-    P --> E
-    P -->|"JSON, iot/sensors/device1, publish QoS 1"| B
-    B -->|"iot/sensors/#"| R
-    B -->|"iot/sensors/#"| W
-    R --> A
-    W --> A
-    R -->|"SELECT конфигурации / INSERT аномалий"| D
-    W -->|"чтение истории, users, table CRUD частично"| D
-    W --> M
-    M -->|"HTTP latest-data / sensor_update"| U
-    U -->|"session login / table API"| W
-    N --> F
+    S["publisher: persistent SQLite sequence"] --> P["v2 AEAD, per-device key"]
+    P -->|"TLS 8883 + password"| B["Mosquitto + topic ACL"]
+    B --> R["receiver: bounded validation + AEAD"]
+    B --> W["Flask MQTT: same v2 validation"]
+    R --> T["PG transaction: conditional replay upsert + anomaly INSERT"]
+    T --> D[("PostgreSQL: 14 legacy tables + mqtt_replay_state")]
+    W -->|"consumer=web replay transaction"| D
+    W --> M["last 50 points: process memory"]
+    M -->|"targeted sid, active user checked"| U["authenticated Socket.IO browser"]
+    U -->|"session + CSRF + role/field checks"| H["existing Flask HTTP/table API"]
+    H --> D
+    N["offline classifier notebook"] --> F["model artifacts absent"]
 ```
 
-`brocker` не принимает серверные MQTT-соединения, не реализует broker и не запускает
-Mosquitto. Flask и receiver — независимые подписчики; Flask не получает от receiver
-расшифрованные события или сигналы аномалий. ML с ними не связан.
+## Startup / credentials
 
-## Реальный поток данных
+security-init копирует локально сгенерированные CA/certificate/пароли/ключи в
+отдельные volumes ролей, не images. CA private key остаётся на хосте. Broker UID
+1883, приложения UID 10001. Broker запускается после установки своих файлов;
+PostgreSQL healthcheck → init-db → receiver, положительный SUBACK → demo publisher.
+Web и demo включаются отдельными профилями. Schema initialization аддитивна,
+не Alembic; колонок 14 исходных ORM-таблиц этап 4 не мигрировал.
 
-1. Publisher генерирует два числа и timestamp, сериализует JSON в UTF-8.
-2. AAD — отдельный JSON: строковый device_id и второй timestamp; nonce 16 случайных
-   байт. Encrypt возвращает ciphertext с 16-байтовым тегом.
-3. Публикуется JSON-оболочка из четырёх полей: nonce, associated_data, ciphertext
-   в base64 и algorithm строкой. Внешний broker маршрутизирует сообщения.
-4. Receiver проверяет тег, читает метаданные, вычисляет задержку по UTC,
-   применяет прежние правила и записывает только аномалии в PostgreSQL через
-   параметризованный SELECT и INSERT в одной транзакции.
-5. Web самостоятельно дешифрует пакет, теряет device_id из AAD и обновляет общий
-   буфер всех датчиков. Сохранение телеметрии отключено. Socket.IO рассылает
-   температуру/влажность/время без разделения по устройствам и без connect auth.
-6. Браузер сначала запрашивает историю через `/api/latest-data`, затем слушает
-   sensor_update. При пустом буфере web пытается читать Log_Journal JOIN Sensor_Data.
-   Источник наполнения этих таблиц рабочим кодом текущей цепочки не установлен.
+Broker слушает TLS/8883, требует пароль/ACL. Клиенты проверяют CA/hostname,
+минимальный TLS 1.2; пароль читается из приватного файла. Publisher/smoke получают
+только свой ключ, receiver/web — разрешённые устройства. TCP plaintext listener
+отсутствует. MQTT/HTTP опубликованы на loopback, PostgreSQL только в Compose network.
+Сертификаты локальные, 30 дней; provisioning и rotation пока ручные.
 
-Транспорт настроен на TCP/1883. Все три процесса поддерживают MQTT username/password из окружения,
-но TLS ещё не настраивается. Paho VERSION2, QoS подписок 1; publisher ожидает
-подтверждение публикации с timeout. Реальная локальная передача и запись аномалий
-проверены; отказоустойчивость/отсутствие потерь в ненадёжной сети не доказаны. Повторная доставка обрабатывается как новое
-событие; authenticated timestamp не используется как anti-replay.
+## Data admission / storage
 
-## Хранение и жизненный цикл
+AAD v2 включает device_id, key_epoch, sequence_number, точный topic, профиль и
+версию. Реестр связывает их с ключом и DB Device_ID. До проверки AEAD тега нет
+изменений БД/UI; размер/схема/base64/типы/диапазоны валидируются явно, без assert.
+Legacy v1 не принимается. Publisher резервирует счётчик в SQLite до publish;
+volume переживает смену контейнера. Nonce — 16 случайных байт.
 
-Flask-SQLAlchemy и receiver используют PostgreSQL через SQLAlchemy 2.0/Psycopg 3,
-с общим DATABASE_URL. Имена/PK 14 моделей сохранены, смешанный регистр SQL корректно
-цитируется. init-db создаёт таблицы явно через create_all; эта операция не заменяет
-Alembic. Данных/DDL исходного MSSQL нет, их миграция не выполнялась. FK пока нет.
-Users обслуживает web, 13 таблиц доступны через ролевую карту. Простой PUT/DELETE
-проверен на PostgreSQL; составные PK и отсутствующий CREATE остаются проблемами.
+Receiver в одной PG транзакции находит конфигурацию, выполняет условный upsert
+high-water mark (consumer, device, epoch), затем INSERT аномалии при прежних порогах.
+Повтор/старый sequence не создаёт запись; ошибка откатывает и счётчик, и событие.
+Конкурентные копии атомарно сериализуются. Причины 0/1 и задержка >0.5s сохранены;
+ML не вызывается. Нормальный пакет тоже продвигает replay-state, но датчики пока
+не пишутся в Sensor_Data. Вся replay-таблица недоступна через общий table API.
 
-Module entrypoints запускаются из корня. Publisher/receiver не соединяются при
-импорте. Web импорт создаёт app/engine без сетевого подключения и файлового логгера;
-serve отдельно проверяет конфигурацию, включает MQTT только по WEB_MQTT_ENABLED=1
-и запускает локальный dev server (debug=False, loopback по умолчанию).
-Создание схемы и начальных пользователей — отдельные явные команды. Пустые bootstrap
-пароли не создают пользователей, существующие пароли не изменяются.
+Web — независимый subscriber/consumer, с отдельным replay high-water mark в той
+же БД. После commit обновляет память и шлёт sensor_update только проверенным sid.
+Crash между commit и emit может потерять UI событие; outbox и многопроцессная
+синхронизация не реализованы. Память общая для потоков устройств, 50 точек;
+история в Sensor_Data по-прежнему не наполняется рабочим pipeline.
 
-Конфигурация передаётся окружением, образец — .env.example. Воспроизведение:
-Python 3.12.16, pyproject dependency groups, uv.lock и экспорты requirements.
-LOG_FILE включает файловый лог при старте; по умолчанию stderr. Есть автоматические
-проверки импорта, AEAD и PostgreSQL. Compose реализован с init-db, Mosquitto, receiver, opt-in demo/web, smoke/tests.
-PostgreSQL и Mosquitto имеют volumes; опубликованы только loopback MQTT/HTTP порты.
-Receiver healthcheck ждёт SUBACK; marker сбрасывается при disconnect, успешное
-переподключение после рестарта broker проверено. Миграций и CI ещё нет, фактическое
-исполнение ARM64 не проверялось.
+## HTTP / browser
 
-Notebook работает отдельно в Kaggle-подобном окружении. Набор сетевых flow-признаков
-не совпадает с decrypted JSON датчиков. Модели сохраняются без preprocessing/schema;
-обратной связи от ML к криптографической части не реализовано.
+Существующие Flask/Jinja/Bootstrap/Chart.js сохранены. Socket.IO требует login и
+CSRF, использует same-origin CORS. Logout — POST, закрывает sockets этого сеанса;
+активность/роль перепроверяются перед отправкой. admin/operator/viewer сохраняют
+свои таблицы и операции; неизвестная роль не получает fallback viewer-доступ.
 
-FastAPI, отдельный worker как оформленный сервис, Policy Engine,
-профили «Магмы»/CRISP, защищённые команды и anti-replay в этой архитектуре отсутствуют.
-Их целевой план приведён отдельно в DEVELOPMENT_STATUS.md.
+Изменяющие запросы защищены CSRFProtect; fetch передаёт X-CSRFToken, login next
+ограничен локальными путями. JSON API допускает только объявленные непервичные
+колонки, проверяет типы/размеры/диапазоны. Составные PK не угадываются: операции
+через scalar API отвергаются. HTTP/DB ошибки не содержат SQL/traceback.
+Динамические значения таблицы создаются через DOM/textContent/value, а не HTML;
+table_edit2 наследует защищённый шаблон. Chromium проверил 4 XSS payload.
 
-Демонстрационная конфигурация данных создаётся только отдельным профилем demo,
-с проверкой конфликтов и без перезаписи существующих строк. Профиль web использует
-существующий Flask; smoke проверяет временное устройство через живой MQTT и БД,
-затем удаляет только свои записи. Полного выделенного worker и sensor persistence
-по-прежнему нет. В Docker используется исходный код без legacy архивов/Git/секретов.
+## Не реализовано / не проверено
+
+Нет FastAPI, Alembic/FK переработки, полного worker ingestion/sensor persistence,
+CREATE API и удобных операций с составными PK. Нет ML inference, Policy Engine,
+«Магмы»/CRISP, автоматических защищённых команд/ротации. Auth Socket.IO поддержан
+в одном Flask-процессе; внешний HTTPS deployment, нагрузка, ARM64 и полный
+независимый криптографический аудит не проверялись. Pure Python Ascon не объявляется
+constant-time/сертифицированным. Тесты и протоколы: [reports/README.md](reports/README.md).
