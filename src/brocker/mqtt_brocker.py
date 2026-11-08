@@ -1,108 +1,133 @@
 #!/usr/bin/env python3
-import paho.mqtt.client as mqtt
-import json
-import os
+"""Legacy MQTT receiver with PostgreSQL anomaly storage (not a broker)."""
+
 import base64
-from datetime import datetime, timedelta
-from ascon.ascon import ascon_decrypt
-import pymssql
+import json
+import logging
+import os
+from datetime import datetime, timezone
+
+import paho.mqtt.client as mqtt
+from sqlalchemy import create_engine, text
+
+from src.runtime import ascon_key, database_url
+from src.web.ascon.ascon import ascon_decrypt
+
+logger = logging.getLogger(__name__)
+
+# Quoted names match the unchanged SQLAlchemy models on case-sensitive PostgreSQL.
+# Bind parameters keep authenticated device metadata out of the SQL syntax.
+FIND_CONFIGURATION = text('''
+    SELECT "Device_ID", "Configuration_Update_Date"
+    FROM "Device_Configuration"
+    WHERE "Tag_ID" = (
+        SELECT "Tag_ID" FROM "Tag_Journal"
+        WHERE starts_with("Tag_Name", :device_id)
+        ORDER BY "Creation_Date" DESC, "Tag_ID" DESC LIMIT 1
+    )
+    ORDER BY "Configuration_Update_Date" DESC, "Device_ID" DESC LIMIT 1
+''')
+INSERT_ANOMALY = text('''
+    INSERT INTO "Anomalies"
+        ("Anomaly_Date", "Anomaly_Cause_ID", "Device_ID", "Configuration_Update_Date")
+    VALUES (:date, :cause, :device_id, :configuration_date)
+''')
 
 
-BROKER_HOST = os.environ.get("MQTT_HOST", "localhost")
-BROKER_PORT = 1883
-TOPIC = "iot/sensors/#"
-ASCON_KEY = bytes.fromhex(os.environ["ASCON_KEY_HEX"])
+def on_connect(client, userdata, flags, reason_code, properties):
+    if reason_code == 0:
+        client.subscribe(os.environ.get("MQTT_TOPIC", "iot/sensors/#"), qos=1)
+    else:
+        logger.error("MQTT connection rejected: %s", reason_code)
 
-DB_SERVER = os.environ["DB_SERVER"]
-DB_USER = os.environ["DB_USER"]
-DB_PASSWORD = os.environ["DB_PASSWORD"]
-DB_NAME = "IoTMonitor"
-
-
-
-def on_connect(client, userdata, flags, rc):
-    client.subscribe(TOPIC)
-    print(f"[{datetime.now()}] Подписка на топик: {TOPIC}\n")
 
 def connect_to_db():
+    engine = create_engine(database_url(), pool_pre_ping=True)
     try:
-        db_conn = pymssql.connect(server = DB_SERVER, user = DB_USER, password = DB_PASSWORD, database = DB_NAME)
-        print("Подключение удалось")
-        return db_conn
-    except Exception as e:
-        print(f"Ошибка подключения к БД: {e}")
-        return None
+        with engine.connect() as connection:
+            connection.execute(text('SELECT 1'))
+    except Exception:
+        engine.dispose()
+        raise
+    return engine
+
+
+def process_packet(packet, key, engine, now=None):
+    """Authenticate a legacy packet and record a threshold anomaly atomically.
+
+    Sensor persistence and ML remain separate future work. Existing naive sensor
+    timestamps are interpreted as UTC; new publishers send an explicit UTC offset.
+    """
+    associated_data = base64.b64decode(packet["associated_data"], validate=True)
+    plaintext = ascon_decrypt(
+        key,
+        base64.b64decode(packet["nonce"], validate=True),
+        associated_data,
+        base64.b64decode(packet["ciphertext"], validate=True),
+        packet["algorithm"],
+    )
+    if plaintext is None:
+        raise ValueError("Ascon authentication failed")
+    metadata = json.loads(associated_data)
+    sensor_data = json.loads(plaintext)
+    timestamp = datetime.fromisoformat(metadata["timestamp"])
+    if timestamp.tzinfo is None:
+        timestamp = timestamp.replace(tzinfo=timezone.utc)
+    now = now or datetime.now(timezone.utc)
+    delay = (now - timestamp).total_seconds()
+    cause = None
+    if sensor_data['temperature'] > 60 or sensor_data['humidity'] > 70:
+        cause = 0
+    elif delay > 0.5:
+        cause = 1
+    if cause is not None:
+        with engine.begin() as connection:
+            config = connection.execute(
+                FIND_CONFIGURATION, {"device_id": metadata["device_id"]}
+            ).first()
+            if config:
+                connection.execute(INSERT_ANOMALY, {
+                    "date": now.astimezone(timezone.utc).replace(tzinfo=None),
+                    "cause": cause,
+                    "device_id": config[0],
+                    "configuration_date": config[1],
+                })
+            else:
+                logger.warning("No device configuration matched authenticated metadata")
+    return sensor_data
 
 
 def on_message(client, userdata, msg):
     try:
-        encrypted_packet = json.loads(msg.payload.decode())
-        
-        # 1. ТОПИК - показывает, куда отправлено сообщение
-        topic = msg.topic
-        
-        # 2. ASSOCIATED DATA - содержит device_id и timestamp
-        associated_data_bytes = base64.b64decode(encrypted_packet["associated_data"])
-        metadata = json.loads(associated_data_bytes.decode('utf-8'))
-        
-        device_id = metadata.get("device_id", "unknown")
-        timestamp = metadata.get("timestamp", "unknown")
-        dt = datetime.now()
-        d = dt - datetime.fromisoformat(timestamp) + timedelta(hours = 3)
-        # Расшифровка данных
-        nonce = base64.b64decode(encrypted_packet["nonce"])
-        ciphertext = base64.b64decode(encrypted_packet["ciphertext"])
-        variant = encrypted_packet["algorithm"]
-        
-        plaintext = ascon_decrypt(ASCON_KEY, nonce, associated_data_bytes, 
-                                 ciphertext, variant)
-        
-        if plaintext:
-            sensor_data = json.loads(plaintext.decode('utf-8'))
-            
-            if (sensor_data.get('temperature') > 60) or (sensor_data.get('humidity') > 70):
-                q = f" select device_id, Configuration_Update_Date from device_configuration where tag_id = (select top(1) tag_id from tag_journal where tag_name like '{device_id}%' order by creation_date desc) order by configuration_update_date desc"
-                cursor = conn.cursor()
-                cursor.execute(q)
-                x = cursor.fetchone()
-                if x:
-                    date = datetime.now()
-                    q = "insert into anomalies ([Anomaly_Date], [Anomaly_Cause_ID] ,[Device_ID] ,[Configuration_Update_Date]) values (%d, 0, %d, %d)"
-                    cursor.execute(q, (date,x[0],x[1]))
-                    conn.commit()
-            elif (d.total_seconds() > 0.5):
-                q = f" select device_id, Configuration_Update_Date from device_configuration where tag_id = (select top(1) tag_id from tag_journal where tag_name like '{device_id}%' order by creation_date desc) order by configuration_update_date desc"
-                cursor = conn.cursor()
-                cursor.execute(q)
-                x = cursor.fetchone()
-                if x:
-                    date = datetime.now()
-                    q = "insert into anomalies ([Anomaly_Date], [Anomaly_Cause_ID] ,[Device_ID] ,[Configuration_Update_Date]) values (%d, 1, %d, %d)"
-                    cursor.execute(q, (date,x[0],x[1]))
-                    conn.commit()
-
-            print(f"{'='*60}")
-            print(f"Device ID: {device_id}")
-            print(f"Topic: {topic}")
-            print(f"Timestamp: {timestamp}")
-            print(f"Data:")
-            print(f"  Temp: {sensor_data.get('temperature')}°C")
-            print(f"  Humidity: {sensor_data.get('humidity')}%")
-            print(f"{'='*60}\n")
-        else:
-            print(f"[-] [{datetime.now()}] Ошибка аутентификации от {device_id}!")
-            
-    except Exception as e:
-        import traceback
-        print(f"Ошибка обработки: {e}")
-        print(traceback.format_exc())
-        conn.rollback()
+        data = process_packet(json.loads(msg.payload), userdata['key'], userdata['engine'])
+        logger.info("Received sensor data on %s: temperature=%s humidity=%s",
+                    msg.topic, data['temperature'], data['humidity'])
+    except Exception as error:
+        # engine.begin rolls back automatically. Never call rollback on a failed
+        # global connection or log untrusted payloads / connection credentials.
+        logger.error("MQTT packet processing failed (%s)", type(error).__name__)
 
 
-conn = connect_to_db()
-client = mqtt.Client()
-client.on_connect = on_connect
-client.on_message = on_message
-client.connect(BROKER_HOST, BROKER_PORT, 60)
-client.loop_forever()
+def main():
+    logging.basicConfig(level=logging.INFO)
+    key = ascon_key()
+    engine = connect_to_db()
+    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2,
+                         userdata={"key": key, "engine": engine})
+    client.on_connect = on_connect
+    client.on_message = on_message
+    if os.environ.get('MQTT_USERNAME'):
+        client.username_pw_set(os.environ['MQTT_USERNAME'], os.environ.get('MQTT_PASSWORD', ''))
+    try:
+        client.connect(os.environ.get('MQTT_HOST', 'localhost'),
+                       int(os.environ.get('MQTT_PORT', '1883')), 60)
+        client.loop_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        client.disconnect()
+        engine.dispose()
 
+
+if __name__ == '__main__':
+    main()

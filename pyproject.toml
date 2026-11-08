@@ -1,0 +1,45 @@
+[project]
+name = "lightcrypto-manager"
+version = "0.1.0"
+description = "Legacy LightCrypto Manager runtime and experiments"
+requires-python = ">=3.12,<3.15"
+dependencies = ["paho-mqtt==2.1.0"]
+
+[dependency-groups]
+publisher = ["numpy>=2.2,<3"]
+receiver = ["SQLAlchemy>=2.0.40,<2.1", "psycopg[binary]>=3.2,<4"]
+web = [
+    "Flask>=3.1,<3.2",
+    "Flask-SocketIO>=5.5,<6",
+    "Flask-SQLAlchemy==3.1.1",
+    "Flask-Login==0.6.3",
+    "Flask-WTF>=1.2,<1.3",
+    "WTForms>=3.2,<3.3",
+    "Werkzeug>=3.1,<3.2",
+    "SQLAlchemy>=2.0.40,<2.1",
+    "psycopg[binary]>=3.2,<4",
+    "email-validator>=2.2,<3",
+    "simple-websocket>=1.1,<2",
+]
+ml = [
+    "numpy>=2.2,<3", "pandas>=2.2,<3", "scikit-learn>=1.6,<2",
+    "matplotlib>=3.10,<4", "seaborn>=0.13,<0.14", "joblib>=1.4,<2",
+    "jupyterlab>=4.3,<5",
+]
+dev = ["pytest>=8.3,<10", "ruff>=0.11,<1"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "--tb=short"
+markers = ["postgres: requires a disposable PostgreSQL database via TEST_DATABASE_URL"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E9", "F63", "F7", "F82"]

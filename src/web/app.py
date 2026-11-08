@@ -5,13 +5,13 @@ from flask_socketio import SocketIO
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from functools import wraps
 import json
-from ascon.ascon import ascon_decrypt
+from src.web.ascon.ascon import ascon_decrypt
+from src.runtime import ascon_key, database_url
 from datetime import datetime
-from config import Config
-from models import *
-from forms import LoginForm, RegistrationForm
+from src.web.config import Config
+from src.web.models import *
+from src.web.forms import LoginForm, RegistrationForm
 import paho.mqtt.client as mqtt_client
-from threading import Thread
 import base64
 
 
@@ -20,19 +20,29 @@ import base64
 app = Flask(__name__)
 app.config.from_object(Config)
 
-handler = logging.FileHandler('/var/log/flask_mqtt.log') # Logs will be saved to flask.log
-handler.setLevel(logging.DEBUG) # Set the log level
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
+def configure_logging():
+    """File logging is optional and is configured only at explicit startup."""
+    from pathlib import Path
 
-app.logger.addHandler(handler)
-app.logger.setLevel(logging.INFO)
-logging.getLogger('werkzeug').addHandler(handler)
+    path = os.environ.get("LOG_FILE")
+    if path:
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+        handler = logging.FileHandler(path)
+        handler.setFormatter(logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        ))
+        app.logger.addHandler(handler)
+    app.logger.setLevel(logging.INFO)
+
+
+db_logger = logging.getLogger("lightcrypto.database")
+error_logger = logging.getLogger("lightcrypto.errors")
+json_audit_logger = logging.getLogger("lightcrypto.audit")
 
 
 # Инициализация расширений
 db.init_app(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
 # Инициализация Flask-Login
 login_manager = LoginManager()
@@ -71,25 +81,17 @@ TABLES = {
 
 mqtt_client_instance = None
 
-def on_connect(client, userdata, flags, rc):
+def on_connect(client, userdata, flags, rc, properties):
     """Callback при подключении к MQTT брокеру"""
     if rc == 0:
         print(f"[{datetime.now()}] Успешно подключено к MQTT брокеру!")
-        client.subscribe(app.config['MQTT_TOPIC'])
+        client.subscribe(app.config['MQTT_TOPIC'], qos=1)
         print(f"[{datetime.now()}] Подписка на топик: {app.config['MQTT_TOPIC']}")
     else:
         print(f"[{datetime.now()}] ОШИБКА подключения к MQTT брокеру!")
         print(f"Код ошибки: {rc}")
-        error_messages = {
-            1: "Неверная версия протокола",
-            2: "Неверный client ID",
-            3: "Сервер недоступен",
-            4: "Неверный логин/пароль",
-            5: "Нет авторизации"
-        }
-        print(f"Описание: {error_messages.get(rc, 'Неизвестная ошибка')}")
 
-def on_disconnect(client, userdata, rc):
+def on_disconnect(client, userdata, flags, rc, properties):
     """Callback при отключении от MQTT брокера"""
     print(f"✗ [{datetime.now()}] Отключено от MQTT брокера (код: {rc})")
     if rc != 0:
@@ -123,6 +125,7 @@ def on_message(client, userdata, message):
 def create_mqtt_client():
     """Создание и настройка MQTT клиента"""
     client = mqtt_client.Client(
+        mqtt_client.CallbackAPIVersion.VERSION2,
         client_id=f"flask-mqtt-{datetime.now().timestamp()}",
         clean_session=True
     )
@@ -198,12 +201,14 @@ def decrypt_ascon_data(encrypted_payload):
             variant
         )
         
+        if plaintext is None:
+            raise ValueError('Ascon authentication failed')
         decrypted = json.loads(plaintext.decode('utf-8'))
         
         return decrypted
         
     except ValueError as e:
-        print("[ERROR] Не удалось расшифровать данные: {e}")
+        print(f"[ERROR] Не удалось расшифровать данные: {e}")
         return None
     except Exception as e:
         print(f"[ERROR] Ошибка расшифровки: {e}")
@@ -561,43 +566,55 @@ def generate_test_data(count=10):
 # ============= Инициализация =============
 
 def create_default_users():
-    """Создание пользователей по умолчанию"""
-    users = [
-        {'username': 'admin', 'email': 'admin@iot.local', 'password': os.environ["BOOTSTRAP_ADMIN_PASSWORD"], 'role': 'admin'},
-        {'username': 'operator', 'email': 'operator@iot.local', 'password': os.environ["BOOTSTRAP_OPERATOR_PASSWORD"], 'role': 'operator'},
-        {'username': 'viewer', 'email': 'viewer@iot.local', 'password': os.environ["BOOTSTRAP_VIEWER_PASSWORD"], 'role': 'viewer'}
-    ]
-    
-    for user_data in users:
-        user = User.query.filter_by(username=user_data['username']).first()
-        if not user:
-            user = User(
-                username=user_data['username'],
-                email=user_data['email'],
-                role=user_data['role']
-            )
-            user.set_password(user_data['password'])
-            db.session.add(user)
-            print(f"Создан пользователь: {user_data['username']}")
-    
+    """Create only explicitly requested accounts, never reset existing passwords."""
+    created = 0
+    for role in ('admin', 'operator', 'viewer'):
+        password = os.environ.get(f'BOOTSTRAP_{role.upper()}_PASSWORD')
+        if not password or User.query.filter_by(username=role).first():
+            continue
+        user = User(username=role, email=f'{role}@iot.local', role=role)
+        user.set_password(password)
+        db.session.add(user)
+        created += 1
     db.session.commit()
+    return created
+
 
 # ============= ГЛАВНАЯ ТОЧКА ВХОДА =============
 
-if __name__ == '__main__':
-    # Инициализация БД
-    with app.app_context():
-        db.create_all()
-        create_default_users()
-    
-    # Запуск MQTT клиента
-    start_mqtt_client()
-    
-    # Запуск Flask с SocketIO
-    print(f"\n{'='*60}")
-    print(f"  Запуск Flask приложения")
-    print(f"  URL: http://0.0.0.0:5000")
-    print(f"{'='*60}\n")
-    
-    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+def main():
+    import argparse
 
+    parser = argparse.ArgumentParser(description="Legacy Flask UI on PostgreSQL")
+    parser.add_argument('command', nargs='?', default='serve',
+                        choices=['serve', 'init-db', 'bootstrap-users'])
+    args = parser.parse_args()
+    database_url()  # Require an explicit PostgreSQL URL at runtime.
+    configure_logging()
+    if args.command == 'init-db':
+        with app.app_context():
+            db.create_all()
+        print("PostgreSQL schema initialized (create_all; not a migration)")
+        return
+    if args.command == 'bootstrap-users':
+        with app.app_context():
+            count = create_default_users()
+        print(f"Created accounts: {count}")
+        return
+    if not app.config['SECRET_KEY']:
+        raise ValueError('FLASK_SECRET_KEY is required to serve the web UI')
+    try:
+        if os.environ.get('WEB_MQTT_ENABLED', '0') == '1':
+            app.config['ASCON_KEY'] = ascon_key()
+            start_mqtt_client()
+        socketio.run(app, host=os.environ.get('WEB_HOST', '127.0.0.1'),
+                     port=int(os.environ.get('WEB_PORT', '5000')), debug=False,
+                     allow_unsafe_werkzeug=True)
+    finally:
+        if mqtt_client_instance:
+            mqtt_client_instance.disconnect()
+            mqtt_client_instance.loop_stop()
+
+
+if __name__ == '__main__':
+    main()
