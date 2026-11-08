@@ -13,7 +13,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ENGINE_OPTIONS = {"pool_pre_ping": True}
     MQTT_BROKER_URL = os.environ.get("MQTT_HOST", "localhost")
-    MQTT_BROKER_PORT = int(os.environ.get("MQTT_PORT", "1883"))
+    MQTT_BROKER_PORT = int(os.environ.get("MQTT_PORT", "8883"))
     MQTT_USERNAME = os.environ.get("MQTT_USERNAME", "")
     MQTT_PASSWORD = os.environ.get("MQTT_PASSWORD", "")
     MQTT_KEEPALIVE = 60

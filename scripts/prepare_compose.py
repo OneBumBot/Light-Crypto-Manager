@@ -11,7 +11,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--env-file', type=Path, default=Path('.env.compose'))
     parser.add_argument('--project', default='lightcrypto')
-    parser.add_argument('--mqtt-port', type=int, default=1883)
+    parser.add_argument('--mqtt-port', type=int, default=8883)
     parser.add_argument('--web-port', type=int, default=5000)
     args = parser.parse_args()
     if not re.fullmatch(r'[a-z0-9][a-z0-9_-]{0,45}', args.project):

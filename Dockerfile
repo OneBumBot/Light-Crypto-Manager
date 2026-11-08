@@ -6,14 +6,14 @@ COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
 COPY src/web/requirements.txt /app/requirements/web.txt
 RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt \
     && useradd --system --uid 10001 --create-home lightcrypto
-COPY src/runtime.py /app/src/runtime.py
+COPY src/*.py /app/src/
 COPY src/publisher/*.py /app/src/publisher/
 COPY src/brocker/*.py /app/src/brocker/
 COPY src/web/*.py /app/src/web/
 COPY src/web/templates /app/src/web/templates
 COPY src/web/static /app/src/web/static
 COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
-COPY scripts/seed_demo.py scripts/mqtt_smoke.py /app/scripts/
+COPY scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
 USER 10001:10001
 CMD ["python", "-m", "src.brocker.mqtt_brocker"]
 

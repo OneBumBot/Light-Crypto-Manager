@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from src.mqtt_transport import configure_client
 import paho.mqtt.client as mqtt
 import time
 import numpy as np
@@ -11,8 +12,8 @@ import base64
 
 # Настройки MQTT брокера
 BROKER_HOST = os.environ.get("MQTT_HOST", "localhost")
-BROKER_PORT = int(os.environ.get("MQTT_PORT", "1883"))
-TOPIC = os.environ.get("MQTT_PUBLISH_TOPIC", "iot/sensors/device1")
+BROKER_PORT = int(os.environ.get("MQTT_PORT", "8883"))
+TOPIC = os.environ.get("MQTT_PUBLISH_TOPIC", "iot/sensors/raspb1")
 CLIENT_ID = os.environ.get('MQTT_CLIENT_ID', 'raspb1')
 
 #Конфигурация
@@ -104,8 +105,7 @@ def main():
     if interval <= 0:
         raise ValueError("PUBLISH_INTERVAL must be positive")
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=CLIENT_ID)
-    if os.environ.get("MQTT_USERNAME"):
-        client.username_pw_set(os.environ["MQTT_USERNAME"], os.environ.get("MQTT_PASSWORD", ""))
+    configure_client(client)
     client.on_connect = on_connect
     client.on_publish = on_publish
     client.on_disconnect = on_disconnect
@@ -133,8 +133,6 @@ def main():
             # Преобразование в JSON
             plaintext_json = json.dumps(sensor_data)
 
-            print(f"[{datetime.now()}] Исходные данные:")
-            print(f"  {plaintext_json}")
 
             # Шифрование с Ascon-AEAD128
             start_time = time.time()

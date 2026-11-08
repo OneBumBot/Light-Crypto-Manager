@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from src.mqtt_transport import configure_client
 """Legacy MQTT receiver with PostgreSQL anomaly storage (not a broker)."""
 
 import base64
@@ -123,8 +124,7 @@ def process_packet(packet, key, engine, now=None):
 def on_message(client, userdata, msg):
     try:
         data = process_packet(json.loads(msg.payload), userdata['key'], userdata['engine'])
-        logger.info("Received sensor data on %s: temperature=%s humidity=%s",
-                    msg.topic, data['temperature'], data['humidity'])
+        logger.info("Telemetry accepted")
     except Exception as error:
         # engine.begin rolls back automatically. Never call rollback on a failed
         # global connection or log untrusted payloads / connection credentials.
@@ -142,11 +142,10 @@ def main():
     client.on_message = on_message
     client.on_subscribe = on_subscribe
     client.on_disconnect = on_disconnect
-    if os.environ.get('MQTT_USERNAME'):
-        client.username_pw_set(os.environ['MQTT_USERNAME'], os.environ.get('MQTT_PASSWORD', ''))
+    configure_client(client)
     try:
         client.connect(os.environ.get('MQTT_HOST', 'localhost'),
-                       int(os.environ.get('MQTT_PORT', '1883')), 60)
+                       int(os.environ.get('MQTT_PORT', '8883')), 60)
         client.loop_forever()
     except KeyboardInterrupt:
         pass

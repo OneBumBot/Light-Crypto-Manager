@@ -1,4 +1,5 @@
 """Check the live broker/receiver/DB path using isolated temporary device rows."""
+from src.mqtt_transport import configure_client
 
 import argparse
 import base64
@@ -40,8 +41,7 @@ def main():
     engine = create_engine(database_url(), pool_pre_ping=True)
     subscribed, demo_received = threading.Event(), threading.Event()
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=device)
-    if os.environ.get('MQTT_USERNAME'):
-        client.username_pw_set(os.environ['MQTT_USERNAME'], os.environ.get('MQTT_PASSWORD', ''))
+    configure_client(client)
 
     def on_connect(client, userdata, flags, reason_code, properties):
         if reason_code == 0:
@@ -72,7 +72,7 @@ def main():
                 VALUES (:id, 1, :id, :date)'''), {'id': identity, 'date': date})
         created = True
         client.connect(os.environ.get('MQTT_HOST', 'localhost'),
-                       int(os.environ.get('MQTT_PORT', '1883')), 60)
+                       int(os.environ.get('MQTT_PORT', '8883')), 60)
         client.loop_start()
         if not subscribed.wait(10):
             raise TimeoutError('Smoke observer subscription timed out')

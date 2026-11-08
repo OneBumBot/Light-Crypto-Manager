@@ -1,0 +1,14 @@
+user publisher
+topic write iot/sensors/raspb1
+user receiver
+topic read iot/sensors/raspb1
+topic read iot/sensors/smoke
+user web
+topic read iot/sensors/raspb1
+topic read iot/sensors/smoke
+user smoke
+topic write iot/sensors/smoke
+topic read iot/sensors/smoke
+topic read iot/sensors/raspb1
+user monitor
+topic write lightcrypto/health

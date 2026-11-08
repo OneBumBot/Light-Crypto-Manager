@@ -12,7 +12,8 @@ x-db-environment: &db-environment
 
 x-mqtt-environment: &mqtt-environment
   MQTT_HOST: broker
-  MQTT_PORT: "1883"
+  MQTT_PORT: "8883"
+  MQTT_CA_FILE: /run/lcm/ca.crt
   ASCON_KEY_HEX: ${ASCON_KEY_HEX:?generate .env.compose}
 
 services:
@@ -34,16 +35,36 @@ services:
   broker:
     image: eclipse-mosquitto:2@sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98
     ports:
-      - "127.0.0.1:${MQTT_BIND_PORT:-1883}:1883"
+      - "127.0.0.1:${MQTT_BIND_PORT:-8883}:8883"
     volumes:
       - ./deploy/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./deploy/mosquitto/acl:/mosquitto/config/acl:ro
+      - broker-security:/mosquitto/security:ro
       - mosquitto-data:/mosquitto/data
     healthcheck:
-      test: [CMD, mosquitto_pub, -h, "127.0.0.1", -t, lightcrypto/health, -m, ping, -q, "1"]
+      test: [CMD, mosquitto_pub, -o, /mosquitto/security/health.conf]
       interval: 3s
       timeout: 3s
       retries: 20
     restart: unless-stopped
+    depends_on:
+      security-init:
+        condition: service_completed_successfully
+
+  security-init:
+    <<: *app
+    user: "0:0"
+    command: [python, -m, scripts.install_security]
+    volumes:
+      - ${MQTT_SECURITY_DIR:?generate local security material}:/input:ro
+      - broker-security:/out/broker
+      - publisher-security:/out/publisher
+      - receiver-security:/out/receiver
+      - web-security:/out/web
+      - smoke-security:/out/smoke
+      - test-security:/out/tests
+      - publisher-state:/out/publisher-state
+      - smoke-state:/out/smoke-state
 
   init-db:
     <<: *app
@@ -55,8 +76,12 @@ services:
 
   receiver:
     <<: *app
+    volumes:
+      - receiver-security:/run/lcm:ro
     environment:
       <<: [*db-environment, *mqtt-environment]
+      MQTT_USERNAME: receiver
+      MQTT_PASSWORD_FILE: /run/lcm/receiver.password
       MQTT_READY_FILE: /tmp/mqtt-ready
     depends_on:
       init-db:
@@ -83,8 +108,13 @@ services:
     <<: *app
     profiles: [demo]
     command: [python, -m, src.publisher.mqtt_pub]
+    volumes:
+      - publisher-security:/run/lcm:ro
+      - publisher-state:/state
     environment:
       <<: *mqtt-environment
+      MQTT_USERNAME: publisher
+      MQTT_PASSWORD_FILE: /run/lcm/publisher.password
       PUBLISH_INTERVAL: ${PUBLISH_INTERVAL:-10}
     depends_on:
       receiver:
@@ -97,8 +127,12 @@ services:
     <<: *app
     profiles: [web]
     command: [python, -m, src.web.app, serve]
+    volumes:
+      - web-security:/run/lcm:ro
     environment:
       <<: [*db-environment, *mqtt-environment]
+      MQTT_USERNAME: web
+      MQTT_PASSWORD_FILE: /run/lcm/web.password
       FLASK_SECRET_KEY: ${FLASK_SECRET_KEY:?generate .env.compose}
       WEB_MQTT_ENABLED: "1"
       WEB_HOST: "0.0.0.0"
@@ -121,8 +155,13 @@ services:
     profiles: [checks]
     entrypoint: [python, -m, scripts.mqtt_smoke]
     command: []
+    volumes:
+      - smoke-security:/run/lcm:ro
+      - smoke-state:/state
     environment:
       <<: [*db-environment, *mqtt-environment]
+      MQTT_USERNAME: smoke
+      MQTT_PASSWORD_FILE: /run/lcm/smoke.password
       PUBLISH_INTERVAL: ${PUBLISH_INTERVAL:-10}
     depends_on:
       receiver:
@@ -135,13 +174,28 @@ services:
     build:
       context: .
       target: tests
+    volumes:
+      - test-security:/run/lcm:ro
     environment:
+      MQTT_CA_FILE: /run/lcm/ca.crt
       <<: *db-environment
+      MQTT_HOST: broker
+      MQTT_PORT: "8883"
       TEST_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-lightcrypto}:${POSTGRES_PASSWORD:?generate .env.compose}@postgres:5432/${POSTGRES_DB:-lightcrypto}
     depends_on:
+      security-init:
+        condition: service_completed_successfully
       postgres:
         condition: service_healthy
 
 volumes:
   postgres-data:
   mosquitto-data:
+  broker-security:
+  publisher-security:
+  receiver-security:
+  web-security:
+  smoke-security:
+  test-security:
+  publisher-state:
+  smoke-state:

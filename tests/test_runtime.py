@@ -49,7 +49,13 @@ def test_publisher_packet_is_readable_by_web():
     assert decrypt_ascon_data(packet) == sensor
 
 
-def test_mqtt_clients_use_callback_v2():
+def test_mqtt_clients_use_callback_v2(monkeypatch, tmp_path):
+    password = tmp_path / "password"
+    password.write_text("public-test-password")
+    monkeypatch.setenv("MQTT_USERNAME", "web")
+    monkeypatch.setenv("MQTT_PASSWORD_FILE", str(password))
+    monkeypatch.setenv("MQTT_INSECURE_TEST_MODE", "1")
+    monkeypatch.setenv("APP_ENV", "test")
     import paho.mqtt.client as mqtt
     from src.web.app import create_mqtt_client
 

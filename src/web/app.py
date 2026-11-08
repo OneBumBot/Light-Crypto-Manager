@@ -1,4 +1,5 @@
 import logging
+from src.mqtt_transport import configure_client
 import os
 from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
 from flask_socketio import SocketIO
@@ -135,13 +136,8 @@ def create_mqtt_client():
     client.on_disconnect = on_disconnect
     client.on_message = on_message
     
-    # Если требуется авторизация
-    if app.config.get('MQTT_USERNAME'):
-        client.username_pw_set(
-            app.config['MQTT_USERNAME'],
-            app.config['MQTT_PASSWORD']
-        )
-    
+    configure_client(client)
+
     return client
 
 def start_mqtt_client():
