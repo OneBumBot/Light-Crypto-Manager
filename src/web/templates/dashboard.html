@@ -1,0 +1,351 @@
+{% extends "base.html" %}
+
+{% block title %}Дашборд - Визуализация данных{% endblock %}
+
+{% block extra_css %}
+<style>
+    .stat-card {
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    .stat-label {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+    .chart-container {
+        position: relative;
+        height: 400px;
+        margin-bottom: 30px;
+    }
+    .status-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+    .status-online {
+        background-color: #28a745;
+        animation: pulse 2s infinite;
+    }
+    .status-offline {
+        background-color: #dc3545;
+    }
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>
+            <span class="status-indicator status-online" id="mqttStatus"></span>
+            Мониторинг IoT устройств в реальном времени
+        </h2>
+        <p class="text-muted">Последнее обновление: <span id="lastUpdate">Ожидание данных...</span></p>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Температура -->
+    <div class="col-md-4">
+        <div class="stat-card bg-light">
+            <div class="stat-label">Температура</div>
+            <div class="stat-value text-danger" id="tempValue">--</div>
+            <small>°C</small>
+        </div>
+    </div>
+    
+    <!-- Влажность -->
+    <div class="col-md-4">
+        <div class="stat-card bg-light">
+            <div class="stat-label">Влажность</div>
+            <div class="stat-value text-primary" id="humidityValue">--</div>
+            <small>%</small>
+        </div>
+    </div>
+    
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">График температуры</h5>
+                <div class="chart-container">
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">График влажности</h5>
+                <div class="chart-container">
+                    <canvas id="humidityChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+// Проверяем загрузку Chart.js
+console.log('Chart.js загружен:', typeof Chart !== 'undefined');
+
+// Подключение к SocketIO
+const socket = io();
+console.log('SocketIO инициализирован');
+
+// Инициализация графиков
+let temperatureChart, humidityChart;
+
+// Данные для графиков
+const chartData = {
+    labels: [],
+    temperature: [],
+    humidity: [],
+};
+
+const MAX_DATA_POINTS = 50;
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', async () => {
+    console.log('DOM loaded');
+
+    if (typeof Chart === 'undefined') {
+        console.error('Chart.js NOT loaded');
+        return;
+    }
+
+    // СНАЧАЛА загружаем данные
+    await loadHistoricalData();
+    
+    // ПОТОМ создаем графики с уже заполненными данными
+    initCharts();
+
+    // Подключаем WebSocket для real-time обновлений
+    socket.on('connect', () => {
+        console.log('Socket.IO connected');
+    });
+
+    socket.on('sensor_update', data => {
+        console.log('sensor_update:', data);
+        updateDashboard(data);
+        updateCharts(data);
+    });
+});
+
+
+
+function initCharts() {
+    console.log('Инициализация графиков...');
+    
+    try {
+        // График температуры
+        const tempCanvas = document.getElementById('temperatureChart');
+        if (!tempCanvas) {
+            console.error('Canvas temperatureChart не найден!');
+            return;
+        }
+        const tempCtx = tempCanvas.getContext('2d');
+        
+        temperatureChart = new Chart(tempCtx, {
+            type: 'line',
+            data: {
+                labels: chartData.labels,
+                datasets: [{
+                    label: 'Температура (°C)',
+                    data: chartData.temperature,
+                    borderColor: 'rgb(220, 53, 69)',
+                    backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+        console.log('График температуры создан');
+        
+        // График влажности
+        const humCanvas = document.getElementById('humidityChart');
+        if (!humCanvas) {
+            console.error('Canvas humidityChart не найден!');
+            return;
+        }
+        const humCtx = humCanvas.getContext('2d');
+        
+        humidityChart = new Chart(humCtx, {
+            type: 'line',
+            data: {
+                labels: chartData.labels,
+                datasets: [{
+                    label: 'Влажность (%)',
+                    data: chartData.humidity,
+                    borderColor: 'rgb(13, 110, 253)',
+                    backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+        console.log('График влажности создан');
+        
+    } catch (error) {
+        console.error('Ошибка при создании графиков:', error);
+    }
+}
+
+async function loadHistoricalData() {
+    console.log('Загрузка исторических данных...');
+    try {
+        const resp = await fetch('/api/latest-data');
+        const data = await resp.json();
+        console.log('Получены данные:', data);
+
+        if (!data.temperature || data.temperature.length === 0) {
+            console.warn('Нет исторических данных');
+            return;
+        }
+
+        // Очищаем старые данные
+        chartData.labels = [];
+        chartData.temperature = [];
+        chartData.humidity = [];
+
+        // Заполняем новыми данными
+        chartData.labels = data.timestamps.map(formatTime);
+        chartData.temperature = data.temperature;
+        chartData.humidity = data.humidity;
+
+        console.log(`Загружено ${chartData.temperature.length} точек данных`);
+
+        // ВАЖНО: Обновляем данные в графиках
+        if (temperatureChart) {
+            temperatureChart.data.labels = chartData.labels;
+            temperatureChart.data.datasets[0].data = chartData.temperature;
+            temperatureChart.update();
+            console.log('График температуры обновлен');
+        }
+
+        if (humidityChart) {
+            humidityChart.data.labels = chartData.labels;
+            humidityChart.data.datasets[0].data = chartData.humidity;
+            humidityChart.update();
+            console.log('График влажности обновлен');
+        }
+
+        // Обновляем текущие значения
+        updateDashboard({
+            temperature: data.temperature[data.temperature.length - 1],
+            humidity: data.humidity[data.humidity.length - 1],
+            timestamp: data.timestamps[data.timestamps.length - 1]
+        });
+
+    } catch (e) {
+        console.error('Ошибка загрузки данных:', e);
+    }
+}
+
+
+
+function updateDashboard(data) {
+    // Обновление числовых значений
+    document.getElementById('tempValue').textContent = 
+        data.temperature ? data.temperature.toFixed(1) : '--';
+    document.getElementById('humidityValue').textContent = 
+        data.humidity ? data.humidity.toFixed(1) : '--';
+    
+    // Обновление времени
+    const lastUpdate = new Date(data.timestamp);
+    document.getElementById('lastUpdate').textContent = 
+        lastUpdate.toLocaleString('ru-RU');
+}
+
+function updateCharts(data) {
+    const timestamp = formatTime(data.timestamp);
+    
+    // Добавление новых данных
+    chartData.labels.push(timestamp);
+    chartData.temperature.push(data.temperature);
+    chartData.humidity.push(data.humidity);
+    
+    // Ограничение количества точек
+    if (chartData.labels.length > MAX_DATA_POINTS) {
+        chartData.labels.shift();
+        chartData.temperature.shift();
+        chartData.humidity.shift();
+    }
+    
+    // Обновление графиков
+    if (temperatureChart) temperatureChart.update('none');
+    if (humidityChart) humidityChart.update('none');
+}
+
+function updateStatus(isOnline) {
+    const statusIndicator = document.getElementById('mqttStatus');
+    if (isOnline) {
+        statusIndicator.className = 'status-indicator status-online';
+    } else {
+        statusIndicator.className = 'status-indicator status-offline';
+    }
+}
+
+function formatTime(timestamp) {
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString('ru-RU', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+}
+</script>
+{% endblock %}
+

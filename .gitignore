@@ -1,0 +1,64 @@
+# Python / notebooks / environments
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+build/
+dist/
+*.egg-info/
+# Secrets and local state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*
+*token*.json
+secrets/
+.aws/
+.codex/
+.agents/
+.local-baseline/
+*.db
+*.db-*
+*.sqlite*
+*.mdf
+*.ldf
+*.log
+logs/
+# Docker local overrides / volumes
+docker-compose.override.yml
+compose.override.yaml
+.docker/
+volumes/
+# Generated datasets, models and KAT output
+*.csv
+*.pkl
+*.joblib
+LWC_*_KAT_*.txt
+LWC_*_KAT_*.json
+# Archives / editor / OS / temporary artifacts
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.bak
+*.backup
+*.tmp
+*.swp
+*~
+.DS_Store
+.idea/
+.vscode/

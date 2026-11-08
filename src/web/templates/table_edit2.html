@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}{{ table_name.replace('_', ' ').title() }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>{{ table_name.replace('_', ' ').title() }}</h2>
+        <p class="text-muted">Ваша роль: <strong>{{ current_user.role }}</strong></p>
+        
+        {% if can_create %}
+        <button class="btn btn-success mb-3" onclick="showCreateModal()">
+            Добавить запись
+        </button>
+        {% endif %}
+        
+        <a href="/tables" class="btn btn-secondary mb-3">Назад</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        {% for column in columns %}
+                        <th>{{ column }}</th>
+                        {% endfor %}
+                        {% if can_update or can_delete %}
+                        <th>Действия</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                    <tr>
+                        {% for column in columns %}
+                        <td>{{ record[column] }}</td>
+                        {% endfor %}
+                        {% if can_update or can_delete %}
+                        <td>
+                            {% if can_update %}
+                            <button class="btn btn-sm btn-warning" 
+                                    onclick='editRecord({{ record | tojson }})'>
+                                Изменить
+                            </button>
+                            {% endif %}
+                            {% if can_delete %}
+                            <button class="btn btn-sm btn-danger" 
+                                    onclick='deleteRecord({{ record | tojson }})'>
+                                Удалить
+                            </button>
+                            {% endif %}
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal без изменений -->
+<script>
+const tableName = "{{ table_name }}";
+const columns = {{ columns | tojson }};
+let currentRecord = null;
+let isCreateMode = false;
+
+function showCreateModal() {
+    isCreateMode = true;
+    currentRecord = null;
+    document.getElementById('modalTitle').textContent = 'Создание записи';
+    
+    const formFields = document.getElementById('formFields');
+    formFields.innerHTML = '';
+    
+    columns.forEach(col => {
+        formFields.innerHTML += `
+            <div class="mb-3">
+                <label class="form-label">${col}</label>
+                <input type="text" class="form-control" name="${col}" id="field_${col}">
+            </div>
+        `;
+    });
+    
+    new bootstrap.Modal(document.getElementById('editModal')).show();
+}
+
+function editRecord(record) {
+    isCreateMode = false;
+    currentRecord = record;
+    document.getElementById('modalTitle').textContent = 'Редактирование записи';
+    
+    const formFields = document.getElementById('formFields');
+    formFields.innerHTML = '';
+    
+    columns.forEach(col => {
+        formFields.innerHTML += `
+            <div class="mb-3">
+                <label class="form-label">${col}</label>
+                <input type="text" class="form-control" name="${col}" 
+                       id="field_${col}" value="${record[col] || ''}">
+            </div>
+        `;
+    });
+    
+    new bootstrap.Modal(document.getElementById('editModal')).show();
+}
+
+async function saveRecord() {
+    const formData = {};
+    columns.forEach(col => {
+        const value = document.getElementById(`field_${col}`).value;
+        formData[col] = value;
+    });
+    
+    try {
+        const method = isCreateMode ? 'POST' : 'PUT';
+        const url = isCreateMode 
+            ? `/api/${tableName}` 
+            : `/api/${tableName}/${currentRecord[columns[0]]}`;
+        
+        const response = await fetch(url, {
+            method: method,
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(formData)
+        });
+        
+        if (response.ok) {
+            alert('Запись сохранена');
+            location.reload();
+        } else {
+            const error = await response.json();
+            alert('Ошибка: ' + error.error);
+        }
+    } catch (e) {
+        alert('Ошибка: ' + e.message);
+    }
+}
+
+async function deleteRecord(record) {
+    if (!confirm('Удалить эту запись?')) return;
+    
+    try {
+        const response = await fetch(`/api/${tableName}/${record[columns[0]]}`, {
+            method: 'DELETE'
+        });
+        
+        if (response.ok) {
+            alert('Запись удалена');
+            location.reload();
+        } else {
+            const error = await response.json();
+            alert('Ошибка: ' + error.error);
+        }
+    } catch (e) {
+        alert('Ошибка: ' + e.message);
+    }
+}
+</script>
+
+{% endblock %}
+

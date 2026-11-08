@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Управление базой данных{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>Управление таблицами базы данных</h2>
+        <p class="text-muted">CRUD операции для всех таблиц системы</p>
+    </div>
+</div>
+
+<div class="row">
+    {% for table in tables %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ table.replace('_', ' ').title() }}</h5>
+                <p class="card-text">Управление записями таблицы {{ table }}</p>
+                <a href="/table/{{ table }}" class="btn btn-primary">Открыть</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
