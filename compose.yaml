@@ -1,0 +1,147 @@
+x-app: &app
+  image: ${COMPOSE_PROJECT_NAME:-lightcrypto}-runtime
+  build:
+    context: .
+    target: runtime
+  init: true
+  stop_signal: SIGINT
+  stop_grace_period: 15s
+
+x-db-environment: &db-environment
+  DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-lightcrypto}:${POSTGRES_PASSWORD:?generate .env.compose}@postgres:5432/${POSTGRES_DB:-lightcrypto}
+
+x-mqtt-environment: &mqtt-environment
+  MQTT_HOST: broker
+  MQTT_PORT: "1883"
+  ASCON_KEY_HEX: ${ASCON_KEY_HEX:?generate .env.compose}
+
+services:
+  postgres:
+    image: postgres:17-alpine@sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-lightcrypto}
+      POSTGRES_USER: ${POSTGRES_USER:-lightcrypto}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?generate .env.compose}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  broker:
+    image: eclipse-mosquitto:2@sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98
+    ports:
+      - "127.0.0.1:${MQTT_BIND_PORT:-1883}:1883"
+    volumes:
+      - ./deploy/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mosquitto-data:/mosquitto/data
+    healthcheck:
+      test: [CMD, mosquitto_pub, -h, "127.0.0.1", -t, lightcrypto/health, -m, ping, -q, "1"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  init-db:
+    <<: *app
+    command: [python, -m, src.web.app, init-db]
+    environment: *db-environment
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  receiver:
+    <<: *app
+    environment:
+      <<: [*db-environment, *mqtt-environment]
+      MQTT_READY_FILE: /tmp/mqtt-ready
+    depends_on:
+      init-db:
+        condition: service_completed_successfully
+      broker:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -c, "from pathlib import Path; raise SystemExit(not Path('/tmp/mqtt-ready').is_file())"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  demo-setup:
+    <<: *app
+    profiles: [demo]
+    command: [python, -m, scripts.seed_demo]
+    environment: *db-environment
+    depends_on:
+      init-db:
+        condition: service_completed_successfully
+
+  publisher:
+    <<: *app
+    profiles: [demo]
+    command: [python, -m, src.publisher.mqtt_pub]
+    environment:
+      <<: *mqtt-environment
+      PUBLISH_INTERVAL: ${PUBLISH_INTERVAL:-10}
+    depends_on:
+      receiver:
+        condition: service_healthy
+      demo-setup:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  web:
+    <<: *app
+    profiles: [web]
+    command: [python, -m, src.web.app, serve]
+    environment:
+      <<: [*db-environment, *mqtt-environment]
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY:?generate .env.compose}
+      WEB_MQTT_ENABLED: "1"
+      WEB_HOST: "0.0.0.0"
+    ports:
+      - "127.0.0.1:${WEB_BIND_PORT:-5000}:5000"
+    depends_on:
+      init-db:
+        condition: service_completed_successfully
+      broker:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/login', timeout=2)"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  smoke:
+    <<: *app
+    profiles: [checks]
+    entrypoint: [python, -m, scripts.mqtt_smoke]
+    command: []
+    environment:
+      <<: [*db-environment, *mqtt-environment]
+      PUBLISH_INTERVAL: ${PUBLISH_INTERVAL:-10}
+    depends_on:
+      receiver:
+        condition: service_healthy
+
+  tests:
+    <<: *app
+    profiles: [checks]
+    image: ${COMPOSE_PROJECT_NAME:-lightcrypto}-tests
+    build:
+      context: .
+      target: tests
+    environment:
+      <<: *db-environment
+      TEST_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-lightcrypto}:${POSTGRES_PASSWORD:?generate .env.compose}@postgres:5432/${POSTGRES_DB:-lightcrypto}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+  mosquitto-data:

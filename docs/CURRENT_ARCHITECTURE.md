@@ -1,14 +1,14 @@
 # Текущая архитектура
 
-Дата: 2026-11-08, обновлено после этапа 2. PostgreSQL создана и проверена
-на изолированной новой БД; полный MQTT обмен ещё не проверен. Исходная схема
-этапа 1 сохранена в коммите `76ca884`; команды запуска — в RUNTIME.md.
+Дата: 2026-11-08, обновлено после этапа 3. PostgreSQL и полный MQTT обмен проверены
+в локальном Docker Compose-контуре с Mosquitto. Исходная схема
+этапа 1 сохранена в коммите `76ca884`; native запуск — в RUNTIME.md, Compose — в COMPOSE.md.
 
 ```mermaid
 flowchart LR
-    P["publisher/mqtt_pub.py: синтетические temperature/humidity"]
+    P["publisher/mqtt_pub.py: профиль demo, синтетические temperature/humidity"]
     E["vendored web/ascon/ascon.py"]
-    B["внешний MQTT broker: конфигурация сервера отсутствует"]
+    B["Mosquitto 2.1.2: Compose broker, deploy/mosquitto"]
     R["brocker/mqtt_brocker.py: subscriber + правила"]
     A["vendored web/ascon/ascon.py"]
     D[("PostgreSQL: 14 таблиц существующей ORM")]
@@ -54,8 +54,8 @@ Mosquitto. Flask и receiver — независимые подписчики; Fl
 
 Транспорт настроен на TCP/1883. Все три процесса поддерживают MQTT username/password из окружения,
 но TLS ещё не настраивается. Paho VERSION2, QoS подписок 1; publisher ожидает
-подтверждение публикации с timeout. Подтверждения доставки/персистентность брокера
-и end-to-end семантика не проверены. Повторная доставка обрабатывается как новое
+подтверждение публикации с timeout. Реальная локальная передача и запись аномалий
+проверены; отказоустойчивость/отсутствие потерь в ненадёжной сети не доказаны. Повторная доставка обрабатывается как новое
 событие; authenticated timestamp не используется как anti-replay.
 
 ## Хранение и жизненный цикл
@@ -77,8 +77,11 @@ serve отдельно проверяет конфигурацию, включа
 Конфигурация передаётся окружением, образец — .env.example. Воспроизведение:
 Python 3.12.16, pyproject dependency groups, uv.lock и экспорты requirements.
 LOG_FILE включает файловый лог при старте; по умолчанию stderr. Есть автоматические
-проверки импорта, AEAD и PostgreSQL. Compose, миграций и CI ещё нет. Полный MQTT
-контур и фактическое исполнение ARM64 остаются непроверенными.
+проверки импорта, AEAD и PostgreSQL. Compose реализован с init-db, Mosquitto, receiver, opt-in demo/web, smoke/tests.
+PostgreSQL и Mosquitto имеют volumes; опубликованы только loopback MQTT/HTTP порты.
+Receiver healthcheck ждёт SUBACK; marker сбрасывается при disconnect, успешное
+переподключение после рестарта broker проверено. Миграций и CI ещё нет, фактическое
+исполнение ARM64 не проверялось.
 
 Notebook работает отдельно в Kaggle-подобном окружении. Набор сетевых flow-признаков
 не совпадает с decrypted JSON датчиков. Модели сохраняются без preprocessing/schema;
@@ -87,3 +90,9 @@ Notebook работает отдельно в Kaggle-подобном окруж
 FastAPI, отдельный worker как оформленный сервис, Policy Engine,
 профили «Магмы»/CRISP, защищённые команды и anti-replay в этой архитектуре отсутствуют.
 Их целевой план приведён отдельно в DEVELOPMENT_STATUS.md.
+
+Демонстрационная конфигурация данных создаётся только отдельным профилем demo,
+с проверкой конфликтов и без перезаписи существующих строк. Профиль web использует
+существующий Flask; smoke проверяет временное устройство через живой MQTT и БД,
+затем удаляет только свои записи. Полного выделенного worker и sensor persistence
+по-прежнему нет. В Docker используется исходный код без legacy архивов/Git/секретов.

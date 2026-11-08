@@ -5,6 +5,7 @@ import base64
 import json
 import logging
 import os
+from pathlib import Path
 from datetime import datetime, timezone
 
 import paho.mqtt.client as mqtt
@@ -34,11 +35,33 @@ INSERT_ANOMALY = text('''
 ''')
 
 
+def set_mqtt_ready(ready):
+    path = os.environ.get('MQTT_READY_FILE')
+    if path:
+        marker = Path(path)
+        if ready:
+            marker.write_text('subscribed\n')
+        else:
+            marker.unlink(missing_ok=True)
+
+
 def on_connect(client, userdata, flags, reason_code, properties):
+    set_mqtt_ready(False)
     if reason_code == 0:
         client.subscribe(os.environ.get("MQTT_TOPIC", "iot/sensors/#"), qos=1)
     else:
         logger.error("MQTT connection rejected: %s", reason_code)
+
+
+def on_subscribe(client, userdata, mid, reason_codes, properties):
+    ready = bool(reason_codes) and all(not code.is_failure for code in reason_codes)
+    set_mqtt_ready(ready)
+    if ready:
+        logger.info('MQTT subscription acknowledged')
+
+
+def on_disconnect(client, userdata, flags, reason_code, properties):
+    set_mqtt_ready(False)
 
 
 def connect_to_db():
@@ -110,12 +133,15 @@ def on_message(client, userdata, msg):
 
 def main():
     logging.basicConfig(level=logging.INFO)
+    set_mqtt_ready(False)
     key = ascon_key()
     engine = connect_to_db()
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2,
                          userdata={"key": key, "engine": engine})
     client.on_connect = on_connect
     client.on_message = on_message
+    client.on_subscribe = on_subscribe
+    client.on_disconnect = on_disconnect
     if os.environ.get('MQTT_USERNAME'):
         client.username_pw_set(os.environ['MQTT_USERNAME'], os.environ.get('MQTT_PASSWORD', ''))
     try:
@@ -125,6 +151,7 @@ def main():
     except KeyboardInterrupt:
         pass
     finally:
+        set_mqtt_ready(False)
         client.disconnect()
         engine.dispose()
 

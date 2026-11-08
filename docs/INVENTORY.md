@@ -1,7 +1,8 @@
 # Инвентаризация LightCrypto Manager
 
 > Исторический снимок этапа 1 (`76ca884`). Изменения этапа 2, PostgreSQL,
-> зависимости и фактический запуск описаны в [RUNTIME.md](RUNTIME.md) и
+> зависимости и фактический запуск описаны в [RUNTIME.md](RUNTIME.md),
+> [COMPOSE.md](COMPOSE.md) (этап 3) и
 > [DEVELOPMENT_STATUS.md](DEVELOPMENT_STATUS.md). Утверждения об отсутствующих
 > пакетах и MSSQL ниже относятся к состоянию до этапа 2.
 

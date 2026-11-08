@@ -1,8 +1,8 @@
 # Состояние разработки и план
 
-Дата: 2026-11-08. Выполнены этапы 0–2. По команде пользователя PostgreSQL
+Дата: 2026-11-08. Выполнены этапы 0–3. По команде пользователя PostgreSQL
 заменила MSSQL уже в этапе 2; переноса данных недоступной MSSQL нет.
-Этап 3 не начат. Push и merge в main не выполнялись.
+Этап 4 не начат. Push и merge в main не выполнялись.
 
 ## Сохранённые этапы
 
@@ -11,11 +11,12 @@
 | 0 — безопасная исходная версия | Корневой Git/main, исключения, приватная копия оригинала, санация конфигурации и notebook outputs | `908dd56` — `chore: establish safe legacy project baseline` |
 | 0 — сохранение прав файлов | Права исполнения трёх vendored Python-скриптов сохранены отдельным коммитом без переписывания истории | `c352d81` — `chore: preserve executable modes of vendored Ascon scripts` |
 | 1 — инвентаризация | Файлы, существующая архитектура, проблемы, статусы и план | `feature/component-inventory`, `76ca884` |
-| 2 — воспроизводимый runtime / PostgreSQL | Python/lock, module entrypoints, PostgreSQL вместо MSSQL, проверки | `feature/reproducible-postgres-runtime`, коммит `feat: establish reproducible PostgreSQL runtime` |
+| 2 — воспроизводимый runtime / PostgreSQL | Python/lock, module entrypoints, PostgreSQL вместо MSSQL, проверки | `feature/reproducible-postgres-runtime`, `fca2153` |
+| 3 — Compose/Mosquitto | Локальные сервисы, healthchecks, demo и реальный MQTT/DB smoke | `feature/local-mqtt-compose`, коммит `build: add local Mosquitto and component compose services` |
 
 Точный хеш последнего коммита см. `git log -1` и итоговый отчёт. Хеш не
 вписывается в содержимое самого коммита. В main осталась безопасная база;
-ветка инвентаризации сохранена отдельно, этап 2 основан на её коммите.
+ветка инвентаризации сохранена отдельно, этап 3 основан на коммите этапа 2.
 
 ## Статусы компонентов
 
@@ -26,11 +27,11 @@
 | Компонент / возможность | Статус | Доказательство / предел |
 |---|---|---|
 | Корневой Git и безопасная база | существует | Два коммита в main, приватный оригинал с manifest, чистое состояние после этапа 0 |
-| Publisher | частично реализовано | Импорт/AEAD готовы; VERSION2, main guard и ожидание PUBACK. Сквозной MQTT ещё не проверен |
+| Publisher | проверено тестами | Реальный процесс demo отправляет MQTT через Mosquitto; пакет наблюдён и расшифрован. ARM64 не запускался |
 | Запуск publisher на Raspberry Pi OS/ARM64 | не проверено | Dry-run готовых runtime wheels для ARM64/CPython 3.12 успешен; на устройстве не запускался |
-| Настоящий MQTT broker / Mosquitto | отсутствует | Нет сервера/конфигурации в репозитории |
-| Receiver в brocker | частично реализовано | PostgreSQL, пороговые правила, параметризованные запросы и восстановление после ошибки проверены; не выделен как worker |
-| Сквозной MQTT обмен | не проверено | Broker и клиентские зависимости не запускались |
+| Настоящий MQTT broker / Mosquitto | проверено тестами | Mosquitto 2.1.2 в Compose, QoS 1 healthcheck, loopback порт и volume |
+| Receiver в brocker | частично реализовано | Аномалии пишутся через живой MQTT; SUBACK readiness и переподключение проверены. Отдельный worker, ML, persistence датчиков ещё впереди |
+| Сквозной MQTT обмен | проверено тестами | Реальный publisher/Mosquitto/receiver/PostgreSQL; повреждённые пакеты не ломают цикл; повторно после рестарта broker |
 | Notebook экспериментов | существует | 13 ячеек RF/IF, исторические метрики просмотрены, не воспроизведены |
 | Датасет, готовые модели и preprocessing artifacts | отсутствует | Есть только код загрузки CSV и joblib.dump |
 | Online ML / согласованные признаки | отсутствует | Сетевые признаки отличаются от temperature/humidity |
@@ -45,11 +46,12 @@
 | genkat/writer | существует | Импорты на Python 3.14.9 успешны, полный генератор не запускался |
 | Синтаксис Python и notebook | проверено тестами | compile() успешен для 9 .py и 13 кодовых ячеек; без исполнения приложений |
 | FastAPI / Alembic | отсутствует | PostgreSQL перенесена в этап 2; API и миграции остаются последующими этапами |
-| Отдельный оформленный MQTT worker | отсутствует | Есть legacy receiver, нет выделенного сервиса/пакета/жизненного цикла |
+| Отдельный оформленный MQTT worker | частично реализовано | Receiver теперь отдельный Compose-сервис; выделение общего ingestion-кода, полная запись датчиков и жизненный цикл worker остаются этапом 5 |
 | Policy Engine / профили / anti-replay / защищённые команды | отсутствует | Алгоритмические справочники БД не являются движком политики |
 | «Магма» / проверенный профиль CRISP | отсутствует | Нет реализации или подтверждения требований |
-| Автоматические тесты | проверено тестами | 103 теста, включая 8 на реальной PostgreSQL; CI ещё нет |
-| Docker Compose / CI | отсутствует | Временный отдельный контейнер БД использовался только для проверок и остановлен |
+| Автоматические тесты | проверено тестами | 108 passed в Docker, 10 DB-тестов; 2 прежних Query.get предупреждения. CI ещё нет |
+| Docker Compose | проверено тестами | Запуск с healthchecks, init-db, demo/web profiles, smoke и tests; volumes тестового контура удалены после проверки |
+| CI | отсутствует | Локальные тесты не заменяют CI |
 
 ## Фактические проверки этапов 0–1
 
@@ -136,7 +138,43 @@ PY
 Тестовой MSSQL не было; миграция её данных не проверялась. Полный MQTT обмен,
 браузерные сценарии, обучение ML и реальное ARM64 выполнение не заявляются.
 
-## Технический план с учётом выполненного этапа 2
+## Фактические результаты этапа 3
+
+Инструкции: [COMPOSE.md](COMPOSE.md). Реализован только локальный контур и проверки;
+web/ORM/ML/криптографический исходник не переписывались. В receiver добавлены
+сброс/установка readiness marker по disconnect/положительному SUBACK.
+
+| Проверка | Результат |
+|---|---|
+| Git перед этапом | Чистая ветка этапа 2, HEAD fca2153; создана feature/local-mqtt-compose |
+| Compose config | С приватным сгенерированным env config --quiet успешен; с пустыми секретами пример конфигурации ожидаемо отклонён |
+| Build | Python 3.12.16, Mosquitto 2.1.2, PostgreSQL 17.11; образы закреплены digest. Classic builder успешно работает, несмотря на предупреждение об отсутствии buildx |
+| Инициализация | PostgreSQL healthy → init-db exit 0; явный demo-setup exit 0; receiver ready только после SUBACK; web /login healthy |
+| MQTT/DB smoke | Два валидных AEAD сообщения → ровно две аномалии своего временного устройства; JSON/tag corruption отвергнуты, следующий пакет принят; fixture очищена |
+| Реальный publisher | Процесс demo наблюдён через broker; packet успешно расшифрован, данные temperature/humidity присутствуют |
+| Broker restart | Receiver получил новый SUBACK; повторный полный smoke и наблюдение demo publisher успешны |
+| Порты | У broker/web публикация только 127.0.0.1, у PostgreSQL нет host binding; для аудита использованы случайные порты |
+| Образ приложения | UID/GID 10001, приватные env, legacy ZIP, Git, кеши и notebook отсутствуют в итоговом образе |
+| Изолированные тесты | 98 passed, 10 DB-тестов deselected при отдельном запуске без PostgreSQL |
+| Полный pytest в Compose | **108 passed, 2 LegacyAPIWarning** для прежнего Query.get. Включены rollback/idempotency/conflict тесты demo seed и SUBACK/config protection |
+| Статика | Ruff выбранных правил, compile, git diff --check; экспорты зависимостей и uv.lock согласованы |
+| Сохранность | Существующие web/publisher/ORM/templates/ML/Ascon не менялись; реальные секреты исключены из Git; тестовый Compose остановлен, удалены только volumes проекта lcm-stage3 |
+
+Ошибки первого прогона не скрываются: smoke сначала получил DataError, поскольку
+его случайный Tag_Name был длиннее 30 символов. Исправлен до 26 символов.
+Проверка первого локального образа также обнаружила ZIP/вложенную .git из-за
+семантики исключений Docker-контекста. Образы и их промежуточные копии удалены
+адресно, без global prune; Dockerfile переключён на явное копирование файлов,
+контекст исправлен, новый образ прошёл проверку. Ошибочные образы не публиковались.
+Реальные значения исходных секретов не выводились и в Git не возвращались.
+
+Ограничения: anonymous MQTT без TLS/ACL только в локальном dev контуре; остаются
+известные проблемы web, нет anti-replay и гарантий отсутствия потерь при сбоях.
+Receiver сохраняет только аномалии, web — live данные в памяти. Browser UI/ARM64/
+ML/нагрузка не проверялись. Alembic, полноценный worker и sensor persistence —
+следующие этапы; этап 4 не начат.
+
+## Технический план с учётом выполненного этапа 3
 
 Перед каждым этапом: проверить чистый Git/сохранение предыдущего, создать отдельную
 ветку от согласованной базы, менять только нужные файлы, выполнить относящиеся
@@ -146,7 +184,7 @@ PY
 | Этап / ветка | Конкретные коммиты | Критерий завершения |
 |---|---|---|
 | 2 `feature/reproducible-postgres-runtime` | `feat: establish reproducible PostgreSQL runtime` | Выполнено с изменением по команде пользователя: Python 3.12.16, uv.lock и экспорты; импорты без соединений, единый Ascon, log/env; PostgreSQL вместо MSSQL, 103 теста. ARM64 — только проверка wheels, не выполнение |
-| 3 `feature/local-mqtt-compose` | `build: add local Mosquitto and component compose services`; `test: verify encrypted local MQTT exchange` | Настоящий broker, конфигурация/healthchecks, loopback-публикация портов, тестовые ключи только локально, воспроизводимый publisher → broker → receiver. Ошибочный пакет не ломает цикл; согласованная тестовая конфигурация тегов/устройств в PostgreSQL; полная запись датчиков остаётся этапом 5 |
+| 3 `feature/local-mqtt-compose` | `build: add local Mosquitto and component compose services` | Выполнено: конфигурация и healthchecks, demo/web profiles, временные smoke fixtures, 108 tests, реальный MQTT/DB обмен и повтор после broker restart. Только loopback, TLS/ACL впереди |
 | 4 `fix/telemetry-protocol-security` | `fix: close critical legacy SQL and web vulnerabilities`; `feat: define validated versioned telemetry envelopes`; `test: cover malformed and tampered telemetry` | SQL/транзакции/логгеры исправлены в этапе 2; здесь закрытые Socket.IO события, XSS/redirect/CSRF/debug; валидируемая схема, размеры, UTC, topic/device binding, crypto allowlist. До устранения критических проблем контур не открывать внешней сети |
 | 5 `feature/migrations-mqtt-worker` | `feat: add relational constraints and Alembic migrations`; `refactor: extract MQTT ingestion worker`; `test: verify transactional telemetry persistence` | Явные FK/индексы/составные ключи, seeds и миграции на чистой БД, worker lifecycle/reconnect, единая транзакция приёма, запись датчиков/аномалий, контракт истории; существующие шаблоны сохранены |
 | 6 `feature/ml-inference-pipeline` | `docs: define observable ML feature contract`; `feat: export versioned preprocessing and anomaly model`; `test: reproduce anomaly evaluation` | Решение: собирать сетевые признаки либо обучать новую модель по телеметрии. Версия/хеш датасета, train-only preprocessing, split по времени/группам, сохранение schema/encoder/model/versions, воспроизводимые метрики и inference. Выход ML — score/сигнал аномалии |
@@ -162,5 +200,5 @@ Ascon и переход на PostgreSQL выполнены в этапе 2; бе
 Наличие «Магмы» само по себе не доказывает ни полноту CRISP, ни криптостойкость
 всей системы; сравнение профилей требует явной модели угроз и требований.
 
-Этап 2 завершён. Следующий шаг — этап 3 (Compose/Mosquitto и сквозной MQTT).
-Он не начат; работа остановлена до отдельной команды пользователя.
+Этап 3 завершён. Следующий шаг — этап 4: критические проблемы безопасности
+и валидируемый единый формат MQTT. Работа остановлена до отдельной команды пользователя.
