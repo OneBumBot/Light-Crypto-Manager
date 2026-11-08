@@ -6,78 +6,25 @@ import numpy as np
 import json
 import os
 from datetime import datetime, timezone
-from src.web.ascon.ascon import ascon_encrypt, ascon_decrypt
-from src.runtime import ascon_key
-import base64
+from src.telemetry import PROFILE, encode_packet, decode_packet, load_registry, strict_json
+from src.sequence import next_sequence
+import math
 
-# Настройки MQTT брокера
 BROKER_HOST = os.environ.get("MQTT_HOST", "localhost")
 BROKER_PORT = int(os.environ.get("MQTT_PORT", "8883"))
-TOPIC = os.environ.get("MQTT_PUBLISH_TOPIC", "iot/sensors/raspb1")
-CLIENT_ID = os.environ.get('MQTT_CLIENT_ID', 'raspb1')
-
-#Конфигурация
-DEVICE_ID = 1 
-ALGORITHM_ID = 1
-
-# Настройки криптографии Ascon-AEAD128
-# Ключ должен быть 16 байт (128 бит) для Ascon-AEAD128
-ASCON_VARIANT = "Ascon-AEAD128"  # Стандарт NIST SP 800-232
+DEVICE_ID = os.environ.get("DEVICE_ID", "raspb1")
+TOPIC = os.environ.get("MQTT_PUBLISH_TOPIC", "iot/sensors/" + DEVICE_ID)
+CLIENT_ID = os.environ.get('MQTT_CLIENT_ID', DEVICE_ID)
+ASCON_VARIANT = PROFILE
 
 
-def generate_nonce():
-    """Генерация уникального nonce (16 байт для Ascon-AEAD128)"""
-    return os.urandom(16)
+def encrypt_data(plaintext_json, registry, *, sequence_number, device_id=DEVICE_ID):
+    return encode_packet(strict_json(plaintext_json), registry, device_id, sequence_number)
 
 
-def encrypt_data(plaintext_json, key, variant="Ascon-AEAD128"):
-    """
-    Шифрование данных с использованием Ascon-AEAD128
+def decrypt_data(packet, registry, topic):
+    return json.dumps(decode_packet(packet, topic, registry).sensor)
 
-    Args:
-        plaintext_json: JSON строка с данными
-        key: 16-байтовый ключ
-        variant: Вариант Ascon (по умолчанию Ascon-AEAD128)
-
-    Returns:
-        dict с зашифрованными данными и метаданными
-    """
-    plaintext = plaintext_json.encode('utf-8')
-    nonce = generate_nonce()
-
-    # Associated Data - незашифрованные метаданные (опционально)
-    associated_data = json.dumps({
-        "device_id": CLIENT_ID,
-        "timestamp": datetime.now(timezone.utc).isoformat()
-    }).encode('utf-8')
-    # Шифрование с использованием Ascon-AEAD128
-    ciphertext = ascon_encrypt(key, nonce, associated_data, plaintext, variant)
-
-    # Формирование пакета для передачи
-    encrypted_packet = {
-        "nonce": base64.b64encode(nonce).decode('utf-8'),
-        "associated_data": base64.b64encode(associated_data).decode('utf-8'),
-        "ciphertext": base64.b64encode(ciphertext).decode('utf-8'),
-        "algorithm": variant
-    }
-    return encrypted_packet
-
-
-def decrypt_data(encrypted_packet, key):
-    """
-    Расшифровка данных (для тестирования)
-    """
-    nonce = base64.b64decode(encrypted_packet["nonce"])
-    associated_data = base64.b64decode(encrypted_packet["associated_data"])
-    ciphertext = base64.b64decode(encrypted_packet["ciphertext"])
-    variant = encrypted_packet["algorithm"]
-
-    plaintext = ascon_decrypt(key, nonce, associated_data, ciphertext, variant)
-
-    if plaintext is None:
-        raise ValueError("Ошибка аутентификации: данные повреждены!")
-
-    return plaintext.decode('utf-8')
 
 # Callback функции MQTT
 
@@ -100,9 +47,13 @@ def on_disconnect(client, userdata, flags, rc, properties):
 
 def main():
     # Создание MQTT клиента
-    key = ascon_key()
+    registry = load_registry()
+    entry = registry[DEVICE_ID]
+    if TOPIC != entry["topic"]:
+        raise ValueError("Publisher topic does not match provisioned device")
+    state_file = os.environ["PUBLISHER_STATE_FILE"]
     interval = float(os.environ.get("PUBLISH_INTERVAL", "10"))
-    if interval <= 0:
+    if not math.isfinite(interval) or interval <= 0:
         raise ValueError("PUBLISH_INTERVAL must be positive")
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=CLIENT_ID)
     configure_client(client)
@@ -125,8 +76,8 @@ def main():
         while True:
             # Сбор данных с датчиков
             sensor_data = {
-                "temperature": round(np.random.normal(loc=50, scale = 15), 2),
-                "humidity": round(np.random.normal(loc=70.0, scale = 10), 2),
+                "temperature": round(float(np.clip(np.random.normal(loc=50, scale=15), -80, 150)), 2),
+                "humidity": round(float(np.clip(np.random.normal(loc=70, scale=10), 0, 100)), 2),
                 "timestamp": datetime.now(timezone.utc).isoformat()
             }
 
@@ -137,7 +88,7 @@ def main():
             # Шифрование с Ascon-AEAD128
             start_time = time.time()
             encrypted_packet = encrypt_data(
-                plaintext_json, key, ASCON_VARIANT)
+                plaintext_json, registry, sequence_number=next_sequence(state_file, DEVICE_ID, entry["key_epoch"]))
             encryption_time = (time.time() - start_time) * 1000  # в миллисекундах
             print(f"[*] [{datetime.now()}]Зашифровано за {encryption_time:.2f} мс")
             print(f"[*] Размер: {len(plaintext_json)} → {len(json.dumps(encrypted_packet))} байт")
@@ -151,7 +102,7 @@ def main():
 
             # Локальная проверка расшифровки (опционально)
             try:
-                decrypted = decrypt_data(encrypted_packet, key)
+                decrypted = decrypt_data(encrypted_packet, registry, TOPIC)
                 print(f"[+] [{datetime.now()}] Проверка расшифровки успешна\n")
             except ValueError as e:
                 print(f"[-] [{datetime.now()}] {e}\n")

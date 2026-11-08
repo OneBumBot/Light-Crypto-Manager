@@ -23,7 +23,6 @@ def main():
     values = {
         'COMPOSE_PROJECT_NAME': args.project,
         'POSTGRES_PASSWORD': secrets.token_hex(24),
-        'ASCON_KEY_HEX': secrets.token_hex(16),
         'FLASK_SECRET_KEY': secrets.token_hex(32),
         'MQTT_BIND_PORT': str(args.mqtt_port),
         'WEB_BIND_PORT': str(args.web_port),

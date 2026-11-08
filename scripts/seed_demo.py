@@ -18,6 +18,12 @@ def seed_demo():
             'Algorithm_ID': 1, 'Tag_ID': 1,
         }),
     ]
+    objects += [
+        (TagJournal, 2, {'Tag_ID': 2, 'Tag_Name': 'smoke-demo', 'Creation_Date': datetime(2026,1,1)}),
+        (DeviceConfiguration, (2,datetime(2026,1,1)), {
+            'Device_ID': 2, 'Configuration_Update_Date': datetime(2026,1,1), 'Algorithm_ID':1, 'Tag_ID':2,
+        }),
+    ]
     try:
         for model, identity, fields in objects:
             existing = db.session.get(model, identity)

@@ -14,7 +14,7 @@ x-mqtt-environment: &mqtt-environment
   MQTT_HOST: broker
   MQTT_PORT: "8883"
   MQTT_CA_FILE: /run/lcm/ca.crt
-  ASCON_KEY_HEX: ${ASCON_KEY_HEX:?generate .env.compose}
+  DEVICE_REGISTRY_FILE: /run/lcm/registry.json
 
 services:
   postgres:
@@ -97,7 +97,7 @@ services:
 
   demo-setup:
     <<: *app
-    profiles: [demo]
+    profiles: [demo, checks]
     command: [python, -m, scripts.seed_demo]
     environment: *db-environment
     depends_on:
@@ -115,6 +115,7 @@ services:
       <<: *mqtt-environment
       MQTT_USERNAME: publisher
       MQTT_PASSWORD_FILE: /run/lcm/publisher.password
+      PUBLISHER_STATE_FILE: /state/sequence.db
       PUBLISH_INTERVAL: ${PUBLISH_INTERVAL:-10}
     depends_on:
       receiver:
@@ -162,8 +163,11 @@ services:
       <<: [*db-environment, *mqtt-environment]
       MQTT_USERNAME: smoke
       MQTT_PASSWORD_FILE: /run/lcm/smoke.password
+      PUBLISHER_STATE_FILE: /state/sequence.db
       PUBLISH_INTERVAL: ${PUBLISH_INTERVAL:-10}
     depends_on:
+      demo-setup:
+        condition: service_completed_successfully
       receiver:
         condition: service_healthy
 

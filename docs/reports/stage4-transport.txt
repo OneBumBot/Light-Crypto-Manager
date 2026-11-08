@@ -7,10 +7,10 @@ EXIT CODE: 0
 UTC: 2026-11-08T12:12:01.280205+00:00
 $ docker compose --env-file .local-runtime/stage4.env build receiver tests
 time="2026-11-08T15:11:50+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
- Image lcm-stage4-runtime Building 
- Image lcm-stage4-tests Building 
- Image lcm-stage4-tests Building 
- Image lcm-stage4-runtime Building 
+ Image lcm-stage4-runtime Building
+ Image lcm-stage4-tests Building
+ Image lcm-stage4-tests Building
+ Image lcm-stage4-runtime Building
 Sending build context to Docker daemon  49.31kB
 
 Sending build context to Docker daemon  49.31kB
@@ -110,8 +110,8 @@ Step 19/27 : COPY requirements/dev.txt /app/requirements/dev.txt
  ---> 796d298b0779
 Successfully built 796d298b0779
 Successfully tagged lcm-stage4-runtime:latest
- Image lcm-stage4-runtime Built 
- Image lcm-stage4-runtime Built 
+ Image lcm-stage4-runtime Built
+ Image lcm-stage4-runtime Built
  ---> 84a529ef710a
 Step 20/27 : RUN pip install --no-cache-dir -r requirements/dev.txt
  ---> Running in 097d06cb7112
@@ -139,11 +139,11 @@ Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl 
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 40.5 MB/s eta 0:00:00
 Installing collected packages: ruff, pygments, pluggy, packaging, iniconfig, pytest
 Successfully installed iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0 ruff-0.17.4
-[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
-[0m[91m
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
 [notice] A new release of pip is available: 25.0.1 -> 26.3
 [notice] To update, run: pip install --upgrade pip
-[0m ---> Removed intermediate container 097d06cb7112
+ ---> Removed intermediate container 097d06cb7112
  ---> 44cacea58216
 Step 21/27 : COPY pyproject.toml /app/pyproject.toml
  ---> 1aaedfe57147
@@ -167,8 +167,8 @@ Step 27/27 : LABEL com.docker.compose.image.builder=classic
  ---> a6a68503b6f2
 Successfully built a6a68503b6f2
 Successfully tagged lcm-stage4-tests:latest
- Image lcm-stage4-tests Built 
- Image lcm-stage4-tests Built 
+ Image lcm-stage4-tests Built
+ Image lcm-stage4-tests Built
 
 EXIT CODE: 0
 
@@ -183,10 +183,10 @@ EXIT CODE: 0
 UTC: 2026-11-08T12:12:31.300841+00:00
 $ docker compose --env-file .local-runtime/stage4.env build receiver tests
 time="2026-11-08T15:12:21+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
- Image lcm-stage4-tests Building 
- Image lcm-stage4-runtime Building 
- Image lcm-stage4-tests Building 
- Image lcm-stage4-runtime Building 
+ Image lcm-stage4-tests Building
+ Image lcm-stage4-runtime Building
+ Image lcm-stage4-tests Building
+ Image lcm-stage4-runtime Building
 Sending build context to Docker daemon  49.37kB
 
 Sending build context to Docker daemon  49.37kB
@@ -288,8 +288,8 @@ Step 18/27 : USER root
 Step 19/27 : COPY requirements/dev.txt /app/requirements/dev.txt
 Successfully built 58b2b8a976db
 Successfully tagged lcm-stage4-runtime:latest
- Image lcm-stage4-runtime Built 
- Image lcm-stage4-runtime Built 
+ Image lcm-stage4-runtime Built
+ Image lcm-stage4-runtime Built
  ---> c59859b90fe6
 Step 20/27 : RUN pip install --no-cache-dir -r requirements/dev.txt
  ---> Running in 3254baab1e6b
@@ -317,11 +317,11 @@ Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl 
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 35.1 MB/s eta 0:00:00
 Installing collected packages: ruff, pygments, pluggy, packaging, iniconfig, pytest
 Successfully installed iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0 ruff-0.17.4
-[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
-[0m[91m
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
 [notice] A new release of pip is available: 25.0.1 -> 26.3
 [notice] To update, run: pip install --upgrade pip
-[0m ---> Removed intermediate container 3254baab1e6b
+ ---> Removed intermediate container 3254baab1e6b
  ---> 559ea6fd0847
 Step 21/27 : COPY pyproject.toml /app/pyproject.toml
  ---> d58196fea50e
@@ -345,130 +345,130 @@ Step 27/27 : LABEL com.docker.compose.image.builder=classic
  ---> 6a27adae2a7e
 Successfully built 6a27adae2a7e
 Successfully tagged lcm-stage4-tests:latest
- Image lcm-stage4-tests Built 
- Image lcm-stage4-tests Built 
+ Image lcm-stage4-tests Built
+ Image lcm-stage4-tests Built
 
 EXIT CODE: 0
 
 UTC: 2026-11-08T12:12:40.635608+00:00
 $ docker compose --env-file .local-runtime/stage4.env --profile demo --profile web up -d --wait --wait-timeout 90
- Volume lcm-stage4_smoke-state Creating 
- Volume lcm-stage4_postgres-data Creating 
- Volume lcm-stage4_smoke-security Creating 
- Volume lcm-stage4_postgres-data Creating 
- Volume lcm-stage4_publisher-security Creating 
- Volume lcm-stage4_publisher-state Creating 
- Volume lcm-stage4_publisher-security Creating 
- Volume lcm-stage4_broker-security Creating 
- Volume lcm-stage4_publisher-state Creating 
- Volume lcm-stage4_broker-security Creating 
- Volume lcm-stage4_receiver-security Creating 
- Volume lcm-stage4_receiver-security Creating 
- Volume lcm-stage4_mosquitto-data Creating 
- Volume lcm-stage4_web-security Creating 
- Volume lcm-stage4_smoke-security Creating 
- Volume lcm-stage4_mosquitto-data Creating 
- Network lcm-stage4_default Creating 
- Network lcm-stage4_default Creating 
- Volume lcm-stage4_smoke-state Creating 
- Volume lcm-stage4_test-security Creating 
- Volume lcm-stage4_test-security Creating 
- Volume lcm-stage4_web-security Creating 
- Volume lcm-stage4_postgres-data Created 
- Volume lcm-stage4_postgres-data Created 
- Volume lcm-stage4_receiver-security Created 
- Volume lcm-stage4_receiver-security Created 
- Volume lcm-stage4_mosquitto-data Created 
- Volume lcm-stage4_mosquitto-data Created 
- Volume lcm-stage4_smoke-security Created 
- Volume lcm-stage4_smoke-security Created 
- Volume lcm-stage4_publisher-security Created 
- Volume lcm-stage4_publisher-security Created 
- Volume lcm-stage4_publisher-state Created 
- Volume lcm-stage4_publisher-state Created 
- Network lcm-stage4_default Created 
- Network lcm-stage4_default Created 
- Container lcm-stage4-postgres-1 Creating 
- Volume lcm-stage4_test-security Created 
- Volume lcm-stage4_test-security Created 
- Volume lcm-stage4_broker-security Created 
- Volume lcm-stage4_broker-security Created 
- Volume lcm-stage4_web-security Created 
- Volume lcm-stage4_web-security Created 
- Volume lcm-stage4_smoke-state Created 
- Volume lcm-stage4_smoke-state Created 
- Container lcm-stage4-security-init-1 Creating 
- Container lcm-stage4-postgres-1 Created 
- Container lcm-stage4-init-db-1 Creating 
- Container lcm-stage4-security-init-1 Created 
- Container lcm-stage4-broker-1 Creating 
- Container lcm-stage4-init-db-1 Created 
- Container lcm-stage4-demo-setup-1 Creating 
- Container lcm-stage4-broker-1 Created 
- Container lcm-stage4-receiver-1 Creating 
- Container lcm-stage4-web-1 Creating 
- Container lcm-stage4-demo-setup-1 Created 
- Container lcm-stage4-web-1 Created 
- Container lcm-stage4-receiver-1 Created 
- Container lcm-stage4-publisher-1 Creating 
- Container lcm-stage4-publisher-1 Created 
- Container lcm-stage4-security-init-1 Starting 
- Container lcm-stage4-postgres-1 Starting 
- Container lcm-stage4-security-init-1 Started 
- Container lcm-stage4-security-init-1 Waiting 
- Container lcm-stage4-postgres-1 Started 
- Container lcm-stage4-postgres-1 Waiting 
- Container lcm-stage4-security-init-1 Exited 
- Container lcm-stage4-broker-1 Starting 
- Container lcm-stage4-broker-1 Started 
- Container lcm-stage4-postgres-1 Healthy 
- Container lcm-stage4-init-db-1 Starting 
- Container lcm-stage4-init-db-1 Started 
- Container lcm-stage4-broker-1 Waiting 
- Container lcm-stage4-init-db-1 Waiting 
- Container lcm-stage4-broker-1 Waiting 
- Container lcm-stage4-init-db-1 Waiting 
- Container lcm-stage4-init-db-1 Waiting 
- Container lcm-stage4-broker-1 Healthy 
- Container lcm-stage4-broker-1 Healthy 
- Container lcm-stage4-init-db-1 Exited 
- Container lcm-stage4-demo-setup-1 Starting 
- Container lcm-stage4-init-db-1 Exited 
- Container lcm-stage4-receiver-1 Starting 
- Container lcm-stage4-init-db-1 Exited 
- Container lcm-stage4-web-1 Starting 
- Container lcm-stage4-demo-setup-1 Started 
- Container lcm-stage4-receiver-1 Started 
- Container lcm-stage4-receiver-1 Waiting 
- Container lcm-stage4-demo-setup-1 Waiting 
- Container lcm-stage4-web-1 Started 
- Container lcm-stage4-demo-setup-1 Exited 
- Container lcm-stage4-receiver-1 Healthy 
- Container lcm-stage4-publisher-1 Starting 
- Container lcm-stage4-publisher-1 Started 
- Container lcm-stage4-security-init-1 Waiting 
- Container lcm-stage4-publisher-1 Waiting 
- Container lcm-stage4-broker-1 Waiting 
- Container lcm-stage4-receiver-1 Waiting 
- Container lcm-stage4-init-db-1 Waiting 
- Container lcm-stage4-demo-setup-1 Waiting 
- Container lcm-stage4-postgres-1 Waiting 
- Container lcm-stage4-web-1 Waiting 
- Container lcm-stage4-postgres-1 Healthy 
- Container lcm-stage4-demo-setup-1 Exited 
- Container lcm-stage4-web-1 Healthy 
- Container lcm-stage4-publisher-1 Healthy 
- Container lcm-stage4-init-db-1 Exited 
- Container lcm-stage4-security-init-1 Exited 
- Container lcm-stage4-broker-1 Healthy 
- Container lcm-stage4-receiver-1 Healthy 
+ Volume lcm-stage4_smoke-state Creating
+ Volume lcm-stage4_postgres-data Creating
+ Volume lcm-stage4_smoke-security Creating
+ Volume lcm-stage4_postgres-data Creating
+ Volume lcm-stage4_publisher-security Creating
+ Volume lcm-stage4_publisher-state Creating
+ Volume lcm-stage4_publisher-security Creating
+ Volume lcm-stage4_broker-security Creating
+ Volume lcm-stage4_publisher-state Creating
+ Volume lcm-stage4_broker-security Creating
+ Volume lcm-stage4_receiver-security Creating
+ Volume lcm-stage4_receiver-security Creating
+ Volume lcm-stage4_mosquitto-data Creating
+ Volume lcm-stage4_web-security Creating
+ Volume lcm-stage4_smoke-security Creating
+ Volume lcm-stage4_mosquitto-data Creating
+ Network lcm-stage4_default Creating
+ Network lcm-stage4_default Creating
+ Volume lcm-stage4_smoke-state Creating
+ Volume lcm-stage4_test-security Creating
+ Volume lcm-stage4_test-security Creating
+ Volume lcm-stage4_web-security Creating
+ Volume lcm-stage4_postgres-data Created
+ Volume lcm-stage4_postgres-data Created
+ Volume lcm-stage4_receiver-security Created
+ Volume lcm-stage4_receiver-security Created
+ Volume lcm-stage4_mosquitto-data Created
+ Volume lcm-stage4_mosquitto-data Created
+ Volume lcm-stage4_smoke-security Created
+ Volume lcm-stage4_smoke-security Created
+ Volume lcm-stage4_publisher-security Created
+ Volume lcm-stage4_publisher-security Created
+ Volume lcm-stage4_publisher-state Created
+ Volume lcm-stage4_publisher-state Created
+ Network lcm-stage4_default Created
+ Network lcm-stage4_default Created
+ Container lcm-stage4-postgres-1 Creating
+ Volume lcm-stage4_test-security Created
+ Volume lcm-stage4_test-security Created
+ Volume lcm-stage4_broker-security Created
+ Volume lcm-stage4_broker-security Created
+ Volume lcm-stage4_web-security Created
+ Volume lcm-stage4_web-security Created
+ Volume lcm-stage4_smoke-state Created
+ Volume lcm-stage4_smoke-state Created
+ Container lcm-stage4-security-init-1 Creating
+ Container lcm-stage4-postgres-1 Created
+ Container lcm-stage4-init-db-1 Creating
+ Container lcm-stage4-security-init-1 Created
+ Container lcm-stage4-broker-1 Creating
+ Container lcm-stage4-init-db-1 Created
+ Container lcm-stage4-demo-setup-1 Creating
+ Container lcm-stage4-broker-1 Created
+ Container lcm-stage4-receiver-1 Creating
+ Container lcm-stage4-web-1 Creating
+ Container lcm-stage4-demo-setup-1 Created
+ Container lcm-stage4-web-1 Created
+ Container lcm-stage4-receiver-1 Created
+ Container lcm-stage4-publisher-1 Creating
+ Container lcm-stage4-publisher-1 Created
+ Container lcm-stage4-security-init-1 Starting
+ Container lcm-stage4-postgres-1 Starting
+ Container lcm-stage4-security-init-1 Started
+ Container lcm-stage4-security-init-1 Waiting
+ Container lcm-stage4-postgres-1 Started
+ Container lcm-stage4-postgres-1 Waiting
+ Container lcm-stage4-security-init-1 Exited
+ Container lcm-stage4-broker-1 Starting
+ Container lcm-stage4-broker-1 Started
+ Container lcm-stage4-postgres-1 Healthy
+ Container lcm-stage4-init-db-1 Starting
+ Container lcm-stage4-init-db-1 Started
+ Container lcm-stage4-broker-1 Waiting
+ Container lcm-stage4-init-db-1 Waiting
+ Container lcm-stage4-broker-1 Waiting
+ Container lcm-stage4-init-db-1 Waiting
+ Container lcm-stage4-init-db-1 Waiting
+ Container lcm-stage4-broker-1 Healthy
+ Container lcm-stage4-broker-1 Healthy
+ Container lcm-stage4-init-db-1 Exited
+ Container lcm-stage4-demo-setup-1 Starting
+ Container lcm-stage4-init-db-1 Exited
+ Container lcm-stage4-receiver-1 Starting
+ Container lcm-stage4-init-db-1 Exited
+ Container lcm-stage4-web-1 Starting
+ Container lcm-stage4-demo-setup-1 Started
+ Container lcm-stage4-receiver-1 Started
+ Container lcm-stage4-receiver-1 Waiting
+ Container lcm-stage4-demo-setup-1 Waiting
+ Container lcm-stage4-web-1 Started
+ Container lcm-stage4-demo-setup-1 Exited
+ Container lcm-stage4-receiver-1 Healthy
+ Container lcm-stage4-publisher-1 Starting
+ Container lcm-stage4-publisher-1 Started
+ Container lcm-stage4-security-init-1 Waiting
+ Container lcm-stage4-publisher-1 Waiting
+ Container lcm-stage4-broker-1 Waiting
+ Container lcm-stage4-receiver-1 Waiting
+ Container lcm-stage4-init-db-1 Waiting
+ Container lcm-stage4-demo-setup-1 Waiting
+ Container lcm-stage4-postgres-1 Waiting
+ Container lcm-stage4-web-1 Waiting
+ Container lcm-stage4-postgres-1 Healthy
+ Container lcm-stage4-demo-setup-1 Exited
+ Container lcm-stage4-web-1 Healthy
+ Container lcm-stage4-publisher-1 Healthy
+ Container lcm-stage4-init-db-1 Exited
+ Container lcm-stage4-security-init-1 Exited
+ Container lcm-stage4-broker-1 Healthy
+ Container lcm-stage4-receiver-1 Healthy
 
 EXIT CODE: 0
 
 UTC: 2026-11-08T12:12:45.924075+00:00
 $ docker compose --env-file .local-runtime/stage4.env run --rm --no-deps --entrypoint python tests -m scripts.mqtt_security_smoke
- Container lcm-stage4-tests-run-362c17980e23 Creating 
- Container lcm-stage4-tests-run-362c17980e23 Created 
+ Container lcm-stage4-tests-run-362c17980e23 Creating
+ Container lcm-stage4-tests-run-362c17980e23 Created
 PASS: trusted TLS and publisher credentials
 PASS: incorrect password rejected
 PASS: untrusted CA rejected
@@ -480,15 +480,15 @@ EXIT CODE: 0
 
 UTC: 2026-11-08T12:13:18.225527+00:00
 $ docker compose --env-file .local-runtime/stage4.env run --rm tests
- Container lcm-stage4-postgres-1 Running 
- Container lcm-stage4-security-init-1 Starting 
- Container lcm-stage4-security-init-1 Started 
- Container lcm-stage4-postgres-1 Waiting 
- Container lcm-stage4-security-init-1 Waiting 
- Container lcm-stage4-security-init-1 Exited 
- Container lcm-stage4-postgres-1 Healthy 
- Container lcm-stage4-tests-run-e24e972e8b58 Creating 
- Container lcm-stage4-tests-run-e24e972e8b58 Created 
+ Container lcm-stage4-postgres-1 Running
+ Container lcm-stage4-security-init-1 Starting
+ Container lcm-stage4-security-init-1 Started
+ Container lcm-stage4-postgres-1 Waiting
+ Container lcm-stage4-security-init-1 Waiting
+ Container lcm-stage4-security-init-1 Exited
+ Container lcm-stage4-postgres-1 Healthy
+ Container lcm-stage4-tests-run-e24e972e8b58 Creating
+ Container lcm-stage4-tests-run-e24e972e8b58 Created
 ........................................................................ [ 66%]
 ....................................                                     [100%]
 =============================== warnings summary ===============================

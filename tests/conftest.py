@@ -2,6 +2,11 @@
 
 import os
 import uuid
+import json
+import tempfile
+import atexit
+import shutil
+from pathlib import Path
 
 import pytest
 from sqlalchemy import create_engine, text
@@ -34,6 +39,8 @@ def postgres_db():
     try:
         with web.app.app_context():
             web.db.create_all()
+            from src.replay import metadata
+            metadata.create_all(web.db.engine)
             yield web
             web.db.session.remove()
     finally:
@@ -43,3 +50,20 @@ def postgres_db():
         with admin.begin() as connection:
             connection.execute(text(f'DROP SCHEMA "{SCHEMA}" CASCADE'))
         admin.dispose()
+
+# Public test keys; isolated from the real Compose key registry.
+TEST_REGISTRY = {
+    name: {'topic': 'iot/sensors/'+name, 'key_epoch': 1, 'database_device_id': i,
+           'key_hex': bytes(range(offset, offset+16)).hex()}
+    for name,i,offset in [('raspb1',1,0),('smoke',2,16)]
+}
+_registry_dir = Path(tempfile.mkdtemp(prefix='lcm-registry-test-'))
+_registry_file = _registry_dir/'registry.json'
+_registry_file.write_text(json.dumps(TEST_REGISTRY))
+_registry_file.chmod(0o600)
+os.environ['DEVICE_REGISTRY_FILE'] = str(_registry_file)
+atexit.register(shutil.rmtree, _registry_dir)
+
+@pytest.fixture
+def registry():
+    return json.loads(json.dumps(TEST_REGISTRY))

@@ -36,4 +36,5 @@ Healthcheck broker использует приватный options file, не п
 MQTT_INSECURE_TEST_MODE=1; Compose не содержит plaintext listener/override.
 
 Очищенные протоколы с командами/кодами завершения: docs/reports/stage4-*.txt.
-Формат и anti-replay, затем web-защита — следующие блоки текущего этапа.
+Формат v2 и постоянный anti-replay реализованы: см. MQTT_PROTOCOL.md.
+Web-защита остаётся следующим блоком текущего этапа.

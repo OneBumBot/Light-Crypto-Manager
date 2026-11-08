@@ -45,7 +45,7 @@ def test_demo_seed_is_idempotent(postgres_db):
     seed_demo()
     seed_demo()
     assert db.session.query(Algorithm).count() == 1
-    assert db.session.query(TagJournal).count() == 1
+    assert db.session.query(TagJournal).count() == 2
 
 
 @pytest.mark.postgres

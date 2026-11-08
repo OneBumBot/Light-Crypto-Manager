@@ -39,14 +39,14 @@ def test_database_requires_postgres(monkeypatch):
     assert database_url('postgresql://localhost/test') == 'postgresql+psycopg://localhost/test'
 
 
-def test_publisher_packet_is_readable_by_web():
+def test_publisher_packet_is_readable_by_web(registry):
     from src.publisher.mqtt_pub import decrypt_data, encrypt_data
     from src.web.app import decrypt_ascon_data
 
     sensor = {'temperature': 25.0, 'humidity': 50.0, 'timestamp': '2026-11-08T00:00:00+00:00'}
-    packet = encrypt_data(json.dumps(sensor), ascon_key())
-    assert json.loads(decrypt_data(packet, ascon_key())) == sensor
-    assert decrypt_ascon_data(packet) == sensor
+    packet = encrypt_data(json.dumps(sensor), registry, sequence_number=1)
+    assert json.loads(decrypt_data(packet, registry, "iot/sensors/raspb1")) == sensor
+    assert decrypt_ascon_data(packet, "iot/sensors/raspb1", registry) == sensor
 
 
 def test_mqtt_clients_use_callback_v2(monkeypatch, tmp_path):

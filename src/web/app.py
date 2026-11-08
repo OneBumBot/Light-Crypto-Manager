@@ -7,7 +7,9 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from functools import wraps
 import json
 from src.web.ascon.ascon import ascon_decrypt
-from src.runtime import ascon_key, database_url
+from src.runtime import database_url
+from src.telemetry import decode_packet, load_registry
+from src.replay import admit, metadata as replay_metadata
 from datetime import datetime
 from src.web.config import Config
 from src.web.models import *
@@ -99,29 +101,15 @@ def on_disconnect(client, userdata, flags, rc, properties):
         print("  Попытка переподключения...")
 
 def on_message(client, userdata, message):
-    """Callback при получении MQTT сообщения"""
-    
     try:
-        payload = json.loads(message.payload.decode())
-        
-        # Расшифровка
-        decrypted_data = decrypt_ascon_data(payload)
-        
-        if decrypted_data:
-            
-            # Сохранение в БД (используем app context)
-            with app.app_context():
-                #save_sensor_data(decrypted_data)
-                update_dashboard(decrypted_data)
-        else:
-            print(f"[ERROR] Не удалось расшифровать данные")
-            
-    except json.JSONDecodeError as e:
-        print(f"[ERROR] Ошибка парсинга JSON: {e}")
-    except Exception as e:
-        print(f"[ERROR] Ошибка обработки MQTT: {e}")
-        import traceback
-        traceback.print_exc()
+        verified = decode_packet(message.payload, message.topic, load_registry())
+        with app.app_context():
+            with db.engine.begin() as connection:
+                accepted = admit(connection, verified, 'web')
+            if accepted:
+                update_dashboard(verified.sensor)
+    except Exception as error:
+        app.logger.warning('MQTT telemetry rejected (%s)', type(error).__name__)
 
 def create_mqtt_client():
     """Создание и настройка MQTT клиента"""
@@ -168,51 +156,8 @@ def start_mqtt_client():
 
 # ============= MQTT Функции =============
 
-def decrypt_ascon_data(encrypted_payload):
-    """Расшифровывает данные Ascon"""
-    try:
-                # Проверяем наличие необходимых полей
-        required_fields = ['nonce', 'ciphertext', 'associated_data', 'algorithm']
-        for field in required_fields:
-            if field not in encrypted_payload:
-                print(f"[ERROR] Отсутствует поле: {field}")
-                return None
-        
-        associated_data_bytes = base64.b64decode(encrypted_payload["associated_data"])
-        metadata = json.loads(associated_data_bytes.decode('utf-8'))
-
-        device_id = metadata.get("device_id", "unknown")
-        timestamp = metadata.get("timestamp", "unknown")
-        nonce = base64.b64decode(encrypted_payload["nonce"])
-        ciphertext = base64.b64decode(encrypted_payload["ciphertext"])
-        variant = encrypted_payload["algorithm"]
-
-        
-        # Расшифровка
-        plaintext = ascon_decrypt(
-            app.config['ASCON_KEY'],
-            nonce,
-            associated_data_bytes,
-            ciphertext,
-            variant
-        )
-        
-        if plaintext is None:
-            raise ValueError('Ascon authentication failed')
-        decrypted = json.loads(plaintext.decode('utf-8'))
-        
-        return decrypted
-        
-    except ValueError as e:
-        print(f"[ERROR] Не удалось расшифровать данные: {e}")
-        return None
-    except Exception as e:
-        print(f"[ERROR] Ошибка расшифровки: {e}")
-        import traceback
-        traceback.print_exc()
-        return None
-
-    return None
+def decrypt_ascon_data(encrypted_payload, topic, registry=None):
+    return decode_packet(encrypted_payload, topic, registry or load_registry()).sensor
 
 
 def save_sensor_data(data):
@@ -590,6 +535,7 @@ def main():
     if args.command == 'init-db':
         with app.app_context():
             db.create_all()
+            replay_metadata.create_all(db.engine)
         print("PostgreSQL schema initialized (create_all; not a migration)")
         return
     if args.command == 'bootstrap-users':
@@ -601,7 +547,7 @@ def main():
         raise ValueError('FLASK_SECRET_KEY is required to serve the web UI')
     try:
         if os.environ.get('WEB_MQTT_ENABLED', '0') == '1':
-            app.config['ASCON_KEY'] = ascon_key()
+            load_registry()
             start_mqtt_client()
         socketio.run(app, host=os.environ.get('WEB_HOST', '127.0.0.1'),
                      port=int(os.environ.get('WEB_PORT', '5000')), debug=False,

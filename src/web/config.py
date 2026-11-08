@@ -1,6 +1,6 @@
 import os
 
-from src.runtime import ascon_key, database_url
+from src.runtime import database_url
 
 
 class Config:
@@ -15,7 +15,5 @@ class Config:
     MQTT_BROKER_URL = os.environ.get("MQTT_HOST", "localhost")
     MQTT_BROKER_PORT = int(os.environ.get("MQTT_PORT", "8883"))
     MQTT_USERNAME = os.environ.get("MQTT_USERNAME", "")
-    MQTT_PASSWORD = os.environ.get("MQTT_PASSWORD", "")
     MQTT_KEEPALIVE = 60
     MQTT_TOPIC = os.environ.get("MQTT_TOPIC", "iot/sensors/#")
-    ASCON_KEY = ascon_key() if os.environ.get("ASCON_KEY_HEX") else None

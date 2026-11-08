@@ -35,6 +35,8 @@ def main():
     for secret in sorted(secret_values,key=len,reverse=True): output=output.replace(secret,'[REDACTED]')
     output=re.sub(r'(?s)-----BEGIN .*?PRIVATE KEY-----.*?-----END .*?PRIVATE KEY-----','[PRIVATE KEY REDACTED]',output)
     output=re.sub(r'(postgresql(?:\+psycopg)?://[^:\s]+:)[^@\s]+@',r'\1[REDACTED]@',output)
+    output=re.sub(r'\x1b\[[0-9;]*[A-Za-z]', '', output)
+    output='\n'.join(line.rstrip() for line in output.splitlines())+'\n'
     text=f'\nUTC: {datetime.now(timezone.utc).isoformat()}\n$ {shlex.join(command)}\n{output}\nEXIT CODE: {result.returncode}\n'
     args.report.parent.mkdir(parents=True,exist_ok=True)
     with args.report.open('a') as report: report.write(text)

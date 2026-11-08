@@ -210,3 +210,10 @@ Ascon и переход на PostgreSQL выполнены в этапе 2; бе
 Положительные/отрицательные подключения и ограничения publish/read проверены на
 реальном Mosquitto. Протокол: docs/reports/stage4-transport.txt.
 Anti-replay, валидация v2 и web-защита пока не завершены; этап не объявляется готовым.
+
+Блок MQTT v2/anti-replay завершён: 146 passed (2 прежних Query.get warning),
+включая конкурентное принятие 16 копий одного пакета ровно один раз, rollback
+счётчика вместе с INSERT, валидацию и счётчик SQLite. Реальный TLS smoke прошёл;
+после force-recreate receiver ранее сохранённый пакет отвергнут без новой записи.
+Результаты: docs/reports/stage4-protocol.txt, схема: docs/MQTT_PROTOCOL.md.
+Web-безопасность остаётся следующим блоком, этап ещё не завершён.

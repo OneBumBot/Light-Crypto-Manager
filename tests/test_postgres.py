@@ -10,7 +10,7 @@ from sqlalchemy import inspect, select, text
 
 from src.brocker.mqtt_brocker import on_message, process_packet
 from src.runtime import ascon_key
-from src.web.ascon.ascon import ascon_encrypt
+from src.telemetry import encode_packet, load_registry
 from src.web.models import (
     Algorithm, Anomaly, DeviceConfiguration, LogJournal, SensorData, TagJournal, User,
 )
@@ -18,15 +18,10 @@ from src.web.models import (
 pytestmark = pytest.mark.postgres
 
 
-def packet(device='raspb1', temperature=65, timestamp=None):
+def packet(device='raspb1', temperature=65, timestamp=None, sequence=1):
     timestamp = timestamp or datetime.now(timezone.utc)
-    ad = json.dumps({'device_id': device, 'timestamp': timestamp.isoformat()}).encode()
     sensor = {'temperature': temperature, 'humidity': 50, 'timestamp': timestamp.isoformat()}
-    nonce = bytes(range(16, 32))
-    ct = ascon_encrypt(ascon_key(), nonce, ad, json.dumps(sensor).encode())
-    return {'algorithm': 'Ascon-AEAD128', 'nonce': base64.b64encode(nonce).decode(),
-            'associated_data': base64.b64encode(ad).decode(),
-            'ciphertext': base64.b64encode(ct).decode()}
+    return encode_packet(sensor, load_registry(), device, sequence)
 
 
 def seed_device(web):
@@ -39,7 +34,7 @@ def seed_device(web):
 
 def test_schema_and_web_read_write(postgres_db):
     web = postgres_db
-    assert len(inspect(web.db.engine).get_table_names()) == 14
+    assert len(inspect(web.db.engine).get_table_names()) == 15
     assert web.create_default_users() == 0  # No password means no default account.
     user = User(username='smoke-admin', email='admin@example.test', role='admin')
     user.set_password('public-test-password')
@@ -70,7 +65,7 @@ def test_init_db_cli_is_idempotent(postgres_db):
     result = subprocess.run([sys.executable, '-m', 'src.web.app', 'init-db'],
                             env=dict(os.environ), capture_output=True, text=True, timeout=15)
     assert result.returncode == 0, 'init-db CLI failed'
-    assert len(inspect(postgres_db.db.engine).get_table_names()) == 14
+    assert len(inspect(postgres_db.db.engine).get_table_names()) == 15
 
 
 def test_bootstrap_is_explicit_and_preserves_passwords(postgres_db, monkeypatch):
@@ -91,7 +86,7 @@ def test_receiver_anomaly_rules(postgres_db, temperature, age, cause):
     seed_device(web)
     now = datetime.now(timezone.utc)
     data = process_packet(packet(temperature=temperature, timestamp=now-timedelta(seconds=age)),
-                          ascon_key(), web.db.engine, now=now)
+                          load_registry(), web.db.engine, "iot/sensors/raspb1", now=now)
     assert data['temperature'] == temperature
     rows = web.db.session.scalars(select(Anomaly)).all()
     assert [row.Anomaly_Cause_ID for row in rows] == ([] if cause is None else [cause])
@@ -100,13 +95,15 @@ def test_receiver_anomaly_rules(postgres_db, temperature, age, cause):
 def test_receiver_untrusted_device_and_tamper(postgres_db):
     web = postgres_db
     seed_device(web)
-    process_packet(packet(device="raspb1' OR 1=1 --"), ascon_key(), web.db.engine)
+    from src.telemetry import InvalidTelemetry
+    with pytest.raises(InvalidTelemetry):
+        packet(device="raspb1' OR 1=1 --")
     assert web.db.session.scalar(select(Anomaly)) is None
     value = packet()
     ct = base64.b64decode(value['ciphertext'])
     value['ciphertext'] = base64.b64encode(ct[:-1] + bytes([ct[-1] ^ 1])).decode()
-    with pytest.raises(ValueError, match='authentication'):
-        process_packet(value, ascon_key(), web.db.engine)
+    with pytest.raises(ValueError, match='authenticated'):
+        process_packet(value, load_registry(), web.db.engine, "iot/sensors/raspb1")
     assert web.db.session.scalar(select(Anomaly)) is None
 
 
@@ -118,10 +115,10 @@ def test_receiver_rolls_back_and_recovers(postgres_db):
         connection.execute(text('ALTER TABLE "Anomalies" ADD CONSTRAINT reject_cause CHECK ("Anomaly_Cause_ID" < 0)'))
     class Message:
         payload = json.dumps(packet()).encode()
-        topic = 'iot/sensors/device1'
-    on_message(None, {'key': ascon_key(), 'engine': web.db.engine}, Message())
+        topic = 'iot/sensors/raspb1'
+    on_message(None, {'registry': load_registry(), 'engine': web.db.engine}, Message())
     with web.db.engine.begin() as connection:
         assert connection.execute(text('SELECT count(*) FROM "Anomalies"')).scalar_one() == 0
         connection.execute(text('ALTER TABLE "Anomalies" DROP CONSTRAINT reject_cause'))
-    process_packet(packet(), ascon_key(), web.db.engine)
+    process_packet(packet(), load_registry(), web.db.engine, "iot/sensors/raspb1")
     assert web.db.session.scalar(select(Anomaly)) is not None
