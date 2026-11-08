@@ -1168,6 +1168,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "pytest" },
+    { name = "python-socketio", extra = ["client"] },
     { name = "ruff" },
 ]
 ml = [
@@ -1206,6 +1207,7 @@ requires-dist = [{ name = "paho-mqtt", specifier = "==2.1.0" }]
 [package.metadata.requires-dev]
 dev = [
     { name = "pytest", specifier = ">=8.3,<10" },
+    { name = "python-socketio", extras = ["client"], specifier = ">=5.18,<6" },
     { name = "ruff", specifier = ">=0.11,<1" },
 ]
 ml = [
@@ -1898,6 +1900,12 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/71/b9/4ab083267c1f8ece9a9e019808412af7c7a03321411a1263cd863321baa2/python_socketio-5.18.1.tar.gz", hash = "sha256:07ab0e7c94a52833a67af1dc05958ad6fb0de69adc87de9198a61b22588c40d4", size = 132106, upload-time = "2026-11-03T12:19:20.723Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/79/e2/cdc630aef7da00698af4ed061ff873297f806cc049cc5c67bf89077cb7e4/python_socketio-5.18.1-py3-none-any.whl", hash = "sha256:e768c473842be811f6dd24bd0a49cd0d4a0c994182e3eba23cc9d1489c7a697e", size = 83022, upload-time = "2026-11-03T12:19:19.136Z" },
+]
+
+[package.optional-dependencies]
+client = [
+    { name = "requests" },
+    { name = "websocket-client" },
 ]
 
 [[package]]

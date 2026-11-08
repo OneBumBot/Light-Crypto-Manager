@@ -111,7 +111,7 @@
 console.log('Chart.js загружен:', typeof Chart !== 'undefined');
 
 // Подключение к SocketIO
-const socket = io();
+const socket = io({auth: {csrf_token: document.querySelector('meta[name="csrf-token"]').content}});
 console.log('SocketIO инициализирован');
 
 // Инициализация графиков

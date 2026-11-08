@@ -197,10 +197,11 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"></script>
 
 <script>
-const tableName = "{{ table_name }}";
+const tableName = {{ table_name | tojson }};
+const primaryKeys = {{ primary_keys | tojson }};
+const fieldTypes = {{ field_types | tojson }};
 const columns = {{ columns | tojson }};
 let currentRecord = null;
 let isCreateMode = false;
@@ -208,127 +209,69 @@ let deleteRecordData = null;
 
 // ============= Просмотр записи =============
 
-function viewRecord(record) {
-    console.log('Просмотр записи:', record);
-    
-    const modalBody = document.getElementById('viewModalBody');
-    let html = '';
-    
-    for (const column of columns) {
-        const value = record[column] !== null && record[column] !== undefined 
-                     ? record[column] 
-                     : '<span class="text-muted">Не задано</span>';
-        
-        html += `
-            <div class="record-details">
-                <strong>${column}:</strong> ${value}
-            </div>
-        `;
+function displayFields(container, record, names) {
+    container.replaceChildren();
+    for (const name of names) {
+        const row = document.createElement('div');
+        row.className = 'record-details';
+        const label = document.createElement('strong');
+        label.textContent = name + ': ';
+        row.append(label, document.createTextNode(String(record[name] ?? 'Не задано')));
+        container.append(row);
     }
-    
-    modalBody.innerHTML = html;
-    
-    const modal = new bootstrap.Modal(document.getElementById('viewModal'));
-    modal.show();
 }
 
-// ============= Создание записи =============
+function viewRecord(record) {
+    displayFields(document.getElementById('viewModalBody'), record, columns);
+    new bootstrap.Modal(document.getElementById('viewModal')).show();
+}
+
+function populateFields(record) {
+    const container = document.getElementById('formFields');
+    container.replaceChildren();
+    for (const col of columns) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'mb-3';
+        const label = document.createElement('label');
+        label.className = 'form-label';
+        label.textContent = col;
+        const input = document.createElement('input');
+        input.className = 'form-control';
+        input.name = col;
+        input.id = 'field_' + col;
+        input.type = fieldTypes[col] === 'datetime' ? 'datetime-local' :
+            (['int', 'Decimal', 'float'].includes(fieldTypes[col]) ? 'number' : 'text');
+        if (['Decimal', 'float'].includes(fieldTypes[col])) input.step = 'any';
+        let value = record?.[col] ?? '';
+        if (input.type === 'datetime-local' && value) value = String(value).slice(0,16);
+        input.value = value;
+        input.readOnly = Boolean(record && primaryKeys.includes(col));
+        wrapper.append(label, input);
+        container.append(wrapper);
+    }
+}
 
 function showCreateModal() {
     isCreateMode = true;
     currentRecord = null;
-    
-    document.getElementById('modalTitle').innerHTML = '<i class="bi bi-plus-circle"></i> Создание записи';
+    document.getElementById('modalTitle').textContent = 'Создание записи';
     document.getElementById('formError').classList.add('d-none');
-    
-    const formFields = document.getElementById('formFields');
-    formFields.innerHTML = '';
-    
-    columns.forEach(col => {
-        // Определяем тип поля
-        let inputType = 'text';
-        let inputClass = 'form-control';
-        
-        if (col.toLowerCase().includes('date') || col.toLowerCase().includes('time')) {
-            inputType = 'datetime-local';
-        } else if (col.toLowerCase().includes('id')) {
-            inputType = 'number';
-        } else if (col.toLowerCase().includes('email')) {
-            inputType = 'email';
-        }
-        
-        formFields.innerHTML += `
-            <div class="mb-3">
-                <label class="form-label"><strong>${col}</strong></label>
-                <input type="${inputType}" 
-                       class="${inputClass}" 
-                       name="${col}" 
-                       id="field_${col}"
-                       placeholder="Введите ${col}">
-            </div>
-        `;
-    });
-    
-    const modal = new bootstrap.Modal(document.getElementById('editModal'));
-    modal.show();
+    populateFields(null);
+    new bootstrap.Modal(document.getElementById('editModal')).show();
 }
-
-// ============= Редактирование записи =============
 
 function editRecord(record) {
     isCreateMode = false;
     currentRecord = record;
-    
-    document.getElementById('modalTitle').innerHTML = '<i class="bi bi-pencil"></i> Редактирование записи';
+    document.getElementById('modalTitle').textContent = 'Редактирование записи';
     document.getElementById('formError').classList.add('d-none');
-    
-    const formFields = document.getElementById('formFields');
-    formFields.innerHTML = '';
-    
-    columns.forEach(col => {
-        let value = record[col] !== null && record[col] !== undefined ? record[col] : '';
-        
-        // Обработка datetime полей
-        if ((col.toLowerCase().includes('date') || col.toLowerCase().includes('time')) && value) {
-            // Преобразование ISO строки в формат datetime-local
-            const date = new Date(value);
-            if (!isNaN(date.getTime())) {
-                const year = date.getFullYear();
-                const month = String(date.getMonth() + 1).padStart(2, '0');
-                const day = String(date.getDate()).padStart(2, '0');
-                const hours = String(date.getHours()).padStart(2, '0');
-                const minutes = String(date.getMinutes()).padStart(2, '0');
-                value = `${year}-${month}-${day}T${hours}:${minutes}`;
-            }
-        }
-        
-        let inputType = 'text';
-        if (col.toLowerCase().includes('date') || col.toLowerCase().includes('time')) {
-            inputType = 'datetime-local';
-        } else if (col.toLowerCase().includes('id')) {
-            inputType = 'number';
-        } else if (col.toLowerCase().includes('email')) {
-            inputType = 'email';
-        }
-        
-        // Первичные ключи делаем readonly
-        const isReadonly = col.toLowerCase().includes('_id') && record[col] ? 'readonly' : '';
-        
-        formFields.innerHTML += `
-            <div class="mb-3">
-                <label class="form-label"><strong>${col}</strong></label>
-                <input type="${inputType}" 
-                       class="form-control" 
-                       name="${col}" 
-                       id="field_${col}" 
-                       value="${value}"
-                       ${isReadonly}>
-            </div>
-        `;
-    });
-    
-    const modal = new bootstrap.Modal(document.getElementById('editModal'));
-    modal.show();
+    populateFields(record);
+    new bootstrap.Modal(document.getElementById('editModal')).show();
+}
+
+function csrfHeaders() {
+    return {'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('meta[name="csrf-token"]').content};
 }
 
 // ============= Сохранение записи =============
@@ -339,6 +282,7 @@ async function saveRecord() {
     
     columns.forEach(col => {
         const input = document.getElementById(`field_${col}`);
+        if (input.readOnly && !isCreateMode) return;
         let value = input.value.trim();
         
         // Преобразование пустых строк в null
@@ -347,14 +291,15 @@ async function saveRecord() {
         }
         
         // Преобразование типов
-        if (value !== null && col.toLowerCase().includes('id')) {
-            value = parseInt(value);
+        if (value !== null && ['int', 'Decimal', 'float'].includes(fieldTypes[col])) {
+            value = Number(value);
+            if (!Number.isFinite(value)) hasErrors = true;
         }
         
         formData[col] = value;
     });
     
-    console.log('Отправка данных:', formData);
+    if (hasErrors) { showError('Некорректное число'); return; }
     
     try {
         const method = isCreateMode ? 'POST' : 'PUT';
@@ -368,7 +313,7 @@ async function saveRecord() {
         
         const response = await fetch(url, {
             method: method,
-            headers: {'Content-Type': 'application/json'},
+            headers: csrfHeaders(),
             body: JSON.stringify(formData)
         });
         
@@ -397,23 +342,8 @@ async function saveRecord() {
 
 function deleteRecord(record) {
     deleteRecordData = record;
-    
-    const infoDiv = document.getElementById('deleteRecordInfo');
-    let html = '';
-    
-    // Показываем первые 3 поля записи
-    const displayColumns = columns.slice(0, Math.min(3, columns.length));
-    for (const column of displayColumns) {
-        const value = record[column] !== null && record[column] !== undefined 
-                     ? record[column] 
-                     : '<span class="text-muted">Не задано</span>';
-        html += `<div><strong>${column}:</strong> ${value}</div>`;
-    }
-    
-    infoDiv.innerHTML = html;
-    
-    const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
-    modal.show();
+    displayFields(document.getElementById('deleteRecordInfo'), record, columns.slice(0,3));
+    new bootstrap.Modal(document.getElementById('deleteModal')).show();
 }
 
 async function confirmDelete() {
@@ -425,7 +355,8 @@ async function confirmDelete() {
         const recordId = deleteRecordData[idColumn];
         
         const response = await fetch(`/api/${tableName}/${recordId}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: csrfHeaders()
         });
         
         const result = await response.json();
@@ -487,13 +418,10 @@ function showError(message) {
 function showNotification(type, message) {
     // Создаем toast уведомление
     const toast = document.createElement('div');
-    toast.className = `alert alert-${type} position-fixed top-0 start-50 translate-middle-x mt-3`;
+    toast.className = `alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed top-0 start-50 translate-middle-x mt-3`;
     toast.style.zIndex = '9999';
-    toast.innerHTML = `
-        <i class="bi bi-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-        ${message}
-    `;
-    
+    toast.textContent = String(message);
+
     document.body.appendChild(toast);
     
     setTimeout(() => {

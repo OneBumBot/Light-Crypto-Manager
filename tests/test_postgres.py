@@ -10,6 +10,7 @@ from sqlalchemy import inspect, select, text
 
 from src.brocker.mqtt_brocker import on_message, process_packet
 from src.runtime import ascon_key
+from web_helpers import csrf_token, headers
 from src.telemetry import encode_packet, load_registry
 from src.web.models import (
     Algorithm, Anomaly, DeviceConfiguration, LogJournal, SensorData, TagJournal, User,
@@ -45,19 +46,20 @@ def test_schema_and_web_read_write(postgres_db):
     web.db.session.flush()
     web.db.session.add(SensorData(Record_ID=log.Record_ID, Temperature=25, Humidity=50))
     web.db.session.commit()
-    web.app.config.update(TESTING=True, WTF_CSRF_ENABLED=False)
+    web.app.config.update(TESTING=True)
     with web.app.test_client() as client:
         response = client.post('/login', data={
             'username': 'smoke-admin', 'password': 'public-test-password',
+            'csrf_token': csrf_token(client),
         })
         assert response.status_code == 302
         assert client.get('/').status_code == 200
         for values in web.latest_data.values():
             values.clear()
         assert client.get('/api/latest-data').json['temperature'] == [25.0]
-        assert client.put('/api/algorithms/1', json={'Algorithm_Name': 'updated'}).status_code == 200
+        assert client.put('/api/algorithms/1', json={'Algorithm_Name': 'updated'}, headers=headers(client)).status_code == 200
         assert web.db.session.get(Algorithm, 1).Algorithm_Name == 'updated'
-        assert client.delete('/api/algorithms/1').status_code == 200
+        assert client.delete('/api/algorithms/1', headers=headers(client)).status_code == 200
         assert web.db.session.get(Algorithm, 1) is None
 
 

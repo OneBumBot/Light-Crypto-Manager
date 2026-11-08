@@ -23,6 +23,7 @@ COPY requirements/dev.txt /app/requirements/dev.txt
 RUN pip install --no-cache-dir -r requirements/dev.txt
 COPY pyproject.toml /app/pyproject.toml
 COPY tests/*.py /app/tests/
+COPY scripts/live_web_smoke.py /app/scripts/live_web_smoke.py
 COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
 COPY deploy/compose.env.example /app/deploy/compose.env.example
 USER 10001:10001

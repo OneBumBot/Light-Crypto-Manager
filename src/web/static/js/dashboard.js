@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io({auth: {csrf_token: document.querySelector('meta[name="csrf-token"]').content}});
 
 // глобальные переменные
 let temperatureChart, humidityChart;

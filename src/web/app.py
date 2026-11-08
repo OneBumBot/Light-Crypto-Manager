@@ -1,8 +1,15 @@
 import logging
 from src.mqtt_transport import configure_client
 import os
-from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
+from flask import Flask, render_template, request, jsonify, redirect, url_for, flash, session, abort
 from flask_socketio import SocketIO
+from flask_wtf.csrf import CSRFProtect, CSRFError, validate_csrf
+from wtforms import ValidationError
+from werkzeug.exceptions import HTTPException
+from sqlalchemy.exc import SQLAlchemyError
+from threading import Lock
+import secrets
+from src.web.security import safe_next, validated_changes, record_identity
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from functools import wraps
 import json
@@ -45,7 +52,10 @@ json_audit_logger = logging.getLogger("lightcrypto.audit")
 
 # Инициализация расширений
 db.init_app(app)
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
+csrf = CSRFProtect(app)
+socketio = SocketIO(app, async_mode="threading", max_http_buffer_size=8192)
+socket_connections = {}
+socket_lock = Lock()
 
 # Инициализация Flask-Login
 login_manager = LoginManager()
@@ -55,7 +65,71 @@ login_manager.login_message = 'Пожалуйста, войдите для до�
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    try:
+        user = db.session.get(User, int(user_id), populate_existing=True)
+    except (ValueError, TypeError):
+        return None
+    return user if user and user.is_active and user.role in {r.value for r in UserRole} else None
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    if request.path.startswith(('/api/', '/debug/')):
+        return jsonify({'error': 'Требуется вход'}), 401
+    return redirect(url_for('login', next=request.path))
+
+
+@app.errorhandler(CSRFError)
+def csrf_failure(error):
+    return jsonify({'error': 'Запрос отклонён'}), 400
+
+
+@app.errorhandler(HTTPException)
+def http_failure(error):
+    return jsonify({'error': 'Запрос отклонён'}), error.code
+
+
+@app.errorhandler(Exception)
+def request_failure(error):
+    db.session.rollback()
+    app.logger.error('Request failed (%s)', type(error).__name__)
+    return jsonify({'error': 'Ошибка обработки запроса'}), 500
+
+
+@app.before_request
+def authenticated_session_token():
+    if current_user.is_authenticated:
+        session.setdefault('socket_token', secrets.token_urlsafe(32))
+
+
+@app.after_request
+def response_headers(response):
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['Referrer-Policy'] = 'same-origin'
+    response.headers['Cache-Control'] = 'no-store'
+    return response
+
+
+@socketio.on('connect')
+def socket_connect(auth=None):
+    if not current_user.is_authenticated or not current_user.has_table_access('sensor_data'):
+        return False
+    token = auth.get('csrf_token') if isinstance(auth,dict) else None
+    if type(token) is not str or len(token)>256 or not session.get('socket_token'):
+        return False
+    try:
+        validate_csrf(token)
+    except ValidationError:
+        return False
+    with socket_lock:
+        socket_connections[request.sid] = (current_user.id, session['socket_token'])
+
+
+@socketio.on('disconnect')
+def socket_disconnect(reason=None):
+    with socket_lock:
+        socket_connections.pop(request.sid, None)
+
 
 # Хранение последних данных
 latest_data = {
@@ -150,9 +224,9 @@ def start_mqtt_client():
         
         
     except Exception as e:
-        print(f"[{datetime.now()}] Ошибка запуска MQTT клиента: {e}")
+        app.logger.warning("MQTT startup failed (%s)", type(e).__name__)
         import traceback
-        traceback.print_exc()
+        app.logger.warning("Operation failed (%s)", type(e).__name__)
 
 # ============= MQTT Функции =============
 
@@ -182,9 +256,9 @@ def save_sensor_data(data):
         
     except Exception as e:
         db.session.rollback()
-        print(f"[ERROR] Ошибка сохранения в БД: {e}")
+        app.logger.warning("Sensor save failed (%s)", type(e).__name__)
         import traceback
-        traceback.print_exc()
+        app.logger.warning("Operation failed (%s)", type(e).__name__)
         return False
 
 def update_dashboard(data):
@@ -199,11 +273,18 @@ def update_dashboard(data):
         for key in latest_data:
             latest_data[key] = latest_data[key][-max_points:]
     
-    socketio.emit('sensor_update', {
-        'temperature': data.get('temperature'),
-        'humidity': data.get('humidity'),
-        'timestamp': data.get('timestamp')
-    })
+    with socket_lock:
+        peers = list(socket_connections.items())
+    for sid, (user_id, token) in peers:
+        user = db.session.get(User, user_id, populate_existing=True)
+        if not user or not user.is_active or user.role not in {r.value for r in UserRole} or not user.has_table_access('sensor_data'):
+            socketio.server.disconnect(sid, namespace='/')
+            continue
+        socketio.emit('sensor_update', {
+            'temperature': data.get('temperature'), 'humidity': data.get('humidity'),
+            'timestamp': data.get('timestamp'),
+        }, to=sid)
+
 
 def load_data_from_db():
     """Загрузка последних данных из БД"""
@@ -230,7 +311,7 @@ def load_data_from_db():
             print("[INFO] Нет данных в БД")
             
     except Exception as e:
-        print(f"[ERROR] Ошибка загрузки из БД: {e}")
+        app.logger.warning("History load failed (%s)", type(e).__name__)
 
 # ============= Декораторы =============
 
@@ -278,15 +359,16 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         
         if user and user.check_password(form.password.data):
-            if not user.is_active:
+            if not user.is_active or user.role not in {r.value for r in UserRole}:
                 flash('Ваш аккаунт деактивирован.', 'danger')
                 return redirect(url_for('login'))
             
             login_user(user, remember=form.remember_me.data)
+            session['socket_token'] = secrets.token_urlsafe(32)
             flash(f'Добро пожаловать, {user.username}!', 'success')
             
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('index'))
+            return redirect(next_page) if safe_next(next_page) else redirect(url_for('index'))
         else:
             flash('Неверное имя пользователя или пароль.', 'danger')
     
@@ -314,9 +396,14 @@ def register():
     
     return render_template('register.html', form=form)
 
-@app.route('/logout')
+@app.route('/logout', methods=['POST'])
 @login_required
 def logout():
+    token = session.pop('socket_token', None)
+    with socket_lock:
+        peers = [sid for sid, identity in socket_connections.items() if identity == (current_user.id, token)]
+    for sid in peers:
+        socketio.server.disconnect(sid, namespace='/')
     logout_user()
     flash('Вы вышли из системы.', 'info')
     return redirect(url_for('login'))
@@ -357,12 +444,14 @@ def view_table(table_name):
     
     model = TABLES[table_name]
     records = model.query.all()
-    columns = list(records[0].to_dict().keys()) if records else []
+    columns = [column.key for column in model.__table__.columns]
     
     return render_template('table_edit.html', 
                          table_name=table_name,
                          records=[r.to_dict() for r in records],
                          columns=columns,
+                         primary_keys=[c.key for c in model.__table__.primary_key.columns],
+                         field_types={c.key: c.type.python_type.__name__ for c in model.__table__.columns},
                          can_create=current_user.can_create(table_name),
                          can_update=current_user.can_update(table_name),
                          can_delete=current_user.can_delete(table_name))
@@ -373,6 +462,7 @@ def view_table(table_name):
 
 @app.route('/debug/mqtt-status')
 @login_required
+@role_required(UserRole.ADMIN)
 def mqtt_status():
     """Проверка статуса MQTT подключения"""
     global mqtt_client_instance
@@ -383,126 +473,61 @@ def mqtt_status():
     
     return jsonify({
         'mqtt_connected': is_connected,
-        'broker_url': app.config['MQTT_BROKER_URL'],
-        'broker_port': app.config['MQTT_BROKER_PORT'],
-        'topic': app.config['MQTT_TOPIC'],
         'client_exists': mqtt_client_instance is not None
     })
+
+
+def operation_model(table_name, operation):
+    if table_name not in TABLES or not current_user.has_table_access(table_name):
+        abort(403)
+    if not getattr(current_user, 'can_' + operation)(table_name):
+        abort(403)
+    return TABLES[table_name]
 
 
 @app.route('/api/<table_name>/<record_id>', methods=['PUT'])
 @login_required
 def update_record(table_name, record_id):
-    if table_name not in TABLES or not current_user.has_table_access(table_name):
-        return jsonify({'error': 'Доступ запрещен'}), 403
-    
-    if not current_user.can_update(table_name):
-        return jsonify({'error': 'Нет прав на изменение'}), 403
-    
+    model = operation_model(table_name, 'update')
+    identity = record_identity(model, record_id)
+    changes = validated_changes(table_name, model, request.get_json(silent=True))
     try:
-        model = TABLES[table_name]
-        
-        # Попытка получить запись по разным типам ID
-        try:
-            record_id = int(record_id)
-            record = model.query.get(record_id)
-        except:
-            # Если не число, пробуем как строку
-            record = model.query.get(record_id)
-        
-        if not record:
-            return jsonify({'error': 'Запись не найдена'}), 404
-        
-        data = request.get_json()
-        
-        # Обновляем только непервичные ключи
-        for key, value in data.items():
-            if hasattr(record, key):
-                setattr(record, key, value)
-        
+        record = db.session.get(model, identity)
+        if record is None:
+            abort(404)
+        for name,value in changes.items():
+            setattr(record, name, value)
         db.session.commit()
-        
-        db_logger.info(f"Обновлена запись: таблица={table_name}, ID={record_id}, пользователь={current_user.username}")
-        
         return jsonify({'message': 'Запись обновлена', 'data': record.to_dict()})
-    except Exception as e:
+    except SQLAlchemyError:
         db.session.rollback()
-        error_logger.error(f"Ошибка обновления записи: {e}", exc_info=True)
-        return jsonify({'error': str(e)}), 400
+        app.logger.warning('Database update rejected')
+        return jsonify({'error': 'Изменение отклонено'}), 400
+
 
 @app.route('/api/<table_name>/<record_id>', methods=['DELETE'])
 @login_required
 def delete_record(table_name, record_id):
-    if table_name not in TABLES or not current_user.has_table_access(table_name):
-        return jsonify({'error': 'Доступ запрещен'}), 403
-    
-    if not current_user.can_delete(table_name):
-        return jsonify({'error': 'Нет прав на удаление'}), 403
-    
+    model = operation_model(table_name, 'delete')
+    identity = record_identity(model, record_id)
     try:
-        model = TABLES[table_name]
-        
-        # Попытка получить запись
-        try:
-            record_id = int(record_id)
-            record = model.query.get(record_id)
-        except:
-            record = model.query.get(record_id)
-        
-        if not record:
-            return jsonify({'error': 'Запись не найдена'}), 404
-        
+        record = db.session.get(model, identity)
+        if record is None:
+            abort(404)
         db.session.delete(record)
         db.session.commit()
-        
-        db_logger.warning(f"Удалена запись: таблица={table_name}, ID={record_id}, пользователь={current_user.username}")
-        
-        json_audit_logger.warning('', extra={
-            'user': current_user.username,
-            'ip': request.remote_addr,
-            'action': 'delete',
-            'table': table_name,
-            'record_id': str(record_id)
-        })
-        
         return jsonify({'message': 'Запись удалена'})
-    except Exception as e:
+    except SQLAlchemyError:
         db.session.rollback()
-        error_logger.error(f"Ошибка удаления записи: {e}", exc_info=True)
-        return jsonify({'error': str(e)}), 400
+        app.logger.warning('Database delete rejected')
+        return jsonify({'error': 'Удаление отклонено'}), 400
 
 
-@app.route('/generate-test-data/<int:count>')
+@app.route('/generate-test-data/<int:count>', methods=['POST'])
 @login_required
+@role_required(UserRole.ADMIN)
 def generate_test_data(count=10):
-    """Генерация тестовых данных"""
-    import random
-    from datetime import timedelta
-    
-    if count > 100:
-        count = 100
-    
-    base_time = datetime.now()
-    
-    for i in range(count):
-        test_data = {
-            'device_id': 1,
-            'timestamp': (base_time - timedelta(minutes=count-i)).isoformat(),
-            'temperature': round(random.uniform(20.0, 30.0), 2),
-            'humidity': round(random.uniform(40.0, 70.0), 2),
-            'algorithm_id': 1,
-            'tag_id': 1
-        }
-        
-        #save_sensor_data(test_data)
-    
-    load_data_from_db()
-    
-    return jsonify({
-        'status': 'success',
-        'message': f'Создано {count} тестовых записей',
-        'data_count': len(latest_data['temperature'])
-    })
+    return jsonify({'error': 'Генератор данных пока недоступен'}), 501
 
 # ============= Инициализация =============
 

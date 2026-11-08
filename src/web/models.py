@@ -59,7 +59,7 @@ class User(UserMixin, db.Model):
         try:
             return UserRole(self.role)
         except ValueError:
-            return UserRole.VIEWER
+            return None
     
     def has_table_access(self, table_name):
         """Проверяет доступ к таблице"""
