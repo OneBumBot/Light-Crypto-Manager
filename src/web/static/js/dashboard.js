@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     socket.on('sensor_update', data => {
-        console.log('sensor_update:', data);
         updateDashboard(data);
         updateCharts(data);
     });
@@ -81,7 +80,6 @@ async function loadHistoricalData() {
     try {
         const resp = await fetch('/api/latest-data');
         const data = await resp.json();
-        console.log('latest-data:', data);
 
         if (!data.temperature || data.temperature.length === 0) {
             console.warn('No historical data');
