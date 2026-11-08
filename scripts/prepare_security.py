@@ -27,8 +27,8 @@ def main():
         parser.error('Invalid DNS name')
     ips = ['127.0.0.1'] + [str(ipaddress.ip_address(value)) for value in args.server_ip]
     directory = args.directory.resolve()
-    directory.mkdir(mode=0o700, parents=True, exist_ok=False)
     os.umask(0o077)
+    directory.mkdir(mode=0o700, parents=True, exist_ok=False)
     def openssl(*parts):
         run(['openssl', *parts], cwd=directory)
     openssl('req', '-x509', '-newkey', 'rsa:3072', '-nodes', '-keyout', 'ca.key',

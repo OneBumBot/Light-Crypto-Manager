@@ -102,3 +102,20 @@ def test_replay_state_survives_new_engine(postgres_db,registry):
     replacement=create_engine(engine.url)
     try: assert process_packet(packet,registry,replacement,TOPIC) is None
     finally: replacement.dispose()
+
+
+def test_legacy_format_has_no_fallback(registry):
+    packet=encode_packet(sensor(),registry,'raspb1',1)
+    old={key:packet[key] for key in ['nonce','associated_data','ciphertext']}
+    old['algorithm']='Ascon-AEAD128'
+    with pytest.raises(InvalidTelemetry): decode_packet(old,TOPIC,registry)
+
+
+@pytest.mark.postgres
+def test_consumers_have_independent_replay_state(postgres_db,registry):
+    from src.replay import admit
+    message=decode_packet(encode_packet(sensor(),registry,'raspb1',1),TOPIC,registry)
+    for consumer in ['receiver','web']:
+        with postgres_db.db.engine.begin() as connection:
+            assert admit(connection,message,consumer)
+            assert not admit(connection,message,consumer)

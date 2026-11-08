@@ -1,0 +1,258 @@
+
+UTC: 2026-11-08T12:38:12.666018+00:00
+$ docker compose --env-file .local-runtime/stage4.env build tests
+time="2026-11-08T15:38:03+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image lcm-stage4-tests Building
+ Image lcm-stage4-tests Building
+Sending build context to Docker daemon  57.88kB
+
+Step 1/28 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/28 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/28 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/28 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> b4309f4ee6bf
+Step 5/28 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 9616cc97744c
+Step 6/28 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3d85e5622316
+Step 7/28 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> ce36eef0dde0
+Step 8/28 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> 60f2638a9992
+Step 9/28 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> 3572ac3951e9
+Step 10/28 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> b7b150ffed0c
+Step 11/28 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 5fd446da0740
+Step 12/28 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> e594f5ee8584
+Step 13/28 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 4ab9de7ce90b
+Step 14/28 : COPY scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 85f88e779b51
+Step 15/28 : USER 10001:10001
+ ---> Using cache
+ ---> 6092fcf69f10
+Step 16/28 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> 68db04fe1f6e
+Step 17/28 : FROM runtime AS tests
+ ---> 68db04fe1f6e
+Step 18/28 : USER root
+ ---> Running in 9d22f7ea7f78
+ ---> Removed intermediate container 9d22f7ea7f78
+ ---> 9e5ec4ce5462
+Step 19/28 : COPY requirements/dev.txt /app/requirements/dev.txt
+ ---> a46575bc29be
+Step 20/28 : RUN pip install --no-cache-dir -r requirements/dev.txt
+ ---> Running in ce2539d34277
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Requirement already satisfied: bidict==0.24.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 3)) (0.24.1)
+Collecting certifi==2026.10.23 (from -r requirements/dev.txt (line 5))
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting charset-normalizer==3.5.2 (from -r requirements/dev.txt (line 7))
+  Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Requirement already satisfied: h11==0.16.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 11)) (0.16.0)
+Requirement already satisfied: idna==3.20 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 13)) (3.20)
+Collecting iniconfig==2.3.1 (from -r requirements/dev.txt (line 15))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging==26.3 (from -r requirements/dev.txt (line 17))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: paho-mqtt==2.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 19)) (2.1.0)
+Collecting pluggy==1.7.0 (from -r requirements/dev.txt (line 21))
+  Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments==2.21.0 (from -r requirements/dev.txt (line 23))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting pytest==9.2.0 (from -r requirements/dev.txt (line 25))
+  Downloading pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Requirement already satisfied: python-engineio==4.15.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 26)) (4.15.1)
+Requirement already satisfied: python-socketio==5.18.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 28)) (5.18.1)
+Collecting requests==2.34.2 (from -r requirements/dev.txt (line 29))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting ruff==0.17.4 (from -r requirements/dev.txt (line 31))
+  Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+Requirement already satisfied: simple-websocket==1.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 32)) (1.1.0)
+Collecting urllib3==2.8.0 (from -r requirements/dev.txt (line 34))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting websocket-client==1.9.2 (from -r requirements/dev.txt (line 36))
+  Downloading websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)
+Requirement already satisfied: wsproto==1.3.2 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 38)) (1.3.2)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 15.1 MB/s eta 0:00:00
+Downloading pytest-9.2.0-py3-none-any.whl (411 kB)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 38.7 MB/s eta 0:00:00
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading websocket_client-1.9.2-py3-none-any.whl (95 kB)
+Installing collected packages: websocket-client, urllib3, ruff, pygments, pluggy, packaging, iniconfig, charset-normalizer, certifi, requests, pytest
+Successfully installed certifi-2026.10.23 charset-normalizer-3.5.2 iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0 requests-2.34.2 ruff-0.17.4 urllib3-2.8.0 websocket-client-1.9.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+ ---> Removed intermediate container ce2539d34277
+ ---> 3940466d90c6
+Step 21/28 : COPY pyproject.toml /app/pyproject.toml
+ ---> 379834bf3194
+Step 22/28 : COPY tests/*.py /app/tests/
+ ---> 07bc9eec1beb
+Step 23/28 : COPY scripts/live_web_smoke.py /app/scripts/live_web_smoke.py
+ ---> a11ef42dc9f1
+Step 24/28 : COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
+ ---> f07bb96aabba
+Step 25/28 : COPY deploy/compose.env.example /app/deploy/compose.env.example
+ ---> 5145a98e36e1
+Step 26/28 : USER 10001:10001
+ ---> Running in be3fa1cea602
+ ---> Removed intermediate container be3fa1cea602
+ ---> 1c6928ea0955
+Step 27/28 : CMD ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
+ ---> Running in 8ee70a15698d
+ ---> Removed intermediate container 8ee70a15698d
+ ---> a0366da5b498
+Step 28/28 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in 2e2c809a6519
+ ---> Removed intermediate container 2e2c809a6519
+ ---> 43657fabd9dd
+Successfully built 43657fabd9dd
+Successfully tagged lcm-stage4-tests:latest
+ Image lcm-stage4-tests Built
+ Image lcm-stage4-tests Built
+
+EXIT CODE: 0
+
+UTC: 2026-11-08T12:38:22.046286+00:00
+$ docker compose --env-file .local-runtime/stage4.env run --rm tests
+ Container lcm-stage4-postgres-1 Running
+ Container lcm-stage4-security-init-1 Starting
+ Container lcm-stage4-security-init-1 Started
+ Container lcm-stage4-security-init-1 Waiting
+ Container lcm-stage4-postgres-1 Waiting
+ Container lcm-stage4-security-init-1 Exited
+ Container lcm-stage4-postgres-1 Healthy
+ Container lcm-stage4-tests-run-e51c67d07d7d Creating
+ Container lcm-stage4-tests-run-e51c67d07d7d Created
+........................................................................ [ 40%]
+........................................................................ [ 81%]
+.................................                                        [100%]
+177 passed in 8.04s
+
+EXIT CODE: 0
+
+UTC: 2026-11-08T12:38:23.592457+00:00
+$ docker compose --env-file .local-runtime/stage4.env run --rm --no-deps --entrypoint python tests -m scripts.mqtt_security_smoke
+ Container lcm-stage4-tests-run-1a59d7412bc3 Creating
+ Container lcm-stage4-tests-run-1a59d7412bc3 Created
+PASS: trusted TLS and publisher credentials
+PASS: incorrect password rejected
+PASS: untrusted CA rejected
+PASS: publisher cannot write another device topic
+PASS: web cannot publish telemetry
+PASS: receiver cannot publish telemetry
+PASS: allowed reader receives probe; publisher cannot read forbidden topic
+
+EXIT CODE: 0
+
+UTC: 2026-11-08T12:38:28.755887+00:00
+$ docker compose --env-file .local-runtime/stage4.env run --rm smoke --expect-demo
+ Container lcm-stage4-receiver-1 Running
+ Container lcm-stage4-postgres-1 Running
+ Container lcm-stage4-broker-1 Running
+ Container lcm-stage4-security-init-1 Starting
+ Container lcm-stage4-postgres-1 Waiting
+ Container lcm-stage4-security-init-1 Started
+ Container lcm-stage4-security-init-1 Waiting
+ Container lcm-stage4-postgres-1 Healthy
+ Container lcm-stage4-init-db-1 Starting
+ Container lcm-stage4-security-init-1 Exited
+ Container lcm-stage4-init-db-1 Started
+ Container lcm-stage4-broker-1 Waiting
+ Container lcm-stage4-init-db-1 Waiting
+ Container lcm-stage4-init-db-1 Waiting
+ Container lcm-stage4-broker-1 Healthy
+ Container lcm-stage4-init-db-1 Exited
+ Container lcm-stage4-init-db-1 Exited
+ Container lcm-stage4-demo-setup-1 Starting
+ Container lcm-stage4-demo-setup-1 Started
+ Container lcm-stage4-receiver-1 Waiting
+ Container lcm-stage4-demo-setup-1 Waiting
+ Container lcm-stage4-receiver-1 Healthy
+ Container lcm-stage4-demo-setup-1 Exited
+ Container lcm-stage4-smoke-run-5afc61381286 Creating
+ Container lcm-stage4-smoke-run-5afc61381286 Created
+PASS: TLS publisher -> broker -> receiver -> PostgreSQL
+PASS: ciphertext/AAD corruption, replay and malformed JSON rejected; next packet accepted
+PASS: live publisher v2 packet authenticated and accepted by receiver
+
+EXIT CODE: 0
+
+UTC: 2026-11-08T12:38:32.616417+00:00
+$ docker compose --env-file .local-runtime/stage4.env up -d --no-deps --force-recreate --wait receiver
+ Container lcm-stage4-receiver-1 Recreate
+ Container lcm-stage4-receiver-1 Recreated
+ Container lcm-stage4-receiver-1 Starting
+ Container lcm-stage4-receiver-1 Started
+ Container lcm-stage4-receiver-1 Waiting
+ Container lcm-stage4-receiver-1 Healthy
+
+EXIT CODE: 0
+
+UTC: 2026-11-08T12:38:37.037962+00:00
+$ docker compose --env-file .local-runtime/stage4.env run --rm smoke --replay-only
+ Container lcm-stage4-broker-1 Running
+ Container lcm-stage4-postgres-1 Running
+ Container lcm-stage4-receiver-1 Running
+ Container lcm-stage4-security-init-1 Starting
+ Container lcm-stage4-postgres-1 Waiting
+ Container lcm-stage4-security-init-1 Started
+ Container lcm-stage4-security-init-1 Waiting
+ Container lcm-stage4-postgres-1 Healthy
+ Container lcm-stage4-init-db-1 Starting
+ Container lcm-stage4-security-init-1 Exited
+ Container lcm-stage4-init-db-1 Started
+ Container lcm-stage4-init-db-1 Waiting
+ Container lcm-stage4-broker-1 Waiting
+ Container lcm-stage4-init-db-1 Waiting
+ Container lcm-stage4-broker-1 Healthy
+ Container lcm-stage4-init-db-1 Exited
+ Container lcm-stage4-init-db-1 Exited
+ Container lcm-stage4-demo-setup-1 Starting
+ Container lcm-stage4-demo-setup-1 Started
+ Container lcm-stage4-demo-setup-1 Waiting
+ Container lcm-stage4-receiver-1 Waiting
+ Container lcm-stage4-receiver-1 Healthy
+ Container lcm-stage4-demo-setup-1 Exited
+ Container lcm-stage4-smoke-run-40d1b1089133 Creating
+ Container lcm-stage4-smoke-run-40d1b1089133 Created
+PASS: stored replay rejected after receiver restart
+
+EXIT CODE: 0
+
+UTC: 2026-11-08T12:40:56.645866+00:00
+$ python3 scripts/prepare_security.py --directory .local-runtime/permission-check/security
+Local security material created (0700/0600); values withheld
+
+EXIT CODE: 0

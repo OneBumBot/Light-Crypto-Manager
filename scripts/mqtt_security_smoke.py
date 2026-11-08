@@ -52,11 +52,13 @@ def main():
         good.publish('iot/sensors/smoke',b'forbidden-write',qos=1)
         assert ack.wait(5) and codes[-1]
         print('PASS: publisher cannot write another device topic')
-        web,denied=connect('web');clients.append(web);assert not denied
-        web.on_publish=published;ack.clear()
-        web.publish('iot/sensors/raspb1',b'forbidden-write',qos=1)
-        assert ack.wait(5) and codes[-1]
-        print('PASS: web cannot publish telemetry')
+        for role in ['web','receiver']:
+            reader,denied=connect(role);clients.append(reader);assert not denied
+            reader.on_publish=published;ack.clear()
+            reader.publish('iot/sensors/raspb1',b'forbidden-write',qos=1)
+            assert ack.wait(5) and codes[-1]
+            print(f'PASS: {role} cannot publish telemetry')
+        web=next(client for client in clients if client._username==b'web')
         positive=threading.Event();negative=threading.Event();subscribed=threading.Event()
         marker=uuid.uuid4().hex.encode()
         web.on_message=lambda c,u,m: positive.set() if m.payload==marker else None
