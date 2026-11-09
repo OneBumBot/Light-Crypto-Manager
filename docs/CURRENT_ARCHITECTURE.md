@@ -1,53 +1,54 @@
-# Текущая архитектура — этап 5
+# Текущая архитектура — после этапа 6
 
-Ветка feature/mongodb-telemetry-storage от d9a000f. Существующие Flask, шаблоны,
-Ascon, TLS/ACL и MQTT v2 сохранены. Подробнее: DATABASE_ARCHITECTURE.md, OUTBOX.md,
-TELEMETRY_SCHEMA.md, SECURITY.md, COMPOSE.md. Доказательства — reports/stage5-*.txt.
+Основа cfda660 этапа5 сохранена: TLS/ACL/Ascon-v2/anti-replay, PostgreSQL+MongoDB,
+Outbox, Flask/Socket.IO. Добавлены отдельные offline ML эксперименты и opt-in
+асинхронный telemetry inference. Подробности — ML_ARCHITECTURE.md и ML_INFERENCE.md.
 
 ```mermaid
 flowchart LR
-    P["publisher: per-device key + SQLite sequence"] -->|"v2 AEAD, TLS/password/topic ACL"| B[Mosquitto]
-    B --> R["receiver: bounded validation + AEAD"]
-    R --> T["PG transaction: replay + anomaly + outbox"]
-    T --> PG[(PostgreSQL)]
-    PG --> C["relay: short SKIP LOCKED lease"]
-    C -->|"insert + duplicate comparison"| M[("MongoDB ordinary measurements")]
-    C -->|"fenced acknowledge/retry/dead"| PG
-    B --> W["Flask MQTT: independent live consumer"]
-    W -->|"consumer=web replay"| PG
-    W --> S["memory 50 points + authenticated Socket.IO"]
-    U["browser: login/roles/CSRF"] --> F["Flask HTTP + existing templates"]
-    F -->|"management tables"| PG
-    F -->|"read-only bounded history"| M
-    F --> S
+    P["publisher / device-specific keys"] -->|"TLS/password/topic ACL + AEAD v2"| B[Mosquitto]
+    B --> I["ingestion: validation/replay/anomaly/outbox"]
+    I --> PG[("PostgreSQL: management/replay/outbox")]
+    PG --> R["outbox relay"]
+    R --> M[("MongoDB verified telemetry")]
+    R --> F["PG bounded ML feed / gap counters"]
+    F --> W["optional telemetry ML worker"]
+    M -->|"bounded causal window"| W
+    A["trusted local DEMO/RESEARCH artifact"] --> W
+    W --> E[("PG immutable-version ML events")]
+    B --> L["Flask independent live consumer"]
+    L -->|"web replay state"| PG
+    L --> S["authorized Socket.IO / memory50"]
+    U["browser login/roles/CSRF"] --> H["Flask existing templates + history + /ml"]
+    H --> PG
+    H --> M
+    H --> E
+    X["real Edge CSV"] --> N["offline Network IDS RF / IF"]
+    N -.-> C["future compatible collector; absent"]
 ```
 
-PostgreSQL: 14 неизменённых legacy таблиц, mqtt_replay_state, telemetry_outbox,
-ingestion_metrics, telemetry_devices и alembic_version. Sensor_Data и её данные не удаляются, но
-новый pipeline не дублирует туда телеметрию. Alembic валидирует существующую
-схему перед baseline; создаёт пустую БД и новые таблицы аддитивно. Не вводит FK
-и не меняет составные PK автоматически. Несекретный реестр device/topic/profile/epoch/enabled находится в telemetry_devices;
-ключи остаются в ограниченных приватных файлах. PG и файлы согласуются явным
-provisioning, конфликт или disabled блокирует admission и live consumer.
+PostgreSQL23 таблицы:14 legacy, replay/outbox/ingestion_metrics/devices/Alembic,
+4 ML tables. Миграция0004 сохраняет старые данные/PK/replay. Sensor_Data не удалена;
+телеметрия хранится MongoDB, ML evaluations отдельно PG. Ключи по-прежнему только
+в scoped private registry, не в ML features/events. MQTT сообщения не менялись.
 
-MongoDB — только проверенные измерения с UTC датами. Outbox сохраняет намерение
-доставки до MongoDB даже при недоступности последней. Lease не держит PG
-транзакцию во время сетевой записи; несколько relay безопасно конкурируют.
-Unique ключ + проверка содержимого обеспечивают идемпотентность повторной записи,
-но не end-to-end exactly-once. Ошибочные/исчерпавшие попытки события видимы как dead.
+Ingestion не импортирует sklearn и не ждёт ML. Relay только дополняет delivery ACK
+bounded marker/gap transaction, не вызывает модель. Worker вне callback и HTTP,
+читаeт target и не болееN предыдущих sequences device/epoch, проверяет даты;
+фильтры/лимиты и claim lease не держат PG transaction при Mongo IO. Event identity:
+device/epoch/sequence/model_id/version. Недоступный model не останавливает pipeline.
 
-Receiver подтверждает QoS1 после PG commit. Backpressure ограничивает durable
-backlog; очереди брокера/диск конечны. Метрики admin API: входящие/сек, accepted,
-rejected, replay, retry/error/delivered, глубина/возраст outbox, средняя задержка,
-количество Mongo документов. Socket.IO по-прежнему один Flask-процесс с памятью;
-live событие может предшествовать Mongo доставке, быть потеряно при crash web.
+Прежние crypto rejects, rule anomalies и новые ML events различимы. ML score —
+нетипичность по отдельной шкале, не подтверждение атаки. Minimum protection не
+переключается. Network IDS остаётся offline, сенсоры не выдают Edge features.
 
-MongoDB и PostgreSQL не публикуют порты наружу. MQTT и HTTP — loopback. Раздельные
-Mongo roles: relay insert/find, web find. Security/storage-init кратковременно
-root копируют локальные материалы в scoped volumes; runtime UID10001. CA private
-key не попадает в контейнеры. Mongo использует auth во внутренней Compose network;
-межсервисный MongoDB TLS и production HA ещё не настроены.
+Инженерные проверки233 pytest + Docker outages/restarts/multi-device/web/security.
+На реальной ограниченной Edge подвыборке RF слаб; source/schema/разбиения и метрики
+в ML_EVALUATION.md. Telemetry модели обучены только на явно synthetic DEMO данных;
+real physical quality не проверена. Ни научное качество, ни1000msg/s не выводятся
+из успешных integration tests. Никаких FastAPI/Policy Engine/«Магмы»/CRISP.
 
-Нет ML inference, Policy Engine, FastAPI, «Магмы»/CRISP. Цели до 1000 msg/s —
-будущие эксперименты, не подтверждённая производительность. Локальная проверка
-не заменяет ARM64 execution, внешний security audit или production deployment.
+Ограничения: model-local trust, finite ML feed с явными gaps/retention, incomplete
+pre-cutover history, source-clock quality, one Flask process/live50, shared PG
+runtime role, Mongo standalone/internal DB TLS отсутствует, production HTTPS/ARM64
+и массовые нагрузки не проверены. Полнота исторического ML не обещается.

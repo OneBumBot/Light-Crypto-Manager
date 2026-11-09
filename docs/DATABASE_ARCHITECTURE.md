@@ -1,3 +1,13 @@
+# Дополнение этапа 6
+
+Alembic0004 добавляет ml_observations, ml_feed_state, ml_models и
+ml_anomaly_events; итого23 таблицы. Проверенное Mongo delivery отмечается в PG
+в транзакции outbox acknowledge; независимый optional worker читает Mongo и пишет
+идемпотентные оценки. Это ограниченный журнал до100000 маркеров с явным gap
+счётчиком и ручной retention, не гарантия оценки всей истории. См.
+[ML_INFERENCE.md](ML_INFERENCE.md) и [ML_ARCHITECTURE.md](ML_ARCHITECTURE.md).
+Replay-state и ingestion transaction не изменены. Далее сохранено описание этапа5.
+
 # Две базы данных — этап 5
 
 PostgreSQL — управляющие данные и источник истины anti-replay. MongoDB — только

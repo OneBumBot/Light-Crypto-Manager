@@ -19,6 +19,8 @@ Push/merge/rebase/main не выполнялись. Следующий этап 
 | 6 offline ML | fa5f9be —typed schemas, train-only pipelines/splits/metrics, causal telemetry, hashed artifact export |
 | 6 async/PG | e54c169 —bounded feed, model registry, leases/events, optional ML image/worker |
 | 6 web | c5874ee —authorized events/status/UI, раздельные источники |
+| 6 fixes | a577074 —fenced completion race, causal/schema bounds |
+| 6 verification | 462f2b7 —recovery/security regression, real-data aggregates |
 
 Дальнейшие fix/test/docs commits — git log --oneline cfda660..HEAD. Final hash
 указан итоговым отчётом, а не помещается внутрь своего коммита.
@@ -43,7 +45,7 @@ Push/merge/rebase/main не выполнялись. Следующий этап 
 | ML queue/checkpoint | частично реализовано | Durable bounded markers100000 + gaps, no measured_at-only cursor; pre-cutover/full-history coverage не гарантирована |
 | ML results / Policy signal | проверено тестами | Unique device/epoch/seq/model/version, finite score, explicit mode/scales; не выбирает crypto |
 | Flask/Socket.IO/security | проверено тестами | Прежние auth/roles/CSRF/TLS/ACL + real HTTP ML pages/events/status |
-| Additional datasets | существует | Подбор MQTTset/MQTT-IoT-IDS2020/CICIoT2023 в ML_DATASETS.md; не скачаны/не обучены |
+| Additional datasets | существует | Подбор MQTTset/MQTT-IoT-IDS2020/MQTT_UAD/CICIoT2023 в ML_DATASETS.md; не скачаны/не обучены |
 | Большие нагрузки / ARM64 | не проверено | CPU/memory/window limits есть,1000msg/s и10000 устройств не измерялись |
 | Policy Engine / FastAPI / «Магма» / CRISP | отсутствует | В этапе6 не разрабатывались |
 
@@ -70,3 +72,7 @@ real anomaly labels и независимая device/session оценка ост
 последовательность device/epoch/sequence и монотонность обеих дат определяют causal
 окно. Исправлена гонка expired claim vs completion повторным event row lock.
 Полный233-test прогон прошёл; модельные артефакты не менялись ради улучшения test.
+
+Изолированный lcm-stage6 остановлен после проверок (stage6-shutdown.txt).
+Команда down выполнена без --volumes: БД, счётчики, model volume и приватные
+материалы сохранены. Предыдущие контуры/volumes не удалялись.

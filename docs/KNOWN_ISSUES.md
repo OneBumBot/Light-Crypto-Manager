@@ -1,3 +1,54 @@
+# Актуальные ограничения после этапа 6
+
+Исторические аудиты ниже сохраняются; актуальные ML факты имеют приоритет.
+
+Устранены: notebook-only workflow без persisted preprocessing, random-row fallback
+в новом training, отсутствие ML feed/worker/events и авторизованного представления.
+Notebook неизменён; его старые методические проблемы не «починены» переписыванием
+исследовательского материала. Новые модули — src/classifier/ml и src/ml_storage.py.
+
+Открытые научные ограничения:
+
+- Реальная Edge оценка только на fixed subset11851 и grouped/proxy holdout:
+  train5630/val1227/test2005, val normal9, train7 из15 categories, unseen MITM в test.
+  RF binary threshold>1 и recall0; RF multiclass false positives велики. Это не
+  доверенный attack detector; per-device/session переносимость не подтверждена.
+- Подтверждены label proxies0/0.0 в четырёх исходных Edge полях; core их исключает,
+  но это не независимый аудит всех remaining protocol semantics. Некоторые DNS
+  boolean fields и ports некорректны/неоднозначны. Полная chronology не установлена.
+- Full CSV C-engine auditor разово завершился SIGSEGV; raw-string Python engine
+  audit успешен. Реальные модели обучены на ограниченном prepared CSV. Не заявляем
+  успешное full2.2M-row RF обучение. License local data/weights не подтверждена;
+  они не публикуются. Новые датасеты только подобраны (ML_DATASETS.md).
+- Telemetry training — synthetic DEMO (320 records,4 devices), не реальные normal
+  conditions. Прогнозы/старые rule anomalies не labels. Physical faults не равны
+  cyberattacks. Для доверенного обучения нужны реальные baselines и независимая
+  разметка, новая validation/test методика и новые неподсмотренные holdouts.
+
+Открытые технические ограничения:
+
+- ML feed bounded100000. Retained markers сами не удаляются после оценки: для
+  длительных runs надо планировать capacity/explicit prune. Иначе overflow_skipped
+  растёт, primary delivery продолжается, ML coverage теряется явно. Это не lossless.
+- Migration backfill только retained outbox до100000; старый relay нужно остановить
+  на cutover. Полная старая Mongo history не покрыта автоматически.
+- Late history может дать warmup/skip при первом snapshot; terminal score/skip
+  того же model version не пересчитывается. Mongo TTL/source expiry →retry/dead;
+  reset/requeue dead ML пока требует review/manual DB/backfill процедуры.
+- One expected interval per model, finite window3..256; silence-gap timer отсутствует.
+  Cold devices →unknown_device, invalid clock/order →unscored; online retraining нет.
+- Joblib требует trusted local root; hash не подпись. Strict dependency versions,
+  model64MiB/manifest1MiB limits. Shared PG role не разделяет capabilities ML/management.
+- CPU1/768MiB и scalar bounded Mongo/PG calls не доказывают1000msg/s; admission
+  lock не менялась. Aggregates/history queries и data export index требуют отдельного
+  performance исследования. GPU/ARM64/HA/soak/production deployment не проверены.
+
+См. ML_INFERENCE.md, ML_EVALUATION.md и reports/STAGE6.md. ML не управляет crypto.
+
+---
+
+## Историческое состояние этапов 0–5
+
 # Актуальные проблемы после этапа 5
 
 Ниже прежний аудит сохранён как исторический снимок; текущие изменения имеют

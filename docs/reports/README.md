@@ -51,3 +51,10 @@ rollback сохраняет возможность retry после DB ошиб�
 Текущий двухбазовый контур и матрица14 сценариев:
 [STAGE5.md](STAGE5.md). Итог210 pytest; отдельные реальные outages/crash/
 multi-device/TLS/ACL/web/Chromium проверки. Промежуточные failures сохранены.
+
+## Этап 6
+
+[STAGE6.md](STAGE6.md):233 pytest, реальные ML recovery/security/web/Chromium
+проверки. Отдельно ограниченный real Edge эксперимент и synthetic telemetry DEMO;
+машиночитаемые метрики рядом с протоколами. Кандидаты дополнительных данных —
+[ML_DATASETS.md](../ML_DATASETS.md), новые наборы не скачивались.

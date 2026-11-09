@@ -1,3 +1,124 @@
+# Этап 6: optional ML поверх защищённого двухбазового контура
+
+Базовый MQTT/PG/Mongo запуск ниже сохранён. Актуально23 PG таблицы (Alembic0004).
+ML выключен по умолчанию: профильml отдельно, ML_ALLOW_RESEARCH=0. Default runtime
+image не содержит sklearn/weights; отдельные ml/tests targets содержат минимальные
+ML библиотеки без датасетов/готовых моделей. Network IDS работает только offline.
+
+## Переход с этапа 5 без пропуска delivery markers
+
+Используйте прежние env/project, сохраните volumes/keys/counters. До применения
+0004 остановите **старый relay**, затем примените миграцию и запустите новую версию:
+
+```bash
+docker compose --env-file .env.compose stop outbox-relay
+docker compose --env-file .env.compose build receiver
+docker compose --env-file .env.compose run --rm init-db
+docker compose --env-file .env.compose up -d --wait receiver outbox-relay
+```
+
+Receiver может накапливать outbox до возобновления relay. Старые таблицы и replay
+сохраняются. Retained delivered outbox backfilled до100000; уже очищенная история
+Mongo до cutover не гарантированно покрыта. Новые ML markers bounded; overflow
+виден в ml_feed_state, не блокирует primary delivery. Без явной retention markers
+занимают capacity даже после оценки: планируйте prune/capacity, см. ML_INFERENCE.md.
+Рабочие volumes этапа5 при разработке/сбоях не использовались; тесты в lcm-stage6.
+
+## Explicit DEMO artifact для инженерной проверки
+
+Не используйте synthetic генерацию вместо недоступных реальных attack данных.
+Следующие команды только для воспроизводимого smoke (не trusted detector):
+
+```bash
+.venv/bin/python -m src.classifier.ml.demo --synthetic-demo --device raspb1 --device alpha --device beta --device gamma --output .local-runtime/ml-demo/train.csv --config-output .local-runtime/ml-demo/train.json
+.venv/bin/python -m src.classifier.ml.train train --data .local-runtime/ml-demo/train.csv --config .local-runtime/ml-demo/train.json --models-dir .local-runtime/ml-models --report .local-runtime/ml-demo/report.json
+```
+
+Модель может оценивать только обученные device baselines; для вашего набора
+устройств/настоящих данных используйте собственную проверенную выборку/версии.
+Не устанавливайте незафиксированные internet pickle/joblib. Все model/data пути
+приватные, loader требует0700/0600 и exact library versions.
+
+В приватном .env.compose задайте (последняя строка — осознанный research opt-in):
+
+```dotenv
+ML_MODELS_DIR=.local-runtime/ml-models
+ML_MODEL_ID=telemetry-statistical
+ML_MODEL_VERSION=1.0.0
+ML_ALLOW_RESEARCH=1
+ML_BATCH_SIZE=16
+```
+
+Затем:
+
+```bash
+docker compose --env-file .env.compose build ml-worker
+docker compose --env-file .env.compose run --rm --no-deps ml-model-init
+docker compose --env-file .env.compose --profile ml up -d ml-worker
+```
+
+ml-model-init — отдельный trusted root tool, не startup dependency: проверяет
+manifest/hash без root unpickle, копирует выбранную immutable версию в volume
+ml-models с UID10001,0700/0600. Worker монтирует его read-only и имеет только Mongo
+history read credential; MQTT credentials/ключей у него нет. Missing/invalid model
+→unavailable, default no opt-in→disabled. При остановке ML telemetry работает.
+
+UI `/ml` и API `/api/ml/events`, `/api/ml/status` требуют login/sensor_data permission.
+Model heartbeat, per-model score semantics, feed gaps, counts/prepare/infer/ACK lag
+доступны там. Модель не выбирает crypto profile, API только читает PG результаты.
+Подробнее: ML_TRAINING.md, ML_FEATURE_CONTRACT.md, ML_INFERENCE.md.
+
+## Изолированные проверки этапа 6
+
+Создайте отдельный project **lcm-stage6*** и credentials как в базовом руководстве,
+с `--extra-device alpha --extra-device beta --extra-device gamma`. Ни чужие volumes,
+ни ключи старого проекта не переиспользуются для отказов. Example env для фактически
+проверенного project — приватный .local-runtime/stage6.env (в Git его нет).
+
+```bash
+docker compose --env-file .local-runtime/stage6.env build tests receiver ml-worker
+docker compose --env-file .local-runtime/stage6.env run --rm tests
+python3 scripts/check_ml_system.py --env-file .local-runtime/stage6.env
+```
+
+check_ml_system первый запуск требует **пустого ML model volume**: доказывает,
+что missing artifact не останавливает MQTT/Mongo; устанавливает локальный DEMO,
+публикует controlled samples3 устройств, проверяет scores/restart/dedupe, затем
+Mongo outage/recovery с сохранёнными ML events. Повтор без удаления state volumes:
+
+```bash
+python3 scripts/check_ml_system.py --env-file .local-runtime/stage6.env --reuse-installed-model
+```
+
+Повтор пропускает только уже проверенную initial missing-model фазу, сохраняет
+counter SQLite; не очищает replay/историю. Source probes используют отдельные
+credentials/keys/topic ACL. Статистическое качество атак этим smoke не оценивается.
+
+```bash
+docker compose --env-file .local-runtime/stage6.env run --rm --no-deps -e WEB_EXPECT_ML=1 --entrypoint python tests -m scripts.live_web_smoke
+docker compose --env-file .local-runtime/stage6.env run --rm --no-deps --entrypoint python tests -m scripts.mqtt_security_smoke
+docker compose --env-file .local-runtime/stage6.env run --rm --no-deps smoke --expect-demo
+python3 scripts/check_dual_database.py --env-file .local-runtime/stage6.env
+```
+
+Последняя команда также останавливает PG/Mongo и аварийно завершает одноразовый
+relay после Mongo write. Разрешены только изолированные lcm-stage5/lcm-stage6 project
+prefixes, но правильный выбор env/volumes всё равно обязан проверить оператор.
+Полные очищенные протоколы и матрица — reports/STAGE6.md.
+
+Остановить и сохранить все state/model/security volumes:
+
+```bash
+docker compose --env-file .env.compose --profile demo --profile web --profile checks --profile ml --profile ml-tools down
+```
+
+`--volumes` не добавляйте. ML не требует изменения протокола, collector,
+Policy Engine/commands/ML quality/1000msg/s не считаются подтверждёнными автоматически.
+
+---
+
+## Базовое руководство этапа 5 (с учётом уточнений выше)
+
 # Локальный двухбазовый защищённый контур — этап 5
 
 Python 3.12.16, закреплённые образы PostgreSQL 17, MongoDB 8.0.17, Mosquitto 2;

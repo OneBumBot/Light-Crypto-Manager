@@ -238,3 +238,20 @@ feature fingerprints, пересекающих partitions, удалило2989 с
 доказывает независимость физических устройств/сессий. Выборка меняет prevalence;
 нельзя переносить метрики на исходные2.2M строк или online MQTT. Конкретные
 метрики и ограничения оценки приведены отдельно в ML_EVALUATION.md.
+
+## Полный streaming audit локальной копии
+
+[stage6-dataset-audit.json](reports/stage6-dataset-audit.json): все2219201 строка,
+63 колонки, raw dtype/missing counts,0 противоречий targets. Физический device
+count и календарный time range не выдумываются. Полный C-engine audit с автоматическим
+dtype однажды завершился SIGSEGV; эта неуспешная команда сохранена в протоколе.
+Повтор Python-engine/raw-string streaming завершился успешно, source hash тот же.
+
+В этой копии **локально подтверждён** zero-token proxy (не только внешняя гипотеза):
+mqtt.protoname/topic/conack.flags у всех603558 attack строк имеют token0.0;
+normal строк с таким token нет. Normal zero tokens представлены0. Полные counts
+для всех четырёх полей сохранены в JSON. Dummy0.0 на этих полях способен восстановить
+binary label без моделирования сетевого поведения. Core исключает эти поля;
+канонические fingerprints в итоговых train/validation/test не пересекаются.
+Это объясняет риск завышенных notebook scores; его прежнее качество не
+воспроизводилось и не подменяется новыми «99%» цифрами.
