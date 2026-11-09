@@ -1,8 +1,8 @@
 """Opt-in isolated lab orchestrator. No external targets, no model training."""
 
 import argparse, json, os, re, shutil, subprocess, time, uuid
-import signal
 from pathlib import Path
+import signal
 from .config import Experiment, NORMAL, VIOLATIONS
 
 
@@ -158,8 +158,7 @@ class Lab:
                     "lab-devices",
                     "python",
                     "-c",
-                    f"import signal
-from pathlib import Path;print(Path('{remote}/capture-ready').exists())",
+                    f"from pathlib import Path;print(Path('{remote}/capture-ready').exists())",
                 ).strip()
                 if ready == "True":
                     break
@@ -194,8 +193,7 @@ from pathlib import Path;print(Path('{remote}/capture-ready').exists())",
                             "lab-devices",
                             "python",
                             "-c",
-                            f"import signal
-from pathlib import Path;Path('{remote}/stop-capture').touch()",
+                            f"from pathlib import Path;Path('{remote}/stop-capture').touch()",
                         )
                         fault_time = None
                     if time.monotonic() - last_guard > 2:
@@ -224,8 +222,7 @@ from pathlib import Path;Path('{remote}/stop-capture').touch()",
                         "lab-devices",
                         "python",
                         "-c",
-                        f"import os,signal;import signal
-from pathlib import Path;p=int(Path('{remote}/driver.pid').read_text());assert p>1;os.kill(p,signal.SIGTERM)",
+                        f"import os,signal;from pathlib import Path;p=int(Path('{remote}/driver.pid').read_text());assert p>1;os.kill(p,signal.SIGTERM)",
                     )
                     driver.communicate(timeout=10)
         finally:
@@ -235,8 +232,7 @@ from pathlib import Path;p=int(Path('{remote}/driver.pid').read_text());assert p
                 "lab-devices",
                 "python",
                 "-c",
-                f"import signal
-from pathlib import Path;Path('{remote}/stop-capture').touch()",
+                f"from pathlib import Path;Path('{remote}/stop-capture').touch()",
             )
             out, err = proc.communicate(timeout=10)
             if proc.returncode:
