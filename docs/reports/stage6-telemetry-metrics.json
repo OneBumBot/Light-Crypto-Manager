@@ -1,0 +1,180 @@
+{
+  "synthetic": true,
+  "scientific_quality_available": false,
+  "runs": [
+    {
+      "model_id": "telemetry-statistical",
+      "model_version": "1.0.0",
+      "algorithm": "statistical",
+      "task": "telemetry_anomaly",
+      "mode": "DEMO",
+      "feature_version": "telemetry-causal-v1",
+      "dataset": {
+        "name": "EXPLICIT SYNTHETIC INTEGRATION FIXTURE; NOT REAL SENSOR BASELINE",
+        "sha256": "f884d79a4b14b7be491ef438a41194db7ecbdae6e9329f93844d3fd7a47668eb",
+        "rows": 320,
+        "columns": [
+          "device_id",
+          "key_epoch",
+          "sequence_number",
+          "measured_at",
+          "received_at",
+          "temperature",
+          "humidity"
+        ],
+        "dtypes": {
+          "device_id": "object",
+          "key_epoch": "int64",
+          "sequence_number": "int64",
+          "measured_at": "object",
+          "received_at": "object",
+          "temperature": "float64",
+          "humidity": "float64"
+        },
+        "devices": 4,
+        "license_status": "Project-generated synthetic fixture",
+        "synthetic": true,
+        "time_range": [
+          "2026-01-01T00:00:00.100000+00:00",
+          "2026-01-01T00:13:10.100000+00:00"
+        ]
+      },
+      "threshold": 1.0679093578640817,
+      "metrics": {
+        "labelled_quality_available": false,
+        "reason": "No independently verified telemetry labels",
+        "test_objects": 60,
+        "alert_rate": 0.0,
+        "score_min": 0.5554719807489078,
+        "score_max": 0.927061077510885
+      },
+      "preprocessing": {
+        "feature_order": [
+          "temperature",
+          "humidity",
+          "delta_temperature",
+          "delta_humidity",
+          "rolling_temperature",
+          "rolling_humidity",
+          "std_temperature",
+          "std_humidity",
+          "interval_seconds",
+          "missing_intervals",
+          "ingestion_delay_seconds"
+        ],
+        "preprocessing": "causal past-only windows + train-only robust per-device baseline; IF train-only imputer/scaler",
+        "window": 5,
+        "expected_interval": 10,
+        "fit_rows": 180,
+        "warmup_or_skipped": 20,
+        "threshold_selection": "unlabelled validation alert quantile; not measured FPR",
+        "score_semantics": "higher means more anomalous; max robust deviation for statistical, negative score_samples for IF; not attack probability",
+        "score_range": [
+          0,
+          null
+        ]
+      },
+      "versions": {
+        "python": "3.12.16",
+        "numpy": "2.5.4",
+        "pandas": "2.3.3",
+        "scipy": "1.18.1",
+        "scikit-learn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "artifact_sha256": "cf7abe77bcb64723d069e541262771feea264b7742bdef03fa6e3e7521f0a479",
+      "split_counts": {
+        "train": 180,
+        "validation": 60,
+        "test": 60
+      }
+    },
+    {
+      "model_id": "telemetry-isolation-forest",
+      "model_version": "1.0.0",
+      "algorithm": "isolation_forest",
+      "task": "telemetry_anomaly",
+      "mode": "DEMO",
+      "feature_version": "telemetry-causal-v1",
+      "dataset": {
+        "name": "EXPLICIT SYNTHETIC INTEGRATION FIXTURE; NOT REAL SENSOR BASELINE",
+        "sha256": "f884d79a4b14b7be491ef438a41194db7ecbdae6e9329f93844d3fd7a47668eb",
+        "rows": 320,
+        "columns": [
+          "device_id",
+          "key_epoch",
+          "sequence_number",
+          "measured_at",
+          "received_at",
+          "temperature",
+          "humidity"
+        ],
+        "dtypes": {
+          "device_id": "object",
+          "key_epoch": "int64",
+          "sequence_number": "int64",
+          "measured_at": "object",
+          "received_at": "object",
+          "temperature": "float64",
+          "humidity": "float64"
+        },
+        "devices": 4,
+        "license_status": "Project-generated synthetic fixture",
+        "synthetic": true,
+        "time_range": [
+          "2026-01-01T00:00:00.100000+00:00",
+          "2026-01-01T00:13:10.100000+00:00"
+        ]
+      },
+      "threshold": 0.6044995890765977,
+      "metrics": {
+        "labelled_quality_available": false,
+        "reason": "No independently verified telemetry labels",
+        "test_objects": 60,
+        "alert_rate": 0.06666666666666667,
+        "score_min": 0.5315703240724832,
+        "score_max": 0.6134097532843327
+      },
+      "preprocessing": {
+        "feature_order": [
+          "temperature",
+          "humidity",
+          "delta_temperature",
+          "delta_humidity",
+          "rolling_temperature",
+          "rolling_humidity",
+          "std_temperature",
+          "std_humidity",
+          "interval_seconds",
+          "missing_intervals",
+          "ingestion_delay_seconds"
+        ],
+        "preprocessing": "causal past-only windows + train-only robust per-device baseline; IF train-only imputer/scaler",
+        "window": 5,
+        "expected_interval": 10,
+        "fit_rows": 180,
+        "warmup_or_skipped": 20,
+        "threshold_selection": "unlabelled validation alert quantile; not measured FPR",
+        "score_semantics": "higher means more anomalous; max robust deviation for statistical, negative score_samples for IF; not attack probability",
+        "score_range": [
+          0,
+          1
+        ]
+      },
+      "versions": {
+        "python": "3.12.16",
+        "numpy": "2.5.4",
+        "pandas": "2.3.3",
+        "scipy": "1.18.1",
+        "scikit-learn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "artifact_sha256": "acd0f2216f1c6cd12dbe2dd6a306e6d0500de8c186f80d101a064c8d45532bc3",
+      "split_counts": {
+        "train": 180,
+        "validation": 60,
+        "test": 60
+      }
+    }
+  ]
+}

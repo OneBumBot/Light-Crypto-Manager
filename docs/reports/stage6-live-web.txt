@@ -1,0 +1,26 @@
+
+UTC: 2026-11-09T16:32:31.610353+00:00
+$ docker compose --env-file .local-runtime/stage6.env run --rm --no-deps -e WEB_EXPECT_ML=1 --entrypoint python tests -m scripts.live_web_smoke
+ Container lcm-stage6-tests-run-244e4069d89d Creating
+ Container lcm-stage6-tests-run-244e4069d89d Created
+PASS: real anonymous Socket.IO connection rejected
+PASS: live CSRF, role restriction, safe redirect and cross-origin rejection
+PASS: logged-in Socket.IO receives live MQTT telemetry
+PASS: ML routes require login, separate protocol/rule/ML sources and preserve role visibility
+PASS: authorized live MongoDB history, history page and admin-only pipeline metrics
+PASS: logout disconnects live Socket.IO and removes HTTP access
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:06:06.401563+00:00
+$ docker compose --env-file .local-runtime/stage6.env run --rm --no-deps -e WEB_EXPECT_ML=1 --entrypoint python tests -m scripts.live_web_smoke
+ Container lcm-stage6-tests-run-26747b983dda Creating
+ Container lcm-stage6-tests-run-26747b983dda Created
+PASS: real anonymous Socket.IO connection rejected
+PASS: live CSRF, role restriction, safe redirect and cross-origin rejection
+PASS: logged-in Socket.IO receives live MQTT telemetry
+PASS: ML routes require login, separate protocol/rule/ML sources and preserve role visibility
+PASS: authorized live MongoDB history, history page and admin-only pipeline metrics
+PASS: logout disconnects live Socket.IO and removes HTTP access
+
+EXIT CODE: 0

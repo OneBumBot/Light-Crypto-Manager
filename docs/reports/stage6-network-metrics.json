@@ -1,0 +1,1182 @@
+{
+  "report_version": 1,
+  "synthetic": false,
+  "runs": [
+    {
+      "model_id": "edge-network-rf-binary",
+      "model_version": "1.0.0",
+      "algorithm": "rf_binary",
+      "mode": "RESEARCH",
+      "artifact_sha256": "1960f7dcd6776a7ec31a4b6f77fbe39fc5ce6cd49234ca6c70d66c423f674620",
+      "dataset": {
+        "name": "Real user-supplied DNN-EdgeIIoT grouped research subset",
+        "sha256": "c5f864cdee295c31470a65d18ea158bfbb5a54512cb346d511c6bd6b339d8c69",
+        "rows": 11851,
+        "columns": [
+          "arp.opcode",
+          "arp.hw.size",
+          "icmp.checksum",
+          "icmp.seq_le",
+          "http.content_length",
+          "http.response",
+          "tcp.ack",
+          "tcp.ack_raw",
+          "tcp.checksum",
+          "tcp.connection.fin",
+          "tcp.connection.rst",
+          "tcp.connection.syn",
+          "tcp.connection.synack",
+          "tcp.flags",
+          "tcp.flags.ack",
+          "tcp.len",
+          "tcp.seq",
+          "udp.stream",
+          "udp.time_delta",
+          "dns.qry.qu",
+          "dns.qry.type",
+          "dns.retransmission",
+          "dns.retransmit_request_in",
+          "mqtt.conflag.cleansess",
+          "mqtt.conflags",
+          "mqtt.hdrflags",
+          "mqtt.len",
+          "mqtt.msgtype",
+          "mqtt.proto_len",
+          "mqtt.topic_len",
+          "mqtt.ver",
+          "http.request.method",
+          "http.referer",
+          "http.request.version",
+          "Attack_label",
+          "Attack_type",
+          "flow_group",
+          "source_index"
+        ],
+        "dtypes": {
+          "arp.opcode": "float64",
+          "arp.hw.size": "float64",
+          "icmp.checksum": "float64",
+          "icmp.seq_le": "float64",
+          "http.content_length": "float64",
+          "http.response": "float64",
+          "tcp.ack": "float64",
+          "tcp.ack_raw": "float64",
+          "tcp.checksum": "float64",
+          "tcp.connection.fin": "float64",
+          "tcp.connection.rst": "float64",
+          "tcp.connection.syn": "float64",
+          "tcp.connection.synack": "float64",
+          "tcp.flags": "float64",
+          "tcp.flags.ack": "float64",
+          "tcp.len": "float64",
+          "tcp.seq": "float64",
+          "udp.stream": "float64",
+          "udp.time_delta": "float64",
+          "dns.qry.qu": "float64",
+          "dns.qry.type": "float64",
+          "dns.retransmission": "float64",
+          "dns.retransmit_request_in": "float64",
+          "mqtt.conflag.cleansess": "float64",
+          "mqtt.conflags": "float64",
+          "mqtt.hdrflags": "float64",
+          "mqtt.len": "float64",
+          "mqtt.msgtype": "float64",
+          "mqtt.proto_len": "float64",
+          "mqtt.topic_len": "float64",
+          "mqtt.ver": "float64",
+          "http.request.method": "object",
+          "http.referer": "object",
+          "http.request.version": "object",
+          "Attack_label": "int64",
+          "Attack_type": "object",
+          "flow_group": "object",
+          "source_index": "int64"
+        },
+        "devices": null,
+        "license_status": "VERIFY_BEFORE_USE_AND_DISTRIBUTION",
+        "synthetic": false,
+        "parent": {
+          "source_file": "DNN-EdgeIIoT-dataset.csv",
+          "source_sha256": "1d3ef6c7cc22784a528a117f1158f5cad750273679437e18a39c360ee6b79fd7",
+          "prepared_sha256": "c5f864cdee295c31470a65d18ea158bfbb5a54512cb346d511c6bd6b339d8c69",
+          "source_rows": 2219201,
+          "selected_rows": 11851,
+          "source_groups": 176700,
+          "selected_groups": 3504,
+          "source_classes": {
+            "Normal": 1615643,
+            "MITM": 1214,
+            "Uploading": 37634,
+            "Ransomware": 10925,
+            "SQL_injection": 51203,
+            "DDoS_HTTP": 49911,
+            "DDoS_TCP": 50062,
+            "Password": 50153,
+            "Port_Scanning": 22564,
+            "Vulnerability_scanner": 50110,
+            "Backdoor": 24862,
+            "XSS": 15915,
+            "Fingerprinting": 1001,
+            "DDoS_UDP": 121568,
+            "DDoS_ICMP": 116436
+          },
+          "selected_classes": {
+            "Normal": 4371,
+            "DDoS_ICMP": 2269,
+            "DDoS_UDP": 1243,
+            "MITM": 1206,
+            "DDoS_TCP": 1003,
+            "XSS": 248,
+            "Port_Scanning": 235,
+            "Backdoor": 229,
+            "Ransomware": 224,
+            "SQL_injection": 184,
+            "Vulnerability_scanner": 167,
+            "Password": 162,
+            "DDoS_HTTP": 156,
+            "Uploading": 135,
+            "Fingerprinting": 19
+          },
+          "clock_only_timestamps": 2096419,
+          "rare_group_fraction": 0.02,
+          "common_count": 100,
+          "per_group_cap": 1000,
+          "max_rows": 150000,
+          "random_state": 42,
+          "synthetic": false,
+          "grouping": "bidirectional source/destination host-pair proxy; never a verified device/session identity",
+          "sampling": "retain common host-pairs, hash-sample rare pairs; lowest seeded row hashes per retained group, no target-based selection",
+          "limitations": [
+            "clock-only timestamps cannot establish calendar chronology",
+            "host-pair split is not independent-device generalization",
+            "capped per-group sampling changes class prevalence",
+            "license not verified; do not distribute data or model"
+          ]
+        },
+        "class_distribution": {
+          "Normal": 4371,
+          "DDoS_ICMP": 2269,
+          "DDoS_UDP": 1243,
+          "MITM": 1206,
+          "DDoS_TCP": 1003,
+          "XSS": 248,
+          "Port_Scanning": 235,
+          "Backdoor": 229,
+          "Ransomware": 224,
+          "SQL_injection": 184,
+          "Vulnerability_scanner": 167,
+          "Password": 162,
+          "DDoS_HTTP": 156,
+          "Uploading": 135,
+          "Fingerprinting": 19
+        }
+      },
+      "split_counts": {
+        "train": 5630,
+        "validation": 1227,
+        "test": 2005
+      },
+      "feature_overlap_purged": 2989,
+      "fit_rows": 5630,
+      "threshold": 1.0000000000000002,
+      "metrics": {
+        "objects": 2005,
+        "labels": [
+          "0",
+          "1"
+        ],
+        "classification_report": {
+          "0": {
+            "precision": 0.49875311720698257,
+            "recall": 1.0,
+            "f1-score": 0.6655574043261231,
+            "support": 1000.0
+          },
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 1005.0
+          },
+          "accuracy": 0.49875311720698257,
+          "macro avg": {
+            "precision": 0.24937655860349128,
+            "recall": 0.5,
+            "f1-score": 0.33277870216306155,
+            "support": 2005.0
+          },
+          "weighted avg": {
+            "precision": 0.24875467192368206,
+            "recall": 0.49875311720698257,
+            "f1-score": 0.33194883008784193,
+            "support": 2005.0
+          }
+        },
+        "macro_f1": 0.33277870216306155,
+        "confusion_matrix": [
+          [
+            1000,
+            0
+          ],
+          [
+            1005,
+            0
+          ]
+        ],
+        "false_positive_rate": 0.0,
+        "roc_auc": 0.4805671641791045,
+        "pr_auc": 0.6422167327400243,
+        "average_precision": 0.546206406468139,
+        "auc_scope": "binary attack-vs-normal risk, including for multiclass classifiers"
+      },
+      "risk_signal_metrics": {
+        "objects": 2005,
+        "labels": [
+          "0",
+          "1"
+        ],
+        "classification_report": {
+          "0": {
+            "precision": 0.49875311720698257,
+            "recall": 1.0,
+            "f1-score": 0.6655574043261231,
+            "support": 1000.0
+          },
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 1005.0
+          },
+          "accuracy": 0.49875311720698257,
+          "macro avg": {
+            "precision": 0.24937655860349128,
+            "recall": 0.5,
+            "f1-score": 0.33277870216306155,
+            "support": 2005.0
+          },
+          "weighted avg": {
+            "precision": 0.24875467192368206,
+            "recall": 0.49875311720698257,
+            "f1-score": 0.33194883008784193,
+            "support": 2005.0
+          }
+        },
+        "macro_f1": 0.33277870216306155,
+        "confusion_matrix": [
+          [
+            1000,
+            0
+          ],
+          [
+            1005,
+            0
+          ]
+        ],
+        "false_positive_rate": 0.0,
+        "roc_auc": 0.4805671641791045,
+        "pr_auc": 0.6422167327400243,
+        "average_precision": 0.546206406468139,
+        "auc_scope": "binary attack-vs-normal risk, including for multiclass classifiers"
+      },
+      "versions": {
+        "python": "3.12.16",
+        "numpy": "2.5.4",
+        "pandas": "2.3.3",
+        "scipy": "1.18.1",
+        "scikit-learn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "preprocessing": {
+        "feature_order": [
+          "arp.opcode",
+          "arp.hw.size",
+          "icmp.checksum",
+          "icmp.seq_le",
+          "http.content_length",
+          "http.response",
+          "tcp.ack",
+          "tcp.ack_raw",
+          "tcp.checksum",
+          "tcp.connection.fin",
+          "tcp.connection.rst",
+          "tcp.connection.syn",
+          "tcp.connection.synack",
+          "tcp.flags",
+          "tcp.flags.ack",
+          "tcp.len",
+          "tcp.seq",
+          "udp.stream",
+          "udp.time_delta",
+          "mqtt.conflag.cleansess",
+          "mqtt.conflags",
+          "mqtt.hdrflags",
+          "mqtt.len",
+          "mqtt.msgtype",
+          "mqtt.proto_len",
+          "mqtt.topic_len",
+          "mqtt.ver",
+          "http.request.method",
+          "http.referer",
+          "http.request.version"
+        ],
+        "preprocessing": "ColumnTransformer: train-only median/scaler and bounded OHE with unknown-ignore",
+        "fit_rows": 5630,
+        "threshold_selection": "validation only, F1 subject to normal-validation FPR bound",
+        "score_semantics": "higher means more anomalous; IF negative score_samples, RF 1-P(normal); not calibrated attack probability",
+        "score_range": [
+          0,
+          1
+        ],
+        "future_collector_required": true
+      },
+      "split_class_distribution": {
+        "train": {
+          "Normal": 1961,
+          "DDoS_ICMP": 1715,
+          "DDoS_UDP": 1179,
+          "DDoS_TCP": 763,
+          "Port_Scanning": 8,
+          "Ransomware": 2,
+          "Backdoor": 2
+        },
+        "validation": {
+          "SQL_injection": 172,
+          "Vulnerability_scanner": 157,
+          "DDoS_HTTP": 156,
+          "Password": 149,
+          "DDoS_ICMP": 138,
+          "Uploading": 123,
+          "Backdoor": 89,
+          "Port_Scanning": 66,
+          "DDoS_TCP": 63,
+          "XSS": 62,
+          "Ransomware": 25,
+          "DDoS_UDP": 17,
+          "Normal": 9,
+          "Fingerprinting": 1
+        },
+        "test": {
+          "Normal": 1000,
+          "MITM": 393,
+          "DDoS_ICMP": 388,
+          "DDoS_TCP": 177,
+          "DDoS_UDP": 47
+        }
+      },
+      "test_classes_absent_from_train": [
+        "MITM"
+      ],
+      "limitations": [
+        "research model, not a trusted cyberattack detector",
+        "no online network feature collector",
+        "quality does not transfer from synthetic tests to real attacks",
+        "clock-only timestamps cannot establish calendar chronology",
+        "host-pair split is not independent-device generalization",
+        "capped per-group sampling changes class prevalence",
+        "license not verified; do not distribute data or model"
+      ]
+    },
+    {
+      "model_id": "edge-network-rf-multiclass",
+      "model_version": "1.0.0",
+      "algorithm": "rf_multiclass",
+      "mode": "RESEARCH",
+      "artifact_sha256": "c6e14d55be72e9ea559483ed6b75dd2db4b61fe6050a886e729a0535cb6648cd",
+      "dataset": {
+        "name": "Real user-supplied DNN-EdgeIIoT grouped research subset",
+        "sha256": "c5f864cdee295c31470a65d18ea158bfbb5a54512cb346d511c6bd6b339d8c69",
+        "rows": 11851,
+        "columns": [
+          "arp.opcode",
+          "arp.hw.size",
+          "icmp.checksum",
+          "icmp.seq_le",
+          "http.content_length",
+          "http.response",
+          "tcp.ack",
+          "tcp.ack_raw",
+          "tcp.checksum",
+          "tcp.connection.fin",
+          "tcp.connection.rst",
+          "tcp.connection.syn",
+          "tcp.connection.synack",
+          "tcp.flags",
+          "tcp.flags.ack",
+          "tcp.len",
+          "tcp.seq",
+          "udp.stream",
+          "udp.time_delta",
+          "dns.qry.qu",
+          "dns.qry.type",
+          "dns.retransmission",
+          "dns.retransmit_request_in",
+          "mqtt.conflag.cleansess",
+          "mqtt.conflags",
+          "mqtt.hdrflags",
+          "mqtt.len",
+          "mqtt.msgtype",
+          "mqtt.proto_len",
+          "mqtt.topic_len",
+          "mqtt.ver",
+          "http.request.method",
+          "http.referer",
+          "http.request.version",
+          "Attack_label",
+          "Attack_type",
+          "flow_group",
+          "source_index"
+        ],
+        "dtypes": {
+          "arp.opcode": "float64",
+          "arp.hw.size": "float64",
+          "icmp.checksum": "float64",
+          "icmp.seq_le": "float64",
+          "http.content_length": "float64",
+          "http.response": "float64",
+          "tcp.ack": "float64",
+          "tcp.ack_raw": "float64",
+          "tcp.checksum": "float64",
+          "tcp.connection.fin": "float64",
+          "tcp.connection.rst": "float64",
+          "tcp.connection.syn": "float64",
+          "tcp.connection.synack": "float64",
+          "tcp.flags": "float64",
+          "tcp.flags.ack": "float64",
+          "tcp.len": "float64",
+          "tcp.seq": "float64",
+          "udp.stream": "float64",
+          "udp.time_delta": "float64",
+          "dns.qry.qu": "float64",
+          "dns.qry.type": "float64",
+          "dns.retransmission": "float64",
+          "dns.retransmit_request_in": "float64",
+          "mqtt.conflag.cleansess": "float64",
+          "mqtt.conflags": "float64",
+          "mqtt.hdrflags": "float64",
+          "mqtt.len": "float64",
+          "mqtt.msgtype": "float64",
+          "mqtt.proto_len": "float64",
+          "mqtt.topic_len": "float64",
+          "mqtt.ver": "float64",
+          "http.request.method": "object",
+          "http.referer": "object",
+          "http.request.version": "object",
+          "Attack_label": "int64",
+          "Attack_type": "object",
+          "flow_group": "object",
+          "source_index": "int64"
+        },
+        "devices": null,
+        "license_status": "VERIFY_BEFORE_USE_AND_DISTRIBUTION",
+        "synthetic": false,
+        "parent": {
+          "source_file": "DNN-EdgeIIoT-dataset.csv",
+          "source_sha256": "1d3ef6c7cc22784a528a117f1158f5cad750273679437e18a39c360ee6b79fd7",
+          "prepared_sha256": "c5f864cdee295c31470a65d18ea158bfbb5a54512cb346d511c6bd6b339d8c69",
+          "source_rows": 2219201,
+          "selected_rows": 11851,
+          "source_groups": 176700,
+          "selected_groups": 3504,
+          "source_classes": {
+            "Normal": 1615643,
+            "MITM": 1214,
+            "Uploading": 37634,
+            "Ransomware": 10925,
+            "SQL_injection": 51203,
+            "DDoS_HTTP": 49911,
+            "DDoS_TCP": 50062,
+            "Password": 50153,
+            "Port_Scanning": 22564,
+            "Vulnerability_scanner": 50110,
+            "Backdoor": 24862,
+            "XSS": 15915,
+            "Fingerprinting": 1001,
+            "DDoS_UDP": 121568,
+            "DDoS_ICMP": 116436
+          },
+          "selected_classes": {
+            "Normal": 4371,
+            "DDoS_ICMP": 2269,
+            "DDoS_UDP": 1243,
+            "MITM": 1206,
+            "DDoS_TCP": 1003,
+            "XSS": 248,
+            "Port_Scanning": 235,
+            "Backdoor": 229,
+            "Ransomware": 224,
+            "SQL_injection": 184,
+            "Vulnerability_scanner": 167,
+            "Password": 162,
+            "DDoS_HTTP": 156,
+            "Uploading": 135,
+            "Fingerprinting": 19
+          },
+          "clock_only_timestamps": 2096419,
+          "rare_group_fraction": 0.02,
+          "common_count": 100,
+          "per_group_cap": 1000,
+          "max_rows": 150000,
+          "random_state": 42,
+          "synthetic": false,
+          "grouping": "bidirectional source/destination host-pair proxy; never a verified device/session identity",
+          "sampling": "retain common host-pairs, hash-sample rare pairs; lowest seeded row hashes per retained group, no target-based selection",
+          "limitations": [
+            "clock-only timestamps cannot establish calendar chronology",
+            "host-pair split is not independent-device generalization",
+            "capped per-group sampling changes class prevalence",
+            "license not verified; do not distribute data or model"
+          ]
+        },
+        "class_distribution": {
+          "Normal": 4371,
+          "DDoS_ICMP": 2269,
+          "DDoS_UDP": 1243,
+          "MITM": 1206,
+          "DDoS_TCP": 1003,
+          "XSS": 248,
+          "Port_Scanning": 235,
+          "Backdoor": 229,
+          "Ransomware": 224,
+          "SQL_injection": 184,
+          "Vulnerability_scanner": 167,
+          "Password": 162,
+          "DDoS_HTTP": 156,
+          "Uploading": 135,
+          "Fingerprinting": 19
+        }
+      },
+      "split_counts": {
+        "train": 5630,
+        "validation": 1227,
+        "test": 2005
+      },
+      "feature_overlap_purged": 2989,
+      "fit_rows": 5630,
+      "threshold": 1.0000000000000002,
+      "metrics": {
+        "objects": 2005,
+        "labels": [
+          "DDoS_ICMP",
+          "DDoS_TCP",
+          "DDoS_UDP",
+          "MITM",
+          "Normal"
+        ],
+        "classification_report": {
+          "DDoS_ICMP": {
+            "precision": 0.9948717948717949,
+            "recall": 1.0,
+            "f1-score": 0.9974293059125964,
+            "support": 388.0
+          },
+          "DDoS_TCP": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 177.0
+          },
+          "DDoS_UDP": {
+            "precision": 0.031988873435326845,
+            "recall": 0.9787234042553191,
+            "f1-score": 0.061952861952861954,
+            "support": 47.0
+          },
+          "MITM": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 393.0
+          },
+          "Normal": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 1000.0
+          },
+          "accuracy": 0.3047381546134663,
+          "macro avg": {
+            "precision": 0.4053721336614243,
+            "recall": 0.5957446808510638,
+            "f1-score": 0.41187643357309167,
+            "support": 2005.0
+          },
+          "weighted avg": {
+            "precision": 0.28155298427018294,
+            "recall": 0.3047381546134663,
+            "f1-score": 0.2827503018483151,
+            "support": 2005.0
+          }
+        },
+        "macro_f1": 0.41187643357309167,
+        "confusion_matrix": [
+          [
+            388,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            177,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            46,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            393,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            999,
+            0,
+            0
+          ]
+        ],
+        "false_positive_rate": 1.0,
+        "roc_auc": 0.4767194029850746,
+        "pr_auc": 0.6404620820490664,
+        "average_precision": 0.5449380446301819,
+        "auc_scope": "binary attack-vs-normal risk, including for multiclass classifiers",
+        "macro_f1_fixed_15_class_ontology": 0.1372921445243639
+      },
+      "risk_signal_metrics": {
+        "objects": 2005,
+        "labels": [
+          "0",
+          "1"
+        ],
+        "classification_report": {
+          "0": {
+            "precision": 0.49875311720698257,
+            "recall": 1.0,
+            "f1-score": 0.6655574043261231,
+            "support": 1000.0
+          },
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 1005.0
+          },
+          "accuracy": 0.49875311720698257,
+          "macro avg": {
+            "precision": 0.24937655860349128,
+            "recall": 0.5,
+            "f1-score": 0.33277870216306155,
+            "support": 2005.0
+          },
+          "weighted avg": {
+            "precision": 0.24875467192368206,
+            "recall": 0.49875311720698257,
+            "f1-score": 0.33194883008784193,
+            "support": 2005.0
+          }
+        },
+        "macro_f1": 0.33277870216306155,
+        "confusion_matrix": [
+          [
+            1000,
+            0
+          ],
+          [
+            1005,
+            0
+          ]
+        ],
+        "false_positive_rate": 0.0,
+        "roc_auc": 0.4767194029850746,
+        "pr_auc": 0.6404620820490664,
+        "average_precision": 0.5449380446301819,
+        "auc_scope": "binary attack-vs-normal risk, including for multiclass classifiers"
+      },
+      "versions": {
+        "python": "3.12.16",
+        "numpy": "2.5.4",
+        "pandas": "2.3.3",
+        "scipy": "1.18.1",
+        "scikit-learn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "preprocessing": {
+        "feature_order": [
+          "arp.opcode",
+          "arp.hw.size",
+          "icmp.checksum",
+          "icmp.seq_le",
+          "http.content_length",
+          "http.response",
+          "tcp.ack",
+          "tcp.ack_raw",
+          "tcp.checksum",
+          "tcp.connection.fin",
+          "tcp.connection.rst",
+          "tcp.connection.syn",
+          "tcp.connection.synack",
+          "tcp.flags",
+          "tcp.flags.ack",
+          "tcp.len",
+          "tcp.seq",
+          "udp.stream",
+          "udp.time_delta",
+          "mqtt.conflag.cleansess",
+          "mqtt.conflags",
+          "mqtt.hdrflags",
+          "mqtt.len",
+          "mqtt.msgtype",
+          "mqtt.proto_len",
+          "mqtt.topic_len",
+          "mqtt.ver",
+          "http.request.method",
+          "http.referer",
+          "http.request.version"
+        ],
+        "preprocessing": "ColumnTransformer: train-only median/scaler and bounded OHE with unknown-ignore",
+        "fit_rows": 5630,
+        "threshold_selection": "validation only, F1 subject to normal-validation FPR bound",
+        "score_semantics": "higher means more anomalous; IF negative score_samples, RF 1-P(normal); not calibrated attack probability",
+        "score_range": [
+          0,
+          1
+        ],
+        "future_collector_required": true
+      },
+      "split_class_distribution": {
+        "train": {
+          "Normal": 1961,
+          "DDoS_ICMP": 1715,
+          "DDoS_UDP": 1179,
+          "DDoS_TCP": 763,
+          "Port_Scanning": 8,
+          "Ransomware": 2,
+          "Backdoor": 2
+        },
+        "validation": {
+          "SQL_injection": 172,
+          "Vulnerability_scanner": 157,
+          "DDoS_HTTP": 156,
+          "Password": 149,
+          "DDoS_ICMP": 138,
+          "Uploading": 123,
+          "Backdoor": 89,
+          "Port_Scanning": 66,
+          "DDoS_TCP": 63,
+          "XSS": 62,
+          "Ransomware": 25,
+          "DDoS_UDP": 17,
+          "Normal": 9,
+          "Fingerprinting": 1
+        },
+        "test": {
+          "Normal": 1000,
+          "MITM": 393,
+          "DDoS_ICMP": 388,
+          "DDoS_TCP": 177,
+          "DDoS_UDP": 47
+        }
+      },
+      "test_classes_absent_from_train": [
+        "MITM"
+      ],
+      "limitations": [
+        "research model, not a trusted cyberattack detector",
+        "no online network feature collector",
+        "quality does not transfer from synthetic tests to real attacks",
+        "clock-only timestamps cannot establish calendar chronology",
+        "host-pair split is not independent-device generalization",
+        "capped per-group sampling changes class prevalence",
+        "license not verified; do not distribute data or model"
+      ]
+    },
+    {
+      "model_id": "edge-network-if",
+      "model_version": "1.0.0",
+      "algorithm": "isolation_forest",
+      "mode": "RESEARCH",
+      "artifact_sha256": "72a26dca25f6a9c051accd8ea654f1f03b687b33c31a6936814c613c2d243c50",
+      "dataset": {
+        "name": "Real user-supplied DNN-EdgeIIoT grouped research subset",
+        "sha256": "c5f864cdee295c31470a65d18ea158bfbb5a54512cb346d511c6bd6b339d8c69",
+        "rows": 11851,
+        "columns": [
+          "arp.opcode",
+          "arp.hw.size",
+          "icmp.checksum",
+          "icmp.seq_le",
+          "http.content_length",
+          "http.response",
+          "tcp.ack",
+          "tcp.ack_raw",
+          "tcp.checksum",
+          "tcp.connection.fin",
+          "tcp.connection.rst",
+          "tcp.connection.syn",
+          "tcp.connection.synack",
+          "tcp.flags",
+          "tcp.flags.ack",
+          "tcp.len",
+          "tcp.seq",
+          "udp.stream",
+          "udp.time_delta",
+          "dns.qry.qu",
+          "dns.qry.type",
+          "dns.retransmission",
+          "dns.retransmit_request_in",
+          "mqtt.conflag.cleansess",
+          "mqtt.conflags",
+          "mqtt.hdrflags",
+          "mqtt.len",
+          "mqtt.msgtype",
+          "mqtt.proto_len",
+          "mqtt.topic_len",
+          "mqtt.ver",
+          "http.request.method",
+          "http.referer",
+          "http.request.version",
+          "Attack_label",
+          "Attack_type",
+          "flow_group",
+          "source_index"
+        ],
+        "dtypes": {
+          "arp.opcode": "float64",
+          "arp.hw.size": "float64",
+          "icmp.checksum": "float64",
+          "icmp.seq_le": "float64",
+          "http.content_length": "float64",
+          "http.response": "float64",
+          "tcp.ack": "float64",
+          "tcp.ack_raw": "float64",
+          "tcp.checksum": "float64",
+          "tcp.connection.fin": "float64",
+          "tcp.connection.rst": "float64",
+          "tcp.connection.syn": "float64",
+          "tcp.connection.synack": "float64",
+          "tcp.flags": "float64",
+          "tcp.flags.ack": "float64",
+          "tcp.len": "float64",
+          "tcp.seq": "float64",
+          "udp.stream": "float64",
+          "udp.time_delta": "float64",
+          "dns.qry.qu": "float64",
+          "dns.qry.type": "float64",
+          "dns.retransmission": "float64",
+          "dns.retransmit_request_in": "float64",
+          "mqtt.conflag.cleansess": "float64",
+          "mqtt.conflags": "float64",
+          "mqtt.hdrflags": "float64",
+          "mqtt.len": "float64",
+          "mqtt.msgtype": "float64",
+          "mqtt.proto_len": "float64",
+          "mqtt.topic_len": "float64",
+          "mqtt.ver": "float64",
+          "http.request.method": "object",
+          "http.referer": "object",
+          "http.request.version": "object",
+          "Attack_label": "int64",
+          "Attack_type": "object",
+          "flow_group": "object",
+          "source_index": "int64"
+        },
+        "devices": null,
+        "license_status": "VERIFY_BEFORE_USE_AND_DISTRIBUTION",
+        "synthetic": false,
+        "parent": {
+          "source_file": "DNN-EdgeIIoT-dataset.csv",
+          "source_sha256": "1d3ef6c7cc22784a528a117f1158f5cad750273679437e18a39c360ee6b79fd7",
+          "prepared_sha256": "c5f864cdee295c31470a65d18ea158bfbb5a54512cb346d511c6bd6b339d8c69",
+          "source_rows": 2219201,
+          "selected_rows": 11851,
+          "source_groups": 176700,
+          "selected_groups": 3504,
+          "source_classes": {
+            "Normal": 1615643,
+            "MITM": 1214,
+            "Uploading": 37634,
+            "Ransomware": 10925,
+            "SQL_injection": 51203,
+            "DDoS_HTTP": 49911,
+            "DDoS_TCP": 50062,
+            "Password": 50153,
+            "Port_Scanning": 22564,
+            "Vulnerability_scanner": 50110,
+            "Backdoor": 24862,
+            "XSS": 15915,
+            "Fingerprinting": 1001,
+            "DDoS_UDP": 121568,
+            "DDoS_ICMP": 116436
+          },
+          "selected_classes": {
+            "Normal": 4371,
+            "DDoS_ICMP": 2269,
+            "DDoS_UDP": 1243,
+            "MITM": 1206,
+            "DDoS_TCP": 1003,
+            "XSS": 248,
+            "Port_Scanning": 235,
+            "Backdoor": 229,
+            "Ransomware": 224,
+            "SQL_injection": 184,
+            "Vulnerability_scanner": 167,
+            "Password": 162,
+            "DDoS_HTTP": 156,
+            "Uploading": 135,
+            "Fingerprinting": 19
+          },
+          "clock_only_timestamps": 2096419,
+          "rare_group_fraction": 0.02,
+          "common_count": 100,
+          "per_group_cap": 1000,
+          "max_rows": 150000,
+          "random_state": 42,
+          "synthetic": false,
+          "grouping": "bidirectional source/destination host-pair proxy; never a verified device/session identity",
+          "sampling": "retain common host-pairs, hash-sample rare pairs; lowest seeded row hashes per retained group, no target-based selection",
+          "limitations": [
+            "clock-only timestamps cannot establish calendar chronology",
+            "host-pair split is not independent-device generalization",
+            "capped per-group sampling changes class prevalence",
+            "license not verified; do not distribute data or model"
+          ]
+        },
+        "class_distribution": {
+          "Normal": 4371,
+          "DDoS_ICMP": 2269,
+          "DDoS_UDP": 1243,
+          "MITM": 1206,
+          "DDoS_TCP": 1003,
+          "XSS": 248,
+          "Port_Scanning": 235,
+          "Backdoor": 229,
+          "Ransomware": 224,
+          "SQL_injection": 184,
+          "Vulnerability_scanner": 167,
+          "Password": 162,
+          "DDoS_HTTP": 156,
+          "Uploading": 135,
+          "Fingerprinting": 19
+        }
+      },
+      "split_counts": {
+        "train": 5630,
+        "validation": 1227,
+        "test": 2005
+      },
+      "feature_overlap_purged": 2989,
+      "fit_rows": 1961,
+      "threshold": 0.472943577687933,
+      "metrics": {
+        "objects": 2005,
+        "labels": [
+          "0",
+          "1"
+        ],
+        "classification_report": {
+          "0": {
+            "precision": 0.6631299734748011,
+            "recall": 1.0,
+            "f1-score": 0.7974481658692185,
+            "support": 1000.0
+          },
+          "1": {
+            "precision": 1.0,
+            "recall": 0.4945273631840796,
+            "f1-score": 0.6617842876165113,
+            "support": 1005.0
+          },
+          "accuracy": 0.7466334164588528,
+          "macro avg": {
+            "precision": 0.8315649867374005,
+            "recall": 0.7472636815920398,
+            "f1-score": 0.729616226742865,
+            "support": 2005.0
+          },
+          "weighted avg": {
+            "precision": 0.8319850241769582,
+            "recall": 0.7466334164588528,
+            "f1-score": 0.7294470697874376,
+            "support": 2005.0
+          }
+        },
+        "macro_f1": 0.729616226742865,
+        "confusion_matrix": [
+          [
+            1000,
+            0
+          ],
+          [
+            508,
+            497
+          ]
+        ],
+        "false_positive_rate": 0.0,
+        "roc_auc": 0.7164179104477613,
+        "pr_auc": 0.8544282626217656,
+        "average_precision": 0.7411476266923991,
+        "auc_scope": "binary attack-vs-normal risk, including for multiclass classifiers"
+      },
+      "risk_signal_metrics": {
+        "objects": 2005,
+        "labels": [
+          "0",
+          "1"
+        ],
+        "classification_report": {
+          "0": {
+            "precision": 0.6631299734748011,
+            "recall": 1.0,
+            "f1-score": 0.7974481658692185,
+            "support": 1000.0
+          },
+          "1": {
+            "precision": 1.0,
+            "recall": 0.4945273631840796,
+            "f1-score": 0.6617842876165113,
+            "support": 1005.0
+          },
+          "accuracy": 0.7466334164588528,
+          "macro avg": {
+            "precision": 0.8315649867374005,
+            "recall": 0.7472636815920398,
+            "f1-score": 0.729616226742865,
+            "support": 2005.0
+          },
+          "weighted avg": {
+            "precision": 0.8319850241769582,
+            "recall": 0.7466334164588528,
+            "f1-score": 0.7294470697874376,
+            "support": 2005.0
+          }
+        },
+        "macro_f1": 0.729616226742865,
+        "confusion_matrix": [
+          [
+            1000,
+            0
+          ],
+          [
+            508,
+            497
+          ]
+        ],
+        "false_positive_rate": 0.0,
+        "roc_auc": 0.7164179104477613,
+        "pr_auc": 0.8544282626217656,
+        "average_precision": 0.7411476266923991,
+        "auc_scope": "binary attack-vs-normal risk, including for multiclass classifiers"
+      },
+      "versions": {
+        "python": "3.12.16",
+        "numpy": "2.5.4",
+        "pandas": "2.3.3",
+        "scipy": "1.18.1",
+        "scikit-learn": "1.9.1",
+        "joblib": "1.6.0"
+      },
+      "preprocessing": {
+        "feature_order": [
+          "arp.opcode",
+          "arp.hw.size",
+          "icmp.checksum",
+          "icmp.seq_le",
+          "http.content_length",
+          "http.response",
+          "tcp.ack",
+          "tcp.ack_raw",
+          "tcp.checksum",
+          "tcp.connection.fin",
+          "tcp.connection.rst",
+          "tcp.connection.syn",
+          "tcp.connection.synack",
+          "tcp.flags",
+          "tcp.flags.ack",
+          "tcp.len",
+          "tcp.seq",
+          "udp.stream",
+          "udp.time_delta",
+          "mqtt.conflag.cleansess",
+          "mqtt.conflags",
+          "mqtt.hdrflags",
+          "mqtt.len",
+          "mqtt.msgtype",
+          "mqtt.proto_len",
+          "mqtt.topic_len",
+          "mqtt.ver",
+          "http.request.method",
+          "http.referer",
+          "http.request.version"
+        ],
+        "preprocessing": "ColumnTransformer: train-only median/scaler and bounded OHE with unknown-ignore",
+        "fit_rows": 1961,
+        "threshold_selection": "validation only, F1 subject to normal-validation FPR bound",
+        "score_semantics": "higher means more anomalous; IF negative score_samples, RF 1-P(normal); not calibrated attack probability",
+        "score_range": [
+          0,
+          1
+        ],
+        "future_collector_required": true
+      },
+      "split_class_distribution": {
+        "train": {
+          "Normal": 1961,
+          "DDoS_ICMP": 1715,
+          "DDoS_UDP": 1179,
+          "DDoS_TCP": 763,
+          "Port_Scanning": 8,
+          "Ransomware": 2,
+          "Backdoor": 2
+        },
+        "validation": {
+          "SQL_injection": 172,
+          "Vulnerability_scanner": 157,
+          "DDoS_HTTP": 156,
+          "Password": 149,
+          "DDoS_ICMP": 138,
+          "Uploading": 123,
+          "Backdoor": 89,
+          "Port_Scanning": 66,
+          "DDoS_TCP": 63,
+          "XSS": 62,
+          "Ransomware": 25,
+          "DDoS_UDP": 17,
+          "Normal": 9,
+          "Fingerprinting": 1
+        },
+        "test": {
+          "Normal": 1000,
+          "MITM": 393,
+          "DDoS_ICMP": 388,
+          "DDoS_TCP": 177,
+          "DDoS_UDP": 47
+        }
+      },
+      "test_classes_absent_from_train": [
+        "MITM"
+      ],
+      "limitations": [
+        "research model, not a trusted cyberattack detector",
+        "no online network feature collector",
+        "quality does not transfer from synthetic tests to real attacks",
+        "clock-only timestamps cannot establish calendar chronology",
+        "host-pair split is not independent-device generalization",
+        "capped per-group sampling changes class prevalence",
+        "license not verified; do not distribute data or model"
+      ]
+    }
+  ],
+  "scientific_scope": "Limited real-data host-pair proxy holdout; not device-independent or production attack detection",
+  "fit_or_threshold_tuning_performed": false
+}

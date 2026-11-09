@@ -1,0 +1,271 @@
+
+UTC: 2026-11-09T16:31:44.463972+00:00
+$ python3 scripts/check_ml_system.py --env-file .local-runtime/stage6.env
+ Container lcm-stage6-postgres-1 Running
+ Container lcm-stage6-mongo-1 Running
+ Volume lcm-stage6_mosquitto-data Creating
+ Container lcm-stage6-init-db-1 Creating
+ Volume lcm-stage6_mosquitto-data Creating
+ Volume lcm-stage6_mosquitto-data Created
+ Volume lcm-stage6_mosquitto-data Created
+ Container lcm-stage6-broker-1 Creating
+ Container lcm-stage6-init-db-1 Created
+ Container lcm-stage6-demo-setup-1 Creating
+ Container lcm-stage6-outbox-relay-1 Creating
+ Container lcm-stage6-broker-1 Created
+ Container lcm-stage6-web-1 Creating
+ Container lcm-stage6-receiver-1 Creating
+ Container lcm-stage6-outbox-relay-1 Created
+ Container lcm-stage6-demo-setup-1 Created
+ Container lcm-stage6-web-1 Created
+ Container lcm-stage6-receiver-1 Created
+ Container lcm-stage6-publisher-1 Creating
+ Container lcm-stage6-publisher-1 Created
+ Container lcm-stage6-storage-init-1 Starting
+ Container lcm-stage6-security-init-1 Starting
+ Container lcm-stage6-postgres-1 Waiting
+ Container lcm-stage6-storage-init-1 Started
+ Container lcm-stage6-storage-init-1 Waiting
+ Container lcm-stage6-security-init-1 Started
+ Container lcm-stage6-security-init-1 Waiting
+ Container lcm-stage6-postgres-1 Healthy
+ Container lcm-stage6-init-db-1 Starting
+ Container lcm-stage6-init-db-1 Started
+ Container lcm-stage6-init-db-1 Waiting
+ Container lcm-stage6-storage-init-1 Waiting
+ Container lcm-stage6-init-db-1 Waiting
+ Container lcm-stage6-security-init-1 Waiting
+ Container lcm-stage6-storage-init-1 Exited
+ Container lcm-stage6-security-init-1 Exited
+ Container lcm-stage6-broker-1 Starting
+ Container lcm-stage6-broker-1 Started
+ Container lcm-stage6-storage-init-1 Waiting
+ Container lcm-stage6-init-db-1 Waiting
+ Container lcm-stage6-broker-1 Waiting
+ Container lcm-stage6-broker-1 Waiting
+ Container lcm-stage6-init-db-1 Waiting
+ Container lcm-stage6-storage-init-1 Exited
+ Container lcm-stage6-security-init-1 Exited
+ Container lcm-stage6-storage-init-1 Exited
+ Container lcm-stage6-init-db-1 Exited
+ Container lcm-stage6-init-db-1 Exited
+ Container lcm-stage6-init-db-1 Exited
+ Container lcm-stage6-demo-setup-1 Starting
+ Container lcm-stage6-init-db-1 Exited
+ Container lcm-stage6-outbox-relay-1 Starting
+ Container lcm-stage6-demo-setup-1 Started
+ Container lcm-stage6-outbox-relay-1 Started
+ Container lcm-stage6-broker-1 Healthy
+ Container lcm-stage6-web-1 Starting
+ Container lcm-stage6-broker-1 Healthy
+ Container lcm-stage6-receiver-1 Starting
+ Container lcm-stage6-web-1 Started
+ Container lcm-stage6-receiver-1 Started
+ Container lcm-stage6-demo-setup-1 Waiting
+ Container lcm-stage6-receiver-1 Waiting
+ Container lcm-stage6-demo-setup-1 Exited
+ Container lcm-stage6-receiver-1 Healthy
+ Container lcm-stage6-publisher-1 Starting
+ Container lcm-stage6-publisher-1 Started
+ Container lcm-stage6-postgres-1 Waiting
+ Container lcm-stage6-receiver-1 Waiting
+ Container lcm-stage6-mongo-1 Waiting
+ Container lcm-stage6-publisher-1 Waiting
+ Container lcm-stage6-security-init-1 Waiting
+ Container lcm-stage6-outbox-relay-1 Waiting
+ Container lcm-stage6-broker-1 Waiting
+ Container lcm-stage6-web-1 Waiting
+ Container lcm-stage6-demo-setup-1 Waiting
+ Container lcm-stage6-init-db-1 Waiting
+ Container lcm-stage6-storage-init-1 Waiting
+ Container lcm-stage6-demo-setup-1 Exited
+ Container lcm-stage6-storage-init-1 Exited
+ Container lcm-stage6-receiver-1 Healthy
+ Container lcm-stage6-mongo-1 Healthy
+ Container lcm-stage6-outbox-relay-1 Healthy
+ Container lcm-stage6-broker-1 Healthy
+ Container lcm-stage6-publisher-1 Healthy
+ Container lcm-stage6-init-db-1 Exited
+ Container lcm-stage6-security-init-1 Exited
+ Container lcm-stage6-postgres-1 Healthy
+ Container lcm-stage6-web-1 Healthy
+ Container lcm-stage6-tests-run-70668ef7ad44 Creating
+ Container lcm-stage6-tests-run-70668ef7ad44 Created
+Device configurations provisioned; keys remain outside PostgreSQL
+ Volume lcm-stage6_ml-models Creating
+ Volume lcm-stage6_ml-models Creating
+ Volume lcm-stage6_ml-models Created
+ Volume lcm-stage6_ml-models Created
+ Container lcm-stage6-ml-worker-1 Creating
+ Container lcm-stage6-ml-worker-1 Created
+ Container lcm-stage6-ml-worker-1 Starting
+ Container lcm-stage6-ml-worker-1 Started
+ Container lcm-stage6-tests-run-65fa46da5253 Creating
+ Container lcm-stage6-tests-run-65fa46da5253 Created
+PASS: missing ML artifact reported unavailable; MQTT -> Mongo delivery continues
+ Container lcm-stage6-ml-model-init-run-47b0aa12ff0b Creating
+ Container lcm-stage6-ml-model-init-run-47b0aa12ff0b Created
+Trusted local model installed; model not deserialized by root
+ Container lcm-stage6-tests-run-e708833397f1 Creating
+ Container lcm-stage6-tests-run-e708833397f1 Created
+PASS: 24 controlled AEAD/TLS samples from three independent devices published
+ Container lcm-stage6-tests-run-5742cdde4971 Creating
+ Container lcm-stage6-tests-run-5742cdde4971 Created
+PASS: all controlled sources durably marked after Mongo confirmation
+ Container lcm-stage6-tests-run-39fe2cd5069f Creating
+ Container lcm-stage6-tests-run-39fe2cd5069f Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage6-ml-worker-1 Restarting
+ Container lcm-stage6-ml-worker-1 Started
+ Container lcm-stage6-tests-run-ef432fd30b65 Creating
+ Container lcm-stage6-tests-run-ef432fd30b65 Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage6-ml-worker-1 Stopping
+ Container lcm-stage6-ml-worker-1 Stopped
+ Container lcm-stage6-tests-run-8e48fd173100 Creating
+ Container lcm-stage6-tests-run-8e48fd173100 Created
+PASS: 24 controlled AEAD/TLS samples from three independent devices published
+ Container lcm-stage6-tests-run-150ff3319420 Creating
+ Container lcm-stage6-tests-run-150ff3319420 Created
+PASS: all controlled sources durably marked after Mongo confirmation
+ Container lcm-stage6-mongo-1 Stopping
+ Container lcm-stage6-mongo-1 Stopped
+ Container lcm-stage6-ml-worker-1 Starting
+ Container lcm-stage6-ml-worker-1 Started
+ Container lcm-stage6-tests-run-f74e894d0b1a Creating
+ Container lcm-stage6-tests-run-f74e894d0b1a Created
+PASS: actual Mongo outage creates retry state; committed ML events preserved
+ Container lcm-stage6-mongo-1 Starting
+ Container lcm-stage6-mongo-1 Started
+ Container lcm-stage6-mongo-1 Waiting
+ Container lcm-stage6-mongo-1 Healthy
+ Container lcm-stage6-tests-run-a12fd547e52f Creating
+ Container lcm-stage6-tests-run-a12fd547e52f Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage6-tests-run-5c5b2e34e5d5 Creating
+ Container lcm-stage6-tests-run-5c5b2e34e5d5 Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+PASS: optional ML, three devices, immutable reload, durable dedupe and Mongo recovery
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T16:46:45.562341+00:00
+$ python3 scripts/check_ml_system.py --env-file .local-runtime/stage6.env --reuse-installed-model
+ Container lcm-stage6-mongo-1 Running
+ Container lcm-stage6-publisher-1 Running
+ Container lcm-stage6-postgres-1 Running
+ Container lcm-stage6-broker-1 Running
+ Container lcm-stage6-outbox-relay-1 Running
+ Container lcm-stage6-web-1 Running
+ Container lcm-stage6-receiver-1 Running
+ Container lcm-stage6-security-init-1 Starting
+ Container lcm-stage6-storage-init-1 Starting
+ Container lcm-stage6-postgres-1 Waiting
+ Container lcm-stage6-security-init-1 Started
+ Container lcm-stage6-security-init-1 Waiting
+ Container lcm-stage6-storage-init-1 Started
+ Container lcm-stage6-storage-init-1 Waiting
+ Container lcm-stage6-postgres-1 Healthy
+ Container lcm-stage6-init-db-1 Starting
+ Container lcm-stage6-security-init-1 Exited
+ Container lcm-stage6-init-db-1 Started
+ Container lcm-stage6-storage-init-1 Waiting
+ Container lcm-stage6-init-db-1 Waiting
+ Container lcm-stage6-init-db-1 Waiting
+ Container lcm-stage6-broker-1 Waiting
+ Container lcm-stage6-broker-1 Waiting
+ Container lcm-stage6-storage-init-1 Waiting
+ Container lcm-stage6-init-db-1 Waiting
+ Container lcm-stage6-init-db-1 Waiting
+ Container lcm-stage6-security-init-1 Waiting
+ Container lcm-stage6-storage-init-1 Exited
+ Container lcm-stage6-broker-1 Healthy
+ Container lcm-stage6-security-init-1 Exited
+ Container lcm-stage6-broker-1 Healthy
+ Container lcm-stage6-storage-init-1 Exited
+ Container lcm-stage6-storage-init-1 Exited
+ Container lcm-stage6-init-db-1 Exited
+ Container lcm-stage6-init-db-1 Exited
+ Container lcm-stage6-init-db-1 Exited
+ Container lcm-stage6-init-db-1 Exited
+ Container lcm-stage6-demo-setup-1 Starting
+ Container lcm-stage6-demo-setup-1 Started
+ Container lcm-stage6-receiver-1 Waiting
+ Container lcm-stage6-demo-setup-1 Waiting
+ Container lcm-stage6-receiver-1 Healthy
+ Container lcm-stage6-demo-setup-1 Exited
+ Container lcm-stage6-storage-init-1 Waiting
+ Container lcm-stage6-demo-setup-1 Waiting
+ Container lcm-stage6-publisher-1 Waiting
+ Container lcm-stage6-web-1 Waiting
+ Container lcm-stage6-broker-1 Waiting
+ Container lcm-stage6-mongo-1 Waiting
+ Container lcm-stage6-postgres-1 Waiting
+ Container lcm-stage6-receiver-1 Waiting
+ Container lcm-stage6-outbox-relay-1 Waiting
+ Container lcm-stage6-security-init-1 Waiting
+ Container lcm-stage6-init-db-1 Waiting
+ Container lcm-stage6-outbox-relay-1 Healthy
+ Container lcm-stage6-publisher-1 Healthy
+ Container lcm-stage6-web-1 Healthy
+ Container lcm-stage6-storage-init-1 Exited
+ Container lcm-stage6-receiver-1 Healthy
+ Container lcm-stage6-mongo-1 Healthy
+ Container lcm-stage6-demo-setup-1 Exited
+ Container lcm-stage6-security-init-1 Exited
+ Container lcm-stage6-postgres-1 Healthy
+ Container lcm-stage6-init-db-1 Exited
+ Container lcm-stage6-broker-1 Healthy
+ Container lcm-stage6-tests-run-f4d2c24a2dd2 Creating
+ Container lcm-stage6-tests-run-f4d2c24a2dd2 Created
+Device configurations provisioned; keys remain outside PostgreSQL
+ Container lcm-stage6-ml-worker-1 Recreate
+ Container lcm-stage6-ml-worker-1 Recreated
+ Container lcm-stage6-ml-worker-1 Starting
+ Container lcm-stage6-ml-worker-1 Started
+INFO: reusing installed model; fresh-project missing-model check is in the initial report
+ Container lcm-stage6-ml-model-init-run-07545b7673dc Creating
+ Container lcm-stage6-ml-model-init-run-07545b7673dc Created
+Trusted local model installed; model not deserialized by root
+ Container lcm-stage6-tests-run-7d7a7192e1f3 Creating
+ Container lcm-stage6-tests-run-7d7a7192e1f3 Created
+PASS: 24 controlled AEAD/TLS samples from three independent devices published
+ Container lcm-stage6-tests-run-5b31f9f8bfe8 Creating
+ Container lcm-stage6-tests-run-5b31f9f8bfe8 Created
+PASS: all controlled sources durably marked after Mongo confirmation
+ Container lcm-stage6-tests-run-439e8a27f47f Creating
+ Container lcm-stage6-tests-run-439e8a27f47f Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage6-ml-worker-1 Restarting
+ Container lcm-stage6-ml-worker-1 Started
+ Container lcm-stage6-tests-run-83a5e67282be Creating
+ Container lcm-stage6-tests-run-83a5e67282be Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage6-ml-worker-1 Stopping
+ Container lcm-stage6-ml-worker-1 Stopped
+ Container lcm-stage6-tests-run-0dd275d9157a Creating
+ Container lcm-stage6-tests-run-0dd275d9157a Created
+PASS: 24 controlled AEAD/TLS samples from three independent devices published
+ Container lcm-stage6-tests-run-bfe5e2ca2f92 Creating
+ Container lcm-stage6-tests-run-bfe5e2ca2f92 Created
+PASS: all controlled sources durably marked after Mongo confirmation
+ Container lcm-stage6-mongo-1 Stopping
+ Container lcm-stage6-mongo-1 Stopped
+ Container lcm-stage6-ml-worker-1 Starting
+ Container lcm-stage6-ml-worker-1 Started
+ Container lcm-stage6-tests-run-be6444f30d81 Creating
+ Container lcm-stage6-tests-run-be6444f30d81 Created
+PASS: actual Mongo outage creates retry state; committed ML events preserved
+ Container lcm-stage6-mongo-1 Starting
+ Container lcm-stage6-mongo-1 Started
+ Container lcm-stage6-mongo-1 Waiting
+ Container lcm-stage6-mongo-1 Healthy
+ Container lcm-stage6-tests-run-6b28ef5f9edb Creating
+ Container lcm-stage6-tests-run-6b28ef5f9edb Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage6-tests-run-e926f37aa531 Creating
+ Container lcm-stage6-tests-run-e926f37aa531 Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+PASS: optional ML, three devices, immutable reload, durable dedupe and Mongo recovery
+
+EXIT CODE: 0

@@ -57,3 +57,12 @@ tests/**
 src/classifier/**
 !src/classifier/ml/
 !src/classifier/ml/*.py
+
+# Keep secret/cache exclusions last, including after ML source allow rules.
+**/.git
+**/.git/**
+**/__pycache__
+**/__pycache__/**
+**/*.pyc
+**/*.zip
+**/.env*

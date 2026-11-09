@@ -106,3 +106,15 @@ $ .venv/bin/python -m scripts.prepare_edge_research --data 'src/classifier/Edge-
 }
 
 EXIT CODE: 0
+
+UTC: 2026-11-09T16:49:18.207895+00:00
+$ .venv/bin/python -m scripts.audit_edge_csv --data 'src/classifier/Edge-IIoTset dataset/Selected dataset for ML and DL/DNN-EdgeIIoT-dataset.csv' --output docs/reports/stage6-dataset-audit.json
+
+
+EXIT CODE: -11
+
+UTC: 2026-11-09T16:52:33.423656+00:00
+$ .venv/bin/python -m scripts.audit_edge_csv --data 'src/classifier/Edge-IIoTset dataset/Selected dataset for ML and DL/DNN-EdgeIIoT-dataset.csv' --output docs/reports/stage6-dataset-audit.json
+Source audit complete: 2219201 rows; 63 columns; target contradictions: 0
+
+EXIT CODE: 0

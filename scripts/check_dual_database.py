@@ -9,8 +9,8 @@ def main():
     parser.add_argument('--env-file',type=Path,required=True)
     args=parser.parse_args()
     values=dict(line.split('=',1) for line in args.env_file.read_text().splitlines() if '=' in line and not line.startswith('#'))
-    if not values.get('COMPOSE_PROJECT_NAME','').startswith('lcm-stage5'):
-        parser.error('Failure exercise requires explicit lcm-stage5 isolated project')
+    if not values.get('COMPOSE_PROJECT_NAME','').startswith(('lcm-stage5','lcm-stage6')):
+        parser.error('Failure exercise requires explicit lcm-stage5/lcm-stage6 isolated project')
     base=['docker','compose','--env-file',str(args.env_file),'--profile','demo','--profile','web','--profile','checks']
     def run(*parts,expected=0):
         result=subprocess.run(base+list(parts))

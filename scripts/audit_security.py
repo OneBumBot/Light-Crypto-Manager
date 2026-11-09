@@ -70,6 +70,8 @@ for root in ['/app','/run','/home/lightcrypto']:
             assert not any(v in data for v in secrets),str(p)
 assert not pathlib.Path('/app/.git').exists()
 assert not list(pathlib.Path('/app').rglob('*.zip'))
+for extension in ['*.joblib','*.pkl','*.csv','*.pcap','*.parquet']:
+    assert not list(pathlib.Path('/app').rglob(extension)),extension
 print('PASS: runtime image private-material/legacy-archive exclusion')
 """
     for image in args.image:

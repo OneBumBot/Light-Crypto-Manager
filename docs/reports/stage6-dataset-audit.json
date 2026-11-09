@@ -1,0 +1,430 @@
+{
+  "source_name": "DNN-EdgeIIoT-dataset.csv",
+  "source_sha256": "1d3ef6c7cc22784a528a117f1158f5cad750273679437e18a39c360ee6b79fd7",
+  "bytes": 1217413981,
+  "parser_policy": "Python CSV engine; raw strings; predictive types validated by explicit feature schema",
+  "rows": 2219201,
+  "columns": [
+    "frame.time",
+    "ip.src_host",
+    "ip.dst_host",
+    "arp.dst.proto_ipv4",
+    "arp.opcode",
+    "arp.hw.size",
+    "arp.src.proto_ipv4",
+    "icmp.checksum",
+    "icmp.seq_le",
+    "icmp.transmit_timestamp",
+    "icmp.unused",
+    "http.file_data",
+    "http.content_length",
+    "http.request.uri.query",
+    "http.request.method",
+    "http.referer",
+    "http.request.full_uri",
+    "http.request.version",
+    "http.response",
+    "http.tls_port",
+    "tcp.ack",
+    "tcp.ack_raw",
+    "tcp.checksum",
+    "tcp.connection.fin",
+    "tcp.connection.rst",
+    "tcp.connection.syn",
+    "tcp.connection.synack",
+    "tcp.dstport",
+    "tcp.flags",
+    "tcp.flags.ack",
+    "tcp.len",
+    "tcp.options",
+    "tcp.payload",
+    "tcp.seq",
+    "tcp.srcport",
+    "udp.port",
+    "udp.stream",
+    "udp.time_delta",
+    "dns.qry.name",
+    "dns.qry.name.len",
+    "dns.qry.qu",
+    "dns.qry.type",
+    "dns.retransmission",
+    "dns.retransmit_request",
+    "dns.retransmit_request_in",
+    "mqtt.conack.flags",
+    "mqtt.conflag.cleansess",
+    "mqtt.conflags",
+    "mqtt.hdrflags",
+    "mqtt.len",
+    "mqtt.msg_decoded_as",
+    "mqtt.msg",
+    "mqtt.msgtype",
+    "mqtt.proto_len",
+    "mqtt.protoname",
+    "mqtt.topic",
+    "mqtt.topic_len",
+    "mqtt.ver",
+    "mbtcp.len",
+    "mbtcp.trans_id",
+    "mbtcp.unit_id",
+    "Attack_label",
+    "Attack_type"
+  ],
+  "observed_chunk_dtypes": {
+    "frame.time": [
+      "object"
+    ],
+    "ip.src_host": [
+      "object"
+    ],
+    "ip.dst_host": [
+      "object"
+    ],
+    "arp.dst.proto_ipv4": [
+      "object"
+    ],
+    "arp.opcode": [
+      "object"
+    ],
+    "arp.hw.size": [
+      "object"
+    ],
+    "arp.src.proto_ipv4": [
+      "object"
+    ],
+    "icmp.checksum": [
+      "object"
+    ],
+    "icmp.seq_le": [
+      "object"
+    ],
+    "icmp.transmit_timestamp": [
+      "object"
+    ],
+    "icmp.unused": [
+      "object"
+    ],
+    "http.file_data": [
+      "object"
+    ],
+    "http.content_length": [
+      "object"
+    ],
+    "http.request.uri.query": [
+      "object"
+    ],
+    "http.request.method": [
+      "object"
+    ],
+    "http.referer": [
+      "object"
+    ],
+    "http.request.full_uri": [
+      "object"
+    ],
+    "http.request.version": [
+      "object"
+    ],
+    "http.response": [
+      "object"
+    ],
+    "http.tls_port": [
+      "object"
+    ],
+    "tcp.ack": [
+      "object"
+    ],
+    "tcp.ack_raw": [
+      "object"
+    ],
+    "tcp.checksum": [
+      "object"
+    ],
+    "tcp.connection.fin": [
+      "object"
+    ],
+    "tcp.connection.rst": [
+      "object"
+    ],
+    "tcp.connection.syn": [
+      "object"
+    ],
+    "tcp.connection.synack": [
+      "object"
+    ],
+    "tcp.dstport": [
+      "object"
+    ],
+    "tcp.flags": [
+      "object"
+    ],
+    "tcp.flags.ack": [
+      "object"
+    ],
+    "tcp.len": [
+      "object"
+    ],
+    "tcp.options": [
+      "object"
+    ],
+    "tcp.payload": [
+      "object"
+    ],
+    "tcp.seq": [
+      "object"
+    ],
+    "tcp.srcport": [
+      "object"
+    ],
+    "udp.port": [
+      "object"
+    ],
+    "udp.stream": [
+      "object"
+    ],
+    "udp.time_delta": [
+      "object"
+    ],
+    "dns.qry.name": [
+      "object"
+    ],
+    "dns.qry.name.len": [
+      "object"
+    ],
+    "dns.qry.qu": [
+      "object"
+    ],
+    "dns.qry.type": [
+      "object"
+    ],
+    "dns.retransmission": [
+      "object"
+    ],
+    "dns.retransmit_request": [
+      "object"
+    ],
+    "dns.retransmit_request_in": [
+      "object"
+    ],
+    "mqtt.conack.flags": [
+      "object"
+    ],
+    "mqtt.conflag.cleansess": [
+      "object"
+    ],
+    "mqtt.conflags": [
+      "object"
+    ],
+    "mqtt.hdrflags": [
+      "object"
+    ],
+    "mqtt.len": [
+      "object"
+    ],
+    "mqtt.msg_decoded_as": [
+      "object"
+    ],
+    "mqtt.msg": [
+      "object"
+    ],
+    "mqtt.msgtype": [
+      "object"
+    ],
+    "mqtt.proto_len": [
+      "object"
+    ],
+    "mqtt.protoname": [
+      "object"
+    ],
+    "mqtt.topic": [
+      "object"
+    ],
+    "mqtt.topic_len": [
+      "object"
+    ],
+    "mqtt.ver": [
+      "object"
+    ],
+    "mbtcp.len": [
+      "object"
+    ],
+    "mbtcp.trans_id": [
+      "object"
+    ],
+    "mbtcp.unit_id": [
+      "object"
+    ],
+    "Attack_label": [
+      "object"
+    ],
+    "Attack_type": [
+      "object"
+    ]
+  },
+  "missing_counts": {
+    "frame.time": 0,
+    "ip.src_host": 0,
+    "ip.dst_host": 0,
+    "arp.dst.proto_ipv4": 0,
+    "arp.opcode": 0,
+    "arp.hw.size": 0,
+    "arp.src.proto_ipv4": 0,
+    "icmp.checksum": 0,
+    "icmp.seq_le": 0,
+    "icmp.transmit_timestamp": 0,
+    "icmp.unused": 0,
+    "http.file_data": 0,
+    "http.content_length": 0,
+    "http.request.uri.query": 0,
+    "http.request.method": 0,
+    "http.referer": 0,
+    "http.request.full_uri": 0,
+    "http.request.version": 0,
+    "http.response": 0,
+    "http.tls_port": 0,
+    "tcp.ack": 0,
+    "tcp.ack_raw": 0,
+    "tcp.checksum": 0,
+    "tcp.connection.fin": 0,
+    "tcp.connection.rst": 0,
+    "tcp.connection.syn": 0,
+    "tcp.connection.synack": 0,
+    "tcp.dstport": 0,
+    "tcp.flags": 0,
+    "tcp.flags.ack": 0,
+    "tcp.len": 0,
+    "tcp.options": 0,
+    "tcp.payload": 0,
+    "tcp.seq": 0,
+    "tcp.srcport": 0,
+    "udp.port": 0,
+    "udp.stream": 0,
+    "udp.time_delta": 0,
+    "dns.qry.name": 0,
+    "dns.qry.name.len": 0,
+    "dns.qry.qu": 0,
+    "dns.qry.type": 0,
+    "dns.retransmission": 0,
+    "dns.retransmit_request": 0,
+    "dns.retransmit_request_in": 0,
+    "mqtt.conack.flags": 0,
+    "mqtt.conflag.cleansess": 0,
+    "mqtt.conflags": 0,
+    "mqtt.hdrflags": 0,
+    "mqtt.len": 0,
+    "mqtt.msg_decoded_as": 0,
+    "mqtt.msg": 0,
+    "mqtt.msgtype": 0,
+    "mqtt.proto_len": 0,
+    "mqtt.protoname": 0,
+    "mqtt.topic": 0,
+    "mqtt.topic_len": 0,
+    "mqtt.ver": 0,
+    "mbtcp.len": 0,
+    "mbtcp.trans_id": 0,
+    "mbtcp.unit_id": 0,
+    "Attack_label": 0,
+    "Attack_type": 0
+  },
+  "verified_device_count": null,
+  "calendar_time_range": null,
+  "calendar_time_range_reason": "year/time-only or unvalidated timestamp tokens",
+  "clock_only_timestamps": 2096419,
+  "binary_distribution": {
+    "0": 1615643,
+    "1": 603558
+  },
+  "attack_type_distribution": {
+    "Normal": 1615643,
+    "MITM": 1214,
+    "Uploading": 37634,
+    "Ransomware": 10925,
+    "SQL_injection": 51203,
+    "DDoS_HTTP": 49911,
+    "DDoS_TCP": 50062,
+    "Password": 50153,
+    "Port_Scanning": 22564,
+    "Vulnerability_scanner": 50110,
+    "Backdoor": 24862,
+    "XSS": 15915,
+    "Fingerprinting": 1001,
+    "DDoS_UDP": 121568,
+    "DDoS_ICMP": 116436
+  },
+  "contradictory_targets": 0,
+  "core_features": [
+    "arp.opcode",
+    "arp.hw.size",
+    "icmp.checksum",
+    "icmp.seq_le",
+    "http.content_length",
+    "http.response",
+    "tcp.ack",
+    "tcp.ack_raw",
+    "tcp.checksum",
+    "tcp.connection.fin",
+    "tcp.connection.rst",
+    "tcp.connection.syn",
+    "tcp.connection.synack",
+    "tcp.flags",
+    "tcp.flags.ack",
+    "tcp.len",
+    "tcp.seq",
+    "udp.stream",
+    "udp.time_delta",
+    "mqtt.conflag.cleansess",
+    "mqtt.conflags",
+    "mqtt.hdrflags",
+    "mqtt.len",
+    "mqtt.msgtype",
+    "mqtt.proto_len",
+    "mqtt.topic_len",
+    "mqtt.ver",
+    "http.request.method",
+    "http.referer",
+    "http.request.version"
+  ],
+  "excluded_proxy_zero_tokens": {
+    "dns.qry.name.len": {
+      "normal": {
+        "0": 1613798,
+        "0.0": 0
+      },
+      "attack": {
+        "0": 0,
+        "0.0": 603331
+      }
+    },
+    "mqtt.conack.flags": {
+      "normal": {
+        "0": 1532586,
+        "0.0": 0
+      },
+      "attack": {
+        "0": 0,
+        "0.0": 603558
+      }
+    },
+    "mqtt.protoname": {
+      "normal": {
+        "0": 1532608,
+        "0.0": 0
+      },
+      "attack": {
+        "0": 0,
+        "0.0": 603558
+      }
+    },
+    "mqtt.topic": {
+      "normal": {
+        "0": 1532627,
+        "0.0": 0
+      },
+      "attack": {
+        "0": 0,
+        "0.0": 603558
+      }
+    }
+  },
+  "license_status": "Not verified for this local copy; raw data and weights remain private",
+  "synthetic": false
+}

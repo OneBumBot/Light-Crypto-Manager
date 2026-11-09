@@ -1,0 +1,24 @@
+
+UTC: 2026-11-09T17:05:47.842088+00:00
+$ docker compose --env-file .local-runtime/stage6.env run --rm --no-deps --entrypoint python tests -m scripts.mqtt_security_smoke
+ Container lcm-stage6-tests-run-ca74ae33982b Creating
+ Container lcm-stage6-tests-run-ca74ae33982b Created
+PASS: trusted TLS and publisher credentials
+PASS: incorrect password rejected
+PASS: untrusted CA rejected
+PASS: publisher cannot write another device topic
+PASS: web cannot publish telemetry
+PASS: receiver cannot publish telemetry
+PASS: allowed reader receives probe; publisher cannot read forbidden topic
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:05:56.388107+00:00
+$ docker compose --env-file .local-runtime/stage6.env run --rm --no-deps smoke --expect-demo
+ Container lcm-stage6-smoke-run-0b69c2f76f3a Creating
+ Container lcm-stage6-smoke-run-0b69c2f76f3a Created
+PASS: TLS publisher -> broker -> receiver -> PostgreSQL
+PASS: ciphertext/AAD corruption, replay and malformed JSON rejected; next packet accepted
+PASS: live publisher v2 packet authenticated and accepted by receiver
+
+EXIT CODE: 0

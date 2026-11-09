@@ -1,0 +1,61 @@
+
+UTC: 2026-11-09T17:08:26.048580+00:00
+$ .venv/bin/ruff check src scripts tests migrations
+All checks passed!
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:08:26.123120+00:00
+$ .venv/bin/python -m compileall -q src/classifier/ml src/ml_storage.py src/ml_signals.py scripts migrations tests
+
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:08:26.178170+00:00
+$ node --check src/web/static/js/ml_results.js
+
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:08:26.215245+00:00
+$ env UV_CACHE_DIR=.cache/uv uv lock --check
+Resolved 140 packages in 0.71ms
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:08:26.243186+00:00
+$ git diff --exit-code cfda660 -- src/classifier/iot-test.ipynb src/telemetry.py src/ingestion.py src/replay.py src/publisher src/brocker src/web/ascon
+
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:14:05.286328+00:00
+$ .venv/bin/ruff check src scripts tests migrations
+All checks passed!
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:14:05.322812+00:00
+$ git diff --check
+
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:14:18.738686+00:00
+$ python3 -c 'from pathlib import Path; import subprocess,shlex; paths=[*Path("requirements").glob("*.txt"),Path("src/web/requirements.txt")]; body=lambda s:[x for x in s.splitlines() if not x.lstrip().startswith("#")];
+for p in paths:
+ cmd=shlex.split(p.read_text().splitlines()[1].lstrip("# ")); idx=next((cmd.index(x) for x in ("-o","--output-file") if x in cmd),None); cmd=cmd[:idx]+cmd[idx+2:] if idx is not None else cmd; r=subprocess.check_output(cmd,stderr=subprocess.DEVNULL,text=True); assert body(r)==body(p.read_text()),str(p); print("PASS recorded export:",p)'
+PASS recorded export: requirements/dev.txt
+PASS recorded export: requirements/publisher.txt
+PASS recorded export: requirements/ml.txt
+PASS recorded export: requirements/receiver.txt
+PASS recorded export: requirements/ml-runtime.txt
+PASS recorded export: src/web/requirements.txt
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:14:18.779435+00:00
+$ git diff --exit-code cfda660 -- src/classifier/iot-test.ipynb src/telemetry.py src/ingestion.py src/mqtt_replay.py src/publisher/mqtt_pub.py src/brocker/mqtt_brocker.py src/web/ascon
+
+
+EXIT CODE: 0

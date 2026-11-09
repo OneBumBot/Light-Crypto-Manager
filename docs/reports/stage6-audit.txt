@@ -149,3 +149,23 @@ $ git diff --check
 
 
 EXIT CODE: 0
+
+UTC: 2026-11-09T17:08:27.387912+00:00
+$ python3 scripts/audit_security.py --secrets-dir .local-runtime/security-stage6 --secrets-dir .local-runtime/mongo-stage6 --image lcm-stage6-runtime --image lcm-stage6-ml --image lcm-stage6-tests
+PASS: runtime image private-material/legacy-archive exclusion
+PASS: runtime image private-material/legacy-archive exclusion
+PASS: runtime image private-material/legacy-archive exclusion
+PASS: known legacy/current secret scan (334 Git blobs and working-tree candidates)
+PASS: private input directories 0700 and generated files/env 0600
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T17:14:20.257382+00:00
+$ python3 scripts/audit_security.py --secrets-dir .local-runtime/security-stage6 --secrets-dir .local-runtime/mongo-stage6 --image lcm-stage6-runtime --image lcm-stage6-ml --image lcm-stage6-tests
+PASS: runtime image private-material/legacy-archive exclusion
+PASS: runtime image private-material/legacy-archive exclusion
+PASS: runtime image private-material/legacy-archive exclusion
+PASS: known legacy/current secret scan (334 Git blobs and working-tree candidates)
+PASS: private input directories 0700 and generated files/env 0600
+
+EXIT CODE: 0

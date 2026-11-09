@@ -22,3 +22,11 @@ $ .venv/bin/python -m src.classifier.ml.train train --data .local-runtime/edge-r
 {"task": "network_ids", "model_id": "edge-network-if", "model_version": "1.0.0", "mode": "RESEARCH", "dataset_sha256": "c5f864cdee295c31470a65d18ea158bfbb5a54512cb346d511c6bd6b339d8c69", "rows": 11851, "status": "research experiment completed"}
 
 EXIT CODE: 0
+
+UTC: 2026-11-09T16:31:39.612365+00:00
+$ .venv/bin/python -m scripts.summarize_ml_experiments --models-dir .local-runtime/stage6-network-models --data .local-runtime/edge-research/network-grouped-v2.csv --output docs/reports/stage6-network-metrics.json
+edge-network-rf-binary fit 5630 macro-F1 0.33277870216306155 FPR 0.0 PR-AUC 0.6422167327400243 ROC-AUC 0.4805671641791045
+edge-network-rf-multiclass fit 5630 macro-F1 0.41187643357309167 FPR 1.0 PR-AUC 0.6404620820490664 ROC-AUC 0.4767194029850746
+edge-network-if fit 1961 macro-F1 0.729616226742865 FPR 0.0 PR-AUC 0.8544282626217656 ROC-AUC 0.7164179104477613
+
+EXIT CODE: 0
