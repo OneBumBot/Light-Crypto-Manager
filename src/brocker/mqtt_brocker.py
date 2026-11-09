@@ -16,18 +16,7 @@ from src.replay import admit
 
 logger = logging.getLogger(__name__)
 
-# Quoted names match the unchanged SQLAlchemy models on case-sensitive PostgreSQL.
-# Bind parameters keep authenticated device metadata out of the SQL syntax.
-FIND_CONFIGURATION = text('''
-    SELECT "Device_ID", "Configuration_Update_Date" FROM "Device_Configuration"
-    WHERE "Device_ID" = :device_id ORDER BY "Configuration_Update_Date" DESC LIMIT 1
-''')
-INSERT_ANOMALY = text('''
-    INSERT INTO "Anomalies"
-        ("Anomaly_Date", "Anomaly_Cause_ID", "Device_ID", "Configuration_Update_Date")
-    VALUES (:date, :cause, :device_id, :configuration_date)
-''')
-
+from src.ingestion import process_packet
 
 def set_mqtt_ready(ready):
     path = os.environ.get('MQTT_READY_FILE')
@@ -69,34 +58,26 @@ def connect_to_db():
     return engine
 
 
-def process_packet(packet, registry, engine, topic, now=None):
-    message = decode_packet(packet, topic, registry)
-    sensor_data = message.sensor
-    now = now or datetime.now(timezone.utc)
-    delay = (now - datetime.fromisoformat(sensor_data['timestamp'])).total_seconds()
-    cause = 0 if sensor_data['temperature'] > 60 or sensor_data['humidity'] > 70 else (1 if delay > 0.5 else None)
-    with engine.begin() as connection:
-        config = connection.execute(FIND_CONFIGURATION, {'device_id': message.database_device_id}).first()
-        if not config:
-            raise InvalidTelemetry('Device configuration is missing')
-        if not admit(connection, message, 'receiver'):
-            return None
-        if cause is not None:
-            connection.execute(INSERT_ANOMALY, {
-                'date': now.astimezone(timezone.utc).replace(tzinfo=None),
-                'cause': cause, 'device_id': config[0], 'configuration_date': config[1],
-            })
-    return sensor_data
-
 
 def on_message(client, userdata, msg):
+    from src.outbox import record
     try:
+        with userdata['engine'].begin() as connection:
+            record(connection, 'incoming')
         data = process_packet(msg.payload, userdata['registry'], userdata['engine'], msg.topic)
         logger.info("Telemetry accepted" if data is not None else "Duplicate telemetry ignored")
+    except InvalidTelemetry:
+        with userdata['engine'].begin() as connection:
+            record(connection, 'rejected')
+        logger.warning('Invalid telemetry rejected')
     except Exception as error:
-        # engine.begin rolls back automatically. Never call rollback on a failed
-        # global connection or log untrusted payloads / connection credentials.
         logger.error("MQTT packet processing failed (%s)", type(error).__name__)
+        # Keep QoS1 packet unacknowledged. Persistent session redelivers on reconnect.
+        if client is not None:
+            client.disconnect()
+        return
+    if client is not None and msg.qos == 1:
+        client.ack(msg.mid, msg.qos)
 
 
 def main():
@@ -104,19 +85,34 @@ def main():
     set_mqtt_ready(False)
     registry = load_registry()
     engine = connect_to_db()
+    import signal
+    from threading import Event
+    stop = Event()
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2,
+                         client_id=os.environ.get('MQTT_CLIENT_ID','lightcrypto-ingestion'),
+                         clean_session=False, manual_ack=True,
                          userdata={"registry": registry, "engine": engine})
     client.on_connect = on_connect
     client.on_message = on_message
     client.on_subscribe = on_subscribe
     client.on_disconnect = on_disconnect
+    client.reconnect_delay_set(min_delay=1, max_delay=30)
     configure_client(client)
+    def shutdown(*_):
+        stop.set()
+        client.disconnect()
+    for sig in (signal.SIGINT, signal.SIGTERM):
+        signal.signal(sig, shutdown)
     try:
-        client.connect(os.environ.get('MQTT_HOST', 'localhost'),
-                       int(os.environ.get('MQTT_PORT', '8883')), 60)
-        client.loop_forever()
-    except KeyboardInterrupt:
-        pass
+        while not stop.is_set():
+            try:
+                client.connect(os.environ.get('MQTT_HOST', 'localhost'),
+                               int(os.environ.get('MQTT_PORT', '8883')), 60)
+                client.loop_forever(retry_first_connection=True)
+            except (OSError, RuntimeError) as error:
+                logger.error('MQTT connection failed (%s)', type(error).__name__)
+            if not stop.is_set():
+                stop.wait(2)
     finally:
         set_mqtt_ready(False)
         client.disconnect()

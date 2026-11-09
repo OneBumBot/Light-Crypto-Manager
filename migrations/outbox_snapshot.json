@@ -1,0 +1,6 @@
+[
+  "\nCREATE TABLE ingestion_metrics (\n\tminute TIMESTAMP WITH TIME ZONE NOT NULL, \n\tkind VARCHAR(20) NOT NULL, \n\tcount BIGINT NOT NULL, \n\tPRIMARY KEY (minute, kind), \n\tCONSTRAINT ck_ingestion_count CHECK (count >= 0)\n)\n\n",
+  "\nCREATE TABLE telemetry_outbox (\n\tid VARCHAR(36) NOT NULL, \n\tdevice_id VARCHAR(48) NOT NULL, \n\tkey_epoch INTEGER NOT NULL, \n\tsequence_number BIGINT NOT NULL, \n\tpayload JSONB NOT NULL, \n\tcreated_at TIMESTAMP WITH TIME ZONE NOT NULL, \n\tstatus VARCHAR(12) DEFAULT 'pending' NOT NULL, \n\tattempts INTEGER DEFAULT '0' NOT NULL, \n\tavailable_at TIMESTAMP WITH TIME ZONE NOT NULL, \n\tlease_until TIMESTAMP WITH TIME ZONE, \n\tclaim_token VARCHAR(36), \n\tdelivered_at TIMESTAMP WITH TIME ZONE, \n\tlast_error VARCHAR(80), \n\tPRIMARY KEY (id), \n\tCONSTRAINT uq_outbox_identity UNIQUE (device_id, key_epoch, sequence_number), \n\tCONSTRAINT ck_outbox_status CHECK (status IN ('pending','claimed','delivered','dead')), \n\tCONSTRAINT ck_outbox_numbers CHECK (attempts >= 0 AND key_epoch > 0 AND sequence_number > 0), \n\tCONSTRAINT ck_outbox_payload CHECK (jsonb_typeof(payload) = 'object' AND octet_length(payload::text) <= 8192)\n)\n\n",
+  "CREATE INDEX ix_outbox_ready ON telemetry_outbox (status, available_at, lease_until)",
+  "CREATE INDEX ix_outbox_retention ON telemetry_outbox (status, delivered_at)"
+]

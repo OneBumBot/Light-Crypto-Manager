@@ -28,7 +28,7 @@ os.environ['ASCON_KEY_HEX'] = bytes(range(16)).hex()
 
 
 @pytest.fixture
-def postgres_db():
+def legacy_postgres_db():
     if not TEST_URL:
         pytest.skip('set TEST_DATABASE_URL for PostgreSQL integration tests')
     from src.web import app as web
@@ -67,3 +67,9 @@ atexit.register(shutil.rmtree, _registry_dir)
 @pytest.fixture
 def registry():
     return json.loads(json.dumps(TEST_REGISTRY))
+
+@pytest.fixture
+def postgres_db(legacy_postgres_db):
+    from src.migrate import upgrade
+    upgrade(legacy_postgres_db.db.engine)
+    yield legacy_postgres_db

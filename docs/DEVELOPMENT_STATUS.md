@@ -279,3 +279,8 @@ Telemetry replay v2 следует переиспользовать; будущ�
 5.2: Alembic baseline проверяет колонки/типы/nullability/PK/unique существующей
 схемы. Новая БД создаётся из зафиксированного snapshot; несовместимость требует
 ручного разбора. destructive downgrade запрещён. Данные и replay не меняются.
+
+5.3: атомарные replay/anomaly/outbox, ограничение backlog, lease/claim с fencing,
+retry/dead/requeue и отключённая по умолчанию очистка доставленного. Реальные PG/Mongo
+проверки: 13 passed (включая миграции и crash после Mongo write); первый concurrency
+тест исправлен: engine передаётся в поток без Flask context lookup. Протокол сохранён.
