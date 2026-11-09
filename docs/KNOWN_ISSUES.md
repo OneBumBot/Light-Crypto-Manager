@@ -1,3 +1,48 @@
+# Актуальные ограничения после этапа 7
+
+Устранены: отсутствие Policy Signal/версий политики/FSM/PG аудита, отсутствие
+bounded source journal и отдельного DRY_RUN worker, смешение рекомендации с
+подтверждённым применением. Формальный control contract и simulator отделены от
+реального device state. Все текущие модели остаются DEMO/RESEARCH и недоверенными.
+
+Открытые ограничения:
+
+- Реальное управление отсутствует: нет device-side handler, live control keys,
+  signatures/AEAD control envelope, device ACK и криптографического переключения.
+  Applied Configuration остаётся NULL. Ascon — единственный реализованный профиль.
+- security_violation критического уровня проверяется контролируемыми тестами и
+  симуляцией; реального trusted online источника пока нет. Broker auth/ACL logs
+  не подключены. InvalidTelemetry даёт общий rejected, без точной причины отказа.
+- QoS1 дубликаты могут дать replay evidence; это не доказательство атаки. Thresholds
+  и cooldown — экспериментальная политика, не научно подтверждённый детектор.
+- ML quality и trusted_detector=false не менялись. Initial NORMAL и восстановление
+  требуют свежего scored ML, поэтому без доступной модели UNKNOWN ожидаем.
+- Security journal finite100000; при заполнении overflow теряет policy coverage
+  явно. Очистка только явная, до1000 старых уже обработанных строк за вызов.
+  Прошлые Anomalies и история до cutover автоматически не backfilled.
+- Audit retention по умолчанию отсутствует. Явная очистка удаляет старые decisions/
+  transitions и terminal intents, обезличивает payload учтённых signals, оставляя
+  identity tombstones против повторной обработки. Это не полный архив исходных
+  оснований после явной очистки; перед ней нужен собственный архив. Политики,
+  tombstones, signals без decision (rate_limited/unattributed), admin audit и states
+  автоматически не удаляются; нужен capacity plan.
+- Retention ограничивает replay старых данных для новой версии политики. Гарантия
+  полных исторических рекомендаций отсутствует. Late evidence аудируется, не
+  применяется ретроспективно; Source processing не end-to-end exactly-once.
+- Pending proposal expiry обрабатывается bounded idle pass; большой backlog может
+  задержать обновление status, expires_at нужно проверять независимо. Requested
+  state хранит исторический contract, актуальный статус — в intents.
+- SELECT aggregates и anti-joins требуют дальнейших нагрузочных измерений. Текущие
+  batch32, evidence128, memory256MiB не доказывают1000msg/s или10000 устройств.
+- Source journal capacity lock добавляет PG работу в ingestion transaction. Старый
+  admission lock не оптимизировался. Shared PG role, внутренний DB TLS/HA и прочие
+  технические ограничения предыдущих этапов остаются.
+
+Результаты: POLICY_EVALUATION.md и reports/STAGE7.md. Ниже сохранены исторические
+аудиты; их заявления «Policy Engine отсутствует» относятся к соответствующим этапам.
+
+---
+
 # Актуальные ограничения после этапа 6
 
 Исторические аудиты ниже сохраняются; актуальные ML факты имеют приоритет.

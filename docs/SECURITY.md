@@ -1,3 +1,31 @@
+# Дополнение безопасности этапа 7
+
+Policy Engine работает в DRY_RUN и не получает control MQTT права/ключи.
+Управляющие topics не созданы. Только Ascon-AEAD128 в реальном registry, минимальная
+TLS/AEAD/v2 защита не отключается. Устройство не подтверждает применение: PG
+CHECK не допускает Applied Configuration до отдельной реализации протокола.
+
+Неаутентифицированные rejects не имеют device_id. Поддельный AAD не может создать
+адресный риск. Trusted binding формируют только внутренние адаптеры на основании
+AEAD-проверенного ingestion журнала; внешний API произвольных trusted signals
+отсутствует. ML contract строго валидируется, mode и trusted_detector=false
+сохраняются. Score не превращается в общую вероятность атаки.
+
+Версии политики неизменяемы по hash; активация admin+CSRF и audit actor/time.
+Rules — типизированные JSON параметры, без eval/SQL/Python. API ограничивает
+размеры/пагинацию, login и sensor_data права; metrics — admin. DOM textContent
+используется для причин, конфигураций и исходных событий. Ошибки БД общие503.
+
+Полный дизайн будущих ключей/авторизации/anti-replay команд/TTL/ACK —
+CONTROL_PROTOCOL_DESIGN.md. Симулятор authentic=True — тестовая предпосылка,
+не реализация криптографической аутентификации. Не переносить simulator snapshots
+в реальное Applied Configuration. Текущие PG credentials ещё общие с мигратором;
+least-privilege roles и внешний аудит остаются отдельной задачей.
+
+Далее исторические сведения этапов4–5; актуальный source/protocol не переписан.
+
+---
+
 # Дополнение безопасности этапа 5
 
 TLS/password/ACL MQTT, AEAD v2, строгая валидация, CSRF, safe redirect, role и

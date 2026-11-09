@@ -1,3 +1,26 @@
+# Текущая архитектура — этап 7
+
+Сохранён MQTT TLS/ACL → Ascon telemetry v2 → PG replay/anomalies/outbox → Mongo.
+Optional ML по-прежнему независим. Добавлен отдельный PG-only policy-worker в
+DRY_RUN: security_observations + ML events → нормализованные сигналы → FSM →
+транзакционные состояния/решения/переходы/намерения → Flask /policy.
+
+В PostgreSQL34 таблицы (0005_policy +0006_policy_control добавили11 к23).
+Идентичности сигналов и решений дедуплицированы по policy version. Независимый
+control counter не меняет telemetry replay-state. Source journal ограничен100000;
+переполнение явно увеличивает overflow, primary ingestion продолжает работу.
+Policy Worker не получает MQTT/Mongo credentials и не запускает модели.
+
+Ascon-AEAD128 остаётся единственным реализованным профилем. Configured profile,
+recommended, requested и applied разделены; applied=NULL, effective=unconfirmed.
+Live control channel отсутствует. Ни SIMULATION, ни отправка сообщения не являются
+подтверждённым изменением устройства. Каталог профилей независим от legacy ORM.
+
+Актуальные документы: POLICY_ARCHITECTURE.md, POLICY_RULES.md, POLICY_STATES.md,
+CONTROL_PROTOCOL_DESIGN.md, POLICY_EVALUATION.md. Ниже историческая основа этапа6.
+
+---
+
 # Текущая архитектура — после этапа 6
 
 Основа cfda660 этапа5 сохранена: TLS/ACL/Ascon-v2/anti-replay, PostgreSQL+MongoDB,

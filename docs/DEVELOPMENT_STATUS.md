@@ -1,17 +1,64 @@
-# Этап 7 — разработка в feature/adaptive-policy-engine
+# Состояние разработки — этап 7
 
-Исходная база 6aedf52 сохранена. Реализованы Policy Signal v1, DRY_RUN FSM,
-конфигурация hysteresis/cooldown, capability registry и формальный control contract.
-0005_policy/0006_policy_control добавляют 11 таблиц (всего34), не меняя старые данные.
-Состояние, аудит и дедупликация транзакционны; worker опционален и не посылает MQTT.
-Ascon-AEAD128 — единственный реальный профиль; Applied Configuration не подтверждена.
+Инженерные требования этапа7 выполнены в feature/adaptive-policy-engine от6aedf52.
+Policy Engine работает в DRY_RUN, отдельный simulator — в SIMULATION. Реальное
+переключение криптографии не реализовано и не заявляется. Main/push/merge не менялись.
 
-Проверки блоков:12 pure unit и19 policy engine/storage tests на настоящем PG.
-Промежуточный полный прогон252 passed; real two-worker/restart/PG outage прошёл.
-Текущие допроверки веба, ML/Outbox regression и итоговая документация ещё продолжаются.
-Этап7 пока не объявлен завершённым. Протоколы: reports/stage7-*.txt.
+| Компонент | Статус | Фактическая граница |
+|---|---|---|
+| Signal Adapter / Policy Signal v1 | проверено тестами | Schema/source allowlist, provenance, typed ML scale/status/version |
+| Protocol journal | проверено тестами | AEAD-проверенные device bindings; rejected без device, bounded100000/overflow |
+| Risk FSM | проверено тестами | NORMAL/WATCH/ALERT/CRITICAL/UNKNOWN, guard и позитивное восстановление |
+| Hysteresis/cooldown/rate limit | проверено тестами | Отдельные escalation/recovery thresholds, continuous history, no empty-queue recovery |
+| Crypto registry | проверено тестами | Только Ascon-AEAD128, capability/minimum guards, unsupported profiles отклоняются |
+| PG states/decisions/audit | проверено тестами | 0005+0006, всего34 таблицы, atomicity/dedupe/concurrency/version guards |
+| Control contract/counters | проверено тестами | Independent epoch/sequence, TTL/identity, proposal persistence; без отправки |
+| ACK simulator | проверено тестами | Explicit simulation authorization/replay/expiry/snapshot; не криптографическая auth |
+| Policy Worker | проверено тестами | Optional PG-only, DRY_RUN, bounded polls, graceful stop, actual PG outage/readiness/restart |
+| Flask /policy и API | проверено тестами | Read roles, admin+CSRF activation/audit, textContent, no fake applied state |
+| Simulation experiment | проверено тестами | 13 synthetic scenarios ×4 variants, deterministic traces/configs, applied_changes=0 |
+| Runtime MQTT/Mongo/Outbox/ML | проверено тестами | Старые regression/recovery/security проверки сохранены и повторены |
+| Live control/device ACK/applied state | отсутствует | Требует device handler, control auth/key separation/ACL и reconciliation |
+| Trusted online critical source | отсутствует | security_violation только контролируемые tests/simulation, broker logs не подключены |
+| Trusted ML attack detector | не проверено | DEMO/RESEARCH, trusted_detector=false; scientific limits этапа6 сохранены |
+| Большие нагрузки / ARM64 / HA | не проверено | Малый smoke не доказывает1000msg/s/10000 устройств |
+| «Магма»/CRISP/FastAPI | отсутствует | Не разрабатывались на этапе7 |
 
-Далее сохранён итог этапа6 как историческая база.
+## Git блоки
+
+1ea9fcc — contracts/FSM/capabilities/control simulator.
+c184f6b — PG journal/migrations/state/audit/worker/independent counters.
+b29621c — deterministic policy experiments.
+370883a — authorized policy dashboard/admin/CSRF/Chromium checks.
+eb403e2 — UNKNOWN/identity/rate/provenance/recovery refinements.
+030abe5 — full regressions/security/recovery protocols.
+Финальный documentation hash указан итоговым отчётом; не помещается внутрь себя.
+
+## Проверки
+
+Последний полный pytest:255 passed in24.45s, без skips/warnings. Прежние233 входят.
+Дополнительно real two-worker/restart/PG outage/readiness; policy off → telemetry
+continues; реальные replay трёх устройств/forged AAD; Mongo/PG outage/relay crash;
+ML missing model/reload/Mongo outage; TLS/password/CA/ACL; HTTP/Socket.IO/CSRF;
+Chromium12 injection payload checks. Ruff/compileall/Node и known-secret/Git/три
+образа прошли. Промежуточные неуспехи сохранены в reports/stage7-*.txt.
+
+Нормативная криптопроверка, реальные control commands/ACK, качество ML и большой
+benchmark не подтверждались. Только synthetic policy comparison: oscillation17→1
+risk transitions с hysteresis; replay reaction1→2 модельные секунды. Никаких
+фактических algorithm switches. Метрики/условия — POLICY_EVALUATION.md.
+
+## Операционные ограничения
+
+Source finite journal/explicit retention и coverage gaps; audit/tombstones capacity
+plan; shared PG role/DB TLS/HA остаются. Unscored/stale ML не считается нормой.
+Active policy change сохраняет guard; Applied Configuration всегда NULL.
+Изолированный lcm-stage7 остановлен без удаления volumes; источники, ключи,
+счётчики и прежняя модель сохранены. Протоколы/матрица: reports/STAGE7.md. Полный список файлов: reports/stage7-files.txt.
+
+Ниже сохранена историческая база этапа6; будущие этапы автоматически не начинаются.
+
+---
 
 # Состояние разработки — этапы 0–6
 

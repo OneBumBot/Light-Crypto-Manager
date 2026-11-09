@@ -1,3 +1,65 @@
+# Этап 7: optional Policy Worker (DRY_RUN)
+
+Используйте существующие env/project/volumes/ключи/счётчики. Примените additive
+миграции0005/0006 до запуска обновлённого ingestion; volumes не удалять:
+
+```bash
+docker compose --env-file .env.compose build receiver
+docker compose --env-file .env.compose run --rm init-db
+docker compose --env-file .env.compose --profile demo --profile web up -d --wait
+# Политика по умолчанию выключена; отдельный явный запуск:
+docker compose --env-file .env.compose --profile policy up -d --wait policy-worker
+```
+
+POLICY_MODE всегда DRY_RUN; другие режимы worker отклоняет. POLICY_BATCH_SIZE32,
+диапазон1..128, CPU1/memory256MiB. Контейнер не получает MQTT/Mongo ключи и не
+загружает ML. Readiness обновляется только после успешной PG обработки, снимается
+при ошибках; heartbeat и staleness видны /policy и /api/policy.
+
+Worker создаёт default-v1 только при отсутствии активной политики. Admin через
+/policy может создать immutable JSON версию/активировать её с CSRF и audit.
+Viewer/operator читают данные при существующем праве sensor_data; менять политику
+не могут. /api/policy/metrics только admin. Настройка источников ML не делает их
+доверенными: без scored ML ожидаем UNKNOWN, основной MQTT контур работает.
+
+## Retention и ограничения
+
+Source journal capacity100000. При overflow сохраняется primary telemetry, но
+теряются новые policy observations; следите за retained/overflow/queue_pending.
+Автоматической очистки нет. Явная bounded операция при остановленных worker:
+
+```bash
+docker compose --env-file .env.compose stop policy-worker
+docker compose --env-file .env.compose run --rm --no-deps policy-worker python -m src.policy.worker --prune-days 30
+```
+
+До1000 старых decisions и обработанных source observations за вызов; proposals
+сохраняются, replay и ML не удаляются. Signal identity tombstones остаются, raw
+payload при явной audit retention теряется. Сделайте отдельный архив оснований
+до очистки. Историческая coverage новой версии не гарантирована. Capacity при
+необходимости меняется явной проверенной admin DB операцией (положительное значение),
+не через непривилегированный HTTP endpoint. Полные ограничения в KNOWN_ISSUES.md.
+
+## Воспроизводимые проверки
+
+Разработка использует только отдельный lcm-stage7 project с новыми volumes и
+0700/0600 материалами. Существующие контуры не используются для fault tests.
+После подготовки приватного stage7.env с тремя дополнительными device identities:
+
+```bash
+docker compose --env-file .local-runtime/stage7.env run --rm --no-deps tests
+python3 scripts/check_policy_system.py --env-file .local-runtime/stage7.env
+python3 scripts/check_dual_database.py --env-file .local-runtime/stage7.env
+python3 scripts/check_ml_system.py --env-file .local-runtime/stage7.env
+```
+
+ML regression требует явно заданного private model directory и research opt-in
+в isolated env. Используется прежний stage6 DEMO artifact, без нового обучения.
+Повтор с установленным model volume: --reuse-installed-model. Протоколы с
+командами/кодами — reports/stage7-*.txt. Ниже сохранено руководство основной системы.
+
+---
+
 # Этап 6: optional ML поверх защищённого двухбазового контура
 
 Базовый MQTT/PG/Mongo запуск ниже сохранён. Актуально23 PG таблицы (Alembic0004).

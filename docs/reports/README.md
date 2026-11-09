@@ -58,3 +58,9 @@ multi-device/TLS/ACL/web/Chromium проверки. Промежуточные f
 проверки. Отдельно ограниченный real Edge эксперимент и synthetic telemetry DEMO;
 машиночитаемые метрики рядом с протоколами. Кандидаты дополнительных данных —
 [ML_DATASETS.md](../ML_DATASETS.md), новые наборы не скачивались.
+
+## Этап 7
+
+[STAGE7.md](STAGE7.md):255 pytest + реальные policy/PG/MQTT/ML/Mongo/security/web
+проверки. [Синтетические52 policy runs](stage7-policy-experiment.json) отдельно от
+инженерных тестов. Ascon — единственный реальный профиль; no live control/ACK.
