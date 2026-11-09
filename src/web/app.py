@@ -529,6 +529,78 @@ def delete_record(table_name, record_id):
 def generate_test_data(count=10):
     return jsonify({'error': 'Генератор данных пока недоступен'}), 501
 
+def history_repository():
+    # Lazy initialization; no Mongo credentials needed for legacy routes/tests.
+    from src.mongo_repository import MongoRepository
+    if 'telemetry_repository' not in app.extensions:
+        app.extensions['telemetry_repository'] = MongoRepository('history')
+    return app.extensions['telemetry_repository']
+
+
+@app.get('/telemetry')
+@login_required
+def telemetry_history_page():
+    if not current_user.has_table_access('sensor_data'): abort(403)
+    return render_template('telemetry_history.html')
+
+
+@app.get('/api/telemetry/history')
+@login_required
+def telemetry_history():
+    if not current_user.has_table_access('sensor_data'):
+        abort(403)
+    allowed = {'device_id','start','end','limit','offset'}
+    if set(request.args)-allowed or any(len(request.args.getlist(k))!=1 for k in request.args):
+        abort(400)
+    try:
+        limit=int(request.args.get('limit','100'))
+        offset=int(request.args.get('offset','0'))
+        # Repository repeats validation at its public boundary.
+        from src.mongo_repository import utc_millis
+        from src.telemetry import DEVICE
+        device=request.args.get('device_id')
+        if device is not None and not DEVICE.fullmatch(device): abort(400)
+        start=utc_millis(request.args['start']) if 'start' in request.args else None
+        end=utc_millis(request.args['end']) if 'end' in request.args else None
+        if not 1<=limit<=500 or not 0<=offset<=10000 or (start and end and start>end): abort(400)
+    except (ValueError,TypeError,OverflowError):
+        abort(400)
+    try:
+        rows=history_repository().history(device=device,start=start,end=end,limit=limit,offset=offset)
+        return jsonify({'items':rows,'limit':limit,'offset':offset})
+    except Exception as error:
+        app.logger.warning('Telemetry history unavailable (%s)',type(error).__name__)
+        return jsonify({'error':'История телеметрии временно недоступна'}),503
+
+
+@app.get('/api/telemetry/metrics')
+@login_required
+def telemetry_metrics():
+    if current_user.role != 'admin': abort(403)
+    from sqlalchemy import select, func
+    from datetime import timedelta, timezone
+    from src.outbox import outbox, metrics
+    try:
+        cutoff=datetime.now(timezone.utc)-timedelta(minutes=1)
+        with db.engine.connect() as connection:
+            counts=dict(connection.execute(select(outbox.c.status,func.count()).group_by(outbox.c.status)).all())
+            counters=dict(connection.execute(select(metrics.c.kind,func.sum(metrics.c.count))
+                .where(metrics.c.minute>=cutoff.replace(second=0,microsecond=0)).group_by(metrics.c.kind)).all())
+            oldest=connection.scalar(select(func.min(outbox.c.created_at)).where(outbox.c.status!='delivered'))
+            latency=connection.scalar(select(func.avg(func.extract('epoch',outbox.c.delivered_at-outbox.c.created_at)))
+                .where(outbox.c.delivered_at>=cutoff))
+        # Two minute-aligned buckets; rate explicitly reports its actual window.
+        window=(datetime.now(timezone.utc)-cutoff.replace(second=0,microsecond=0)).total_seconds()
+        mongo_count=history_repository().collection.count_documents({},maxTimeMS=2000)
+        return jsonify(outbox=counts,counters={k:int(v) for k,v in counters.items()},
+            incoming_per_second=float(counters.get('incoming',0))/window,window_seconds=window,
+            oldest_pending_seconds=(datetime.now(timezone.utc)-oldest).total_seconds() if oldest else 0,
+            mean_delivery_seconds=float(latency) if latency is not None else None,mongo_documents=mongo_count)
+    except Exception as error:
+        app.logger.warning('Metrics unavailable (%s)',type(error).__name__)
+        return jsonify({'error':'Метрики временно недоступны'}),503
+
+
 # ============= Инициализация =============
 
 def create_default_users():
@@ -559,9 +631,9 @@ def main():
     configure_logging()
     if args.command == 'init-db':
         with app.app_context():
-            db.create_all()
-            replay_metadata.create_all(db.engine)
-        print("PostgreSQL schema initialized (create_all; not a migration)")
+            from src.migrate import upgrade
+            upgrade(db.engine)
+        print("PostgreSQL migrations applied")
         return
     if args.command == 'bootstrap-users':
         with app.app_context():

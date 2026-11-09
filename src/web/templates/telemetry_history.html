@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}История телеметрии{% endblock %}
+{% block content %}
+<h2>История телеметрии</h2>
+<form id="historyFilters" class="mb-3">
+  <label>Устройство <input name="device_id" maxlength="48"></label>
+  <label>С (UTC) <input name="start" type="datetime-local"></label>
+  <label>По (UTC) <input name="end" type="datetime-local"></label>
+  <button type="submit">Показать</button>
+</form>
+<p id="historyStatus" role="status"></p>
+<table class="table"><thead><tr><th>Устройство</th><th>Время UTC</th><th>Температура</th><th>Влажность</th><th>Эпоха / счётчик</th></tr></thead><tbody id="historyRows"></tbody></table>
+<button id="historyPrev" type="button">Назад</button>
+<button id="historyNext" type="button">Далее</button>
+<script src="{{ url_for('static', filename='js/telemetry_history.js') }}" defer></script>
+{% endblock %}

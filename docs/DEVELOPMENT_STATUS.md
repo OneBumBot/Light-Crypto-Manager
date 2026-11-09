@@ -290,3 +290,7 @@ lease relay и явный retention admin script. QoS1 manual ACK после PG 
 DB/backpressure ошибка вызывает reconnect без ACK. Генератор поддерживает несколько
 device identities с отдельными паролями, ключами и точными ACL. 203 pytest passed
 с реальными PostgreSQL/MongoDB, включая прежние проверки безопасности.
+
+5.6: read-only history API и страница /telemetry, UTC/device/date filters,
+bounded limit/offset, прежние права sensor_data, общие ошибки 503. Live путь
+сохранён. Метрики доступны только admin; JSON API не позволяет читать outbox payload.
