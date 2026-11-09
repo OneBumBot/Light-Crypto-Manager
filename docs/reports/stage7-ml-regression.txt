@@ -1,0 +1,127 @@
+
+UTC: 2026-11-09T20:49:13.453036+00:00
+$ python3 scripts/check_ml_system.py --env-file .local-runtime/stage7.env
+ Container lcm-stage7-postgres-1 Running
+ Container lcm-stage7-web-1 Running
+ Container lcm-stage7-mongo-1 Running
+ Container lcm-stage7-broker-1 Running
+ Container lcm-stage7-receiver-1 Running
+ Container lcm-stage7-publisher-1 Running
+ Container lcm-stage7-outbox-relay-1 Running
+ Container lcm-stage7-storage-init-1 Starting
+ Container lcm-stage7-security-init-1 Starting
+ Container lcm-stage7-postgres-1 Waiting
+ Container lcm-stage7-storage-init-1 Started
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-security-init-1 Started
+ Container lcm-stage7-security-init-1 Waiting
+ Container lcm-stage7-postgres-1 Healthy
+ Container lcm-stage7-init-db-1 Starting
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-init-db-1 Started
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-security-init-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-security-init-1 Exited
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-broker-1 Waiting
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-broker-1 Waiting
+ Container lcm-stage7-security-init-1 Exited
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-broker-1 Healthy
+ Container lcm-stage7-broker-1 Healthy
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-demo-setup-1 Starting
+ Container lcm-stage7-demo-setup-1 Started
+ Container lcm-stage7-receiver-1 Waiting
+ Container lcm-stage7-demo-setup-1 Waiting
+ Container lcm-stage7-receiver-1 Healthy
+ Container lcm-stage7-demo-setup-1 Exited
+ Container lcm-stage7-publisher-1 Waiting
+ Container lcm-stage7-postgres-1 Waiting
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-mongo-1 Waiting
+ Container lcm-stage7-outbox-relay-1 Waiting
+ Container lcm-stage7-security-init-1 Waiting
+ Container lcm-stage7-web-1 Waiting
+ Container lcm-stage7-broker-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-demo-setup-1 Waiting
+ Container lcm-stage7-receiver-1 Waiting
+ Container lcm-stage7-demo-setup-1 Exited
+ Container lcm-stage7-mongo-1 Healthy
+ Container lcm-stage7-web-1 Healthy
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-postgres-1 Healthy
+ Container lcm-stage7-outbox-relay-1 Healthy
+ Container lcm-stage7-publisher-1 Healthy
+ Container lcm-stage7-broker-1 Healthy
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-receiver-1 Healthy
+ Container lcm-stage7-security-init-1 Exited
+ Container lcm-stage7-tests-run-caf0c79d75b7 Creating
+ Container lcm-stage7-tests-run-caf0c79d75b7 Created
+Device configurations provisioned; keys remain outside PostgreSQL
+ Volume lcm-stage7_ml-models Creating
+ Volume lcm-stage7_ml-models Creating
+ Volume lcm-stage7_ml-models Created
+ Volume lcm-stage7_ml-models Created
+ Container lcm-stage7-ml-worker-1 Creating
+ Container lcm-stage7-ml-worker-1 Created
+ Container lcm-stage7-ml-worker-1 Starting
+ Container lcm-stage7-ml-worker-1 Started
+ Container lcm-stage7-tests-run-85dcd013dcda Creating
+ Container lcm-stage7-tests-run-85dcd013dcda Created
+PASS: missing ML artifact reported unavailable; MQTT -> Mongo delivery continues
+ Container lcm-stage7-ml-model-init-run-21298832cf77 Creating
+ Container lcm-stage7-ml-model-init-run-21298832cf77 Created
+Trusted local model installed; model not deserialized by root
+ Container lcm-stage7-tests-run-a96c7f64aa5d Creating
+ Container lcm-stage7-tests-run-a96c7f64aa5d Created
+PASS: 24 controlled AEAD/TLS samples from three independent devices published
+ Container lcm-stage7-tests-run-c8b5d44fdbcc Creating
+ Container lcm-stage7-tests-run-c8b5d44fdbcc Created
+PASS: all controlled sources durably marked after Mongo confirmation
+ Container lcm-stage7-tests-run-60bfeb7df31a Creating
+ Container lcm-stage7-tests-run-60bfeb7df31a Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage7-ml-worker-1 Restarting
+ Container lcm-stage7-ml-worker-1 Started
+ Container lcm-stage7-tests-run-a66421f5957d Creating
+ Container lcm-stage7-tests-run-a66421f5957d Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage7-ml-worker-1 Stopping
+ Container lcm-stage7-ml-worker-1 Stopped
+ Container lcm-stage7-tests-run-bc4231c17397 Creating
+ Container lcm-stage7-tests-run-bc4231c17397 Created
+PASS: 24 controlled AEAD/TLS samples from three independent devices published
+ Container lcm-stage7-tests-run-d18191b2c17e Creating
+ Container lcm-stage7-tests-run-d18191b2c17e Created
+PASS: all controlled sources durably marked after Mongo confirmation
+ Container lcm-stage7-mongo-1 Stopping
+ Container lcm-stage7-mongo-1 Stopped
+ Container lcm-stage7-ml-worker-1 Starting
+ Container lcm-stage7-ml-worker-1 Started
+ Container lcm-stage7-tests-run-29ebdbf71d09 Creating
+ Container lcm-stage7-tests-run-29ebdbf71d09 Created
+PASS: actual Mongo outage creates retry state; committed ML events preserved
+ Container lcm-stage7-mongo-1 Starting
+ Container lcm-stage7-mongo-1 Started
+ Container lcm-stage7-mongo-1 Waiting
+ Container lcm-stage7-mongo-1 Healthy
+ Container lcm-stage7-tests-run-fac599ff9632 Creating
+ Container lcm-stage7-tests-run-fac599ff9632 Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage7-tests-run-c0bee0fd4bdb Creating
+ Container lcm-stage7-tests-run-c0bee0fd4bdb Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+PASS: optional ML, three devices, immutable reload, durable dedupe and Mongo recovery
+
+EXIT CODE: 0

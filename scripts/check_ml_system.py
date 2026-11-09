@@ -10,8 +10,8 @@ def main():
     parser.add_argument('--reuse-installed-model',action='store_true')
     args=parser.parse_args()
     values=dict(line.split('=',1) for line in args.env_file.read_text().splitlines() if '=' in line and not line.startswith('#'))
-    if not values.get('COMPOSE_PROJECT_NAME','').startswith('lcm-stage6'):
-        parser.error('Explicit isolated lcm-stage6 project required')
+    if not values.get('COMPOSE_PROJECT_NAME','').startswith(('lcm-stage6','lcm-stage7')):
+        parser.error('Explicit isolated lcm-stage6/lcm-stage7 project required')
     base=['docker','compose','--env-file',str(args.env_file),'--profile','demo','--profile','web']
     def run(*parts):subprocess.run(base+list(parts),check=True)
     def probe(phase):run('run','--rm','--no-deps','--entrypoint','python','tests','-m','scripts.ml_system_probe',phase)

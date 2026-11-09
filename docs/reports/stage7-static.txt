@@ -16,3 +16,21 @@ $ git diff --check
 
 
 EXIT CODE: 0
+
+UTC: 2026-11-09T20:50:50.034969+00:00
+$ .venv/bin/ruff check src scripts tests migrations
+All checks passed!
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T20:50:50.084937+00:00
+$ .venv/bin/python -m compileall -q src/policy src/security_events.py migrations scripts/policy_system_probe.py scripts/check_policy_system.py
+
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T20:50:50.113579+00:00
+$ git diff --exit-code 6aedf52 -- src/replay.py src/telemetry.py src/outbox.py src/outbox_relay.py src/ml_storage.py src/ml_signals.py src/classifier/ml src/mongo_repository.py src/publisher
+
+
+EXIT CODE: 0

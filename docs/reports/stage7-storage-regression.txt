@@ -1,0 +1,181 @@
+
+UTC: 2026-11-09T20:45:36.010366+00:00
+$ python3 scripts/check_dual_database.py --env-file .local-runtime/stage7.env
+ Container lcm-stage7-broker-1 Running
+ Container lcm-stage7-mongo-1 Running
+ Container lcm-stage7-postgres-1 Running
+ Container lcm-stage7-init-db-1 Recreate
+ Container lcm-stage7-security-init-1 Recreate
+ Container lcm-stage7-storage-init-1 Recreate
+ Container lcm-stage7-init-db-1 Recreated
+ Container lcm-stage7-receiver-1 Recreate
+ Container lcm-stage7-storage-init-1 Recreated
+ Container lcm-stage7-outbox-relay-1 Recreate
+ Container lcm-stage7-outbox-relay-2 Creating
+ Container lcm-stage7-web-1 Recreate
+ Container lcm-stage7-security-init-1 Recreated
+ Container lcm-stage7-demo-setup-1 Recreate
+ Container lcm-stage7-outbox-relay-2 Created
+ Container lcm-stage7-demo-setup-1 Recreated
+ Container lcm-stage7-receiver-1 Recreated
+ Container lcm-stage7-publisher-1 Recreate
+ Container lcm-stage7-web-1 Recreated
+ Container lcm-stage7-publisher-1 Recreated
+ Container lcm-stage7-outbox-relay-1 Recreated
+ Container lcm-stage7-security-init-1 Starting
+ Container lcm-stage7-storage-init-1 Starting
+ Container lcm-stage7-postgres-1 Waiting
+ Container lcm-stage7-security-init-1 Started
+ Container lcm-stage7-security-init-1 Waiting
+ Container lcm-stage7-storage-init-1 Started
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-postgres-1 Healthy
+ Container lcm-stage7-init-db-1 Starting
+ Container lcm-stage7-init-db-1 Started
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-security-init-1 Waiting
+ Container lcm-stage7-security-init-1 Exited
+ Container lcm-stage7-broker-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-broker-1 Waiting
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-security-init-1 Exited
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-broker-1 Healthy
+ Container lcm-stage7-broker-1 Healthy
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-demo-setup-1 Starting
+ Container lcm-stage7-outbox-relay-1 Starting
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-web-1 Starting
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-receiver-1 Starting
+ Container lcm-stage7-demo-setup-1 Started
+ Container lcm-stage7-outbox-relay-1 Started
+ Container lcm-stage7-outbox-relay-2 Starting
+ Container lcm-stage7-outbox-relay-2 Started
+ Container lcm-stage7-web-1 Started
+ Container lcm-stage7-receiver-1 Started
+ Container lcm-stage7-receiver-1 Waiting
+ Container lcm-stage7-demo-setup-1 Waiting
+ Container lcm-stage7-demo-setup-1 Exited
+ Container lcm-stage7-receiver-1 Healthy
+ Container lcm-stage7-publisher-1 Starting
+ Container lcm-stage7-publisher-1 Started
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-receiver-1 Waiting
+ Container lcm-stage7-demo-setup-1 Waiting
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-web-1 Waiting
+ Container lcm-stage7-publisher-1 Waiting
+ Container lcm-stage7-security-init-1 Waiting
+ Container lcm-stage7-broker-1 Waiting
+ Container lcm-stage7-mongo-1 Waiting
+ Container lcm-stage7-postgres-1 Waiting
+ Container lcm-stage7-outbox-relay-1 Waiting
+ Container lcm-stage7-outbox-relay-2 Waiting
+ Container lcm-stage7-broker-1 Healthy
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-postgres-1 Healthy
+ Container lcm-stage7-web-1 Healthy
+ Container lcm-stage7-demo-setup-1 Exited
+ Container lcm-stage7-receiver-1 Healthy
+ Container lcm-stage7-publisher-1 Healthy
+ Container lcm-stage7-mongo-1 Healthy
+ Container lcm-stage7-security-init-1 Exited
+ Container lcm-stage7-outbox-relay-1 Healthy
+ Container lcm-stage7-outbox-relay-2 Healthy
+ Container lcm-stage7-tests-run-2aeddf8b8e0c Creating
+ Container lcm-stage7-tests-run-2aeddf8b8e0c Created
+Device configurations provisioned; keys remain outside PostgreSQL
+ Container lcm-stage7-tests-run-7095a220b3a6 Creating
+ Container lcm-stage7-tests-run-7095a220b3a6 Created
+PASS: publisher -> TLS broker -> ingestion -> PG outbox -> MongoDB
+ Container lcm-stage7-tests-run-f8a97fff9f56 Creating
+ Container lcm-stage7-tests-run-f8a97fff9f56 Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7-tests-run-23385b363bd2 Creating
+ Container lcm-stage7-tests-run-23385b363bd2 Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7-tests-run-91651cf0cab3 Creating
+ Container lcm-stage7-tests-run-91651cf0cab3 Created
+PASS: per-device identity cannot publish another provisioned device topic
+ Container lcm-stage7-mongo-1 Stopping
+ Container lcm-stage7-mongo-1 Stopped
+ Container lcm-stage7-tests-run-ff2ad302a318 Creating
+ Container lcm-stage7-tests-run-ff2ad302a318 Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7-tests-run-01b27b1b6ff7 Creating
+ Container lcm-stage7-tests-run-01b27b1b6ff7 Created
+PASS: MongoDB unavailable; all accepted events retained in PG outbox with delivery attempts
+ Container lcm-stage7-mongo-1 Starting
+ Container lcm-stage7-mongo-1 Started
+ Container lcm-stage7-mongo-1 Waiting
+ Container lcm-stage7-mongo-1 Healthy
+ Container lcm-stage7-tests-run-e0e99ecfb947 Creating
+ Container lcm-stage7-tests-run-e0e99ecfb947 Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7-postgres-1 Stopping
+ Container lcm-stage7-postgres-1 Stopped
+ Container lcm-stage7-tests-run-4cc980ac709f Creating
+ Container lcm-stage7-tests-run-4cc980ac709f Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7-postgres-1 Starting
+ Container lcm-stage7-postgres-1 Started
+ Container lcm-stage7-postgres-1 Waiting
+ Container lcm-stage7-postgres-1 Healthy
+ Container lcm-stage7-tests-run-7568e469f22c Creating
+ Container lcm-stage7-tests-run-7568e469f22c Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7-receiver-1 Recreate
+ Container lcm-stage7-receiver-1 Recreated
+ Container lcm-stage7-receiver-1 Starting
+ Container lcm-stage7-receiver-1 Started
+ Container lcm-stage7-receiver-1 Waiting
+ Container lcm-stage7-receiver-1 Healthy
+ Container lcm-stage7-outbox-relay-2 Restarting
+ Container lcm-stage7-outbox-relay-1 Restarting
+ Container lcm-stage7-outbox-relay-1 Started
+ Container lcm-stage7-outbox-relay-2 Started
+ Container lcm-stage7-tests-run-eccb50006a1b Creating
+ Container lcm-stage7-tests-run-eccb50006a1b Created
+PASS: replay after receiver/relay restart creates no additional outbox/Mongo records
+ Container lcm-stage7-tests-run-bd7132951322 Creating
+ Container lcm-stage7-tests-run-bd7132951322 Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7-publisher-1 Stopping
+ Container lcm-stage7-outbox-relay-2 Stopping
+ Container lcm-stage7-outbox-relay-1 Stopping
+ Container lcm-stage7-publisher-1 Stopped
+ Container lcm-stage7-outbox-relay-1 Stopped
+ Container lcm-stage7-outbox-relay-2 Stopped
+ Container lcm-stage7-tests-run-b258b674676e Creating
+ Container lcm-stage7-tests-run-b258b674676e Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7-tests-run-19016a1cf07f Creating
+ Container lcm-stage7-tests-run-19016a1cf07f Created
+EXPECTED: process exits after Mongo write before PG acknowledge
+
+ Container lcm-stage7-outbox-relay-1 Starting
+ Container lcm-stage7-outbox-relay-1 Started
+ Container lcm-stage7-outbox-relay-2 Starting
+ Container lcm-stage7-outbox-relay-2 Started
+ Container lcm-stage7-outbox-relay-1 Waiting
+ Container lcm-stage7-outbox-relay-2 Waiting
+ Container lcm-stage7-outbox-relay-1 Healthy
+ Container lcm-stage7-outbox-relay-2 Healthy
+ Container lcm-stage7-tests-run-08696d94708c Creating
+ Container lcm-stage7-tests-run-08696d94708c Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7-publisher-1 Starting
+ Container lcm-stage7-publisher-1 Started
+PASS: multi-device TLS ingestion, Mongo/PG outage recovery, process crash, two relays and restarts
+
+EXIT CODE: 0

@@ -1,0 +1,14 @@
+
+UTC: 2026-11-09T20:49:15.055986+00:00
+$ docker compose --env-file .local-runtime/stage7.env run --rm --no-deps --entrypoint python tests -m scripts.mqtt_security_smoke
+ Container lcm-stage7-tests-run-d77c2595441d Creating
+ Container lcm-stage7-tests-run-d77c2595441d Created
+PASS: trusted TLS and publisher credentials
+PASS: incorrect password rejected
+PASS: untrusted CA rejected
+PASS: publisher cannot write another device topic
+PASS: web cannot publish telemetry
+PASS: receiver cannot publish telemetry
+PASS: allowed reader receives probe; publisher cannot read forbidden topic
+
+EXIT CODE: 0
