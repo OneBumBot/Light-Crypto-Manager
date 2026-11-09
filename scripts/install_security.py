@@ -17,6 +17,7 @@ for role in ['broker','publisher','receiver','web','smoke','tests']:
     elif role == 'tests':
         files += [name+'.password' for name in ['publisher','receiver','web','smoke','monitor']]
         files += ['registry.json','untrusted.crt']
+        files += [p.name for p in source.glob('device_*.password')]
     else:
         files += [role+'.password']
     for name in files:
@@ -25,7 +26,18 @@ for role in ['broker','publisher','receiver','web','smoke','tests']:
         path.chmod(0o600)
         os.chown(path,uid,uid)
     if role == 'broker':
-        path=target/'health.conf'
+        registry=json.loads((source/'registry.json').read_text())
+        acl=''
+        bindings={'publisher':['raspb1'],'smoke':['smoke']}
+        bindings.update({'device_'+name:[name] for name in registry if (source/('device_'+name+'.password')).exists()})
+        for user, devices in bindings.items():
+            acl+='user '+user+'\n'+''.join('topic write '+registry[d]['topic']+'\n' for d in devices)+'\n'
+        for user in ['receiver','web','smoke']:
+            acl+='user '+user+'\n'+''.join('topic read '+entry['topic']+'\n' for entry in registry.values())+'\n'
+        acl+='user monitor\ntopic write lightcrypto/health\n'
+        path=target/'acl'
+        path.write_text(acl); path.chmod(0o600); os.chown(path,uid,uid)
+        path=target/'health.conf' 
         password=(source/'monitor.password').read_text().strip()
         path.write_text('-h localhost\n-p 8883\n--cafile /mosquitto/security/ca.crt\n-u monitor\n-P '+password+'\n-t lightcrypto/health\n-m ping\n-q 1\n')
         path.chmod(0o600)

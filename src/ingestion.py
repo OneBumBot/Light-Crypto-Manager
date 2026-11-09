@@ -34,11 +34,11 @@ def process_packet(packet, registry, engine, topic, now=None):
             raise InvalidTelemetry('Device configuration is missing')
         # Serialize capacity admission only; no network IO inside this lock.
         connection.execute(text('SELECT pg_advisory_xact_lock(734819206)'))
-        if connection.scalar(select(func.count()).select_from(outbox).where(outbox.c.status != 'delivered')) >= int(os.environ.get('MAX_OUTBOX_PENDING', '100000')):
-            raise IngestionBackpressure('Outbox capacity reached')
         if not admit(connection, message, 'receiver'):
             record(connection, 'replay', now)
             return None
+        if connection.scalar(select(func.count()).select_from(outbox).where(outbox.c.status != 'delivered')) >= int(os.environ.get('MAX_OUTBOX_PENDING', '100000')):
+            raise IngestionBackpressure('Outbox capacity reached')
         if cause is not None:
             connection.execute(INSERT_ANOMALY, {
                 'date': now.astimezone(timezone.utc).replace(tzinfo=None),
@@ -46,5 +46,3 @@ def process_packet(packet, registry, engine, topic, now=None):
             })
         enqueue(connection, message, now)
     return sensor_data
-
-

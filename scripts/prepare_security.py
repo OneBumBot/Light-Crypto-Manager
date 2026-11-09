@@ -21,7 +21,10 @@ def main():
     parser.add_argument('--directory', type=Path, required=True)
     parser.add_argument('--server-name', action='append', default=[])
     parser.add_argument('--server-ip', action='append', default=[])
+    parser.add_argument('--extra-device', action='append', default=[])
     args = parser.parse_args()
+    if len(set(args.extra_device)) != len(args.extra_device) or any(not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,47}', name) or name in ['raspb1','smoke'] for name in args.extra_device):
+        parser.error('Invalid or duplicate device identity')
     names = ['broker', 'localhost'] + args.server_name
     if any(not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9.-]{0,252}', name) for name in names):
         parser.error('Invalid DNS name')
@@ -43,7 +46,7 @@ def main():
             '-CAcreateserial', '-out', 'server.crt', '-days', '30', '-extfile', 'server.ext')
     openssl('req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-keyout', 'untrusted.key',
             '-out', 'untrusted.crt', '-days', '30', '-subj', '/CN=Untrusted test CA')
-    for i, role in enumerate(ROLES):
+    for i, role in enumerate(ROLES + ['device_'+name for name in args.extra_device]):
         password = secrets.token_hex(24)
         (directory/(role+'.password')).write_text(password+'\n')
         command = ['docker','run','--rm','-i','--user',f'{os.getuid()}:{os.getgid()}',
@@ -56,7 +59,7 @@ def main():
     registry = {name: {'topic': 'iot/sensors/'+name, 'key_epoch': 1,
                        'database_device_id': index,
                        'key_hex': secrets.token_hex(16)}
-                for index,name in enumerate(['raspb1','smoke'], 1)}
+                for index,name in enumerate(['raspb1','smoke'] + args.extra_device, 1)}
     (directory/'registry.json').write_text(json.dumps(registry))
     for file in directory.iterdir():
         file.chmod(0o600)

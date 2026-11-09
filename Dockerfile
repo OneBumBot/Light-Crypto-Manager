@@ -13,7 +13,7 @@ COPY src/web/*.py /app/src/web/
 COPY src/web/templates /app/src/web/templates
 COPY src/web/static /app/src/web/static
 COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
-COPY scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
 COPY alembic.ini /app/alembic.ini
 COPY migrations /app/migrations
 USER 10001:10001
@@ -25,7 +25,7 @@ COPY requirements/dev.txt /app/requirements/dev.txt
 RUN pip install --no-cache-dir -r requirements/dev.txt
 COPY pyproject.toml /app/pyproject.toml
 COPY tests/*.py /app/tests/
-COPY scripts/live_web_smoke.py /app/scripts/live_web_smoke.py
+COPY scripts/live_web_smoke.py scripts/dual_database_probe.py /app/scripts/
 COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
 COPY deploy/compose.env.example /app/deploy/compose.env.example
 USER 10001:10001

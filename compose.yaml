@@ -38,6 +38,7 @@ services:
       - mongo-security:/run/mongo:ro
       - ./deploy/mongo/init.js:/docker-entrypoint-initdb.d/init.js:ro
       - ./deploy/mongo/health.js:/health.js:ro
+      - ./deploy/mongo/retention.js:/retention.js:ro
     healthcheck:
       test: [CMD, mongosh, --quiet, --file, /health.js]
       interval: 5s
@@ -69,7 +70,6 @@ services:
       - "127.0.0.1:${MQTT_BIND_PORT:-8883}:8883"
     volumes:
       - ./deploy/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
-      - ./deploy/mosquitto/acl:/mosquitto/config/acl:ro
       - broker-security:/mosquitto/security:ro
       - mosquitto-data:/mosquitto/data
     healthcheck:
@@ -99,7 +99,7 @@ services:
 
   init-db:
     <<: *app
-    command: [python, -m, src.web.app, init-db]
+    command: [python, -m, src.migrate]
     environment: *db-environment
     depends_on:
       postgres:
@@ -113,6 +113,8 @@ services:
       <<: [*db-environment, *mqtt-environment]
       MQTT_USERNAME: receiver
       MQTT_PASSWORD_FILE: /run/lcm/receiver.password
+      MQTT_CLIENT_ID: ${INGESTION_CLIENT_ID:-lightcrypto-ingestion}
+      MAX_OUTBOX_PENDING: ${MAX_OUTBOX_PENDING:-100000}
       MQTT_READY_FILE: /tmp/mqtt-ready
     depends_on:
       init-db:
@@ -124,6 +126,28 @@ services:
       interval: 3s
       timeout: 3s
       retries: 20
+    restart: unless-stopped
+
+  outbox-relay:
+    <<: *app
+    command: [python, -m, src.outbox_relay]
+    volumes:
+      - relay-storage-security:/run/storage:ro
+    environment:
+      <<: *db-environment
+      MONGO_PASSWORD_FILE: /run/storage/relay.password
+      OUTBOX_RETENTION_DAYS: ${OUTBOX_RETENTION_DAYS:-0}
+      OUTBOX_MAX_ATTEMPTS: ${OUTBOX_MAX_ATTEMPTS:-12}
+    depends_on:
+      init-db:
+        condition: service_completed_successfully
+      storage-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, python, -c, "import time; from pathlib import Path; p=Path('/tmp/relay-ready'); raise SystemExit(not p.exists() or time.time()-p.stat().st_mtime>30)"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
     restart: unless-stopped
 
   demo-setup:
@@ -161,11 +185,13 @@ services:
     command: [python, -m, src.web.app, serve]
     volumes:
       - web-security:/run/lcm:ro
+      - web-storage-security:/run/storage:ro
     environment:
       <<: [*db-environment, *mqtt-environment]
       MQTT_USERNAME: web
       MQTT_PASSWORD_FILE: /run/lcm/web.password
       FLASK_SECRET_KEY: ${FLASK_SECRET_KEY:?generate .env.compose}
+      MONGO_PASSWORD_FILE: /run/storage/history.password
       WEB_MQTT_ENABLED: "1"
       WEB_HOST: "0.0.0.0"
     ports:
@@ -175,6 +201,8 @@ services:
         condition: service_completed_successfully
       broker:
         condition: service_healthy
+      storage-init:
+        condition: service_completed_successfully
     healthcheck:
       test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/login', timeout=2)"]
       interval: 3s
@@ -211,13 +239,21 @@ services:
       target: tests
     volumes:
       - test-security:/run/lcm:ro
+      - smoke-state:/state
+      - test-storage-security:/run/storage:ro
     environment:
+      MONGO_PASSWORD_FILE: /run/storage/relay.password
+      TEST_MONGO_ENABLED: "1"
       MQTT_CA_FILE: /run/lcm/ca.crt
       <<: *db-environment
       MQTT_HOST: broker
       MQTT_PORT: "8883"
       TEST_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-lightcrypto}:${POSTGRES_PASSWORD:?generate .env.compose}@postgres:5432/${POSTGRES_DB:-lightcrypto}
     depends_on:
+      storage-init:
+        condition: service_completed_successfully
+      mongo:
+        condition: service_healthy
       security-init:
         condition: service_completed_successfully
       postgres:

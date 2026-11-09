@@ -284,3 +284,9 @@ Telemetry replay v2 следует переиспользовать; будущ�
 retry/dead/requeue и отключённая по умолчанию очистка доставленного. Реальные PG/Mongo
 проверки: 13 passed (включая миграции и crash после Mongo write); первый concurrency
 тест исправлен: engine передаётся в поток без Flask context lookup. Протокол сохранён.
+
+5.4–5.5: MongoRepository insert-only с unique key и сравнением duplicate, UTC BSON,
+lease relay и явный retention admin script. QoS1 manual ACK после PG commit;
+DB/backpressure ошибка вызывает reconnect без ACK. Генератор поддерживает несколько
+device identities с отдельными паролями, ключами и точными ACL. 203 pytest passed
+с реальными PostgreSQL/MongoDB, включая прежние проверки безопасности.

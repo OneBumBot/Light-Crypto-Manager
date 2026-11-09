@@ -67,8 +67,12 @@ def on_message(client, userdata, msg):
         data = process_packet(msg.payload, userdata['registry'], userdata['engine'], msg.topic)
         logger.info("Telemetry accepted" if data is not None else "Duplicate telemetry ignored")
     except InvalidTelemetry:
-        with userdata['engine'].begin() as connection:
-            record(connection, 'rejected')
+        try:
+            with userdata['engine'].begin() as connection:
+                record(connection, 'rejected')
+        except Exception:
+            if client is not None: client.disconnect()
+            return
         logger.warning('Invalid telemetry rejected')
     except Exception as error:
         logger.error("MQTT packet processing failed (%s)", type(error).__name__)

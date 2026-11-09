@@ -5,8 +5,8 @@ from src.migrate import upgrade
 pytestmark = pytest.mark.postgres
 
 
-def test_migrate_existing_preserves_data(postgres_db):
-    engine = postgres_db.db.engine
+def test_migrate_existing_preserves_data(legacy_postgres_db):
+    engine = legacy_postgres_db.db.engine
     with engine.begin() as conn:
         conn.execute(text("INSERT INTO mqtt_replay_state VALUES ('receiver','migration',1,12)"))
         conn.execute(text('INSERT INTO "Sensor_Data" ("Record_ID","Temperature") VALUES (818,12.5)'))
@@ -18,8 +18,8 @@ def test_migrate_existing_preserves_data(postgres_db):
         assert conn.execute(text('SELECT version_num FROM alembic_version')).scalar_one()
 
 
-def test_migrate_empty_schema(postgres_db):
-    engine = postgres_db.db.engine
+def test_migrate_empty_schema(legacy_postgres_db):
+    engine = legacy_postgres_db.db.engine
     # Dedicated nested schema, never drops application tables/volumes.
     with engine.begin() as conn:
         conn.execute(text('CREATE SCHEMA fresh_migration'))
@@ -34,8 +34,8 @@ def test_migrate_empty_schema(postgres_db):
         conn.execute(text('DROP SCHEMA fresh_migration CASCADE'))
 
 
-def test_migration_rejects_incompatible_schema(postgres_db):
-    engine = postgres_db.db.engine
+def test_migration_rejects_incompatible_schema(legacy_postgres_db):
+    engine = legacy_postgres_db.db.engine
     with engine.begin() as conn:
         conn.execute(text('ALTER TABLE "Sensor_Data" ADD COLUMN unexpected integer'))
     with pytest.raises(RuntimeError, match='schema mismatch'):

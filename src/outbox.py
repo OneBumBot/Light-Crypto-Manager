@@ -70,6 +70,8 @@ def claim(engine, *, lease_seconds=30, max_attempts=12):
             .order_by(outbox.c.available_at, outbox.c.id).with_for_update(skip_locked=True).limit(1)).mappings().first()
         if row is None:
             return None
+        if row['attempts'] > 0:
+            record(connection, 'delivery_retry', now)
         token = str(uuid.uuid4())
         result = connection.execute(update(outbox).where(outbox.c.id == row['id'])
             .values(status='claimed', attempts=outbox.c.attempts+1, claim_token=token,
