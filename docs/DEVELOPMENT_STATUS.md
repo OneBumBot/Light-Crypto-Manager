@@ -275,3 +275,7 @@ Telemetry replay v2 следует переиспользовать; будущ�
 Проверки и последующие блоки фиксируются в `reports/stage5-*.txt`.
 
 Проверка 5.1: Compose config, сборка runtime и authenticated MongoDB/PG healthchecks пройдены; команды в reports/stage5-storage.txt.
+
+5.2: Alembic baseline проверяет колонки/типы/nullability/PK/unique существующей
+схемы. Новая БД создаётся из зафиксированного snapshot; несовместимость требует
+ручного разбора. destructive downgrade запрещён. Данные и replay не меняются.

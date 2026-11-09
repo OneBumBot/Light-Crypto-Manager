@@ -1,0 +1,365 @@
+{
+  "Algorithm_Scheme": {
+    "sql": "\nCREATE TABLE \"Algorithm_Scheme\" (\n\t\"Algorithm_Scheme_ID\" SERIAL NOT NULL, \n\t\"Algorithm_Scheme\" VARCHAR(20), \n\tPRIMARY KEY (\"Algorithm_Scheme_ID\")\n)\n\n",
+    "columns": {
+      "Algorithm_Scheme_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Algorithm_Scheme": {
+        "type": "VARCHAR(20)",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Algorithm_Scheme_ID"
+    ],
+    "unique": []
+  },
+  "Algorithm_Type": {
+    "sql": "\nCREATE TABLE \"Algorithm_Type\" (\n\t\"Algorithm_Type_ID\" SERIAL NOT NULL, \n\t\"Algorithm_Name\" VARCHAR(30), \n\tPRIMARY KEY (\"Algorithm_Type_ID\")\n)\n\n",
+    "columns": {
+      "Algorithm_Type_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Algorithm_Name": {
+        "type": "VARCHAR(30)",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Algorithm_Type_ID"
+    ],
+    "unique": []
+  },
+  "Algorithms": {
+    "sql": "\nCREATE TABLE \"Algorithms\" (\n\t\"Algorithm_ID\" SERIAL NOT NULL, \n\t\"Parameters_ID\" INTEGER, \n\t\"Algorithm_Name\" VARCHAR(40), \n\t\"Algorithm_Type_ID\" INTEGER, \n\tPRIMARY KEY (\"Algorithm_ID\")\n)\n\n",
+    "columns": {
+      "Algorithm_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Parameters_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      },
+      "Algorithm_Name": {
+        "type": "VARCHAR(40)",
+        "nullable": true
+      },
+      "Algorithm_Type_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Algorithm_ID"
+    ],
+    "unique": []
+  },
+  "Anomalies": {
+    "sql": "\nCREATE TABLE \"Anomalies\" (\n\t\"Anomaly_ID\" SERIAL NOT NULL, \n\t\"Anomaly_Date\" TIMESTAMP WITHOUT TIME ZONE, \n\t\"Anomaly_Cause_ID\" INTEGER, \n\t\"Device_ID\" INTEGER, \n\t\"Configuration_Update_Date\" TIMESTAMP WITHOUT TIME ZONE, \n\tPRIMARY KEY (\"Anomaly_ID\")\n)\n\n",
+    "columns": {
+      "Anomaly_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Anomaly_Date": {
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": true
+      },
+      "Anomaly_Cause_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      },
+      "Device_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      },
+      "Configuration_Update_Date": {
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Anomaly_ID"
+    ],
+    "unique": []
+  },
+  "Anomaly_Causes": {
+    "sql": "\nCREATE TABLE \"Anomaly_Causes\" (\n\t\"Anomaly_Cause_ID\" SERIAL NOT NULL, \n\t\"Anomaly_Cause\" VARCHAR(20), \n\tPRIMARY KEY (\"Anomaly_Cause_ID\")\n)\n\n",
+    "columns": {
+      "Anomaly_Cause_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Anomaly_Cause": {
+        "type": "VARCHAR(20)",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Anomaly_Cause_ID"
+    ],
+    "unique": []
+  },
+  "Device_Configuration": {
+    "sql": "\nCREATE TABLE \"Device_Configuration\" (\n\t\"Device_ID\" INTEGER NOT NULL, \n\t\"Algorithm_ID\" INTEGER, \n\t\"Tag_ID\" INTEGER, \n\t\"Configuration_Update_Date\" TIMESTAMP WITHOUT TIME ZONE NOT NULL, \n\tPRIMARY KEY (\"Device_ID\", \"Configuration_Update_Date\")\n)\n\n",
+    "columns": {
+      "Device_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Algorithm_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      },
+      "Tag_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      },
+      "Configuration_Update_Date": {
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false
+      }
+    },
+    "pk": [
+      "Device_ID",
+      "Configuration_Update_Date"
+    ],
+    "unique": []
+  },
+  "Global_Reports": {
+    "sql": "\nCREATE TABLE \"Global_Reports\" (\n\t\"Creation_Date\" TIMESTAMP WITHOUT TIME ZONE NOT NULL, \n\t\"Report_ID\" INTEGER NOT NULL, \n\t\"Report_Name\" VARCHAR(100), \n\t\"Report_Type_ID\" INTEGER, \n\t\"Record_ID\" INTEGER, \n\tPRIMARY KEY (\"Creation_Date\", \"Report_ID\")\n)\n\n",
+    "columns": {
+      "Creation_Date": {
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false
+      },
+      "Report_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Report_Name": {
+        "type": "VARCHAR(100)",
+        "nullable": true
+      },
+      "Report_Type_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      },
+      "Record_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Creation_Date",
+      "Report_ID"
+    ],
+    "unique": []
+  },
+  "Log_Journal": {
+    "sql": "\nCREATE TABLE \"Log_Journal\" (\n\t\"Record_ID\" SERIAL NOT NULL, \n\t\"Log_Type_ID\" INTEGER, \n\t\"Record_Date\" TIMESTAMP WITHOUT TIME ZONE, \n\t\"Anomaly_ID\" INTEGER, \n\tPRIMARY KEY (\"Record_ID\")\n)\n\n",
+    "columns": {
+      "Record_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Log_Type_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      },
+      "Record_Date": {
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": true
+      },
+      "Anomaly_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Record_ID"
+    ],
+    "unique": []
+  },
+  "Log_Type": {
+    "sql": "\nCREATE TABLE \"Log_Type\" (\n\t\"Log_Type_ID\" SERIAL NOT NULL, \n\t\"Log_Type\" VARCHAR(50), \n\tPRIMARY KEY (\"Log_Type_ID\")\n)\n\n",
+    "columns": {
+      "Log_Type_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Log_Type": {
+        "type": "VARCHAR(50)",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Log_Type_ID"
+    ],
+    "unique": []
+  },
+  "Parameters": {
+    "sql": "\nCREATE TABLE \"Parameters\" (\n\t\"Parameters_ID\" INTEGER NOT NULL, \n\t\"Key_Size\" INTEGER, \n\t\"Rounds_Count\" INTEGER, \n\t\"Algorithm_Type_ID\" INTEGER NOT NULL, \n\t\"Algorithm_Scheme_ID\" INTEGER, \n\tPRIMARY KEY (\"Parameters_ID\", \"Algorithm_Type_ID\")\n)\n\n",
+    "columns": {
+      "Parameters_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Key_Size": {
+        "type": "INTEGER",
+        "nullable": true
+      },
+      "Rounds_Count": {
+        "type": "INTEGER",
+        "nullable": true
+      },
+      "Algorithm_Type_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Algorithm_Scheme_ID": {
+        "type": "INTEGER",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Parameters_ID",
+      "Algorithm_Type_ID"
+    ],
+    "unique": []
+  },
+  "Report_Types": {
+    "sql": "\nCREATE TABLE \"Report_Types\" (\n\t\"Report_Type_ID\" SERIAL NOT NULL, \n\t\"Report_Type\" VARCHAR(30), \n\tPRIMARY KEY (\"Report_Type_ID\")\n)\n\n",
+    "columns": {
+      "Report_Type_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Report_Type": {
+        "type": "VARCHAR(30)",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Report_Type_ID"
+    ],
+    "unique": []
+  },
+  "Sensor_Data": {
+    "sql": "\nCREATE TABLE \"Sensor_Data\" (\n\t\"Record_ID\" SERIAL NOT NULL, \n\t\"Temperature\" NUMERIC(5, 2), \n\t\"Humidity\" NUMERIC(5, 2), \n\tPRIMARY KEY (\"Record_ID\")\n)\n\n",
+    "columns": {
+      "Record_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Temperature": {
+        "type": "NUMERIC(5, 2)",
+        "nullable": true
+      },
+      "Humidity": {
+        "type": "NUMERIC(5, 2)",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Record_ID"
+    ],
+    "unique": []
+  },
+  "Tag_Journal": {
+    "sql": "\nCREATE TABLE \"Tag_Journal\" (\n\t\"Tag_ID\" SERIAL NOT NULL, \n\t\"Tag_Name\" VARCHAR(30), \n\t\"Creation_Date\" TIMESTAMP WITHOUT TIME ZONE, \n\tPRIMARY KEY (\"Tag_ID\")\n)\n\n",
+    "columns": {
+      "Tag_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Tag_Name": {
+        "type": "VARCHAR(30)",
+        "nullable": true
+      },
+      "Creation_Date": {
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "Tag_ID"
+    ],
+    "unique": []
+  },
+  "Users": {
+    "sql": "\nCREATE TABLE \"Users\" (\n\t\"User_ID\" SERIAL NOT NULL, \n\t\"Username\" VARCHAR(50) NOT NULL, \n\t\"Email\" VARCHAR(100) NOT NULL, \n\t\"Password_Hash\" VARCHAR(255) NOT NULL, \n\t\"Role\" VARCHAR(20) NOT NULL, \n\t\"Is_Active\" BOOLEAN, \n\t\"Created_At\" TIMESTAMP WITHOUT TIME ZONE, \n\tPRIMARY KEY (\"User_ID\"), \n\tUNIQUE (\"Username\"), \n\tUNIQUE (\"Email\")\n)\n\n",
+    "columns": {
+      "User_ID": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "Username": {
+        "type": "VARCHAR(50)",
+        "nullable": false
+      },
+      "Email": {
+        "type": "VARCHAR(100)",
+        "nullable": false
+      },
+      "Password_Hash": {
+        "type": "VARCHAR(255)",
+        "nullable": false
+      },
+      "Role": {
+        "type": "VARCHAR(20)",
+        "nullable": false
+      },
+      "Is_Active": {
+        "type": "BOOLEAN",
+        "nullable": true
+      },
+      "Created_At": {
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": true
+      }
+    },
+    "pk": [
+      "User_ID"
+    ],
+    "unique": [
+      [
+        "Email"
+      ],
+      [
+        "Username"
+      ]
+    ]
+  },
+  "mqtt_replay_state": {
+    "sql": "\nCREATE TABLE mqtt_replay_state (\n\tconsumer VARCHAR(16) NOT NULL, \n\tdevice_id VARCHAR(48) NOT NULL, \n\tkey_epoch INTEGER NOT NULL, \n\tlast_sequence BIGINT NOT NULL, \n\tPRIMARY KEY (consumer, device_id, key_epoch), \n\tCHECK (last_sequence > 0 AND key_epoch > 0)\n)\n\n",
+    "columns": {
+      "consumer": {
+        "type": "VARCHAR(16)",
+        "nullable": false
+      },
+      "device_id": {
+        "type": "VARCHAR(48)",
+        "nullable": false
+      },
+      "key_epoch": {
+        "type": "INTEGER",
+        "nullable": false
+      },
+      "last_sequence": {
+        "type": "BIGINT",
+        "nullable": false
+      }
+    },
+    "pk": [
+      "consumer",
+      "device_id",
+      "key_epoch"
+    ],
+    "unique": []
+  }
+}

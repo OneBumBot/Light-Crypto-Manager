@@ -14,6 +14,8 @@ COPY src/web/templates /app/src/web/templates
 COPY src/web/static /app/src/web/static
 COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
 COPY scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+COPY alembic.ini /app/alembic.ini
+COPY migrations /app/migrations
 USER 10001:10001
 CMD ["python", "-m", "src.brocker.mqtt_brocker"]
 
