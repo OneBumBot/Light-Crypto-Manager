@@ -13,3 +13,15 @@ $ .venv/bin/python -m scripts.diagnose_rf75 --data .local-runtime/edge-research/
 Frozen baseline diagnosis saved; no training, selection or threshold changes
 
 EXIT CODE: 0
+
+UTC: 2026-11-09T21:50:37.139746+00:00
+$ .venv/bin/python -m scripts.diagnose_rf75 --data .local-runtime/edge-research/network-grouped-v2.csv --models .local-runtime/stage6-network-models --output docs/reports/stage75-rf-diagnosis-v2.json
+Frozen baseline diagnosis saved; no training, selection or threshold changes
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T21:59:19.568767+00:00
+$ .venv/bin/python -m scripts.diagnose_rf75 --data .local-runtime/edge-research/network-grouped-v2.csv --models .local-runtime/stage6-network-models --output docs/reports/stage75-rf-diagnosis-v3.json
+Frozen baseline diagnosis saved; no training, selection or threshold changes
+
+EXIT CODE: 0

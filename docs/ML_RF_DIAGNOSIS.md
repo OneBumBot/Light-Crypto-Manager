@@ -2,7 +2,7 @@
 
 Baseline не переобучен, threshold и test не менялись. Ветка этапа7.5 начинается
 с c9250d8. Диагностический запуск только читает старый fitted pipeline и старые
-partition indices: [stage75-rf-diagnosis.json](reports/stage75-rf-diagnosis.json).
+partition indices: [stage75-rf-diagnosis-v3.json](reports/stage75-rf-diagnosis-v3.json).
 Ни старый test, ни его score не используются для выбора новых параметров/признаков.
 
 ## Почему порог больше 1
@@ -60,3 +60,22 @@ metadata сохраняются вне X; duplicates/связанные груп
 Preprocessing/train weights только на train, threshold/hyperparameters только на
 validation, окончательный test после freeze. Без независимых normal captures
 полноценный benchmark блокируется, а не заменяется random-row split.
+
+## Уточнение независимости и эффекта purge
+
+| Часть | Строк до purge | Normal до | Строк после | Normal после |
+|---|---:|---:|---:|---:|
+| Train | 7165 | 2677 | 5630 | 1961 |
+| Validation | 2190 | 694 | 1227 | 9 |
+| Test (только историческая диагностика) | 2496 | 1000 | 2005 | 1000 |
+
+У оставшихся9 normal validation **одна endpoint-pair группа и один уникальный
+canonical feature-вектор**. Это не9 независимых проверок normal traffic.
+Conservative feature-duplicate purge удалил685 из694 normal validation, поэтому
+сильно изменил распределение. Совпадение числовых признаков ещё не доказывает
+копирование одного физического пакета: repeated TCP patterns бывают нормальными.
+Нужны capture/packet provenance и отчёт о последствиях очистки. Новый pipeline
+сохраняет эту conservative проверку как заранее заданный guard и отказывает,
+если после неё недостаточно normal rows/groups; он не объявляет редкую оставшуюся
+точку надёжной validation. Для другой dedup методики требуется отдельный заранее
+зафиксированный план, а не подбор по старому test.

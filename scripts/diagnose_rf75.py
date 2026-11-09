@@ -22,15 +22,23 @@ def main():
             if len(matches)!=1:raise ValueError('Ambiguous frozen baseline artifact')
             mid=matches[0];m,pipeline=load(args.models,mid,'1.0.0')
         if file_hash(args.data)!=m['dataset']['sha256']:raise ValueError('Baseline dataset hash mismatch')
+        reference_types=set(frame.iloc[m['split']['indices'][0]].Attack_type)
         item=dict(model_id=mid,artifact_sha256=m['artifact_sha256'],dataset_sha256=m['dataset']['sha256'],threshold=m['threshold'],partitions={})
         sets=[]
         for name,indices in zip(['train','validation','test'],m['split']['indices']):
             sub=frame.iloc[indices];scores=risk_scores(pipeline,sub,m['algorithm']);binary=sub.Attack_label.to_numpy()
             groups=set(sub.flow_group);sets.append(groups)
-            item['partitions'][name]=dict(rows=len(sub),groups=len(groups),classes={k:int(v) for k,v in sub.Attack_type.value_counts().items()},
+            item['partitions'][name]=dict(rows=len(sub),groups=len(groups),class_groups={str(label):int(sub.loc[sub.Attack_label==label].flow_group.nunique()) for label in [0,1]},
+                unique_feature_patterns={str(label):int(pd.util.hash_pandas_object(network_frame(sub.loc[sub.Attack_label==label]),index=False).nunique()) for label in [0,1]},classes={k:int(v) for k,v in sub.Attack_type.value_counts().items()},
                 probability_or_score_quantiles={str(label):np.quantile(scores[binary==label],[0,.05,.5,.95,1]).tolist() if (binary==label).any() else None for label in [0,1]},
+                per_attack_binary_risk={str(kind):dict(rows=int((sub.Attack_type==kind).sum()),recall=float((scores[sub.Attack_type.to_numpy()==kind]>=m['threshold']).mean()),
+                    false_negatives=int((scores[sub.Attack_type.to_numpy()==kind]<m['threshold']).sum()),seen_in_reference_rf_train=kind in reference_types,
+                    seen_in_model_fit=False if m['algorithm']=='isolation_forest' else kind in reference_types) for kind in sorted(set(sub.Attack_type)-{'Normal'})},
                 scores_at_one=int((scores==1).sum()),scores_above_threshold=int((scores>=m['threshold']).sum()),
                 constant_features=sorted([c for c,v in network_frame(sub).nunique(dropna=False).items() if v<=1]))
+        from src.classifier.ml.splitting import split_frame
+        before,_=split_frame(frame,m['training_parameters'])
+        item['before_feature_duplicate_purge']={name:{'rows':len(indices),'classes':{k:int(v) for k,v in frame.iloc[indices].Attack_type.value_counts().items()}} for name,indices in zip(['train','validation','test'],before)}
         item['cross_partition_groups']=len((sets[0]&sets[1])|(sets[0]&sets[2])|(sets[1]&sets[2]))
         val=item['partitions']['validation'];n=val['classes'].get('Normal',0)
         item['validation_normal_count']=n;item['max_false_positives_at_empirical_5_percent']=int(n*.05)

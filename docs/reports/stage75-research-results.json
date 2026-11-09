@@ -1,0 +1,477 @@
+{
+  "stage": "7.5",
+  "engineering_status": "implemented_and_unit_tested",
+  "scientific_status": "blocked",
+  "versions": {
+    "python": "3.12.16",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "data_provenance": "stage75-data-access.json / stage75-mqttset-audit.json",
+  "real_import": {
+    "rows": 14501,
+    "sha256": "9ad9f30dccffe94a415637e2749f61930edaef5b3063b35185ba84f076181906",
+    "source_file_sha256": "7c8b60b1d8908b9b934da9b2c1cdf7963f7fa124944689276ae5155f0c637efe",
+    "captures": 1,
+    "sessions": 1430,
+    "class_counts": {
+      "Bruteforce": 14501
+    },
+    "granularity": "packet",
+    "feature_version": "tcp-packet-passive-v1",
+    "label_scope": "capture_scenario",
+    "license": "CC BY-NC-SA 4.0"
+  },
+  "reason": "Single raw attack capture/no independent normal captures; reduced metadata missing; no random-row fallback",
+  "full_dataset_normal_captures_in_official_listing": 1,
+  "new_real_models_trained": 0,
+  "new_real_artifacts_exported": 0,
+  "new_internal_quality_test_performed": false,
+  "independent_external_test_performed": false,
+  "historical_baseline_preserved": true,
+  "historical_hashes": {
+    "src/classifier/iot-test.ipynb": "dd25b44ab0b53ab087c76c861c6f85d58980bc325c1fbac9134a78b4d368432b",
+    "docs/reports/stage6-network-metrics.json": "94e559a9d02170bcc70bb29475f4e036edcd17d4ab9d4059a761b630516c527e",
+    "docs/reports/stage6-telemetry-metrics.json": "a78be1570a9adb8798b26a992dbec59690b631f614bdf756a0260ed412fd8a79",
+    ".local-runtime/stage6-network-models/edge-network-rf-binary/1.0.0/model.joblib": "1960f7dcd6776a7ec31a4b6f77fbe39fc5ce6cd49234ca6c70d66c423f674620",
+    ".local-runtime/stage6-network-models/edge-network-rf-binary/1.0.0/manifest.json": "642665f56c494c159d8ff7b93ef823343a1019a9e31ca6a2510d7b7582830001",
+    ".local-runtime/stage6-network-models/edge-network-rf-multiclass/1.0.0/model.joblib": "c6e14d55be72e9ea559483ed6b75dd2db4b61fe6050a886e729a0535cb6648cd",
+    ".local-runtime/stage6-network-models/edge-network-rf-multiclass/1.0.0/manifest.json": "c525fde667b169b5d7e335ab15df5ed6a70c52de92a36bfaf854cb5687f26478",
+    ".local-runtime/stage6-network-models/edge-network-if/1.0.0/model.joblib": "72a26dca25f6a9c051accd8ea654f1f03b687b33c31a6936814c613c2d243c50",
+    ".local-runtime/stage6-network-models/edge-network-if/1.0.0/manifest.json": "a97c8b2b6e1ceae5fd6504650f37568b78103987b5c9c2bc73a56c627d111779",
+    ".local-runtime/stage6-models/telemetry-statistical/1.0.0/model.joblib": "cf7abe77bcb64723d069e541262771feea264b7742bdef03fa6e3e7521f0a479",
+    ".local-runtime/stage6-models/telemetry-statistical/1.0.0/manifest.json": "7a4e4a2eaae2d894d6efeaca290bab4517e3d8bc0dfa1cf3d5106c0ad54684c6",
+    ".local-runtime/stage6-models/telemetry-isolation-forest/1.0.0/model.joblib": "acd0f2216f1c6cd12dbe2dd6a306e6d0500de8c186f80d101a064c8d45532bc3",
+    ".local-runtime/stage6-models/telemetry-isolation-forest/1.0.0/manifest.json": "9aaf23e028125c1352c6ff0292504835a41467ccee10a62d51a1fd6cb4d41e49"
+  },
+  "config": {
+    "schema_version": 1,
+    "seed": 75,
+    "minimum_normal_rows": 1000,
+    "minimum_class_captures": 5,
+    "max_rows": 100000,
+    "validation_fpr_target": 0.05,
+    "model_version": "7.5.0",
+    "candidates": [
+      {
+        "candidate_id": "rf_baseline",
+        "algorithm": "rf",
+        "scaling": "none",
+        "parameters": {
+          "n_estimators": 100,
+          "max_depth": null,
+          "min_samples_split": 2,
+          "min_samples_leaf": 1,
+          "max_features": "sqrt",
+          "class_weight": null
+        }
+      },
+      {
+        "candidate_id": "rf_balanced",
+        "algorithm": "rf",
+        "scaling": "none",
+        "parameters": {
+          "n_estimators": 100,
+          "max_depth": null,
+          "min_samples_split": 2,
+          "min_samples_leaf": 1,
+          "max_features": "sqrt",
+          "class_weight": "balanced"
+        }
+      },
+      {
+        "candidate_id": "rf_subsample",
+        "algorithm": "rf",
+        "scaling": "none",
+        "parameters": {
+          "n_estimators": 100,
+          "max_depth": null,
+          "min_samples_split": 2,
+          "min_samples_leaf": 1,
+          "max_features": "sqrt",
+          "class_weight": "balanced_subsample"
+        }
+      },
+      {
+        "candidate_id": "rf_tuned_0",
+        "algorithm": "rf",
+        "scaling": "none",
+        "parameters": {
+          "n_estimators": 100,
+          "max_depth": 16,
+          "min_samples_leaf": 2,
+          "min_samples_split": 4,
+          "max_features": "sqrt",
+          "class_weight": "balanced"
+        }
+      },
+      {
+        "candidate_id": "rf_tuned_1",
+        "algorithm": "rf",
+        "scaling": "none",
+        "parameters": {
+          "n_estimators": 200,
+          "max_depth": 32,
+          "min_samples_leaf": 4,
+          "min_samples_split": 8,
+          "max_features": 0.8,
+          "class_weight": "balanced_subsample"
+        }
+      },
+      {
+        "candidate_id": "if_baseline",
+        "algorithm": "if",
+        "scaling": "none",
+        "parameters": {
+          "n_estimators": 100,
+          "max_samples": 256,
+          "max_features": 1.0
+        }
+      },
+      {
+        "candidate_id": "if_standard",
+        "algorithm": "if",
+        "scaling": "standard",
+        "parameters": {
+          "n_estimators": 100,
+          "max_samples": 256,
+          "max_features": 1.0
+        }
+      },
+      {
+        "candidate_id": "if_tuned_0",
+        "algorithm": "if",
+        "scaling": "none",
+        "parameters": {
+          "n_estimators": 200,
+          "max_samples": 1024,
+          "max_features": 0.75
+        }
+      },
+      {
+        "candidate_id": "if_tuned_1",
+        "algorithm": "if",
+        "scaling": "robust",
+        "parameters": {
+          "n_estimators": 200,
+          "max_samples": 256,
+          "max_features": 0.5
+        }
+      }
+    ]
+  },
+  "config_sha256": "aba14b480b702984e804f615089ed2a8511c0150c62bb672a25f34534f843b3e",
+  "candidate_matrix": [
+    {
+      "candidate_id": "rf_baseline",
+      "task": "rf_binary",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "rf_baseline",
+      "task": "rf_multiclass",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "rf_balanced",
+      "task": "rf_binary",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": "balanced"
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "rf_balanced",
+      "task": "rf_multiclass",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": "balanced"
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "rf_subsample",
+      "task": "rf_binary",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": "balanced_subsample"
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "rf_subsample",
+      "task": "rf_multiclass",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": "balanced_subsample"
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "rf_tuned_0",
+      "task": "rf_binary",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": 16,
+        "min_samples_leaf": 2,
+        "min_samples_split": 4,
+        "max_features": "sqrt",
+        "class_weight": "balanced"
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "rf_tuned_0",
+      "task": "rf_multiclass",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": 16,
+        "min_samples_leaf": 2,
+        "min_samples_split": 4,
+        "max_features": "sqrt",
+        "class_weight": "balanced"
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "rf_tuned_1",
+      "task": "rf_binary",
+      "parameters": {
+        "n_estimators": 200,
+        "max_depth": 32,
+        "min_samples_leaf": 4,
+        "min_samples_split": 8,
+        "max_features": 0.8,
+        "class_weight": "balanced_subsample"
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "rf_tuned_1",
+      "task": "rf_multiclass",
+      "parameters": {
+        "n_estimators": 200,
+        "max_depth": 32,
+        "min_samples_leaf": 4,
+        "min_samples_split": 8,
+        "max_features": 0.8,
+        "class_weight": "balanced_subsample"
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "if_baseline",
+      "task": "isolation_forest",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "if_standard",
+      "task": "isolation_forest",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "scaling": "standard",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "if_tuned_0",
+      "task": "isolation_forest",
+      "parameters": {
+        "n_estimators": 200,
+        "max_samples": 1024,
+        "max_features": 0.75
+      },
+      "scaling": "none",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    },
+    {
+      "candidate_id": "if_tuned_1",
+      "task": "isolation_forest",
+      "parameters": {
+        "n_estimators": 200,
+        "max_samples": 256,
+        "max_features": 0.5
+      },
+      "scaling": "robust",
+      "model_version": "7.5.0",
+      "status": "not_trained_no_valid_real_partition",
+      "validation_metrics": null,
+      "final_test_metrics": null,
+      "external_metrics": null,
+      "preprocessing_seconds": null,
+      "training_seconds": null,
+      "inference_cost": null,
+      "threshold": null
+    }
+  ],
+  "historical_diagnosis": "stage75-rf-diagnosis-v3.json",
+  "historical_cost": "stage75-baseline-cost.json",
+  "trusted_detector": false,
+  "policy_mode": "DRY_RUN",
+  "real_crypto_profiles": [
+    "Ascon-AEAD128"
+  ],
+  "synthetic_results_are_engineering_only": true,
+  "commands": [
+    ".venv/bin/python -m src.classifier.research.cli import --config .local-runtime/research75/raw-import.json --output .local-runtime/research75/bruteforce-prepared-v2.csv",
+    ".venv/bin/python -m src.classifier.research.cli plan --data .local-runtime/research75/bruteforce-prepared-v2.csv --manifest .local-runtime/research75/bruteforce-prepared-v2.manifest.json --config configs/ml/research75.json --output .local-runtime/research75/real-plan-v2.json"
+  ]
+}

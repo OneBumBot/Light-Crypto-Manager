@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "python": "3.12.16",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "architecture": "x86_64",
+  "system": "Linux",
+  "dataset_sha256": "c5f864cdee295c31470a65d18ea158bfbb5a54512cb346d511c6bd6b339d8c69",
+  "data_scope": "historical validation only",
+  "results": [
+    {
+      "model_id": "edge-network-if",
+      "model_version": "1.0.0",
+      "artifact_sha256": "72a26dca25f6a9c051accd8ea654f1f03b687b33c31a6936814c613c2d243c50",
+      "artifact_bytes": 102808,
+      "feature_version": "network-core-v1",
+      "rows": 1227,
+      "scope": "frozen stage6 validation; no test rows",
+      "single_samples": 64,
+      "single_ms_p50_p95_p99": [
+        6.152724497951567,
+        6.216023697561468,
+        6.3862011980381785
+      ],
+      "batch_size": 256,
+      "throughput_rows_per_second": 34810.604207242686,
+      "peak_rss_kib_cumulative_process": 174156,
+      "fit_performed": false,
+      "threshold_changed": false,
+      "training_time_seconds": null,
+      "preprocessing_fit_seconds": null
+    },
+    {
+      "model_id": "edge-network-rf-binary",
+      "model_version": "1.0.0",
+      "artifact_sha256": "1960f7dcd6776a7ec31a4b6f77fbe39fc5ce6cd49234ca6c70d66c423f674620",
+      "artifact_bytes": 21691,
+      "feature_version": "network-core-v1",
+      "rows": 1227,
+      "scope": "frozen stage6 validation; no test rows",
+      "single_samples": 64,
+      "single_ms_p50_p95_p99": [
+        6.0010470006091055,
+        6.129708701337222,
+        6.326012172648916
+      ],
+      "batch_size": 256,
+      "throughput_rows_per_second": 35759.936981200175,
+      "peak_rss_kib_cumulative_process": 174156,
+      "fit_performed": false,
+      "threshold_changed": false,
+      "training_time_seconds": null,
+      "preprocessing_fit_seconds": null
+    },
+    {
+      "model_id": "edge-network-rf-multiclass",
+      "model_version": "1.0.0",
+      "artifact_sha256": "c6e14d55be72e9ea559483ed6b75dd2db4b61fe6050a886e729a0535cb6648cd",
+      "artifact_bytes": 31515,
+      "feature_version": "network-core-v1",
+      "rows": 1227,
+      "scope": "frozen stage6 validation; no test rows",
+      "single_samples": 64,
+      "single_ms_p50_p95_p99": [
+        6.036328999471152,
+        6.095197148533771,
+        6.121404382574838
+      ],
+      "batch_size": 256,
+      "throughput_rows_per_second": 35510.76755089173,
+      "peak_rss_kib_cumulative_process": 174156,
+      "fit_performed": false,
+      "threshold_changed": false,
+      "training_time_seconds": null,
+      "preprocessing_fit_seconds": null
+    }
+  ],
+  "limitations": [
+    "Small shared development host timing, not controlled production benchmark",
+    "Schema validation/preprocessing included in inference",
+    "Cumulative process RSS, not isolated per-model memory",
+    "No Raspberry Pi/ARM measurement",
+    "No new model quality or improvement claim"
+  ]
+}

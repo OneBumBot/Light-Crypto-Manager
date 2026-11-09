@@ -4,3 +4,166 @@ $ .venv/bin/ruff check scripts/diagnose_rf75.py
 All checks passed!
 
 EXIT CODE: 0
+
+UTC: 2026-11-09T21:40:30.431873+00:00
+$ .venv/bin/ruff check src/classifier/research scripts/diagnose_rf75.py scripts/fetch_mqttset75.py tests/test_research75.py
+All checks passed!
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T21:58:04.089997+00:00
+$ .venv/bin/ruff check src scripts tests migrations
+All checks passed!
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T21:58:04.124518+00:00
+$ git diff --exit-code c9250d8 -- src/policy src/telemetry.py src/replay.py src/ingestion.py src/outbox.py src/outbox_relay.py src/ml_signals.py src/ml_storage.py src/mongo_repository.py src/publisher src/brocker compose.yaml migrations src/web
+
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T22:00:00.602774+00:00
+$ python3 scripts/audit_ml_notebook.py --expected-sha256 dd25b44ab0b53ab087c76c861c6f85d58980bc325c1fbac9134a78b4d368432b
+{
+  "notebook": "src/classifier/iot-test.ipynb",
+  "sha256": "dd25b44ab0b53ab087c76c861c6f85d58980bc325c1fbac9134a78b4d368432b",
+  "inspection_only": true,
+  "dataset_loaded": false,
+  "cells": [
+    {
+      "number": 1,
+      "type": "code",
+      "source_lines": 11,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 2,
+      "type": "code",
+      "source_lines": 15,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 3,
+      "type": "code",
+      "source_lines": 13,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 4,
+      "type": "code",
+      "source_lines": 1,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 5,
+      "type": "code",
+      "source_lines": 9,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 6,
+      "type": "code",
+      "source_lines": 1,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 7,
+      "type": "code",
+      "source_lines": 8,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 8,
+      "type": "code",
+      "source_lines": 3,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 9,
+      "type": "code",
+      "source_lines": 36,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 10,
+      "type": "code",
+      "source_lines": 1,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 11,
+      "type": "code",
+      "source_lines": 1,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 12,
+      "type": "code",
+      "source_lines": 60,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 13,
+      "type": "code",
+      "source_lines": 1,
+      "saved_outputs": 0,
+      "execution_count": null
+    }
+  ],
+  "declared_lists": {
+    "drop_columns": [
+      "frame.time",
+      "ip.src_host",
+      "ip.dst_host",
+      "arp.src.proto_ipv4",
+      "arp.dst.proto_ipv4",
+      "http.file_data",
+      "http.request.full_uri",
+      "icmp.transmit_timestamp",
+      "http.request.uri.query",
+      "tcp.options",
+      "tcp.payload",
+      "tcp.srcport",
+      "tcp.dstport",
+      "udp.port",
+      "mqtt.msg"
+    ],
+    "categorical_cols": [
+      "http.request.method",
+      "http.referer",
+      "http.request.version",
+      "dns.qry.name.len",
+      "mqtt.conack.flags",
+      "mqtt.protoname",
+      "mqtt.topic"
+    ]
+  },
+  "feature_matrix": "dynamic: all surviving columns except both targets; CSV required for exact schema"
+}
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T22:03:51.507049+00:00
+$ .venv/bin/python -m compileall -q src/classifier/research scripts/diagnose_rf75.py scripts/audit_mqttset75.py scripts/benchmark_baseline75.py scripts/fetch_mqttset75.py
+
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T22:03:51.534763+00:00
+$ git diff --check
+
+
+EXIT CODE: 0

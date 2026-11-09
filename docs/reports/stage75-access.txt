@@ -4,3 +4,9 @@ $ python3 scripts/fetch_mqttset75.py --directory .local-runtime/research75/repro
 {"source_url": "https://www.kaggle.com/datasets/cnrieiit/mqttset", "metadata_url": "https://www.kaggle.com/api/v1/datasets/view/cnrieiit/mqttset", "dataset_version": 5, "license": "CC BY-NC-SA 4.0", "file": "Data/README.md", "bytes": 5374, "sha256": "fd76c095a7a04391155ad1a54fb2446e7e07294f3edc65efbf19cdc56d3b1d43", "downloaded_at": "2026-11-09T21:41:37.800509+00:00", "distribution": "private noncommercial research; no automatic data/weights publication"}
 
 EXIT CODE: 0
+
+UTC: 2026-11-09T21:50:38.883950+00:00
+$ .venv/bin/python -m scripts.audit_mqttset75 --directory .local-runtime/research75 --output docs/reports/stage75-mqttset-audit.json
+Aggregate source audit saved; no raw payload/credentials emitted
+
+EXIT CODE: 0
