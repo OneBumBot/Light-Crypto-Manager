@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Сигналы ML{% endblock %}
+{% block content %}
+<h2>Сигналы ML — DEMO / RESEARCH</h2>
+<p>Оценка модели не является подтверждением кибератаки. Разные шкалы score нельзя сравнивать как вероятность атаки.</p>
+<h3>Доступность моделей и обработка</h3><pre id="mlStatus" role="status"></pre>
+<h3>Криптографический протокол</h3><p id="protocolStatus"></p>
+<h3>Простые правила</h3><p id="rulesStatus"></p>
+{% if current_user.has_table_access('anomalies') %}<a href="{{ url_for('view_table', table_name='anomalies') }}">Отдельный журнал правил</a>{% endif %}
+<h3>Результаты моделей</h3>
+<form id="mlFilters"><label>Устройство <input name="device_id" maxlength="48"></label><button>Обновить</button></form>
+<p id="mlMessage"></p>
+<table class="table"><thead><tr><th>Устройство</th><th>Детектор</th><th>Время</th><th>Score</th><th>Threshold</th><th>Модель</th><th>Статус</th><th>Аномалия</th></tr></thead><tbody id="mlRows"></tbody></table>
+<script src="{{ url_for('static', filename='js/ml_results.js') }}" defer></script>
+{% endblock %}

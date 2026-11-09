@@ -531,6 +531,75 @@ def delete_record(table_name, record_id):
 def generate_test_data(count=10):
     return jsonify({'error': 'Генератор данных пока недоступен'}), 501
 
+@app.get('/ml')
+@login_required
+def ml_results_page():
+    if not current_user.has_table_access('sensor_data'): abort(403)
+    return render_template('ml_results.html')
+
+
+@app.get('/api/ml/events')
+@login_required
+def ml_results():
+    if not current_user.has_table_access('sensor_data'): abort(403)
+    from src.ml_storage import events
+    from src.telemetry import DEVICE
+    from sqlalchemy import select
+    try:
+        if set(request.args)-{'device_id','limit','offset'} or any(len(request.args.getlist(k))!=1 for k in request.args): abort(400)
+        limit=int(request.args.get('limit','50'));offset=int(request.args.get('offset','0'))
+        device=request.args.get('device_id')
+        if not 1<=limit<=200 or not 0<=offset<=10000 or (device is not None and not DEVICE.fullmatch(device)):abort(400)
+    except (ValueError,TypeError):abort(400)
+    columns=[events.c[k] for k in ['device_id','key_epoch','sequence_number','detector','model_id','model_version',
+        'feature_version','evaluated_at','score','threshold','is_anomaly','status','diagnostic','prepare_ms','inference_ms','delivery_ack_lag_seconds']]
+    query=select(*columns).order_by(events.c.evaluated_at.desc().nullslast(),events.c.id.desc()).limit(limit).offset(offset)
+    if device is not None:query=query.where(events.c.device_id==device)
+    try:
+        with db.engine.connect() as c:rows=c.execute(query).mappings().all()
+        items=[{k:(v.isoformat() if isinstance(v,datetime) else v) for k,v in row.items()} for row in rows]
+        return jsonify(items=items,limit=limit,offset=offset,interpretation='Research signals; not confirmed cyberattacks')
+    except SQLAlchemyError:
+        return jsonify(error='Результаты ML временно недоступны'),503
+
+
+@app.get('/api/ml/status')
+@login_required
+def ml_status():
+    if not current_user.has_table_access('sensor_data'):abort(403)
+    from src.ml_storage import models,events,feed_state
+    from src.outbox import metrics
+    from sqlalchemy import select,func
+    from datetime import timezone,timedelta
+    try:
+        with db.engine.connect() as c:
+            rows=c.execute(select(models.c.model_id,models.c.model_version,models.c.feature_version,
+                models.c.detector,models.c.mode,models.c.score_semantics,models.c.score_upper_bound,models.c.status,models.c.heartbeat_at,models.c.diagnostic)
+                .order_by(models.c.heartbeat_at.desc()).limit(50)).mappings().all()
+            state=c.execute(select(feed_state)).mappings().first()
+            counts=dict(c.execute(select(events.c.status,func.count()).group_by(events.c.status)).all())
+            timing=c.execute(select(func.avg(events.c.prepare_ms),func.avg(events.c.inference_ms),
+                func.avg(events.c.delivery_ack_lag_seconds))).one()
+            rejected=None;rules=None
+            if current_user.role=='admin':
+                rejected=c.scalar(select(func.coalesce(func.sum(metrics.c.count),0)).where(metrics.c.kind=='rejected'))
+            if current_user.has_table_access('anomalies'):
+                rules=c.scalar(select(func.count()).select_from(Anomaly))
+        now=datetime.now(timezone.utc)
+        model_rows=[]
+        for row in rows:
+            value=dict(row);value['heartbeat_at']=value['heartbeat_at'].isoformat()
+            value['stale']=(now-row['heartbeat_at'])>timedelta(seconds=30)
+            model_rows.append(value)
+        return jsonify(models=model_rows,feed=dict(state) if state else None,
+            event_status_counts=counts,mean_prepare_ms=timing[0],mean_inference_ms=timing[1],
+            mean_delivery_ack_lag_seconds=timing[2],
+            protocol_rejections=rejected,rule_anomalies=rules,
+            score_interpretation='Model-specific higher-is-more-anomalous score; not a common attack probability')
+    except SQLAlchemyError:
+        return jsonify(error='Статус ML временно недоступен'),503
+
+
 history_repository_lock = Lock()
 
 
