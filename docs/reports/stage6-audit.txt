@@ -1,0 +1,151 @@
+
+UTC: 2026-11-09T16:00:35.890988+00:00
+$ python3 scripts/audit_ml_notebook.py --expected-sha256 dd25b44ab0b53ab087c76c861c6f85d58980bc325c1fbac9134a78b4d368432b
+{
+  "notebook": "src/classifier/iot-test.ipynb",
+  "sha256": "dd25b44ab0b53ab087c76c861c6f85d58980bc325c1fbac9134a78b4d368432b",
+  "inspection_only": true,
+  "dataset_loaded": false,
+  "cells": [
+    {
+      "number": 1,
+      "type": "code",
+      "source_lines": 11,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 2,
+      "type": "code",
+      "source_lines": 15,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 3,
+      "type": "code",
+      "source_lines": 13,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 4,
+      "type": "code",
+      "source_lines": 1,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 5,
+      "type": "code",
+      "source_lines": 9,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 6,
+      "type": "code",
+      "source_lines": 1,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 7,
+      "type": "code",
+      "source_lines": 8,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 8,
+      "type": "code",
+      "source_lines": 3,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 9,
+      "type": "code",
+      "source_lines": 36,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 10,
+      "type": "code",
+      "source_lines": 1,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 11,
+      "type": "code",
+      "source_lines": 1,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 12,
+      "type": "code",
+      "source_lines": 60,
+      "saved_outputs": 0,
+      "execution_count": null
+    },
+    {
+      "number": 13,
+      "type": "code",
+      "source_lines": 1,
+      "saved_outputs": 0,
+      "execution_count": null
+    }
+  ],
+  "declared_lists": {
+    "drop_columns": [
+      "frame.time",
+      "ip.src_host",
+      "ip.dst_host",
+      "arp.src.proto_ipv4",
+      "arp.dst.proto_ipv4",
+      "http.file_data",
+      "http.request.full_uri",
+      "icmp.transmit_timestamp",
+      "http.request.uri.query",
+      "tcp.options",
+      "tcp.payload",
+      "tcp.srcport",
+      "tcp.dstport",
+      "udp.port",
+      "mqtt.msg"
+    ],
+    "categorical_cols": [
+      "http.request.method",
+      "http.referer",
+      "http.request.version",
+      "dns.qry.name.len",
+      "mqtt.conack.flags",
+      "mqtt.protoname",
+      "mqtt.topic"
+    ]
+  },
+  "feature_matrix": "dynamic: all surviving columns except both targets; CSV required for exact schema"
+}
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T16:00:35.922736+00:00
+$ .venv/bin/ruff check scripts/audit_ml_notebook.py
+All checks passed!
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T16:00:35.949374+00:00
+$ git diff --exit-code cfda660 -- src/classifier/iot-test.ipynb src/telemetry.py src/ingestion.py src/outbox.py src/outbox_relay.py src/mongo_repository.py
+
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T16:00:35.975587+00:00
+$ git diff --check
+
+
+EXIT CODE: 0

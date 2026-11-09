@@ -73,3 +73,14 @@ LWC_*_KAT_*.json
 registry.json
 passwords
 server.ext
+
+# ML datasets and generated model/data artifacts (stage 6)
+datasets/
+artifacts/
+*.parquet
+*.feather
+*.arrow
+*.npy
+*.npz
+*.onnx
+*.skops
