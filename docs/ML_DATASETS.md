@@ -1,3 +1,22 @@
+# Обновление этапа 7.5 — фактический доступ и пригодность
+
+MQTTset v5 metadata подтверждает CC BY-NC-SA4.0. Реально получены raw bruteforce
+и reduced CSV, README/parser; hashes/counts — reports/stage75-data-access.json,
+reports/stage75-mqttset-audit.json. Capture split не удаётся: normal capture один,
+reduced утратил provenance. Новые реальные модели не обучались.
+
+IEEE landing page доступна через обычный HTTP200, metadata license CC BY4.0.
+Download UI предлагает login/subscription; usable anonymous file link не получен,
+ограничение не обходилось. Архивы/внешний benchmark не получены. Нужны локально
+предоставленные данные с provenance либо разрешённый доступ владельца аккаунта.
+CICIoT2023/TON_IoT не скачивались, производные объединённые datasets не использованы.
+
+Подробно: ML_DATASET_COMPARISON.md, ML_NETWORK_FEATURE_FEASIBILITY.md,
+ML_GENERALIZATION.md. Ниже сохранён исторический подбор этапа6; его слова «не
+скачаны» относятся к тому моменту, актуальный статус дан выше.
+
+---
+
 # Кандидаты для дополнения Network IDS — поиск 2026-11-09
 
 Дополнительный запрос пользователя: найти данные, способные улучшить RF. Ни один

@@ -1,15 +1,48 @@
-# Этап 7.5 — исследование в feature/ml-research-improvement
+# Состояние разработки — этап 7.5
 
-Исходная база c9250d8 сохранена. Диагностика frozen RF: все9 normal validation
-имеют risk1.0, поэтому FPR constraint выбирает threshold>1. Новый packet extractor
-и offline RF/IF pipeline реализованы отдельно; network-core-v1 не переписан.
-12 новых unit-тестов проходят, промежуточный полный контейнерный прогон265 passed.
-MQTTset v5 metadata license CC BY-NC-SA4.0 подтверждена публичным API; реальные
-raw14501 и reduced330926 строк проверены. Reduced утратил capture/session metadata,
-normal raw capture только один: строгий benchmark и обучение новых реальных
-моделей заблокированы недостатком независимых normal captures. IEEE DataPort
-недоступен; внешний benchmark не выполнен. Научное улучшение RF/IF не заявляется.
-Итоговые regression/документация ещё выполняются. Ниже исторический этап7.
+Ветка feature/ml-research-improvement отc9250d8. Инженерная часть реализована,
+научная оценка улучшенного RF/IF **заблокирована недостатком пригодных independent
+captures и неполученными внешними архивами**. Новых real-data fitted artifacts нет.
+ML/Policy остаются RESEARCH/DEMO, trusted_detector=false, policy DRY_RUN.
+
+| Компонент | Статус | Факт / ограничение |
+|---|---|---|
+| Frozen stage6 baseline | проверено тестами/хешами | 13 files unchanged: notebook,2 reports,5 моделей+manifests |
+| RF diagnosis | выполнено | normal validation scores1.0; purge694→9,1 group/1 vector; threshold>1 |
+| Historical per-attack IF errors | выполнено, ограниченный baseline | ICMP/UDP recall0; TCP.6271; MITM.9822 (не новый benchmark) |
+| MQTTset metadata/license | проверено | v5, CC BY-NC-SA4.0, limited public files без аккаунта |
+| Raw import | проверено на реальных данных |14501 packet rows,1 attack capture,0 normal; plan отвергнут |
+| Reduced audit | выполнено |330926 rows/209499 identical reduced rows, provenance удалена |
+| MQTT-IoT-IDS2020 | частично проверено | Public page200/CC BY4.0, login/subscription download UI, archives не получены |
+| Feature contract/extractor | проверено unit tests | tcp-packet-passive-v1,5 TCP fields, no zero-fill missing columns |
+| RF/IF experimental workflow | проверено unit tests | capture split, train-only transforms/weights, normal-only IF, frozen test |
+| Новые реальные модели/quality | не выполнено | strict gates не разрешают обучать на неподходящем split |
+| External source benchmark | не выполнено | Нет файлов/совместимого prepared source/внутреннего frozen model selection |
+| Baseline inference cost | измерено ограниченно | Frozen validation1227, x86_64,6ms single/35k rows/s batch, не production guarantee |
+| Runtime collector / TLS generalization | отсутствует / не проверено | Только технический проект, пассивно видимые поля ещё не runtime feed |
+| Telemetry IF | сохранён DEMO | Нет новых реальных размеченных физических данных |
+| Existing system regressions | проверено |267 pytest + real recovery/TLS/ACL/ML/Policy/HTTP/Chromium |
+| Crypto/Policy/FastAPI/Magma/CRISP | не изменялись | Ascon/TLS/v2/replay/roles/DRY_RUN сохранены |
+
+## Git и результаты
+
+ac6d4d7 — исходная RF diagnosis и source provenance.
+8b4795b — strict packet import, frozen RF/IF experiment pipeline,12 unit tests.
+504ac6f — capture support failures, historical attack errors и baseline inference costs.
+02c67b1 —267 tests и реальные runtime/security/recovery регрессии.
+Дальнейшие verification/docs commits — git log c9250d8..HEAD; финальный hash в отчёте.
+
+Последний полный прогон267 passed in27.24s, без skips/warnings, прежние255 включены.
+Отдельно реальные3 устройства/TLS/ACL/replay/Outbox crash/Mongo/PG outage/ML recovery,
+2 Policy Worker/restart/readiness, Flask roles/CSRF/Socket.IO и Chromium12 payloads.
+Версии/команды/config/hashes/counts — reports/STAGE75.md и stage75-research-results.json.
+Новые weighted/tuned models только предусмотрены матрицей9 specs/14 fits; эффекты
+на реальных данных не оценены. Synthetic unit results не являются scientific metrics.
+
+Изолированный lcm-stage75 остановлен без удаления volumes; private data/models
+сохранены. Нет push/merge/rebase/main изменений. Следующий основной этап не начинается.
+Текущие источники/готовность/что предоставить — ML_DATASET_COMPARISON.md,
+ML_RESEARCH_7_5.md и ML_GENERALIZATION.md. Далее исторический этап7.
 
 ---
 

@@ -64,3 +64,10 @@ multi-device/TLS/ACL/web/Chromium проверки. Промежуточные f
 [STAGE7.md](STAGE7.md):255 pytest + реальные policy/PG/MQTT/ML/Mongo/security/web
 проверки. [Синтетические52 policy runs](stage7-policy-experiment.json) отдельно от
 инженерных тестов. Ascon — единственный реальный профиль; no live control/ACK.
+
+## Этап 7.5
+
+[STAGE75.md](STAGE75.md):267 pytest и реальные регрессии. Исследование выявило
+непригодность текущего capture support для нового benchmark; RF/IF improvement
+не подтверждено. Сохранены hashes, source audit, frozen baseline diagnosis/costs
+и машиночитаемые blocked statuses; synthetic fixtures не заменяют real evaluation.

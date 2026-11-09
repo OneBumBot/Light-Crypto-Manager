@@ -79,3 +79,7 @@ Conservative feature-duplicate purge удалил685 из694 normal validation, 
 если после неё недостаточно normal rows/groups; он не объявляет редкую оставшуюся
 точку надёжной validation. Для другой dedup методики требуется отдельный заранее
 зафиксированный план, а не подбор по старому test.
+
+Normal group support также мало вне validation: train2 endpoint-pair группы,
+test1 (1000 rows/442 unique feature patterns). Значение FPR0 на таком test не
+равно подтверждённой независимой проверке1000 устройств/captures.

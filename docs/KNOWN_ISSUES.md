@@ -1,3 +1,35 @@
+# Ограничения этапа 7.5
+
+Научный RF/IF benchmark новых данных заблокирован. MQTTset raw имеет только один
+normal capture; reduced330926 rows потерял provenance и содержит209499 одинаковых
+reduced rows (не обязательно те же физические пакеты). IEEE page metadata доступна,
+но архивы download UI требуют login/subscription; данные не получены/не обойдены.
+
+Frozen RF diagnosis: до purge normal validation694, после9,1 group/1 vector,
+risk1.0; threshold>1 не детектирует атаки. IF overall recall.4945 скрывает
+нулевой recall ICMP/UDP и высокий MITM recall на old limited test. Это не новое
+подтверждение качества или независимая оценка. Stage6 reports/models не менялись.
+
+Новая engineering схема5 TCP features видима под TLS в принципе, но offline
+extractor не равен runtime collector. Требуются agreed link layer/clock/stream
+semantics, trusted broker/identity adapter и новые TLS captures. Native2020 packet
+CSV/uni/biflow нельзя искусственно zero-fill или считать одной гранулярностью.
+
+Conservative feature-fingerprint purge может удалить нормальные repeated patterns;
+потери и counts до/после фиксируются, insufficient support приводит к отказу.
+Capture IDs не доказывают независимость; group CI имеет ограничения zero-event
+bootstrap. Operating point empirical5% не population guarantee. Final-test marker
+преднамеренно блокирует повтор даже после crash; recovery — reviewed new experiment.
+External route оценивает binary risk, не объединяет source-specific attack taxonomies.
+
+Новых real-data model artifacts нет. Classifier tests обучают только явно synthetic
+DEMO fixtures. Baseline inference timing на old validation — snapshot общегоx86_64
+host, cumulative process RSS, без нового training/ARM64/load/энергии. Dataset/weights
+лицензии не переносить на код/статьи или наоборот; raw/weights не публикуются.
+Policy/crypto/TLS/replay/Outbox/Mongo/Flask invariants сохранены. Ниже история7.
+
+---
+
 # Актуальные ограничения после этапа 7
 
 Устранены: отсутствие Policy Signal/версий политики/FSM/PG аудита, отсутствие

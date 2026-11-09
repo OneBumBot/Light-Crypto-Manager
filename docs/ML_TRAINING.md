@@ -1,3 +1,25 @@
+# Дополнение этапа 7.5: отдельный offline research workflow
+
+Старая команда ниже сохраняет network-core-v1 и telemetry workflow. Новые packet
+experiments запускаются отдельно через src.classifier.research.cli:
+import → plan → train(validation only) → frozen test → compatible external.
+Полные команды/manifest requirements — ML_RESEARCH_7_5.md; конфигурация
+configs/ml/research75.json, шаблон import configs/ml/research75-import.example.json.
+
+Default: seed75, capture groups, minimum1000 normal rows/5 class-containing captures
+per partition, fixed9 candidate specs (14 RF binary/multiclass/IF fits). Параметры
+не подбираются по old Edge test. При недостатке support отказ, no row-random fallback.
+Новые модели research75-*, version7.5.0; для следующего опыта задайте новую version.
+В текущем реальном запуске plan был отклонён, поэтому train/test не выполнялись.
+Synthetic fixtures используются только unit tests и экспортируют DEMO artifacts.
+
+Frozen threshold выбирается validation F1 under empirical FPR target, не population
+FPR guarantee; calibration не равна contamination. Train-only weights/median/scaler,
+IF normal-only fit, manifest/hash/dependency checks обязательны. Новые модели не
+устанавливаются в online telemetry worker или Policy Worker. Далее прежние команды.
+
+---
+
 # Обучение и артефакты
 
 Используйте Python3.12.16 и lockfile. `.venv`/uv:

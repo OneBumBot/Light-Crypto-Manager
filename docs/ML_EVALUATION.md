@@ -1,3 +1,20 @@
+# Этап 7.5: научный benchmark пока заблокирован
+
+Новые реальные RF/IF не обучены: нет достаточного independent normal capture
+support, reduced потерял capture/session provenance; external2020 files не получены.
+Никаких новых quality scores из синтетики не публикуется. Historical reports
+stage6-network-metrics.json и stage6-telemetry-metrics.json сохранены побайтно.
+
+Новая диагностика: RF normal validation scores1.0, feature purge694→9 normal,
+остаток1 группа/1 vector. Details в ML_RF_DIAGNOSIS.md. Сводная таблица baseline,
+planned matrix, historical per-attack failures и measured validation inference
+costs — ML_RF_IF_BENCHMARK.md. Новая методика и команды — ML_RESEARCH_7_5.md.
+
+Не смешивать historical test, внутренний future validation/test, external dataset,
+synthetic unit checks и технические regression tests. Ниже историческая оценка6.
+
+---
+
 # Оценка: разные задачи и разные виды доказательств
 
 ## Network IDS — реальные данные, ограниченный эксперимент

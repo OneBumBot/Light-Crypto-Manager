@@ -1,3 +1,31 @@
+# Дополнение7.5: tcp-packet-passive-v1 (offline)
+
+Отдельная новая schema, старая network-core-v1 ниже не меняется. Порядок5 numeric
+features: frame.len, tcp.len, tcp.flags, tcp.window_size_value, tcp.time_delta.
+Гранулярность packet, не flow/window/measurement. Диапазоны и hex flags conversion
+в research/schema.py; отсутствующая колонка и all-missing train feature отклоняются.
+NaN value обрабатывается train-only median+missing indicator; Infinity/invalid types
+отклоняются. Metadata source/capture/session/packet/timestamp/labels не входят в X.
+
+Source provenance обязательна; dataset_family задаёт независимую type ontology:
+MQTTset6 классов, MQTT-IoT-IDS20205 классов. Binary0=Normal,1=attack. Неизвестные
+типы не склеиваются автоматически; тип unseen в RF train отмечается в оценке.
+Packet_audited требует отдельный per-packet binary label_column, иначе только
+явно обозначенные capture-scenario labels. Режим prepared schema/hash фиксируется.
+
+Offline output contract offline-network-risk-v1 содержит detector=network_ids,
+version/model/score/threshold/direction/range, optional type, mode и
+trusted_detector=false, binding=unattributed. Он **не является** live Policy Signal
+и не создаёт authenticated device identity. Policy allowlist не расширена.
+
+Экстракция/наблюдаемость под TLS и ограничения byte semantics —
+ML_NETWORK_FEATURE_FEASIBILITY.md. Поля теоретически наблюдаемы, но действующего
+collector в LightCrypto Manager ещё нет; plaintext→TLS переносимость не проверена.
+Артефакт loader поддерживает этот явно версионированный offline contract; никакого
+неявного zero padding старой30-column schema или отключения TLS нет.
+
+---
+
 # Версионированные признаки и сигнал
 
 ## Network IDS: network-core-v1
