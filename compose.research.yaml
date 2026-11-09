@@ -1,0 +1,104 @@
+# Explicit opt-in override. Always use a fresh lcm-stage7b-* project and private config.
+services:
+  postgres:
+    cpus: '1.0'
+    mem_limit: 512m
+    logging: &bounded-logs
+      options: {max-size: 4m, max-file: '2'}
+  mongo:
+    cpus: '1.0'
+    mem_limit: 768m
+    command: [mongod, --auth, --wiredTigerCacheSizeGB, '0.25']
+    logging: *bounded-logs
+  receiver:
+    cpus: '1.0'
+    mem_limit: 256m
+    logging: *bounded-logs
+  outbox-relay:
+    cpus: '1.0'
+    mem_limit: 256m
+    logging: *bounded-logs
+  broker:
+    cpus: '0.5'
+    mem_limit: 128m
+    ports: !reset []
+    command: [mosquitto, -c, /mosquitto/config/mosquitto.conf, -v]
+    logging: *bounded-logs
+  web:
+    cpus: '0.5'
+    mem_limit: 256m
+    ports: !reset []
+    logging: *bounded-logs
+  policy-worker:
+    cpus: '0.5'
+    mem_limit: 192m
+    logging: *bounded-logs
+  research-provision:
+    image: ${COMPOSE_PROJECT_NAME}-runtime
+    profiles: [research]
+    cpus: '0.5'
+    mem_limit: 192m
+    command: [python, -m, scripts.provision_registry]
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-lightcrypto}:${POSTGRES_PASSWORD:?generate private config}@postgres:5432/${POSTGRES_DB:-lightcrypto}
+      DEVICE_REGISTRY_FILE: /run/lcm/registry.json
+    volumes:
+      - receiver-security:/run/lcm:ro
+    depends_on:
+      init-db: {condition: service_completed_successfully}
+      security-init: {condition: service_completed_successfully}
+  research-init:
+    image: ${COMPOSE_PROJECT_NAME}-laboratory
+    build:
+      context: .
+      dockerfile: deploy/research/Dockerfile
+    profiles: [research]
+    user: '0:0'
+    cpus: '0.5'
+    mem_limit: 192m
+    command: [python, -m, src.research_stand.install]
+    depends_on:
+      research-provision: {condition: service_completed_successfully}
+    volumes:
+      - ${MQTT_SECURITY_DIR}:/input:ro
+      - research-credentials:/out/credentials
+      - research-state:/out/state
+      - research-data:/out/data
+  lab-devices:
+    image: ${COMPOSE_PROJECT_NAME}-laboratory
+    profiles: [research]
+    init: true
+    cap_drop: [ALL]
+    volumes:
+      - research-credentials:/run/research:ro
+      - research-state:/state
+      - research-data:/research
+    depends_on:
+      research-init: {condition: service_completed_successfully}
+      receiver: {condition: service_healthy}
+    cpus: '1.0'
+    mem_limit: 256m
+    stop_grace_period: 15s
+    logging: *bounded-logs
+  traffic-collector:
+    image: ${COMPOSE_PROJECT_NAME}-laboratory
+    profiles: [research]
+    init: true
+    network_mode: service:lab-devices
+    cap_drop: [ALL]
+    cap_add: [NET_RAW]
+    volumes:
+      - research-data:/research
+    depends_on:
+      lab-devices: {condition: service_started}
+    cpus: '1.0'
+    mem_limit: 256m
+    stop_grace_period: 15s
+    logging: *bounded-logs
+networks:
+  default:
+    internal: true
+volumes:
+  research-credentials:
+  research-state:
+  research-data:

@@ -36,6 +36,8 @@ RUN pip install --no-cache-dir -r requirements/dev.txt
 COPY pyproject.toml /app/pyproject.toml
 COPY tests/*.py /app/tests/
 COPY src/classifier/research /app/src/classifier/research
+COPY src/research_stand /app/src/research_stand
+COPY scripts/stand_state.py /app/scripts/stand_state.py
 COPY scripts/live_web_smoke.py scripts/dual_database_probe.py scripts/ml_system_probe.py scripts/policy_system_probe.py /app/scripts/
 COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
 COPY deploy/compose.env.example /app/deploy/compose.env.example

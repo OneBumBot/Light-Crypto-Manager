@@ -186,3 +186,13 @@ real anomaly labels и независимая device/session оценка ост
 Изолированный lcm-stage6 остановлен после проверок (stage6-shutdown.txt).
 Команда down выполнена без --volumes: БД, счётчики, model volume и приватные
 материалы сохранены. Предыдущие контуры/volumes не удалялись.
+
+## Этап 7.5b — исследовательский MQTT/TLS стенд
+
+Ветка `feature/mqtt-tls-dataset-collection`, исходный `d4dc3aa`.
+Изолированный Compose override, bounded generator/collector и per-connection
+разметка реализованы. Проверенный пилот:4 captures,1894 packets,1441 normal,
+99 controlled_violation,354 unknown. Потери ядра0. Strict plan ожидаемо отклонён
+из-за4/2 групп классов; пороги не менялись. Основной сбор/регрессии выполняются;
+итоговые доказательства будут в `RESEARCH_75B_RESULTS.md` и reports/stage75b-*.
+ML training и final test не запускаются. Старые отчёты/модели сохраняются.

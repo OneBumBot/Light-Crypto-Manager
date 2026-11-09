@@ -13,7 +13,7 @@ from .schema import VERSION,FEATURES,META,packet_frame
 LABELS={'legitimate':'Normal','normal':'Normal','bruteforce':'Bruteforce','dos':'DoS',
         'malformed':'Malformed','slowite':'SlowITe','flood':'Flood','aggressivescan':'AggressiveScan',
         'udpscan':'UDPScan','sshbruteforce':'SSHBruteforce','mqttbruteforce':'MQTTBruteforce'}
-ONTOLOGIES={'mqttset':sorted(['Normal','Bruteforce','DoS','Malformed','SlowITe','Flood']),
+ONTOLOGIES={'lightcrypto-lab-v1':['ControlledViolation','Normal'], 'mqttset':sorted(['Normal','Bruteforce','DoS','Malformed','SlowITe','Flood']),
             'mqtt-iot-ids2020':sorted(['Normal','AggressiveScan','UDPScan','SSHBruteforce','MQTTBruteforce'])}
 RAW=FEATURES+['frame.time_epoch','frame.number','tcp.stream','ip.proto']
 
