@@ -6,6 +6,7 @@ COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
 COPY src/web/requirements.txt /app/requirements/web.txt
 RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt \
     && useradd --system --uid 10001 --create-home lightcrypto
+COPY src/policy /app/src/policy
 COPY src/*.py /app/src/
 COPY src/publisher/*.py /app/src/publisher/
 COPY src/brocker/*.py /app/src/brocker/
@@ -34,7 +35,7 @@ COPY requirements/dev.txt /app/requirements/dev.txt
 RUN pip install --no-cache-dir -r requirements/dev.txt
 COPY pyproject.toml /app/pyproject.toml
 COPY tests/*.py /app/tests/
-COPY scripts/live_web_smoke.py scripts/dual_database_probe.py scripts/ml_system_probe.py /app/scripts/
+COPY scripts/live_web_smoke.py scripts/dual_database_probe.py scripts/ml_system_probe.py scripts/policy_system_probe.py /app/scripts/
 COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
 COPY deploy/compose.env.example /app/deploy/compose.env.example
 USER 10001:10001

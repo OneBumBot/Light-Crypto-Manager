@@ -1,0 +1,94 @@
+
+UTC: 2026-11-09T20:32:42.907925+00:00
+$ docker compose --env-file .local-runtime/stage7.env run --rm --no-deps tests
+ Container lcm-stage7-tests-run-09cc476b871b Creating
+ Container lcm-stage7-tests-run-09cc476b871b Created
+........................................................................ [ 29%]
+..................................F..................................... [ 58%]
+........................................................................ [ 87%]
+................................                                         [100%]
+=================================== FAILURES ===================================
+____________ test_poison_packet_acknowledged_and_handler_continues _____________
+tests/test_ingestion_ack.py:27: in test_poison_packet_acknowledged_and_handler_continues
+    client.ack.assert_called_once_with(17,1)
+/usr/local/lib/python3.12/unittest/mock.py:960: in assert_called_once_with
+    raise AssertionError(msg)
+E   AssertionError: Expected 'ack' to be called once. Called 0 times.
+=========================== short test summary info ============================
+FAILED tests/test_ingestion_ack.py::test_poison_packet_acknowledged_and_handler_continues
+1 failed, 247 passed in 23.67s
+
+
+EXIT CODE: 1
+
+UTC: 2026-11-09T20:36:12.893759+00:00
+$ docker compose --env-file .local-runtime/stage7.env run --rm --no-deps tests
+ Container lcm-stage7-tests-run-c87cae31f6a8 Creating
+ Container lcm-stage7-tests-run-c87cae31f6a8 Created
+........................................................................ [ 28%]
+........................................................................ [ 57%]
+....................F................................................... [ 85%]
+....................................                                     [100%]
+=================================== FAILURES ===================================
+______________ test_policy_auth_roles_csrf_activation_validation _______________
+tests/test_policy_web.py:14: in test_policy_auth_roles_csrf_activation_validation
+    viewer=login(web);operator=login(web,'operator');admin=login(web,'admin')
+                               ^^^^^^^^^^^^^^^^^^^^^
+tests/test_history_api.py:15: in login
+    assert client.post('/login',data=dict(username=user.username,password='public-test-password',csrf_token=csrf_token(client))).status_code==302
+                                                                                                            ^^^^^^^^^^^^^^^^^^
+tests/web_helpers.py:11: in csrf_token
+    assert match is not None
+           ^^^^^^^^^^^^^^^^^
+E   AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_policy_web.py::test_policy_auth_roles_csrf_activation_validation
+1 failed, 251 passed in 24.42s
+
+
+EXIT CODE: 1
+
+UTC: 2026-11-09T20:37:58.741854+00:00
+$ docker compose --env-file .local-runtime/stage7.env run --rm --no-deps tests
+ Container lcm-stage7-tests-run-7a14f9e884a3 Creating
+ Container lcm-stage7-tests-run-7a14f9e884a3 Created
+........................................................................ [ 28%]
+........................................................................ [ 57%]
+....................F................................................... [ 85%]
+....................................                                     [100%]
+=================================== FAILURES ===================================
+______________ test_policy_auth_roles_csrf_activation_validation _______________
+tests/test_policy_web.py:26: in test_policy_auth_roles_csrf_activation_validation
+    headers={'X-CSRFToken':csrf_token(client)}).status_code==403
+                           ^^^^^^^^^^^^^^^^^^
+tests/web_helpers.py:11: in csrf_token
+    assert match is not None
+           ^^^^^^^^^^^^^^^^^
+E   AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_policy_web.py::test_policy_auth_roles_csrf_activation_validation
+1 failed, 251 passed in 24.11s
+
+
+EXIT CODE: 1
+
+UTC: 2026-11-09T20:39:50.793810+00:00
+$ docker compose --env-file .local-runtime/stage7.env run --rm --no-deps tests
+ Container lcm-stage7-tests-run-2ad01e6a791e Creating
+ Container lcm-stage7-tests-run-2ad01e6a791e Created
+........................................................................ [ 28%]
+........................................................................ [ 57%]
+........................................................................ [ 85%]
+....................................                                     [100%]
+252 passed in 24.26s
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T20:42:52.541437+00:00
+$ docker compose --env-file .local-runtime/stage7.env run --rm --no-deps --volume /home/onebumbot/Projects/Light_Crypto_Manager/src/policy:/app/src/policy:ro --volume /home/onebumbot/Projects/Light_Crypto_Manager/tests:/app/tests:ro tests python -m pytest -q -p no:cacheprovider tests/test_policy_engine.py tests/test_policy_storage.py
+ Container lcm-stage7-tests-run-1154036cc588 Creating
+ Container lcm-stage7-tests-run-1154036cc588 Created
+...................                                                      [100%]
+19 passed in 1.09s
+
+EXIT CODE: 0

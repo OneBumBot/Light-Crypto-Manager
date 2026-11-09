@@ -1,5 +1,6 @@
 """Declarative bounded policy settings. No expression evaluator."""
 from dataclasses import dataclass, asdict
+import re
 
 @dataclass(frozen=True)
 class Rules:
@@ -30,7 +31,7 @@ class Rules:
         if self.strategy not in {'fixed','adaptive','adaptive_research','adaptive_hysteresis'}:
             raise ValueError('Unsupported strategy')
         for p in [self.minimum_profile,self.elevated_profile]:
-            if type(p) is not str or len(p)>64:raise ValueError('Invalid profile ID')
+            if type(p) is not str or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,63}',p):raise ValueError('Invalid profile ID')
         return self
 
     def payload(self):return asdict(self.validate())

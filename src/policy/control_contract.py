@@ -30,6 +30,8 @@ class Command:
     schema_version: int = 1
 
     def validate(self):
+        if not all(isinstance(getattr(self,k),str) for k in ['command_id','device_id','command_type','requested_profile','policy_version','created_at','expires_at','acknowledgement_id','correlation_id','status']):
+            raise ValueError('Command string fields required')
         for name in ['command_id','acknowledgement_id','correlation_id']:
             if str(uuid.UUID(getattr(self,name)))!=getattr(self,name):raise ValueError('Canonical UUID required')
         if not DEVICE.fullmatch(self.device_id) or self.command_type!='set_profile' or self.schema_version!=1 or type(self.schema_version) is not int:
@@ -54,6 +56,8 @@ class AckSimulator:
         if subject!='simulation-controller' or authentic is not True:raise ValueError('Simulator authentication/authorization required')
         if not utc(command.created_at)<=now<utc(command.expires_at):raise ValueError('Expired or premature command')
         if command.command_id in self.used:raise ValueError('Duplicate command')
+        if len(self.used)>=1000:raise ValueError('Simulator identity capacity reached')
+        if command.command_epoch<max([e for d,e in self.last if d==command.device_id] or [0]):raise ValueError('Obsolete command epoch')
         key=(command.device_id,command.command_epoch)
         if command.command_sequence<=self.last.get(key,0):raise ValueError('Command replay')
         if command.requested_profile not in {'ascon-aead128-v1','simulated-profile'}:raise ValueError('Unsupported simulated profile')
@@ -62,3 +66,27 @@ class AckSimulator:
         return dict(acknowledgement_id=command.acknowledgement_id,command_id=command.command_id,
                     correlation_id=command.correlation_id,status='simulated',mode='SIMULATION',
                     applied_configuration=None,simulated_configuration=command.requested_profile)
+
+    def snapshot(self):
+        return dict(mode='SIMULATION',last=[dict(device_id=d,epoch=e,sequence=n) for (d,e),n in sorted(self.last.items())],
+                    used=sorted(self.used),simulated_configuration=dict(self.applied))
+
+    @classmethod
+    def restore(cls,payload):
+        if type(payload) is not dict or set(payload)!={'mode','last','used','simulated_configuration'} or payload['mode']!='SIMULATION':
+            raise ValueError('Only simulator snapshots are accepted')
+        if type(payload['last']) is not list or type(payload['used']) is not list or len(payload['last'])>1000 or len(payload['used'])>1000:
+            raise ValueError('Invalid bounded simulator history')
+        result=cls()
+        for row in payload['last']:
+            if type(row) is not dict or set(row)!={'device_id','epoch','sequence'} or not isinstance(row['device_id'],str) or not DEVICE.fullmatch(row['device_id']):raise ValueError('Invalid simulator device')
+            if any(type(row[k]) is not int or not 1<=row[k]<=2**63-1 for k in ['epoch','sequence']):raise ValueError('Invalid simulator replay state')
+            result.last[(row['device_id'],row['epoch'])]=row['sequence']
+        for item in payload['used']:
+            if not isinstance(item,str) or str(uuid.UUID(item))!=item:raise ValueError('Invalid simulator command ID')
+            result.used.add(item)
+        if type(payload['simulated_configuration']) is not dict or len(payload['simulated_configuration'])>1000:raise ValueError('Invalid simulator configurations')
+        for device,profile in payload['simulated_configuration'].items():
+            if not DEVICE.fullmatch(device) or profile not in {'ascon-aead128-v1','simulated-profile'}:raise ValueError('Invalid simulated profile')
+        result.applied=dict(payload['simulated_configuration'])
+        return result

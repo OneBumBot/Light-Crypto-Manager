@@ -70,6 +70,8 @@ def on_message(client, userdata, msg):
         try:
             with userdata['engine'].begin() as connection:
                 record(connection, 'rejected')
+                from src.security_events import capture
+                capture(connection, 'rejected')
         except Exception:
             if client is not None: client.disconnect()
             return

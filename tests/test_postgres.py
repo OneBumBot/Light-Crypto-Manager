@@ -37,7 +37,7 @@ def seed_device(web):
 
 def test_schema_and_web_read_write(postgres_db):
     web = postgres_db
-    assert len(inspect(web.db.engine).get_table_names()) == 23
+    assert len(inspect(web.db.engine).get_table_names()) == 34
     assert web.create_default_users() == 0  # No password means no default account.
     user = User(username='smoke-admin', email='admin@example.test', role='admin')
     user.set_password('public-test-password')
@@ -69,7 +69,7 @@ def test_init_db_cli_is_idempotent(postgres_db):
     result = subprocess.run([sys.executable, '-m', 'src.web.app', 'init-db'],
                             env=dict(os.environ), capture_output=True, text=True, timeout=15)
     assert result.returncode == 0, 'init-db CLI failed'
-    assert len(inspect(postgres_db.db.engine).get_table_names()) == 23
+    assert len(inspect(postgres_db.db.engine).get_table_names()) == 34
 
 
 def test_bootstrap_is_explicit_and_preserves_passwords(postgres_db, monkeypatch):

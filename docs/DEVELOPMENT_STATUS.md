@@ -1,3 +1,18 @@
+# Этап 7 — разработка в feature/adaptive-policy-engine
+
+Исходная база 6aedf52 сохранена. Реализованы Policy Signal v1, DRY_RUN FSM,
+конфигурация hysteresis/cooldown, capability registry и формальный control contract.
+0005_policy/0006_policy_control добавляют 11 таблиц (всего34), не меняя старые данные.
+Состояние, аудит и дедупликация транзакционны; worker опционален и не посылает MQTT.
+Ascon-AEAD128 — единственный реальный профиль; Applied Configuration не подтверждена.
+
+Проверки блоков:12 pure unit и19 policy engine/storage tests на настоящем PG.
+Промежуточный полный прогон252 passed; real two-worker/restart/PG outage прошёл.
+Текущие допроверки веба, ML/Outbox regression и итоговая документация ещё продолжаются.
+Этап7 пока не объявлен завершённым. Протоколы: reports/stage7-*.txt.
+
+Далее сохранён итог этапа6 как историческая база.
+
 # Состояние разработки — этапы 0–6
 
 2026-11-09. Инженерная часть этапа6 реализована в feature/ml-inference-pipeline

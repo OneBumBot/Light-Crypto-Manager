@@ -25,6 +25,7 @@ class State:
     stable_since: str | None = None
     healthy_count: int = 0
     evidence: list = field(default_factory=list)
+    healthy_evidence: list = field(default_factory=list)
     def payload(self):return asdict(self)
 
 
@@ -51,19 +52,22 @@ def evaluate(state,signal,rules,now,*,mode='DRY_RUN',capabilities=('mqtt_tls','a
         attack=authenticated and signal.source=='protocol' and signal.category in {'replay','security_violation'}
         critical=attack and signal.category=='security_violation'
         healthy=authenticated and signal.source=='protocol' and signal.category=='accepted'
+        if signal.source=='system' and signal.category=='unavailable' and signal.original=={'component':'ml'}:
+            s.ml_available=False
         if signal.source=='ml':
             s.last_ml_at=occurred.isoformat();s.ml_available=signal.category!='unavailable'
         if healthy:
             if s.last_telemetry_at and (occurred-utc(s.last_telemetry_at)).total_seconds()>rules.telemetry_fresh_seconds:
-                s.stable_since=None;s.healthy_count=0
+                s.stable_since=None;s.healthy_count=0;s.healthy_evidence=[]
             s.last_telemetry_at=occurred.isoformat()
-            if s.stable_since is None:s.stable_since=occurred.isoformat();s.healthy_count=0
+            if s.stable_since is None:s.stable_since=occurred.isoformat();s.healthy_count=0;s.healthy_evidence=[]
             s.healthy_count=min(128,s.healthy_count+1)
+            s.healthy_evidence=(s.healthy_evidence+[signal.event_id])[-128:]
         if attack:
             s.evidence.append({'event_id':signal.event_id,'at':occurred.isoformat()})
-            s.stable_since=None;s.healthy_count=0
+            s.stable_since=None;s.healthy_count=0;s.healthy_evidence=[]
         if signal.source=='rule' or (signal.source=='ml' and signal.category=='anomaly'):
-            s.stable_since=None;s.healthy_count=0
+            s.stable_since=None;s.healthy_count=0;s.healthy_evidence=[]
         count=len(s.evidence)
         target=s.risk
         if rules.strategy=='fixed':target='NORMAL' if healthy and s.guard=='NORMAL' else s.risk;reason=['Fixed baseline: no adaptive transitions']
@@ -76,12 +80,14 @@ def evaluate(state,signal,rules,now,*,mode='DRY_RUN',capabilities=('mqtt_tls','a
         elif signal.source in {'ml','system'} and signal.category in {'unavailable','stale'}:
             target='UNKNOWN';reason=['Insufficient information; protected configuration retained']
         elif healthy:
-            if s.risk=='UNKNOWN' and s.guard=='NORMAL' and s.healthy_count>=2:
+            if s.risk=='UNKNOWN' and s.guard=='NORMAL' and s.healthy_count>=2 and s.ml_available and s.last_ml_at and (now-utc(s.last_ml_at)).total_seconds()<=rules.ml_fresh_seconds:
                 target='NORMAL';reason=['Fresh authenticated telemetry observations']
             elif s.stable_since and (occurred-utc(s.stable_since)).total_seconds()>=rules.recovery_seconds and s.healthy_count>=rules.recovery_observations:
                 ml_fresh=s.ml_available and s.last_ml_at and (now-utc(s.last_ml_at)).total_seconds()<=rules.ml_fresh_seconds
                 if ml_fresh:target='NORMAL';reason=['Sustained positive recovery evidence and available ML; not attack-free proof']
                 else:suppressed=True;reason=['Recovery blocked: ML absent, stale or unavailable']
+        if s.last_ml_at and (now-utc(s.last_ml_at)).total_seconds()>rules.ml_fresh_seconds and not attack:
+            s.ml_available=False;target='UNKNOWN';reason=['ML evidence stale; protection retained']
         if s.last_telemetry_at and (now-utc(s.last_telemetry_at)).total_seconds()>rules.telemetry_fresh_seconds and not attack:
             target='UNKNOWN';reason=['Authenticated telemetry stale; guard retained']
         elif not s.last_telemetry_at and not attack and signal.source=='ml':
@@ -100,13 +106,16 @@ def evaluate(state,signal,rules,now,*,mode='DRY_RUN',capabilities=('mqtt_tls','a
             if target not in ALLOWED[s.risk]:raise ValueError('Forbidden transition')
             s.risk=target;s.changed_at=now.isoformat()
         if s.risk in LEVEL:s.guard=s.risk
-    s.last_decision_at=now.isoformat()
+    emit=(not s.last_decision_at or (now-utc(s.last_decision_at)).total_seconds()>=rules.min_decision_seconds
+          or (signal.category=='security_violation' and signal.trust in {'verified','simulation'}))
+    if emit:s.last_decision_at=now.isoformat()
+    used=list(dict.fromkeys(used+[e['event_id'] for e in s.evidence]+s.healthy_evidence))
     recommended_state='WATCH' if signal.source=='ml' and signal.category=='anomaly' and diagnostic=='accepted' and LEVEL.get(s.risk,0)<1 else s.risk
     profile=rules.elevated_profile if s.guard in {'ALERT','CRITICAL'} else rules.minimum_profile
     protection=recommend(profile,capabilities,rules.minimum_profile,simulation=mode=='SIMULATION')
     return s,dict(current_state=previous,observed_risk=s.risk,recommended_state=recommended_state,
         reasons=reason or ['Evidence recorded; no transition'],used_signals=used,mode=mode,
-        decision_at=now.isoformat(),diagnostic=diagnostic,suppressed=suppressed,
+        decision_at=now.isoformat(),diagnostic=diagnostic,suppressed=suppressed,emit_decision=emit,
         transitioned=previous!=s.risk,recommended_protection=protection,applicable=False,
         execution_status='simulated' if mode=='SIMULATION' else protection['status'],
         applied_configuration=None,effective_security_state='unconfirmed',trusted_detector=False)

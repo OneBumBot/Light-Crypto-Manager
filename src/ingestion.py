@@ -6,6 +6,7 @@ from src.telemetry import decode_packet, InvalidTelemetry
 from src.replay import admit
 from src.outbox import enqueue, outbox, record
 from src.devices import require_enabled
+from src.security_events import capture
 
 class IngestionBackpressure(RuntimeError):
     pass
@@ -38,6 +39,7 @@ def process_packet(packet, registry, engine, topic, now=None):
         connection.execute(text('SELECT pg_advisory_xact_lock(734819206)'))
         if not admit(connection, message, 'receiver'):
             record(connection, 'replay', now)
+            capture(connection, 'replay', message, now)
             return None
         if connection.scalar(select(func.count()).select_from(outbox).where(outbox.c.status != 'delivered')) >= int(os.environ.get('MAX_OUTBOX_PENDING', '100000')):
             raise IngestionBackpressure('Outbox capacity reached')
@@ -46,5 +48,8 @@ def process_packet(packet, registry, engine, topic, now=None):
                 'date': now.astimezone(timezone.utc).replace(tzinfo=None),
                 'cause': cause, 'device_id': config[0], 'configuration_date': config[1],
             })
+        capture(connection, 'accepted', message, now)
+        if cause is not None:
+            capture(connection, 'physical_anomaly' if cause==0 else 'delivery_delay', message, now)
         enqueue(connection, message, now)
     return sensor_data

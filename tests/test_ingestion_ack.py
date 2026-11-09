@@ -22,7 +22,10 @@ def test_pg_failure_disconnects_without_ack():
 
 def test_poison_packet_acknowledged_and_handler_continues():
     client=Mock(); engine=MagicMock()
-    with patch('src.brocker.mqtt_brocker.process_packet',side_effect=InvalidTelemetry()),patch('src.outbox.record'):
+    with patch('src.brocker.mqtt_brocker.process_packet',side_effect=InvalidTelemetry()),patch('src.outbox.record'),patch('src.security_events.capture') as capture:
         on_message(client,{'engine':engine,'registry':{}},SimpleNamespace(payload=b'{}',topic='t',qos=1,mid=17))
     client.ack.assert_called_once_with(17,1)
     client.disconnect.assert_not_called()
+
+    capture.assert_called_once()
+    assert capture.call_args.args[1:]==('rejected',)

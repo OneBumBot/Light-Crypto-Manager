@@ -280,6 +280,26 @@ services:
       receiver:
         condition: service_healthy
 
+  policy-worker:
+    <<: *app
+    profiles: [policy]
+    command: [python, -m, src.policy.worker]
+    environment:
+      <<: *db-environment
+      POLICY_MODE: DRY_RUN
+      POLICY_BATCH_SIZE: ${POLICY_BATCH_SIZE:-32}
+    cpus: "1.0"
+    mem_limit: 256m
+    depends_on:
+      init-db:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, python, -c, "import pathlib,time; p=pathlib.Path('/tmp/policy-ready'); assert p.exists() and time.time()-p.stat().st_mtime<30"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+
   tests:
     <<: *app
     profiles: [checks]

@@ -1,0 +1,159 @@
+
+UTC: 2026-11-09T20:40:18.186139+00:00
+$ python3 scripts/check_policy_system.py --env-file .local-runtime/stage7.env
+ Container lcm-stage7-broker-1 Running
+ Container lcm-stage7-postgres-1 Running
+ Container lcm-stage7-mongo-1 Running
+ Container lcm-stage7-init-db-1 Recreate
+ Container lcm-stage7-security-init-1 Recreate
+ Container lcm-stage7-storage-init-1 Recreate
+ Container lcm-stage7-init-db-1 Recreated
+ Container lcm-stage7-policy-worker-1 Recreate
+ Container lcm-stage7-receiver-1 Recreate
+ Container lcm-stage7-policy-worker-2 Creating
+ Container lcm-stage7-policy-worker-2 Created
+ Container lcm-stage7-storage-init-1 Recreated
+ Container lcm-stage7-web-1 Recreate
+ Container lcm-stage7-outbox-relay-1 Recreate
+ Container lcm-stage7-security-init-1 Recreated
+ Container lcm-stage7-demo-setup-1 Recreate
+ Container lcm-stage7-demo-setup-1 Recreated
+ Container lcm-stage7-policy-worker-1 Recreated
+ Container lcm-stage7-receiver-1 Recreated
+ Container lcm-stage7-publisher-1 Recreate
+ Container lcm-stage7-web-1 Recreated
+ Container lcm-stage7-outbox-relay-1 Recreated
+ Container lcm-stage7-publisher-1 Recreated
+ Container lcm-stage7-storage-init-1 Starting
+ Container lcm-stage7-security-init-1 Starting
+ Container lcm-stage7-postgres-1 Waiting
+ Container lcm-stage7-storage-init-1 Started
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-security-init-1 Started
+ Container lcm-stage7-security-init-1 Waiting
+ Container lcm-stage7-postgres-1 Healthy
+ Container lcm-stage7-init-db-1 Starting
+ Container lcm-stage7-init-db-1 Started
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-security-init-1 Waiting
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-security-init-1 Exited
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-broker-1 Waiting
+ Container lcm-stage7-broker-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-security-init-1 Exited
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-broker-1 Healthy
+ Container lcm-stage7-broker-1 Healthy
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-receiver-1 Starting
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-web-1 Starting
+ Container lcm-stage7-receiver-1 Started
+ Container lcm-stage7-web-1 Started
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-outbox-relay-1 Starting
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-policy-worker-1 Starting
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-demo-setup-1 Starting
+ Container lcm-stage7-outbox-relay-1 Started
+ Container lcm-stage7-policy-worker-1 Started
+ Container lcm-stage7-policy-worker-2 Starting
+ Container lcm-stage7-policy-worker-2 Started
+ Container lcm-stage7-demo-setup-1 Started
+ Container lcm-stage7-receiver-1 Waiting
+ Container lcm-stage7-demo-setup-1 Waiting
+ Container lcm-stage7-demo-setup-1 Exited
+ Container lcm-stage7-receiver-1 Healthy
+ Container lcm-stage7-publisher-1 Starting
+ Container lcm-stage7-publisher-1 Started
+ Container lcm-stage7-policy-worker-1 Waiting
+ Container lcm-stage7-policy-worker-2 Waiting
+ Container lcm-stage7-outbox-relay-1 Waiting
+ Container lcm-stage7-storage-init-1 Waiting
+ Container lcm-stage7-receiver-1 Waiting
+ Container lcm-stage7-demo-setup-1 Waiting
+ Container lcm-stage7-security-init-1 Waiting
+ Container lcm-stage7-broker-1 Waiting
+ Container lcm-stage7-mongo-1 Waiting
+ Container lcm-stage7-publisher-1 Waiting
+ Container lcm-stage7-postgres-1 Waiting
+ Container lcm-stage7-web-1 Waiting
+ Container lcm-stage7-init-db-1 Waiting
+ Container lcm-stage7-postgres-1 Healthy
+ Container lcm-stage7-publisher-1 Healthy
+ Container lcm-stage7-demo-setup-1 Exited
+ Container lcm-stage7-broker-1 Healthy
+ Container lcm-stage7-receiver-1 Healthy
+ Container lcm-stage7-mongo-1 Healthy
+ Container lcm-stage7-web-1 Healthy
+ Container lcm-stage7-init-db-1 Exited
+ Container lcm-stage7-storage-init-1 Exited
+ Container lcm-stage7-security-init-1 Exited
+ Container lcm-stage7-outbox-relay-1 Healthy
+ Container lcm-stage7-policy-worker-1 Healthy
+ Container lcm-stage7-policy-worker-2 Healthy
+ Container lcm-stage7-tests-run-88afe18cac66 Creating
+ Container lcm-stage7-tests-run-88afe18cac66 Created
+Device configurations provisioned; keys remain outside PostgreSQL
+ Container lcm-stage7-tests-run-382659e5ff1c Creating
+ Container lcm-stage7-tests-run-382659e5ff1c Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7-tests-run-2fd90a5e4328 Creating
+ Container lcm-stage7-tests-run-2fd90a5e4328 Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7-tests-run-87f2eed4f1f1 Creating
+ Container lcm-stage7-tests-run-87f2eed4f1f1 Created
+PASS: real authenticated replay raises three device risk guards; forged AAD cannot target a victim
+ Container lcm-stage7-tests-run-4d4ac6dbe65a Creating
+ Container lcm-stage7-tests-run-4d4ac6dbe65a Created
+PASS: committed bounded decision snapshot persisted
+ Container lcm-stage7-policy-worker-2 Stopping
+ Container lcm-stage7-policy-worker-1 Stopping
+ Container lcm-stage7-policy-worker-2 Stopped
+ Container lcm-stage7-policy-worker-1 Stopped
+ Container lcm-stage7-tests-run-ceea5e519abb Creating
+ Container lcm-stage7-tests-run-ceea5e519abb Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7-tests-run-97e26c86a541 Creating
+ Container lcm-stage7-tests-run-97e26c86a541 Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7-tests-run-0f1742d044bd Creating
+ Container lcm-stage7-tests-run-0f1742d044bd Created
+PASS: policy stopped; telemetry keeps running and durable observations remain queued
+ Container lcm-stage7-policy-worker-1 Starting
+ Container lcm-stage7-policy-worker-1 Started
+ Container lcm-stage7-policy-worker-2 Starting
+ Container lcm-stage7-policy-worker-2 Started
+ Container lcm-stage7-tests-run-2e3e9ba176ab Creating
+ Container lcm-stage7-tests-run-2e3e9ba176ab Created
+PASS: parallel/restarted policy workers retain committed decisions, dedupe sources and never claim applied configuration
+ Container lcm-stage7-policy-worker-2 Restarting
+ Container lcm-stage7-policy-worker-1 Restarting
+ Container lcm-stage7-policy-worker-2 Started
+ Container lcm-stage7-policy-worker-1 Started
+ Container lcm-stage7-tests-run-4a123bb5687f Creating
+ Container lcm-stage7-tests-run-4a123bb5687f Created
+PASS: parallel/restarted policy workers retain committed decisions, dedupe sources and never claim applied configuration
+ Container lcm-stage7-postgres-1 Stopping
+ Container lcm-stage7-postgres-1 Stopped
+ Container lcm-stage7-tests-run-5b6b767fa85a Creating
+ Container lcm-stage7-tests-run-5b6b767fa85a Created
+PASS: PostgreSQL outage rejects processing; no local fake decision/ACK
+ Container lcm-stage7-postgres-1 Starting
+ Container lcm-stage7-postgres-1 Started
+ Container lcm-stage7-postgres-1 Waiting
+ Container lcm-stage7-postgres-1 Healthy
+ Container lcm-stage7-tests-run-017264b121ab Creating
+ Container lcm-stage7-tests-run-017264b121ab Created
+PASS: parallel/restarted policy workers retain committed decisions, dedupe sources and never claim applied configuration
+PASS: policy-only downtime, two workers, replay attribution, restart and real PostgreSQL outage recovery
+
+EXIT CODE: 0

@@ -1,0 +1,16 @@
+{
+  "window_seconds": 60,
+  "max_age_seconds": 120,
+  "future_skew_seconds": 5,
+  "cooldown_seconds": 30,
+  "recovery_seconds": 300,
+  "recovery_observations": 6,
+  "watch_observations": 2,
+  "alert_observations": 3,
+  "min_decision_seconds": 1,
+  "telemetry_fresh_seconds": 60,
+  "ml_fresh_seconds": 120,
+  "minimum_profile": "ascon-aead128-v1",
+  "elevated_profile": "ascon-aead128-v1",
+  "strategy": "adaptive_hysteresis"
+}

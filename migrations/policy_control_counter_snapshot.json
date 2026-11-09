@@ -1,0 +1,3 @@
+[
+  "\nCREATE TABLE policy_control_counters (\n\tdevice_id VARCHAR(48) NOT NULL, \n\tcommand_epoch BIGINT DEFAULT '1' NOT NULL, \n\tlast_sequence BIGINT DEFAULT '0' NOT NULL, \n\tPRIMARY KEY (device_id), \n\tCONSTRAINT ck_policy_command_counter CHECK (command_epoch>0 AND last_sequence>=0)\n)\n\n"
+]

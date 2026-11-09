@@ -99,5 +99,45 @@ def test_command_contract_auth_replay_ttl_and_no_applied():
     ack=sim.acknowledge(c,T,authentic=True)
     assert ack['status']=='simulated' and ack['applied_configuration'] is None
     with pytest.raises(ValueError):sim.acknowledge(c,T,authentic=True)
+    restored=AckSimulator.restore(sim.snapshot())
+    with pytest.raises(ValueError):restored.acknowledge(c,T,authentic=True)
     with pytest.raises(ValueError):AckSimulator().acknowledge(c,T+timedelta(seconds=31),authentic=True)
     with pytest.raises(ValueError):AckSimulator().acknowledge(replace(c,requested_profile='magma'),T,authentic=True)
+
+
+def test_ml_untrusted_semantics_and_unavailable_not_normal():
+    from src.policy.simulation import event
+    from src.policy.signals import validate_ml
+    ml=event(1,'anomaly','ml',anomaly=True)
+    state,result=evaluate(State(),ml,Rules(),T+timedelta(seconds=1))
+    assert state.risk=='UNKNOWN' and result['recommended_state']=='WATCH'
+    assert result['trusted_detector'] is False and result['applied_configuration'] is None
+    assert ml.original['trusted_detector'] is False
+    for changes in [{'trusted_detector':True},{'score':float('nan')},{'score':float('inf')},
+                    {'feature_version':'unknown'},{'score_direction':'probability'},{'is_anomaly':False},
+                    {'score_range':[0,0.5]},{'status':'made-up'}]:
+        with pytest.raises(ValueError):validate_ml(dict(ml.original,**changes))
+    with pytest.raises(ValueError):replace(ml,device_id='other').validate()
+    unavailable=event(2,'unavailable','ml')
+    assert unavailable.category=='unavailable' and unavailable.original['score'] is None
+    state,result=evaluate(State(risk='ALERT',guard='ALERT'),unavailable,Rules(),T+timedelta(seconds=2))
+    assert state.risk=='UNKNOWN' and state.guard=='ALERT'
+
+
+def test_deterministic_simulation_and_unconfirmed_config():
+    from src.policy.simulation import experiment
+    a=experiment();b=experiment();assert a==b and len(a['results'])==52
+    assert all(r['applied_changes']==0 for r in a['results'])
+    assert all(t['applied_configuration'] is None for r in a['results'] for t in r['trace'])
+    missing=[r for r in a['results'] if r['scenario']=='missing_ack']
+    assert all(t['effective_security_state']=='unconfirmed' for r in missing for t in r['trace'])
+
+
+def test_continuous_fast_events_do_not_starve_rate_limited_decisions():
+    s=State(last_decision_at=T.isoformat())
+    rules=Rules(min_decision_seconds=10)
+    emitted=[]
+    for n in range(1,22):
+        s,d=step(s,n,'replay',rules=rules)
+        if d['emit_decision']:emitted.append(n)
+    assert emitted==[10,20] and s.risk=='ALERT'
