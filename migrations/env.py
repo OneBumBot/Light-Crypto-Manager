@@ -5,7 +5,8 @@ from src.web.models import db
 from src.replay import metadata as replay_metadata
 
 from src.outbox import metadata as outbox_metadata
-metadata = [db.metadata, replay_metadata, outbox_metadata]
+from src.devices import metadata as device_metadata
+metadata = [db.metadata, replay_metadata, outbox_metadata, device_metadata]
 
 connection = context.config.attributes.get('connection')
 

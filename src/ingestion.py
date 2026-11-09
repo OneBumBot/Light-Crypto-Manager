@@ -5,6 +5,7 @@ from sqlalchemy import text, select, func
 from src.telemetry import decode_packet, InvalidTelemetry
 from src.replay import admit
 from src.outbox import enqueue, outbox, record
+from src.devices import require_enabled
 
 class IngestionBackpressure(RuntimeError):
     pass
@@ -29,6 +30,7 @@ def process_packet(packet, registry, engine, topic, now=None):
     delay = (now - datetime.fromisoformat(sensor_data['timestamp'])).total_seconds()
     cause = 0 if sensor_data['temperature'] > 60 or sensor_data['humidity'] > 70 else (1 if delay > 0.5 else None)
     with engine.begin() as connection:
+        require_enabled(connection,message,topic)
         config = connection.execute(FIND_CONFIGURATION, {'device_id': message.database_device_id}).first()
         if not config:
             raise InvalidTelemetry('Device configuration is missing')

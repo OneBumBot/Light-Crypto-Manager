@@ -67,6 +67,10 @@ def test_crash_after_mongo_before_pg_ack(postgres_db,registry,mongo):
     registry[name]=registry.pop('raspb1')
     registry[name]['topic']='iot/sensors/'+name
     seed_device(postgres_db)
+    from src.devices import provision,devices
+    with postgres_db.db.engine.begin() as c:
+        c.execute(devices.delete())
+        provision(c,registry)
     from src.telemetry import encode_packet
     from src.ingestion import process_packet
     packet=encode_packet(dict(temperature=65,humidity=50,timestamp=datetime.now(timezone.utc).isoformat()),registry,name,1)
@@ -79,3 +83,17 @@ def test_crash_after_mongo_before_pg_ack(postgres_db,registry,mongo):
     assert len(mongo.history(device=name))==1
     with postgres_db.db.engine.connect() as c:
         assert c.scalar(select(outbox.c.status))=='delivered'
+
+
+def test_history_sort_dates_pagination_and_server_validator(mongo):
+    data=payload()
+    for sequence in range(1,4):
+        mongo.store(dict(data,sequence_number=sequence,measured_at=f'2026-01-0{sequence}T00:00:00+00:00'))
+    assert [r['sequence_number'] for r in mongo.history(device=data['device_id'])]==[3,2,1]
+    rows=mongo.history(device=data['device_id'],start='2026-01-02T00:00:00Z',end='2026-01-03T00:00:00Z',limit=1,offset=1)
+    assert [r['sequence_number'] for r in rows]==[2]
+    assert mongo.history(device='missing_'+uuid.uuid4().hex)==[]
+    bad=document(payload()); bad['password']='public-invalid-field'
+    with pytest.raises(OperationFailure): mongo.collection.insert_one(bad)
+    bad=document(payload()); bad['temperature']=151
+    with pytest.raises(OperationFailure): mongo.collection.insert_one(bad)

@@ -32,6 +32,9 @@ def seed_demo():
                     raise ValueError('Demo IDs conflict with existing data; no changes committed')
             else:
                 db.session.add(model(**fields))
+        from src.telemetry import load_registry
+        from src.devices import provision
+        provision(db.session.connection(),{k:v for k,v in load_registry().items() if k in ['raspb1','smoke']})
         db.session.commit()
     except Exception:
         db.session.rollback()

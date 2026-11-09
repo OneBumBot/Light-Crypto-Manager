@@ -9,6 +9,7 @@ dependencies = ["paho-mqtt==2.1.0"]
 publisher = ["numpy>=2.2,<3"]
 receiver = ["alembic>=1.16,<2", "pymongo>=4.13,<5","SQLAlchemy>=2.0.40,<2.1", "psycopg[binary]>=3.2,<4"]
 web = [
+    "alembic>=1.16,<2",
     "pymongo>=4.13,<5",
     "Flask>=3.1,<3.2",
     "Flask-SocketIO>=5.5,<6",

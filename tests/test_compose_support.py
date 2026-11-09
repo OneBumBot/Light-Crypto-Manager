@@ -56,3 +56,18 @@ def test_demo_seed_conflict_rolls_back_without_overwrite(postgres_db):
         seed_demo()
     assert db.session.get(TagJournal, 1).Tag_Name == 'existing-real-device'
     assert db.session.query(Algorithm).count() == 0
+
+
+@pytest.mark.postgres
+def test_generic_provisioning_is_idempotent(postgres_db,monkeypatch,registry,tmp_path):
+    import json
+    from scripts.provision_registry import main
+    path=tmp_path/'registry.json'
+    path.write_text(json.dumps(registry))
+    monkeypatch.setenv('DEVICE_REGISTRY_FILE',str(path))
+    main(); main()
+    assert db.session.query(TagJournal).count()==len(registry)
+    db.session.get(TagJournal,1).Tag_Name='conflicting-name'
+    db.session.commit()
+    with pytest.raises(RuntimeError,match='conflict'): main()
+    assert db.session.get(TagJournal,1).Tag_Name=='conflicting-name'

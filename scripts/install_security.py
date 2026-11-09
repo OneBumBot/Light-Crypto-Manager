@@ -37,7 +37,7 @@ for role in ['broker','publisher','receiver','web','smoke','tests']:
         acl+='user monitor\ntopic write lightcrypto/health\n'
         path=target/'acl'
         path.write_text(acl); path.chmod(0o600); os.chown(path,uid,uid)
-        path=target/'health.conf' 
+        path=target/'health.conf'
         password=(source/'monitor.password').read_text().strip()
         path.write_text('-h localhost\n-p 8883\n--cafile /mosquitto/security/ca.crt\n-u monitor\n-P '+password+'\n-t lightcrypto/health\n-m ping\n-q 1\n')
         path.chmod(0o600)

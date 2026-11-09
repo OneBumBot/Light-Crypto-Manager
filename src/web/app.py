@@ -179,6 +179,8 @@ def on_message(client, userdata, message):
         verified = decode_packet(message.payload, message.topic, load_registry())
         with app.app_context():
             with db.engine.begin() as connection:
+                from src.devices import require_enabled
+                require_enabled(connection,verified,message.topic)
                 accepted = admit(connection, verified, 'web')
             if accepted:
                 update_dashboard(verified.sensor)
@@ -529,12 +531,16 @@ def delete_record(table_name, record_id):
 def generate_test_data(count=10):
     return jsonify({'error': 'Генератор данных пока недоступен'}), 501
 
+history_repository_lock = Lock()
+
+
 def history_repository():
     # Lazy initialization; no Mongo credentials needed for legacy routes/tests.
     from src.mongo_repository import MongoRepository
-    if 'telemetry_repository' not in app.extensions:
-        app.extensions['telemetry_repository'] = MongoRepository('history')
-    return app.extensions['telemetry_repository']
+    with history_repository_lock:
+        if 'telemetry_repository' not in app.extensions:
+            app.extensions['telemetry_repository'] = MongoRepository('history')
+        return app.extensions['telemetry_repository']
 
 
 @app.get('/telemetry')

@@ -103,3 +103,24 @@ def test_relay_network_failure_retries(postgres_db,registry):
     assert deliver_one(postgres_db.db.engine,repo)
     with postgres_db.db.engine.connect() as c:
         assert c.scalar(select(outbox.c.status))=='delivered'
+
+
+def test_crash_at_last_attempt_becomes_dead(postgres_db,registry):
+    seed_device(postgres_db)
+    ingest(postgres_db,registry)
+    assert claim(postgres_db.db.engine,lease_seconds=0,max_attempts=1)
+    assert claim(postgres_db.db.engine,max_attempts=1) is None
+    with postgres_db.db.engine.connect() as c:
+        assert c.scalar(select(outbox.c.status))=='dead'
+
+
+def test_pg_device_binding_disables_admission(postgres_db,registry):
+    seed_device(postgres_db)
+    from src.devices import devices
+    from src.telemetry import InvalidTelemetry
+    with postgres_db.db.engine.begin() as c:
+        c.execute(devices.update().where(devices.c.device_id=='raspb1').values(enabled=False))
+    with pytest.raises(InvalidTelemetry): ingest(postgres_db,registry)
+    with postgres_db.db.engine.connect() as c:
+        assert c.scalar(select(func.count()).select_from(outbox))==0
+        assert c.scalar(select(func.count()).select_from(replay_state))==0

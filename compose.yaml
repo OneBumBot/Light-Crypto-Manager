@@ -154,8 +154,14 @@ services:
     <<: *app
     profiles: [demo, checks]
     command: [python, -m, scripts.seed_demo]
-    environment: *db-environment
+    environment:
+      <<: *db-environment
+      DEVICE_REGISTRY_FILE: /run/lcm/registry.json
+    volumes:
+      - receiver-security:/run/lcm:ro
     depends_on:
+      security-init:
+        condition: service_completed_successfully
       init-db:
         condition: service_completed_successfully
 

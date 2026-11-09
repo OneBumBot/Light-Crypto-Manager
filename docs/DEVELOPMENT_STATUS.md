@@ -294,3 +294,8 @@ device identities с отдельными паролями, ключами и т
 5.6: read-only history API и страница /telemetry, UTC/device/date filters,
 bounded limit/offset, прежние права sensor_data, общие ошибки 503. Live путь
 сохранён. Метрики доступны только admin; JSON API не позволяет читать outbox payload.
+
+5.7: добавлен несекретный PG telemetry_devices (0003) с проверкой enabled/topic/
+profile/epoch в ingestion и live consumer. Полный повтор: 210 passed без warnings.
+Проверены реальная недоступность PG/Mongo, три отдельных устройства, два relay,
+process exit19 после Mongo write, restart и отсутствие дополнительных записей.

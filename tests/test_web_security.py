@@ -21,6 +21,9 @@ def web(postgres_db):
         web.db.session.add(user)
     web.db.session.add(Algorithm(Algorithm_ID=1,Algorithm_Name='original'))
     web.db.session.add(TagJournal(Tag_ID=1,Tag_Name='original-tag'))
+    from src.telemetry import load_registry
+    from src.devices import provision
+    provision(web.db.session.connection(),load_registry())
     web.db.session.commit()
     yield web
     with web.socket_lock:
