@@ -1,113 +1,72 @@
-# Состояние разработки
+# Состояние разработки — этапы 0–6
 
-2026-11-09. Выполнены только этапы0–5. Ветка этапа5:
-`feature/mongodb-telemetry-storage`, база `feature/security-hardening`/`d9a000f`.
-Push, merge, rebase и изменение main в этапе5 не выполнялись. Рабочие volumes
-этапа4 не использовались. Отчёты: [reports/STAGE5.md](reports/STAGE5.md).
-Исторический подробный статус0–4 доступен в `git show d9a000f:docs/DEVELOPMENT_STATUS.md`.
+2026-11-09. Инженерная часть этапа6 реализована в feature/ml-inference-pipeline
+от cfda660 (feature/mongodb-telemetry-storage). Source notebook неизменён.
+Push/merge/rebase/main не выполнялись. Следующий этап автоматически не начинается.
+Подробные протоколы: reports/STAGE6.md; прежний статус — git show cfda660:docs/DEVELOPMENT_STATUS.md.
 
-## Сохранённые этапы
+## Сохранённые этапы и блоки
 
-| Этап | Результат / коммит |
+| Этап | Git / результат |
 |---|---|
-| 0 | Safe baseline908dd56 + permissions c352d81, main |
-| 1 | Inventory76ca884, feature/component-inventory |
-| 2 | PostgreSQL/runtime fca2153, feature/reproducible-postgres-runtime |
-| 3 | Compose/Mosquitto5be5444, feature/local-mqtt-compose |
-| 4 | TLS/auth/ACL, MQTTv2/replay/web177 tests; d9a000f и пять предыдущих security commits |
-| 5.1 | MongoDB auth/scoped roles/volumes/health:1fff057 |
-| 5.2 | Validated Alembic baseline:6420b89 |
-| 5.3 | Atomic replay/anomaly/outbox ingestion:799cbdb |
-| 5.4–5.5 | Mongo relay/idempotence/leases + device provisioning:5515caf |
-| 5.6 | Authorized Flask history/page/metrics:17ffcf5 |
-| 5.7 | Non-secret PG device binding/enabled + migration0003:c07c6b2 |
+| 0 | safe baseline908dd56+c352d81 в main |
+| 1 | inventory76ca884 |
+| 2 | reproducible PostgreSQL runtime fca2153 |
+| 3 | Compose/Mosquitto5be5444 |
+| 4 | security-hardening d9a000f,177 pytest |
+| 5 | dual database/outbox/worker cfda660,210 pytest |
+| 6 аудит | 6705332 —13 ячеек, dataset/feature/методика; исходный notebook сохранён |
+| 6 offline ML | fa5f9be —typed schemas, train-only pipelines/splits/metrics, causal telemetry, hashed artifact export |
+| 6 async/PG | e54c169 —bounded feed, model registry, leases/events, optional ML image/worker |
+| 6 web | c5874ee —authorized events/status/UI, раздельные источники |
 
-Последующие test/docs commits: `git log --oneline d9a000f..HEAD`; финальный хеш
-указывается итоговым отчётом, а не помещается внутрь самого коммита.
+Дальнейшие fix/test/docs commits — git log --oneline cfda660..HEAD. Final hash
+указан итоговым отчётом, а не помещается внутрь своего коммита.
 
-## Статусы компонентов
+## Текущее состояние
 
-| Компонент | Статус | Фактическая область проверки |
+| Компонент | Статус | Фактическое доказательство / граница |
 |---|---|---|
-| Safe Git baseline / nested Ascon | существует | История сохранена, vendor/classifier этап5 не меняет |
-| Publisher | проверено тестами | TLS, v2, separate keys, persistent SQLite sequence, реальный PG/Mongo приём |
-| Mosquitto | проверено тестами | TLS/password/точные topic ACL; неверный пароль/CA/запрещённый read/write |
-| Ingestion receiver | проверено тестами | AEAD/validation + device binding + atomic replay/anomaly/outbox; manual QoS1 ACK, PG outage и restart |
-| Anti-replay | проверено тестами | PostgreSQL source of truth; rollback/concurrency/restart, consumer receiver/web |
-| PostgreSQL legacy schema | проверено тестами | 14 таблиц сохранены + replay/outbox/metrics/devices/Alembic =19; legacy rows/replay сохранены |
-| Alembic | проверено тестами | Empty/legacy/repeat/incompatible; composite PK не меняются |
-| MongoDB | проверено тестами | Auth/scoped insert-find/read roles, validator/indexes, persistent history; restart/outage |
-| Transactional Outbox | проверено тестами | claim/lease/fencing, retries/dead/requeue, retention, capacity; rollback и process crash |
-| Relay | проверено тестами | Два процесса + реальная Mongo недоступность/восстановление, duplicate comparison |
-| Несколько устройств | проверено тестами | Три новых отдельных identity/key/topic/history, запрет чужого topic |
-| Provisioning/rotation | частично реализовано | Автоматизируемые extra-device + PG provisioning; ротация/изменение работающего состава вручную |
-| Flask/roles/CSRF/Socket.IO | проверено тестами | Прежние ограничения + network HTTP/socket, logout/revocation, безопасный редирект |
-| Mongo history API/page | проверено тестами | Login/role, device/date/sort/limit/offset, empty, общий503; live сохранён |
-| Основной dashboard | частично реализовано | Live память50/один процесс, все устройства общие; новый history route отдельно |
-| CRUD legacy | частично реализовано | Простой PUT/DELETE и allowlist; CREATE/composite CRUD не реализованы |
-| Sensor_Data | существует | Схема/данные сохранены; новый pipeline пишет Mongo, не эту таблицу |
-| Метрики | проверено тестами | Admin API: incoming/s, accepted/rejected/replay, backlog/age/latency/errors/retries, Mongo count |
-| Ascon primitive | проверено тестами | Прежние roundtrip/tamper/KAT; исходник не изменён. Полный SP800-232 audit не заявлен |
-| Notebook classifier | существует | Offline experiments; dataset/model artifacts отсутствуют |
-| Автоматические проверки | проверено тестами | 210 passed без предупреждений, плюс реальные TLS/ACL/outages/crash/HTTP/socket/Chromium |
-| ARM64 / Raspberry Pi execution | не проверено | Параметры TLS/native publisher готовы, физический запуск не проводился |
-| 1000 msg/s / 10000 устройств | не проверено | Только будущая цель; current admission lock/count ограничивают скорость |
-| FastAPI / ML inference / Policy Engine / «Магма»/CRISP | отсутствует | В этапе5 не разрабатывались |
-| CI / production HA / DB TLS | отсутствует | Локальные проверки не заменяют production deployment |
+| MQTT publisher/broker/ingestion | проверено тестами | TLS/ACL/AEADv2/replay сохранены, core callback не запускает ML |
+| PG/Mongo/Outbox | проверено тестами | Предыдущие recovery/concurrency/replay и реальные container outages/crash повторены |
+| Legacy schema / Alembic | проверено тестами | 23 таблицы,0004ML добавлена; stage5 rows/outbox/replay сохраняются |
+| Network IDS RF binary/multiclass/IF | проверено тестами | Engineering pipeline и limited real Edge experiment; не production attack detector |
+| Real Edge source | существует | 2219201 строка,63 поля,15 Attack_type, hash/labels/types audit; license unverified |
+| Independent network validation | не проверено | Host-pair proxy, не physical device/session holdout; chronology неполна; val normal9 |
+| RF качество | частично реализовано | Binary macroF1.3328/recall0, multiclass fixed15 macroF1.1373; модель недоверенная |
+| IF Network качество | частично реализовано | Binary macroF1.7296/FPR0 на ограниченном test2005; не generalization guarantee |
+| Network live collector | отсутствует | MQTT sensors не имеют DNN network feature vector |
+| Telemetry statistical / IF | проверено тестами | Обе обучены на320 synthetic records4 devices, split180/60/60 после warmup |
+| Telemetry real quality | не проверено | Нет representative physical baseline/independent labels; псевдоточные метрики не вычисляются |
+| Model export/load | проверено тестами | Pipeline+manifest/hash, owner/mode/path/schema/version checks, tamper rejection |
+| Optional inference worker | проверено тестами | Mongo→bounded features→PGevents, missing model/dedupe/restart/Mongo recovery |
+| ML queue/checkpoint | частично реализовано | Durable bounded markers100000 + gaps, no measured_at-only cursor; pre-cutover/full-history coverage не гарантирована |
+| ML results / Policy signal | проверено тестами | Unique device/epoch/seq/model/version, finite score, explicit mode/scales; не выбирает crypto |
+| Flask/Socket.IO/security | проверено тестами | Прежние auth/roles/CSRF/TLS/ACL + real HTTP ML pages/events/status |
+| Additional datasets | существует | Подбор MQTTset/MQTT-IoT-IDS2020/CICIoT2023 в ML_DATASETS.md; не скачаны/не обучены |
+| Большие нагрузки / ARM64 | не проверено | CPU/memory/window limits есть,1000msg/s и10000 устройств не измерялись |
+| Policy Engine / FastAPI / «Магма» / CRISP | отсутствует | В этапе6 не разрабатывались |
 
-## Итог проверок
+## Результаты и ограничения
 
-- Полный актуальный pytest: **210 passed**, PostgreSQL и MongoDB реальные, без
-  пропусков/предупреждений. Предыдущие177 сохранены; fixture init теперь Alembic.
-- Три independently provisioned устройства и два relay; Mongo stop/recover,
-  PostgreSQL stop/recover без MQTT ACK, replay/restart и процесс exit19 после Mongo
-  insert до PG acknowledge — успешно, один документ на каждую стабильную identity.
-- Live HTTP/Socket.IO, CSRF/roles, Mongo history/admin metrics и Chromium4 XSS
-  payload — успешно; TLS/пароль/ACL negative и mqtt smoke прошли.
-- Ruff, compileall, Node, uv lock, known-secret Git/image/permissions audit — успешно.
-  Промежуточные неуспешные тестовые прогоны сохранены и объяснены в reports/STAGE5.md.
-- Retention opt-in: проверена настройка/отключение Mongo TTL и удаление только
-  delivered PG событий в tests; месячный TTL lifecycle не воспроизводился.
+Полный текущий pytest:233 passed, без skips/warnings; прежние210 включены.
+Отдельно real Docker ML missing-model/restart/dedupe/Mongo retry/recovery,3 устройства;
+старые PG/Mongo outage/relay crash/replay/TLS/ACL/HTTP/Socket.IO проверки.
+Актуальный финальный прогон/статические/security/Chromium результаты — reports/STAGE6.md.
+Промежуточные errors сохранены; исходный CSV auditor C-engine SIGSEGV исправлен
+raw-string Python-engine чтением; полный аудит завершён успешно,0 label conflicts.
 
-## Границы / следующий этап
+Реальные Network модели обучены на11851-row subset, не на всём DNN: после purge
+train5630/val1227/test2005, IF fit1961normal. Высокое качество RF не заявляется.
+Локально подтверждены label proxies0/0.0; данные и weights остаются приватными.
+Scientific metrics, integration success и DEMO telemetry не смешиваются.
 
-At-least-once delivery + idempotent Mongo insert, не end-to-end exactly-once/lossless.
-Конечные очереди/диск/retry budget; dead требует вмешательства. Cleanup delivered
-и Mongo TTL выключены по умолчанию. Legacy FK/CRUD, Mongo HA/TLS, production HTTPS,
-автоматическая ротация, многопроцессный live, большие нагрузки и ARM64 ещё впереди.
+ML off по умолчанию, research opt-in явный. Feed finite и retained даже после
+score; нужны capacity/prune, overflow сообщает gap без остановки telemetry.
+Retrospective coverage, source-clock correctness, shared PG role, production HA/TLS,
+real anomaly labels и независимая device/session оценка остаются ограничениями.
 
-Следующий этап выполняется только по отдельной команде пользователя. ML, Policy
-Engine, FastAPI и отечественный профиль автоматически не начинаются.
-
-Тестовый lcm-stage5 остановлен обычным down без --volumes. PostgreSQL, MongoDB,
-счётчики и материалы сохранены. Протокол остановки — reports/stage5-shutdown.txt.
-
-## Этап 6 — начат, не завершён
-
-Ветка feature/ml-inference-pipeline от cfda660. Прочитаны13 ячеек исходного
-notebook, проверены preprocessing/split/labels/metrics/artifacts и доступность
-сетевых признаков. Результат — ML_DATA_AUDIT.md; notebook сохранён побайтно.
-Датасета DNN-EdgeIIoT и готовых моделей в исходниках нет; фактическое качество
-не воспроизводилось. Скрипт audit_ml_notebook.py проверяет структуру/синтаксис
-без исполнения, .gitignore дополнен форматами ML данных/артефактов.
-
-Продолжение задания получено; после аудита начинается реализация pipeline.
-В блоке аудита runtime/схема БД/безопасность не изменялись;
-210 tests — исторический результат этапа5, а не новый запуск этапа6.
-
-Блок offline ML: реализованы явные network/telemetry схемы, sklearn pipelines,
-групповой/временной split, causal per-device features, statistical/IF telemetry,
-RF binary/multiclass и IF IDS, manifest/hash export. 11 unit tests passed.
-После получения пользовательского CSV выполнена реальная ограниченная group-based
-IDS оценка; source2219201, subset11851, split5630/1227/2005. Модели/CSV локальны.
-Первый текущий Docker regression run:224 passed, включая предыдущие210;
-async/web интеграция ещё проверяется.
-
-Блок async ML: миграция0004 добавляет bounded delivery feed + gap counters,
-model registry и ml_anomaly_events; всего23 таблицы. Relay подтверждает Mongo
-независимо от модели; ML feed overflow учитывается явно. Отдельный opt-in worker
-читает ограниченные окна, сохраняет версии/lease/retry/skips/тайминги. Docker
-runtime не содержит sklearn/весов; отдельный ml target, cpus1/memory768m.
-Проверено230 pytest и реальное восстановление worker/Mongo, missing model не
-останавливает MQTT. ML модель для runtime — DEMO,320 синтетических наблюдений,
-не обученный на атаках доверенный детектор.
+Финальные уточнения: canonical fingerprint purge проверен без пересечений;
+последовательность device/epoch/sequence и монотонность обеих дат определяют causal
+окно. Исправлена гонка expired claim vs completion повторным event row lock.
+Полный233-test прогон прошёл; модельные артефакты не менялись ради улучшения test.

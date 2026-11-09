@@ -76,3 +76,36 @@ def test_signal_contract_does_not_choose_crypto(postgres_db):
     assert output['trusted_detector'] is False
     assert output['score_range']==[0,None] and output['score_direction']=='higher_is_more_anomalous'
     assert not {'algorithm','crypto_profile','command','key'} & set(output)
+
+
+def test_disabled_worker_never_loads_or_scores(postgres_db,tmp_path):
+    import os,subprocess,sys
+    engine=postgres_db.db.engine;marker(engine)
+    environment=dict(os.environ,ML_ALLOW_RESEARCH='0',ML_MODEL_ID='disabled-model',
+        ML_MODEL_VERSION='1.0.0',ML_MODELS_DIR=str(tmp_path/'missing-models'),
+        MONGO_PASSWORD_FILE='/run/storage/history.password')
+    result=subprocess.run([sys.executable,'-m','src.classifier.ml.worker','--once'],
+        env=environment,capture_output=True,text=True,timeout=15)
+    assert result.returncode==0
+    with engine.connect() as c:
+        assert c.scalar(select(models.c.status).where(models.c.model_id=='disabled-model'))=='disabled'
+        assert c.scalar(select(func.count()).select_from(events))==0
+
+
+def test_completion_racing_expired_claim_is_not_overwritten(postgres_db):
+    from sqlalchemy import event as sql_events
+    engine=postgres_db.db.engine;model=manifest();marker(engine)
+    original=claim_one(engine,model)
+    with engine.begin() as c:c.execute(events.update().values(lease_until=datetime.now(timezone.utc)-timedelta(seconds=1)))
+    fired=[]
+    def finish_during_claim(connection,cursor,statement,parameters,context,executemany):
+        if 'LEFT OUTER JOIN ml_anomaly_events' in statement and not fired:
+            fired.append(True)
+            assert complete(engine,original,'ok',score=2,threshold=1,is_anomaly=True)
+    sql_events.listen(engine,'after_cursor_execute',finish_during_claim)
+    try:assert claim_one(engine,model) is None
+    finally:sql_events.remove(engine,'after_cursor_execute',finish_during_claim)
+    assert fired
+    with engine.connect() as c:
+        value=c.execute(select(events)).mappings().one()
+        assert value['status']=='ok' and value['score']==2 and value['attempts']==1

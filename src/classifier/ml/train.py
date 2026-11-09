@@ -1,11 +1,12 @@
 """Explicit-path research training. Never substitutes synthetic data for a missing dataset."""
 import argparse
+import csv
 import json
 from pathlib import Path
 import numpy as np
 import pandas as pd
 from .artifacts import export, file_hash, load
-from .schema import NETWORK_VERSION, TELEMETRY_VERSION, NETWORK_FEATURES
+from .schema import NETWORK_VERSION, TELEMETRY_VERSION, NETWORK_FEATURES, network_frame
 from .network import build_network, risk_scores
 from .telemetry_features import causal_frame, build_telemetry
 from .splitting import split_frame
@@ -26,6 +27,11 @@ def read_config(path):
 def read_data(path,config):
     path=Path(path)
     if not path.is_file(): raise ValueError('Dataset file missing; provide an explicit existing --data path')
+    with path.open(newline='',encoding='utf-8-sig') as header_stream:
+        header=next(csv.reader(header_stream),[])
+    if len(header)!=len(set(header)):raise ValueError('Duplicate dataset column names')
+    if config.get('task')=='network_ids' and config.get('split_strategy')=='group' and config.get('group_column') not in header:
+        raise ValueError('Reliable group metadata required; no random-row fallback')
     maximum=config.get('max_rows',300000)
     if type(maximum) is not int or not 10<=maximum<=10000000: raise ValueError('Invalid max_rows')
     frame=pd.read_csv(path,nrows=maximum+1,low_memory=False)
@@ -59,7 +65,7 @@ def train(data,config,models_dir):
         partitions,split=split_frame(frame,config)
         train_idx,val_idx,test_idx=partitions
         # Optional exact-feature overlap guard: fail instead of silently altering the held-out sample.
-        hashes=pd.util.hash_pandas_object(frame[NETWORK_FEATURES],index=False)
+        hashes=pd.util.hash_pandas_object(network_frame(frame),index=False)
         overlap=len(set(hashes.loc[train_idx]) & (set(hashes.loc[val_idx])|set(hashes.loc[test_idx])))
         split['exact_feature_overlap_train_holdouts']=overlap
         sets=[set(hashes.loc[p]) for p in partitions]

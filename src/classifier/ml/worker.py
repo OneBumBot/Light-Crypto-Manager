@@ -33,7 +33,7 @@ def evaluate_one(engine,repository,manifest,pipeline,*,after_score=None):
         window=manifest['preprocessing']['window']
         # Receiver accepts monotone sequence per epoch; arrival history is bounded.
         history=list(repository.collection.find(dict(device_id=event['device_id'],key_epoch=event['key_epoch'],
-            sequence_number={'$lt':event['sequence_number']},received_at={'$lte':target['received_at']})).sort('sequence_number',-1).limit(window).max_time_ms(2000))
+            sequence_number={'$lt':event['sequence_number']})).sort('sequence_number',-1).limit(window).max_time_ms(2000))
         history.reverse()
         features,status=one_window(target,history,window,manifest['preprocessing']['expected_interval'])
         prep_ms=(time.perf_counter()-start)*1000
@@ -46,7 +46,8 @@ def evaluate_one(engine,repository,manifest,pipeline,*,after_score=None):
         begin=time.perf_counter()
         score=float(-pipeline.score_samples(pd.DataFrame([features]))[0])
         inference_ms=(time.perf_counter()-begin)*1000
-        if not math.isfinite(score) or score<0:raise ValueError('Invalid model score')
+        upper=manifest['preprocessing']['score_range'][1]
+        if not math.isfinite(score) or score<0 or (upper is not None and score>upper):raise ValueError('Invalid model score')
         if after_score:after_score(event)
         complete(engine,event,'ok',score=score,threshold=manifest['threshold'],is_anomaly=score>=manifest['threshold'],
             prepare_ms=prep_ms,inference_ms=inference_ms)

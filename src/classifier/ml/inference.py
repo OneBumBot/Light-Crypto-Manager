@@ -8,7 +8,7 @@ def network_inference(manifest,pipeline,frame,feature_version):
     if manifest['task']!='network_ids' or feature_version!=NETWORK_VERSION or manifest['feature_version']!=feature_version:
         raise ValueError('Incompatible network collector contract')
     scores=risk_scores(pipeline,frame,manifest['algorithm'])
-    if not np.isfinite(scores).all(): raise ValueError('Nonfinite model score')
+    if not np.isfinite(scores).all() or (scores<0).any() or (scores>1).any(): raise ValueError('Nonfinite model score')
     classes=pipeline.predict(frame).tolist() if manifest['algorithm']=='rf_multiclass' else (scores>=manifest['threshold']).astype(int).tolist()
     return [dict(detector='network_ids',model_id=manifest['model_id'],model_version=manifest['model_version'],
         feature_version=feature_version,score=float(score),threshold=manifest['threshold'],

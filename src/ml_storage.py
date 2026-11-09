@@ -102,16 +102,26 @@ def claim_one(engine,manifest,lease_seconds=30,max_attempts=8):
             .select_from(join).where(ready).order_by(feed.c.mongo_confirmed_at,feed.c.id)
             .with_for_update(of=feed,skip_locked=True).limit(1)).mappings().first()
         if row is None:return None
-        token=str(uuid.uuid4());event_id=row['event_id'] or str(uuid.uuid4())
-        if row['event_id'] and row['attempts']>=max_attempts:
+        # Completion does not lock feed; re-read/lock the event after the feed lock
+        # so a stale outer-join snapshot cannot reclaim an already finished result.
+        current=c.execute(select(events).where(events.c.device_id==row['device_id'],
+            events.c.key_epoch==row['key_epoch'],events.c.sequence_number==row['sequence_number'],
+            events.c.model_id==mid,events.c.model_version==version).with_for_update()).mappings().first()
+        if current:
+            ready_now=(current['status']=='retry' and current['available_at']<=now) or (
+                current['status']=='processing' and current['lease_until']<=now)
+            if not ready_now:return None
+        token=str(uuid.uuid4());event_id=current['id'] if current else str(uuid.uuid4())
+        attempts=current['attempts'] if current else 0
+        if current and attempts>=max_attempts:
             c.execute(update(events).where(events.c.id==event_id).values(status='dead',diagnostic='AttemptsExhausted',
                 claim_token=None,lease_until=None,evaluated_at=now))
             return None
         values=dict(observation_id=row['id'],device_id=row['device_id'],key_epoch=row['key_epoch'],
             sequence_number=row['sequence_number'],model_id=mid,model_version=version,feature_version=manifest['feature_version'],
-            status='processing',attempts=(row['attempts'] or 0)+1,available_at=now,
+            status='processing',attempts=attempts+1,available_at=now,
             claim_token=token,lease_until=now+timedelta(seconds=lease_seconds))
-        if row['event_id']:c.execute(update(events).where(events.c.id==event_id).values(**values))
+        if current:c.execute(update(events).where(events.c.id==event_id).values(**values))
         else:c.execute(events.insert().values(id=event_id,**values))
         return dict(id=event_id,**values,mongo_confirmed_at=row['mongo_confirmed_at'])
 

@@ -115,3 +115,34 @@ def test_metrics_need_ground_truth_classes():
     assert report['false_positive_rate']==0.5
     assert report['roc_auc'] is None and report['pr_auc'] is None
     assert report['confusion_matrix']==[[1,1],[0,0]]
+
+
+def test_model_artifact_permissions_and_external_evaluation_no_fit(tmp_path,monkeypatch):
+    original=tmp_path/'train.csv';network_rows().to_csv(original,index=False)
+    settings=config('network_ids','rf_binary')
+    train(original,settings,tmp_path/'models')
+    external=tmp_path/'external.csv';data=network_rows(120);data['tcp.len']+=1000;data.to_csv(external,index=False)
+    evaluation=tmp_path/'evaluation.json';evaluation.write_text(json.dumps(settings))
+    from sklearn.ensemble import RandomForestClassifier
+    def forbidden(*args,**kwargs):raise AssertionError('evaluation must not fit')
+    monkeypatch.setattr(RandomForestClassifier,'fit',forbidden)
+    result=evaluate(external,evaluation,tmp_path/'models','test-model','1.0.0')
+    assert result['fit_performed'] is False and result['metrics']['objects']==120
+    file=tmp_path/'models'/'test-model'/'1.0.0'/'model.joblib'
+    file.chmod(0o644)
+    with pytest.raises(ValueError,match='Private'):load(tmp_path/'models','test-model','1.0.0')
+
+
+def test_late_sequence_and_measurement_windows_skip_then_recover():
+    rows=telemetry_rows(devices=('raspb1',),count=20)
+    # Receiver clock inversion: an older sequence appears available after a newer one.
+    rows[6]['received_at']=rows[8]['received_at']
+    features,statuses=causal_frame(rows,5)
+    states={row['sequence_number']:row['status'] for row in statuses}
+    assert states[8]=='out_of_order'
+    assert any(value=='ready' for sequence,value in states.items() if sequence>=14)
+    # A future receipt cannot be used as history for an earlier event.
+    prior=telemetry_rows(devices=('raspb1',),count=6)
+    prior[4]['received_at']=prior[5]['received_at']
+    earlier=dict(prior[5],received_at=prior[3]['received_at'])
+    assert one_window(earlier,prior[:5],5)[1]=='out_of_order'

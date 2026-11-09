@@ -30,7 +30,9 @@ def raw_record(value):
     positive(result['key_epoch'],2**31-1); positive(result['sequence_number'])
     for key in ['measured_at','received_at']:
         date=result[key]
-        if isinstance(date,str): date=datetime.fromisoformat(date)
+        if isinstance(date,str):
+            try:date=datetime.fromisoformat(date)
+            except ValueError:raise ValueError('Invalid UTC telemetry datetime') from None
         if not isinstance(date,datetime) or date.utcoffset()!=timezone.utc.utcoffset(None):
             raise ValueError('UTC telemetry dates required')
         result[key]=date.astimezone(timezone.utc)
@@ -75,21 +77,24 @@ def one_window(target,history,window=8,expected_interval=10):
 
 def causal_frame(records,window=8,expected_interval=10):
     records=[raw_record(row) for row in records]
-    # Availability order, never a retrospective measured_at sort.
-    records.sort(key=lambda r:(r['received_at'],r['device_id'],r['key_epoch'],r['sequence_number']))
+    # Accepted sequence is authoritative; timestamps are checked, never used to
+    # pull future measurements into an earlier window.
+    records.sort(key=lambda r:(r['device_id'],r['key_epoch'],r['sequence_number']))
     histories={};seen=set();rows=[];statuses=[]
     for target in records:
         identity=(target['device_id'],target['key_epoch'],target['sequence_number'])
         if identity in seen: raise ValueError('Duplicate source telemetry identity')
         seen.add(identity)
-        key=identity[:2]; history=histories.setdefault(key,deque(maxlen=window))
+        key=identity[:2]; history=histories.setdefault(key,[])
         if history and target['sequence_number']<=history[-1]['sequence_number']:
             status='out_of_order';row=None
         else: row,status=one_window(target,list(history),window,expected_interval)
         statuses.append({'device_id':target['device_id'],'sequence_number':target['sequence_number'],'status':status})
         if row is not None: rows.append(row)
-        # Invalid order cannot poison subsequent causal windows.
-        history.append(target)
+        # Keep the highest sequence context visible by this received_at cutoff.
+        # Nonmonotone measurement windows are skipped until the bad record ages out.
+        histories[key]=sorted(history+[target],key=lambda row:row['sequence_number'])[-window:]
+    rows.sort(key=lambda r:(r['received_at'],r['device_id'],r['key_epoch'],r['sequence_number']))
     return pd.DataFrame(rows),statuses
 
 

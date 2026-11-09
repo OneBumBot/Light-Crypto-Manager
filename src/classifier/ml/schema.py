@@ -42,7 +42,8 @@ def network_frame(frame, version=NETWORK_VERSION):
         values=result[name]
         if values.map(lambda x:isinstance(x,(bool,np.bool_))).any():
             raise ValueError('Boolean token in numeric feature: '+name)
-        numeric=pd.to_numeric(values,errors='raise').astype(float)
+        try:numeric=pd.to_numeric(values,errors='raise').astype(float)
+        except (TypeError,ValueError):raise ValueError('Invalid numeric feature: '+name) from None
         present=numeric.dropna()
         limits={'arp.opcode':65535,'arp.hw.size':255,'icmp.checksum':65535,'icmp.seq_le':65535,
             'http.content_length':2**31-1,'tcp.ack':2**32-1,'tcp.ack_raw':2**32-1,'tcp.checksum':65535,
