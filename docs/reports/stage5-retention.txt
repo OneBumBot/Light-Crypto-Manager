@@ -1,0 +1,12 @@
+
+UTC: 2026-11-09T15:27:55.173346+00:00
+$ docker compose --env-file .local-runtime/stage5.env exec -T -e TELEMETRY_RETENTION_SECONDS=315360000 mongo mongosh --quiet --file /retention.js
+Explicit telemetry retention policy applied
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T15:27:55.402979+00:00
+$ docker compose --env-file .local-runtime/stage5.env exec -T -e TELEMETRY_RETENTION_SECONDS=0 mongo mongosh --quiet --file /retention.js
+Explicit telemetry retention policy applied
+
+EXIT CODE: 0

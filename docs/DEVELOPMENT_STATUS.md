@@ -1,301 +1,80 @@
-# Состояние разработки и план
+# Состояние разработки
 
-Дата: 2026-11-08. Выполнены этапы 0–4. По команде пользователя PostgreSQL
-заменила MSSQL уже в этапе 2; переноса данных недоступной MSSQL нет.
-Этап 5 не начат. Push и merge в main не выполнялись.
+2026-11-09. Выполнены только этапы0–5. Ветка этапа5:
+`feature/mongodb-telemetry-storage`, база `feature/security-hardening`/`d9a000f`.
+Push, merge, rebase и изменение main в этапе5 не выполнялись. Рабочие volumes
+этапа4 не использовались. Отчёты: [reports/STAGE5.md](reports/STAGE5.md).
+Исторический подробный статус0–4 доступен в `git show d9a000f:docs/DEVELOPMENT_STATUS.md`.
 
 ## Сохранённые этапы
 
-| Этап | Результат | Git |
-|---|---|---|
-| 0 — безопасная исходная версия | Корневой Git/main, исключения, приватная копия оригинала, санация конфигурации и notebook outputs | `908dd56` — `chore: establish safe legacy project baseline` |
-| 0 — сохранение прав файлов | Права исполнения трёх vendored Python-скриптов сохранены отдельным коммитом без переписывания истории | `c352d81` — `chore: preserve executable modes of vendored Ascon scripts` |
-| 1 — инвентаризация | Файлы, существующая архитектура, проблемы, статусы и план | `feature/component-inventory`, `76ca884` |
-| 2 — воспроизводимый runtime / PostgreSQL | Python/lock, module entrypoints, PostgreSQL вместо MSSQL, проверки | `feature/reproducible-postgres-runtime`, `fca2153` |
-| 3 — Compose/Mosquitto | Локальные сервисы, healthchecks, demo и реальный MQTT/DB smoke | `feature/local-mqtt-compose`, коммит `build: add local Mosquitto and component compose services` |
-| 4 — безопасность MQTT/web | TLS/auth/ACL, v2 validation, постоянный anti-replay и web hardening | `feature/security-hardening`, коммиты ниже |
+| Этап | Результат / коммит |
+|---|---|
+| 0 | Safe baseline908dd56 + permissions c352d81, main |
+| 1 | Inventory76ca884, feature/component-inventory |
+| 2 | PostgreSQL/runtime fca2153, feature/reproducible-postgres-runtime |
+| 3 | Compose/Mosquitto5be5444, feature/local-mqtt-compose |
+| 4 | TLS/auth/ACL, MQTTv2/replay/web177 tests; d9a000f и пять предыдущих security commits |
+| 5.1 | MongoDB auth/scoped roles/volumes/health:1fff057 |
+| 5.2 | Validated Alembic baseline:6420b89 |
+| 5.3 | Atomic replay/anomaly/outbox ingestion:799cbdb |
+| 5.4–5.5 | Mongo relay/idempotence/leases + device provisioning:5515caf |
+| 5.6 | Authorized Flask history/page/metrics:17ffcf5 |
+| 5.7 | Non-secret PG device binding/enabled + migration0003:c07c6b2 |
 
-Точный хеш последнего коммита см. `git log -1` и итоговый отчёт. Хеш не
-вписывается в содержимое самого коммита. В main осталась безопасная база;
-ветка инвентаризации сохранена отдельно, этап 4 основан на проверенном 5be5444 этапа 3.
+Последующие test/docs commits: `git log --oneline d9a000f..HEAD`; финальный хеш
+указывается итоговым отчётом, а не помещается внутрь самого коммита.
 
 ## Статусы компонентов
 
-«Существует» подтверждает наличие файлов, «частично реализовано» — неполный
-сценарий, «не проверено» — нет достаточного запуска, «проверено тестами» имеет
-ровно указанную область проверки и не распространяется на весь сервис.
-
-| Компонент / возможность | Статус | Доказательство / предел |
+| Компонент | Статус | Фактическая область проверки |
 |---|---|---|
-| Корневой Git и безопасная база | существует | Два коммита в main, приватный оригинал с manifest, чистое состояние после этапа 0 |
-| Publisher | проверено тестами | TLS/ACL, v2, per-device key, persistent SQLite counter; приём подтверждён PG. ARM64 не запускался |
-| Запуск publisher на Raspberry Pi OS/ARM64 | не проверено | Dry-run готовых runtime wheels для ARM64/CPython 3.12 успешен; на устройстве не запускался |
-| Настоящий MQTT broker / Mosquitto | проверено тестами | TLS/8883, password_file/ACL, неверный пароль/CA/publish/read; plaintext listener отсутствует |
-| Receiver в brocker | частично реализовано | Аномалии пишутся через живой MQTT; SUBACK readiness и переподключение проверены. Отдельный worker, ML, persistence датчиков ещё впереди |
-| Сквозной MQTT обмен | проверено тестами | TLS/v2/Mosquitto/receiver/PG; tamper/replay и повтор после force-recreate receiver |
-| Notebook экспериментов | существует | 13 ячеек RF/IF, исторические метрики просмотрены, не воспроизведены |
-| Датасет, готовые модели и preprocessing artifacts | отсутствует | Есть только код загрузки CSV и joblib.dump |
-| Online ML / согласованные признаки | отсутствует | Сетевые признаки отличаются от temperature/humidity |
-| Flask, формы и роли | проверено тестами | CSRF активна, Socket.IO login/CSRF/same-origin, role/active проверки; live HTTP/socket logout и telemetry успешны |
-| ORM предметной области | проверено тестами | 14 исходных таблиц + 1 replay-таблица; additive init-db. FK/Alembic/composite CRUD впереди |
-| CRUD | частично реализовано | Простой PUT/DELETE проверен на PostgreSQL; POST/составные PK пока не реализованы |
-| Сохранение телеметрии | частично реализовано | save_sensor_data отключена и не завершает транзакцию |
-| Шаблоны, CSS, JS, realtime UI | частично реализовано | Макеты/графики/Socket.IO есть; браузер не запускался, обнаружены дефекты |
-| Работа Flask/API/PostgreSQL | проверено тестами | Вход, dashboard render, история, простой PUT/DELETE; живой HTTP /login=200. Остальные пути полностью не покрыты |
-| Локальный примитив Ascon-AEAD128 | проверено тестами | 81 PT/AAD случай: round trip, длина, отказы при изменении tag/AAD/key/nonce |
-| Соответствие Ascon финальному SP 800-232 | не проверено | 4 внешних KAT ascon-c проходят; полной нормативной проверки/аудита нет |
-| genkat/writer | существует | Импорты на Python 3.14.9 успешны, полный генератор не запускался |
-| Синтаксис Python и notebook | проверено тестами | compile() успешен для 9 .py и 13 кодовых ячеек; без исполнения приложений |
-| FastAPI / Alembic | отсутствует | PostgreSQL перенесена в этап 2; API и миграции остаются последующими этапами |
-| Отдельный оформленный MQTT worker | частично реализовано | Receiver теперь отдельный Compose-сервис; выделение общего ingestion-кода, полная запись датчиков и жизненный цикл worker остаются этапом 5 |
-| Постоянный anti-replay | проверено тестами | Atomic PG state consumer/device/epoch, rollback, concurrency/restart; sender SQLite |
-| Policy Engine / защищённые команды | отсутствует | Anti-replay телеметрии реализован в этапе 4; динамическая политика не добавлялась |
-| «Магма» / проверенный профиль CRISP | отсутствует | Нет реализации или подтверждения требований |
-| Автоматические тесты | проверено тестами | 177 passed без предупреждений; отдельно реальные TLS/ACL/restart/HTTP/socket/Chromium проверки. CI ещё нет |
-| Docker Compose | проверено тестами | Запуск с healthchecks, init-db, demo/web profiles, smoke и tests; volumes тестового контура удалены после проверки |
-| CI | отсутствует | Локальные тесты не заменяют CI |
+| Safe Git baseline / nested Ascon | существует | История сохранена, vendor/classifier этап5 не меняет |
+| Publisher | проверено тестами | TLS, v2, separate keys, persistent SQLite sequence, реальный PG/Mongo приём |
+| Mosquitto | проверено тестами | TLS/password/точные topic ACL; неверный пароль/CA/запрещённый read/write |
+| Ingestion receiver | проверено тестами | AEAD/validation + device binding + atomic replay/anomaly/outbox; manual QoS1 ACK, PG outage и restart |
+| Anti-replay | проверено тестами | PostgreSQL source of truth; rollback/concurrency/restart, consumer receiver/web |
+| PostgreSQL legacy schema | проверено тестами | 14 таблиц сохранены + replay/outbox/metrics/devices/Alembic =19; legacy rows/replay сохранены |
+| Alembic | проверено тестами | Empty/legacy/repeat/incompatible; composite PK не меняются |
+| MongoDB | проверено тестами | Auth/scoped insert-find/read roles, validator/indexes, persistent history; restart/outage |
+| Transactional Outbox | проверено тестами | claim/lease/fencing, retries/dead/requeue, retention, capacity; rollback и process crash |
+| Relay | проверено тестами | Два процесса + реальная Mongo недоступность/восстановление, duplicate comparison |
+| Несколько устройств | проверено тестами | Три новых отдельных identity/key/topic/history, запрет чужого topic |
+| Provisioning/rotation | частично реализовано | Автоматизируемые extra-device + PG provisioning; ротация/изменение работающего состава вручную |
+| Flask/roles/CSRF/Socket.IO | проверено тестами | Прежние ограничения + network HTTP/socket, logout/revocation, безопасный редирект |
+| Mongo history API/page | проверено тестами | Login/role, device/date/sort/limit/offset, empty, общий503; live сохранён |
+| Основной dashboard | частично реализовано | Live память50/один процесс, все устройства общие; новый history route отдельно |
+| CRUD legacy | частично реализовано | Простой PUT/DELETE и allowlist; CREATE/composite CRUD не реализованы |
+| Sensor_Data | существует | Схема/данные сохранены; новый pipeline пишет Mongo, не эту таблицу |
+| Метрики | проверено тестами | Admin API: incoming/s, accepted/rejected/replay, backlog/age/latency/errors/retries, Mongo count |
+| Ascon primitive | проверено тестами | Прежние roundtrip/tamper/KAT; исходник не изменён. Полный SP800-232 audit не заявлен |
+| Notebook classifier | существует | Offline experiments; dataset/model artifacts отсутствуют |
+| Автоматические проверки | проверено тестами | 210 passed без предупреждений, плюс реальные TLS/ACL/outages/crash/HTTP/socket/Chromium |
+| ARM64 / Raspberry Pi execution | не проверено | Параметры TLS/native publisher готовы, физический запуск не проводился |
+| 1000 msg/s / 10000 устройств | не проверено | Только будущая цель; current admission lock/count ограничивают скорость |
+| FastAPI / ML inference / Policy Engine / «Магма»/CRISP | отсутствует | В этапе5 не разрабатывались |
+| CI / production HA / DB TLS | отсутствует | Локальные проверки не заменяют production deployment |
 
-## Фактические проверки этапов 0–1
+## Итог проверок
 
-Среда: Linux x86_64, Python 3.14.9. Установка зависимостей и сервисов не выполнялась.
+- Полный актуальный pytest: **210 passed**, PostgreSQL и MongoDB реальные, без
+  пропусков/предупреждений. Предыдущие177 сохранены; fixture init теперь Alembic.
+- Три independently provisioned устройства и два relay; Mongo stop/recover,
+  PostgreSQL stop/recover без MQTT ACK, replay/restart и процесс exit19 после Mongo
+  insert до PG acknowledge — успешно, один документ на каждую стабильную identity.
+- Live HTTP/Socket.IO, CSRF/roles, Mongo history/admin metrics и Chromium4 XSS
+  payload — успешно; TLS/пароль/ACL negative и mqtt smoke прошли.
+- Ruff, compileall, Node, uv lock, known-secret Git/image/permissions audit — успешно.
+  Промежуточные неуспешные тестовые прогоны сохранены и объяснены в reports/STAGE5.md.
+- Retention opt-in: проверена настройка/отключение Mongo TTL и удаление только
+  delivered PG событий в tests; месячный TTL lifecycle не воспроизводился.
 
-| Проверка | Результат |
-|---|---|
-| Корень и вложенные .git | Исходно корневой Git отсутствовал; один вложенный Ascon master/ed24e54, сохранён |
-| Git identity | user.name/user.email уже настроены, не изменялись |
-| Архив и исходники до git add | Просмотрены конфигурационные присваивания, пароли, текстовые кандидаты и ZIP; секретные значения не печатались |
-| Приватная копия | Каталог 0700, tar.gz и manifest 0600; хеши всех 52 исходных файлов сверены с архивом |
-| Санация | Подготовленные 24 файла не содержали выделенных исходных ключей/паролей/URI; исходники всех ячеек notebook совпадают с оригиналом |
-| Обычные файлы Ascon | В индексе нет mode 160000; checkout базы содержит сам код, вложенный Git не удалён |
-| Синтаксис | compile() для 9 Python-файлов и 13 ячеек успешен |
-| Ascon round trip | 81 сочетание длин PT/AAD; ciphertext длиной PT+16; успешно |
-| Ascon отрицательные случаи | Для каждого из 81 пакета изменение tag, AAD, key и nonce → None; успешно |
-| Ascon legacy default | Ascon-128 вызывает AssertionError в vendored реализации; несовместимость подтверждена |
-| Повторный ciphertext | Повторная расшифровка успешна; anti-replay у примитива отсутствует по назначению, протокол его не добавляет |
-| Ascon genkat/writer | Импорт успешен на текущем Python; внешний эталон/полная генерация не проверены |
-| Зависимости | Web/MQTT/ML пакеты и pyascon отсутствуют по importlib.metadata/find_spec; запуск сервисов не выполнен |
-| Git whitespace этапа 0 | Неуспешно, exit 2: 275 унаследованных замечаний к пробелам/EOF; legacy форматирование сохранено |
-| Git diff --check этапа 1 | Успешно: новые документы без замечаний |
+## Границы / следующий этап
 
-Проверка секретов — локальный аудит известных литералов и подозрительных полей,
-а не гарантия обнаружения любого секрета. Приватный архив/вложенная история не
-публикуются. Никакие реальные ключи для тестов Ascon не использовались.
+At-least-once delivery + idempotent Mongo insert, не end-to-end exactly-once/lossless.
+Конечные очереди/диск/retry budget; dead требует вмешательства. Cleanup delivered
+и Mongo TTL выключены по умолчанию. Legacy FK/CRUD, Mongo HA/TLS, production HTTPS,
+автоматическая ротация, многопроцессный live, большие нагрузки и ARM64 ещё впереди.
 
-Пример повторения локальной проверки Ascon из корня (без сети/пакетов):
-
-```bash
-python3 -B - <<'PY'
-import importlib.util
-spec = importlib.util.spec_from_file_location('audit_ascon', 'src/web/ascon/ascon.py')
-a = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(a)
-key = nonce = bytes(range(16))  # только публичные тестовые данные
-lengths = [0, 1, 7, 8, 15, 16, 17, 31, 32]
-for plen in lengths:
-    for alen in lengths:
-        pt, ad = bytes(range(plen)), bytes(range(alen))
-        ct = a.ascon_encrypt(key, nonce, ad, pt)
-        assert len(ct) == plen + 16
-        assert a.ascon_decrypt(key, nonce, ad, ct) == pt
-        changed_tag = ct[:-1] + bytes([ct[-1] ^ 1])
-        changed_key = bytes([key[0] ^ 1]) + key[1:]
-        changed_nonce = bytes([nonce[0] ^ 1]) + nonce[1:]
-        assert a.ascon_decrypt(key, nonce, ad, changed_tag) is None
-        assert a.ascon_decrypt(key, nonce, ad + b'x', ct) is None
-        assert a.ascon_decrypt(changed_key, nonce, ad, ct) is None
-        assert a.ascon_decrypt(key, changed_nonce, ad, ct) is None
-print('PASS: 81 round trips and four tamper checks per case')
-PY
-```
-
-Это проверка одной реализации на тестовых данных с фиксированными key/nonce,
-а не шаблон безопасного применения nonce в реальной системе.
-
-## Фактические результаты этапа 2
-
-Подробные команды установки, запуска, инициализации PostgreSQL и тестов:
-[RUNTIME.md](RUNTIME.md). PostgreSQL перенесена в текущий этап по явной команде
-пользователя; выделение worker, FK/Alembic и полная запись телеметрии не выполнены.
-
-| Проверка | Результат |
-|---|---|
-| Окружение | CPython 3.12.16, uv 0.13.6; uv.lock разрешает 137 пакетов, все runtime/ML группы установлены локально |
-| Изолированные проверки | 95 passed без БД; импорт всех трёх модулей без env/подключений/FileHandler, key/config validation, Flask login page, publisher → web AEAD |
-| Ascon | 4 внешних фиксированных KAT ascon-c + 81 набор PT/AAD с tamper checks; успешно. Исходники Ascon не менялись |
-| PostgreSQL | Временный postgres:17-alpine, image digest `sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac`; только случайный loopback-порт |
-| Схема и CLI | 14 таблиц, init-db повторяем, bootstrap только по явным паролям, существующие пароли сохраняются |
-| Web/PostgreSQL | Вход, dashboard render, чтение явно записанной тестовой истории, простой PUT/DELETE успешны |
-| Receiver/PostgreSQL | Обе причины аномалий и normal case; отвергаются подмена тега и device_id с SQL-синтаксисом; ошибка INSERT откатывается и следующая обработка успешна |
-| Итог pytest | **103 passed, 2 LegacyAPIWarning (Query.get)**; 8 тестов используют PostgreSQL, схемы изолированы и удаляются |
-| Живой процесс web | init-db CLI успешен, serve без MQTT, /login=200 по HTTP, LOG_FILE работает; процесс остановлен |
-| ML | 13 ячеек синтаксически корректны; исходные импорты успешны с pandas 2.3.3 / scikit-learn 1.9.1; обучения/датасета нет |
-| ARM64 | uv pip dry-run --only-binary для CPython 3.12/aarch64-manylinux_2_28: 28 runtime пакетов разрешены. Реального ARM64 запуска нет |
-| Статика | compileall, Ruff выбранных fatal/undefined проверок, uv lock --check, git diff --check успешны |
-| Секреты и сохранность | Локальные env/логи/venv/cache исключены, исходные секретные литералы не возвращены; модели, шаблоны, notebook и vendored Ascon не изменены |
-
-Первый запуск DB-тестов из sandbox: 6 ошибок соединения; после разрешения доступа
-к loopback проверки успешны. Стандартный traceback включил временный пароль
-изолированной БД — пароль заменён, pytest настроен на --tb=short. Реальные исходные
-реквизиты не использовались. Контейнер с временной БД остановлен после проверок.
-Тестовой MSSQL не было; миграция её данных не проверялась. Полный MQTT обмен,
-браузерные сценарии, обучение ML и реальное ARM64 выполнение не заявляются.
-
-## Фактические результаты этапа 3
-
-Инструкции: [COMPOSE.md](COMPOSE.md). Реализован только локальный контур и проверки;
-web/ORM/ML/криптографический исходник не переписывались. В receiver добавлены
-сброс/установка readiness marker по disconnect/положительному SUBACK.
-
-| Проверка | Результат |
-|---|---|
-| Git перед этапом | Чистая ветка этапа 2, HEAD fca2153; создана feature/local-mqtt-compose |
-| Compose config | С приватным сгенерированным env config --quiet успешен; с пустыми секретами пример конфигурации ожидаемо отклонён |
-| Build | Python 3.12.16, Mosquitto 2.1.2, PostgreSQL 17.11; образы закреплены digest. Classic builder успешно работает, несмотря на предупреждение об отсутствии buildx |
-| Инициализация | PostgreSQL healthy → init-db exit 0; явный demo-setup exit 0; receiver ready только после SUBACK; web /login healthy |
-| MQTT/DB smoke | Два валидных AEAD сообщения → ровно две аномалии своего временного устройства; JSON/tag corruption отвергнуты, следующий пакет принят; fixture очищена |
-| Реальный publisher | Процесс demo наблюдён через broker; packet успешно расшифрован, данные temperature/humidity присутствуют |
-| Broker restart | Receiver получил новый SUBACK; повторный полный smoke и наблюдение demo publisher успешны |
-| Порты | У broker/web публикация только 127.0.0.1, у PostgreSQL нет host binding; для аудита использованы случайные порты |
-| Образ приложения | UID/GID 10001, приватные env, legacy ZIP, Git, кеши и notebook отсутствуют в итоговом образе |
-| Изолированные тесты | 98 passed, 10 DB-тестов deselected при отдельном запуске без PostgreSQL |
-| Полный pytest в Compose | **108 passed, 2 LegacyAPIWarning** для прежнего Query.get. Включены rollback/idempotency/conflict тесты demo seed и SUBACK/config protection |
-| Статика | Ruff выбранных правил, compile, git diff --check; экспорты зависимостей и uv.lock согласованы |
-| Сохранность | Существующие web/publisher/ORM/templates/ML/Ascon не менялись; реальные секреты исключены из Git; тестовый Compose остановлен, удалены только volumes проекта lcm-stage3 |
-
-Ошибки первого прогона не скрываются: smoke сначала получил DataError, поскольку
-его случайный Tag_Name был длиннее 30 символов. Исправлен до 26 символов.
-Проверка первого локального образа также обнаружила ZIP/вложенную .git из-за
-семантики исключений Docker-контекста. Образы и их промежуточные копии удалены
-адресно, без global prune; Dockerfile переключён на явное копирование файлов,
-контекст исправлен, новый образ прошёл проверку. Ошибочные образы не публиковались.
-Реальные значения исходных секретов не выводились и в Git не возвращались.
-
-Ограничения: anonymous MQTT без TLS/ACL только в локальном dev контуре; остаются
-известные проблемы web, нет anti-replay и гарантий отсутствия потерь при сбоях.
-Receiver сохраняет только аномалии, web — live данные в памяти. Browser UI/ARM64/
-ML/нагрузка не проверялись. Alembic, полноценный worker и sensor persistence —
-следующие этапы; этап 4 не начат.
-
-## Технический план с учётом выполненного этапа 4
-
-Перед каждым этапом: проверить чистый Git/сохранение предыдущего, создать отдельную
-ветку от согласованной базы, менять только нужные файлы, выполнить относящиеся
-проверки, обновить этот документ и сделать коммиты. Merge в main/push — только
-по отдельному разрешению. Этап 1 остаётся несмешанным с реализацией.
-
-| Этап / ветка | Конкретные коммиты | Критерий завершения |
-|---|---|---|
-| 2 `feature/reproducible-postgres-runtime` | `feat: establish reproducible PostgreSQL runtime` | Выполнено с изменением по команде пользователя: Python 3.12.16, uv.lock и экспорты; импорты без соединений, единый Ascon, log/env; PostgreSQL вместо MSSQL, 103 теста. ARM64 — только проверка wheels, не выполнение |
-| 3 `feature/local-mqtt-compose` | `build: add local Mosquitto and component compose services` | Выполнено: конфигурация и healthchecks, demo/web profiles, временные smoke fixtures, 108 tests, реальный MQTT/DB обмен и повтор после broker restart. Только loopback, TLS/ACL впереди |
-| 4 `feature/security-hardening` | Логические security/test коммиты перечислены ниже | Завершено: TLS/auth/ACL, v2 и persistent replay, web hardening, 177 tests и реальные MQTT/HTTP/Socket.IO/Chromium проверки |
-| 5 `feature/migrations-mqtt-worker` | `feat: add relational constraints and Alembic migrations`; `refactor: extract MQTT ingestion worker`; `test: verify transactional telemetry persistence` | Явные FK/индексы/составные ключи, seeds и миграции на чистой БД, worker lifecycle/reconnect, единая транзакция приёма, запись датчиков/аномалий, контракт истории; существующие шаблоны сохранены |
-| 6 `feature/ml-inference-pipeline` | `docs: define observable ML feature contract`; `feat: export versioned preprocessing and anomaly model`; `test: reproduce anomaly evaluation` | Решение: собирать сетевые признаки либо обучать новую модель по телеметрии. Версия/хеш датасета, train-only preprocessing, split по времени/группам, сохранение schema/encoder/model/versions, воспроизводимые метрики и inference. Выход ML — score/сигнал аномалии |
-| 7 `feature/adaptive-policy-engine` | `feat: enforce minimum crypto profiles and policy hysteresis`; `feat: authenticate profile commands and reject replays`; `test: verify policy transitions and command recovery` | Минимальный уровень защиты обязателен; устойчивые аномалии быстро усиливают профиль, снижение лишь после продолжительного стабильного окна; ML не выбирает алгоритм. Key/session/sequence, хранение replay-state, дедупликация, authenticated commands, подтверждение/повторы/rollback, restart tests; не ранжировать алгоритмы по названию без модели угроз |
-| 8 `feature/fastapi-web-integration` | `feat: expose authenticated FastAPI telemetry and table APIs`; `refactor: connect existing templates to FastAPI`; `test: cover web roles and realtime flows` | Сохранённые шаблоны/CSS/графики; контракт авторизации и realtime, полный CRUD с составными PK, пагинация; роли/CSRF/socket/browser tests; отключение legacy Flask пути только после проверки паритета |
-| 9 `feature/domestic-crypto-profile` | `docs: specify Magma profile and CRISP requirements`; `feat: implement verified domestic crypto profile`; `test: validate domestic profile vectors and interoperability` | Сначала источники требований/профиль: режим, аутентификация, key/nonce limits, anti-replay и совместимость; независимые векторы. «Магма» не объявляется полным CRISP; при неполноте требований это ограничение явно фиксируется |
-| 10 `feature/system-validation` | `test: add integration security and load scenarios`; `docs: publish reproducible experiment and deployment procedures` | Полная цепочка Compose, fuzz/negative cases, перезапуски/потери/повторы, нагрузка и ARM64 замеры, фиксированные параметры экспериментов, документация ограничений и фактические результаты |
-
-Порядок уточнён результатами аудита: согласование импортов, локальная проверка
-Ascon и переход на PostgreSQL выполнены в этапе 2; безопасность legacy закрывается до внешнего доступа,
-а replay/dedup полностью фиксируются до включения адаптивного управления.
-Инфраструктура ограничена задачей: без Windows, SIEM и лишних сервисов.
-Наличие «Магмы» само по себе не доказывает ни полноту CRISP, ни криптостойкость
-всей системы; сравнение профилей требует явной модели угроз и требований.
-
-Этап 4 завершён. Следующий шаг — этап 5: миграции, структура связей и полноценный
-MQTT worker/persistence датчиков. Он не начат; требуется отдельная команда пользователя.
-
-## Ход этапа 4 (исторические промежуточные записи)
-
-Создана feature/security-hardening от чистого 5be5444. Транспорт MQTT переведён
-на TLS/8883 с аутентификацией и ACL, отдельными материалами ролей вне Git/образов.
-Положительные/отрицательные подключения и ограничения publish/read проверены на
-реальном Mosquitto. Протокол: docs/reports/stage4-transport.txt.
-Anti-replay, валидация v2 и web-защита пока не завершены; этап не объявляется готовым.
-
-Блок MQTT v2/anti-replay завершён: 146 passed (2 прежних Query.get warning),
-включая конкурентное принятие 16 копий одного пакета ровно один раз, rollback
-счётчика вместе с INSERT, валидацию и счётчик SQLite. Реальный TLS smoke прошёл;
-после force-recreate receiver ранее сохранённый пакет отвергнут без новой записи.
-Результаты: docs/reports/stage4-protocol.txt, схема: docs/MQTT_PROTOCOL.md.
-Web-безопасность остаётся следующим блоком, этап ещё не завершён.
-
-Веб-блок этапа 4: 172 passed в контейнере; прежние Query.get предупреждения
-устранены переходом соответствующих API на Session.get. Реальные сетевые проверки
-HTTP/Socket.IO и Chromium DOM-XSS прошли; результаты в docs/reports/stage4-web.txt.
-CSRF включена по умолчанию и в регрессионных тестах. Финальная документация и
-повторный итоговый MQTT-контроль ещё выполняются; этап 5 не начат.
-
-Итоговый регрессионный контроль: 177 passed, без предупреждений. Повторно прошли
-TLS/ACL (включая запрет publish у receiver), v2 tamper/replay smoke и replay
-после force-recreate receiver. Проверены права новых каталогов/файлов 0700/0600.
-Протокол docs/reports/stage4-final.txt; финальное обновление документации выполняется.
-
-Дополнительная проверка логирования: удалены browser console дампы decrypted
-MQTT и истории. Диагностические сообщения без содержимого телеметрии сохранены.
-
-## Итог этапа 4
-
-Только этап 4 завершён. База — 5be5444; main не менялась. Ветка
-feature/security-hardening. Изменения разделены на логические коммиты:
-
-| Хеш | Изменение |
-|---|---|
-| 53eadeb | MQTT authentication, TLS, role ACL, приватная генерация/установка |
-| 40be3e9 | Bounded v2 validation и atomic persistent anti-replay |
-| 60504c9 | Flask/Socket.IO/CSRF/DOM/API hardening и web проверки |
-| ef2e692 | Итоговые transport/replay регрессии и credential exclusions |
-| 3e8376e | Удалены browser console дампы decrypted telemetry/history |
-
-Финальная документация и audit helper сохранены следующим docs-коммитом; его
-хеш см. git log -1. Все 12 сценариев задачи сопоставлены с фактическими запусками
-в [reports/README.md](reports/README.md). 177 pytest passed без предупреждений;
-реальный TLS/ACL, MQTT/v2/PG, force-recreate receiver/replay, HTTP/Socket.IO,
-Chromium DOM XSS успешны. Протоколы содержат UTC, команды, вывод и EXIT CODE,
-включая исправленные CSRF fixture прогоны. Raw секретные выводы не публикуются.
-
-Проверены 0700/0600 материалов, non-root image, отсутствие ключей/credentials/Git/
-архивов в image, отдельные role mounts, current/legacy secret literals в history
-и рабочем дереве. Это локальная проверка известных литералов, не абсолютная
-гарантия или внешний аудит. Тестовый lcm-stage4 остановлен; volumes счётчиков,
-replay-state и материалов сохранены. Push/merge не выполнялись.
-
-Оставшиеся/непроверенные сценарии — KNOWN_ISSUES.md: sensor persistence,
-FK/Alembic, CREATE/composite CRUD, web process/outbox, manual key lifecycle,
-production HTTPS, ARM64/нагрузка/полный cryptographic audit. ML, Policy Engine,
-«Магма»/CRISP не реализовывались. Готова база к этапу 5, без автоматического перехода.
-Telemetry replay v2 следует переиспользовать; будущие управляющие команды
-потребуют собственной проверки ключей/счётчиков, не прямого выбора алгоритма ML.
-
-## Этап 5 — в работе
-
-Ветка `feature/mongodb-telemetry-storage` от `d9a000f`. Рабочие volumes этапа 4
-не используются. 5.1: добавлены MongoDB 8.0.17 (digest), отдельные приватные
-учётные записи relay/history, volume, healthcheck, серверная валидация и индексы.
-Проверки и последующие блоки фиксируются в `reports/stage5-*.txt`.
-
-Проверка 5.1: Compose config, сборка runtime и authenticated MongoDB/PG healthchecks пройдены; команды в reports/stage5-storage.txt.
-
-5.2: Alembic baseline проверяет колонки/типы/nullability/PK/unique существующей
-схемы. Новая БД создаётся из зафиксированного snapshot; несовместимость требует
-ручного разбора. destructive downgrade запрещён. Данные и replay не меняются.
-
-5.3: атомарные replay/anomaly/outbox, ограничение backlog, lease/claim с fencing,
-retry/dead/requeue и отключённая по умолчанию очистка доставленного. Реальные PG/Mongo
-проверки: 13 passed (включая миграции и crash после Mongo write); первый concurrency
-тест исправлен: engine передаётся в поток без Flask context lookup. Протокол сохранён.
-
-5.4–5.5: MongoRepository insert-only с unique key и сравнением duplicate, UTC BSON,
-lease relay и явный retention admin script. QoS1 manual ACK после PG commit;
-DB/backpressure ошибка вызывает reconnect без ACK. Генератор поддерживает несколько
-device identities с отдельными паролями, ключами и точными ACL. 203 pytest passed
-с реальными PostgreSQL/MongoDB, включая прежние проверки безопасности.
-
-5.6: read-only history API и страница /telemetry, UTC/device/date filters,
-bounded limit/offset, прежние права sensor_data, общие ошибки 503. Live путь
-сохранён. Метрики доступны только admin; JSON API не позволяет читать outbox payload.
-
-5.7: добавлен несекретный PG telemetry_devices (0003) с проверкой enabled/topic/
-profile/epoch в ingestion и live consumer. Полный повтор: 210 passed без warnings.
-Проверены реальная недоступность PG/Mongo, три отдельных устройства, два relay,
-process exit19 после Mongo write, restart и отсутствие дополнительных записей.
+Следующий этап выполняется только по отдельной команде пользователя. ML, Policy
+Engine, FastAPI и отечественный профиль автоматически не начинаются.

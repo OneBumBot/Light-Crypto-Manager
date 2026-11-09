@@ -14,10 +14,11 @@ def git(*args):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--secrets-dir',type=Path,required=True)
+    parser.add_argument('--secrets-dir',type=Path,required=True,action='append')
+    parser.add_argument('--image',action='append',default=[])
     args=parser.parse_args()
     secret_values=set()
-    for root in [args.secrets_dir]:
+    for root in args.secrets_dir:
         assert stat.S_IMODE(root.stat().st_mode)==0o700
         for path in root.iterdir():
             if not path.is_file(): continue
@@ -59,6 +60,23 @@ def main():
     for name in paths:
         path=Path(name)
         if path.is_file(): assert not any(value in path.read_bytes() for value in secret_values),name
+    # Check the final image filesystem and config; credentials are supplied only over stdin.
+    code = """import json, pathlib, sys
+secrets=[bytes.fromhex(x) for x in json.load(sys.stdin)]
+for root in ['/app','/run','/home/lightcrypto']:
+    for p in pathlib.Path(root).rglob('*'):
+        if p.is_file():
+            data=p.read_bytes()
+            assert not any(v in data for v in secrets),str(p)
+assert not pathlib.Path('/app/.git').exists()
+assert not list(pathlib.Path('/app').rglob('*.zip'))
+print('PASS: runtime image private-material/legacy-archive exclusion')
+"""
+    for image in args.image:
+        subprocess.run(['docker','run','--rm','-i','--entrypoint','python',image,'-c',code],
+            input=json.dumps([v.hex() for v in secret_values]).encode(),check=True)
+        config=subprocess.check_output(['docker','image','inspect',image])
+        assert not any(v in config for v in secret_values)
     print(f'PASS: known legacy/current secret scan ({len(checked)} Git blobs and working-tree candidates)')
     print('PASS: private input directories 0700 and generated files/env 0600')
 

@@ -12,7 +12,7 @@ import subprocess
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report',type=Path,required=True)
-    parser.add_argument('--secrets-dir',type=Path)
+    parser.add_argument('--secrets-dir',type=Path,action='append')
     parser.add_argument('command',nargs=argparse.REMAINDER)
     args=parser.parse_args()
     command=args.command[1:] if args.command[:1]==['--'] else args.command
@@ -21,8 +21,8 @@ def main():
         if isinstance(value,dict):
             for x in value.values(): collect(x)
         elif isinstance(value,str) and len(value)>=24: secret_values.add(value)
-    if args.secrets_dir:
-        for p in args.secrets_dir.rglob('*'):
+    for secret_dir in args.secrets_dir or []:
+        for p in secret_dir.rglob('*'):
             if p.is_file() and p.suffix=='.password': secret_values.add(p.read_text().strip())
             elif p.is_file() and p.suffix=='.json': collect(json.loads(p.read_text()))
     for p in Path('.local-runtime').glob('*.env'):

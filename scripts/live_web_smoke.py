@@ -50,7 +50,17 @@ def main():
         assert active.connected
         assert received.wait(20)
         print('PASS: logged-in Socket.IO receives live MQTT telemetry')
-        response=session.post(base+'/logout',headers={'X-CSRFToken':csrf},allow_redirects=False,timeout=5)
+        history=session.get(base+'/api/telemetry/history',params={'limit':2},timeout=5)
+        assert history.status_code==200 and 0<len(history.json()['items'])<=2
+        assert session.get(base+'/telemetry',timeout=5).status_code==200
+        assert session.get(base+'/api/telemetry/metrics',timeout=5).status_code==403
+        with app.app_context():
+            user=db.session.get(User,user_id); user.role='admin'; db.session.commit()
+        metrics=session.get(base+'/api/telemetry/metrics',timeout=5)
+        assert metrics.status_code==200
+        assert metrics.json()['mongo_documents']>0 and metrics.json()['counters']['incoming']>0
+        print('PASS: authorized live MongoDB history, history page and admin-only pipeline metrics')
+        response=session.post(base+'/logout' ,headers={'X-CSRFToken':csrf},allow_redirects=False,timeout=5)
         assert response.status_code==302 and disconnected.wait(5)
         assert session.get(base+'/api/latest-data',timeout=5).status_code==401
         print('PASS: logout disconnects live Socket.IO and removes HTTP access')

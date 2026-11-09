@@ -43,7 +43,7 @@ def publish(name,entry,packet):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('phase',choices=['demo','publish','pending','delivered','replay','verify','identity'])
+    parser.add_argument('phase',choices=['demo','publish','pending','delivered','replay','verify','identity','crash'])
     args=parser.parse_args()
     registry=load_registry('/run/lcm/registry.json')
     engine=create_engine(database_url(),pool_pre_ping=True)
@@ -77,8 +77,16 @@ def main():
                 for name,epoch,sequence in identities:
                     result.extend(c.execute(select(outbox).where(outbox.c.device_id==name,outbox.c.key_epoch==epoch,outbox.c.sequence_number==sequence)).mappings().all())
                 return result
-        if args.phase=='pending':
+        if args.phase=='crash':
+            from src.outbox_relay import deliver_one
+            def crash_after_write(event):
+                print('EXPECTED: process exits after Mongo write before PG acknowledge',flush=True)
+                os._exit(19)
             wait(lambda:len(events())==len(identities))
+            assert deliver_one(engine,repo,after_write=crash_after_write,lease_seconds=1)
+            raise AssertionError('Crash seam not reached')
+        if args.phase=='pending':
+            wait(lambda:len(events())==len(identities) and all(e['attempts']>=1 for e in events()))
             assert all(e['status'] in ('pending','claimed') for e in events())
             assert all(e['attempts']>=1 for e in events())
             print('PASS: MongoDB unavailable; all accepted events retained in PG outbox with delivery attempts')

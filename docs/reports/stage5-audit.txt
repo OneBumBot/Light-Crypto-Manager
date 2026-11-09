@@ -1,0 +1,9 @@
+
+UTC: 2026-11-09T15:29:02.531495+00:00
+$ python3 scripts/audit_security.py --secrets-dir .local-runtime/security-stage5 --secrets-dir .local-runtime/security-stage5-multi --secrets-dir .local-runtime/mongo-stage5 --image lcm-stage5-runtime --image lcm-stage5-tests
+PASS: runtime image private-material/legacy-archive exclusion
+PASS: runtime image private-material/legacy-archive exclusion
+PASS: known legacy/current secret scan (234 Git blobs and working-tree candidates)
+PASS: private input directories 0700 and generated files/env 0600
+
+EXIT CODE: 0

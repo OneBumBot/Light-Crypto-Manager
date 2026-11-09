@@ -1,0 +1,12 @@
+
+UTC: 2026-11-09T15:26:52.993847+00:00
+$ docker compose --env-file .local-runtime/stage5.env run --rm --no-deps --entrypoint python tests -m scripts.live_web_smoke
+ Container lcm-stage5-tests-run-718261ac43b8 Creating
+ Container lcm-stage5-tests-run-718261ac43b8 Created
+PASS: real anonymous Socket.IO connection rejected
+PASS: live CSRF, role restriction, safe redirect and cross-origin rejection
+PASS: logged-in Socket.IO receives live MQTT telemetry
+PASS: authorized live MongoDB history, history page and admin-only pipeline metrics
+PASS: logout disconnects live Socket.IO and removes HTTP access
+
+EXIT CODE: 0
