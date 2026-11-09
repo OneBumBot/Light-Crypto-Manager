@@ -78,3 +78,6 @@ At-least-once delivery + idempotent Mongo insert, не end-to-end exactly-once/l
 
 Следующий этап выполняется только по отдельной команде пользователя. ML, Policy
 Engine, FastAPI и отечественный профиль автоматически не начинаются.
+
+Тестовый lcm-stage5 остановлен обычным down без --volumes. PostgreSQL, MongoDB,
+счётчики и материалы сохранены. Протокол остановки — reports/stage5-shutdown.txt.

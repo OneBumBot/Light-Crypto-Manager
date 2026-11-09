@@ -1,3 +1,23 @@
+# Дополнение безопасности этапа 5
+
+TLS/password/ACL MQTT, AEAD v2, строгая валидация, CSRF, safe redirect, role и
+Socket.IO проверки этапа4 сохранены. PostgreSQL telemetry_devices дополнительно
+сверяет enabled/topic/device/epoch/profile с приватным key registry. Ключей и
+паролей в outbox/telemetry schema нет; поля формируются allowlist.
+
+Mongo auth включена; relay insert/find, web find, root отдельно. Unique key и
+сравнение содержимого не дают признать конфликтующий duplicate успешным.
+Outbox не открыт в table API; ошибки/metrics не выводят payload/credentials.
+History требует sensor_data access; metrics — admin. Локальный Mongo traffic
+внутри Compose пока без TLS, поэтому production deployment не заявляется.
+
+QoS1 ACK следует PG commit; lease/claim и retry/dead восстанавливают проверенные
+сбои, но не дают end-to-end exactly-once/lossless. См. OUTBOX.md и ограничения
+KNOWN_ISSUES.md. Секреты/логи/конечные образы проверяет scripts/audit_security.py
+(несколько --secrets-dir, --image); это поиск известных материалов, не полный аудит.
+
+## Историческое описание этапа 4
+
 # Этап 4: защищённый контур
 
 Ветка: feature/security-hardening от 5be5444. Этап 5 не начат.

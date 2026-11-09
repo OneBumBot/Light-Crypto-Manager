@@ -1,135 +1,173 @@
-# Локальный защищённый контур — этап 4
+# Локальный двухбазовый защищённый контур — этап 5
 
-Этап 3 сохранён в коммите 5be5444. Текущая конфигурация использует только TLS/8883,
-аутентификацию и ACL; старый plaintext listener отсутствует. Web остаётся Flask.
-Образы закреплены digest, Python — 3.12.16. PostgreSQL не публикуется на хост,
-HTTP/MQTT публикуются только на 127.0.0.1. Это локальный dev-контур.
+Python 3.12.16, закреплённые образы PostgreSQL 17, MongoDB 8.0.17, Mosquitto 2;
+точные digest — compose.yaml. MongoDB/PostgreSQL не публикуют порты наружу.
+MQTT TLS/8883 и локальный Flask HTTP/5000 привязаны к loopback. TLS/ACL этапа 4
+сохранены. Это dev/research deployment, не production HA.
 
-## Новый запуск
+## Новая установка
 
-Требуются Docker/Compose, Python 3 и openssl на хосте. Проверено с Engine 29.9.2,
-Compose 5.6.1. Classic builder работает без buildx; предупреждение сохранено в отчётах.
+Требуются Docker/Compose, Python3, openssl. Проверены Engine29.9.2, Compose5.6.1;
+classic builder работает без buildx. Команды из корня:
 
 ```bash
 mkdir -m 700 -p .local-runtime
 python3 scripts/prepare_security.py --directory .local-runtime/security
+python3 scripts/prepare_storage.py --directory .local-runtime/mongo-security
 python3 scripts/prepare_compose.py
 docker compose --env-file .env.compose config --quiet
-docker compose --env-file .env.compose --profile demo --profile web up --build -d --wait --wait-timeout 90
+docker compose --env-file .env.compose --profile demo --profile web up --build -d --wait --wait-timeout 150
 ```
 
-Генераторы отказываются перезаписывать существующие файлы/каталоги. На новой
-установке родительские каталоги/материалы получают 0700/0600. Секреты генерируются
-случайно и не печатаются. В .env.compose указаны POSTGRES_PASSWORD, FLASK_SECRET_KEY,
-MQTT_SECURITY_DIR; ключи устройств находятся только в приватном registry.json.
-Старый ASCON_KEY_HEX не используется MQTT-контуром. Не выводите обычный config:
-он разворачивает значения секретного окружения; config --quiet безопасен.
+Генераторы отказываются перезаписывать материалы. Каталоги0700, файлы0600.
+Не печатайте `compose config` без --quiet: он разворачивает PG/session secrets.
+MQTT/security credentials устанавливает security-init; Mongo credentials —
+storage-init. CA private key остаётся на хосте. Client/runtime UID10001;
+Mosquitto UID1883, Mongo credentials UID999. Секретов в images нет.
 
-Для отдельного тестового проекта можно задать --project, --mqtt-port 0,
---web-port 0 и --env-file .local-runtime/<name>.env; MQTT_SECURITY_DIR в этом env
-должен указывать на соответствующий уже созданный приватный каталог материалов.
-Узнать случайные порты: `compose port broker 8883`, `compose port web 5000`
-с тем же --env-file. По умолчанию MQTT — localhost:8883, HTTP — localhost:5000.
-
-## Сервисы и секреты
-
-| Сервис | Действие |
+| Сервис | Назначение |
 |---|---|
-| security-init | Однократно копирует только нужные файлы из приватного host-каталога в отдельные role volumes, назначает владельцев и 0600/0700 |
-| postgres | PostgreSQL, постоянный volume, pg_isready healthcheck |
-| init-db | Создаёт 14 исходных таблиц и дополнительную mqtt_replay_state; не мигрирует существующие колонки |
-| broker | Mosquitto TLS/8883 после security-init; password_file, ACL, лимиты размера; healthcheck использует monitor/options file |
-| receiver | После init-db/broker; TLS клиент, v2 validation, атомарный anti-replay/аномалии; ready после SUBACK |
-| demo-setup | Профили demo/checks: явная фикстура raspb1/Device_ID=1 и smoke/Device_ID=2, алгоритм/причины; конфликты не перезаписываются |
-| publisher | Профиль demo; отдельные credentials/ключ raspb1, постоянный SQLite sequence volume |
-| web | Профиль web; отдельные read-only MQTT credentials, собственный PG replay consumer, HTTP /login healthcheck |
-| smoke | Профиль checks; отдельные credentials/ключ smoke, постоянный sequence и сохранённый пакет для restart-проверки |
-| tests | Профиль checks; pytest, реальные DB-схемы и тестовые клиентские зависимости; не production сервис |
+| postgres | Управляющая БД, replay/outbox/metrics/Alembic, постоянный volume |
+| mongo | Authenticated ordinary collection measurements, persistent volume, authenticated healthcheck |
+| init-db | Alembic upgrade head под advisory lock; завершение обязательно для ingestion/web/relay |
+| broker | Только TLS/password/точные per-user topic ACL; readiness через monitor/options file |
+| receiver | AEAD/валидация + PG transaction, QoS1 manual ACK, readiness после SUBACK |
+| outbox-relay | Короткая PG lease → Mongo insert/сравнение duplicate → PG acknowledge |
+| demo-setup / publisher | opt-in demo, два прежних fixture устройства, publisher raspb1 |
+| web | Существующие Flask/Socket.IO/live; read-only Mongo history и admin metrics |
+| smoke / tests | opt-in checks, отдельные тестовые права, реальные DB тесты |
 
-Базовый up не создаёт фиктивных устройств: demo/checks включаются явно. Повторный
-seed идемпотентен; при конфликте IDs/значений откатывает всю транзакцию. Пороги
-аномалий сохранены. Receiver пишет только аномалии, sensor persistence — этап 5.
+Mongo роли: relay только insert/find одной collection, history только find;
+ни delete, ни index/schema admin. Root только init/администрирование/healthcheck,
+не монтируется web/relay. Серверный validator и unique/history indexes создаются
+первым init. При существующем Mongo volume init scripts повторно не выполняются;
+изменения схемы/ротация требуют явной admin процедуры, а не удаления volume.
 
-CA private key остаётся на хосте. Broker volume содержит серверный private key,
-password hashes, CA/cert и monitor password; его UID — 1883. Клиентские role
-volumes принадлежат UID 10001. Publisher/smoke не видят чужих паролей/ключей;
-receiver/web видят ключи только разрешённых устройств. Security-init — короткий
-trusted root процесс, обычные приложения непривилегированны. В images нет этих
-материалов: host input монтируется read-only, файлы попадают только в volumes.
-Тестовый сервис имеет набор тестовых credentials для отрицательных проверок.
+## Переход с этапа 4
 
-ACL: publisher пишет только iot/sensors/raspb1; receiver/web читают raspb1/smoke
-и не публикуют; smoke пишет свой topic и наблюдает demo; monitor пишет только
-lightcrypto/health. APP_ENV=test + MQTT_INSECURE_TEST_MODE=1 отключают TLS только
-в явно выбранном клиентском тесте; Compose не содержит plaintext broker режима.
+Сохраните прежние MQTT materials, publisher-state, replay-state и PG volume.
+Не запускайте генератор поверх старых файлов и не меняйте COMPOSE_PROJECT_NAME,
+если требуется использовать прежние данные. Создайте только новые Mongo materials,
+добавьте `MONGO_SECURITY_DIR=.local-runtime/mongo-security` в прежний приватный env.
+До первого запуска нового receiver остановите publisher/receiver/web, чтобы
+телеметрия не поступала до заполнения нового control registry. Для существующего
+локального demo (с тем же env/project и прежними security/state volumes):
 
-## Проверки
+```bash
+docker compose --env-file .env.compose --profile demo --profile web stop publisher receiver web
+docker compose --env-file .env.compose build receiver
+docker compose --env-file .env.compose up -d --wait postgres mongo broker
+docker compose --env-file .env.compose run --rm init-db
+docker compose --env-file .env.compose run --rm --no-deps --entrypoint python receiver -m scripts.provision_registry
+docker compose --env-file .env.compose --profile demo --profile web up -d --wait --wait-timeout 150
+```
 
-После demo/web запуска:
+При конфликте provisioning оставьте producers остановленными до ручного разбора;
+реальные custom конфигурации не перезаписываются ради demo. Для собственного
+набора сервисов выбирайте свои профили без demo fixtures. `init-db` применяет Alembic:
+
+1. 0001 валидирует все существующие legacy columns/types/nullability/PK/unique.
+2. Создаёт отсутствующие таблицы, не меняя уже существующие/их данные.
+3. 0002 добавляет telemetry_outbox/ingestion_metrics и индексы/constraints.
+4. 0003 создаёт несекретный telemetry_devices; заполните его явным provisioning
+   (demo-setup заполняет два demo устройства, остальные — provision_registry).
+
+Sensor_Data и replay-state сохраняются. Пустая БД проходит тот же upgrade.
+Несовместимая схема вызывает отказ с именем таблицы; не обходите его blind stamp,
+не удаляйте БД. Rollback миграций намеренно не удаляет таблицы: нужен разбор и
+отдельная проверенная миграция. Перед реальным upgrade сделайте свой backup.
+Тесты проверяют legacy transition на изолированной схеме, volumes этапа4 не менялись.
+
+## Несколько устройств
+
+Новый независимый тестовый контур:
+
+```bash
+python3 scripts/prepare_security.py --directory .local-runtime/security-stage5-demo --extra-device alpha --extra-device beta --extra-device gamma
+python3 scripts/prepare_storage.py --directory .local-runtime/mongo-stage5-demo
+python3 scripts/prepare_compose.py --project lcm-stage5-demo --env-file .local-runtime/stage5-demo.env --mqtt-port 0 --web-port 0
+```
+
+В приватном stage5-demo.env задайте соответствующие MQTT_SECURITY_DIR и
+MONGO_SECURITY_DIR. Дальнейшие команды используют этот --env-file. Новые устройства
+получают уникальные ключи и DB IDs из provisioning registry; пользователь MQTT
+`device_<device_id>` имеет write только своего exact topic. Consumer ACL генерируется
+из реестра, а не анонимного wildcard. security-init обновляет брокерный ACL volume;
+после изменения состава реестра перезапустите broker/receiver/web явно, не меняйте
+уже действующие key/epoch без процедуры ротации. Дополнительные credentials в
+production нужно передавать каждому устройству отдельно (тестовый сервис получает
+набор только для проверок). Publisher поддерживает DEVICE_ID, MQTT_USERNAME,
+MQTT_PASSWORD_FILE, DEVICE_REGISTRY_FILE и собственный PUBLISHER_STATE_FILE.
+
+После запуска demo/checks PG provisioning остальных устройств выполняется явно:
+
+```bash
+docker compose --env-file .local-runtime/stage5-demo.env run --rm --no-deps -e DEVICE_REGISTRY_FILE=/run/lcm/registry.json --entrypoint python tests -m scripts.provision_registry
+```
+
+Скрипт идемпотентен, не перезаписывает конфликтующие конфигурации/теги. Алгоритм1
+для локального demo должен быть provisioned demo-setup. Общего ключа нет.
+Большой генератор устройств/клиентов не добавлялся; повторяемые --extra-device
+готовят небольшой fixture. Формат v2 менять ради будущего генератора не нужно.
+
+## Проверки и отказы
 
 ```bash
 docker compose --env-file .env.compose build tests
 docker compose --env-file .env.compose run --rm tests
 docker compose --env-file .env.compose run --rm --no-deps --entrypoint python tests -m scripts.mqtt_security_smoke
 docker compose --env-file .env.compose run --rm smoke --expect-demo
-docker compose --env-file .env.compose up -d --no-deps --force-recreate --wait receiver
-docker compose --env-file .env.compose run --rm smoke --replay-only
 docker compose --env-file .env.compose run --rm --no-deps --entrypoint python tests -m scripts.live_web_smoke
 ```
 
-Smokе больше не удаляет replay-state: это постоянное состояние защиты. Для smoke
-используется явно provisioned устройство, а проверка сравнивает относительное
-число его аномалий. Сохранённый packet.json/SQLite находится в приватном smoke-state
-volume. --replay-only повторяет пакет, сохранённый предыдущим успешным smoke.
-Проверяется не только наблюдение publisher-пакета: replay-state receiver должен
-подтверждать, что тот аутентифицирован и принят. Независимые consumers receiver/web
-не блокируют друг друга и не принимают повтор у себя.
-
-Для Chromium DOM-XSS проверки (отдельный test-tool, не runtime зависимость):
+Отдельная проверка с остановкой MongoDB и аварией процесса (только тестовый
+project lcm-stage5*, с тремя extra-device и отдельными volumes):
 
 ```bash
-UV_CACHE_DIR=.cache/uv PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers uv run --no-project --python .venv/bin/python --with playwright==1.56.0 python -m playwright install chromium --only-shell
-UV_CACHE_DIR=.cache/uv PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers uv run --no-project --python .venv/bin/python --with playwright==1.56.0 python scripts/check_dom_xss.py
+python3 scripts/check_dual_database.py --env-file .local-runtime/stage5-demo.env
 ```
 
-Требуются uv и Python-окружение этапа 2; на проверенной машине Chromium запустился
-с fallback binary Playwright для Ubuntu. Это реальные DOM проверки активного JS,
-не полный аудит всех браузеров/страниц. В тестах CSRF не отключается. Изменяющие
-API используют X-CSRFToken, Socket.IO — login session + auth.csrf_token.
+Сценарий запускает два relay, три устройства, проверяет запрет чужого topic,
+останавливает Mongo, проверяет сохранённый backlog/попытки, восстанавливает Mongo,
+останавливает/восстанавливает PostgreSQL для проверки manual ACK, пересоздаёт receiver/restart relay и повторяет пакет. Затем останавливает publisher
+и relay, намеренно завершает одноразовый relay процесс кодом19 после Mongo write
+до PG acknowledge, запускает relay и проверяет единственность документов.
+Код19 — ожидаемый внутренний fault, итоговый код сценария должен быть0.
+Рабочие volumes не используются/не удаляются. Не запускайте на ценных данных:
+префикс имени — лишь guard, не замена проверки вами выбора env/project.
 
-Очищенные протоколы с командами и EXIT CODE:
-[reports/README.md](reports/README.md). Для записи нового запуска:
+Очищенные команды, коды и результаты — reports/stage5-*.txt. Для новых отчётов:
 
 ```bash
-python3 scripts/run_check.py --report docs/reports/local-check.txt --secrets-dir .local-runtime/security -- docker compose --env-file .env.compose run --rm tests
+python3 scripts/run_check.py --report docs/reports/local-check.txt --secrets-dir .local-runtime/security --secrets-dir .local-runtime/mongo-security -- docker compose --env-file .env.compose run --rm tests
 ```
 
-Runner удаляет известные секретные литералы, private-key блоки, пароли URL,
-ANSI-коды и хвостовые пробелы. Перед публикацией отчёты всё равно проверяются.
+Включены реальные Mongo insert/conflict/schema/role tests, PG rollback/concurrency/
+lease/dead/retention, legacy и empty migration. Предыдущие TLS/ACL/CSRF/socket/XSS
+проверки сохранены. Chromium-команда этапа4 остаётся в reports/README.md.
 
-## Сохранение состояния и Raspberry Pi
+## Метрики / обслуживание
+
+`GET /api/telemetry/metrics` — только admin: входящие/сек за указанное окно (60–120s),
+accepted/rejected/replay/delivery_retry/delivery_error/delivered за это окно,
+outbox по статусам, возраст старейшего недоставленного, средняя задержка за минуту,
+точное количество документов Mongo. Это DB-backed snapshot, не Prometheus;
+Mongo count может быть дорогим, ограничен timeout. Ошибка БД даёт общий503.
+
+Настройки: MAX_OUTBOX_PENDING=100000, OUTBOX_MAX_ATTEMPTS=12,
+OUTBOX_RETENTION_DAYS=0 (явно включаемая очистка delivered), INGESTION_CLIENT_ID.
+Mongo TTL выключен; включение/отключение — TELEMETRY_SCHEMA.md. Dead вручную
+requeue после исправления причины — OUTBOX.md. Новые поля env можно добавить в
+приватный env; допустимые значения нужно выбирать осознанно.
+
+Остановить, сохранив состояние:
 
 ```bash
 docker compose --env-file .env.compose --profile demo --profile web --profile checks down
 ```
 
-Обычный down сохраняет PG replay-state, sender counters и security volumes.
-Не удаляйте их при сохранении старых ключей. После потери/отката состояния нужна
-новая эпоха/ключ и согласованное provisioning. По завершении этапа тестовый проект
-lcm-stage4 остановлен **без удаления volumes**, чтобы сохранить anti-replay.
-Для повторения используйте тот же приватный env/каталог и сохранённые volumes.
-
-Publisher уже поддерживает MQTT_HOST/PORT/CA_FILE/USERNAME/PASSWORD_FILE,
-DEVICE_ID, DEVICE_REGISTRY_FILE, PUBLISHER_STATE_FILE. На Pi передайте только CA,
-password своего устройства и ограниченный реестр только с его ключом, все приватные
-файлы 0600/каталог 0700; не передавайте CA private key или consumer credentials.
-При генерации server certificate добавьте --server-name <DNS> / --server-ip <IP>.
-Для доступа Pi потребуется явная публикация порта broker на нужный LAN-интерфейс
-в deployment-конфигурации; стандартный localhost binding намеренно сохранён.
-Код publisher менять для TLS/параметров подключения не требуется. ARM64 execution
-не проверялось, сборка/производительность устройства не заявляются.
-
-Ограничения: Flask dev server/local HTTP (для внешнего доступа нужен HTTPS),
-нет Alembic/FK переработки, полноценной записи датчиков, outbox/exactly-once UI,
-автоматической ротации/provisioning, Policy Engine, ML или CRISP. Формат v1
-отклоняется; схема v2 и границы atomic admission — [MQTT_PROTOCOL.md](MQTT_PROTOCOL.md).
+Не используйте --volumes с действующими ключами/историей. Потеря sender/replay
+состояния требует новой эпохи/ключа. После проверок stage5 volumes также сохраняются.
+Raspberry Pi параметры TLS/CA/hostname verification не менялись; нужен SAN реального
+DNS/IP и явный LAN binding в deployment. ARM64 и нагрузка до1000 msg/s не проверены.
+Mongo/PG HA, Mongo TLS внутри сети, FastAPI, ML, Policy Engine и CRISP не добавлены.

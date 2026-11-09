@@ -1,3 +1,15 @@
+# Уточнение runtime после этапа 5
+
+Актуальный двухбазовый запуск и миграции: [COMPOSE.md](COMPOSE.md).
+Для native init-db нужны web/receiver dependency groups; create_all больше не
+используется CLI — выполняется Alembic upgrade. Для relay/history дополнительно
+нужна authenticated MongoDB, MONGO_HOST/PORT/PASSWORD_FILE (role-scoped файл).
+По умолчанию Compose не публикует MongoDB наружу; localhost в .env.example —
+пример для отдельно поднятой native MongoDB. Web должен использовать history.password,
+relay — relay.password; не передавайте web root/relay пароль. PG device registry
+должен быть provisioned, как описано в DATABASE_ARCHITECTURE.md. Ниже сохранены
+инструкции этапа4, кроме изменённых этим уточнением init/storage деталей.
+
 # Native runtime — актуально после этапа 4
 
 Compose с готовым TLS/ACL/PG контуром: [COMPOSE.md](COMPOSE.md). Этот файл описывает

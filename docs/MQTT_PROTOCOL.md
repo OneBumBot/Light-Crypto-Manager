@@ -1,3 +1,17 @@
+# Дополнение этапа 5: протокол v2 сохранён
+
+Формат ciphertext/AAD и диапазоны ниже не менялись. Дополнительно перед admission
+проверяется PostgreSQL telemetry_devices: enabled/device/topic/epoch/profile и
+numeric ID должны совпадать с приватным registry. Один PG commit receiver теперь
+содержит replay-state, аномалию и outbox; затем отдельный relay пишет историю в
+MongoDB. QoS1 manual ACK — после commit. Источник anti-replay — PostgreSQL, не
+MongoDB. Web остаётся отдельным live consumer, постоянную историю сам не пишет.
+Схемой управляет Alembic, 19 таблиц включая legacy и служебные. Старые упоминания
+create_all/отсутствующего outbox ниже описывают только этап4 и заменены этим
+уточнением. Гарантии и ограничения — OUTBOX.md, схема хранения — TELEMETRY_SCHEMA.md.
+
+## Схема и исходные проверки этапа 4
+
 # MQTT telemetry v2
 
 Версия 1 этапа 3 больше не принимается. Неявного fallback/legacy режима нет.

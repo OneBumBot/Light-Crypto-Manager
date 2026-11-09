@@ -1,3 +1,56 @@
+# Актуальные проблемы после этапа 5
+
+Ниже прежний аудит сохранён как исторический снимок; текущие изменения имеют
+приоритет. Фактические команды/сбои/повторные запуски — reports/stage5-*.txt.
+
+## Устранено в этапе 5
+
+- Нет постоянной истории датчиков: verified telemetry теперь идёт через PG outbox
+  в authenticated MongoDB; Sensor_Data сохранена. `src/ingestion.py`, `src/outbox.py`,
+  `src/outbox_relay.py`, `src/mongo_repository.py`.
+- Потеря при Mongo outage / crash до PG ACK: durable claim/retry, unique identity,
+  сравнение duplicate и fencing. Dead видимы и не очищаются молча.
+- create_all без миграций: src/migrate.py + migrations/0001..0003, проверки empty /
+  legacy / повтор / несовместимость. Данные и replay не удаляются.
+- Только файловый реестр identity: telemetry_devices содержит несекретные PG
+  bindings; keys остаются scoped файлами. Disabled/mismatch блокирует admission.
+- Нет авторизованной Mongo истории: /api/telemetry/history и /telemetry с прежними
+  ролями, ограничением ответа, UTC/date/device filters и общим503.
+
+## Оставшиеся ограничения
+
+- Конечные PG/брокерные очереди, диски и retry budget: не lossless/exactly-once.
+  Dead требует явного вмешательства. Без OUTBOX_RETENTION_DAYS доставленные
+  payload остаются в PG; Mongo TTL также по умолчанию отключён (OUTBOX.md).
+- Admission advisory lock + count backlog и один PG callback ограничивают скорость;
+  1000 msg/s и 10000 устройств не измерялись. Нет генератора тысяч MQTT клиентов.
+- Mongo standalone без replica set/HA; Mongo/PG TLS внутри Compose не настроен.
+  Локальные runtime PG credentials пока общие с мигратором, не production RBAC.
+- JSON key registry, PG binding и broker ACL согласуются явным provisioning.
+  Автоматической ротации/защищённых команд нет; утеря состояния требует новой эпохи.
+- Full legacy FK audit/коррекция составных PK/CRUD CREATE остаются отдельно.
+  Неизвестные несовместимые схемы миграция безопасно отвергает.
+- Mongo schema/index updates после первого init требуют явной admin миграции;
+  автоматизированной системы Mongo schema migrations пока нет. TTL — явная команда.
+- History offset-pagination не snapshot; при вставках/TTL страницы могут смещаться.
+  Права sensor_data общие на устройства, tenant/device user ACL ещё нет.
+- Flask dev server/local HTTP, один Socket.IO процесс, память live50 общая для
+  устройств; live не подтверждает PG/Mongo commit и не гарантирует доставку браузеру.
+- Минутные агрегаты metrics не очищаются автоматически; admin Mongo count может
+  стать дорогим (timeout2s). Нет внешнего monitoring/alerts/CI.
+- ML, FastAPI, Policy Engine, «Магма»/CRISP не реализовывались.
+
+## Не проверено
+
+ARM64/Raspberry Pi execution, большая нагрузка/длительный soak, crash всего хоста
+с power loss, репликационные сбои, production HTTPS/TLS БД, внешний security audit
+и полная нормативная проверка Ascon. Успех локальных тестов их не подтверждает.
+Полный 30-дневный TTL lifecycle не воспроизводился; default удаления нет.
+
+---
+
+## Исторический аудит этапов 0–4
+
 # Известные проблемы
 
 ## Актуальное состояние после этапа 4
