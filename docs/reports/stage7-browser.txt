@@ -1,0 +1,18 @@
+
+UTC: 2026-11-09T20:43:52.820989+00:00
+$ env UV_CACHE_DIR=.cache/uv PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers uv run --no-project --python .venv/bin/python --with playwright==1.56.0 python scripts/check_dom_xss.py
+Traceback (most recent call last):
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_dom_xss.py", line 69, in <module>
+    assert payload in policy_page.locator('#policyOverview').inner_text()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+EXIT CODE: 1
+
+UTC: 2026-11-09T20:44:21.858813+00:00
+$ env UV_CACHE_DIR=.cache/uv PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers uv run --no-project --python .venv/bin/python --with playwright==1.56.0 python scripts/check_dom_xss.py
+PASS: real Chromium rejects DOM/attribute/script injection in view, edit, delete and notification flows (4 payloads)
+PASS: real Chromium renders ML scores/status/model metadata as text (4 injection payloads)
+PASS: Chromium policy reasons/source/configuration injection rendered as text (4 payloads)
+
+EXIT CODE: 0

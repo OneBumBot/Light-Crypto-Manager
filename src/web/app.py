@@ -695,6 +695,10 @@ def create_default_users():
 
 # ============= ГЛАВНАЯ ТОЧКА ВХОДА =============
 
+from src.policy.web import blueprint as policy_blueprint
+app.register_blueprint(policy_blueprint)
+
+
 def main():
     import argparse
 

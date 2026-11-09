@@ -45,6 +45,7 @@
 {% endblock %}
 
 {% block content %}
+<a href="{{ url_for('policy.page') }}">Адаптивная политика — DRY_RUN</a>
 <p><a href="{{ url_for('telemetry_history_page') }}">История телеметрии</a> · <a href="{{ url_for('ml_results_page') }}">Сигналы ML</a></p>
 <div class="row">
     <div class="col-12">

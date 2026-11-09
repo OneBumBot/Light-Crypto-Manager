@@ -92,3 +92,15 @@ $ docker compose --env-file .local-runtime/stage7.env run --rm --no-deps --volum
 19 passed in 1.09s
 
 EXIT CODE: 0
+
+UTC: 2026-11-09T20:44:42.076998+00:00
+$ docker compose --env-file .local-runtime/stage7.env run --rm --no-deps tests
+ Container lcm-stage7-tests-run-48440d9a0122 Creating
+ Container lcm-stage7-tests-run-48440d9a0122 Created
+........................................................................ [ 28%]
+........................................................................ [ 56%]
+........................................................................ [ 85%]
+.....................................                                    [100%]
+253 passed in 24.36s
+
+EXIT CODE: 0

@@ -1,5 +1,6 @@
 """Real HTTP/Socket.IO checks against the running web container, with disposable user."""
 import os
+import json
 import re
 import secrets
 import threading
@@ -59,6 +60,15 @@ def main():
         if os.environ.get('WEB_EXPECT_ML')=='1':
             assert ml.json()['items'] and any(m['status']=='available' for m in status.json()['models'])
         print('PASS: ML routes require login, separate protocol/rule/ML sources and preserve role visibility')
+        assert requests.get(base+'/api/policy',timeout=5).status_code==401
+        policy=session.get(base+'/api/policy',timeout=5)
+        assert policy.status_code==200 and policy.json()['live_control_enabled'] is False
+        assert session.get(base+'/policy',timeout=5).status_code==200
+        assert session.get(base+'/api/policy/metrics',timeout=5).status_code==403
+        assert session.post(base+'/api/policy/versions',json={'version':'forbidden','rules':{},'activate':True},
+            headers={'X-CSRFToken':csrf},timeout=5).status_code==403
+        assert all(row['applied'] is None for row in policy.json()['items'])
+        print('PASS: authorized DRY_RUN policy views, role restrictions and no applied configuration claims')
         history=session.get(base+'/api/telemetry/history',params={'limit':2},timeout=5)
         assert history.status_code==200 and 0<len(history.json()['items'])<=2
         assert session.get(base+'/telemetry',timeout=5).status_code==200
@@ -69,6 +79,9 @@ def main():
         assert metrics.status_code==200
         assert metrics.json()['mongo_documents']>0 and metrics.json()['counters']['incoming']>0
         print('PASS: authorized live MongoDB history, history page and admin-only pipeline metrics')
+        policy_metrics=session.get(base+'/api/policy/metrics',timeout=5)
+        assert policy_metrics.status_code==200 and policy_metrics.json()['switching_latency'] is None
+        print('POLICY_METRICS '+json.dumps(policy_metrics.json(),sort_keys=True))
         response=session.post(base+'/logout' ,headers={'X-CSRFToken':csrf},allow_redirects=False,timeout=5)
         assert response.status_code==302 and disconnected.wait(5)
         assert session.get(base+'/api/latest-data',timeout=5).status_code==401

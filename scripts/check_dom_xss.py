@@ -54,7 +54,26 @@ with sync_playwright() as playwright:
         assert ml_page.locator('img,svg').count()==0
         assert ml_page.evaluate('window.__xss || 0')==0
         ml_page.close()
+    policy_source=(root/'src/web/static/js/policy.js').read_text()
+    for payload in ['<img src=x onerror="window.__xss=1">','<svg onload="window.__xss=1"></svg>',
+                    '</script><script>window.__xss=1</script>','" autofocus onfocus="window.__xss=1"']:
+        policy_page=browser.new_page()
+        policy_page.set_content('<form id="policyFilters"><input name="device_id"></form>'+''.join(
+            '<pre id="'+name+'"></pre>' for name in ['policyMessage','policyOverview','policyDecisions',
+                'policySignals','policyTransitions','policyIntents']))
+        policy_page.evaluate("""payload => {
+            window.fetch=async () => ({ok:true,json:async()=>({items:[{reason:payload,requested:payload,applied:null}]})});
+        }""",payload)
+        policy_page.add_script_tag(content=policy_source)
+        policy_page.wait_for_function("document.getElementById('policyIntents').textContent.length>0")
+        import json
+        assert json.loads(policy_page.locator('#policyOverview').inner_text())['items'][0]['reason']==payload
+        assert policy_page.locator('img,svg').count()==0
+        assert policy_page.evaluate('window.__xss || 0')==0
+        policy_page.close()
     browser.close()
 print('PASS: real Chromium rejects DOM/attribute/script injection in view, edit, delete and notification flows (4 payloads)')
 
 print('PASS: real Chromium renders ML scores/status/model metadata as text (4 injection payloads)')
+
+print('PASS: Chromium policy reasons/source/configuration injection rendered as text (4 payloads)')
