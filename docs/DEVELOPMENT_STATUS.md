@@ -94,3 +94,11 @@ notebook, проверены preprocessing/split/labels/metrics/artifacts и д�
 Продолжение задания получено; после аудита начинается реализация pipeline.
 В блоке аудита runtime/схема БД/безопасность не изменялись;
 210 tests — исторический результат этапа5, а не новый запуск этапа6.
+
+Блок offline ML: реализованы явные network/telemetry схемы, sklearn pipelines,
+групповой/временной split, causal per-device features, statistical/IF telemetry,
+RF binary/multiclass и IF IDS, manifest/hash export. 11 unit tests passed.
+После получения пользовательского CSV выполнена реальная ограниченная group-based
+IDS оценка; source2219201, subset11851, split5630/1227/2005. Модели/CSV локальны.
+Первый текущий Docker regression run:224 passed, включая предыдущие210;
+async/web интеграция ещё проверяется.

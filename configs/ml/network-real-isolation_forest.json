@@ -1,0 +1,27 @@
+{
+  "config_version": 1,
+  "random_state": 42,
+  "mode": "RESEARCH",
+  "source": "Real user-supplied DNN-EdgeIIoT grouped research subset",
+  "license_status": "VERIFY_BEFORE_USE_AND_DISTRIBUTION",
+  "synthetic": false,
+  "max_rows": 150000,
+  "model_id": "edge-network-if",
+  "model_version": "1.0.0",
+  "task": "network_ids",
+  "algorithm": "isolation_forest",
+  "feature_version": "network-core-v1",
+  "split_strategy": "group",
+  "group_column": "flow_group",
+  "fractions": [
+    0.6,
+    0.2,
+    0.2
+  ],
+  "trees": 32,
+  "validation_fpr_target": 0.05,
+  "reject_feature_overlap": true,
+  "stratify_group_labels": "Attack_label",
+  "feature_overlap_policy": "purge_all_cross_partition",
+  "source_manifest": ".local-runtime/edge-research/network-grouped-v2.manifest.json"
+}

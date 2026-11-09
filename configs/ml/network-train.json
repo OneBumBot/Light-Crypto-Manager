@@ -1,0 +1,24 @@
+{
+  "config_version": 1,
+  "random_state": 42,
+  "mode": "RESEARCH",
+  "source": "Edge-IIoTset DNN CSV, explicit local version",
+  "license_status": "VERIFY_BEFORE_USE_AND_DISTRIBUTION",
+  "synthetic": false,
+  "max_rows": 2300000,
+  "model_id": "network-rf",
+  "model_version": "1.0.0",
+  "task": "network_ids",
+  "algorithm": "rf_binary",
+  "feature_version": "network-core-v1",
+  "split_strategy": "group",
+  "group_column": "capture_id",
+  "fractions": [
+    0.6,
+    0.2,
+    0.2
+  ],
+  "trees": 100,
+  "validation_fpr_target": 0.05,
+  "reject_feature_overlap": true
+}

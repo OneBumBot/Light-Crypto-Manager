@@ -1,0 +1,28 @@
+{
+  "config_version": 1,
+  "random_state": 42,
+  "mode": "DEMO",
+  "source": "Verified MongoDB telemetry export; demo publisher is not representative normal data",
+  "license_status": "VERIFY_BEFORE_USE_AND_DISTRIBUTION",
+  "synthetic": false,
+  "max_rows": 300000,
+  "model_id": "telemetry-statistical",
+  "model_version": "1.0.0",
+  "task": "telemetry_anomaly",
+  "algorithm": "statistical",
+  "feature_version": "telemetry-causal-v1",
+  "split_strategy": "time",
+  "group_column": null,
+  "fractions": [
+    0.6,
+    0.2,
+    0.2
+  ],
+  "trees": 100,
+  "validation_fpr_target": 0.05,
+  "reject_feature_overlap": true,
+  "time_column": "received_at",
+  "window": 8,
+  "expected_interval": 10,
+  "validation_alert_quantile": 0.99
+}

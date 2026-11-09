@@ -1,0 +1,108 @@
+
+UTC: 2026-11-09T16:12:17.205140+00:00
+$ .venv/bin/python -m scripts.prepare_edge_research --data 'src/classifier/Edge-IIoTset dataset/Selected dataset for ML and DL/DNN-EdgeIIoT-dataset.csv' --output .local-runtime/edge-research/network.csv --group-fraction 0.1 --seed 42
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/prepare_edge_research.py", line 66, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/prepare_edge_research.py", line 50, in main
+    frame['flow_group']=frame.apply(group,axis=1)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.venv/lib/python3.12/site-packages/pandas/core/frame.py", line 10401, in apply
+    return op.apply().__finalize__(self, method="apply")
+           ^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.venv/lib/python3.12/site-packages/pandas/core/apply.py", line 916, in apply
+    return self.apply_standard()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.venv/lib/python3.12/site-packages/pandas/core/apply.py", line 1063, in apply_standard
+    results, res_index = self.apply_series_generator()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.venv/lib/python3.12/site-packages/pandas/core/apply.py", line 1081, in apply_series_generator
+    results[i] = self.func(v, *self.args, **self.kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/prepare_edge_research.py", line 39, in group
+    sport=int(float(token('tcp.srcport')));dport=int(float(token('tcp.dstport')))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: 'DESKTOP-UHF0SF2'
+
+EXIT CODE: 1
+
+UTC: 2026-11-09T16:15:59.670823+00:00
+$ .venv/bin/python -m scripts.prepare_edge_research --data 'src/classifier/Edge-IIoTset dataset/Selected dataset for ML and DL/DNN-EdgeIIoT-dataset.csv' --output .local-runtime/edge-research/network-grouped-v1.csv --max-rows 150000 --seed 42
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/prepare_edge_research.py", line 68, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/prepare_edge_research.py", line 39, in main
+    if len(counts)>args.max_rows:raise ValueError('More groups than explicit sample budget')
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: More groups than explicit sample budget
+
+EXIT CODE: 1
+
+UTC: 2026-11-09T16:18:50.573377+00:00
+$ .venv/bin/python -m scripts.prepare_edge_research --data 'src/classifier/Edge-IIoTset dataset/Selected dataset for ML and DL/DNN-EdgeIIoT-dataset.csv' --output .local-runtime/edge-research/network-grouped-v2.csv --max-rows 150000 --seed 42 --rare-group-fraction 0.02 --common-count 100
+{
+  "source_file": "DNN-EdgeIIoT-dataset.csv",
+  "source_sha256": "1d3ef6c7cc22784a528a117f1158f5cad750273679437e18a39c360ee6b79fd7",
+  "prepared_sha256": "c5f864cdee295c31470a65d18ea158bfbb5a54512cb346d511c6bd6b339d8c69",
+  "source_rows": 2219201,
+  "selected_rows": 11851,
+  "source_groups": 176700,
+  "selected_groups": 3504,
+  "source_classes": {
+    "Normal": 1615643,
+    "MITM": 1214,
+    "Uploading": 37634,
+    "Ransomware": 10925,
+    "SQL_injection": 51203,
+    "DDoS_HTTP": 49911,
+    "DDoS_TCP": 50062,
+    "Password": 50153,
+    "Port_Scanning": 22564,
+    "Vulnerability_scanner": 50110,
+    "Backdoor": 24862,
+    "XSS": 15915,
+    "Fingerprinting": 1001,
+    "DDoS_UDP": 121568,
+    "DDoS_ICMP": 116436
+  },
+  "selected_classes": {
+    "Normal": 4371,
+    "DDoS_ICMP": 2269,
+    "DDoS_UDP": 1243,
+    "MITM": 1206,
+    "DDoS_TCP": 1003,
+    "XSS": 248,
+    "Port_Scanning": 235,
+    "Backdoor": 229,
+    "Ransomware": 224,
+    "SQL_injection": 184,
+    "Vulnerability_scanner": 167,
+    "Password": 162,
+    "DDoS_HTTP": 156,
+    "Uploading": 135,
+    "Fingerprinting": 19
+  },
+  "clock_only_timestamps": 2096419,
+  "rare_group_fraction": 0.02,
+  "common_count": 100,
+  "per_group_cap": 1000,
+  "max_rows": 150000,
+  "random_state": 42,
+  "synthetic": false,
+  "grouping": "bidirectional source/destination host-pair proxy; never a verified device/session identity",
+  "sampling": "retain common host-pairs, hash-sample rare pairs; lowest seeded row hashes per retained group, no target-based selection",
+  "limitations": [
+    "clock-only timestamps cannot establish calendar chronology",
+    "host-pair split is not independent-device generalization",
+    "capped per-group sampling changes class prevalence",
+    "license not verified; do not distribute data or model"
+  ]
+}
+
+EXIT CODE: 0
