@@ -1,3 +1,18 @@
+# Этап 7.5 — исследование в feature/ml-research-improvement
+
+Исходная база c9250d8 сохранена. Диагностика frozen RF: все9 normal validation
+имеют risk1.0, поэтому FPR constraint выбирает threshold>1. Новый packet extractor
+и offline RF/IF pipeline реализованы отдельно; network-core-v1 не переписан.
+12 новых unit-тестов проходят, промежуточный полный контейнерный прогон265 passed.
+MQTTset v5 metadata license CC BY-NC-SA4.0 подтверждена публичным API; реальные
+raw14501 и reduced330926 строк проверены. Reduced утратил capture/session metadata,
+normal raw capture только один: строгий benchmark и обучение новых реальных
+моделей заблокированы недостатком независимых normal captures. IEEE DataPort
+недоступен; внешний benchmark не выполнен. Научное улучшение RF/IF не заявляется.
+Итоговые regression/документация ещё выполняются. Ниже исторический этап7.
+
+---
+
 # Состояние разработки — этап 7
 
 Инженерные требования этапа7 выполнены в feature/adaptive-policy-engine от6aedf52.

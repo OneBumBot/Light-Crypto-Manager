@@ -51,8 +51,12 @@ def verify(root,model_id,version,*,enforce_owner=True):
     manifest=strict_json((path/'manifest.json').read_bytes())
     if manifest.get('manifest_version')!=1 or manifest.get('model_id')!=model_id or manifest.get('model_version')!=version:
         raise ValueError('Artifact identity/version mismatch')
-    expected=NETWORK_VERSION if manifest.get('task')=='network_ids' else TELEMETRY_VERSION
-    if manifest.get('task') not in ('network_ids','telemetry_anomaly') or manifest.get('feature_version')!=expected:
+    # New offline schema is additive; legacy v1 meanings and telemetry contract stay unchanged.
+    expected={NETWORK_VERSION,'tcp-packet-passive-v1'} if manifest.get('task')=='network_ids' else {TELEMETRY_VERSION}
+    if manifest.get('feature_version')=='tcp-packet-passive-v1':
+        if manifest.get('trusted_detector') is not False or manifest.get('preprocessing',{}).get('feature_order')!=['frame.len','tcp.len','tcp.flags','tcp.window_size_value','tcp.time_delta']:
+            raise ValueError('Invalid offline research schema/trust declaration')
+    if manifest.get('task') not in ('network_ids','telemetry_anomaly') or type(manifest.get('feature_version')) is not str or manifest.get('feature_version') not in expected:
         raise ValueError('Unsupported artifact feature contract')
     if manifest.get('versions')!=versions(): raise ValueError('Artifact dependency version mismatch')
     if manifest.get('artifact_sha256')!=file_hash(path/'model.joblib'):

@@ -1,0 +1,56 @@
+
+UTC: 2026-11-09T21:38:33.738475+00:00
+$ .venv/bin/pytest -q tests/test_research75.py
+..F.....                                                                 [100%]
+=================================== FAILURES ===================================
+________ test_schema_nonfinite_types_and_missing_imputed_on_train_only _________
+tests/test_research75.py:77: in test_schema_nonfinite_types_and_missing_imputed_on_train_only
+    assert timing['fit_attack']==50 and timing['fit_normal']==50
+E   assert (48 == 50)
+=========================== short test summary info ============================
+FAILED tests/test_research75.py::test_schema_nonfinite_types_and_missing_imputed_on_train_only
+1 failed, 7 passed in 1.84s
+
+EXIT CODE: 1
+
+UTC: 2026-11-09T21:40:30.397039+00:00
+$ .venv/bin/pytest -q tests/test_research75.py
+........                                                                 [100%]
+8 passed in 1.63s
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T21:42:45.303577+00:00
+$ .venv/bin/pytest -q tests/test_research75.py
+..........                                                               [100%]
+10 passed in 2.32s
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T21:44:07.057966+00:00
+$ .venv/bin/pytest -q tests/test_research75.py
+..........                                                               [100%]
+10 passed in 2.38s
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T21:46:20.559196+00:00
+$ .venv/bin/pytest -q tests/test_research75.py
+...........                                                              [100%]
+11 passed in 2.43s
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T21:47:35.453707+00:00
+$ .venv/bin/pytest -q tests/test_research75.py
+............                                                             [100%]
+12 passed in 2.58s
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T21:48:56.810855+00:00
+$ .venv/bin/pytest -q tests/test_research75.py
+............                                                             [100%]
+12 passed in 2.54s
+
+EXIT CODE: 0

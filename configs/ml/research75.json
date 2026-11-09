@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "seed": 75,
+  "minimum_normal_rows": 1000,
+  "minimum_class_captures": 5,
+  "max_rows": 100000,
+  "validation_fpr_target": 0.05,
+  "model_version": "7.5.0",
+  "candidates": [
+    {
+      "candidate_id": "rf_baseline",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      }
+    },
+    {
+      "candidate_id": "rf_balanced",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": "balanced"
+      }
+    },
+    {
+      "candidate_id": "rf_subsample",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": "balanced_subsample"
+      }
+    },
+    {
+      "candidate_id": "rf_tuned_0",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": 16,
+        "min_samples_leaf": 2,
+        "min_samples_split": 4,
+        "max_features": "sqrt",
+        "class_weight": "balanced"
+      }
+    },
+    {
+      "candidate_id": "rf_tuned_1",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 200,
+        "max_depth": 32,
+        "min_samples_leaf": 4,
+        "min_samples_split": 8,
+        "max_features": 0.8,
+        "class_weight": "balanced_subsample"
+      }
+    },
+    {
+      "candidate_id": "if_baseline",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      }
+    },
+    {
+      "candidate_id": "if_standard",
+      "algorithm": "if",
+      "scaling": "standard",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      }
+    },
+    {
+      "candidate_id": "if_tuned_0",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 200,
+        "max_samples": 1024,
+        "max_features": 0.75
+      }
+    },
+    {
+      "candidate_id": "if_tuned_1",
+      "algorithm": "if",
+      "scaling": "robust",
+      "parameters": {
+        "n_estimators": 200,
+        "max_samples": 256,
+        "max_features": 0.5
+      }
+    }
+  ]
+}

@@ -73,3 +73,11 @@ src/policy/**
 **/__pycache__
 **/__pycache__/**
 **/*.pyc
+
+# Offline research code is copied only into the tests target, never data/artifacts.
+!src/classifier/research/
+src/classifier/research/**
+!src/classifier/research/*.py
+**/__pycache__
+**/__pycache__/**
+**/*.pyc

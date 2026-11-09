@@ -1,0 +1,24 @@
+
+UTC: 2026-11-09T21:40:31.587302+00:00
+$ .venv/bin/python -m src.classifier.research.cli import --config .local-runtime/research75/raw-import.json --output .local-runtime/research75/bruteforce-prepared.csv
+{"status": "completed", "command": "import", "synthetic": false, "scope": null, "rows": 14501, "trusted_detector": false}
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T21:40:32.158303+00:00
+$ .venv/bin/python -m src.classifier.research.cli plan --data .local-runtime/research75/bruteforce-prepared.csv --manifest .local-runtime/research75/bruteforce-prepared.manifest.json --config configs/ml/research75.json --output .local-runtime/research75/real-plan.json
+Research run rejected: Insufficient independent captures per class for train/validation/test: {'0': 0, '1': 1}
+
+EXIT CODE: 2
+
+UTC: 2026-11-09T21:47:36.100386+00:00
+$ .venv/bin/python -m src.classifier.research.cli import --config .local-runtime/research75/raw-import.json --output .local-runtime/research75/bruteforce-prepared-v2.csv
+{"status": "completed", "command": "import", "synthetic": false, "scope": null, "rows": 14501, "trusted_detector": false}
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T21:47:36.678319+00:00
+$ .venv/bin/python -m src.classifier.research.cli plan --data .local-runtime/research75/bruteforce-prepared-v2.csv --manifest .local-runtime/research75/bruteforce-prepared-v2.manifest.json --config configs/ml/research75.json --output .local-runtime/research75/real-plan-v2.json
+Research run rejected: Insufficient independent captures per class for train/validation/test: {'0': 0, '1': 1}
+
+EXIT CODE: 2

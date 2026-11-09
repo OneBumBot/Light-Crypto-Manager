@@ -1,0 +1,44 @@
+{
+  "source": "https://www.kaggle.com/datasets/cnrieiit/mqttset",
+  "dataset_version": 5,
+  "license": "CC BY-NC-SA 4.0",
+  "downloaded_files": [
+    {
+      "name": "bruteforce.csv",
+      "bytes": 4239465,
+      "sha256": "7c8b60b1d8908b9b934da9b2c1cdf7963f7fa124944689276ae5155f0c637efe"
+    },
+    {
+      "name": "mqttdataset_reduced.csv",
+      "bytes": 59392755,
+      "sha256": "7846fd9842621235462c1aa924f96bfb43a4a8bb05d5d9b920949ec99cf829d3"
+    },
+    {
+      "name": "README.md",
+      "bytes": 5374,
+      "sha256": "fd76c095a7a04391155ad1a54fb2446e7e07294f3edc65efbf19cdc56d3b1d43"
+    },
+    {
+      "name": "rawparsing_normal.py",
+      "bytes": 3247,
+      "sha256": "5ccdc064de28867667360acec8d5b23d96d0fe17c7906e87aa47a5e0eff513b4"
+    },
+    {
+      "name": "processingdata_ml.py",
+      "bytes": 6916,
+      "sha256": "8074fe766263bda8052f33a6e727191825bd33c6776f9358147738a54128ab5d"
+    }
+  ],
+  "files_not_downloaded": [
+    "legitimate_1w.csv (3.30GB; only one independent normal capture, cannot support requested split)",
+    "other PCAPs/augmented files (not needed to establish failed capture support)"
+  ],
+  "ieee": {
+    "source": "https://doi.org/10.21227/bhxy-ep04",
+    "status": "DataPort unavailable/restricted in this environment",
+    "dataset_downloaded": false,
+    "external_benchmark_performed": false
+  },
+  "benchmark_status": "blocked by insufficient independent normal captures and missing provenance in reduced CSV",
+  "real_new_models_trained": 0
+}
