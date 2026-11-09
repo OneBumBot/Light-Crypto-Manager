@@ -266,3 +266,12 @@ production HTTPS, ARM64/нагрузка/полный cryptographic audit. ML, P
 «Магма»/CRISP не реализовывались. Готова база к этапу 5, без автоматического перехода.
 Telemetry replay v2 следует переиспользовать; будущие управляющие команды
 потребуют собственной проверки ключей/счётчиков, не прямого выбора алгоритма ML.
+
+## Этап 5 — в работе
+
+Ветка `feature/mongodb-telemetry-storage` от `d9a000f`. Рабочие volumes этапа 4
+не используются. 5.1: добавлены MongoDB 8.0.17 (digest), отдельные приватные
+учётные записи relay/history, volume, healthcheck, серверная валидация и индексы.
+Проверки и последующие блоки фиксируются в `reports/stage5-*.txt`.
+
+Проверка 5.1: Compose config, сборка runtime и authenticated MongoDB/PG healthchecks пройдены; команды в reports/stage5-storage.txt.

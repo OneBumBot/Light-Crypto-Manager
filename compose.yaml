@@ -17,6 +17,37 @@ x-mqtt-environment: &mqtt-environment
   DEVICE_REGISTRY_FILE: /run/lcm/registry.json
 
 services:
+  storage-init:
+    <<: *app
+    user: "0:0"
+    command: [python, -m, scripts.install_storage]
+    volumes:
+      - ${MONGO_SECURITY_DIR:?generate MongoDB credentials}:/input:ro
+      - mongo-security:/out/mongo
+      - relay-storage-security:/out/relay
+      - web-storage-security:/out/web
+      - test-storage-security:/out/tests
+
+  mongo:
+    image: mongo:8.0.17@sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/mongo/root.password
+    volumes:
+      - mongo-data:/data/db
+      - mongo-security:/run/mongo:ro
+      - ./deploy/mongo/init.js:/docker-entrypoint-initdb.d/init.js:ro
+      - ./deploy/mongo/health.js:/health.js:ro
+    healthcheck:
+      test: [CMD, mongosh, --quiet, --file, /health.js]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    depends_on:
+      storage-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
   postgres:
     image: postgres:17-alpine@sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac
     environment:
@@ -203,3 +234,8 @@ volumes:
   test-security:
   publisher-state:
   smoke-state:
+  mongo-data:
+  mongo-security:
+  relay-storage-security:
+  web-storage-security:
+  test-storage-security:

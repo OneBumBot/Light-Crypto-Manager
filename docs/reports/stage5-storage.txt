@@ -1,0 +1,224 @@
+
+UTC: 2026-11-09T15:09:05.095570+00:00
+$ docker compose --env-file .local-runtime/stage5.env config --quiet
+
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T15:09:21.275930+00:00
+$ docker compose --env-file .local-runtime/stage5.env build storage-init
+time="2026-11-09T18:09:05+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image lcm-stage5-runtime Building
+ Image lcm-stage5-runtime Building
+Sending build context to Docker daemon  59.32kB
+
+Step 1/17 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/17 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/17 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/17 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> 55b78a10299f
+Step 5/17 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> 37074ee68df9
+Step 6/17 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Running in 043b4eb51cc7
+Ignoring tzdata: markers 'sys_platform == "win32"' don't match your environment
+Ignoring tzdata: markers 'sys_platform == "win32"' don't match your environment
+Collecting numpy==2.5.4 (from -r requirements/publisher.txt (line 3))
+  Downloading numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting paho-mqtt==2.1.0 (from -r requirements/publisher.txt (line 4))
+  Downloading paho_mqtt-2.1.0-py3-none-any.whl.metadata (23 kB)
+Collecting alembic==1.20.1 (from -r requirements/receiver.txt (line 3))
+  Downloading alembic-1.20.1-py3-none-any.whl.metadata (7.3 kB)
+Collecting dnspython==2.9.2 (from -r requirements/receiver.txt (line 4))
+  Downloading dnspython-2.9.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting greenlet==3.5.6 (from -r requirements/receiver.txt (line 6))
+  Downloading greenlet-3.5.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+Collecting mako==1.4.3 (from -r requirements/receiver.txt (line 8))
+  Downloading mako-1.4.3-py3-none-any.whl.metadata (2.9 kB)
+Collecting markupsafe==3.0.4 (from -r requirements/receiver.txt (line 10))
+  Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Collecting psycopg==3.3.8 (from -r requirements/receiver.txt (line 12))
+  Downloading psycopg-3.3.8-py3-none-any.whl.metadata (4.4 kB)
+Collecting psycopg-binary==3.3.8 (from -r requirements/receiver.txt (line 13))
+  Downloading psycopg_binary-3.3.8-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+Collecting pymongo==4.19.0 (from -r requirements/receiver.txt (line 15))
+  Downloading pymongo-4.19.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (10 kB)
+Collecting sqlalchemy==2.0.57 (from -r requirements/receiver.txt (line 16))
+  Downloading sqlalchemy-2.0.57-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.6 kB)
+Collecting typing-extensions==4.16.0 (from -r requirements/receiver.txt (line 18))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting bidict==0.24.1 (from -r requirements/web.txt (line 3))
+  Downloading bidict-0.24.1-py3-none-any.whl.metadata (8.7 kB)
+Collecting blinker==1.9.0 (from -r requirements/web.txt (line 5))
+  Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting click==8.5.1 (from -r requirements/web.txt (line 9))
+  Downloading click-8.5.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting email-validator==2.3.0 (from -r requirements/web.txt (line 17))
+  Downloading email_validator-2.3.0-py3-none-any.whl.metadata (26 kB)
+Collecting flask==3.1.3 (from -r requirements/web.txt (line 18))
+  Downloading flask-3.1.3-py3-none-any.whl.metadata (3.2 kB)
+Collecting flask-login==0.6.3 (from -r requirements/web.txt (line 24))
+  Downloading Flask_Login-0.6.3-py3-none-any.whl.metadata (5.8 kB)
+Collecting flask-socketio==5.7.2 (from -r requirements/web.txt (line 25))
+  Downloading flask_socketio-5.7.2-py3-none-any.whl.metadata (3.3 kB)
+Collecting flask-sqlalchemy==3.1.1 (from -r requirements/web.txt (line 26))
+  Downloading flask_sqlalchemy-3.1.1-py3-none-any.whl.metadata (3.4 kB)
+Collecting flask-wtf==1.2.2 (from -r requirements/web.txt (line 27))
+  Downloading flask_wtf-1.2.2-py3-none-any.whl.metadata (3.4 kB)
+Collecting h11==0.16.0 (from -r requirements/web.txt (line 30))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting idna==3.20 (from -r requirements/web.txt (line 32))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting itsdangerous==2.2.0 (from -r requirements/web.txt (line 34))
+  Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting jinja2==3.1.6 (from -r requirements/web.txt (line 38))
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting python-engineio==4.15.1 (from -r requirements/web.txt (line 52))
+  Downloading python_engineio-4.15.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting python-socketio==5.18.1 (from -r requirements/web.txt (line 54))
+  Downloading python_socketio-5.18.1-py3-none-any.whl.metadata (3.6 kB)
+Collecting simple-websocket==1.1.0 (from -r requirements/web.txt (line 56))
+  Downloading simple_websocket-1.1.0-py3-none-any.whl.metadata (1.5 kB)
+Collecting werkzeug==3.1.9 (from -r requirements/web.txt (line 66))
+  Downloading werkzeug-3.1.9-py3-none-any.whl.metadata (4.1 kB)
+Collecting wsproto==1.3.2 (from -r requirements/web.txt (line 71))
+  Downloading wsproto-1.3.2-py3-none-any.whl.metadata (5.2 kB)
+Collecting wtforms==3.2.2 (from -r requirements/web.txt (line 73))
+  Downloading wtforms-3.2.2-py3-none-any.whl.metadata (4.9 kB)
+Downloading numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 34.9 MB/s eta 0:00:00
+Downloading paho_mqtt-2.1.0-py3-none-any.whl (67 kB)
+Downloading alembic-1.20.1-py3-none-any.whl (270 kB)
+Downloading dnspython-2.9.2-py3-none-any.whl (360 kB)
+Downloading greenlet-3.5.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (621 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 621.4/621.4 kB 70.1 MB/s eta 0:00:00
+Downloading mako-1.4.3-py3-none-any.whl (80 kB)
+Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Downloading psycopg-3.3.8-py3-none-any.whl (216 kB)
+Downloading psycopg_binary-3.3.8-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 22.5 MB/s eta 0:00:00
+Downloading pymongo-4.19.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 21.4 MB/s eta 0:00:00
+Downloading sqlalchemy-2.0.57-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 46.5 MB/s eta 0:00:00
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading bidict-0.24.1-py3-none-any.whl (36 kB)
+Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Downloading click-8.5.1-py3-none-any.whl (126 kB)
+Downloading email_validator-2.3.0-py3-none-any.whl (35 kB)
+Downloading flask-3.1.3-py3-none-any.whl (103 kB)
+Downloading Flask_Login-0.6.3-py3-none-any.whl (17 kB)
+Downloading flask_socketio-5.7.2-py3-none-any.whl (18 kB)
+Downloading flask_sqlalchemy-3.1.1-py3-none-any.whl (25 kB)
+Downloading flask_wtf-1.2.2-py3-none-any.whl (12 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading python_engineio-4.15.1-py3-none-any.whl (60 kB)
+Downloading python_socketio-5.18.1-py3-none-any.whl (83 kB)
+Downloading simple_websocket-1.1.0-py3-none-any.whl (13 kB)
+Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
+Downloading wsproto-1.3.2-py3-none-any.whl (24 kB)
+Downloading wtforms-3.2.2-py3-none-any.whl (158 kB)
+Installing collected packages: typing-extensions, psycopg-binary, paho-mqtt, numpy, markupsafe, itsdangerous, idna, h11, greenlet, dnspython, click, blinker, bidict, wtforms, wsproto, werkzeug, sqlalchemy, pymongo, psycopg, mako, jinja2, email-validator, simple-websocket, flask, alembic, python-engineio, flask-wtf, flask-sqlalchemy, flask-login, python-socketio, flask-socketio
+Successfully installed alembic-1.20.1 bidict-0.24.1 blinker-1.9.0 click-8.5.1 dnspython-2.9.2 email-validator-2.3.0 flask-3.1.3 flask-login-0.6.3 flask-socketio-5.7.2 flask-sqlalchemy-3.1.1 flask-wtf-1.2.2 greenlet-3.5.6 h11-0.16.0 idna-3.20 itsdangerous-2.2.0 jinja2-3.1.6 mako-1.4.3 markupsafe-3.0.4 numpy-2.5.4 paho-mqtt-2.1.0 psycopg-3.3.8 psycopg-binary-3.3.8 pymongo-4.19.0 python-engineio-4.15.1 python-socketio-5.18.1 simple-websocket-1.1.0 sqlalchemy-2.0.57 typing-extensions-4.16.0 werkzeug-3.1.9 wsproto-1.3.2 wtforms-3.2.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+useradd warning: lightcrypto's uid 10001 is greater than SYS_UID_MAX 999
+ ---> Removed intermediate container 043b4eb51cc7
+ ---> 67172134504a
+Step 7/17 : COPY src/*.py /app/src/
+ ---> 2f01a26234d6
+Step 8/17 : COPY src/publisher/*.py /app/src/publisher/
+ ---> 121ec35f48e2
+Step 9/17 : COPY src/brocker/*.py /app/src/brocker/
+ ---> 22cc221593a4
+Step 10/17 : COPY src/web/*.py /app/src/web/
+ ---> d68ddeb3014b
+Step 11/17 : COPY src/web/templates /app/src/web/templates
+ ---> 74207096daf5
+Step 12/17 : COPY src/web/static /app/src/web/static
+ ---> 96f37fe67403
+Step 13/17 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> b0507e4ddb54
+Step 14/17 : COPY scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> 95ace12e9954
+Step 15/17 : USER 10001:10001
+ ---> Running in 57dbf8538cc6
+ ---> Removed intermediate container 57dbf8538cc6
+ ---> b7d61fef7fe3
+Step 16/17 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Running in 10c99f89e69e
+ ---> Removed intermediate container 10c99f89e69e
+ ---> 822d8e660fea
+Step 17/17 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in aba0737cbd3d
+ ---> Removed intermediate container aba0737cbd3d
+ ---> 1ad6c2d8ae2a
+Successfully built 1ad6c2d8ae2a
+Successfully tagged lcm-stage5-runtime:latest
+ Image lcm-stage5-runtime Built
+ Image lcm-stage5-runtime Built
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T15:10:01.987982+00:00
+$ docker compose --env-file .local-runtime/stage5.env up -d --wait --wait-timeout 150 mongo postgres
+ Volume lcm-stage5_relay-storage-security Creating
+ Volume lcm-stage5_mongo-data Creating
+ Volume lcm-stage5_postgres-data Creating
+ Volume lcm-stage5_mongo-data Creating
+ Volume lcm-stage5_test-storage-security Creating
+ Volume lcm-stage5_test-storage-security Creating
+ Volume lcm-stage5_mongo-security Creating
+ Volume lcm-stage5_mongo-security Creating
+ Volume lcm-stage5_relay-storage-security Creating
+ Volume lcm-stage5_postgres-data Creating
+ Network lcm-stage5_default Creating
+ Volume lcm-stage5_web-storage-security Creating
+ Volume lcm-stage5_web-storage-security Creating
+ Network lcm-stage5_default Creating
+ Volume lcm-stage5_test-storage-security Created
+ Volume lcm-stage5_test-storage-security Created
+ Volume lcm-stage5_mongo-data Created
+ Volume lcm-stage5_mongo-data Created
+ Volume lcm-stage5_relay-storage-security Created
+ Volume lcm-stage5_relay-storage-security Created
+ Volume lcm-stage5_mongo-security Created
+ Volume lcm-stage5_mongo-security Created
+ Volume lcm-stage5_postgres-data Created
+ Volume lcm-stage5_postgres-data Created
+ Volume lcm-stage5_web-storage-security Created
+ Volume lcm-stage5_web-storage-security Created
+ Network lcm-stage5_default Created
+ Network lcm-stage5_default Created
+ Container lcm-stage5-storage-init-1 Creating
+ Container lcm-stage5-postgres-1 Creating
+ Container lcm-stage5-postgres-1 Created
+ Container lcm-stage5-storage-init-1 Created
+ Container lcm-stage5-mongo-1 Creating
+ Container lcm-stage5-mongo-1 Created
+ Container lcm-stage5-postgres-1 Starting
+ Container lcm-stage5-storage-init-1 Starting
+ Container lcm-stage5-postgres-1 Started
+ Container lcm-stage5-storage-init-1 Started
+ Container lcm-stage5-storage-init-1 Waiting
+ Container lcm-stage5-storage-init-1 Exited
+ Container lcm-stage5-mongo-1 Starting
+ Container lcm-stage5-mongo-1 Started
+ Container lcm-stage5-storage-init-1 Waiting
+ Container lcm-stage5-mongo-1 Waiting
+ Container lcm-stage5-postgres-1 Waiting
+ Container lcm-stage5-storage-init-1 Exited
+ Container lcm-stage5-postgres-1 Healthy
+ Container lcm-stage5-mongo-1 Healthy
+
+EXIT CODE: 0
