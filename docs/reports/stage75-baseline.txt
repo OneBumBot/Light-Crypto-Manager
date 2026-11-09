@@ -1,0 +1,15 @@
+
+UTC: 2026-11-09T21:29:47.455319+00:00
+$ .venv/bin/python scripts/diagnose_rf75.py --data .local-runtime/edge-research/network-grouped-v2.csv --models .local-runtime/stage6-network-models --output docs/reports/stage75-rf-diagnosis.json
+Traceback (most recent call last):
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/diagnose_rf75.py", line 7, in <module>
+    from src.classifier.ml.artifacts import load,file_hash
+ModuleNotFoundError: No module named 'src'
+
+EXIT CODE: 1
+
+UTC: 2026-11-09T21:29:55.819336+00:00
+$ .venv/bin/python -m scripts.diagnose_rf75 --data .local-runtime/edge-research/network-grouped-v2.csv --models .local-runtime/stage6-network-models --output docs/reports/stage75-rf-diagnosis.json
+Frozen baseline diagnosis saved; no training, selection or threshold changes
+
+EXIT CODE: 0
