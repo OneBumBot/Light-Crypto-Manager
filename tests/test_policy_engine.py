@@ -141,3 +141,8 @@ def test_continuous_fast_events_do_not_starve_rate_limited_decisions():
         s,d=step(s,n,'replay',rules=rules)
         if d['emit_decision']:emitted.append(n)
     assert emitted==[10,20] and s.risk=='ALERT'
+
+
+def test_fixed_baseline_missing_ml_is_unknown_not_normal():
+    s,d=step(State(),1,rules=Rules(strategy='fixed'))
+    assert s.risk=='UNKNOWN' and d['applied_configuration'] is None

@@ -24,7 +24,10 @@ def main():
     try:
         if args.phase=='unavailable':
             try:poll(engine)
-            except SQLAlchemyError:print('PASS: PostgreSQL outage rejects processing; no local fake decision/ACK');return
+            except SQLAlchemyError:
+                snapshot=json.loads(SNAPSHOT.read_text());snapshot['outage_at']=datetime.now(timezone.utc).isoformat()
+                SNAPSHOT.write_text(json.dumps(snapshot));SNAPSHOT.chmod(0o600)
+                print('PASS: PostgreSQL outage rejects processing; no local fake decision/ACK');return
             raise AssertionError('Expected unavailable PostgreSQL')
         def active():
             with engine.connect() as c:return c.scalar(select(versions.c.version).where(versions.c.active.is_(True)))
@@ -67,7 +70,8 @@ def main():
             def ready():
                 with engine.connect() as c:
                     workers=c.execute(select(worker_status)).mappings().all();now=datetime.now(timezone.utc)
-                    return any(w['status']=='ready' and (now-w['heartbeat_at']).total_seconds()<15 for w in workers)
+                    return any(w['status']=='ready' and (now-w['heartbeat_at']).total_seconds()<15 and (
+                        'outage_at' not in snapshot or w['heartbeat_at']>datetime.fromisoformat(snapshot['outage_at'])) for w in workers)
             wait(ready)
             with engine.connect() as c:
                 assert set(c.scalars(select(decisions.c.id).where(decisions.c.id.in_(snapshot['ids']))))==set(snapshot['ids'])

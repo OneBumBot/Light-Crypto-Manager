@@ -70,7 +70,7 @@ def run(name,events,strategy):
         if profile!=last_profile:changes+=1;last_profile=profile
         if reaction is None and state.risk in {'ALERT','CRITICAL'} and first_trigger:reaction=(now-first_trigger).total_seconds()
         trace.append(dict(event_id=signal.event_id,**result))
-    return dict(scenario=name,strategy=strategy,mode='SIMULATION',synthetic=True,
+    return dict(scenario=name,strategy=strategy,policy_version='simulation-v1-'+strategy,rules=rules.payload(),mode='SIMULATION',synthetic=True,
         decisions=len(trace),risk_transitions=sum(r['transitioned'] for r in trace),
         suppressed=sum(r['suppressed'] for r in trace),modeled_recommendation_changes=changes,
         unexpected_risk_escalations=unexpected,reaction_seconds=reaction,applied_changes=0,

@@ -7,6 +7,23 @@
     {
       "scenario": "normal",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 8,
@@ -53,7 +70,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1:accepted"
@@ -82,7 +99,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:11:accepted",
@@ -112,7 +129,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:21:accepted",
@@ -143,7 +160,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:31:accepted",
@@ -175,7 +192,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:41:accepted",
@@ -208,7 +225,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:51:accepted",
@@ -242,7 +259,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:61:accepted",
@@ -276,6 +293,23 @@
     {
       "scenario": "normal",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 8,
@@ -545,6 +579,23 @@
     {
       "scenario": "normal",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 8,
@@ -814,6 +865,23 @@
     {
       "scenario": "normal",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 8,
@@ -1083,24 +1151,41 @@
     {
       "scenario": "single_physical",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
-      "risk_transitions": 1,
+      "risk_transitions": 0,
       "suppressed": 0,
       "modeled_recommendation_changes": 0,
       "unexpected_risk_escalations": 0,
       "reaction_seconds": null,
       "applied_changes": 0,
-      "final_risk": "NORMAL",
+      "final_risk": "UNKNOWN",
       "trace": [
         {
           "event_id": "sim:0:accepted",
           "current_state": "UNKNOWN",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:0:accepted"
@@ -1110,7 +1195,7 @@
           "diagnostic": "accepted",
           "suppressed": false,
           "emit_decision": true,
-          "transitioned": true,
+          "transitioned": false,
           "recommended_protection": {
             "profile_id": "ascon-aead128-v1",
             "status": "recommended",
@@ -1125,11 +1210,11 @@
         },
         {
           "event_id": "sim:1:physical_anomaly",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1:physical_anomaly"
@@ -1154,11 +1239,11 @@
         },
         {
           "event_id": "sim:2:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:2:accepted"
@@ -1186,6 +1271,23 @@
     {
       "scenario": "single_physical",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -1289,6 +1391,23 @@
     {
       "scenario": "single_physical",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -1392,6 +1511,23 @@
     {
       "scenario": "single_physical",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -1495,6 +1631,23 @@
     {
       "scenario": "physical_series",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -1512,7 +1665,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1:physical_anomaly"
@@ -1541,7 +1694,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:2:physical_anomaly"
@@ -1570,7 +1723,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:3:physical_anomaly"
@@ -1598,6 +1751,23 @@
     {
       "scenario": "physical_series",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -1701,6 +1871,23 @@
     {
       "scenario": "physical_series",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -1804,6 +1991,23 @@
     {
       "scenario": "physical_series",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -1907,6 +2111,23 @@
     {
       "scenario": "replay_series",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -1924,7 +2145,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1:replay"
@@ -1953,7 +2174,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:2:replay",
@@ -1983,7 +2204,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:3:replay",
@@ -2013,6 +2234,23 @@
     {
       "scenario": "replay_series",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -2119,6 +2357,23 @@
     {
       "scenario": "replay_series",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -2225,6 +2480,23 @@
     {
       "scenario": "replay_series",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -2331,6 +2603,23 @@
     {
       "scenario": "verified_security_violation",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 1,
@@ -2348,7 +2637,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1:security_violation"
@@ -2376,6 +2665,23 @@
     {
       "scenario": "verified_security_violation",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 1,
@@ -2421,6 +2727,23 @@
     {
       "scenario": "verified_security_violation",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 1,
@@ -2466,6 +2789,23 @@
     {
       "scenario": "verified_security_violation",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 1,
@@ -2511,16 +2851,33 @@
     {
       "scenario": "ml_unavailable",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 5,
-      "risk_transitions": 1,
+      "risk_transitions": 0,
       "suppressed": 0,
       "modeled_recommendation_changes": 0,
       "unexpected_risk_escalations": 0,
       "reaction_seconds": null,
       "applied_changes": 0,
-      "final_risk": "NORMAL",
+      "final_risk": "UNKNOWN",
       "trace": [
         {
           "event_id": "sim:1:replay",
@@ -2528,7 +2885,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1:replay"
@@ -2557,7 +2914,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:2:replay",
@@ -2587,7 +2944,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:3:replay",
@@ -2647,10 +3004,10 @@
         {
           "event_id": "sim:20:accepted",
           "current_state": "UNKNOWN",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:20:accepted",
@@ -2663,7 +3020,7 @@
           "diagnostic": "accepted",
           "suppressed": false,
           "emit_decision": true,
-          "transitioned": true,
+          "transitioned": false,
           "recommended_protection": {
             "profile_id": "ascon-aead128-v1",
             "status": "recommended",
@@ -2681,6 +3038,23 @@
     {
       "scenario": "ml_unavailable",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 5,
@@ -2851,6 +3225,23 @@
     {
       "scenario": "ml_unavailable",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 5,
@@ -3021,6 +3412,23 @@
     {
       "scenario": "ml_unavailable",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 5,
@@ -3191,11 +3599,28 @@
     {
       "scenario": "stale_ml",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 2,
       "risk_transitions": 0,
-      "suppressed": 1,
+      "suppressed": 0,
       "modeled_recommendation_changes": 0,
       "unexpected_risk_escalations": 0,
       "reaction_seconds": null,
@@ -3235,7 +3660,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Transition suppressed by cooldown/rate limit"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:300:accepted"
@@ -3243,7 +3668,7 @@
           "mode": "SIMULATION",
           "decision_at": "2026-01-01T00:05:00+00:00",
           "diagnostic": "accepted",
-          "suppressed": true,
+          "suppressed": false,
           "emit_decision": false,
           "transitioned": false,
           "recommended_protection": {
@@ -3263,6 +3688,23 @@
     {
       "scenario": "stale_ml",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 2,
@@ -3335,6 +3777,23 @@
     {
       "scenario": "stale_ml",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 2,
@@ -3407,6 +3866,23 @@
     {
       "scenario": "stale_ml",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 2,
@@ -3479,6 +3955,23 @@
     {
       "scenario": "conflicting_sources",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -3493,10 +3986,10 @@
         {
           "event_id": "sim:0:accepted",
           "current_state": "UNKNOWN",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:0:accepted"
@@ -3506,7 +3999,7 @@
           "diagnostic": "accepted",
           "suppressed": false,
           "emit_decision": true,
-          "transitioned": true,
+          "transitioned": false,
           "recommended_protection": {
             "profile_id": "ascon-aead128-v1",
             "status": "recommended",
@@ -3521,11 +4014,11 @@
         },
         {
           "event_id": "ml:6e81fa16-d255-5d4d-812f-656b0cb7edb9:ok",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
           "recommended_state": "WATCH",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "ml:6e81fa16-d255-5d4d-812f-656b0cb7edb9:ok"
@@ -3550,11 +4043,11 @@
         },
         {
           "event_id": "sim:2:accepted",
-          "current_state": "NORMAL",
+          "current_state": "UNKNOWN",
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:2:accepted"
@@ -3564,7 +4057,7 @@
           "diagnostic": "accepted",
           "suppressed": false,
           "emit_decision": true,
-          "transitioned": false,
+          "transitioned": true,
           "recommended_protection": {
             "profile_id": "ascon-aead128-v1",
             "status": "recommended",
@@ -3582,6 +4075,23 @@
     {
       "scenario": "conflicting_sources",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -3685,6 +4195,23 @@
     {
       "scenario": "conflicting_sources",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -3788,6 +4315,23 @@
     {
       "scenario": "conflicting_sources",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -3891,6 +4435,23 @@
     {
       "scenario": "recovery",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 39,
@@ -3908,7 +4469,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1:replay"
@@ -3937,7 +4498,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:2:replay",
@@ -3967,7 +4528,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:3:replay",
@@ -3995,10 +4556,10 @@
         {
           "event_id": "sim:10:accepted",
           "current_state": "UNKNOWN",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:10:accepted",
@@ -4011,7 +4572,7 @@
           "diagnostic": "accepted",
           "suppressed": false,
           "emit_decision": true,
-          "transitioned": true,
+          "transitioned": false,
           "recommended_protection": {
             "profile_id": "ascon-aead128-v1",
             "status": "recommended",
@@ -4026,11 +4587,11 @@
         },
         {
           "event_id": "sim:20:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:20:accepted",
@@ -4059,11 +4620,11 @@
         },
         {
           "event_id": "sim:30:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:30:accepted",
@@ -4093,11 +4654,11 @@
         },
         {
           "event_id": "sim:40:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:40:accepted",
@@ -4128,11 +4689,11 @@
         },
         {
           "event_id": "sim:50:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:50:accepted",
@@ -4164,11 +4725,11 @@
         },
         {
           "event_id": "sim:60:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:60:accepted",
@@ -4201,11 +4762,11 @@
         },
         {
           "event_id": "sim:70:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:70:accepted",
@@ -4236,11 +4797,11 @@
         },
         {
           "event_id": "sim:80:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:80:accepted",
@@ -4272,11 +4833,11 @@
         },
         {
           "event_id": "sim:90:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:90:accepted",
@@ -4309,11 +4870,11 @@
         },
         {
           "event_id": "sim:100:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:100:accepted",
@@ -4347,11 +4908,11 @@
         },
         {
           "event_id": "sim:110:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:110:accepted",
@@ -4386,11 +4947,11 @@
         },
         {
           "event_id": "sim:120:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:120:accepted",
@@ -4426,11 +4987,11 @@
         },
         {
           "event_id": "sim:130:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:130:accepted",
@@ -4467,11 +5028,11 @@
         },
         {
           "event_id": "sim:140:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:140:accepted",
@@ -4509,11 +5070,11 @@
         },
         {
           "event_id": "sim:150:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:150:accepted",
@@ -4552,11 +5113,11 @@
         },
         {
           "event_id": "sim:160:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:160:accepted",
@@ -4596,11 +5157,11 @@
         },
         {
           "event_id": "sim:170:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:170:accepted",
@@ -4641,11 +5202,11 @@
         },
         {
           "event_id": "sim:180:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:180:accepted",
@@ -4687,11 +5248,11 @@
         },
         {
           "event_id": "sim:190:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:190:accepted",
@@ -4734,11 +5295,11 @@
         },
         {
           "event_id": "sim:200:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:200:accepted",
@@ -4782,11 +5343,11 @@
         },
         {
           "event_id": "sim:210:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:210:accepted",
@@ -4831,11 +5392,11 @@
         },
         {
           "event_id": "sim:220:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:220:accepted",
@@ -4881,11 +5442,11 @@
         },
         {
           "event_id": "sim:230:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:230:accepted",
@@ -4932,11 +5493,11 @@
         },
         {
           "event_id": "sim:240:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:240:accepted",
@@ -4984,11 +5545,11 @@
         },
         {
           "event_id": "sim:250:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:250:accepted",
@@ -5037,11 +5598,11 @@
         },
         {
           "event_id": "sim:260:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:260:accepted",
@@ -5091,11 +5652,11 @@
         },
         {
           "event_id": "sim:270:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:270:accepted",
@@ -5146,11 +5707,11 @@
         },
         {
           "event_id": "sim:280:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:280:accepted",
@@ -5202,11 +5763,11 @@
         },
         {
           "event_id": "sim:290:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:290:accepted",
@@ -5259,11 +5820,11 @@
         },
         {
           "event_id": "sim:300:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:300:accepted",
@@ -5317,11 +5878,11 @@
         },
         {
           "event_id": "sim:310:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:310:accepted",
@@ -5376,11 +5937,11 @@
         },
         {
           "event_id": "sim:320:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:320:accepted",
@@ -5436,11 +5997,11 @@
         },
         {
           "event_id": "sim:330:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:330:accepted",
@@ -5497,11 +6058,11 @@
         },
         {
           "event_id": "sim:340:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:340:accepted",
@@ -5559,11 +6120,11 @@
         },
         {
           "event_id": "ml:ef2af18f-63fa-593d-9447-62192a9a0915:ok",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "ml:ef2af18f-63fa-593d-9447-62192a9a0915:ok",
@@ -5622,11 +6183,11 @@
         },
         {
           "event_id": "sim:350:accepted",
-          "current_state": "NORMAL",
+          "current_state": "UNKNOWN",
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:350:accepted",
@@ -5670,7 +6231,7 @@
           "diagnostic": "accepted",
           "suppressed": false,
           "emit_decision": true,
-          "transitioned": false,
+          "transitioned": true,
           "recommended_protection": {
             "profile_id": "ascon-aead128-v1",
             "status": "recommended",
@@ -5688,6 +6249,23 @@
     {
       "scenario": "recovery",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 39,
@@ -7485,6 +8063,23 @@
     {
       "scenario": "recovery",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 39,
@@ -9282,6 +9877,23 @@
     {
       "scenario": "recovery",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 39,
@@ -11079,6 +11691,23 @@
     {
       "scenario": "oscillation",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 41,
@@ -11125,7 +11754,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1:physical_anomaly"
@@ -11183,7 +11812,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:3:accepted"
@@ -11212,7 +11841,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:4:accepted",
@@ -11242,7 +11871,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:5:accepted",
@@ -11273,7 +11902,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:11:physical_anomaly"
@@ -11302,7 +11931,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "ml:404aa75f-ad56-55ee-b206-e311e91cdf42:ok"
@@ -11331,7 +11960,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:13:accepted"
@@ -11360,7 +11989,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:14:accepted",
@@ -11390,7 +12019,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:15:accepted",
@@ -11421,7 +12050,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:21:physical_anomaly"
@@ -11450,7 +12079,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "ml:df5c2b96-41f5-5b69-9c5b-2621ea1dee8c:ok"
@@ -11479,7 +12108,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:23:accepted"
@@ -11508,7 +12137,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:24:accepted",
@@ -11538,7 +12167,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:25:accepted",
@@ -11569,7 +12198,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:31:physical_anomaly"
@@ -11598,7 +12227,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "ml:3c8bdd2a-529a-5dc8-8ba4-4a863f9ca524:ok"
@@ -11627,7 +12256,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:33:accepted"
@@ -11656,7 +12285,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:34:accepted",
@@ -11686,7 +12315,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:35:accepted",
@@ -11717,7 +12346,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:41:physical_anomaly"
@@ -11746,7 +12375,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "ml:ef099cde-8be7-564f-a74c-acc0c0b49ef8:ok"
@@ -11775,7 +12404,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:43:accepted"
@@ -11804,7 +12433,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:44:accepted",
@@ -11834,7 +12463,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:45:accepted",
@@ -11865,7 +12494,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:51:physical_anomaly"
@@ -11894,7 +12523,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "ml:690822a9-ab76-5aac-bc94-9958de1775a2:ok"
@@ -11923,7 +12552,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:53:accepted"
@@ -11952,7 +12581,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:54:accepted",
@@ -11982,7 +12611,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:55:accepted",
@@ -12013,7 +12642,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:61:physical_anomaly"
@@ -12042,7 +12671,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "ml:d174c4db-c6f2-5132-9dea-973cf10c2771:ok"
@@ -12071,7 +12700,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:63:accepted"
@@ -12100,7 +12729,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:64:accepted",
@@ -12130,7 +12759,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:65:accepted",
@@ -12161,7 +12790,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:71:physical_anomaly"
@@ -12190,7 +12819,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "ml:2a6962a9-fdec-5342-8cab-4727c33d064f:ok"
@@ -12219,7 +12848,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:73:accepted"
@@ -12248,7 +12877,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:74:accepted",
@@ -12278,7 +12907,7 @@
           "observed_risk": "NORMAL",
           "recommended_state": "NORMAL",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:75:accepted",
@@ -12308,6 +12937,23 @@
     {
       "scenario": "oscillation",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 41,
@@ -13537,6 +14183,23 @@
     {
       "scenario": "oscillation",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 41,
@@ -14766,6 +15429,23 @@
     {
       "scenario": "oscillation",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 41,
@@ -15995,24 +16675,41 @@
     {
       "scenario": "missing_events",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
-      "risk_transitions": 1,
+      "risk_transitions": 0,
       "suppressed": 0,
       "modeled_recommendation_changes": 0,
       "unexpected_risk_escalations": 0,
       "reaction_seconds": null,
       "applied_changes": 0,
-      "final_risk": "NORMAL",
+      "final_risk": "UNKNOWN",
       "trace": [
         {
           "event_id": "sim:0:accepted",
           "current_state": "UNKNOWN",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:0:accepted"
@@ -16022,7 +16719,7 @@
           "diagnostic": "accepted",
           "suppressed": false,
           "emit_decision": true,
-          "transitioned": true,
+          "transitioned": false,
           "recommended_protection": {
             "profile_id": "ascon-aead128-v1",
             "status": "recommended",
@@ -16037,11 +16734,11 @@
         },
         {
           "event_id": "sim:500:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:500:accepted"
@@ -16066,11 +16763,11 @@
         },
         {
           "event_id": "sim:1000:accepted",
-          "current_state": "NORMAL",
-          "observed_risk": "NORMAL",
-          "recommended_state": "NORMAL",
+          "current_state": "UNKNOWN",
+          "observed_risk": "UNKNOWN",
+          "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1000:accepted"
@@ -16098,6 +16795,23 @@
     {
       "scenario": "missing_events",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -16201,6 +16915,23 @@
     {
       "scenario": "missing_events",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -16304,6 +17035,23 @@
     {
       "scenario": "missing_events",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -16407,6 +17155,23 @@
     {
       "scenario": "unsupported_profile",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "unavailable-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -16424,7 +17189,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1:replay"
@@ -16453,7 +17218,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:2:replay",
@@ -16483,7 +17248,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:3:replay",
@@ -16513,6 +17278,23 @@
     {
       "scenario": "unsupported_profile",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "unavailable-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -16617,6 +17399,23 @@
     {
       "scenario": "unsupported_profile",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "unavailable-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -16721,6 +17520,23 @@
     {
       "scenario": "unsupported_profile",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "unavailable-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -16826,6 +17642,23 @@
     {
       "scenario": "missing_ack",
       "strategy": "fixed",
+      "policy_version": "simulation-v1-fixed",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "fixed"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -16843,7 +17676,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:1:replay"
@@ -16872,7 +17705,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:2:replay",
@@ -16902,7 +17735,7 @@
           "observed_risk": "UNKNOWN",
           "recommended_state": "UNKNOWN",
           "reasons": [
-            "Fixed baseline: no adaptive transitions"
+            "Fixed protection baseline; insufficient data still means UNKNOWN"
           ],
           "used_signals": [
             "sim:3:replay",
@@ -16932,6 +17765,23 @@
     {
       "scenario": "missing_ack",
       "strategy": "adaptive",
+      "policy_version": "simulation-v1-adaptive",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -17038,6 +17888,23 @@
     {
       "scenario": "missing_ack",
       "strategy": "adaptive_research",
+      "policy_version": "simulation-v1-adaptive_research",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 0,
+        "recovery_seconds": 1,
+        "recovery_observations": 2,
+        "watch_observations": 1,
+        "alert_observations": 2,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_research"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,
@@ -17144,6 +18011,23 @@
     {
       "scenario": "missing_ack",
       "strategy": "adaptive_hysteresis",
+      "policy_version": "simulation-v1-adaptive_hysteresis",
+      "rules": {
+        "window_seconds": 60,
+        "max_age_seconds": 120,
+        "future_skew_seconds": 5,
+        "cooldown_seconds": 30,
+        "recovery_seconds": 300,
+        "recovery_observations": 6,
+        "watch_observations": 2,
+        "alert_observations": 3,
+        "min_decision_seconds": 1,
+        "telemetry_fresh_seconds": 60,
+        "ml_fresh_seconds": 120,
+        "minimum_profile": "ascon-aead128-v1",
+        "elevated_profile": "simulated-profile",
+        "strategy": "adaptive_hysteresis"
+      },
       "mode": "SIMULATION",
       "synthetic": true,
       "decisions": 3,

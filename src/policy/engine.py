@@ -70,7 +70,9 @@ def evaluate(state,signal,rules,now,*,mode='DRY_RUN',capabilities=('mqtt_tls','a
             s.stable_since=None;s.healthy_count=0;s.healthy_evidence=[]
         count=len(s.evidence)
         target=s.risk
-        if rules.strategy=='fixed':target='NORMAL' if healthy and s.guard=='NORMAL' else s.risk;reason=['Fixed baseline: no adaptive transitions']
+        if rules.strategy=='fixed':
+            target='NORMAL' if healthy and s.guard=='NORMAL' and s.ml_available and s.last_ml_at and (now-utc(s.last_ml_at)).total_seconds()<=rules.ml_fresh_seconds else ('UNKNOWN' if healthy and not s.ml_available else s.risk)
+            reason=['Fixed protection baseline; insufficient data still means UNKNOWN']
         elif critical:target='CRITICAL';reason=['Verified security rule violation']
         elif count>=rules.alert_observations:target='ALERT';reason=['Sustained authenticated replay evidence']
         elif count>=rules.watch_observations:target='WATCH';reason=['Repeated authenticated replay evidence']

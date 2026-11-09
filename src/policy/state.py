@@ -34,6 +34,7 @@ def install(connection,version,config,now,actor='bootstrap',activate=False):
 
 def process(connection,signal,version,now,*,before_commit=None):
     signal.validate();now=utc(now);start=time.perf_counter()
+    if signal.binding=='simulation' or signal.trust=='simulation':raise ValueError('Simulation signals forbidden in runtime persistence')
     row=connection.execute(select(versions).where(versions.c.version==version)).mappings().one()
     rules=Rules.parse(row['config'])
     # Never derive trusted identity from raw MQTT data here. Only internal adapters.
@@ -51,6 +52,9 @@ def process(connection,signal,version,now,*,before_commit=None):
         source=signal.source,payload=signal.payload(),status='processing',created_at=now).on_conflict_do_nothing()
         .returning(signals.c.event_id)).first()
     if inserted is None:return None
+    if state_row is None:
+        connection.execute(update(signals).where(signals.c.event_id==signal.event_id,signals.c.version==version).values(status='unattributed'))
+        return None
     state=State(**state_row['state']) if state_row else State()
     if state_row and previous and previous['version']!=version and previous['updated_at']>state_row['updated_at']:
         other=State(**previous['state'])

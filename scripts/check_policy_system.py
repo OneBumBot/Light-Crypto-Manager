@@ -20,6 +20,8 @@ def main():
     run('restart','policy-worker');probe('verify')
     try:
         run('stop','postgres');probe('unavailable')
+        run('exec','-T','--index','1','policy-worker','python','-c',
+            "from pathlib import Path; import time\np=Path('/tmp/policy-ready');deadline=time.monotonic()+15\nwhile p.exists() and time.monotonic()<deadline: time.sleep(0.2)\nassert not p.exists()\nprint('PASS: policy readiness removed during PostgreSQL outage')")
     finally:run('up','-d','--no-deps','--wait','postgres')
     probe('verify')
     print('PASS: policy-only downtime, two workers, replay attribution, restart and real PostgreSQL outage recovery')

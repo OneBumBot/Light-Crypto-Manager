@@ -77,7 +77,7 @@ def test_source_journal_bounded_unattributed_and_worker_dedupe(postgres_db):
     assert poll(engine) and poll(engine) and not poll(engine)
     with engine.connect() as c:
         assert c.scalar(select(queue.c.overflow))==1
-        assert c.scalar(select(func.count()).select_from(decisions))==2
+        assert c.scalar(select(func.count()).select_from(decisions))==1
         assert c.scalar(select(journal.c.device_id).where(journal.c.category=='rejected')) is None
         assert c.scalar(select(func.count()).select_from(states))==1
 
@@ -112,3 +112,25 @@ def test_policy_version_change_retains_guard_and_command_counter(postgres_db):
         assert d['observed_risk']=='CRITICAL'
         assert c.scalar(select(command_counters.c.last_sequence))==2
     with engine.connect() as c:assert c.scalar(select(states.c.applied).limit(1)) is None
+
+
+def test_explicit_retention_preserves_identity_state_and_replay(postgres_db):
+    from types import SimpleNamespace
+    from src.policy.state import prune
+    from src.policy.worker import prune_journal
+    engine=postgres_db.db.engine;setup(engine)
+    with engine.begin() as c:
+        process(c,sig(1,'replay'),'test-v1',T+timedelta(seconds=1))
+        c.execute(text("INSERT INTO mqtt_replay_state VALUES ('receiver','retention',1,77)"))
+        capture(c,'accepted',SimpleNamespace(device_id='alpha',key_epoch=1,sequence_number=2),T)
+    assert poll(engine)
+    with engine.begin() as c:
+        assert prune(c,1,T+timedelta(days=3))==1
+        assert prune_journal(c,1,T+timedelta(days=3))==1
+        assert c.scalar(select(queue.c.retained))==0
+        assert process(c,sig(1,'replay'),'test-v1',T+timedelta(days=3)) is None
+        assert c.scalar(select(states.c.device_id))=='alpha'
+        assert c.scalar(text("SELECT last_sequence FROM mqtt_replay_state WHERE device_id='retention'"))==77
+        assert c.scalar(select(signals.c.payload).where(signals.c.event_id=='test:1'))=={'retained_identity':True}
+    with pytest.raises(ValueError):
+        with engine.begin() as c:prune(c,True,T)
