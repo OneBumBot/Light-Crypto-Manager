@@ -183,3 +183,113 @@ def test_private_ontology_separate_from_real_attack_datasets():
 def test_normal_requires_verified_acceptance():
     rows, truth = fixture()
     assert {r["ground_truth"] for r in raw_map_packets(rows, truth, {}, {})} == {"unknown"}
+
+
+def test_builder_keeps_unknown_out_of_training_and_preserves_provenance(tmp_path, monkeypatch):
+    from src.research_stand import dataset as module
+    from src.classifier.research.datasets import read_prepared
+
+    root = tmp_path / "captures"
+    folder = root / "fixture"
+    folder.mkdir(parents=True)
+    (folder / "ground-truth.json").write_text("{}")
+    (folder / "core.json").write_text(
+        json.dumps(dict(categories={}, before={"categories": {}}, mongo_delta=2, outbox_pending=0))
+    )
+    rows, truth = fixture()
+    for r in rows:
+        r.update(
+            {
+                "frame.len": "120",
+                "tcp.len": "60",
+                "tcp.window_size_value": "512",
+                "tcp.time_delta": "0.1",
+                "tcp.analysis.lost_segment": "",
+            }
+        )
+    labeled = map_packets(rows, truth, {}, {})
+    truth.update(
+        experiment=Experiment("fixture", "regular").payload(),
+        devices=["lab001"],
+        experiment_started_at=1,
+        experiment_finished_at=4,
+        sent_messages=2,
+        generator_peak_rss_kib=1024,
+    )
+    truth["connections"][0]["normal_retry_dup_observed"] = False
+    cap = dict(
+        pcap_sha256="a" * 64,
+        bytes=500,
+        stats={"dropped_by_kernel": 0},
+        tcpdump_version="synthetic fixture",
+        collector_peak_rss_kib=1024,
+    )
+    monkeypatch.setattr(
+        module, "read", lambda _: (labeled, truth, cap, {"tool_version": "synthetic fixture"})
+    )
+    output = tmp_path / "dataset"
+    report = module.build(root, output)
+    assert report["unknown_rows"] == 2 and report["known_rows"] == 2
+    frame, manifest = read_prepared(output / "dataset.csv", output / "dataset.manifest.json")
+    assert set(frame.label) == {0} and frame.experiment_id.eq("fixture").all()
+    assert manifest["feature_order"] == module.FEATURES
+    assert module.validate(output, root)["known_rows"] == 2
+    (folder / "ground-truth.json").write_text("modified")
+    with pytest.raises(ValueError, match="integrity"):
+        module.validate(output, root)
+    with pytest.raises(ValueError, match="immutable"):
+        module.build(root, output)
+
+
+def test_capture_hash_tampering_rejected_before_labels(tmp_path):
+    from src.research_stand.dataset import read
+
+    (tmp_path / "traffic.pcap").write_bytes(b"synthetic invalid capture")
+    (tmp_path / "capture.json").write_text(json.dumps({"pcap_sha256": "0" * 64}))
+    (tmp_path / "extractor.json").write_text("{}")
+    (tmp_path / "ground-truth.json").write_text("{}")
+    with pytest.raises(ValueError, match="hash mismatch"):
+        read(tmp_path)
+
+
+def test_unknown_does_not_become_normal_when_no_outcome():
+    rows, truth = fixture()
+    truth["connections"][0].update(activity="bounded_rate", actions=[{}])
+    assert {r["ground_truth"] for r in map_packets(rows, truth, {}, {})} == {"unknown"}
+
+
+def test_duplicate_connection_identity_rejected():
+    rows, truth = fixture()
+    truth["connections"] *= 2
+    with pytest.raises(ValueError, match="Duplicate"):
+        map_packets(rows, truth, {}, {})
+
+
+def test_missing_clock_uncertainty_rejected():
+    rows, truth = fixture()
+    truth["clock"]["boundary_margin_seconds"] = float("nan")
+    with pytest.raises(ValueError, match="clock"):
+        map_packets(rows, truth, {}, {})
+
+
+def test_disk_watchdog_refuses_oversized_volume():
+    from src.research_stand.orchestrator import Lab
+
+    lab = Lab.__new__(Lab)
+    lab.call = lambda *a: str(2 * 1024**2) + " /private\n"
+    with pytest.raises(ValueError, match="disk budget"):
+        lab.resource_usage()
+
+
+def test_retention_requires_explicit_safe_identity(tmp_path):
+    from src.research_stand.retention import eligible
+
+    with pytest.raises(ValueError):
+        eligible(tmp_path, "../other", 30)
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    root = tmp_path / "root"
+    root.mkdir()
+    (root / "capture").symlink_to(outside, target_is_directory=True)
+    with pytest.raises(ValueError, match="Unsafe"):
+        eligible(root, "capture", 30)

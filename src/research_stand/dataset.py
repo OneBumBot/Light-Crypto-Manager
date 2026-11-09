@@ -118,6 +118,7 @@ def build(root, output):
                 else None,
             )
             rows.append(row)
+        core = json.loads((folder / "core.json").read_text())
         reports.append(
             dict(
                 capture_id=identity,
@@ -164,6 +165,8 @@ def build(root, output):
         granularity="packet",
         extractor="lcm-tshark-tcp-v1",
         synthetic=False,
+        data_origin="controlled laboratory: generated clients, real TLS network packets",
+        synthetic_sensor_values=True,
         source_url="local isolated LightCrypto MQTT/TLS lab",
         dataset_version="75b-v1",
         license="Private laboratory data; publication not authorized",

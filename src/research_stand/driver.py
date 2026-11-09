@@ -325,7 +325,7 @@ def run(config, root):
         errors=errors,
         generator_peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
         generator_user_cpu_seconds=resource.getrusage(resource.RUSAGE_SELF).ru_utime,
-        all_clients_stopped=True,
+        all_clients_stopped=all(r.get("closed_at") is not None for r in records),
         mode="CONTROLLED_LAB",
         telemetry_values="generated valid sensor values, not real physical ground truth",
     )

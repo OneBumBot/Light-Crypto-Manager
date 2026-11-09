@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "stage": "7.5b",
+  "checked_on": "2026-11-10",
+  "scope": "metadata and bounded header audit only; no training, no external benchmark",
+  "datasets": [
+    {
+      "id": "MQTT_UAD",
+      "version": 1,
+      "source": "https://doi.org/10.6084/m9.figshare.24420958.v1",
+      "license": "CC BY 4.0",
+      "metadata_sha256": "14811d6c92a51adea9027037afe8ce3173b5d9bed979c2aaffe30236e615a828",
+      "header_sha256": "f21480d3bb11d49b93ebfcca7a2f135409345bfa4006c657eb0cbfb810d7a32f",
+      "header_download_max_bytes": 4096,
+      "files": [
+        {
+          "name": "DoS.csv",
+          "size": 34541574
+        },
+        {
+          "name": "Intrusion.csv",
+          "size": 20625178
+        },
+        {
+          "name": "MitM.csv",
+          "size": 28099946
+        }
+      ],
+      "full_dataset_sha256": null,
+      "granularity": "packet",
+      "current_schema_compatible": false,
+      "reason": "four required TCP columns absent from inspected DoS.csv header; independent capture count not established"
+    },
+    {
+      "id": "MQTTEEB-D",
+      "version": 2,
+      "source": "https://doi.org/10.17632/jfttfjn6tr.2",
+      "license": "CC BY 4.0 (dataset page)",
+      "files_downloaded": false,
+      "full_dataset_sha256": null,
+      "granularity": "packet-derived CSV (author declaration)",
+      "current_schema_compatible": "unverified",
+      "independent_captures": "unverified"
+    },
+    {
+      "id": "IoT-SFC v2",
+      "repository_version_inspected": 6,
+      "latest_listing_version": 8,
+      "latest_content_verified": false,
+      "source": "https://doi.org/10.17632/j9xffc2psb.6",
+      "license": "CC BY 4.0 (V6 page; not automatically transferable to other versions)",
+      "files_downloaded": false,
+      "full_dataset_sha256": null,
+      "granularity": "heterogeneous Zeek log records",
+      "current_schema_compatible": false,
+      "independent_captures": "unverified"
+    }
+  ]
+}
