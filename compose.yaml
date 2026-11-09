@@ -150,6 +150,50 @@ services:
       retries: 10
     restart: unless-stopped
 
+  ml-model-init:
+    <<: *app
+    profiles: [ml-tools]
+    image: ${COMPOSE_PROJECT_NAME:-lightcrypto}-ml
+    build:
+      context: .
+      target: ml
+    user: "0:0"
+    command: [python, -m, scripts.install_ml_model]
+    environment:
+      ML_MODEL_ID: ${ML_MODEL_ID:-telemetry-statistical}
+      ML_MODEL_VERSION: ${ML_MODEL_VERSION:-1.0.0}
+    volumes:
+      - ${ML_MODELS_DIR:-./.local-runtime/ml-models}:/input:ro
+      - ml-models:/models
+
+  ml-worker:
+    <<: *app
+    profiles: [ml]
+    image: ${COMPOSE_PROJECT_NAME:-lightcrypto}-ml
+    build:
+      context: .
+      target: ml
+    command: [python, -m, src.classifier.ml.worker]
+    cpus: 1
+    mem_limit: 768m
+    volumes:
+      - ml-models:/models:ro
+      - web-storage-security:/run/storage:ro
+    environment:
+      <<: *db-environment
+      MONGO_PASSWORD_FILE: /run/storage/history.password
+      ML_MODEL_ID: ${ML_MODEL_ID:-telemetry-statistical}
+      ML_MODEL_VERSION: ${ML_MODEL_VERSION:-1.0.0}
+      ML_ALLOW_RESEARCH: ${ML_ALLOW_RESEARCH:-0}
+      ML_MODELS_DIR: /models
+      ML_BATCH_SIZE: ${ML_BATCH_SIZE:-16}
+    depends_on:
+      init-db:
+        condition: service_completed_successfully
+      storage-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
   demo-setup:
     <<: *app
     profiles: [demo, checks]
@@ -281,3 +325,4 @@ volumes:
   relay-storage-security:
   web-storage-security:
   test-storage-security:
+  ml-models:

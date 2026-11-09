@@ -102,3 +102,12 @@ RF binary/multiclass и IF IDS, manifest/hash export. 11 unit tests passed.
 IDS оценка; source2219201, subset11851, split5630/1227/2005. Модели/CSV локальны.
 Первый текущий Docker regression run:224 passed, включая предыдущие210;
 async/web интеграция ещё проверяется.
+
+Блок async ML: миграция0004 добавляет bounded delivery feed + gap counters,
+model registry и ml_anomaly_events; всего23 таблицы. Relay подтверждает Mongo
+независимо от модели; ML feed overflow учитывается явно. Отдельный opt-in worker
+читает ограниченные окна, сохраняет версии/lease/retry/skips/тайминги. Docker
+runtime не содержит sklearn/весов; отдельный ml target, cpus1/memory768m.
+Проверено230 pytest и реальное восстановление worker/Mongo, missing model не
+останавливает MQTT. ML модель для runtime — DEMO,320 синтетических наблюдений,
+не обученный на атаках доверенный детектор.

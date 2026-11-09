@@ -23,8 +23,9 @@ web = [
     "email-validator>=2.2,<3",
     "simple-websocket>=1.1,<2",
 ]
+ml-runtime = ["numpy>=2.2,<3", "pandas>=2.2,<3", "scikit-learn>=1.6,<2", "joblib>=1.4,<2"]
 ml = [
-    "numpy>=2.2,<3", "pandas>=2.2,<3", "scikit-learn>=1.6,<2",
+    {include-group="ml-runtime"},
     "matplotlib>=3.10,<4", "seaborn>=0.13,<0.14", "joblib>=1.4,<2",
     "jupyterlab>=4.3,<5",
 ]

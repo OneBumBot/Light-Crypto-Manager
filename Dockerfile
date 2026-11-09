@@ -19,13 +19,22 @@ COPY migrations /app/migrations
 USER 10001:10001
 CMD ["python", "-m", "src.brocker.mqtt_brocker"]
 
-FROM runtime AS tests
+FROM runtime AS ml
+USER root
+COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+COPY src/classifier/ml /app/src/classifier/ml
+COPY scripts/install_ml_model.py scripts/export_ml_telemetry.py /app/scripts/
+USER 10001:10001
+CMD ["python", "-m", "src.classifier.ml.worker"]
+
+FROM ml AS tests
 USER root
 COPY requirements/dev.txt /app/requirements/dev.txt
 RUN pip install --no-cache-dir -r requirements/dev.txt
 COPY pyproject.toml /app/pyproject.toml
 COPY tests/*.py /app/tests/
-COPY scripts/live_web_smoke.py scripts/dual_database_probe.py /app/scripts/
+COPY scripts/live_web_smoke.py scripts/dual_database_probe.py scripts/ml_system_probe.py /app/scripts/
 COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
 COPY deploy/compose.env.example /app/deploy/compose.env.example
 USER 10001:10001

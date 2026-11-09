@@ -6,7 +6,8 @@ from src.replay import metadata as replay_metadata
 
 from src.outbox import metadata as outbox_metadata
 from src.devices import metadata as device_metadata
-metadata = [db.metadata, replay_metadata, outbox_metadata, device_metadata]
+from src.ml_storage import metadata as ml_metadata
+metadata = [db.metadata, replay_metadata, outbox_metadata, device_metadata, ml_metadata]
 
 connection = context.config.attributes.get('connection')
 

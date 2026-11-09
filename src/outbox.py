@@ -91,6 +91,9 @@ def finish(engine, event, error=None, *, max_attempts=12, backoff_base=1, backof
                           available_at=now+timedelta(seconds=min(backoff_cap,backoff_base*2**min(event['attempts']-1,20))),
                           last_error=type(error).__name__[:80])
         result = connection.execute(update(outbox).where(where).values(**values, claim_token=None,lease_until=None))
+        if result.rowcount and error is None:
+            from src.ml_storage import publish_observation
+            publish_observation(connection,event,now)
         if result.rowcount:
             record(connection, 'delivered' if error is None else 'delivery_error')
         return bool(result.rowcount)

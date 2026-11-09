@@ -1,0 +1,12 @@
+
+UTC: 2026-11-09T16:29:22.624847+00:00
+$ .venv/bin/python -m src.classifier.ml.demo --synthetic-demo --device raspb1 --device alpha --device beta --device gamma --output .local-runtime/stage6-demo/train.csv --config-output .local-runtime/stage6-demo/train.json
+Synthetic demo fixture rows: 320
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T16:29:23.193068+00:00
+$ .venv/bin/python -m src.classifier.ml.train train --data .local-runtime/stage6-demo/train.csv --config .local-runtime/stage6-demo/train.json --models-dir .local-runtime/stage6-models --report .local-runtime/stage6-demo/model-report.json
+{"task": "telemetry_anomaly", "model_id": "telemetry-statistical", "model_version": "1.0.0", "mode": "DEMO", "dataset_sha256": "f884d79a4b14b7be491ef438a41194db7ecbdae6e9329f93844d3fd7a47668eb", "rows": 320, "status": "research experiment completed"}
+
+EXIT CODE: 0

@@ -1,0 +1,1748 @@
+
+UTC: 2026-11-09T16:19:12.417731+00:00
+$ docker compose --env-file .local-runtime/stage6.env build tests receiver ml-worker
+time="2026-11-09T19:18:37+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image lcm-stage6-ml Building
+ Image lcm-stage6-runtime Building
+ Image lcm-stage6-tests Building
+ Image lcm-stage6-runtime Building
+ Image lcm-stage6-tests Building
+ Image lcm-stage6-ml Building
+Sending build context to Docker daemon  137.9kB
+
+Sending build context to Docker daemon  137.9kB
+
+Sending build context to Docker daemon  137.9kB
+
+Step 1/19 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/27 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/38 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/38 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/19 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/27 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/38 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/19 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/27 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/38 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/19 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/27 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/38 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/27 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/19 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/38 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/19 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/27 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/38 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/19 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/27 : COPY src/*.py /app/src/
+ ---> 0ac53332962a
+Step 8/19 : COPY src/publisher/*.py /app/src/publisher/
+ ---> 265558cc1b02
+Step 8/38 : COPY src/publisher/*.py /app/src/publisher/
+ ---> 32de3208ddef
+Step 8/27 : COPY src/publisher/*.py /app/src/publisher/
+ ---> 92a39a758dbc
+Step 9/38 : COPY src/brocker/*.py /app/src/brocker/
+ ---> 7c96acb16425
+Step 9/27 : COPY src/brocker/*.py /app/src/brocker/
+ ---> 0bb6f7007eef
+Step 9/19 : COPY src/brocker/*.py /app/src/brocker/
+ ---> 34f55a524525
+Step 10/38 : COPY src/web/*.py /app/src/web/
+ ---> b1d068143d16
+Step 10/27 : COPY src/web/*.py /app/src/web/
+ ---> 5611ebe5a884
+Step 10/19 : COPY src/web/*.py /app/src/web/
+ ---> 4beedd07e2e1
+Step 11/27 : COPY src/web/templates /app/src/web/templates
+ ---> 633f4900bbfe
+Step 11/38 : COPY src/web/templates /app/src/web/templates
+ ---> 22febf19502a
+Step 11/19 : COPY src/web/templates /app/src/web/templates
+ ---> d77d5922dbaa
+Step 12/19 : COPY src/web/static /app/src/web/static
+ ---> 635d34da314d
+Step 12/38 : COPY src/web/static /app/src/web/static
+ ---> 68996660256a
+Step 12/27 : COPY src/web/static /app/src/web/static
+ ---> 8c99f0805d44
+Step 13/27 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> efe2d6a56df9
+Step 13/19 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> a04c30012579
+Step 13/38 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> 0e9c1afb29a9
+Step 14/27 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> 99003d3067a8
+Step 14/38 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> 5528d24bff1c
+Step 14/19 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> 7a7b84197154
+Step 15/19 : COPY alembic.ini /app/alembic.ini
+ ---> d946d76b339c
+Step 15/27 : COPY alembic.ini /app/alembic.ini
+ ---> 2db6db344059
+Step 15/38 : COPY alembic.ini /app/alembic.ini
+ ---> 755cdd76aad6
+Step 16/38 : COPY migrations /app/migrations
+ ---> dad7bf896c8d
+Step 16/27 : COPY migrations /app/migrations
+ ---> c51aa0b36a13
+Step 16/19 : COPY migrations /app/migrations
+ ---> 101b542cd13f
+Step 17/38 : USER 10001:10001
+ ---> a7b824a19cf1
+Step 17/19 : USER 10001:10001
+ ---> 489d59e81c8e
+Step 17/27 : USER 10001:10001
+ ---> Running in 8dfdfd4ae9ea
+ ---> Running in 4449ba24c2d8
+ ---> Running in 791f7c97f903
+ ---> Removed intermediate container 791f7c97f903
+ ---> 7c92904c3554
+Step 18/27 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Removed intermediate container 8dfdfd4ae9ea
+ ---> 8a1641624321
+Step 18/38 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Removed intermediate container 4449ba24c2d8
+ ---> aa0491ed72ef
+Step 18/19 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Running in 0d36b5172d27
+ ---> Running in 9b943ee891a2
+ ---> Running in e89b7c8d9576
+ ---> Removed intermediate container e89b7c8d9576
+ ---> 3e2fcee75315
+Step 19/19 : LABEL com.docker.compose.image.builder=classic
+ ---> Removed intermediate container 0d36b5172d27
+ ---> e1252f1690b5
+Step 19/27 : FROM runtime AS ml
+ ---> Removed intermediate container 9b943ee891a2
+ ---> 4d1bb12d47f7
+Step 19/38 : FROM runtime AS ml
+ ---> e1252f1690b5
+Step 20/27 : USER root
+ ---> 4d1bb12d47f7
+Step 20/38 : USER root
+ ---> Running in 4300573bc70f
+ ---> Running in e26fa105f1e6
+ ---> Running in fc2232a15197
+ ---> Removed intermediate container 4300573bc70f
+ ---> ae8f6bc876be
+ ---> Removed intermediate container fc2232a15197
+ ---> 68921d332281
+Step 21/27 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+ ---> Removed intermediate container e26fa105f1e6
+ ---> c4ca9e5cb8cf
+Step 21/38 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+Successfully built ae8f6bc876be
+Successfully tagged lcm-stage6-runtime:latest
+ Image lcm-stage6-runtime Built
+ Image lcm-stage6-runtime Built
+ ---> 60db15b2ac8d
+Step 22/27 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> 96894e0cf480
+Step 22/38 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> Running in 58d678d9afeb
+ ---> Running in b3de1168c04d
+Collecting cloudpickle==3.1.2 (from -r requirements/ml-runtime.txt (line 3))
+Collecting cloudpickle==3.1.2 (from -r requirements/ml-runtime.txt (line 3))
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting joblib==1.6.0 (from -r requirements/ml-runtime.txt (line 5))
+Collecting joblib==1.6.0 (from -r requirements/ml-runtime.txt (line 5))
+  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting narwhals==2.28.0 (from -r requirements/ml-runtime.txt (line 7))
+Collecting narwhals==2.28.0 (from -r requirements/ml-runtime.txt (line 7))
+  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+Requirement already satisfied: numpy==2.5.4 in /usr/local/lib/python3.12/site-packages (from -r requirements/ml-runtime.txt (line 9)) (2.5.4)
+  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+Requirement already satisfied: numpy==2.5.4 in /usr/local/lib/python3.12/site-packages (from -r requirements/ml-runtime.txt (line 9)) (2.5.4)
+Collecting pandas==2.3.3 (from -r requirements/ml-runtime.txt (line 14))
+  Downloading pandas-2.3.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+Collecting pandas==2.3.3 (from -r requirements/ml-runtime.txt (line 14))
+  Downloading pandas-2.3.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+Collecting python-dateutil==4.0.0 (from -r requirements/ml-runtime.txt (line 15))
+  Downloading python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting python-dateutil==4.0.0 (from -r requirements/ml-runtime.txt (line 15))
+Collecting pytz==2026.6 (from -r requirements/ml-runtime.txt (line 17))
+  Downloading python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+  Downloading pytz-2026.6-py2.py3-none-any.whl.metadata (22 kB)
+Collecting pytz==2026.6 (from -r requirements/ml-runtime.txt (line 17))
+  Downloading pytz-2026.6-py2.py3-none-any.whl.metadata (22 kB)
+Collecting scikit-learn==1.9.1 (from -r requirements/ml-runtime.txt (line 19))
+  Downloading scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.3 kB)
+Collecting scikit-learn==1.9.1 (from -r requirements/ml-runtime.txt (line 19))
+Collecting scipy==1.18.1 (from -r requirements/ml-runtime.txt (line 20))
+  Downloading scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.3 kB)
+  Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Collecting threadpoolctl==3.8.0 (from -r requirements/ml-runtime.txt (line 22))
+Collecting scipy==1.18.1 (from -r requirements/ml-runtime.txt (line 20))
+  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)
+  Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Collecting tzdata==2026.6 (from -r requirements/ml-runtime.txt (line 24))
+Collecting threadpoolctl==3.8.0 (from -r requirements/ml-runtime.txt (line 22))
+  Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Collecting tzdata==2026.6 (from -r requirements/ml-runtime.txt (line 24))
+Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+  Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Downloading pandas-2.3.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.4 MB)
+Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+Downloading pandas-2.3.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.4/12.4 MB 20.0 MB/s eta 0:00:00
+Downloading python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+Downloading pytz-2026.6-py2.py3-none-any.whl (506 kB)
+Downloading scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.4/12.4 MB 18.9 MB/s eta 0:00:00
+Downloading python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+Downloading pytz-2026.6-py2.py3-none-any.whl (506 kB)
+Downloading scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 21.4 MB/s eta 0:00:00
+Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 24.3 MB/s eta 0:00:00
+Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 23.6 MB/s eta 0:00:00
+Downloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Installing collected packages: pytz, tzdata, threadpoolctl, scipy, narwhals, cloudpickle, python-dateutil, joblib, scikit-learn, pandas
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 16.9 MB/s eta 0:00:00
+Downloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Installing collected packages: pytz, tzdata, threadpoolctl, scipy, narwhals, cloudpickle, python-dateutil, joblib, scikit-learn, pandas
+Successfully installed cloudpickle-3.1.2 joblib-1.6.0 narwhals-2.28.0 pandas-2.3.3 python-dateutil-4.0.0 pytz-2026.6 scikit-learn-1.9.1 scipy-1.18.1 threadpoolctl-3.8.0 tzdata-2026.6
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+Successfully installed cloudpickle-3.1.2 joblib-1.6.0 narwhals-2.28.0 pandas-2.3.3 python-dateutil-4.0.0 pytz-2026.6 scikit-learn-1.9.1 scipy-1.18.1 threadpoolctl-3.8.0 tzdata-2026.6
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+ ---> Removed intermediate container 58d678d9afeb
+ ---> 4d10483f5d64
+Step 23/27 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> Removed intermediate container b3de1168c04d
+ ---> f178d0133b40
+Step 23/38 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> bd72ef3b2f10
+Step 24/27 : COPY scripts/install_ml_model.py /app/scripts/install_ml_model.py
+ ---> 1f18d1c31b6b
+Step 24/38 : COPY scripts/install_ml_model.py /app/scripts/install_ml_model.py
+ ---> 7a2f940cecca
+Step 25/38 : USER 10001:10001
+ ---> 7b030ceac328
+Step 25/27 : USER 10001:10001
+ ---> Running in c92e3c733e23
+ ---> Running in 34ed277510d7
+ ---> Removed intermediate container 34ed277510d7
+ ---> 3faf4d4fba44
+Step 26/27 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Removed intermediate container c92e3c733e23
+ ---> 85c3b6a40bb3
+Step 26/38 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Running in 60eb6947b21a
+ ---> Running in c635a034f323
+ ---> Removed intermediate container c635a034f323
+ ---> a55995bc064b
+Step 27/38 : FROM ml AS tests
+ ---> a55995bc064b
+Step 28/38 : USER root
+ ---> Removed intermediate container 60eb6947b21a
+ ---> e2565fe2d0dc
+Step 27/27 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in d120f957c49e
+ ---> Running in efe6860dec41
+ ---> Removed intermediate container efe6860dec41
+ ---> c45552d417be
+ ---> Removed intermediate container d120f957c49e
+ ---> f11899070609
+Step 29/38 : COPY requirements/dev.txt /app/requirements/dev.txt
+Successfully built c45552d417be
+Successfully tagged lcm-stage6-ml:latest
+ Image lcm-stage6-ml Built
+ Image lcm-stage6-ml Built
+ ---> 622179fb4757
+Step 30/38 : RUN pip install --no-cache-dir -r requirements/dev.txt
+ ---> Running in ae0f9108963b
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Requirement already satisfied: bidict==0.24.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 3)) (0.24.1)
+Collecting certifi==2026.10.23 (from -r requirements/dev.txt (line 5))
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting charset-normalizer==3.5.2 (from -r requirements/dev.txt (line 7))
+  Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Requirement already satisfied: h11==0.16.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 11)) (0.16.0)
+Requirement already satisfied: idna==3.20 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 13)) (3.20)
+Collecting iniconfig==2.3.1 (from -r requirements/dev.txt (line 15))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging==26.3 (from -r requirements/dev.txt (line 17))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: paho-mqtt==2.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 19)) (2.1.0)
+Collecting pluggy==1.7.0 (from -r requirements/dev.txt (line 21))
+  Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments==2.21.0 (from -r requirements/dev.txt (line 23))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting pytest==9.2.0 (from -r requirements/dev.txt (line 25))
+  Downloading pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Requirement already satisfied: python-engineio==4.15.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 26)) (4.15.1)
+Requirement already satisfied: python-socketio==5.18.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 28)) (5.18.1)
+Collecting requests==2.34.2 (from -r requirements/dev.txt (line 29))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting ruff==0.17.4 (from -r requirements/dev.txt (line 31))
+  Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+Requirement already satisfied: simple-websocket==1.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 32)) (1.1.0)
+Collecting urllib3==2.8.0 (from -r requirements/dev.txt (line 34))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting websocket-client==1.9.2 (from -r requirements/dev.txt (line 36))
+  Downloading websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)
+Requirement already satisfied: wsproto==1.3.2 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 38)) (1.3.2)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 14.5 MB/s eta 0:00:00
+Downloading pytest-9.2.0-py3-none-any.whl (411 kB)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 29.8 MB/s eta 0:00:00
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading websocket_client-1.9.2-py3-none-any.whl (95 kB)
+Installing collected packages: websocket-client, urllib3, ruff, pygments, pluggy, packaging, iniconfig, charset-normalizer, certifi, requests, pytest
+Successfully installed certifi-2026.10.23 charset-normalizer-3.5.2 iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0 requests-2.34.2 ruff-0.17.4 urllib3-2.8.0 websocket-client-1.9.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+ ---> Removed intermediate container ae0f9108963b
+ ---> d304357d19d9
+Step 31/38 : COPY pyproject.toml /app/pyproject.toml
+ ---> 5ee3883c549f
+Step 32/38 : COPY tests/*.py /app/tests/
+ ---> 17989afbde3b
+Step 33/38 : COPY scripts/live_web_smoke.py scripts/dual_database_probe.py /app/scripts/
+ ---> d8dee9ab960e
+Step 34/38 : COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
+ ---> b17303b60ff0
+Step 35/38 : COPY deploy/compose.env.example /app/deploy/compose.env.example
+ ---> 36985f16627a
+Step 36/38 : USER 10001:10001
+ ---> Running in 64d8717097a0
+ ---> Removed intermediate container 64d8717097a0
+ ---> c8062e917457
+Step 37/38 : CMD ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
+ ---> Running in 398488a622b5
+ ---> Removed intermediate container 398488a622b5
+ ---> 66fba28f8fdb
+Step 38/38 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in 1abd45b09b97
+ ---> Removed intermediate container 1abd45b09b97
+ ---> fe593666509c
+Successfully built fe593666509c
+Successfully tagged lcm-stage6-tests:latest
+ Image lcm-stage6-tests Built
+ Image lcm-stage6-tests Built
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T16:26:55.328982+00:00
+$ docker compose --env-file .local-runtime/stage6.env build tests receiver ml-worker
+time="2026-11-09T19:26:21+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image lcm-stage6-runtime Building
+ Image lcm-stage6-tests Building
+ Image lcm-stage6-ml Building
+ Image lcm-stage6-runtime Building
+ Image lcm-stage6-tests Building
+ Image lcm-stage6-ml Building
+Sending build context to Docker daemon  140.7kB
+
+Sending build context to Docker daemon  140.7kB
+
+Sending build context to Docker daemon  140.7kB
+
+Step 1/38 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/19 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/27 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/27 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/19 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/38 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/27 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/19 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/38 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/27 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/19 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/38 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/27 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/19 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/38 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/27 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/19 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/38 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/27 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/19 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/38 : COPY src/*.py /app/src/
+ ---> 8553e9a5c857
+Step 8/19 : COPY src/publisher/*.py /app/src/publisher/
+ ---> ab2d72f5311e
+Step 8/27 : COPY src/publisher/*.py /app/src/publisher/
+ ---> b2e5ac3d0144
+Step 8/38 : COPY src/publisher/*.py /app/src/publisher/
+ ---> 39c95c6840cc
+Step 9/38 : COPY src/brocker/*.py /app/src/brocker/
+ ---> f6ce4eb77ea7
+Step 9/19 : COPY src/brocker/*.py /app/src/brocker/
+ ---> a9981d7e375f
+Step 9/27 : COPY src/brocker/*.py /app/src/brocker/
+ ---> 21378a75e11e
+Step 10/38 : COPY src/web/*.py /app/src/web/
+ ---> b5b57fa03120
+Step 10/19 : COPY src/web/*.py /app/src/web/
+ ---> 8f578d4b022d
+Step 10/27 : COPY src/web/*.py /app/src/web/
+ ---> fd24b1e9cbdf
+Step 11/38 : COPY src/web/templates /app/src/web/templates
+ ---> 72ef6476f28e
+Step 11/19 : COPY src/web/templates /app/src/web/templates
+ ---> 8e98ee638ec4
+Step 11/27 : COPY src/web/templates /app/src/web/templates
+ ---> 1dbedea0aadb
+Step 12/38 : COPY src/web/static /app/src/web/static
+ ---> ea357a53498e
+Step 12/19 : COPY src/web/static /app/src/web/static
+ ---> 4750748c1b2c
+Step 12/27 : COPY src/web/static /app/src/web/static
+ ---> 4d873c302057
+Step 13/19 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> 4e1f6e511ab6
+Step 13/27 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> 6b34fc39fc79
+Step 13/38 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> 80aa81adbca3
+Step 14/38 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> 4416ac6f6c89
+Step 14/19 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> 2d0f5e090c64
+Step 14/27 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> cf3684925f43
+Step 15/19 : COPY alembic.ini /app/alembic.ini
+ ---> f9718455a3ab
+Step 15/27 : COPY alembic.ini /app/alembic.ini
+ ---> 2c86b0fa0c9b
+Step 15/38 : COPY alembic.ini /app/alembic.ini
+ ---> af95fc81d973
+Step 16/27 : COPY migrations /app/migrations
+ ---> be057b6f25d6
+Step 16/19 : COPY migrations /app/migrations
+ ---> 2f7c30d350d6
+Step 16/38 : COPY migrations /app/migrations
+ ---> 8ccd3bf10c54
+Step 17/27 : USER 10001:10001
+ ---> 9b0715199544
+Step 17/19 : USER 10001:10001
+ ---> 8ca983eda1a7
+Step 17/38 : USER 10001:10001
+ ---> Running in 4c192670f59a
+ ---> Running in 840c256a656b
+ ---> Running in bd4fa447deed
+ ---> Removed intermediate container bd4fa447deed
+ ---> eb83c34cecd5
+Step 18/38 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Removed intermediate container 4c192670f59a
+ ---> c11bc73c5a2c
+Step 18/27 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Removed intermediate container 840c256a656b
+ ---> d8ba8feda375
+Step 18/19 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Running in 084a71e4e2f9
+ ---> Running in dba6398ef2fb
+ ---> Running in e66c2d3061d8
+ ---> Removed intermediate container 084a71e4e2f9
+ ---> d08181a0602b
+Step 19/38 : FROM runtime AS ml
+ ---> d08181a0602b
+Step 20/38 : USER root
+ ---> Removed intermediate container dba6398ef2fb
+ ---> a84a5029062c
+Step 19/27 : FROM runtime AS ml
+ ---> Removed intermediate container e66c2d3061d8
+ ---> 41a16a0d84e9
+Step 19/19 : LABEL com.docker.compose.image.builder=classic
+ ---> a84a5029062c
+Step 20/27 : USER root
+ ---> Running in 36a690db4bc7
+ ---> Running in d7f39a989b4d
+ ---> Running in 849a9d8b89ed
+ ---> Removed intermediate container d7f39a989b4d
+ ---> e72eaea55a1f
+Step 21/27 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+ ---> Removed intermediate container 849a9d8b89ed
+ ---> 9fee4d0cdd99
+ ---> Removed intermediate container 36a690db4bc7
+ ---> 87519bb3e1de
+Step 21/38 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+Successfully built 9fee4d0cdd99
+Successfully tagged lcm-stage6-runtime:latest
+ Image lcm-stage6-runtime Built
+ Image lcm-stage6-runtime Built
+ ---> 969b4b125076
+Step 22/27 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> b73d7c4a0a25
+Step 22/38 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> Running in 63763af61eb7
+ ---> Running in 60f0ef073c92
+Collecting cloudpickle==3.1.2 (from -r requirements/ml-runtime.txt (line 3))
+Collecting cloudpickle==3.1.2 (from -r requirements/ml-runtime.txt (line 3))
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting joblib==1.6.0 (from -r requirements/ml-runtime.txt (line 5))
+Collecting joblib==1.6.0 (from -r requirements/ml-runtime.txt (line 5))
+  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting narwhals==2.28.0 (from -r requirements/ml-runtime.txt (line 7))
+Collecting narwhals==2.28.0 (from -r requirements/ml-runtime.txt (line 7))
+  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+Requirement already satisfied: numpy==2.5.4 in /usr/local/lib/python3.12/site-packages (from -r requirements/ml-runtime.txt (line 9)) (2.5.4)
+  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+Requirement already satisfied: numpy==2.5.4 in /usr/local/lib/python3.12/site-packages (from -r requirements/ml-runtime.txt (line 9)) (2.5.4)
+Collecting pandas==2.3.3 (from -r requirements/ml-runtime.txt (line 14))
+Collecting pandas==2.3.3 (from -r requirements/ml-runtime.txt (line 14))
+  Downloading pandas-2.3.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+  Downloading pandas-2.3.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+Collecting python-dateutil==4.0.0 (from -r requirements/ml-runtime.txt (line 15))
+  Downloading python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting python-dateutil==4.0.0 (from -r requirements/ml-runtime.txt (line 15))
+  Downloading python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting pytz==2026.6 (from -r requirements/ml-runtime.txt (line 17))
+  Downloading pytz-2026.6-py2.py3-none-any.whl.metadata (22 kB)
+Collecting pytz==2026.6 (from -r requirements/ml-runtime.txt (line 17))
+  Downloading pytz-2026.6-py2.py3-none-any.whl.metadata (22 kB)
+Collecting scikit-learn==1.9.1 (from -r requirements/ml-runtime.txt (line 19))
+  Downloading scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.3 kB)
+Collecting scikit-learn==1.9.1 (from -r requirements/ml-runtime.txt (line 19))
+  Downloading scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.3 kB)
+Collecting scipy==1.18.1 (from -r requirements/ml-runtime.txt (line 20))
+  Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Collecting scipy==1.18.1 (from -r requirements/ml-runtime.txt (line 20))
+Collecting threadpoolctl==3.8.0 (from -r requirements/ml-runtime.txt (line 22))
+  Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)
+Collecting threadpoolctl==3.8.0 (from -r requirements/ml-runtime.txt (line 22))
+Collecting tzdata==2026.6 (from -r requirements/ml-runtime.txt (line 24))
+  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)
+  Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting tzdata==2026.6 (from -r requirements/ml-runtime.txt (line 24))
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+  Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+Downloading pandas-2.3.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.4 MB)
+Downloading pandas-2.3.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.4/12.4 MB 20.0 MB/s eta 0:00:00
+Downloading python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.4/12.4 MB 20.0 MB/s eta 0:00:00
+Downloading pytz-2026.6-py2.py3-none-any.whl (506 kB)
+Downloading python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+Downloading scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.2 MB)
+Downloading pytz-2026.6-py2.py3-none-any.whl (506 kB)
+Downloading scikit_learn-1.9.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 20.7 MB/s eta 0:00:00
+Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 19.3 MB/s eta 0:00:00
+Downloading scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 22.1 MB/s eta 0:00:00
+Downloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Installing collected packages: pytz, tzdata, threadpoolctl, scipy, narwhals, cloudpickle, python-dateutil, joblib, scikit-learn, pandas
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 19.7 MB/s eta 0:00:00
+Downloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Installing collected packages: pytz, tzdata, threadpoolctl, scipy, narwhals, cloudpickle, python-dateutil, joblib, scikit-learn, pandas
+Successfully installed cloudpickle-3.1.2 joblib-1.6.0 narwhals-2.28.0 pandas-2.3.3 python-dateutil-4.0.0 pytz-2026.6 scikit-learn-1.9.1 scipy-1.18.1 threadpoolctl-3.8.0 tzdata-2026.6
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Successfully installed cloudpickle-3.1.2 joblib-1.6.0 narwhals-2.28.0 pandas-2.3.3 python-dateutil-4.0.0 pytz-2026.6 scikit-learn-1.9.1 scipy-1.18.1 threadpoolctl-3.8.0 tzdata-2026.6
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+ ---> Removed intermediate container 63763af61eb7
+ ---> 9de80acf31ab
+Step 23/27 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> Removed intermediate container 60f0ef073c92
+ ---> 71028fa9cce7
+Step 23/38 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> 019b7ad1c14a
+Step 24/27 : COPY scripts/install_ml_model.py /app/scripts/install_ml_model.py
+ ---> d4c63bc225aa
+Step 24/38 : COPY scripts/install_ml_model.py /app/scripts/install_ml_model.py
+ ---> d5ccb3403784
+Step 25/38 : USER 10001:10001
+ ---> dfa355d69511
+Step 25/27 : USER 10001:10001
+ ---> Running in a5e3e4c9fac0
+ ---> Running in 3f2acac868cc
+ ---> Removed intermediate container a5e3e4c9fac0
+ ---> 17ea082ec20c
+Step 26/38 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Removed intermediate container 3f2acac868cc
+ ---> 3c0002904c02
+Step 26/27 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Running in 873e0a8f4031
+ ---> Running in cf502c379512
+ ---> Removed intermediate container 873e0a8f4031
+ ---> 5c98908888e9
+Step 27/38 : FROM ml AS tests
+ ---> Removed intermediate container cf502c379512
+ ---> 75f88e8d6d7a
+Step 27/27 : LABEL com.docker.compose.image.builder=classic
+ ---> 5c98908888e9
+Step 28/38 : USER root
+ ---> Running in 01ddfe746372
+ ---> Running in b3083b573c4c
+ ---> Removed intermediate container b3083b573c4c
+ ---> 4cf3fdadb66c
+ ---> Removed intermediate container 01ddfe746372
+ ---> cbde44f6824e
+Step 29/38 : COPY requirements/dev.txt /app/requirements/dev.txt
+Successfully built 4cf3fdadb66c
+Successfully tagged lcm-stage6-ml:latest
+ Image lcm-stage6-ml Built
+ Image lcm-stage6-ml Built
+ ---> 3208ea0c0e83
+Step 30/38 : RUN pip install --no-cache-dir -r requirements/dev.txt
+ ---> Running in 87bbd0be315a
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Requirement already satisfied: bidict==0.24.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 3)) (0.24.1)
+Collecting certifi==2026.10.23 (from -r requirements/dev.txt (line 5))
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting charset-normalizer==3.5.2 (from -r requirements/dev.txt (line 7))
+  Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Requirement already satisfied: h11==0.16.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 11)) (0.16.0)
+Requirement already satisfied: idna==3.20 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 13)) (3.20)
+Collecting iniconfig==2.3.1 (from -r requirements/dev.txt (line 15))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging==26.3 (from -r requirements/dev.txt (line 17))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: paho-mqtt==2.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 19)) (2.1.0)
+Collecting pluggy==1.7.0 (from -r requirements/dev.txt (line 21))
+  Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments==2.21.0 (from -r requirements/dev.txt (line 23))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting pytest==9.2.0 (from -r requirements/dev.txt (line 25))
+  Downloading pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Requirement already satisfied: python-engineio==4.15.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 26)) (4.15.1)
+Requirement already satisfied: python-socketio==5.18.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 28)) (5.18.1)
+Collecting requests==2.34.2 (from -r requirements/dev.txt (line 29))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting ruff==0.17.4 (from -r requirements/dev.txt (line 31))
+  Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+Requirement already satisfied: simple-websocket==1.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 32)) (1.1.0)
+Collecting urllib3==2.8.0 (from -r requirements/dev.txt (line 34))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting websocket-client==1.9.2 (from -r requirements/dev.txt (line 36))
+  Downloading websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)
+Requirement already satisfied: wsproto==1.3.2 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 38)) (1.3.2)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 17.0 MB/s eta 0:00:00
+Downloading pytest-9.2.0-py3-none-any.whl (411 kB)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 34.3 MB/s eta 0:00:00
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading websocket_client-1.9.2-py3-none-any.whl (95 kB)
+Installing collected packages: websocket-client, urllib3, ruff, pygments, pluggy, packaging, iniconfig, charset-normalizer, certifi, requests, pytest
+Successfully installed certifi-2026.10.23 charset-normalizer-3.5.2 iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0 requests-2.34.2 ruff-0.17.4 urllib3-2.8.0 websocket-client-1.9.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+ ---> Removed intermediate container 87bbd0be315a
+ ---> 59768663df96
+Step 31/38 : COPY pyproject.toml /app/pyproject.toml
+ ---> f0926b7c68d1
+Step 32/38 : COPY tests/*.py /app/tests/
+ ---> 3f98dce27cf3
+Step 33/38 : COPY scripts/live_web_smoke.py scripts/dual_database_probe.py /app/scripts/
+ ---> 4ec49182b3b8
+Step 34/38 : COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
+ ---> d04190065e38
+Step 35/38 : COPY deploy/compose.env.example /app/deploy/compose.env.example
+ ---> 8ca6812444ab
+Step 36/38 : USER 10001:10001
+ ---> Running in ceb62f6feae1
+ ---> Removed intermediate container ceb62f6feae1
+ ---> 2331cb733e74
+Step 37/38 : CMD ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
+ ---> Running in 3e0bc6a3d8a0
+ ---> Removed intermediate container 3e0bc6a3d8a0
+ ---> 42caf429bfa0
+Step 38/38 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in bed61b156c5b
+ ---> Removed intermediate container bed61b156c5b
+ ---> 23fe65b2fdb9
+Successfully built 23fe65b2fdb9
+Successfully tagged lcm-stage6-tests:latest
+ Image lcm-stage6-tests Built
+ Image lcm-stage6-tests Built
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T16:28:29.362033+00:00
+$ docker compose --env-file .local-runtime/stage6.env build tests receiver ml-worker
+time="2026-11-09T19:28:18+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image lcm-stage6-runtime Building
+ Image lcm-stage6-ml Building
+ Image lcm-stage6-tests Building
+ Image lcm-stage6-tests Building
+ Image lcm-stage6-runtime Building
+ Image lcm-stage6-ml Building
+Sending build context to Docker daemon  141.5kB
+
+Sending build context to Docker daemon  141.5kB
+
+Sending build context to Docker daemon  141.5kB
+
+Step 1/38 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/19 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/27 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/27 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/38 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/19 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/27 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/38 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/19 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/27 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/38 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/19 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/27 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/38 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/19 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/27 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/38 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/19 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/27 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/38 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/19 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> ab2d72f5311e
+Step 8/27 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> ab2d72f5311e
+Step 8/38 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> a9981d7e375f
+Step 9/27 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> ab2d72f5311e
+Step 8/19 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> a9981d7e375f
+Step 9/38 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> 8f578d4b022d
+Step 10/27 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> a9981d7e375f
+Step 9/19 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> 8f578d4b022d
+Step 10/38 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 8e98ee638ec4
+Step 11/27 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 8f578d4b022d
+Step 10/19 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 8e98ee638ec4
+Step 11/38 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 4750748c1b2c
+Step 12/27 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 8e98ee638ec4
+Step 11/19 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 4750748c1b2c
+Step 12/38 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 4e1f6e511ab6
+Step 13/27 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 4750748c1b2c
+Step 12/19 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 4e1f6e511ab6
+Step 13/38 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 2d0f5e090c64
+Step 14/27 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 4e1f6e511ab6
+Step 13/19 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 2d0f5e090c64
+Step 14/38 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> f9718455a3ab
+Step 15/27 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 2d0f5e090c64
+Step 14/19 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> f9718455a3ab
+Step 15/38 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> af95fc81d973
+Step 16/27 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> f9718455a3ab
+Step 15/19 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> af95fc81d973
+Step 16/38 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> af95fc81d973
+Step 16/19 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 8ccd3bf10c54
+Step 17/27 : USER 10001:10001
+ ---> Using cache
+ ---> 8ccd3bf10c54
+Step 17/38 : USER 10001:10001
+ ---> Using cache
+ ---> 8ccd3bf10c54
+Step 17/19 : USER 10001:10001
+ ---> Using cache
+ ---> c11bc73c5a2c
+Step 18/27 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> c11bc73c5a2c
+Step 18/38 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> a84a5029062c
+Step 19/27 : FROM runtime AS ml
+ ---> Using cache
+ ---> c11bc73c5a2c
+Step 18/19 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> a84a5029062c
+Step 19/38 : FROM runtime AS ml
+ ---> Using cache
+ ---> a84a5029062c
+Step 19/19 : LABEL com.docker.compose.image.builder=classic
+ ---> a84a5029062c
+Step 20/27 : USER root
+ ---> a84a5029062c
+Step 20/38 : USER root
+ ---> Using cache
+ ---> e72eaea55a1f
+Step 21/27 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+ ---> Using cache
+ ---> e72eaea55a1f
+Step 21/38 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+ ---> Using cache
+ ---> 969b4b125076
+Step 22/27 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> Using cache
+ ---> 969b4b125076
+Step 22/38 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> Using cache
+ ---> 9de80acf31ab
+Step 23/27 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> Using cache
+ ---> 9de80acf31ab
+Step 23/38 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> Using cache
+ ---> 019b7ad1c14a
+Step 24/27 : COPY scripts/install_ml_model.py /app/scripts/install_ml_model.py
+ ---> Using cache
+ ---> 019b7ad1c14a
+Step 24/38 : COPY scripts/install_ml_model.py /app/scripts/install_ml_model.py
+ ---> Using cache
+ ---> dfa355d69511
+Step 25/27 : USER 10001:10001
+ ---> Using cache
+ ---> dfa355d69511
+Step 25/38 : USER 10001:10001
+ ---> Using cache
+ ---> 3c0002904c02
+Step 26/27 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Using cache
+ ---> 3c0002904c02
+Step 26/38 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Using cache
+ ---> 75f88e8d6d7a
+Step 27/27 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 75f88e8d6d7a
+Step 27/38 : FROM ml AS tests
+ ---> Using cache
+ ---> 4cf3fdadb66c
+ ---> 75f88e8d6d7a
+Step 28/38 : USER root
+Successfully built 4cf3fdadb66c
+Successfully tagged lcm-stage6-ml:latest
+ Image lcm-stage6-ml Built
+ Image lcm-stage6-ml Built
+ ---> Running in b06c98921fec
+ ---> Running in 76eac1baf682
+ ---> Removed intermediate container b06c98921fec
+ ---> 7f15ae19ac99
+Successfully built 7f15ae19ac99
+Successfully tagged lcm-stage6-runtime:latest
+ Image lcm-stage6-runtime Built
+ Image lcm-stage6-runtime Built
+ ---> Removed intermediate container 76eac1baf682
+ ---> d6d584af4569
+Step 29/38 : COPY requirements/dev.txt /app/requirements/dev.txt
+ ---> 2977f1cacc58
+Step 30/38 : RUN pip install --no-cache-dir -r requirements/dev.txt
+ ---> Running in 168709dd2754
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Requirement already satisfied: bidict==0.24.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 3)) (0.24.1)
+Collecting certifi==2026.10.23 (from -r requirements/dev.txt (line 5))
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting charset-normalizer==3.5.2 (from -r requirements/dev.txt (line 7))
+  Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Requirement already satisfied: h11==0.16.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 11)) (0.16.0)
+Requirement already satisfied: idna==3.20 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 13)) (3.20)
+Collecting iniconfig==2.3.1 (from -r requirements/dev.txt (line 15))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging==26.3 (from -r requirements/dev.txt (line 17))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: paho-mqtt==2.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 19)) (2.1.0)
+Collecting pluggy==1.7.0 (from -r requirements/dev.txt (line 21))
+  Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments==2.21.0 (from -r requirements/dev.txt (line 23))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting pytest==9.2.0 (from -r requirements/dev.txt (line 25))
+  Downloading pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Requirement already satisfied: python-engineio==4.15.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 26)) (4.15.1)
+Requirement already satisfied: python-socketio==5.18.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 28)) (5.18.1)
+Collecting requests==2.34.2 (from -r requirements/dev.txt (line 29))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting ruff==0.17.4 (from -r requirements/dev.txt (line 31))
+  Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+Requirement already satisfied: simple-websocket==1.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 32)) (1.1.0)
+Collecting urllib3==2.8.0 (from -r requirements/dev.txt (line 34))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting websocket-client==1.9.2 (from -r requirements/dev.txt (line 36))
+  Downloading websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)
+Requirement already satisfied: wsproto==1.3.2 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 38)) (1.3.2)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 17.4 MB/s eta 0:00:00
+Downloading pytest-9.2.0-py3-none-any.whl (411 kB)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 42.7 MB/s eta 0:00:00
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading websocket_client-1.9.2-py3-none-any.whl (95 kB)
+Installing collected packages: websocket-client, urllib3, ruff, pygments, pluggy, packaging, iniconfig, charset-normalizer, certifi, requests, pytest
+Successfully installed certifi-2026.10.23 charset-normalizer-3.5.2 iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0 requests-2.34.2 ruff-0.17.4 urllib3-2.8.0 websocket-client-1.9.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+ ---> Removed intermediate container 168709dd2754
+ ---> 3599b722d84d
+Step 31/38 : COPY pyproject.toml /app/pyproject.toml
+ ---> b82eed857e7c
+Step 32/38 : COPY tests/*.py /app/tests/
+ ---> 2015a31b865e
+Step 33/38 : COPY scripts/live_web_smoke.py scripts/dual_database_probe.py /app/scripts/
+ ---> 1ed329a16fd4
+Step 34/38 : COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
+ ---> a0a38be73ac0
+Step 35/38 : COPY deploy/compose.env.example /app/deploy/compose.env.example
+ ---> e118c8ecc647
+Step 36/38 : USER 10001:10001
+ ---> Running in f71534248f66
+ ---> Removed intermediate container f71534248f66
+ ---> 166e9788228f
+Step 37/38 : CMD ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
+ ---> Running in a042ab75cfe1
+ ---> Removed intermediate container a042ab75cfe1
+ ---> 22abaec95143
+Step 38/38 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in a047a86a365c
+ ---> Removed intermediate container a047a86a365c
+ ---> a7acfb5c8307
+Successfully built a7acfb5c8307
+Successfully tagged lcm-stage6-tests:latest
+ Image lcm-stage6-tests Built
+ Image lcm-stage6-tests Built
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T16:29:35.976497+00:00
+$ docker compose --env-file .local-runtime/stage6.env build tests receiver ml-worker
+time="2026-11-09T19:29:23+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image lcm-stage6-ml Building
+ Image lcm-stage6-runtime Building
+ Image lcm-stage6-tests Building
+ Image lcm-stage6-ml Building
+ Image lcm-stage6-tests Building
+ Image lcm-stage6-runtime Building
+Sending build context to Docker daemon  146.3kB
+
+Sending build context to Docker daemon  146.3kB
+
+Sending build context to Docker daemon  146.3kB
+
+Step 1/27 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/38 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/19 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/27 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/38 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/19 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/27 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/38 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/19 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/27 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/38 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/19 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/38 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/27 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/19 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/38 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/27 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/19 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/38 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/27 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/19 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> ab2d72f5311e
+Step 8/38 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> ab2d72f5311e
+Step 8/19 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> ab2d72f5311e
+Step 8/27 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> a9981d7e375f
+Step 9/38 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> a9981d7e375f
+Step 9/19 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> a9981d7e375f
+Step 9/27 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> 8f578d4b022d
+Step 10/19 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 8f578d4b022d
+Step 10/38 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 8f578d4b022d
+Step 10/27 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 8e98ee638ec4
+Step 11/19 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 8e98ee638ec4
+Step 11/27 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 8e98ee638ec4
+Step 11/38 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 4750748c1b2c
+Step 12/27 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 4750748c1b2c
+Step 12/19 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 4750748c1b2c
+Step 12/38 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 4e1f6e511ab6
+Step 13/27 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 4e1f6e511ab6
+Step 13/38 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 4e1f6e511ab6
+Step 13/19 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 2d0f5e090c64
+Step 14/27 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 2d0f5e090c64
+Step 14/38 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 2d0f5e090c64
+Step 14/19 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> f9718455a3ab
+Step 15/19 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> f9718455a3ab
+Step 15/38 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> f9718455a3ab
+Step 15/27 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> af95fc81d973
+Step 16/38 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> af95fc81d973
+Step 16/19 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> af95fc81d973
+Step 16/27 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 8ccd3bf10c54
+Step 17/27 : USER 10001:10001
+ ---> Using cache
+ ---> 8ccd3bf10c54
+Step 17/19 : USER 10001:10001
+ ---> Using cache
+ ---> 8ccd3bf10c54
+Step 17/38 : USER 10001:10001
+ ---> Using cache
+ ---> c11bc73c5a2c
+ ---> Using cache
+Step 18/38 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> c11bc73c5a2c
+Step 18/19 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> c11bc73c5a2c
+Step 18/27 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> a84a5029062c
+Step 19/27 : FROM runtime AS ml
+ ---> Using cache
+ ---> a84a5029062c
+Step 19/19 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> a84a5029062c
+Step 19/38 : FROM runtime AS ml
+ ---> a84a5029062c
+Step 20/27 : USER root
+ ---> a84a5029062c
+Step 20/38 : USER root
+ ---> Using cache
+ ---> 7f15ae19ac99
+ ---> Using cache
+ ---> e72eaea55a1f
+Step 21/27 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+Successfully built 7f15ae19ac99
+ ---> Using cache
+ ---> e72eaea55a1f
+Step 21/38 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+Successfully tagged lcm-stage6-runtime:latest
+ Image lcm-stage6-runtime Built
+ Image lcm-stage6-runtime Built
+ ---> Using cache
+ ---> 969b4b125076
+Step 22/27 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> Using cache
+ ---> 969b4b125076
+Step 22/38 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> Using cache
+ ---> 9de80acf31ab
+Step 23/27 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> Using cache
+ ---> 9de80acf31ab
+Step 23/38 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> 717e1d955af7
+Step 24/27 : COPY scripts/install_ml_model.py /app/scripts/install_ml_model.py
+ ---> 1755d727c009
+Step 24/38 : COPY scripts/install_ml_model.py /app/scripts/install_ml_model.py
+ ---> 617441b15a92
+Step 25/27 : USER 10001:10001
+ ---> 37ad9fee4460
+Step 25/38 : USER 10001:10001
+ ---> Running in 28ce172ef45f
+ ---> Running in ec79c1831a9e
+ ---> Removed intermediate container ec79c1831a9e
+ ---> 9ef1aedee2f1
+Step 26/27 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Removed intermediate container 28ce172ef45f
+ ---> 3e1f1aa2fa7d
+Step 26/38 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Running in 3d152d379b58
+ ---> Running in 8cce95f9f95a
+ ---> Removed intermediate container 8cce95f9f95a
+ ---> 4bce38945228
+Step 27/38 : FROM ml AS tests
+ ---> Removed intermediate container 3d152d379b58
+ ---> 4fbe0e67b5d5
+Step 27/27 : LABEL com.docker.compose.image.builder=classic
+ ---> 4bce38945228
+Step 28/38 : USER root
+ ---> Running in b2692eb377b9
+ ---> Running in 30f442878a73
+ ---> Removed intermediate container 30f442878a73
+ ---> 235456c2fdb4
+Step 29/38 : COPY requirements/dev.txt /app/requirements/dev.txt
+ ---> Removed intermediate container b2692eb377b9
+ ---> dcbbf79c9034
+Successfully built dcbbf79c9034
+Successfully tagged lcm-stage6-ml:latest
+ Image lcm-stage6-ml Built
+ Image lcm-stage6-ml Built
+ ---> fc03cdabeec4
+Step 30/38 : RUN pip install --no-cache-dir -r requirements/dev.txt
+ ---> Running in 75cbd54c404d
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Requirement already satisfied: bidict==0.24.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 3)) (0.24.1)
+Collecting certifi==2026.10.23 (from -r requirements/dev.txt (line 5))
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting charset-normalizer==3.5.2 (from -r requirements/dev.txt (line 7))
+  Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Requirement already satisfied: h11==0.16.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 11)) (0.16.0)
+Requirement already satisfied: idna==3.20 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 13)) (3.20)
+Collecting iniconfig==2.3.1 (from -r requirements/dev.txt (line 15))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging==26.3 (from -r requirements/dev.txt (line 17))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: paho-mqtt==2.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 19)) (2.1.0)
+Collecting pluggy==1.7.0 (from -r requirements/dev.txt (line 21))
+  Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments==2.21.0 (from -r requirements/dev.txt (line 23))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting pytest==9.2.0 (from -r requirements/dev.txt (line 25))
+  Downloading pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Requirement already satisfied: python-engineio==4.15.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 26)) (4.15.1)
+Requirement already satisfied: python-socketio==5.18.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 28)) (5.18.1)
+Collecting requests==2.34.2 (from -r requirements/dev.txt (line 29))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting ruff==0.17.4 (from -r requirements/dev.txt (line 31))
+  Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+Requirement already satisfied: simple-websocket==1.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 32)) (1.1.0)
+Collecting urllib3==2.8.0 (from -r requirements/dev.txt (line 34))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting websocket-client==1.9.2 (from -r requirements/dev.txt (line 36))
+  Downloading websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)
+Requirement already satisfied: wsproto==1.3.2 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 38)) (1.3.2)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 16.8 MB/s eta 0:00:00
+Downloading pytest-9.2.0-py3-none-any.whl (411 kB)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 33.8 MB/s eta 0:00:00
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading websocket_client-1.9.2-py3-none-any.whl (95 kB)
+Installing collected packages: websocket-client, urllib3, ruff, pygments, pluggy, packaging, iniconfig, charset-normalizer, certifi, requests, pytest
+Successfully installed certifi-2026.10.23 charset-normalizer-3.5.2 iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0 requests-2.34.2 ruff-0.17.4 urllib3-2.8.0 websocket-client-1.9.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+ ---> Removed intermediate container 75cbd54c404d
+ ---> 0b6bb911210b
+Step 31/38 : COPY pyproject.toml /app/pyproject.toml
+ ---> 7ad0fa8b1adf
+Step 32/38 : COPY tests/*.py /app/tests/
+ ---> e5467f9dfc0c
+Step 33/38 : COPY scripts/live_web_smoke.py scripts/dual_database_probe.py scripts/ml_system_probe.py /app/scripts/
+ ---> 184027aaf31e
+Step 34/38 : COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
+ ---> e874d31937d6
+Step 35/38 : COPY deploy/compose.env.example /app/deploy/compose.env.example
+ ---> 5880003a9439
+Step 36/38 : USER 10001:10001
+ ---> Running in 194e6983a463
+ ---> Removed intermediate container 194e6983a463
+ ---> 83e9ac543ff6
+Step 37/38 : CMD ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
+ ---> Running in 2566b59d35b1
+ ---> Removed intermediate container 2566b59d35b1
+ ---> 9dfa6bd219d7
+Step 38/38 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in 17d78f6d4bc9
+ ---> Removed intermediate container 17d78f6d4bc9
+ ---> a042a20f62d9
+Successfully built a042a20f62d9
+Successfully tagged lcm-stage6-tests:latest
+ Image lcm-stage6-tests Built
+ Image lcm-stage6-tests Built
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T16:31:02.769156+00:00
+$ docker compose --env-file .local-runtime/stage6.env build tests receiver ml-worker
+time="2026-11-09T19:30:50+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image lcm-stage6-ml Building
+ Image lcm-stage6-runtime Building
+ Image lcm-stage6-tests Building
+ Image lcm-stage6-tests Building
+ Image lcm-stage6-runtime Building
+ Image lcm-stage6-ml Building
+Sending build context to Docker daemon  146.6kB
+
+Sending build context to Docker daemon  146.6kB
+
+Sending build context to Docker daemon  146.6kB
+
+Step 1/38 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/27 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/19 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/27 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/19 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/38 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/27 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/19 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/38 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/27 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/19 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/38 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/27 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/19 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/38 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/27 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/19 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/38 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/27 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/19 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/38 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> ab2d72f5311e
+Step 8/27 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> ab2d72f5311e
+Step 8/19 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> ab2d72f5311e
+Step 8/38 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> a9981d7e375f
+Step 9/27 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> a9981d7e375f
+Step 9/19 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> a9981d7e375f
+Step 9/38 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> 8f578d4b022d
+Step 10/27 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 8f578d4b022d
+Step 10/19 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 8f578d4b022d
+Step 10/38 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 8e98ee638ec4
+Step 11/27 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 8e98ee638ec4
+Step 11/19 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 8e98ee638ec4
+Step 11/38 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 4750748c1b2c
+Step 12/27 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 4750748c1b2c
+Step 12/19 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 4750748c1b2c
+Step 12/38 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 4e1f6e511ab6
+Step 13/27 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 4e1f6e511ab6
+Step 13/19 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 4e1f6e511ab6
+Step 13/38 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 2d0f5e090c64
+Step 14/27 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 2d0f5e090c64
+Step 14/19 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 2d0f5e090c64
+Step 14/38 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> f9718455a3ab
+Step 15/27 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> f9718455a3ab
+Step 15/19 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> f9718455a3ab
+Step 15/38 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> af95fc81d973
+Step 16/27 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> af95fc81d973
+Step 16/19 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> af95fc81d973
+Step 16/38 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 8ccd3bf10c54
+Step 17/27 : USER 10001:10001
+ ---> Using cache
+ ---> 8ccd3bf10c54
+Step 17/19 : USER 10001:10001
+ ---> Using cache
+ ---> 8ccd3bf10c54
+Step 17/38 : USER 10001:10001
+ ---> Using cache
+ ---> c11bc73c5a2c
+Step 18/27 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> c11bc73c5a2c
+Step 18/19 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> c11bc73c5a2c
+Step 18/38 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> a84a5029062c
+Step 19/27 : FROM runtime AS ml
+ ---> Using cache
+ ---> a84a5029062c
+Step 19/19 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> a84a5029062c
+Step 19/38 : FROM runtime AS ml
+ ---> a84a5029062c
+Step 20/27 : USER root
+ ---> a84a5029062c
+Step 20/38 : USER root
+ ---> Using cache
+ ---> 7f15ae19ac99
+Successfully built 7f15ae19ac99
+ ---> Using cache
+ ---> e72eaea55a1f
+Step 21/27 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+ ---> Using cache
+ ---> e72eaea55a1f
+Step 21/38 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+Successfully tagged lcm-stage6-runtime:latest
+ Image lcm-stage6-runtime Built
+ Image lcm-stage6-runtime Built
+ ---> Using cache
+ ---> 969b4b125076
+Step 22/27 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> Using cache
+ ---> 969b4b125076
+Step 22/38 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> Using cache
+ ---> 9de80acf31ab
+Step 23/27 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> Using cache
+ ---> 9de80acf31ab
+Step 23/38 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> 270cd2cee0e2
+Step 24/27 : COPY scripts/install_ml_model.py /app/scripts/install_ml_model.py
+ ---> 1647246e8aa2
+Step 24/38 : COPY scripts/install_ml_model.py /app/scripts/install_ml_model.py
+ ---> 247f4f34eeff
+Step 25/38 : USER 10001:10001
+ ---> db465a2349b1
+Step 25/27 : USER 10001:10001
+ ---> Running in 170e1c21da56
+ ---> Running in 1973784f4b6d
+ ---> Removed intermediate container 170e1c21da56
+ ---> edbc5dddbc33
+Step 26/38 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Removed intermediate container 1973784f4b6d
+ ---> f6986c9bf58f
+Step 26/27 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Running in d28572122556
+ ---> Running in 5262c0235be8
+ ---> Removed intermediate container 5262c0235be8
+ ---> 1dc92be5f166
+Step 27/27 : LABEL com.docker.compose.image.builder=classic
+ ---> Removed intermediate container d28572122556
+ ---> 79e0e01ba4df
+Step 27/38 : FROM ml AS tests
+ ---> 79e0e01ba4df
+Step 28/38 : USER root
+ ---> Running in 8c894a5f7b63
+ ---> Running in 1e2c96d7a3ae
+ ---> Removed intermediate container 1e2c96d7a3ae
+ ---> d3e9499eefa1
+Step 29/38 : COPY requirements/dev.txt /app/requirements/dev.txt
+ ---> Removed intermediate container 8c894a5f7b63
+ ---> 2cdfae6cc375
+Successfully built 2cdfae6cc375
+Successfully tagged lcm-stage6-ml:latest
+ Image lcm-stage6-ml Built
+ Image lcm-stage6-ml Built
+ ---> 20e37083cba2
+Step 30/38 : RUN pip install --no-cache-dir -r requirements/dev.txt
+ ---> Running in 52040c6ed23e
+Ignoring colorama: markers 'sys_platform == "win32"' don't match your environment
+Requirement already satisfied: bidict==0.24.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 3)) (0.24.1)
+Collecting certifi==2026.10.23 (from -r requirements/dev.txt (line 5))
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting charset-normalizer==3.5.2 (from -r requirements/dev.txt (line 7))
+  Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Requirement already satisfied: h11==0.16.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 11)) (0.16.0)
+Requirement already satisfied: idna==3.20 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 13)) (3.20)
+Collecting iniconfig==2.3.1 (from -r requirements/dev.txt (line 15))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging==26.3 (from -r requirements/dev.txt (line 17))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: paho-mqtt==2.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 19)) (2.1.0)
+Collecting pluggy==1.7.0 (from -r requirements/dev.txt (line 21))
+  Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments==2.21.0 (from -r requirements/dev.txt (line 23))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting pytest==9.2.0 (from -r requirements/dev.txt (line 25))
+  Downloading pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Requirement already satisfied: python-engineio==4.15.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 26)) (4.15.1)
+Requirement already satisfied: python-socketio==5.18.1 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 28)) (5.18.1)
+Collecting requests==2.34.2 (from -r requirements/dev.txt (line 29))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting ruff==0.17.4 (from -r requirements/dev.txt (line 31))
+  Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+Requirement already satisfied: simple-websocket==1.1.0 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 32)) (1.1.0)
+Collecting urllib3==2.8.0 (from -r requirements/dev.txt (line 34))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting websocket-client==1.9.2 (from -r requirements/dev.txt (line 36))
+  Downloading websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)
+Requirement already satisfied: wsproto==1.3.2 in /usr/local/lib/python3.12/site-packages (from -r requirements/dev.txt (line 38)) (1.3.2)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 16.2 MB/s eta 0:00:00
+Downloading pytest-9.2.0-py3-none-any.whl (411 kB)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading ruff-0.17.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.6/10.6 MB 34.1 MB/s eta 0:00:00
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading websocket_client-1.9.2-py3-none-any.whl (95 kB)
+Installing collected packages: websocket-client, urllib3, ruff, pygments, pluggy, packaging, iniconfig, charset-normalizer, certifi, requests, pytest
+Successfully installed certifi-2026.10.23 charset-normalizer-3.5.2 iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pytest-9.2.0 requests-2.34.2 ruff-0.17.4 urllib3-2.8.0 websocket-client-1.9.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: pip install --upgrade pip
+ ---> Removed intermediate container 52040c6ed23e
+ ---> 2fb045b48ae5
+Step 31/38 : COPY pyproject.toml /app/pyproject.toml
+ ---> 31e86d552404
+Step 32/38 : COPY tests/*.py /app/tests/
+ ---> 7de147c99569
+Step 33/38 : COPY scripts/live_web_smoke.py scripts/dual_database_probe.py scripts/ml_system_probe.py /app/scripts/
+ ---> a41e38f487ba
+Step 34/38 : COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
+ ---> cd1d27e900e8
+Step 35/38 : COPY deploy/compose.env.example /app/deploy/compose.env.example
+ ---> e6de806d90a2
+Step 36/38 : USER 10001:10001
+ ---> Running in 7d282c6accff
+ ---> Removed intermediate container 7d282c6accff
+ ---> 2fd5906e97a3
+Step 37/38 : CMD ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
+ ---> Running in dd20c7ecd043
+ ---> Removed intermediate container dd20c7ecd043
+ ---> 1ec9147b0049
+Step 38/38 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in 1191e01faca2
+ ---> Removed intermediate container 1191e01faca2
+ ---> b3a84ee41988
+Successfully built b3a84ee41988
+Successfully tagged lcm-stage6-tests:latest
+ Image lcm-stage6-tests Built
+ Image lcm-stage6-tests Built
+
+EXIT CODE: 0
