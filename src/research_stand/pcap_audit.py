@@ -19,7 +19,19 @@ def load_json(path):
     path = Path(path)
     if path.is_symlink() or path.stat().st_size > 8 * 1024**2:
         raise ValueError("Evidence file resource/path bound")
-    return json.loads(path.read_text())
+
+    def pairs(items):
+        out = {}
+        for k, v in items:
+            if k in out:
+                raise ValueError("Duplicate evidence key")
+            out[k] = v
+        return out
+
+    def constant(value):
+        raise ValueError("Nonfinite evidence number")
+
+    return json.loads(path.read_text(), object_pairs_hook=pairs, parse_constant=constant)
 
 
 def headers(folder):

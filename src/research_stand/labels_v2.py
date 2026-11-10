@@ -2,7 +2,7 @@
 
 import statistics
 
-VERSION = "connection-evidence-v2.1"
+VERSION = "connection-evidence-v2.2"
 REASONS = {
     "normal": "broker_session_and_receiver_event",
     "bad_credentials": "broker_connack_denied_session",
@@ -35,6 +35,10 @@ def verdict(record, truth, broker, core):
     hi = record["closed_at"]
     if s is None:
         return "unknown", "independent_session_evidence_missing", "", lo, hi
+    if s.get("closed_at") is None:
+        return "unknown", "independent_session_end_missing", "", lo, hi
+    lo = max(lo, s["opened_at"])
+    hi = min(hi, s["closed_at"])
     if activity == "bad_credentials":
         return (
             ("controlled_violation", REASONS[activity], "", lo, hi)

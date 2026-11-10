@@ -65,6 +65,7 @@ def fixture(
             client_id=client,
             opened_at=r["attempt_started_at"],
             authenticated_at=1.6,
+            closed_at=9.0,
             auth_code=5 if activity == "bad_credentials" else 0,
             username=None if activity == "bad_credentials" else "device_" + device,
             events=[],
@@ -473,4 +474,29 @@ def test_forged_source_stream_with_coherent_export_hash_is_rejected(tmp_path):
     m["csv_sha256"] = digest(folder / "headers.csv")
     p.write_text(json.dumps(m))
     with pytest.raises(ValueError, match="stream identity"):
+        build(raw, tmp_path / "out")
+
+
+def test_generator_cannot_extend_activity_past_independent_session_end(tmp_path):
+    raw = tmp_path / "raw"
+    folder = fixture(raw)
+    p = folder / "broker-evidence.json"
+    b = json.loads(p.read_text())
+    for s in b["sessions"]:
+        s["closed_at"] = 8.0
+    p.write_text(json.dumps(b))
+    out = tmp_path / "out"
+    build(raw, out)
+    f = pd.read_csv(out / "observations.csv")
+    assert f.loc[f.epoch_seconds == 8.8, "ground_truth"].eq("unknown").all()
+
+
+def test_nonfinite_source_clock_is_not_silently_accepted(tmp_path):
+    raw = tmp_path / "raw"
+    folder = fixture(raw)
+    p = folder / "ground-truth.json"
+    t = json.loads(p.read_text())
+    t["clock"]["boundary_margin_seconds"] = float("nan")
+    p.write_text(json.dumps(t))
+    with pytest.raises(ValueError, match="Nonfinite"):
         build(raw, tmp_path / "out")

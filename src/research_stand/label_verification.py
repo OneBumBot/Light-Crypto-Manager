@@ -73,8 +73,12 @@ def expected(row, all_rows, truth, broker, core):
                 and s["authenticated_at"] <= hi + 0.02
             ):
                 server.append(s)
-    if len(server) == 1:
+    if len(server) == 1 and server[0].get("closed_at") is None:
+        why = "independent_session_end_missing"
+    elif len(server) == 1:
         s = server[0]
+        lo = max(lo, s["opened_at"])
+        hi = min(hi, s["closed_at"])
         if kind == "bad_credentials":
             why = "contradictory_or_unconfirmed_auth_result"
             if s["auth_code"] == 5 and r.get("auth_rejected"):
@@ -262,7 +266,7 @@ def reconcile(directory, captures):
     directory = Path(directory)
     captures = Path(captures)
     m = load_json(directory / "dataset.manifest.json")
-    if m.get("label_rules_version") != "connection-evidence-v2.1":
+    if m.get("label_rules_version") != "connection-evidence-v2.2":
         raise ValueError("Use legacy reconciliation for archival v1")
     if (
         digest(directory / "dataset.csv") != m["sha256"]
@@ -325,7 +329,7 @@ def reconcile(directory, captures):
                 feature_version="tcp-packet-passive-v1",
                 source_pcap_sha256=cap["pcap_sha256"],
                 scenario_category=truth["experiment"]["scenario"],
-                label_source="connection-evidence-v2.1",
+                label_source="connection-evidence-v2.2",
             )
             required.update(
                 label={"normal": "0", "controlled_violation": "1", "unknown": ""}[

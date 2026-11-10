@@ -59,7 +59,26 @@ def checks(env, captures, output):
     )
     for kind in ["forbidden_acl", "replay", "bounded_rate", "pattern_change", "bad_credentials"]:
         part = frame.loc[frame.scenario_category == kind]
-        assert part.ground_truth.eq("controlled_violation").any(), kind
+        if kind == "bad_credentials":
+            bound_denials = []
+            for folder in captures.iterdir():
+                truth = json.loads((folder / "ground-truth.json").read_text())
+                if truth["experiment"]["scenario"] == kind:
+                    bound_denials.extend(
+                        s
+                        for s in json.loads((folder / "broker-evidence.json").read_text())[
+                            "sessions"
+                        ]
+                        if s["auth_code"] == 5 and s.get("closed_at")
+                    )
+            assert bound_denials and all(s["username"] is None for s in bound_denials)
+            assert (
+                part.loc[part.ground_truth == "controlled_violation", "authenticated_device"]
+                .eq("")
+                .all()
+            )
+        else:
+            assert part.ground_truth.eq("controlled_violation").any(), kind
         assert (
             part.loc[part.connection_activity == "normal", "ground_truth"]
             .ne("controlled_violation")
