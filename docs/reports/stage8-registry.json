@@ -1,0 +1,57 @@
+{
+  "profiles": [
+    {
+      "profile_id": "ascon-aead128-v1",
+      "version": 1,
+      "algorithm": "Ascon-AEAD128",
+      "status": "implemented",
+      "parameters": {
+        "key_bytes": 16,
+        "nonce_bytes": 16,
+        "tag_bytes": 16
+      },
+      "capabilities": [
+        "mqtt_tls",
+        "aead",
+        "telemetry_v2"
+      ],
+      "protocol": "MQTT telemetry v2",
+      "activation_allowed": true,
+      "limitations": "Python reference, no hardware/constant-time certification",
+      "server_implemented": true,
+      "device_implemented": true,
+      "known_vectors_passed": true,
+      "software_e2e_passed": true,
+      "device_implementations": [
+        "python-device-agent-v1"
+      ]
+    },
+    {
+      "profile_id": "aes-128-gcm-v1",
+      "version": 1,
+      "algorithm": "AES-128-GCM",
+      "status": "verified",
+      "parameters": {
+        "key_bytes": 16,
+        "nonce_bytes": 12,
+        "tag_bytes": 16
+      },
+      "capabilities": [
+        "mqtt_tls",
+        "aead",
+        "telemetry_v2"
+      ],
+      "protocol": "MQTT telemetry v2",
+      "activation_allowed": true,
+      "limitations": "cryptography AESGCM; software agent verified, ARM unmeasured",
+      "server_implemented": true,
+      "device_implemented": true,
+      "known_vectors_passed": true,
+      "software_e2e_passed": true,
+      "device_implementations": [
+        "python-device-agent-v1"
+      ]
+    }
+  ],
+  "scope": "Python software agent only; per-device activation separately authorized"
+}

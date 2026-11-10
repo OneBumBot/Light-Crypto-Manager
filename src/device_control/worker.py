@@ -56,6 +56,7 @@ def main():
                     if outcome.is_published():
                         with engine.begin() as c:server.delivery_finished(c,cmd)
                 with engine.begin() as c:
+                    if c.scalar(select(func.count()).select_from(m.devices).where(m.devices.c.device_id.in_(list(config))))!=len(config):raise ValueError('Provisioning unavailable')
                     n=server.now(c)
                     c.execute(insert(m.workers).values(id=os.environ.get('HOSTNAME','local'),heartbeat=n,status='ready').on_conflict_do_update(index_elements=['id'],set_={'heartbeat':n,'status':'ready'}))
                 ready.touch()

@@ -39,3 +39,10 @@ audit=Table('live_control_audit',metadata,
 workers=Table('live_control_workers',metadata,Column('id',String(64),primary_key=True),D('heartbeat'),Column('status',String(24),nullable=False))
 Index('ix_live_command_delivery',commands.c.status,commands.c.available_at)
 Index('ix_live_control_history',audit.c.device_id,audit.c.at)
+# Small immutable receipts only at baseline/switch confirmation, not a second telemetry history.
+evidence=Table('live_control_evidence',metadata,
+    Column('event_id',String(36),primary_key=True),Column('device_id',String(48),nullable=False),
+    Column('key_epoch',Integer,nullable=False),Column('sequence_number',BigInteger,nullable=False),
+    Column('profile',String(64),nullable=False),Column('packet_sha256',String(64),nullable=False),
+    Column('key_reference',String(96),nullable=False),Column('accepted_at',DateTime(timezone=True),nullable=False),
+    UniqueConstraint('device_id','key_epoch','sequence_number',name='uq_live_evidence_identity'))

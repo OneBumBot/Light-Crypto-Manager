@@ -1,0 +1,3 @@
+[
+  "\nCREATE TABLE live_control_evidence (\n\tevent_id VARCHAR(36) NOT NULL, \n\tdevice_id VARCHAR(48) NOT NULL, \n\tkey_epoch INTEGER NOT NULL, \n\tsequence_number BIGINT NOT NULL, \n\tprofile VARCHAR(64) NOT NULL, \n\tpacket_sha256 VARCHAR(64) NOT NULL, \n\tkey_reference VARCHAR(96) NOT NULL, \n\taccepted_at TIMESTAMP WITH TIME ZONE NOT NULL, \n\tPRIMARY KEY (event_id), \n\tCONSTRAINT uq_live_evidence_identity UNIQUE (device_id, key_epoch, sequence_number)\n)\n\n"
+]

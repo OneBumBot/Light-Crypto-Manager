@@ -1,0 +1,515 @@
+{
+  "schema_version": 1,
+  "environment": {
+    "python": "3.12.16",
+    "architecture": "x86_64",
+    "cryptography": "50.0.2",
+    "openssl": "OpenSSL 4.0.3 29 Sep 2026"
+  },
+  "command": ".venv/bin/python -m pytest -q -p no:cacheprovider --junitxml=.local-runtime/stage8/crypto-kat.xml tests/test_crypto.py tests/test_aes_profiles.py tests/test_control_protocol.py::test_independent_mac_vector",
+  "exit_code": 0,
+  "tests": [
+    {
+      "name": "test_reference_vectors[--4F9C278211BEC9316BF68F46EE8B2EC6]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_reference_vectors[-30-CCCB674FE18A09A285D6AB11B35675C0]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_reference_vectors[20--E8DD576ABA1CD3E6FC704DE02AEDB79588]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_reference_vectors[20-30-962B8016836C75A7D86866588CA245D886]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_boundaries_and_authentication[0-0]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_boundaries_and_authentication[0-1]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[0-7]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_boundaries_and_authentication[0-8]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_boundaries_and_authentication[0-15]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_boundaries_and_authentication[0-16]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[0-17]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[0-31]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[0-32]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[1-0]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[1-1]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[1-7]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[1-8]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[1-15]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[1-16]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[1-17]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[1-31]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[1-32]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[7-0]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[7-1]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[7-7]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[7-8]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[7-15]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[7-16]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[7-17]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[7-31]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[7-32]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[8-0]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[8-1]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[8-7]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[8-8]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[8-15]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[8-16]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[8-17]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[8-31]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[8-32]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[15-0]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[15-1]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[15-7]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[15-8]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[15-15]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[15-16]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[15-17]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[15-31]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[15-32]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[16-0]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[16-1]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[16-7]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[16-8]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[16-15]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[16-16]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[16-17]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[16-31]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[16-32]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[17-0]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[17-1]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[17-7]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[17-8]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[17-15]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[17-16]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[17-17]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[17-31]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[17-32]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[31-0]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[31-1]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[31-7]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[31-8]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[31-15]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[31-16]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[31-17]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[31-31]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[31-32]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[32-0]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[32-1]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[32-7]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[32-8]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[32-15]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[32-16]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[32-17]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[32-31]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_boundaries_and_authentication[32-32]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_nist_gcm_kat[-58e2fccefa7e3061367f1d57a4e7455a]",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_nist_gcm_kat[00000000000000000000000000000000-0388dace60b6a392f328c2b971b2fe78ab6e47d42cec13bdf53a67b21257bddf]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_aes_rejects_modifications[ciphertext]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_aes_rejects_modifications[tag]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_aes_rejects_modifications[aad]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_aes_rejects_modifications[key]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_aes_rejects_modifications[nonce]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_strict_aes_parameters[\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00-\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_strict_aes_parameters[\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00-\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_strict_aes_parameters[\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00-\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00]",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_aes_v2_dispatch_and_binding",
+      "status": "passed",
+      "seconds": 0.001
+    },
+    {
+      "name": "test_cavp_cavs_14_count_zero",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_cavp_aad_128_tag_128_count_zero",
+      "status": "passed",
+      "seconds": 0.0
+    },
+    {
+      "name": "test_independent_mac_vector",
+      "status": "passed",
+      "seconds": 0.001
+    }
+  ],
+  "independent_vectors": [
+    "Ascon ascon-c Counts1/2/34/35",
+    "NIST GCM examples",
+    "CAVP CAVS14 PTlen0 AADlen0/128 Taglen128 Count0",
+    "Canonical HMAC envelope independently calculated using openssl dgst SHA256/HMAC"
+  ],
+  "scope": "KAT plus boundary/tamper unit checks; not certification"
+}

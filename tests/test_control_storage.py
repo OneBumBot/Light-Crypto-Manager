@@ -132,3 +132,47 @@ def test_control_web_roles_csrf_and_fields(postgres_db,registry,monkeypatch,role
         assert client.post('/api/control/raspb1/switch',json=body).status_code==400
         resp=client.post('/api/control/raspb1/switch',json=body,headers=headers(client))
         assert resp.status_code==(202 if role=='admin' else 403)
+
+
+def test_capability_rejection_creates_no_command(postgres_db,registry):
+    web=postgres_db;setup(web,registry);baseline(web,registry)
+    with web.db.engine.begin() as c:c.execute(update(m.devices).values(capabilities=[ASCON]))
+    with pytest.raises(ValueError):
+        with web.db.engine.begin() as c:server.request_switch(c,'raspb1',AES,'admin:1',mode=server.MODE)
+    with web.db.engine.connect() as c:
+        assert c.scalar(select(func.count()).select_from(m.commands))==0
+        assert c.scalar(select(m.devices.c.pending_transition)) is None
+
+
+def test_control_evidence_survives_outbox_retention(postgres_db,registry):
+    web=postgres_db;setup(web,registry);baseline(web,registry)
+    from datetime import timedelta
+    from src.outbox import cleanup
+    with web.db.engine.begin() as c:
+        receipt=c.execute(select(m.evidence)).mappings().one()
+        assert len(receipt['packet_sha256'])==64 and receipt['profile']==ASCON
+        c.execute(update(outbox).values(status='delivered',delivered_at=datetime.now(timezone.utc)-timedelta(days=3)))
+    assert cleanup(web.db.engine,1)==1
+    with web.db.engine.connect() as c:
+        assert c.scalar(select(func.count()).select_from(outbox))==0
+        assert c.scalar(select(m.evidence.c.event_id))==receipt['event_id']
+        assert c.scalar(select(m.devices.c.effective_event))==receipt['event_id']
+
+
+def test_receipt_failure_rolls_back_profile_replay_and_outbox(postgres_db,registry,tmp_path):
+    web=postgres_db;cfg=setup(web,registry);seq=baseline(web,registry);engine=web.db.engine
+    with engine.begin() as c:server.request_switch(c,'raspb1',AES,'admin:1',mode=server.MODE)
+    state=DeviceState(tmp_path/'state.db','raspb1',1,initialize=True)
+    cmd,body=pending_command(engine,cfg)
+    ack=open_message(state.execute(body,cfg),bytes.fromhex(cfg['status_key']),'device','raspb1',topic('raspb1','device'))
+    with engine.begin() as c:server.handle_ack(c,ack)
+    cmd,body=pending_command(engine,cfg);state.execute(body,cfg)
+    with engine.begin() as c:c.execute(text("ALTER TABLE live_control_evidence ADD CONSTRAINT injected_receipt_failure CHECK (profile != 'aes-128-gcm-v1')"))
+    with pytest.raises(Exception):process_packet(packet(registry,seq,AES),registry,engine,'iot/sensors/raspb1')
+    with engine.connect() as c:
+        assert c.scalar(select(m.devices.c.effective_profile))==ASCON
+        assert c.scalar(select(m.transitions.c.phase))=='ACTIVATION_SENT'
+        assert c.scalar(select(replay_state.c.last_sequence).where(replay_state.c.consumer=='receiver'))==seq-1
+        assert c.scalar(select(func.count()).select_from(outbox))==1
+        assert c.scalar(select(func.count()).select_from(m.evidence))==1
+    state.close()

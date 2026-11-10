@@ -1,0 +1,30 @@
+
+UTC: 2026-11-10T13:34:12.915971+00:00
+$ docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_security_probe
+ Container lcm-stage8-control-tests-run-fb497e02eed6 Creating
+ Container lcm-stage8-control-tests-run-fb497e02eed6 Created
+{
+  "real_tls": true,
+  "checks": [
+    "invalid_mac",
+    "wrong_key_direction",
+    "wrong_device_topic",
+    "requested_profile",
+    "command_epoch",
+    "command_sequence",
+    "controller_identity",
+    "expired_and_retained",
+    "device_cannot_command_itself",
+    "device_cannot_status_other_device",
+    "controller_cannot_publish_telemetry",
+    "device_cannot_read_other_commands",
+    "anonymous_http_denied",
+    "viewer_http_control_denied",
+    "viewer_status_allowed"
+  ],
+  "invalid_commands_created_ack": 0,
+  "effective_unchanged": true,
+  "live_control_hmac": true
+}
+
+EXIT CODE: 0

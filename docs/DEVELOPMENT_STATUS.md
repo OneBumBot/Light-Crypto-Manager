@@ -1,3 +1,16 @@
+# Этап 8 — проверка реального control layer продолжается
+
+Ветка feature/adaptive-crypto-control от f6f3c23. AES-128-GCM и Ascon telemetry v2;
+отдельные HMAC-protected manual commands, реальный Python device agent,
+PREPARE/ACTIVATE и effective только по принятой telemetry. Policy/ML — DRY_RUN /
+trusted_detector=false. Первые реальные roundtrip и 9 recovery probes пройдены.
+Полная промежуточная регрессия: 394 passed, exit0; завершение acceptance/benchmark
+и итоговая документация ещё выполняются. Миграции0007/0008 аддитивные, receipts
+не удаляются вместе с telemetry outbox. Рабочие volumes/исследовательские данные
+прежних этапов не используются. Подробности будут в STAGE8_RESULTS.md.
+
+## Исторический итог 7.5b-fix
+
 # Состояние разработки — 7.5b-fix
 
 Ветка feature/mqtt-tls-ground-truth-hardening от 3282557. Корректирующая инженерная

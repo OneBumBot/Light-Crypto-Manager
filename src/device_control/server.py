@@ -58,7 +58,7 @@ def request_switch(c,device,target,actor,*,ttl=120,mode=None):
     if d['pending_transition']:raise ValueError('Conflicting transition; recovery required')
     if d['effective_profile']==target:raise ValueError('Profile already effective')
     if d['last_request_at'] and (n-d['last_request_at']).total_seconds()<2:raise ValueError('Administrative request rate limited')
-    t=dict(id=identity(),device_id=device,old_profile=d['effective_profile'],target_profile=target,phase='PREPARE_SENT',actor=actor,
+    t=dict(id=identity(),device_id=device,old_profile=d['effective_profile'],target_profile=target,phase='PREPARED_SERVER',actor=actor,
         correlation_id=identity(),created_at=n,deadline=n+timedelta(seconds=ttl))
     c.execute(m.transitions.insert().values(**t))
     c.execute(update(m.devices).where(m.devices.c.device_id==device).values(pending_transition=t['id'],last_request_at=n))
@@ -111,7 +111,7 @@ def handle_ack(c,body):
     c.execute(update(m.commands).where(m.commands.c.id==cmd['id']).values(status='acknowledged',claim=None,lease_until=None))
     c.execute(update(m.devices).where(m.devices.c.device_id==device).values(command_acknowledged=data['command_sequence']))
     if t['phase']=='EFFECTIVE_CONFIRMED':return True
-    if data['result']=='READY' and cmd['phase']=='PREPARE' and t['phase']=='PREPARE_SENT':
+    if data['result']=='READY' and cmd['phase']=='PREPARE' and t['phase'] in ['PREPARED_SERVER','PREPARE_SENT']:
         log(c,device,'DEVICE_READY',t['id'],ack=body['message_id'])
         fresh=dict(d,command_sequence=d['command_sequence'])
         add_command(c,fresh,t,'ACTIVATE')
@@ -147,6 +147,13 @@ def observe(c,message,event_id):
     d=c.execute(select(m.devices).where(m.devices.c.device_id==message.device_id).with_for_update()).mappings().first()
     if d is None:return
     profile=BY_ALGORITHM[message.profile];n=now(c)
+    confirming=False
+    if d['pending_transition']:
+        pending=c.execute(select(m.transitions).where(m.transitions.c.id==d['pending_transition'])).mappings().one()
+        confirming=pending['phase'] in ['ACTIVATION_SENT','DEVICE_APPLIED'] and pending['target_profile']==profile
+    if not d['effective_profile'] or confirming:
+        if not message.packet_sha256:raise InvalidTelemetry('Missing authenticated packet receipt')
+        c.execute(m.evidence.insert().values(event_id=event_id,device_id=message.device_id,key_epoch=message.key_epoch,sequence_number=message.sequence_number,profile=profile,packet_sha256=message.packet_sha256,key_reference=profile+':'+str(message.key_epoch),accepted_at=n))
     if not d['effective_profile']:
         c.execute(update(m.devices).where(m.devices.c.device_id==message.device_id).values(effective_profile=profile,effective_event=event_id,effective_at=n))
         log(c,message.device_id,'BASELINE_TELEMETRY_VERIFIED',event=event_id,profile=profile)
@@ -163,8 +170,9 @@ def claim(c,config):
     n=now(c)
     # Device locks precede command locks everywhere, avoiding ACK/claim lock inversion.
     eligible=select(m.commands.c.device_id).where(m.commands.c.status.in_(['pending','claimed']),m.commands.c.available_at<=n,or_(m.commands.c.lease_until.is_(None),m.commands.c.lease_until<=n))
-    expired=select(m.transitions.c.id).where(m.transitions.c.deadline<=n,m.transitions.c.phase.in_(['PREPARE_SENT','ACTIVATION_SENT','DEVICE_APPLIED']))
-    device=c.execute(select(m.devices).where(m.devices.c.pending_transition.is_not(None),or_(m.devices.c.device_id.in_(eligible),m.devices.c.pending_transition.in_(expired))).order_by(m.devices.c.device_id).limit(1).with_for_update(skip_locked=True)).mappings().first()
+    expired=select(m.transitions.c.id).where(m.transitions.c.deadline<=n,m.transitions.c.phase.in_(['PREPARED_SERVER','PREPARE_SENT','ACTIVATION_SENT','DEVICE_APPLIED']))
+    active=select(m.transitions.c.id).where(m.transitions.c.phase.in_(['PREPARED_SERVER','PREPARE_SENT','ACTIVATION_SENT']),m.transitions.c.device_id.in_(eligible))
+    device=c.execute(select(m.devices).where(m.devices.c.pending_transition.is_not(None),or_(m.devices.c.pending_transition.in_(active),m.devices.c.pending_transition.in_(expired))).order_by(m.devices.c.device_id).limit(1).with_for_update(skip_locked=True)).mappings().first()
     if not device:return None
     t=c.execute(select(m.transitions).where(m.transitions.c.id==device['pending_transition'])).mappings().one()
     if t['deadline']<=n:
@@ -172,7 +180,7 @@ def claim(c,config):
             c.execute(update(m.transitions).where(m.transitions.c.id==t['id']).values(phase='UNKNOWN_OUTCOME',error='DeadlineExpired'))
             log(c,device['device_id'],'UNKNOWN_OUTCOME',t['id'])
         return None
-    if t['phase'] not in ['PREPARE_SENT','ACTIVATION_SENT']:return None
+    if t['phase'] not in ['PREPARED_SERVER','PREPARE_SENT','ACTIVATION_SENT']:return None
     row=c.execute(select(m.commands).where(m.commands.c.transition_id==t['id'],m.commands.c.status.in_(['pending','claimed']),
         m.commands.c.available_at<=n,or_(m.commands.c.lease_until.is_(None),m.commands.c.lease_until<=n))
         .order_by(m.commands.c.sequence).limit(1).with_for_update(skip_locked=True)).mappings().first()
@@ -188,5 +196,26 @@ def claim(c,config):
 
 
 def delivery_finished(c,cmd):
+    # Only a real broker PUBACK earns a sent audit record. Device ACK is separate.
+    if cmd['phase']=='PREPARE':
+        c.execute(update(m.transitions).where(m.transitions.c.id==cmd['transition_id'],m.transitions.c.phase=='PREPARED_SERVER').values(phase='PREPARE_SENT'))
+    log(c,cmd['device_id'],'BROKER_PUBACK',cmd['transition_id'],command_id=cmd['id'],attempt=cmd['attempts']+1)
     c.execute(update(m.commands).where(m.commands.c.id==cmd['id'],m.commands.c.claim==cmd['claim'],m.commands.c.status=='claimed')
         .values(status='pending',claim=None,lease_until=None,available_at=now(c)+timedelta(seconds=min(10,2**min(cmd['attempts'],4)))))
+
+
+def reopen_reconciliation(c,device,transition_id,actor,*,ttl=60,mode=None):
+    """Explicit admin reopens only observation of an ALREADY authorized activation.
+    No new command, no rollback and no applied/effective state is written here.
+    """
+    if mode!=MODE or not actor.startswith('admin:') or type(ttl) is not int or not 15<=ttl<=120:raise ValueError('Manual bounded reconciliation required')
+    d=lock(c,device);n=now(c)
+    from src.devices import devices as registered
+    if not c.scalar(select(registered.c.device_id).where(registered.c.device_id==device,registered.c.enabled.is_(True))):raise ValueError('Device disabled')
+    if d['pending_transition']!=transition_id:raise ValueError('No matching pending transition')
+    t=c.execute(select(m.transitions).where(m.transitions.c.id==transition_id)).mappings().one()
+    if t['phase'] not in ['UNKNOWN_OUTCOME','RECOVERY_REQUIRED'] or not t['activated_at']:raise ValueError('No prior authorized activation to reconcile')
+    if not c.scalar(select(m.commands.c.id).where(m.commands.c.transition_id==transition_id,m.commands.c.phase=='ACTIVATE')):raise ValueError('No durable activation')
+    c.execute(update(m.commands).where(m.commands.c.transition_id==transition_id,m.commands.c.status.in_(['pending','claimed'])).values(status='expired',claim=None,lease_until=None))
+    c.execute(update(m.transitions).where(m.transitions.c.id==transition_id).values(phase='ACTIVATION_SENT',deadline=n+timedelta(seconds=ttl),error='ReconciliationWindow'))
+    log(c,device,'RECONCILIATION_AUTHORIZED',transition_id,actor=actor,ttl=ttl)

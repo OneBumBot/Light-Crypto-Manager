@@ -16,7 +16,9 @@ log=logging.getLogger(__name__)
 def main():
     logging.basicConfig(level=logging.INFO)
     if os.environ.get('MQTT_INSECURE_TEST_MODE')=='1':raise ValueError('Live agent requires TLS')
-    if (os.environ.get('CONTROL_DROP_ACTIVATE_ACK')=='1' or os.environ.get('CONTROL_TEST_READY_DELAY')) and os.environ.get('APP_ENV')!='test':raise ValueError('Fault injection restricted to explicit test mode')
+    if (os.environ.get('CONTROL_DROP_ACTIVATE_ACK')=='1' or os.environ.get('CONTROL_TEST_READY_DELAY') or os.environ.get('CONTROL_TEST_ACTIVATED_DELAY')) and os.environ.get('APP_ENV')!='test':raise ValueError('Fault injection restricted to explicit test mode')
+    activated_delay=float(os.environ.get('CONTROL_TEST_ACTIVATED_DELAY','0'))
+    if not 0<=activated_delay<=20:raise ValueError('Bounded activated test delay')
     delay=float(os.environ.get('CONTROL_TEST_READY_DELAY','0'))
     if not 0<=delay<=5:raise ValueError('Bounded test delay')
     device=os.environ['DEVICE_ID'];config=load()[device]
@@ -72,6 +74,7 @@ def main():
                         if grant is None:raise ValueError('Boot reconciliation incomplete')
                         ack=state.execute(body,config)
                         if body['data']['phase']=='PREPARE' and delay:stop.wait(delay)
+                        if body['data']['phase']=='ACTIVATE' and activated_delay:stop.wait(activated_delay)
                         if os.environ.get('CONTROL_DROP_ACTIVATE_ACK')!='1' or body['data']['phase']!='ACTIVATE':
                             client.publish(topic(device,'device'),ack,qos=1)
                         log.info('Authenticated device command executed or exact retry answered')

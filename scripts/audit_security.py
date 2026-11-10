@@ -25,7 +25,19 @@ def main():
             assert stat.S_IMODE(path.stat().st_mode)==0o600, str(path)
             if path.suffix=='.password': secret_values.add(path.read_bytes().strip())
             elif path.name=='registry.json':
-                secret_values.update(v['key_hex'].encode() for v in json.loads(path.read_text()).values())
+                for entry in json.loads(path.read_text()).values():
+                    secret_values.add(entry['key_hex'].encode())
+                    secret_values.update(v.encode() for v in entry.get('telemetry_keys',{}).values())
+            elif path.name=='control.json':
+                for entry in json.loads(path.read_text()).values():
+                    secret_values.update(entry[k].encode() for k in ['command_key','status_key'])
+                    secret_values.add(entry['registry']['key_hex'].encode())
+                    secret_values.update(v.encode() for v in entry['registry'].get('telemetry_keys',{}).values())
+            elif path.name.endswith('.env'):
+                for line in path.read_text().splitlines():
+                    if '=' in line:
+                        name,value=line.split('=',1)
+                        if value and any(k in name for k in ['PASSWORD','SECRET','KEY_HEX']):secret_values.add(value.encode())
             elif path.suffix=='.key': secret_values.add(path.read_bytes().strip())
     for path in Path('.local-runtime').glob('*.env'):
         assert stat.S_IMODE(path.stat().st_mode)==0o600

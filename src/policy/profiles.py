@@ -15,17 +15,17 @@ class Profile:
     protocol: str
     activation_allowed: bool
     limitations: str
-    server_implemented: bool = True
-    device_implemented: bool = True
-    known_vectors_passed: bool = True
-    software_e2e_passed: bool = True
+    server_implemented: bool = False
+    device_implemented: bool = False
+    known_vectors_passed: bool = False
+    software_e2e_passed: bool = False
     device_implementations: tuple = ('python-device-agent-v1',)
 
 IMPLEMENTED={ASCON:Profile(ASCON,1,'Ascon-AEAD128','implemented',
     {'key_bytes':16,'nonce_bytes':16,'tag_bytes':16},('mqtt_tls','aead','telemetry_v2'),
-    'MQTT telemetry v2',True,'Python reference, no hardware/constant-time certification'),
+    'MQTT telemetry v2',True,'Python reference, no hardware/constant-time certification',server_implemented=True,device_implemented=True,known_vectors_passed=True,software_e2e_passed=True),
     AES:Profile(AES,1,'AES-128-GCM','verified',{'key_bytes':16,'nonce_bytes':12,'tag_bytes':16},
-        ('mqtt_tls','aead','telemetry_v2'),'MQTT telemetry v2',True,'cryptography AESGCM; software agent verified, ARM unmeasured')}
+        ('mqtt_tls','aead','telemetry_v2'),'MQTT telemetry v2',True,'cryptography AESGCM; software agent verified, ARM unmeasured',server_implemented=True,device_implemented=True,known_vectors_passed=True,software_e2e_passed=True)}
 
 
 def registry():return [asdict(p) for p in IMPLEMENTED.values()]

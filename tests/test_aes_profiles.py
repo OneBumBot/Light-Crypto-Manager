@@ -51,3 +51,13 @@ def test_cavp_cavs_14_count_zero():
     expected=bytes.fromhex('250327c674aaf477aef2675748cf6971')
     assert encrypt(AES,key,nonce,b'',b'')==expected
     assert decrypt(AES,key,nonce,b'',expected)==b''
+
+
+def test_cavp_aad_128_tag_128_count_zero():
+    # gcmEncryptExtIV128.rsp: PTlen=0, AADlen=128, Taglen=128 Count=0.
+    key=bytes.fromhex('77be63708971c4e240d1cb79e8d77feb')
+    nonce=bytes.fromhex('e0e00f19fed7ba0136a797f3')
+    aad=bytes.fromhex('7a43ec1d9c0a5a78a0b16533a6213cab')
+    tag=bytes.fromhex('209fcc8d3675ed938e9c7166709dd946')
+    assert encrypt(AES,key,nonce,aad,b'')==tag
+    assert decrypt(AES,key,nonce,aad,tag)==b''

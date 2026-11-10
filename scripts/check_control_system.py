@@ -1,0 +1,124 @@
+"""Bounded REAL service failure exercises, stage8 project only, no volume deletion."""
+import argparse,subprocess,os,json,time
+from pathlib import Path
+
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--env-file',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--extended',action='store_true')
+    a=p.parse_args();values=dict(line.split('=',1) for line in a.env_file.read_text().splitlines() if '=' in line and not line.startswith('#'))
+    project=values.get('COMPOSE_PROJECT_NAME','')
+    if not project.startswith('lcm-stage8-'):p.error('Dedicated lcm-stage8-* project required')
+    base=['docker','compose','--env-file',str(a.env_file),'-f','compose.yaml','-f','compose.control.yaml','--profile','control']
+    events=[]
+    def run(*parts,check=True):
+        r=subprocess.run(base+list(parts),capture_output=True,text=True,timeout=160)
+        if check and r.returncode:raise RuntimeError('Isolated control command failed: '+parts[0]+'; '+r.stderr[-300:])
+        return r
+    def probe(action):
+        r=run('run','--rm','--no-deps','--entrypoint','python','tests','-m','scripts.control_system_probe',action)
+        return json.loads(r.stdout[r.stdout.index('{'):])
+    def status():return probe('status')
+    def device():return next(d for d in status()['devices'] if d['device_id']=='alpha')
+    def telemetry():return status()['telemetry']['alpha']
+    def latest():return [t for t in status()['transitions'] if t['device_id']=='alpha'][-1]
+    def wait(predicate,seconds=35):
+        end=time.monotonic()+seconds
+        while time.monotonic()<end:
+            if predicate():return
+            time.sleep(.3)
+        raise AssertionError('Real recovery state not reached')
+    def device_python(code):return run('exec','-T','device-alpha','python','-c',code)
+    def setup_override(drop=False,delay=0,activated_delay=0):
+        target=a.output.parent/'control-faults.yaml'
+        target.write_text('services:\n  device-alpha:\n    environment:\n      APP_ENV: test\n      CONTROL_DROP_ACTIVATE_ACK: "'+('1' if drop else '0')+'"\n      CONTROL_TEST_READY_DELAY: "'+str(delay)+'"\n      CONTROL_TEST_ACTIVATED_DELAY: "'+str(activated_delay)+'"\n')
+        return target
+    def recreate(override):
+        subprocess.run(base+['-f',str(override),'up','-d','--no-deps','--force-recreate','--wait','device-alpha'],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,timeout=90)
+    a.output.parent.mkdir(parents=True,exist_ok=True)
+    if a.output.exists():p.error('Immutable output path already exists')
+    before=status();assert device()['effective_profile']=='ascon-aead128-v1'
+    # Save actual durable Ascon ledger for a later rollback probe; does not touch datasets.
+    device_python("import sqlite3,os;sqlite3.connect('/device/device.db').backup(sqlite3.connect('/device/ascon-snapshot.db'));os.chmod('/device/ascon-snapshot.db',0o600)")
+    try:
+        switched=probe('switch-aes');assert device()['effective_profile']=='aes-128-gcm-v1'
+        first=device();run('restart','device-alpha')
+        wait(lambda:device()['sequence_reserved']>first['sequence_reserved'] and telemetry()['max_sequence']>first['sequence_reserved'])
+        # New telemetry references must be strictly larger after boot range discard.
+        probe_after=status();assert device()['effective_profile']=='aes-128-gcm-v1'
+        events.append(dict(scenario='device_restart',status='passed',before_reserved=first['sequence_reserved'],after_reserved=device()['sequence_reserved'],effective='aes-128-gcm-v1'))
+        # Restore stale local profile/replay snapshot. Server must refuse grant; no new effective event.
+        device_python("import sqlite3,os;sqlite3.connect('/device/device.db').backup(sqlite3.connect('/device/aes-current.db'));os.chmod('/device/aes-current.db',0o600)")
+        run('stop','device-alpha')
+        run('run','--rm','--no-deps','--entrypoint','python','device-alpha','-c',"import shutil;shutil.copyfile('/device/ascon-snapshot.db','/device/device.db')")
+        time.sleep(.5);snap=device();accepted_before=telemetry();run('up','-d','--no-deps','device-alpha');time.sleep(3)
+        assert telemetry()==accepted_before
+        assert device()['effective_event']==snap['effective_event'] and device()['effective_profile']=='aes-128-gcm-v1'
+        run('stop','device-alpha')
+        run('run','--rm','--no-deps','--entrypoint','python','device-alpha','-c',"import shutil;shutil.copyfile('/device/aes-current.db','/device/device.db')")
+        run('up','-d','--no-deps','--wait','device-alpha')
+        events.append(dict(scenario='stale_device_state_restore',status='passed',new_telemetry_with_stale_state=False,silent_downgrade=False))
+        # Return to Ascon via a new authorized transition, not a local fallback.
+        probe('request-ascon');wait(lambda:device()['effective_profile']=='ascon-aead128-v1')
+        # REAL control worker stopped between PREPARE and ACTIVATE: delayed device READY.
+        override=setup_override(delay=3);recreate(override);probe('request-aes')
+        wait(lambda:latest()['phase']=='PREPARE_SENT' and device_python("import sqlite3; c=sqlite3.connect('/device/device.db'); print(c.execute('SELECT prepared IS NOT NULL FROM state').fetchone()[0])").stdout.strip()=='1')
+        run('stop','control-worker');assert latest()['phase']=='PREPARE_SENT';time.sleep(3.3)
+        run('up','-d','--no-deps','--wait','control-worker');wait(lambda:device()['effective_profile']=='aes-128-gcm-v1')
+        events.append(dict(scenario='controller_restart_after_prepare',status='passed',effective_event=device()['effective_event'],transition=latest()['id']))
+        override=setup_override();recreate(override);probe('request-ascon');wait(lambda:device()['effective_profile']=='ascon-aead128-v1')
+        # Lost authenticated ACTIVATE ACK: device applies; only telemetry may confirm.
+        override=setup_override(drop=True);recreate(override);probe('switch-aes')
+        t=latest();assert t['phase']=='EFFECTIVE_CONFIRMED' and t['acknowledged_at'] is None and t['telemetry_event']
+        events.append(dict(scenario='lost_activate_ack',status='passed',acknowledged_at=None,telemetry_event=t['telemetry_event'],silent_rollback=False))
+        override=setup_override();recreate(override);probe('request-ascon');wait(lambda:device()['effective_profile']=='ascon-aead128-v1')
+        # Broker outage: committed intent, no receiver/device evidence while disconnected.
+        run('stop','control-worker');probe('request-aes');saved=latest();run('stop','broker')
+        assert latest()['phase']=='PREPARED_SERVER' and device()['effective_profile']=='ascon-aead128-v1'
+        time.sleep(2);run('up','-d','--no-deps','--wait','broker');run('up','-d','--no-deps','--wait','control-worker')
+        wait(lambda:device()['effective_profile']=='aes-128-gcm-v1',50)
+        events.append(dict(scenario='broker_outage',status='passed',transition=saved['id'],false_effective_during_outage=False))
+        probe('request-ascon');wait(lambda:device()['effective_profile']=='ascon-aead128-v1')
+        # PG outage AFTER durable intent but BEFORE any publish.
+        run('stop','control-worker');probe('request-aes');saved=latest();run('stop','postgres')
+        unavailable=run('run','--rm','--no-deps','--entrypoint','python','tests','-m','scripts.control_system_probe','status',check=False)
+        assert unavailable.returncode!=0
+        time.sleep(2);run('up','-d','--no-deps','--wait','postgres');run('up','-d','--no-deps','--wait','control-worker')
+        wait(lambda:device()['effective_profile']=='aes-128-gcm-v1',50)
+        events.append(dict(scenario='postgres_outage_after_intent',status='passed',probe_during_outage_exit=unavailable.returncode,transition=saved['id']))
+        if a.extended:
+            probe('request-ascon');wait(lambda:device()['effective_profile']=='ascon-aead128-v1')
+            override=setup_override(drop=True,activated_delay=3);recreate(override);probe('request-aes')
+            wait(lambda:device_python("import sqlite3;c=sqlite3.connect('/device/device.db');print(c.execute('SELECT profile FROM state').fetchone()[0])").stdout.strip()=='aes-128-gcm-v1')
+            run('stop','postgres');time.sleep(1)
+            run('up','-d','--no-deps','--wait','postgres')
+            wait(lambda:device()['effective_profile']=='aes-128-gcm-v1',45)
+            events.append(dict(scenario='postgres_outage_after_device_activation',status='passed',telemetry_event=device()['effective_event']))
+            override=setup_override();recreate(override);probe('request-ascon');wait(lambda:device()['effective_profile']=='ascon-aead128-v1')
+            override=setup_override(drop=True,activated_delay=18);recreate(override);probe('request-aes-short')
+            wait(lambda:latest()['phase']=='UNKNOWN_OUTCOME',30)
+            assert device()['effective_profile']=='ascon-aead128-v1'
+            probe('reconcile');assert device()['effective_profile']=='aes-128-gcm-v1'
+            events.append(dict(scenario='grace_expiry_manual_reconciliation',status='passed',no_premature_effective=True,telemetry_event=device()['effective_event']))
+            override=setup_override();recreate(override)
+            device_python("import sqlite3,os;sqlite3.connect('/device/device.db').backup(sqlite3.connect('/device/pre-loss.db'));os.chmod('/device/pre-loss.db',0o600)")
+            run('stop','device-alpha');time.sleep(.5);saved=telemetry()
+            run('run','--rm','--no-deps','--entrypoint','python','device-alpha','-c',"import os;os.rename('/device/device.db','/device/lost-state.db')")
+            try:
+                failure=run('run','--rm','--no-deps','device-alpha',check=False)
+                assert failure.returncode!=0 and 'Device state missing' in failure.stderr
+                assert telemetry()==saved
+            finally:
+                run('run','--rm','--no-deps','--entrypoint','python','device-alpha','-c',"import os;os.rename('/device/lost-state.db','/device/device.db')")
+                run('up','-d','--no-deps','--wait','device-alpha')
+            events.append(dict(scenario='lost_device_state',status='passed',agent_exit=failure.returncode,accepted_with_missing_state=0))
+        # Duplicate authenticated ACK/command replay is exercised by worker restart and repeat delivery;
+        # precise corrupted messages and concurrent rollback are separate security probe/tests.
+        result=dict(schema_version=1,project=project,environment='real Docker software IoT agents; TLS mandatory',events=events,final=status(),
+                    no_volume_deleted=True,ml_models_trained=0,policy_mode='DRY_RUN')
+        a.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({'events':events,'exit_code':0},indent=2))
+    finally:
+        # Restore services after every failure; no volume deletion, no profile rollback command.
+        for service in ['postgres','broker','control-worker']:
+            run('up','-d','--no-deps',service,check=False)
+
+if __name__=='__main__':main()

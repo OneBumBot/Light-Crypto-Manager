@@ -13,7 +13,7 @@ def load(path=None):
     for device,e in value.items():
         exact(e,['registry','command_key','status_key','capabilities','command_epoch'])
         validate_registry({device:e['registry']})
-        if e['command_epoch']!=e['registry']['key_epoch']:raise ValueError('Explicit equal provisioning epochs required')
+        if type(e['command_epoch']) is not int or e['command_epoch']!=e['registry']['key_epoch']:raise ValueError('Explicit equal provisioning epochs required')
         if type(e['capabilities']) is not list or not e['capabilities'] or any(x not in [ASCON,AES] for x in e['capabilities']):raise ValueError('Capabilities')
         if AES in e['capabilities'] and 'AES-128-GCM' not in e['registry'].get('telemetry_keys',{}):raise ValueError('Missing AES telemetry key')
         keys=[e['registry']['key_hex'],*e['registry'].get('telemetry_keys',{}).values(),e['command_key'],e['status_key']]

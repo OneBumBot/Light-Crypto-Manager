@@ -1,0 +1,90 @@
+
+UTC: 2026-11-10T13:04:45.397965+00:00
+$ python3 scripts/check_control_system.py --env-file .local-runtime/stage8/integration/compose.env --output .local-runtime/stage8/recovery-results.json
+Traceback (most recent call last):
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_control_system.py", line 96, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_control_system.py", line 40, in main
+    device_python("import sqlite3;sqlite3.connect('/device/device.db').backup(sqlite3.connect('/device/ascon-snapshot.db'))")
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_control_system.py", line 29, in device_python
+    def device_python(code):return run('exec','-T','--user','0','device-alpha','python','-c',code)
+                                   ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_control_system.py", line 15, in run
+    if check and r.returncode:raise RuntimeError('Isolated control command failed: '+parts[0]+'; '+r.stderr[-300:])
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Isolated control command failed: exec; Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+sqlite3.OperationalError: unable to open database file
+
+
+EXIT CODE: 1
+
+UTC: 2026-11-10T13:07:56.271978+00:00
+$ python3 scripts/check_control_system.py --env-file .local-runtime/stage8/integration/compose.env --output .local-runtime/stage8/recovery-results.json
+Traceback (most recent call last):
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_control_system.py", line 98, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_control_system.py", line 75, in main
+    run('stop','control-worker');probe('request-aes');saved=latest();run('stop','broker')
+                                 ~~~~~^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_control_system.py", line 18, in probe
+    r=run('run','--rm','--no-deps','--entrypoint','python','tests','-m','scripts.control_system_probe',action)
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_control_system.py", line 15, in run
+    if check and r.returncode:raise RuntimeError('Isolated control command failed: '+parts[0]+'; '+r.stderr[-300:])
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Isolated control command failed: run; f\\u0443\\u0441\\u0442\\u0438\\u043c\\u044b\\u0439 \\u0438\\u043b\\u0438 \\u043a\\u043e\\u043d\\u0444\\u043b\\u0438\\u043a\\u0442\\u0443\\u044e\\u0449\\u0438\\u0439 \\u0437\\u0430\\u043f\\u0440\\u043e\\u0441 \\u043f\\u0435\\u0440\\u0435\\u043a\\u043b\\u044e\\u0447\\u0435\\u043d\\u0438\\u044f"}\n')
+
+
+
+EXIT CODE: 1
+
+UTC: 2026-11-10T13:26:10.235302+00:00
+$ python3 scripts/check_control_system.py --env-file .local-runtime/stage8/integration/compose.env --output .local-runtime/stage8/recovery-results.json
+{
+  "events": [
+    {
+      "scenario": "device_restart",
+      "status": "passed",
+      "before_reserved": 90000,
+      "after_reserved": 100000,
+      "effective": "aes-128-gcm-v1"
+    },
+    {
+      "scenario": "stale_device_state_restore",
+      "status": "passed",
+      "new_telemetry_with_stale_state": false,
+      "silent_downgrade": false
+    },
+    {
+      "scenario": "controller_restart_after_prepare",
+      "status": "passed",
+      "effective_event": "63c5968e-a334-4e77-af5d-ef0932b8af80",
+      "transition": "fb495f82-840f-4bb5-b208-0e239451a956"
+    },
+    {
+      "scenario": "lost_activate_ack",
+      "status": "passed",
+      "acknowledged_at": null,
+      "telemetry_event": "98103824-e7ff-4a0b-8a9a-5b4ca07b5071",
+      "silent_rollback": false
+    },
+    {
+      "scenario": "broker_outage",
+      "status": "passed",
+      "transition": "e6fdebef-d79a-4c20-99cd-63f9c2556a27",
+      "false_effective_during_outage": false
+    },
+    {
+      "scenario": "postgres_outage_after_intent",
+      "status": "passed",
+      "probe_during_outage_exit": 1,
+      "transition": "fc87e5ed-6ed8-48b6-982c-fc26d9f90532"
+    }
+  ],
+  "exit_code": 0
+}
+
+EXIT CODE: 0

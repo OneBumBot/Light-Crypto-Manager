@@ -1,6 +1,29 @@
 # Explicitly opt in with -f compose.control.yaml --profile control.
 # No production volumes; use scripts.prepare_control with a fresh stage8 project.
+x-control-logging: &control-logging
+  driver: json-file
+  options: {max-size: "5m", max-file: "2"}
 services:
+  postgres:
+    logging: *control-logging
+    cpus: 1
+    mem_limit: 768m
+  mongo:
+    logging: *control-logging
+    cpus: 1
+    mem_limit: 768m
+  broker:
+    logging: *control-logging
+    cpus: 0.5
+    mem_limit: 128m
+  receiver:
+    logging: *control-logging
+    cpus: 0.5
+    mem_limit: 256m
+  outbox-relay:
+    logging: *control-logging
+    cpus: 0.5
+    mem_limit: 256m
   control-init:
     image: ${COMPOSE_PROJECT_NAME}-runtime
     profiles: [control]
@@ -13,6 +36,7 @@ services:
       - beta-control:/out/beta
       - gamma-control:/out/gamma
   control-worker:
+    logging: *control-logging
     image: ${COMPOSE_PROJECT_NAME}-runtime
     profiles: [control]
     init: true
@@ -41,6 +65,7 @@ services:
       retries: 15
     stop_grace_period: 10s
   device-alpha: &device
+    logging: *control-logging
     image: ${COMPOSE_PROJECT_NAME}-runtime
     profiles: [control]
     init: true
@@ -85,9 +110,15 @@ services:
       DEVICE_ID: gamma
     volumes: [gamma-control:/device]
   web:
+    logging: *control-logging
+    cpus: 0.5
+    mem_limit: 256m
     environment:
       CONTROL_MODE: ${CONTROL_MODE:-DISABLED}
   tests:
+    logging: *control-logging
+    cpus: 1
+    mem_limit: 1024m
     volumes:
       - control-security:/run/control:ro
     environment:

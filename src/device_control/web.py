@@ -42,9 +42,13 @@ def status():
             acks=c.execute(select(m.acks).where(m.acks.c.device_id.in_(ids)).order_by(m.acks.c.received_at.desc()).limit(limit)).mappings().all()
             audit=c.execute(select(m.audit).where(m.audit.c.device_id.in_(ids)).order_by(m.audit.c.at.desc()).limit(limit)).mappings().all()
             workers=c.execute(select(m.workers).order_by(m.workers.c.heartbeat.desc()).limit(20)).mappings().all()
+            from src.outbox import outbox
+            last_telemetry=c.execute(select(outbox.c.id,outbox.c.device_id,outbox.c.key_epoch,outbox.c.sequence_number,outbox.c.created_at,outbox.c.payload['crypto_profile'].astext.label('profile')).where(outbox.c.device_id.in_(ids)).distinct(outbox.c.device_id).order_by(outbox.c.device_id,outbox.c.key_epoch.desc(),outbox.c.sequence_number.desc())).mappings().all()
+            evidence=c.execute(select(m.evidence).where(m.evidence.c.device_id.in_(ids)).order_by(m.evidence.c.accepted_at.desc()).limit(limit)).mappings().all()
+            commands=c.execute(select(m.commands.c.id,m.commands.c.device_id,m.commands.c.transition_id,m.commands.c.phase,m.commands.c.status,m.commands.c.attempts,m.commands.c.expires_at).where(m.commands.c.device_id.in_(ids)).order_by(m.commands.c.expires_at.desc()).limit(limit)).mappings().all()
         # Key fingerprints are internal provisioning consistency metadata, excluded from HTTP.
         items=[{k:v for k,v in serialized(r).items() if k not in ['key_fingerprint','sequence_reserved']} for r in rows]
-        return jsonify(items=items,transitions=[serialized(r) for r in history],acks=[serialized(r) for r in acks],audit=[serialized(r) for r in audit],
+        return jsonify(items=items,effective_evidence=[serialized(r) for r in evidence],last_verified_telemetry=[serialized(r) for r in last_telemetry],commands=[serialized(r) for r in commands],transitions=[dict(serialized(r),age_seconds=(datetime.now(timezone.utc)-r['created_at']).total_seconds()) for r in history],acks=[serialized(r) for r in acks],audit=[serialized(r) for r in audit],
             workers=[dict(serialized(r),stale=(datetime.now(timezone.utc)-r['heartbeat']).total_seconds()>10) for r in workers],profiles=PROFILES,
             mode=os.environ.get('CONTROL_MODE','DISABLED'),policy_mode='DRY_RUN')
     except SQLAlchemyError:return jsonify(error='Управление временно недоступно'),503
@@ -62,6 +66,23 @@ def switch(device):
         with db.engine.begin() as c:
             if not c.scalar(select(registered_devices.c.device_id).where(registered_devices.c.device_id==device,registered_devices.c.enabled.is_(True))):abort(404)
             tid=server.request_switch(c,device,body['profile'],'admin:'+str(current_user.id),ttl=body['ttl'],mode=server.MODE)
-        return jsonify(transition_id=tid,status='PREPARE_SENT',effective_changed=False),202
+        return jsonify(transition_id=tid,status='PREPARED_SERVER',effective_changed=False),202
     except (TypeError,ValueError):return jsonify(error='Недопустимый или конфликтующий запрос переключения'),409
     except SQLAlchemyError:return jsonify(error='Запрос временно недоступен'),503
+
+
+@blueprint.post('/api/control/<device>/reconcile')
+@login_required
+def reconcile(device):
+    if current_user.role!='admin':abort(403)
+    if os.environ.get('CONTROL_MODE')!=server.MODE:return jsonify(error='Управление отключено'),409
+    if not DEVICE.fullmatch(device) or request.content_length is None or request.content_length>2048:abort(400)
+    try:
+        body=strict_json(request.get_data())
+        if type(body) is not dict or set(body)!={'transition_id','ttl'}:raise ValueError('Fields')
+        from .protocol import uid
+        uid(body['transition_id'])
+        with db.engine.begin() as c:server.reopen_reconciliation(c,device,body['transition_id'],'admin:'+str(current_user.id),ttl=body['ttl'],mode=server.MODE)
+        return jsonify(status='AwaitingAuthenticatedTelemetry',effective_changed=False),202
+    except (TypeError,ValueError):return jsonify(error='Недопустимый запрос сверки состояния'),409
+    except SQLAlchemyError:return jsonify(error='Сверка временно недоступна'),503

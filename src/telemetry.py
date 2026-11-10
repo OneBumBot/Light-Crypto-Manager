@@ -1,5 +1,6 @@
 """Bounded, authenticated telemetry v2. No legacy packets are accepted."""
 import base64
+import hashlib
 from dataclasses import dataclass
 from datetime import datetime, timezone
 import json
@@ -122,6 +123,7 @@ class VerifiedTelemetry:
     database_device_id: int
     sensor: dict
     profile: str = PROFILE
+    packet_sha256: str | None = None
 
 
 def decode_packet(raw, topic, registry):
@@ -160,4 +162,4 @@ def decode_packet(raw, topic, registry):
     except (InvalidTag,ValueError): reject()
     sensor=validate_sensor(strict_json(plaintext))
     return VerifiedTelemetry(device,metadata['key_epoch'],metadata['sequence_number'],
-                             entry['database_device_id'],sensor,packet['profile'])
+                             entry['database_device_id'],sensor,packet['profile'],hashlib.sha256(raw).hexdigest())

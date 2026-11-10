@@ -2,8 +2,8 @@
 {% block title %}Политика защиты{% endblock %}
 {% block content %}
 <h2>Политика защиты — DRY_RUN</h2>
-<p>Рекомендация и запрос не означают применение. Live управление отключено. Подтверждённая устройством конфигурация пока неизвестна.</p>
-<p>Статусы разделены: recommended, requested, acknowledged, applied, failed, unsupported, simulated. В этом этапе реальные acknowledged/applied отсутствуют.</p>
+<p>Рекомендация и запрос не означают применение. Policy Engine не исполняет live-команды. Реальные подтверждения доступны отдельно: <a href="/control">управление криптопрофилями</a>.</p>
+<p>Статусы разделены: recommended, requested, acknowledged, applied, failed, unsupported, simulated. Здесь показаны DRY_RUN намерения; они не заменяют authenticated ACK и verified effective из control layer.</p>
 <form id="policyFilters"><label>Устройство <input name="device_id" maxlength="48"></label><button>Обновить</button></form>
 <p id="policyMessage" role="status"></p>
 <h3>Риск и конфигурации</h3><pre id="policyOverview"></pre>

@@ -85,3 +85,30 @@ def test_device_state_process_lock(tmp_path):
     p=tmp_path/'state.db';s=DeviceState(p,'alpha',1,initialize=True)
     with pytest.raises(BlockingIOError):DeviceState(p,'alpha',1)
     s.close()
+
+
+def test_monotonic_replay_gap_rejected(tmp_path):
+    s=DeviceState(tmp_path/'state.db','alpha',1,initialize=True)
+    high=command(sequence=100);s.execute(high,conf())
+    lower=command('ACTIVATE',50,high['data']['transition_id'])
+    with pytest.raises(ValueError):s.execute(lower,conf())
+    assert s.read()['profile']==ASCON;s.close()
+
+
+def test_authenticated_claimed_device_mismatch():
+    import hmac,json
+    from src.device_control.protocol import DOMAIN
+    body=command()
+    envelope=dict(domain=DOMAIN,direction='controller',topic=topic('beta','controller'),body=body)
+    raw=canonical(dict(**envelope,mac=hmac.new(KEY,canonical(envelope),hashlib.sha256).hexdigest()))
+    with pytest.raises(ValueError):open_message(raw,KEY,'controller','beta',topic('beta','controller'))
+
+
+def test_independent_mac_vector():
+    # Canonical envelope expected MAC generated independently with OpenSSL dgst
+    # 3.6.5 SHA256/HMAC, public key bytes(range(32)), not Python seal().
+    import json
+    n=datetime(2026,11,10,tzinfo=timezone.utc);u='00000000-0000-4000-8000-000000000001'
+    b=message('alpha','command',dict(command_id=u,transition_id=u,correlation_id=u,command_type='set_profile',phase='PREPARE',requested_profile=AES,
+        source_version='admin-v1',controller_identity='lcm-manual-controller',profile_config_version=1,key_reference=AES+':1',command_epoch=1,command_sequence=1),now=n,message_id=u)
+    assert json.loads(seal(b,KEY,'controller',now=n))['mac']=='17c0f0e26d8a35a9d819ed363fdf5e056547ed7559454fa23407c8db7964b3a8'

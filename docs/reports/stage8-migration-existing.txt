@@ -1,0 +1,8 @@
+
+UTC: 2026-11-10T13:38:05.336994+00:00
+$ docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m src.migrate
+ Container lcm-stage8-control-tests-run-976260d909a2 Creating
+ Container lcm-stage8-control-tests-run-976260d909a2 Created
+PostgreSQL migrations applied
+
+EXIT CODE: 0

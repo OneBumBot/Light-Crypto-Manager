@@ -14,3 +14,13 @@ status и исправления изоляции Flask fixture sessions — 43 
 обе EFFECTIVE_CONFIRMED имеют outbox event и Mongo record. Соседи Ascon, gamma
 отвергает AES по capabilities. См. stage8-roundtrip.txt. Registry отмечает
 подтверждение только software agent, не Raspberry Pi и не сертификацию.
+
+Следующий блок: полный pytest с реальными PG/Mongo — 394 passed/exit0.
+9 targeted code mutants выявлены поведением (предварительный runner до receipt
+теста: 54 baseline checks); финальный mutation run будет повторён на acceptance.
+Реальные recovery probes — 9 пройдены, включая grace expiry/reconciliation и
+missing state. Часть ACK-negative сценариев требует свежего нормального ACK:
+первый MQTT-negative report содержит15 checks и не заявляет пропущенные ACK cases.
+Добавлена0008_control_evidence: только transition receipts, не копия сенсорной
+истории. Проверены retention и rollback при отказе записи receipt. Архивные
+records без packet digest не backfill выдуманными доказательствами.
