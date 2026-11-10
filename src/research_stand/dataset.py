@@ -267,6 +267,14 @@ def validate(directory, captures_root=None):
                 != capture["pcap_sha256"]
             ):
                 raise ValueError("Excluded source integrity mismatch")
+        from .label_verification import legacy_reconcile
+
+        reconciliation = legacy_reconcile(directory, captures_root)
+    else:
+        reconciliation = {
+            "reconciliation": "not_performed_without_raw",
+            "independent_label_verification": False,
+        }
     # No identifiers or raw MQTT fields can enter model inputs.
     if manifest["feature_order"] != FEATURES:
         raise ValueError("Provenance became predictive feature")
@@ -285,6 +293,7 @@ def validate(directory, captures_root=None):
     return dict(
         schema_version=1,
         status="engineering_validated_scientific_quality_unproven",
+        label_reconciliation=reconciliation,
         observations=len(observations),
         known_rows=len(data),
         unknown_rows=manifest["unknown_excluded"],
@@ -311,10 +320,19 @@ def main():
     p.add_argument("--output")
     p.add_argument("--captures")
     p.add_argument("--selection")
+    p.add_argument(
+        "--archive-v1", action="store_true", help="Explicit historical reproduction only"
+    )
     a = p.parse_args()
     print(
         json.dumps(
-            build(a.root, a.output, a.selection)
+            (
+                build(a.root, a.output, a.selection)
+                if a.archive_v1
+                else __import__("src.research_stand.dataset_v2", fromlist=["build"]).build(
+                    a.root, a.output
+                )
+            )
             if a.command == "build"
             else validate(a.root, a.captures),
             indent=2,

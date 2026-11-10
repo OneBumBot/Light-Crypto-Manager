@@ -233,7 +233,9 @@ def test_builder_keeps_unknown_out_of_training_and_preserves_provenance(tmp_path
     frame, manifest = read_prepared(output / "dataset.csv", output / "dataset.manifest.json")
     assert set(frame.label) == {0} and frame.experiment_id.eq("fixture").all()
     assert manifest["feature_order"] == module.FEATURES
-    assert module.validate(output, root)["known_rows"] == 2
+    assert module.validate(output)["known_rows"] == 2
+    with pytest.raises(FileNotFoundError):
+        module.validate(output, root)
     (folder / "ground-truth.json").write_text("modified")
     with pytest.raises(ValueError, match="integrity"):
         module.validate(output, root)

@@ -1,4 +1,5 @@
 """Controlled RF/IF candidates, validation-only selection and single frozen test entry."""
+from src.research_stand.quality import statuses
 import gc
 import json
 import os
@@ -86,6 +87,7 @@ def fit_candidate(frame,indices,spec,seed,multiclass=False):
 
 def plan(data,manifest,config,output):
     config_checked(config);frame,source=read_prepared(data,manifest,config.get('max_rows',100000))
+    if source.get('dataset_family')=='lightcrypto-lab-v1' and source.get('label_rules_version') and not source.get('provenance',{}).get('independent_label_verification'):raise ValueError('No independently corroborated laboratory labels; planning blocked')
     split=prepare_split(frame,config['seed'],config.get('minimum_normal_rows',1000),config.get('minimum_class_captures',5))
     value=dict(schema_version=1,dataset_sha256=source['sha256'],manifest_sha256=file_hash(Path(manifest)),
         config=config,config_sha256=canonical_hash(config),split=split,versions=versions())
@@ -108,6 +110,7 @@ def checked_plan(data,manifest,plan_path):
 
 def train(data,manifest,plan_path,models_dir,experiment_dir):
     frame,source,p=checked_plan(data,manifest,plan_path);config=p['config'];trials=config_checked(config)
+    if source.get('dataset_family')=='lightcrypto-lab-v1' and not source.get('label_rules_version'):raise ValueError('Archived laboratory v1 is not approved for training')
     folder=Path(experiment_dir);folder.mkdir(mode=0o700,parents=True,exist_ok=False)
     train_idx,val_idx,_=p['split']['indices'];validation=frame.iloc[val_idx]
     results=[]
@@ -178,7 +181,7 @@ def final_test(data,manifest,plan_path,models_dir,experiment_dir):
             threshold=threshold,threshold_frozen=True,mode=model['mode'],trusted_detector=False)
         reports.append(report)
     output=dict(schema_version=1,scope='final_internal_test',dataset=source,split=p['split'],freeze_sha256=expected,
-        scientific_quality_available=not source['synthetic'] and source['label_scope']=='packet_audited',versions=versions(),results=reports,
+        scientific_quality_available=False, data_quality=statuses(source),versions=versions(),results=reports,
         limitations=['Capture independence is a data collection assumption; not proven by different IDs',
                      'TLS availability of fields is not encrypted-runtime generalization','Synthetic results are engineering tests only'])
     (folder/'test.json').write_text(json.dumps(output,indent=2,allow_nan=False)+'\n')
