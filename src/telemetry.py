@@ -8,7 +8,8 @@ import os
 from pathlib import Path
 import re
 
-from src.web.ascon.ascon import ascon_decrypt, ascon_encrypt
+from src.crypto_profiles import ASCON, AES, PROFILES, BY_ALGORITHM, encrypt, decrypt
+from cryptography.exceptions import InvalidTag
 
 MAX_PACKET_BYTES = 8192
 MAX_SEQUENCE = 2**63-1
@@ -64,7 +65,7 @@ def validate_registry(registry):
     database_ids=set()
     for device,entry in registry.items():
         if not DEVICE.fullmatch(device): reject()
-        exact(entry,['topic','key_epoch','database_device_id','key_hex'])
+        exact(entry,['topic','key_epoch','database_device_id','key_hex'] + (['telemetry_keys'] if 'telemetry_keys' in entry else []))
         if entry['topic']!='iot/sensors/'+device: reject()
         positive(entry['key_epoch'],2**31-1)
         positive(entry['database_device_id'],2**31-1)
@@ -74,6 +75,12 @@ def validate_registry(registry):
         except (ValueError,TypeError): reject()
         if len(key)!=16 or len(entry['key_hex'])!=32 or key in seen: reject()
         seen.add(key)
+        if 'telemetry_keys' in entry:
+            exact(entry['telemetry_keys'], ['AES-128-GCM'])
+            try: aes=bytes.fromhex(entry['telemetry_keys']['AES-128-GCM'])
+            except (ValueError,TypeError): reject()
+            if len(aes)!=16 or len(entry['telemetry_keys']['AES-128-GCM'])!=32 or aes in seen: reject()
+            seen.add(aes)
     return registry
 
 
@@ -87,18 +94,22 @@ def canonical(value):
     return json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()
 
 
-def encode_packet(sensor, registry, device_id, sequence_number):
+def encode_packet(sensor, registry, device_id, sequence_number, *, profile=ASCON):
     validate_registry(registry)
     if device_id not in registry: reject()
     positive(sequence_number)
     validate_sensor(sensor)
     entry=registry[device_id]
+    if profile not in PROFILES: reject()
+    algorithm=PROFILES[profile]['algorithm']
+    key=entry['key_hex'] if profile==ASCON else entry.get('telemetry_keys',{}).get(algorithm)
+    if key is None: reject()
     metadata={'device_id':device_id,'topic':entry['topic'],'key_epoch':entry['key_epoch'],
-              'sequence_number':sequence_number,'schema_version':2,'profile':PROFILE}
+              'sequence_number':sequence_number,'schema_version':2,'profile':algorithm}
     ad=canonical(metadata)
-    nonce=os.urandom(16)
-    ciphertext=ascon_encrypt(bytes.fromhex(entry['key_hex']),nonce,ad,canonical(sensor),PROFILE)
-    return {'schema_version':2,'profile':PROFILE,'nonce':base64.b64encode(nonce).decode(),
+    nonce=os.urandom(16) if profile==ASCON else entry['key_epoch'].to_bytes(4,'big')+sequence_number.to_bytes(8,'big')
+    ciphertext=encrypt(profile,bytes.fromhex(key),nonce,ad,canonical(sensor))
+    return {'schema_version':2,'profile':algorithm,'nonce':base64.b64encode(nonce).decode(),
             'associated_data':base64.b64encode(ad).decode(),
             'ciphertext':base64.b64encode(ciphertext).decode()}
 
@@ -110,6 +121,7 @@ class VerifiedTelemetry:
     sequence_number: int
     database_device_id: int
     sensor: dict
+    profile: str = PROFILE
 
 
 def decode_packet(raw, topic, registry):
@@ -118,7 +130,7 @@ def decode_packet(raw, topic, registry):
     if type(raw) is not bytes or not 1<=len(raw)<=MAX_PACKET_BYTES: reject()
     packet=strict_json(raw)
     exact(packet,['schema_version','profile','nonce','associated_data','ciphertext'])
-    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile']!=PROFILE: reject()
+    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile'] not in BY_ALGORITHM: reject()
     def decode(name, maximum):
         value=packet[name]
         if type(value) is not str or len(value)>maximum*2: reject()
@@ -129,7 +141,8 @@ def decode_packet(raw, topic, registry):
     nonce=decode('nonce',16)
     ad=decode('associated_data',1024)
     ciphertext=decode('ciphertext',4096)
-    if len(nonce)!=16 or len(ciphertext)<16: reject()
+    profile=BY_ALGORITHM[packet['profile']]
+    if len(nonce)!=PROFILES[profile]['nonce_bytes'] or len(ciphertext)<16: reject()
     metadata=strict_json(ad)
     exact(metadata,['device_id','topic','key_epoch','sequence_number','schema_version','profile'])
     device=metadata['device_id']
@@ -137,12 +150,14 @@ def decode_packet(raw, topic, registry):
     positive(metadata['sequence_number'])
     positive(metadata['key_epoch'],2**31-1)
     entry=registry[device]
-    if type(metadata['schema_version']) is not int or metadata['schema_version']!=2 or metadata['profile']!=PROFILE: reject()
+    if type(metadata['schema_version']) is not int or metadata['schema_version']!=2 or metadata['profile']!=packet['profile']: reject()
     if topic!=entry['topic'] or metadata['topic']!=topic or metadata['key_epoch']!=entry['key_epoch']: reject()
-    key=bytes.fromhex(entry['key_hex'])
-    if len(key)!=16: reject()
-    plaintext=ascon_decrypt(key,nonce,ad,ciphertext,PROFILE)
-    if plaintext is None: reject()
+    key_hex=entry['key_hex'] if profile==ASCON else entry.get('telemetry_keys',{}).get(packet['profile'])
+    if not key_hex: reject()
+    key=bytes.fromhex(key_hex)
+    if profile==AES and nonce!=metadata['key_epoch'].to_bytes(4,'big')+metadata['sequence_number'].to_bytes(8,'big'): reject()
+    try: plaintext=decrypt(profile,key,nonce,ad,ciphertext)
+    except (InvalidTag,ValueError): reject()
     sensor=validate_sensor(strict_json(plaintext))
     return VerifiedTelemetry(device,metadata['key_epoch'],metadata['sequence_number'],
-                             entry['database_device_id'],sensor)
+                             entry['database_device_id'],sensor,packet['profile'])

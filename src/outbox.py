@@ -49,7 +49,7 @@ def record(connection, kind, now=None):
 def enqueue(connection, message, now):
     sensor = message.sensor
     payload = dict(device_id=message.device_id, key_epoch=message.key_epoch,
-        sequence_number=message.sequence_number, crypto_profile='Ascon-AEAD128',
+        sequence_number=message.sequence_number, crypto_profile=message.profile,
         measured_at=sensor['timestamp'], received_at=now.isoformat(),
         temperature=sensor['temperature'], humidity=sensor['humidity'], sensors={})
     connection.execute(outbox.insert().values(id=str(uuid.uuid4()), device_id=message.device_id,

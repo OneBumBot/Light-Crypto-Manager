@@ -11,7 +11,7 @@ telemetry.createCollection('measurements', {
       key_epoch: {bsonType: ['int','long'], minimum: 1, maximum: 2147483647},
       sequence_number: {bsonType: ['int','long'], minimum: 1},
       measured_at: {bsonType: 'date'}, received_at: {bsonType: 'date'},
-      crypto_profile: {enum: ['Ascon-AEAD128']},
+      crypto_profile: {enum: ['Ascon-AEAD128', 'AES-128-GCM']},
       temperature: {bsonType: ['int','long','double'], minimum: -80, maximum: 150},
       humidity: {bsonType: ['int','long','double'], minimum: 0, maximum: 100},
       sensors: {bsonType: 'object', maxProperties: 0}

@@ -3,7 +3,7 @@ name = "lightcrypto-manager"
 version = "0.1.0"
 description = "Legacy LightCrypto Manager runtime and experiments"
 requires-python = ">=3.12,<3.15"
-dependencies = ["paho-mqtt==2.1.0"]
+dependencies = ["paho-mqtt==2.1.0", "cryptography>=46,<51"]
 
 [dependency-groups]
 publisher = ["numpy>=2.2,<3"]

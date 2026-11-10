@@ -27,7 +27,7 @@ def document(payload):
         raise ValueError('Invalid device')
     positive(payload['key_epoch'],2**31-1)
     positive(payload['sequence_number'])
-    if payload['crypto_profile'] != PROFILE or payload['sensors'] != {}:
+    if payload['crypto_profile'] not in ('Ascon-AEAD128','AES-128-GCM') or payload['sensors'] != {}:
         raise ValueError('Unsupported telemetry schema')
     validate_sensor(dict(temperature=payload['temperature'],humidity=payload['humidity'],timestamp=payload['measured_at']))
     result = dict(payload)
