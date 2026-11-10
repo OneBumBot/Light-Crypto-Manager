@@ -6,7 +6,8 @@ from cryptography.exceptions import InvalidTag
 from src.crypto_profiles import AES, encrypt, decrypt
 from src.telemetry import encode_packet,decode_packet,InvalidTelemetry,canonical
 
-# NIST CAVP gcmEncryptExtIV128.rsp (also pyca/cryptography vectors).
+# Supplemental public zero-key GCM regression examples.
+# Exact CAVP records with source provenance are tested separately below.
 @pytest.mark.parametrize('plaintext,expected',[
     ('','58e2fccefa7e3061367f1d57a4e7455a'),
     ('00'*16,'0388dace60b6a392f328c2b971b2fe78ab6e47d42cec13bdf53a67b21257bddf'),

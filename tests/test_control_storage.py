@@ -68,6 +68,15 @@ def test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade(postg
         evidence=c.execute(select(outbox).where(outbox.c.id==d['effective_event'])).mappings().one()
         assert evidence['payload']['crypto_profile']=='AES-128-GCM' and evidence['sequence_number']==seq
     with pytest.raises(InvalidTelemetry):process_packet(packet(registry,seq+1),registry,web.db.engine,'iot/sensors/raspb1')
+    # A real protected cached ACK may arrive AFTER accepted target telemetry.
+    # It must update reported metadata without changing verified evidence/time.
+    late=open_message(state.execute(body,conf),bytes.fromhex(conf['status_key']),'device','raspb1',topic('raspb1','device'))
+    with web.db.engine.begin() as c:assert server.handle_ack(c,late)
+    with web.db.engine.connect() as c:
+        assert c.scalar(select(m.devices.c.reported_profile))==AES
+        assert c.scalar(select(m.transitions.c.acknowledged_at)) is not None
+        assert c.scalar(select(m.devices.c.effective_event))==evidence['id']
+        assert c.scalar(select(m.transitions.c.confirmed_at))==t['confirmed_at']
     state.close()
 
 

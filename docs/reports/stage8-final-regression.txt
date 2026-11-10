@@ -12,3 +12,17 @@ $ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --r
 401 passed in 34.44s
 
 EXIT CODE: 0
+
+UTC: 2026-11-10T14:07:54.409626+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps tests
+ Container lcm-stage8-acceptance-tests-run-18116620bc9f Creating
+ Container lcm-stage8-acceptance-tests-run-18116620bc9f Created
+........................................................................ [ 17%]
+........................................................................ [ 35%]
+........................................................................ [ 53%]
+........................................................................ [ 71%]
+........................................................................ [ 89%]
+.........................................                                [100%]
+401 passed in 34.23s
+
+EXIT CODE: 0

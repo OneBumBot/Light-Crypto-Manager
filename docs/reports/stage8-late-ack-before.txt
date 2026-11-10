@@ -1,0 +1,23 @@
+
+UTC: 2026-11-10T14:05:23.753280+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps tests python -m pytest -q -p no:cacheprovider tests/test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade
+ Container lcm-stage8-acceptance-tests-run-f6dfd3b5dbc9 Creating
+ Container lcm-stage8-acceptance-tests-run-f6dfd3b5dbc9 Created
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____ test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade ____
+tests/test_control_storage.py:76: in test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade
+    assert c.scalar(select(m.devices.c.reported_profile))==AES
+E   AssertionError: assert None == 'aes-128-gcm-v1'
+E    +  where None = scalar(<sqlalchemy.sql.selectable.Select object at 0x7fbefe812330>)
+E    +    where scalar = <sqlalchemy.engine.base.Connection object at 0x7fbefe8b8260>.scalar
+E    +    and   <sqlalchemy.sql.selectable.Select object at 0x7fbefe812330> = select(Column('reported_profile', String(length=64), table=<live_control_devices>))
+E    +      where Column('reported_profile', String(length=64), table=<live_control_devices>) = <sqlalchemy.sql.base.ReadOnlyColumnCollection object at 0x7fbf036e1ee0>.reported_profile
+E    +        where <sqlalchemy.sql.base.ReadOnlyColumnCollection object at 0x7fbf036e1ee0> = Table('live_control_devices', MetaData(), Column('device_id', String(length=48), table=<live_control_devices>, primary...<live_control_devices>), Column('last_request_at', DateTime(timezone=True), table=<live_control_devices>), schema=None).c
+E    +          where Table('live_control_devices', MetaData(), Column('device_id', String(length=48), table=<live_control_devices>, primary...<live_control_devices>), Column('last_request_at', DateTime(timezone=True), table=<live_control_devices>), schema=None) = m.devices
+=========================== short test summary info ============================
+FAILED tests/test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade
+1 failed in 0.56s
+
+
+EXIT CODE: 1

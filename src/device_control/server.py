@@ -111,7 +111,13 @@ def handle_ack(c,body):
     c.execute(m.acks.insert().values(id=body['message_id'],command_id=cmd['id'],device_id=device,body=body,sha256=digest,received_at=n))
     c.execute(update(m.commands).where(m.commands.c.id==cmd['id']).values(status='acknowledged',claim=None,lease_until=None))
     c.execute(update(m.devices).where(m.devices.c.device_id==device).values(command_acknowledged=data['command_sequence']))
-    if t['phase']=='EFFECTIVE_CONFIRMED':return True
+    if t['phase']=='EFFECTIVE_CONFIRMED':
+        if cmd['phase']!='ACTIVATE' or data['result']!='DEVICE_APPLIED':raise ValueError('Contradictory late ACK')
+        c.execute(update(m.transitions).where(m.transitions.c.id==t['id']).values(acknowledged_at=func.coalesce(m.transitions.c.acknowledged_at,n)))
+        if d['effective_event']==t['telemetry_event']:
+            c.execute(update(m.devices).where(m.devices.c.device_id==device).values(reported_profile=t['target_profile']))
+        log(c,device,'LATE_DEVICE_REPORTED_APPLIED',t['id'],ack=body['message_id'])
+        return True
     if data['result']=='READY' and cmd['phase']=='PREPARE' and t['phase'] in ['PREPARED_SERVER','PREPARE_SENT']:
         log(c,device,'DEVICE_READY',t['id'],ack=body['message_id'])
         fresh=dict(d,command_sequence=d['command_sequence'])

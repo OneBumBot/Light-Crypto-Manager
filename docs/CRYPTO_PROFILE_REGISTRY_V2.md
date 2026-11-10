@@ -17,7 +17,7 @@ python-device-agent-v1, не произвольные физические ус�
 Simulation profiles не попадают в IMPLEMENTED и не активируются.
 
 Ascon KAT: существующие независимые ascon-c Counts 1/2/34/35 сохранены.
-AES: NIST GCM examples и CAVP CAVS14.0 gcmEncryptExtIV128.rsp, IVlen96/Taglen128,
+AES: дополнительные zero-key GCM regression examples и точные CAVP CAVS14.0 gcmEncryptExtIV128.rsp, IVlen96/Taglen128,
 включая PTlen0/AADlen0 и PTlen0/AADlen128 Count0. Ожидаемые байты фиксированы,
 не вычисляются тестируемым encrypt. Источники:
 [Ascon reference](https://github.com/ascon/ascon-c/blob/main/crypto_aead/asconaead128/LWC_AEAD_KAT_128_128.txt),
