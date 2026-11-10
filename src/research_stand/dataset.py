@@ -324,6 +324,10 @@ def main():
         "--archive-v1", action="store_true", help="Explicit historical reproduction only"
     )
     a = p.parse_args()
+    if a.command == "build" and a.selection and not a.archive_v1:
+        p.error(
+            "Use --archive-v1 for legacy selection or dataset_v2 --parent-manifest for reannotation"
+        )
     print(
         json.dumps(
             (

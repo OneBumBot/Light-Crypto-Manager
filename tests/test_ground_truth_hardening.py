@@ -240,7 +240,11 @@ def coherent_hashes(out):
 
 def test_public_pipeline_positive_mixed_and_unknown(tmp_path):
     raw, out = derived(tmp_path)
+    before = {str(p): digest(p) for root in [raw, out] for p in root.rglob("*") if p.is_file()}
     report = reconcile(out, raw)
+    assert before == {
+        str(p): digest(p) for root in [raw, out] for p in root.rglob("*") if p.is_file()
+    }
     assert set(report["class_counts"]) == {"normal", "controlled_violation", "unknown"}
     f = pd.read_csv(out / "observations.csv", keep_default_na=False)
     assert set(f.label_unit) == {"connection_activity"} and set(f.packet_specific_evidence) == {
