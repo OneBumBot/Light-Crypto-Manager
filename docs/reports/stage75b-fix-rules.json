@@ -1,0 +1,21 @@
+{
+  "version": "connection-evidence-v2.2",
+  "source_corroboration": "broker session + timed authenticated PG + independent ciphertext digest for replay",
+  "minimum_unique_publishes": 8,
+  "minimum_peer_publishes": 6,
+  "fast_median_nominal_ratio": 0.75,
+  "fast_fraction": 0.9,
+  "fast_expected_ratio": 0.5,
+  "interval_tolerance_seconds": 0.05,
+  "low_ratio": 0.8,
+  "high_ratio": 1.2,
+  "minimum_low_intervals": 3,
+  "minimum_high_intervals": 3,
+  "minimum_alternation_fraction": 0.7,
+  "broker_window_margin_seconds": 0.02,
+  "packet_margin_minimum_seconds": 5e-05,
+  "activity_bounds": "intersection of producer TLS and independently recorded broker session",
+  "packet_specific_evidence": "none_encrypted_tls",
+  "calibrated_using_rf_if_metrics": false,
+  "formal_external_preregistration": false
+}

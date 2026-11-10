@@ -1,0 +1,255 @@
+
+UTC: 2026-11-10T10:50:00.257883+00:00
+$ .venv/bin/python -m scripts.verify_ground_truth_hardening --env-file .local-runtime/ground-truth-fix/lab/compose.env --captures .local-runtime/ground-truth-fix/corroborated-captures --output .local-runtime/ground-truth-fix/integration-final
+{
+  "schema_version": 1,
+  "project": "lcm-stage7b-gtfix",
+  "service": {
+    "categories": {
+      "replay": 44,
+      "rejected": 32,
+      "accepted": 1027
+    },
+    "outbox_pending": 0,
+    "mongo_records": 1027,
+    "policy_mode": "DRY_RUN",
+    "applied": 0
+  },
+  "reconciliation": {
+    "schema_version": 2,
+    "reconciliation": "matched",
+    "physical_packets": 2269,
+    "class_counts": {
+      "unknown": 569,
+      "normal": 1509,
+      "controlled_violation": 191
+    },
+    "corroborated_connections": 39,
+    "independent_algorithm": true,
+    "malicious_packet_accuracy": null,
+    "real_attack_detection_unproven": true,
+    "files_modified": false
+  },
+  "scenarios": {
+    "A_normal_tls": {
+      "status": "passed",
+      "normal": 211,
+      "server_records": 1027
+    },
+    "B_controlled": {
+      "status": "passed",
+      "positive_connections": 5,
+      "packet_attack_claim": false
+    },
+    "C_forged_generator_evidence": {
+      "status": "passed",
+      "target_activity": "unknown",
+      "independent_broker_unchanged": true
+    },
+    "D_real_qos1_dup": {
+      "status": "passed",
+      "broker_dup_events": 4,
+      "attack_rows": 0
+    },
+    "E_missing_source": {
+      "status": "passed",
+      "mechanism": "independent journal unavailable on private capture copy; no service outage claimed",
+      "all_unknown": true
+    },
+    "C_independent_digest_conflict": {
+      "status": "passed",
+      "deliberate_replay_unverified": true
+    },
+    "F_collector_fault": {
+      "status": "passed",
+      "stopped": true,
+      "duration": 2.125767469406128,
+      "mongo_delta": 17,
+      "unfinished_capture_in_dataset": false
+    },
+    "coherent_real_csv_tamper": {
+      "status": "rejected_logically",
+      "hashes_updated": true
+    }
+  },
+  "models_trained_on_lab_data": 0,
+  "final_holdout_evaluated": false,
+  "label_accuracy": null
+}
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T10:54:08.132346+00:00
+$ .venv/bin/python -m scripts.verify_ground_truth_hardening --env-file .local-runtime/ground-truth-fix/lab/compose.env --captures .local-runtime/ground-truth-fix/corroborated-captures --output .local-runtime/ground-truth-fix/integration-final2
+{
+  "schema_version": 1,
+  "project": "lcm-stage7b-gtfix",
+  "service": {
+    "categories": {
+      "replay": 44,
+      "rejected": 32,
+      "accepted": 1044
+    },
+    "outbox_pending": 0,
+    "mongo_records": 1044,
+    "policy_mode": "DRY_RUN",
+    "applied": 0
+  },
+  "reconciliation": {
+    "schema_version": 2,
+    "reconciliation": "matched",
+    "physical_packets": 2269,
+    "class_counts": {
+      "unknown": 569,
+      "normal": 1509,
+      "controlled_violation": 191
+    },
+    "corroborated_connections": 39,
+    "independent_algorithm": true,
+    "malicious_packet_accuracy": null,
+    "real_attack_detection_unproven": true,
+    "files_modified": false
+  },
+  "scenarios": {
+    "A_normal_tls": {
+      "status": "passed",
+      "normal": 211,
+      "server_records": 1044
+    },
+    "B_controlled": {
+      "status": "passed",
+      "positive_connections": 5,
+      "packet_attack_claim": false
+    },
+    "C_forged_generator_evidence": {
+      "status": "passed",
+      "target_activity": "unknown",
+      "independent_broker_unchanged": true
+    },
+    "D_real_qos1_dup": {
+      "status": "passed",
+      "broker_dup_events": 4,
+      "attack_rows": 0
+    },
+    "E_missing_source": {
+      "status": "passed",
+      "mechanism": "independent journal unavailable on private capture copy; no service outage claimed",
+      "all_unknown": true
+    },
+    "C_independent_digest_conflict": {
+      "status": "passed",
+      "deliberate_replay_unverified": true
+    },
+    "E_live_observer_exit": {
+      "status": "passed",
+      "source_process_terminated": true,
+      "experiment_aborted": true,
+      "mongo_delta": 17,
+      "no_verified_dataset": true
+    },
+    "F_collector_fault": {
+      "status": "passed",
+      "stopped": true,
+      "duration": 2.183807611465454,
+      "mongo_delta": 17,
+      "unfinished_capture_in_dataset": false
+    },
+    "coherent_real_csv_tamper": {
+      "status": "rejected_logically",
+      "hashes_updated": true
+    }
+  },
+  "models_trained_on_lab_data": 0,
+  "final_holdout_evaluated": false,
+  "label_accuracy": null
+}
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T11:09:05.019693+00:00
+$ .venv/bin/python -m scripts.verify_ground_truth_hardening --env-file .local-runtime/ground-truth-fix/lab/compose.env --captures .local-runtime/ground-truth-fix/corroborated-captures --output .local-runtime/ground-truth-fix/integration-v22
+{
+  "original_capture_hashes_unchanged": true,
+  "schema_version": 1,
+  "project": "lcm-stage7b-gtfix",
+  "service": {
+    "categories": {
+      "replay": 44,
+      "rejected": 32,
+      "accepted": 1078
+    },
+    "outbox_pending": 0,
+    "mongo_records": 1078,
+    "policy_mode": "DRY_RUN",
+    "applied": 0
+  },
+  "reconciliation": {
+    "schema_version": 2,
+    "reconciliation": "matched",
+    "physical_packets": 2269,
+    "class_counts": {
+      "unknown": 570,
+      "normal": 1509,
+      "controlled_violation": 190
+    },
+    "corroborated_connections": 39,
+    "independent_algorithm": true,
+    "malicious_packet_accuracy": null,
+    "real_attack_detection_unproven": true,
+    "files_modified": false
+  },
+  "scenarios": {
+    "A_normal_tls": {
+      "status": "passed",
+      "normal": 211,
+      "server_records": 1078
+    },
+    "B_controlled": {
+      "status": "passed",
+      "positive_connections": 5,
+      "packet_attack_claim": false
+    },
+    "C_forged_generator_evidence": {
+      "status": "passed",
+      "target_activity": "unknown",
+      "independent_broker_unchanged": true
+    },
+    "D_real_qos1_dup": {
+      "status": "passed",
+      "broker_dup_events": 4,
+      "attack_rows": 0
+    },
+    "E_missing_source": {
+      "status": "passed",
+      "mechanism": "independent journal unavailable on private capture copy; no service outage claimed",
+      "all_unknown": true
+    },
+    "C_independent_digest_conflict": {
+      "status": "passed",
+      "deliberate_replay_unverified": true
+    },
+    "E_live_observer_exit": {
+      "status": "passed",
+      "source_process_terminated": true,
+      "experiment_aborted": true,
+      "mongo_delta": 16,
+      "no_verified_dataset": true
+    },
+    "F_collector_fault": {
+      "status": "passed",
+      "stopped": true,
+      "duration": 2.158278465270996,
+      "mongo_delta": 17,
+      "unfinished_capture_in_dataset": false
+    },
+    "coherent_real_csv_tamper": {
+      "status": "rejected_logically",
+      "hashes_updated": true
+    }
+  },
+  "models_trained_on_lab_data": 0,
+  "final_holdout_evaluated": false,
+  "label_accuracy": null
+}
+
+EXIT CODE: 0

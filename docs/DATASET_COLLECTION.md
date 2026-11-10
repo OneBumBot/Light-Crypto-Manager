@@ -67,3 +67,48 @@ docker compose --env-file "$LAB_ENV" --profile research --profile policy --profi
 `python -m src.research_stand.retention` (по умолчанию preview), см. --help.
 Docker volumes намеренно сохраняются; их удаление — отдельное ручное действие
 после backup/проверки имён. Не используйте down -v для очистки рабочего контура.
+
+## Воспроизведение после исправления ground truth
+
+Старые PCAP/manifests/CSV/plan по-прежнему private и immutable. Для точного старого
+build нужен `--archive-v1`; этот набор не разрешён для нового train. Стандартный
+build теперь v2; `dataset validate --root NEW --captures RAW` выбирает versioned
+oracle автоматически. Source observer failure прерывает experiment без включения
+незавершённого capture; ingestion/PG/Mongo продолжают работать.
+
+В research override появился idle service research-observer: отдельный TLS client
+со scoped read-only credential своего брокера и без device key registry.
+traffic-collector зависит от него; обычный up traffic-collector подготовит его.
+Активный fanout witness запускается только orchestrator на время одного run.
+Он сохраняет digest, не MQTT payload. Collector остаётся в namespace publisher,
+observer имеет отдельный namespace и не смешивает свои пакеты с dataset.
+
+```bash
+# Свежая конфигурация и новый project, никогда рабочие volumes:
+python3 scripts/prepare_research_stand.py --directory .local-runtime/new-gtfix --project lcm-stage7b-new-gtfix
+export COMPOSE_FILE=compose.yaml:compose.research.yaml
+LCM_GT_ENV=.local-runtime/new-gtfix/compose.env
+docker compose --env-file "$LCM_GT_ENV" --profile research build receiver tests research-init
+docker compose --env-file "$LCM_GT_ENV" --profile research up -d --wait mongo outbox-relay policy-worker traffic-collector
+```
+
+Для воспроизведения небольшой матрицы используйте публичный Lab.experiment с
+Experiment(scenario, clients=4,duration=8,interval=.5,jitter=.01,seed=81000+i):
+regular / bad_credentials / forbidden_acl / qos1_retry / replay / tampered /
+bounded_rate / pattern_change. В контролируемых случаях violation=True, normal
+False. Эта матрица уже реально выполнена; дополнительно исправленный auth retry
+сохранён отдельным capture. Конфиги находятся в original ground-truth journals.
+Не объявляйте эти отдельные процессы доказанно статистически независимыми.
+
+```bash
+.venv/bin/python -m src.research_stand.dataset_v2 --captures /private/raw --output /private/new-v2.2
+.venv/bin/python -m src.research_stand.label_verification --dataset /private/new-v2.2 --captures /private/raw --output /private/reconciliation.json
+.venv/bin/python -m scripts.verify_ground_truth_hardening --env-file "$LCM_GT_ENV" --captures /private/raw --output /private/unique-probe-output
+```
+
+Последний probe требует уже собранные перечисленные scenarios, затем создаёт
+private evidence copies и bounded source/collector fault runs. Нужен новый output
+path: старые результаты не перезаписываются. Test mutations используют temporary
+source trees; raw data не правят. Никакого train/test/auto-install моделей нет.
+Недостаток groups и неизмеренные labels нельзя обойти увеличением одинаковых
+пакетов. Для строгой disk quota по-прежнему требуется отдельный filesystem/VM.

@@ -1,0 +1,8 @@
+
+UTC: 2026-11-10T11:25:01.160709+00:00
+$ docker compose --env-file .local-runtime/ground-truth-fix/lab/compose.env -f compose.yaml -f compose.research.yaml run --rm --no-deps tests python -c 'import json,time;from scripts.stand_state import snapshot;s=snapshot(time.time()-30);print(json.dumps({k:s[k] for k in ['"'"'schema_version'"'"','"'"'categories'"'"','"'"'outbox_pending'"'"','"'"'mongo_records'"'"','"'"'postgres'"'"','"'"'mongo'"'"']}))'
+ Container lcm-stage7b-gtfix-tests-run-7141dbc5152d Creating
+ Container lcm-stage7b-gtfix-tests-run-7141dbc5152d Created
+{"schema_version": 2, "categories": {"replay": 44, "rejected": 32, "accepted": 1111}, "outbox_pending": 0, "mongo_records": 1111, "postgres": "available", "mongo": "available"}
+
+EXIT CODE: 0

@@ -110,3 +110,20 @@ score_range, score_semantics, mode и trusted_detector=false. Null/unscored
 защиту; правила будущего Policy Engine требуют отдельного этапа. Network future
 interface возвращает дополнительно predicted_class; его argmax может отличаться
 от отдельного thresholded risk signal, что учитывается раздельно в метриках.
+
+## Исследовательские annotations 7.5b-fix
+
+tcp-packet-passive-v1 по-прежнему ровно5numeric features. Новые метаданные
+connection-evidence-v2.2 НЕ predictive inputs: label_unit, label_scope,
+connection_activity, packet_specific_evidence, evidence level, confidence, reason,
+scenario и provenance. Packet features и единица метки различны: connection/
+window context не означает malicious packet. Unknown имеет пустой binary label
+и исключается из training table. Real TLS capture не делает модель trusted.
+
+Explicit provenance: real_packet_capture/generated_test_clients/controlled_lab,
+independent_label_verification/external_validation, attack_realism_scope и known
+shortcut risks. Engineering/laboratory consistency не тождественны RF/IF quality
+или real attack detection. Старый lab75b-v1 training блокируется; новые данные
+должны пройти source reconciliation и прежние support gates. Scientific flag
+для текущих исследований false. Online telemetry worker и Policy ML allowlist
+не менялись, Network model туда не устанавливается. LABEL_SEMANTICS.md.

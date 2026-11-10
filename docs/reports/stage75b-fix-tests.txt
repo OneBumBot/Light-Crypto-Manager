@@ -1,0 +1,95 @@
+
+UTC: 2026-11-10T10:54:02.174680+00:00
+$ docker compose --env-file .local-runtime/ground-truth-fix/regression/compose.env run --rm --no-deps tests
+ Container lcm-stage7b-gtfix-reg-tests-run-07ea252335cc Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-07ea252335cc Created
+........................................................................ [ 21%]
+........................................................................ [ 43%]
+........................................................................ [ 65%]
+........................................................................ [ 87%]
+...........................................                              [100%]
+331 passed in 30.44s
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T11:03:56.036370+00:00
+$ docker compose --env-file .local-runtime/ground-truth-fix/regression/compose.env run --rm --no-deps tests
+ Container lcm-stage7b-gtfix-reg-tests-run-02f61c5743b2 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-02f61c5743b2 Created
+........................................................................ [ 21%]
+........................................................................ [ 43%]
+........................................................................ [ 64%]
+........................................................................ [ 86%]
+..............................................                           [100%]
+334 passed in 28.37s
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T11:11:02.626768+00:00
+$ docker compose --env-file .local-runtime/ground-truth-fix/regression/compose.env run --rm --no-deps tests
+ Container lcm-stage7b-gtfix-reg-tests-run-1e6fa2103c14 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-1e6fa2103c14 Created
+........................................................................ [ 21%]
+........................................................................ [ 42%]
+........................................................................ [ 64%]
+........................................................................ [ 85%]
+................................................                         [100%]
+336 passed in 28.42s
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T11:22:31.908849+00:00
+$ docker compose --env-file .local-runtime/ground-truth-fix/regression/compose.env run --rm --no-deps tests
+ Container lcm-stage7b-gtfix-reg-tests-run-10c5268440d1 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-10c5268440d1 Created
+........................................................................ [ 21%]
+........................................................................ [ 42%]
+........................................................................ [ 64%]
+........................................................................ [ 85%]
+................................................                         [100%]
+336 passed in 28.92s
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T11:31:26.762291+00:00
+$ docker compose --env-file .local-runtime/ground-truth-fix/regression/compose.env run --rm tests
+ Network lcm-stage7b-gtfix-reg_default Creating
+ Network lcm-stage7b-gtfix-reg_default Creating
+ Network lcm-stage7b-gtfix-reg_default Created
+ Network lcm-stage7b-gtfix-reg_default Created
+ Container lcm-stage7b-gtfix-reg-postgres-1 Creating
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Creating
+ Container lcm-stage7b-gtfix-reg-security-init-1 Creating
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Created
+ Container lcm-stage7b-gtfix-reg-mongo-1 Creating
+ Container lcm-stage7b-gtfix-reg-security-init-1 Created
+ Container lcm-stage7b-gtfix-reg-postgres-1 Created
+ Container lcm-stage7b-gtfix-reg-mongo-1 Created
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Starting
+ Container lcm-stage7b-gtfix-reg-security-init-1 Starting
+ Container lcm-stage7b-gtfix-reg-postgres-1 Starting
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Started
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Waiting
+ Container lcm-stage7b-gtfix-reg-security-init-1 Started
+ Container lcm-stage7b-gtfix-reg-postgres-1 Started
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Exited
+ Container lcm-stage7b-gtfix-reg-mongo-1 Starting
+ Container lcm-stage7b-gtfix-reg-mongo-1 Started
+ Container lcm-stage7b-gtfix-reg-security-init-1 Waiting
+ Container lcm-stage7b-gtfix-reg-postgres-1 Waiting
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Waiting
+ Container lcm-stage7b-gtfix-reg-mongo-1 Waiting
+ Container lcm-stage7b-gtfix-reg-security-init-1 Exited
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Exited
+ Container lcm-stage7b-gtfix-reg-postgres-1 Healthy
+ Container lcm-stage7b-gtfix-reg-mongo-1 Healthy
+ Container lcm-stage7b-gtfix-reg-tests-run-d06459b23122 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-d06459b23122 Created
+........................................................................ [ 21%]
+........................................................................ [ 42%]
+........................................................................ [ 64%]
+........................................................................ [ 85%]
+.................................................                        [100%]
+337 passed in 30.84s
+
+EXIT CODE: 0

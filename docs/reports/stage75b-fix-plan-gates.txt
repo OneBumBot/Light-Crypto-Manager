@@ -1,0 +1,24 @@
+
+UTC: 2026-11-10T11:04:58.308088+00:00
+$ .venv/bin/python -m src.classifier.research.cli plan --data .local-runtime/ground-truth-fix/archive-v2.1/dataset.csv --manifest .local-runtime/ground-truth-fix/archive-v2.1/dataset.manifest.json --config configs/ml/research75.json --output .local-runtime/ground-truth-fix/archive-v2.1/blocked-plan.json
+Research run rejected: No independently corroborated laboratory labels; planning blocked
+
+EXIT CODE: 2
+
+UTC: 2026-11-10T11:04:58.880589+00:00
+$ .venv/bin/python -m src.classifier.research.cli plan --data .local-runtime/ground-truth-fix/integration-final2/checked-dataset/dataset.csv --manifest .local-runtime/ground-truth-fix/integration-final2/checked-dataset/dataset.manifest.json --config configs/ml/research75.json --output .local-runtime/ground-truth-fix/integration-final2/checked-dataset/blocked-plan.json
+Research run rejected: Insufficient independent captures per class for train/validation/test: {'0': 9, '1': 5}
+
+EXIT CODE: 2
+
+UTC: 2026-11-10T11:13:27.843813+00:00
+$ .venv/bin/python -m src.classifier.research.cli plan --data .local-runtime/ground-truth-fix/archive-v2.2/dataset.csv --manifest .local-runtime/ground-truth-fix/archive-v2.2/dataset.manifest.json --config configs/ml/research75.json --output .local-runtime/ground-truth-fix/archive-v2.2/blocked-plan.json
+Research run rejected: No independently corroborated laboratory labels; planning blocked
+
+EXIT CODE: 2
+
+UTC: 2026-11-10T11:13:28.432262+00:00
+$ .venv/bin/python -m src.classifier.research.cli plan --data .local-runtime/ground-truth-fix/integration-v22/checked-dataset/dataset.csv --manifest .local-runtime/ground-truth-fix/integration-v22/checked-dataset/dataset.manifest.json --config configs/ml/research75.json --output .local-runtime/ground-truth-fix/integration-v22/checked-dataset/blocked-plan.json
+Research run rejected: Insufficient independent captures per class for train/validation/test: {'0': 9, '1': 5}
+
+EXIT CODE: 2

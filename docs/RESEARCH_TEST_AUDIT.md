@@ -40,3 +40,7 @@ independence. Идентичный feature vector не равен физичес
 а не вызывать builder повторно. Старые tests остаются historical regressions.
 Новые tests/probes и mutation results перечисляются в GROUND_TRUTH_VERIFICATION.md
 и RESEARCH_75B_FIX_RESULTS.md после фактического выполнения.
+
+Итог после исправления: новый oracle и real probes реализованы; результаты и
+ограничения приведены в [RESEARCH_75B_FIX_RESULTS.md](RESEARCH_75B_FIX_RESULTS.md).
+Историческая классификация выше относится к исходному HEAD 3282557.

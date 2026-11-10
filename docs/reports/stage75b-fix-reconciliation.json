@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "rules": "connection-evidence-v2.2",
+  "archive": {
+    "schema_version": 2,
+    "reconciliation": "matched",
+    "physical_packets": 46395,
+    "class_counts": {
+      "unknown": 46395
+    },
+    "corroborated_connections": 0,
+    "independent_algorithm": true,
+    "malicious_packet_accuracy": null,
+    "real_attack_detection_unproven": true,
+    "files_modified": false
+  },
+  "live": {
+    "schema_version": 2,
+    "reconciliation": "matched",
+    "physical_packets": 2269,
+    "class_counts": {
+      "unknown": 570,
+      "normal": 1509,
+      "controlled_violation": 190
+    },
+    "corroborated_connections": 39,
+    "independent_algorithm": true,
+    "malicious_packet_accuracy": null,
+    "real_attack_detection_unproven": true,
+    "files_modified": false
+  },
+  "quantitative_label_accuracy": null
+}

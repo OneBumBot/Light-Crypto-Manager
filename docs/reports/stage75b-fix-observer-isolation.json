@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "keyless_runtime_mounts_checked": true,
+  "observer_cpu_limit": 0.5,
+  "observer_memory_bytes": 134217728,
+  "mounts": [
+    {
+      "target": "/research",
+      "read_only": false
+    },
+    {
+      "target": "/run/observer",
+      "read_only": true
+    }
+  ],
+  "shared_operator_and_data_volume": true,
+  "cryptographic_log_attestation": false,
+  "ascon_keys_available": false
+}

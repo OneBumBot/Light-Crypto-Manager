@@ -1,0 +1,140 @@
+
+UTC: 2026-11-10T11:06:12.411485+00:00
+$ python3 scripts/check_policy_system.py --env-file .local-runtime/ground-truth-fix/regression/compose.env
+ Container lcm-stage7b-gtfix-reg-web-1 Running
+ Container lcm-stage7b-gtfix-reg-publisher-1 Running
+ Container lcm-stage7b-gtfix-reg-postgres-1 Running
+ Container lcm-stage7b-gtfix-reg-mongo-1 Running
+ Container lcm-stage7b-gtfix-reg-receiver-1 Running
+ Container lcm-stage7b-gtfix-reg-outbox-relay-1 Running
+ Container lcm-stage7b-gtfix-reg-broker-1 Running
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Creating
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Creating
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Created
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Created
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Starting
+ Container lcm-stage7b-gtfix-reg-security-init-1 Starting
+ Container lcm-stage7b-gtfix-reg-postgres-1 Waiting
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Started
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Waiting
+ Container lcm-stage7b-gtfix-reg-security-init-1 Started
+ Container lcm-stage7b-gtfix-reg-security-init-1 Waiting
+ Container lcm-stage7b-gtfix-reg-postgres-1 Healthy
+ Container lcm-stage7b-gtfix-reg-init-db-1 Starting
+ Container lcm-stage7b-gtfix-reg-init-db-1 Started
+ Container lcm-stage7b-gtfix-reg-init-db-1 Waiting
+ Container lcm-stage7b-gtfix-reg-security-init-1 Waiting
+ Container lcm-stage7b-gtfix-reg-init-db-1 Waiting
+ Container lcm-stage7b-gtfix-reg-init-db-1 Waiting
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Waiting
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Exited
+ Container lcm-stage7b-gtfix-reg-security-init-1 Exited
+ Container lcm-stage7b-gtfix-reg-init-db-1 Waiting
+ Container lcm-stage7b-gtfix-reg-broker-1 Waiting
+ Container lcm-stage7b-gtfix-reg-init-db-1 Waiting
+ Container lcm-stage7b-gtfix-reg-broker-1 Waiting
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Waiting
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Exited
+ Container lcm-stage7b-gtfix-reg-security-init-1 Exited
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Exited
+ Container lcm-stage7b-gtfix-reg-broker-1 Healthy
+ Container lcm-stage7b-gtfix-reg-broker-1 Healthy
+ Container lcm-stage7b-gtfix-reg-init-db-1 Exited
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Starting
+ Container lcm-stage7b-gtfix-reg-init-db-1 Exited
+ Container lcm-stage7b-gtfix-reg-demo-setup-1 Starting
+ Container lcm-stage7b-gtfix-reg-init-db-1 Exited
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Started
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Starting
+ Container lcm-stage7b-gtfix-reg-init-db-1 Exited
+ Container lcm-stage7b-gtfix-reg-init-db-1 Exited
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Started
+ Container lcm-stage7b-gtfix-reg-demo-setup-1 Started
+ Container lcm-stage7b-gtfix-reg-receiver-1 Waiting
+ Container lcm-stage7b-gtfix-reg-demo-setup-1 Waiting
+ Container lcm-stage7b-gtfix-reg-receiver-1 Healthy
+ Container lcm-stage7b-gtfix-reg-demo-setup-1 Exited
+ Container lcm-stage7b-gtfix-reg-mongo-1 Waiting
+ Container lcm-stage7b-gtfix-reg-receiver-1 Waiting
+ Container lcm-stage7b-gtfix-reg-security-init-1 Waiting
+ Container lcm-stage7b-gtfix-reg-init-db-1 Waiting
+ Container lcm-stage7b-gtfix-reg-web-1 Waiting
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Waiting
+ Container lcm-stage7b-gtfix-reg-demo-setup-1 Waiting
+ Container lcm-stage7b-gtfix-reg-postgres-1 Waiting
+ Container lcm-stage7b-gtfix-reg-outbox-relay-1 Waiting
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Waiting
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Waiting
+ Container lcm-stage7b-gtfix-reg-broker-1 Waiting
+ Container lcm-stage7b-gtfix-reg-publisher-1 Waiting
+ Container lcm-stage7b-gtfix-reg-outbox-relay-1 Healthy
+ Container lcm-stage7b-gtfix-reg-web-1 Healthy
+ Container lcm-stage7b-gtfix-reg-receiver-1 Healthy
+ Container lcm-stage7b-gtfix-reg-publisher-1 Healthy
+ Container lcm-stage7b-gtfix-reg-mongo-1 Healthy
+ Container lcm-stage7b-gtfix-reg-storage-init-1 Exited
+ Container lcm-stage7b-gtfix-reg-demo-setup-1 Exited
+ Container lcm-stage7b-gtfix-reg-init-db-1 Exited
+ Container lcm-stage7b-gtfix-reg-broker-1 Healthy
+ Container lcm-stage7b-gtfix-reg-postgres-1 Healthy
+ Container lcm-stage7b-gtfix-reg-security-init-1 Exited
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Healthy
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Healthy
+ Container lcm-stage7b-gtfix-reg-tests-run-c233a78e09f6 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-c233a78e09f6 Created
+Device configurations provisioned; keys remain outside PostgreSQL
+ Container lcm-stage7b-gtfix-reg-tests-run-3c738162c30d Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-3c738162c30d Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7b-gtfix-reg-tests-run-edfefed1a197 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-edfefed1a197 Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7b-gtfix-reg-tests-run-c1b2d07bb6be Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-c1b2d07bb6be Created
+PASS: real authenticated replay raises three device risk guards; forged AAD cannot target a victim
+ Container lcm-stage7b-gtfix-reg-tests-run-6cb28e29261d Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-6cb28e29261d Created
+PASS: committed bounded decision snapshot persisted
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Stopping
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Stopping
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Stopped
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Stopped
+ Container lcm-stage7b-gtfix-reg-tests-run-20bb8c1d755c Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-20bb8c1d755c Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7b-gtfix-reg-tests-run-21603ac46474 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-21603ac46474 Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7b-gtfix-reg-tests-run-efcfd3db27e9 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-efcfd3db27e9 Created
+PASS: policy stopped; telemetry keeps running and durable observations remain queued
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Starting
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Started
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Starting
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Started
+ Container lcm-stage7b-gtfix-reg-tests-run-bedeaeb346c4 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-bedeaeb346c4 Created
+PASS: parallel/restarted policy workers retain committed decisions, dedupe sources and never claim applied configuration
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Restarting
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Restarting
+ Container lcm-stage7b-gtfix-reg-policy-worker-2 Started
+ Container lcm-stage7b-gtfix-reg-policy-worker-1 Started
+ Container lcm-stage7b-gtfix-reg-tests-run-acffb6ef5c16 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-acffb6ef5c16 Created
+PASS: parallel/restarted policy workers retain committed decisions, dedupe sources and never claim applied configuration
+ Container lcm-stage7b-gtfix-reg-postgres-1 Stopping
+ Container lcm-stage7b-gtfix-reg-postgres-1 Stopped
+ Container lcm-stage7b-gtfix-reg-tests-run-59001e8b337e Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-59001e8b337e Created
+PASS: PostgreSQL outage rejects processing; no local fake decision/ACK
+PASS: policy readiness removed during PostgreSQL outage
+ Container lcm-stage7b-gtfix-reg-postgres-1 Starting
+ Container lcm-stage7b-gtfix-reg-postgres-1 Started
+ Container lcm-stage7b-gtfix-reg-postgres-1 Waiting
+ Container lcm-stage7b-gtfix-reg-postgres-1 Healthy
+ Container lcm-stage7b-gtfix-reg-tests-run-743364970abc Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-743364970abc Created
+PASS: parallel/restarted policy workers retain committed decisions, dedupe sources and never claim applied configuration
+PASS: policy-only downtime, two workers, replay attribution, restart and real PostgreSQL outage recovery
+
+EXIT CODE: 0

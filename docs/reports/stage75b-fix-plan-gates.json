@@ -1,0 +1,16 @@
+[
+  {
+    "dataset": "archive",
+    "rules": "connection-evidence-v2.2",
+    "exit_code": 2,
+    "output": "\nUTC: 2026-11-10T11:13:27.843813+00:00\n$ .venv/bin/python -m src.classifier.research.cli plan --data .local-runtime/ground-truth-fix/archive-v2.2/dataset.csv --manifest .local-runtime/ground-truth-fix/archive-v2.2/dataset.manifest.json --config configs/ml/research75.json --output .local-runtime/ground-truth-fix/archive-v2.2/blocked-plan.json\nResearch run rejected: No independently corroborated laboratory labels; planning blocked\n\nEXIT CODE: 2\n",
+    "plan_created": false
+  },
+  {
+    "dataset": "live",
+    "rules": "connection-evidence-v2.2",
+    "exit_code": 2,
+    "output": "\nUTC: 2026-11-10T11:13:28.432262+00:00\n$ .venv/bin/python -m src.classifier.research.cli plan --data .local-runtime/ground-truth-fix/integration-v22/checked-dataset/dataset.csv --manifest .local-runtime/ground-truth-fix/integration-v22/checked-dataset/dataset.manifest.json --config configs/ml/research75.json --output .local-runtime/ground-truth-fix/integration-v22/checked-dataset/blocked-plan.json\nResearch run rejected: Insufficient independent captures per class for train/validation/test: {'0': 9, '1': 5}\n\nEXIT CODE: 2\n",
+    "plan_created": false
+  }
+]

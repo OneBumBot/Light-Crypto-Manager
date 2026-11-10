@@ -1,0 +1,38 @@
+
+UTC: 2026-11-10T11:34:26.099552+00:00
+$ .venv/bin/python -m src.research_stand.dataset validate --root .local-runtime/ground-truth-fix/archive-v2.2 --captures .local-runtime/stand75b/primary
+{
+  "schema_version": 2,
+  "reconciliation": "matched",
+  "physical_packets": 46395,
+  "class_counts": {
+    "unknown": 46395
+  },
+  "corroborated_connections": 0,
+  "independent_algorithm": true,
+  "malicious_packet_accuracy": null,
+  "real_attack_detection_unproven": true,
+  "files_modified": false
+}
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T11:34:26.302507+00:00
+$ .venv/bin/python -m src.research_stand.dataset validate --root .local-runtime/ground-truth-fix/integration-v22/checked-dataset --captures .local-runtime/ground-truth-fix/corroborated-captures
+{
+  "schema_version": 2,
+  "reconciliation": "matched",
+  "physical_packets": 2269,
+  "class_counts": {
+    "unknown": 570,
+    "normal": 1509,
+    "controlled_violation": 190
+  },
+  "corroborated_connections": 39,
+  "independent_algorithm": true,
+  "malicious_packet_accuracy": null,
+  "real_attack_detection_unproven": true,
+  "files_modified": false
+}
+
+EXIT CODE: 0

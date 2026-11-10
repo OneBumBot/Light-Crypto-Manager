@@ -107,3 +107,22 @@ scores. Достоверность real-attack detection и переносимо
 lab-independent dataset остаётся отдельной задачей. Policy/source trust/crypto
 не менялись. Подготовленный holdout ещё не оценивался; обучение7.5c только по
 отдельной команде. Новые packet IDs/captures не означают независимость устройств.
+
+## Пересмотр готовности после 7.5b-fix
+
+Старый strict split был воспроизводим, но labels не были независимо проверены.
+Готовность прежнего75b-v1 для нового обучения отозвана: это archive/reproduction
+material. Coherent hashes не исключали логическую подмену labels; дефект реально
+воспроизведён и исправлен отдельным oracle. Новая archive reannotation v2.2 имеет
+46395unknown и0подтверждённых training rows, старый CSV/plan сохранены.
+
+Новый real TLS probe дал2269observations с connection/window labels, не attack
+packet gold standard. Известных classes недостаточно для strict split:9/5groups.
+Новый plan не создан (exit2), RF/IF не обучались, holdout не оценивался. Global
+scientific_quality_available больше не повышается из synthetic=false и scope.
+Engineering validation, label consistency, model quality и transferability раздельны.
+
+Старый exact feature purge удаляет68%known rows и уничтожает positive coverage
+части сценариев. Shared condition seeds пересекают partitions; метод не менялся
+ради метрик. Нужна отдельная следующая методика condition/device/host grouping.
+Подробности: RESEARCH_75B_FIX_RESULTS.md и reports/stage75b-fix-coverage.json.

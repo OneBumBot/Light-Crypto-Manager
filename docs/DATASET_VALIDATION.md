@@ -65,3 +65,30 @@ Builder ограничен100000 observations суммарно и100captures, н
 обхода ограничений памяти. Для жёстких CPU/RAM ограничений offline обработки
 допустим отдельный контейнер tests image с `--network none --cpus 1 --memory 768m`,
 с private input mount и user UID/GID владельца данных, без DB/MQTT credentials.
+
+## Текущая независимая проверка 7.5b-fix
+
+Старые SHA checks выше не сверяли полностью сохранённые labels с источниками:
+coherent-hash normal→violation подмена действительно проходила. Теперь validate
+с raw path dispatch по label_rules_version: v1 — отдельная historical reconciliation
+без scientific attestation, v2.2 — независимый per-packet oracle. Для v2 без raw
+sources валидация labels запрещена. Missing/extra/foreign IDs, изменённые labels,
+connection/reason/time/capture, unknown promotion и header stream spoof отвергаются
+даже при согласованных производных hashes/counts. Исходный PCAP отдельно сверяется
+с headers.csv по wire/sequence/stream/length/flags/window/time; whole-file RAM нет.
+
+Старый build воспроизводится только с --archive-v1. По умолчанию создаётся v2;
+legacy --selection без этого флага отвергается, не игнорируется. Для архивной
+переразметки используйте dataset_v2 --parent-manifest, который сохраняет source
+selection и parent hashes. Новый путь обязателен. Любая версия label semantics
+отделена от неизменной tcp-packet-passive-v1 feature schema.
+
+Все исходные файлы7.5b сохранены. Original split/purge не менялся; repeated
+packet_id0 не доказывает отсутствие duplicate wire capture. Exact feature equality
+не является physical duplicate. После старого purge нет positive replay/pattern
+в test и bad_credentials/bounded_rate в validation. Seed-pairs пересекают части
+7/9/2раза; риск связанных условий не исчезает при capture disjointness.
+
+Новая archived reannotation:0known groups; небольшой real probe:normal9/positive5
+capture groups. Оба plan отклонены с exit2; thresholds не ослаблены, планы не
+созданы. Внешняя label accuracy и real IDS metrics остаются unproven.

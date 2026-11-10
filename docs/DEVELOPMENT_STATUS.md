@@ -1,3 +1,29 @@
+# Состояние разработки — 7.5b-fix
+
+Ветка feature/mqtt-tls-ground-truth-hardening от 3282557. Корректирующая инженерная
+часть завершена; обучение 7.5c заблокировано качеством/поддержкой данных.
+
+| Компонент | Статус | Факт |
+|---|---|---|
+| Test/source audit | выполнено | Реальный old-validator false acceptance, классификация mocks/fixtures/real services |
+| Independent reconciliation | проверено | Raw PCAP +separate oracle, logical tamper при coherent hashes отвергается |
+| Label semantics | исправлено v2.2 | Connection/window, не malicious packet; unknown не normal |
+| Scenario corroboration | проверено частично | Broker/PG/digest, real ACL/auth/replay/rate/pattern; tamper не подтверждён |
+| Archived7.5b dataset | сохранён / не train-ready |59 captures, новая версия 46395 unknown;0 known groups |
+| New real small dataset | проверено инженерно |9 captures,2269 rows:1509 normal/190 controlled/570 unknown |
+| New split gates | отказ ожидаемый |Archive no independent labels; live9/5 groups, новые plans отсутствуют |
+| Old split audit | выполнено |Original indices сохранены; coverage gaps, shared seeds7/9/2 |
+| Mutations | проверено |8behavioral mutants killed, initial coverage gap документирован |
+| Full regression | проверено |337 passed:301 прежний+36 новых, реальные свои PG/Mongo |
+| Actual TLS/fault/web/ML/Policy | проверено |Own projects only, no applied crypto, role/CSRF/TLS/ACL сохранены |
+| Scientific label/model accuracy | не проверено |Нет внешнего gold standard/реальной новой RF/IF оценки |
+
+Архив/модели/старый frozen plan не изменены, main/push/merge не выполнялись.
+Текущий итог: [RESEARCH_75B_FIX_RESULTS.md](RESEARCH_75B_FIX_RESULTS.md).
+Проверки и machine reports: docs/reports/stage75b-fix-*.
+
+## Историческое состояние 7.5b (готовность labels пересмотрена выше)
+
 # Состояние разработки — этап 7.5b
 
 Ветка `feature/mqtt-tls-dataset-collection`, исходный `d4dc3aa`.
@@ -214,11 +240,3 @@ real anomaly labels и независимая device/session оценка ост
 Изолированный lcm-stage6 остановлен после проверок (stage6-shutdown.txt).
 Команда down выполнена без --volumes: БД, счётчики, model volume и приватные
 материалы сохранены. Предыдущие контуры/volumes не удалялись.
-
-## 7.5b-fix — начат корректирующий аудит
-
-Исходный3282557, feature/mqtt-tls-ground-truth-hardening. Архив и модели сохранены:
-764file hashes в private ground-truth-fix/archive-hashes.json. Подтверждён реальный
-false acceptance логически изменённой метки старым validator после обновления
-hashes/counts. Прежняя готовность labels/научной оценки требует пересмотра;
-training/final holdout не запускаются. См.RESEARCH_TEST_AUDIT.md.

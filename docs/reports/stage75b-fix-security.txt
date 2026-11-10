@@ -1,0 +1,14 @@
+
+UTC: 2026-11-10T11:11:04.231360+00:00
+$ docker compose --env-file .local-runtime/ground-truth-fix/regression/compose.env run --rm --no-deps --entrypoint python tests -m scripts.mqtt_security_smoke
+ Container lcm-stage7b-gtfix-reg-tests-run-9aefb68ddef8 Creating
+ Container lcm-stage7b-gtfix-reg-tests-run-9aefb68ddef8 Created
+PASS: trusted TLS and publisher credentials
+PASS: incorrect password rejected
+PASS: untrusted CA rejected
+PASS: publisher cannot write another device topic
+PASS: web cannot publish telemetry
+PASS: receiver cannot publish telemetry
+PASS: allowed reader receives probe; publisher cannot read forbidden topic
+
+EXIT CODE: 0

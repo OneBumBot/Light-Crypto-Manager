@@ -379,3 +379,33 @@ overshoot, не filesystem hard quota. Для жёсткой изоляции п
 audit не выполнен; IoT-SFC log granularity требует отдельного контракта и проверки
 лицензии конкретной версии. Источники не скачаны целиком/не смешаны с own lab.
 Доказательства и команды — docs/RESEARCH_75B_RESULTS.md и reports/stage75b-*.
+
+## 7.5b-fix — уточнение достоверности данных
+
+Реально воспроизведено: старый validator принимал logical label tamper с новыми
+hashes. Исправлено independent per-row oracle +bounded PCAP identity audit.
+Packet_audited на старом connection-level наборе было неверным термином; архив
+не переписан, новая версия2.2 connection/window. Rate/pattern больше не основаны
+на двух actions; ACL привязан к session/time, replay к timed PG identity и
+независимому digest witness. Anonymous AEAD tamper actor остаётся unknown.
+
+Исправлены реальные broker parser omissions: reconnect close сendpoint и
+CONNACK5 при параллельном pending health connection. Session lifecycle теперь
+ограничивает local times; Nonfinite/duplicate-key journals отвергаются.
+Новые source outage/collector faults и coherent-hash tamper проверены реально.
+
+Остаётся: у старых59captures нет нужных независимых доказательств, поэтому в новой
+archive версии33848known→unknown, итого46395unknown, training-ready groups0.
+Новый real probe2269rows (1509normal/190controlled/570unknown),9captures/5positive
+capture groups — мало для split. Старый holdout не содержит positive replay и
+pattern_change; validation не содержит bad_credentials/bounded_rate после purge.
+Одинаковый5-vector не физический дубликат. Captures disjoint, но paired seeds
+пересекаются7/9/2 — зависимость условий остаётся риском. Старый split не заменён.
+
+Независимый software oracle и три trusted lab sources не внешний gold standard.
+Label accuracy/clock accuracy/real attack realism/transfer не измерены; новые
+RF/IF не обучены. Source journals не подписаны, local operator/shared writable
+research volume — граница доверия, не tamper-proof recorder. Observer keyless,
+но использует существующую readonly web-role своего lab broker. Disk watchdog
+не hard quota. Все эти ограничения обязательны для дипломной интерпретации.
+Подробный итог/фактические commands/exit codes: RESEARCH_75B_FIX_RESULTS.md.

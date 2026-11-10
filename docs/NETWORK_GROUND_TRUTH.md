@@ -40,3 +40,18 @@ header CSV, journal, broker allowlist и core snapshot. Validator может п�
 проверить все исходные хэши (`--captures`). Manifest не является цифровой подписью:
 он обнаруживает изменение относительно сохранённой версии, но не защищает от
 злонамеренной перезаписи доверенным владельцем хранилища.
+
+## Исправление 7.5b-fix — текущий контракт
+
+Предыдущая схема выше — архивная75b-v1; её packet_audited не является доказательством
+malicious packet ground truth. Новая connection-evidence-v2.2 отделяет scenario,
+connection/window activity и packet-specific evidence (последнее none под TLS).
+Критерии/источники — [LABEL_SEMANTICS.md](LABEL_SEMANTICS.md), независимый oracle —
+[GROUND_TRUTH_VERIFICATION.md](GROUND_TRUTH_VERIFICATION.md).
+
+Без timed session evidence старый архив полностью unknown в новой версии:
+33848known→unknown, итог46395unknown; исходники/план не перезаписаны. Новый probe
+имеет отдельные broker lifecycle/MID/DUP, read-only PG events и keyless encrypted
+payload digest witness. Anonymous AEAD reject не получает device identity.
+Broker clock/log latency не имеет внешнего метрологического эталона; успешный
+reconciliation не означает100%label accuracy и не оценивает качество RF/IF.

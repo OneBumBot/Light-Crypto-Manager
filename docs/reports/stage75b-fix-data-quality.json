@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "rules_version": "connection-evidence-v2.2",
+  "dataset_version": "75b-fix-v2.2",
+  "dataset_sha256": "4c66103c45efd597ca849a76e7989c752b6eadfacdac49b462bb2c439a1dd545",
+  "manifest_sha256": "6a12b4f714e4847308ae6854b41e4372b62f679eb81f6c248252ed9deae52739",
+  "observations_sha256": "2f8d75aac7ed54ebf26051f519306125cd1b45b1367c69f1ace9915650b08a8b",
+  "provenance": {
+    "real_packet_capture": true,
+    "generated_test_clients": true,
+    "controlled_lab_scenarios": true,
+    "independent_label_verification": true,
+    "external_validation_performed": false,
+    "attack_realism_scope": "controlled_lab_connection_activity_only",
+    "known_shortcut_risks": [
+      "single_host_and_stack",
+      "connection_duration",
+      "scenario_selection",
+      "capture_batch"
+    ]
+  },
+  "data_quality": {
+    "engineering_validated": true,
+    "laboratory_labels_validated": true,
+    "independent_external_validation_pending": true,
+    "real_attack_detection_unproven": true,
+    "real_packet_capture": true,
+    "generated_test_clients": true,
+    "controlled_lab_scenarios": true,
+    "label_unit": "connection_activity",
+    "label_evidence_level": "session_or_window_corroboration_not_packet_attack",
+    "independent_label_verification": true,
+    "external_validation_performed": false,
+    "attack_realism_scope": "controlled_lab_connection_activity_only",
+    "known_shortcut_risks": [
+      "single_host_and_stack",
+      "connection_duration",
+      "scenario_selection",
+      "capture_batch"
+    ],
+    "scientific_quality_available": false
+  },
+  "raw_captures": 9,
+  "class_counts": {
+    "normal": 1509,
+    "unknown": 570,
+    "controlled_violation": 190
+  },
+  "scenarios": {
+    "bad_credentials": {
+      "rows": 374,
+      "counts": {
+        "normal": 283,
+        "unknown": 88,
+        "controlled_violation": 3
+      },
+      "connections": 8,
+      "corroborated_connections": 7
+    },
+    "bounded_rate": {
+      "rows": 305,
+      "counts": {
+        "normal": 153,
+        "controlled_violation": 88,
+        "unknown": 64
+      },
+      "connections": 4,
+      "corroborated_connections": 4
+    },
+    "forbidden_acl": {
+      "rows": 214,
+      "counts": {
+        "normal": 157,
+        "unknown": 52,
+        "controlled_violation": 5
+      },
+      "connections": 4,
+      "corroborated_connections": 4
+    },
+    "pattern_change": {
+      "rows": 260,
+      "counts": {
+        "normal": 160,
+        "unknown": 57,
+        "controlled_violation": 43
+      },
+      "connections": 4,
+      "corroborated_connections": 4
+    },
+    "qos1_retry": {
+      "rows": 328,
+      "counts": {
+        "normal": 227,
+        "unknown": 101
+      },
+      "connections": 8,
+      "corroborated_connections": 8
+    },
+    "regular": {
+      "rows": 256,
+      "counts": {
+        "normal": 211,
+        "unknown": 45
+      },
+      "connections": 4,
+      "corroborated_connections": 4
+    },
+    "replay": {
+      "rows": 280,
+      "counts": {
+        "normal": 165,
+        "unknown": 64,
+        "controlled_violation": 51
+      },
+      "connections": 5,
+      "corroborated_connections": 5
+    },
+    "tampered": {
+      "rows": 252,
+      "counts": {
+        "normal": 153,
+        "unknown": 99
+      },
+      "connections": 4,
+      "corroborated_connections": 3
+    }
+  },
+  "real_ml_models_trained": 0,
+  "holdout_predictions_executed": false,
+  "commands": {
+    "build": "python -m src.research_stand.dataset_v2 --captures PRIVATE --output NEW --parent-manifest ARCHIVE_MANIFEST",
+    "reconcile": "python -m src.research_stand.label_verification --dataset NEW --captures PRIVATE",
+    "probe": "python -m scripts.verify_ground_truth_hardening --env-file .local-runtime/ground-truth-fix/lab/compose.env --captures .local-runtime/ground-truth-fix/corroborated-captures --output .local-runtime/ground-truth-fix/integration-v22"
+  },
+  "limitations": [
+    "Labels are connection/window annotations, not audited malicious packets",
+    "Same host/operator; no independent external label accuracy reference",
+    "Anonymous AEAD reject remains uncorrelated; tampered actor unknown",
+    "Small source capture count, below strict split support",
+    "Original old dataset and plan remain unchanged"
+  ]
+}
