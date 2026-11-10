@@ -98,7 +98,7 @@ class Lab:
             usage[service] = dict(bytes=value, limit=maximum)
         return usage
 
-    def experiment(self, cfg, *, fault_after=None):
+    def experiment(self, cfg, *, fault_after=None, evidence_fault_after=None):
         cfg.validate()
         identity = cfg.experiment_id
         if (self.output / identity).exists():
@@ -110,7 +110,7 @@ class Lab:
         # Host load guard supplements hard container quotas; no sustained background overload.
         if os.getloadavg()[0] > max(4, (os.cpu_count() or 1) * 0.75):
             raise ValueError("Host load guard")
-        before = self.state()
+        before = self.state(time.time() - 30)
         usage = self.resource_usage()
         start = time.time()
         remote = "/research/" + identity
@@ -145,7 +145,43 @@ class Lab:
             stderr=subprocess.PIPE,
             text=True,
         )
+        witness = None
         try:
+            witness = subprocess.Popen(
+                self.cmd
+                + [
+                    "exec",
+                    "-T",
+                    "research-observer",
+                    "python",
+                    "-m",
+                    "src.research_stand.observer",
+                    "--directory",
+                    remote,
+                    "--duration",
+                    str(min(30, cfg.duration + 12)),
+                ],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+            )
+            until = time.monotonic() + 5
+            while time.monotonic() < until:
+                if witness.poll() is not None:
+                    raise RuntimeError("Independent observer unavailable")
+                ready = self.call(
+                    "exec",
+                    "-T",
+                    "lab-devices",
+                    "python",
+                    "-c",
+                    f"from pathlib import Path;print(Path('{remote}/observer-ready').exists())",
+                ).strip()
+                if ready == "True":
+                    break
+                time.sleep(0.1)
+            else:
+                raise RuntimeError("Observer readiness timeout")
             until = time.monotonic() + 6
             while time.monotonic() < until:
                 if proc.poll() is not None:
@@ -182,10 +218,27 @@ class Lab:
                 text=True,
             )
             deadline = time.monotonic() + cfg.duration + 12
+            evidence_fault_time = (
+                time.monotonic() + evidence_fault_after if evidence_fault_after else None
+            )
             last_guard = 0
             fault_time = time.monotonic() + fault_after if fault_after else None
             try:
                 while driver.poll() is None:
+                    if evidence_fault_time and time.monotonic() > evidence_fault_time:
+                        self.call(
+                            "exec",
+                            "-T",
+                            "research-observer",
+                            "python",
+                            "-c",
+                            f"import os,signal;from pathlib import Path;p=int(Path('{remote}/observer.pid').read_text());assert p>1;os.kill(p,signal.SIGTERM)",
+                        )
+                        evidence_fault_time = None
+                    if witness.poll() is not None:
+                        raise RuntimeError(
+                            "Independent evidence source unavailable; stopping experiment"
+                        )
                     if fault_time and time.monotonic() > fault_time:
                         self.call(
                             "exec",
@@ -232,11 +285,17 @@ class Lab:
                 "lab-devices",
                 "python",
                 "-c",
-                f"from pathlib import Path;Path('{remote}/stop-capture').touch()",
+                f"from pathlib import Path;[(Path('{remote}')/name).touch() for name in ['stop-observer','stop-capture']]",
             )
-            out, err = proc.communicate(timeout=10)
+            try:
+                if witness is not None:
+                    witness.communicate(timeout=10)
+            finally:
+                out, err = proc.communicate(timeout=10)
             if proc.returncode:
-                raise RuntimeError("Capture failed: " + err[-500:])
+                raise RuntimeError("Collector failed during cleanup")
+            if witness is not None and witness.returncode:
+                raise RuntimeError("Independent observer failed")
         self.call(
             "exec",
             "-T",
@@ -256,6 +315,12 @@ class Lab:
             authentication_rejections=log.count("not authorised"),
             source="isolated Mosquitto log allowlist",
         )
+        from .broker_evidence import parse
+
+        independent_log = self.call(
+            "logs", "--timestamps", "--no-log-prefix", "--since", str(int(start)), "broker"
+        )
+        broker_evidence = parse(independent_log, start, time.time())
         time.sleep(0.5)
         after = self.state(start)
         core = {
@@ -277,6 +342,7 @@ class Lab:
                 raise ValueError("Symlink forbidden in capture")
             p.chmod(0o700 if p.is_dir() else 0o600)
         (folder / "broker-events.json").write_text(json.dumps(broker_events, indent=2) + "\n")
+        (folder / "broker-evidence.json").write_text(json.dumps(broker_evidence, indent=2) + "\n")
         (folder / "core.json").write_text(json.dumps(core, indent=2) + "\n")
         for p in folder.iterdir():
             p.chmod(0o600)

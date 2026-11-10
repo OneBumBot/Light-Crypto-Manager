@@ -26,7 +26,11 @@ def main():
         shutil.copyfile(source / ("device_" + name + ".password"), path / "mqtt.password")
         (path / "registry.json").write_text(json.dumps({name: entry}))
     (out / "bad.password").write_text(invalid_password(48) + "\n")
-    for root in [out, Path("/out/state"), Path("/out/data")]:
+    observer = Path("/out/observer")
+    observer.mkdir(exist_ok=True)
+    for name in ["ca.crt", "web.password"]:
+        shutil.copyfile(source / name, observer / name)
+    for root in [out, observer, Path("/out/state"), Path("/out/data")]:
         root.mkdir(exist_ok=True)
         for path in [root, *root.rglob("*")]:
             path.chmod(0o700 if path.is_dir() else 0o600)

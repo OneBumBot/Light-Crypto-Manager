@@ -79,6 +79,7 @@ services:
       - research-credentials:/out/credentials
       - research-state:/out/state
       - research-data:/out/data
+      - research-observer-security:/out/observer
   lab-devices:
     image: ${COMPOSE_PROJECT_NAME}-laboratory
     profiles: [research]
@@ -95,6 +96,20 @@ services:
     mem_limit: 256m
     stop_grace_period: 15s
     logging: *bounded-logs
+  research-observer:
+    image: ${COMPOSE_PROJECT_NAME}-laboratory
+    profiles: [research]
+    init: true
+    cap_drop: [ALL]
+    cpus: '0.5'
+    mem_limit: 128m
+    volumes:
+      - research-observer-security:/run/observer:ro
+      - research-data:/research
+    depends_on:
+      research-init: {condition: service_completed_successfully}
+      broker: {condition: service_healthy}
+    logging: *bounded-logs
   traffic-collector:
     image: ${COMPOSE_PROJECT_NAME}-laboratory
     profiles: [research]
@@ -106,6 +121,7 @@ services:
       - research-data:/research
     depends_on:
       lab-devices: {condition: service_started}
+      research-observer: {condition: service_started}
     cpus: '1.0'
     mem_limit: 256m
     stop_grace_period: 15s
@@ -114,6 +130,7 @@ networks:
   default:
     internal: true
 volumes:
+  research-observer-security:
   research-credentials:
   research-state:
   research-data:

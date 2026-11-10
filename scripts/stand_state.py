@@ -12,6 +12,7 @@ def snapshot(since):
     repo = MongoRepository()
     try:
         with engine.connect() as c:
+            c.execute(text("SET TRANSACTION READ ONLY"))
             counts = dict(
                 c.execute(
                     text("SELECT category,count(*) FROM security_observations GROUP BY category")
@@ -33,10 +34,25 @@ def snapshot(since):
                 .scalars()
                 .all()
             )
+            events = (
+                c.execute(
+                    text(
+                        "SELECT id,category,device_id,key_epoch,sequence_number,occurred_at FROM security_observations WHERE occurred_at>=:since ORDER BY occurred_at,id LIMIT 10001"
+                    ),
+                    {"since": datetime.fromtimestamp(since, timezone.utc)},
+                )
+                .mappings()
+                .all()
+            )
+            if len(events) > 10000:
+                raise ValueError("Corroboration journal overflow")
+            events = [{**dict(e), "occurred_at": e["occurred_at"].timestamp()} for e in events]
             pending = c.execute(
                 text("SELECT count(*) FROM telemetry_outbox WHERE status!='delivered'")
             ).scalar_one()
         return dict(
+            schema_version=2,
+            security_events=events,
             at=time.time(),
             accepted_devices=accepted,
             categories=counts,
