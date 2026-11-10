@@ -104,7 +104,9 @@ def run(dataset, plan_path):
         frozen_plan_sha256=plan["plan_sha256"],
         overall=summary(f, obs, configs),
         partitions=parts,
-        physical_duplicate_packets=physical,
+        physical_capture_identity_duplicates=physical,
+        physical_wire_duplicate_count=None,
+        physical_duplicate_scope="Repeated packet_id only; unique capture record IDs do not prove absence of duplicate wire observations",
         repeated_network_events="QoS1 and deliberate replay are distinct events, not physical duplicates; see source journals",
         identical_feature_vectors_rows=int(f.duplicated(FEATURES, keep=False).sum()),
         feature_purge_rows=plan["split"]["duplicate_purged_rows"],
@@ -131,7 +133,7 @@ if __name__ == "__main__":
     print(
         json.dumps(
             {
-                "physical_duplicates": result["physical_duplicate_packets"],
+                "physical_duplicates": result["physical_capture_identity_duplicates"],
                 "pair_seed_intersections": result["condition_pair_seed_intersections"],
                 "test_coverage": result["partitions"]["test"]["after"],
             },

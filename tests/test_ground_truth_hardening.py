@@ -243,6 +243,11 @@ def test_public_pipeline_positive_mixed_and_unknown(tmp_path):
     raw, out = derived(tmp_path)
     before = {str(p): digest(p) for root in [raw, out] for p in root.rglob("*") if p.is_file()}
     report = reconcile(out, raw)
+    from src.research_stand.dataset import validate
+
+    assert validate(out, raw)["reconciliation"] == "matched"
+    with pytest.raises(ValueError, match="Raw capture evidence required"):
+        validate(out)
     assert before == {
         str(p): digest(p) for root in [raw, out] for p in root.rglob("*") if p.is_file()
     }

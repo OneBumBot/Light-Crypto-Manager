@@ -236,6 +236,15 @@ def validate(directory, captures_root=None):
     from src.classifier.research.datasets import read_prepared
 
     directory = Path(directory)
+    from .pcap_audit import load_json
+
+    versioned = load_json(directory / "dataset.manifest.json")
+    if versioned.get("label_rules_version"):
+        if captures_root is None:
+            raise ValueError("Raw capture evidence required for versioned label validation")
+        from .label_verification import reconcile
+
+        return reconcile(directory, captures_root)
     data, manifest = read_prepared(
         directory / "dataset.csv", directory / "dataset.manifest.json", max_rows=1000000
     )
