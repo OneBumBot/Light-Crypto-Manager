@@ -354,3 +354,57 @@ docker compose --env-file .env.compose --profile demo --profile web --profile ch
 Raspberry Pi параметры TLS/CA/hostname verification не менялись; нужен SAN реального
 DNS/IP и явный LAN binding в deployment. ARM64 и нагрузка до1000 msg/s не проверены.
 Mongo/PG HA, Mongo TLS внутри сети, FastAPI, ML, Policy Engine и CRISP не добавлены.
+
+## Этап 8: opt-in manual control, только fresh isolated project
+
+Основной compose не включает control services. Новый compose.control.yaml и
+MANUAL_AUTHORIZED_CONTROL подключаются явно; Policy остаётся DRY_RUN.
+
+```bash
+uv sync --frozen --inexact --group dev --group publisher --group receiver --group web --group ml-runtime
+.venv/bin/python -m scripts.prepare_control --directory .local-runtime/my-stage8 --project lcm-stage8-my-check
+export COMPOSE_FILE=compose.yaml:compose.control.yaml
+LCM_CONTROL_ENV=.local-runtime/my-stage8/compose.env
+docker compose --env-file "$LCM_CONTROL_ENV" build receiver tests
+# Mongo нужно включить явно, если запускается список отдельных services:
+docker compose --env-file "$LCM_CONTROL_ENV" up -d --wait postgres mongo receiver outbox-relay web
+docker compose --env-file "$LCM_CONTROL_ENV" --profile control run --rm --no-deps control-init
+docker compose --env-file "$LCM_CONTROL_ENV" run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe setup
+docker compose --env-file "$LCM_CONTROL_ENV" --profile control --profile policy up -d --wait --scale control-worker=2 control-worker policy-worker device-alpha device-beta device-gamma
+docker compose --env-file "$LCM_CONTROL_ENV" run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe roundtrip
+docker compose --env-file "$LCM_CONTROL_ENV" run --rm --no-deps --entrypoint python tests -m scripts.control_security_probe
+docker compose --env-file "$LCM_CONTROL_ENV" run --rm --no-deps tests
+```
+
+setup использует только этот project, создаёт legacy demo+device bindings и live
+capabilities. Control worker health требует PG/config provisioning и MQTT SUBACK,
+не только существование process. Roundtrip probe создаёт временного admin с
+случайным паролем и обращается к **реальному HTTP**, затем удаляет test account.
+Для постоянного UI используйте уже существующую процедуру bootstrap admin;
+никаких default passwords не добавлено. Страница /control, POST admin+CSRF.
+
+```bash
+# Отдельные immutable outputs. Recovery начинается с effective Ascon alpha;
+# после roundtrip это выполнено, после benchmark/другого recovery может быть AES.
+python3 scripts/check_control_system.py --env-file "$LCM_CONTROL_ENV" --output /private/new-recovery.json --extended
+CONTROL_LATE_ACK_PROBE=1 python3 scripts/check_control_system.py --env-file "$LCM_CONTROL_ENV" --output /private/new-late-ack.json
+python3 scripts/benchmark_switching.py --env-file "$LCM_CONTROL_ENV" --output /private/new-benchmark.json
+docker compose --env-file "$LCM_CONTROL_ENV" run --rm --no-deps --entrypoint python tests -m scripts.crypto_benchmark --iterations 300
+# Остановка сохраняет volumes/keys/counters; не добавлять -v:
+docker compose --env-file "$LCM_CONTROL_ENV" --profile '*' down --timeout 15
+```
+
+Recovery helpers сами ограничены lcm-stage8-*; target broker/web внутренние.
+Control ACK negative probe требует недавний normal completed ACTIVATE ACK;
+запускайте сразу после roundtrip, а не после intentionally dropped ACK.
+Late-ACK-only probe повторяет неизменённые bytes реального device ledger.
+Перед каждым recovery самостоятельно проверяйте начальный profile через status;
+возврат AES→Ascon только новой авторизованной командой, не ручным UPDATE state.
+
+Existing Mongo schema с Ascon-only enum обновляется явно (сначала backup/review):
+`docker compose --env-file "$LCM_CONTROL_ENV" exec -T mongo mongosh --quiet --file /upgrade_profiles.js`.
+Операция аддитивна/idempotent, records/indexes сохраняются. Проверка на собственной
+лабораторной БД: scripts/verify_mongo_profile_upgrade.py. Старые рабочие volumes
+для этого fault/probe не используются. Существующие legacy publishers Ascon не
+получают control capabilities автоматически; переход требует reviewed account/
+ACL/key provisioning и остановки второго producer той же identity.

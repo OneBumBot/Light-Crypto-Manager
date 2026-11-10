@@ -1,3 +1,23 @@
+# Этап 8 — действующее расширение telemetry v2
+
+Wire fields и AAD остаются прежними. Разрешены Ascon-AEAD128 (profile ID
+ascon-aead128-v1,16-byte random nonce) и AES-128-GCM (aes-128-gcm-v1,12-byte nonce,
+16-byte tag). AESGCM uses independent128-bit key, nonce epoch32BE||sequence64BE.
+Алгоритм выбирается по explicit registry; AAD profile должен совпасть с outer
+profile, key/device/topic/epoch binding проверяется до admission. Unknown/ошибка
+AEAD не дают fallback. Sequence/replay общий между профилями одного device/epoch.
+Для AES используется только прошедший live provisioning/lease Device Agent;
+stateless encode_packet сам не выделяет безопасный sequence.
+
+telemetry_devices.crypto_profile сохраняет legacy Ascon binding; это НЕ текущий
+фактически подтверждённый profile. Для managed device server дополнительно
+проверяет live_control_devices и bounded transition. Только receiver admission
+transaction пишет effective receipt; web live consumer не подтверждает effective.
+Control v2 — отдельные topics/domain/HMAC keys/replay counters; это не telemetry
+schema3 и не изменение старых Ascon пакетов. Подробности SECURE_CONTROL_PROTOCOL.md,
+CRYPTO_KEY_AND_NONCE_MANAGEMENT.md. Ниже историческая схема этапов4–5, её утверждение
+«единственный профиль» заменено этим расширением.
+
 # Дополнение этапа 5: протокол v2 сохранён
 
 Формат ciphertext/AAD и диапазоны ниже не менялись. Дополнительно перед admission

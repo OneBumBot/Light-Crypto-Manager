@@ -1,13 +1,26 @@
-# Этап 8 — проверка реального control layer продолжается
+# Этап 8 — real manual crypto control проверен
 
-Ветка feature/adaptive-crypto-control от f6f3c23. AES-128-GCM и Ascon telemetry v2;
-отдельные HMAC-protected manual commands, реальный Python device agent,
-PREPARE/ACTIVATE и effective только по принятой telemetry. Policy/ML — DRY_RUN /
-trusted_detector=false. Первые реальные roundtrip и 9 recovery probes пройдены.
-Полная промежуточная регрессия: 394 passed, exit0; завершение acceptance/benchmark
-и итоговая документация ещё выполняются. Миграции0007/0008 аддитивные, receipts
-не удаляются вместе с telemetry outbox. Рабочие volumes/исследовательские данные
-прежних этапов не используются. Подробности будут в STAGE8_RESULTS.md.
+Ветка feature/adaptive-crypto-control, исходный f6f3c23. Реальные software IoT
+Ascon↔AES-GCM, authenticated PREPARE/ACTIVATE, verified telemetry evidence.
+Policy Worker — DRY_RUN, trusted_detector=false; никакого auto ML control.
+
+| Компонент | Статус | Фактическая проверка |
+|---|---|---|
+| AES/Ascon | проверено KAT/интеграцией | Два AEAD,99crypto checks, реальные пакеты |
+| Live control | реализовано / проверено | Manual admin HTTP + HMAC + точные TLS ACL |
+| Device Agent | проверено software |3devices, durable SQLite, restart/fail-closed |
+| Nonce/replay | проверено | PG boot ranges, independent command ledger, mutation reuse rejected |
+| PG state/evidence | проверено |0007/0008 additive,42tables, rollback/retention preservation |
+| Actual switching | проверено | Ascon→AES→Ascon, real PG/Mongo references,2controllers |
+| Recovery | проверено с ограничениями |9real cases + late real ACK; PREPARE-only expiry/manual repair ограничения |
+| Flask/Socket.IO | проверено | RBAC/CSRF/redirects, actual HTTP/socket, viewer denied control |
+| Regression | проверено |401passed,0skipped, exit0;337previous+64new |
+| Mutations | проверено |9/9 behavioral defects detected in temporary copies |
+| Performance | измерено |18micro cases,6static windows,4switches; software/x86 only |
+| Scientific ML/physical ARM | не проверено | Новых моделей/доверенности/ARM claims нет |
+
+STAGE8_RESULTS.md описывает команды, факты, ограничения и raw reports.
+Старые datasets/models/plans сохраняются; push/merge/main не выполнялись.
 
 ## Исторический итог 7.5b-fix
 

@@ -1,4 +1,4 @@
-# Этап 8 — проект реализации (проверки в STAGE8_RESULTS.md)
+# Этап 8 — реализованная архитектура (проверки в STAGE8_RESULTS.md)
 
 Исходный HEAD f6f3c23. Изменения только в feature/adaptive-crypto-control.
 Policy Worker сохраняет DRY_RUN; live control включается отдельно и только
@@ -37,3 +37,17 @@ control keys не может их подделать. Это разрешённ�
 [SP 800-232](https://csrc.nist.gov/pubs/sp/800/232/final),
 [cryptography AESGCM](https://cryptography.io/en/latest/hazmat/primitives/aead/#cryptography.hazmat.primitives.ciphers.aead.AESGCM).
 Статус реализации/тестов не выводится из этого документа-проекта.
+
+```mermaid
+flowchart LR
+  Admin[Admin + CSRF] --> Intent[PG command intent]
+  Intent --> Controller[Control worker]
+  Controller -->|TLS + command MAC| Device[Device ledger + AEAD encoder]
+  Device -->|authenticated ACK| Controller
+  Device --> Broker[MQTT TLS broker]
+  Broker --> Receiver[AEAD + AAD + replay admission]
+  Receiver --> PG[PG outbox + effective receipt]
+  PG --> Relay[Mongo relay]
+  Relay --> Mongo[Mongo history]
+  Policy[Policy DRY_RUN] -.recommendation only.-> Admin
+```

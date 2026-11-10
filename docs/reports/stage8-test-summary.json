@@ -1,0 +1,411 @@
+{
+  "schema_version": 1,
+  "baseline": "f6f3c23d90cc32e691170994a11481d7d77b7924",
+  "code_revision": "282a49ffbab4f200f3a7485a9f033bdaf840112f",
+  "full_pytest": {
+    "passed": 401,
+    "skipped": 0,
+    "exit_code": 0,
+    "last_seconds": 34.23
+  },
+  "historical_tests": 337,
+  "new_test_cases": 64,
+  "mutants_killed": 9,
+  "actual_recovery_cases": 9,
+  "late_ack_network_probe": true,
+  "models_trained_on_real_data": 0,
+  "holdout_predictions": false,
+  "reports": [
+    {
+      "report": "docs/reports/stage8-acceptance-recovery.txt",
+      "runs": [
+        {
+          "command": "python3 scripts/check_control_system.py --env-file .local-runtime/stage8/acceptance/compose.env --output .local-runtime/stage8/acceptance-recovery.json --extended",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-acceptance-setup.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env --profile control run --rm --no-deps control-init",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe setup",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-acceptance-startup.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env --profile control up -d --wait receiver outbox-relay web",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env --profile control up -d --wait control-worker device-alpha device-beta device-gamma",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-browser-security.txt",
+      "runs": [
+        {
+          "command": "env UV_CACHE_DIR=.cache/uv PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers uv run --no-project --python .venv/bin/python --with playwright==1.56.0 python scripts/check_dom_xss.py",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-control-unit.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps tests python -m pytest -q tests/test_control_protocol.py tests/test_control_storage.py tests/test_aes_profiles.py",
+          "exit_code": 1
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps tests python -m pytest -q -p no:cacheprovider tests/test_control_protocol.py tests/test_control_storage.py tests/test_aes_profiles.py",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-crypto-microbenchmark.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.crypto_benchmark --iterations 300 --output /tmp/crypto-micro.json",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-final-mutations.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_mutations --output /tmp/final-mutations.json",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_mutations --output /tmp/final-mutations.json",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_mutations --output /tmp/final-late-ack-mutations.json",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-final-regression.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps tests",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps tests",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-final-roundtrip.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe roundtrip",
+          "exit_code": 1
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe roundtrip",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe roundtrip",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-final-services.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env --profile control --profile policy up -d --wait --scale control-worker=2 receiver outbox-relay web control-worker policy-worker device-alpha device-beta device-gamma",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env --profile control --profile policy up -d --wait --scale control-worker=2 receiver outbox-relay web control-worker policy-worker device-alpha device-beta device-gamma",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-ground-truth-regression.txt",
+      "runs": [
+        {
+          "command": ".venv/bin/python -m src.research_stand.label_verification --dataset .local-runtime/ground-truth-fix/integration-v22/checked-dataset --captures .local-runtime/ground-truth-fix/corroborated-captures",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-intermediate-shutdown.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env --profile '*' down --timeout 15",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-late-ack-after.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps tests python -m pytest -q -p no:cacheprovider tests/test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-late-ack-before.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps tests python -m pytest -q -p no:cacheprovider tests/test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade",
+          "exit_code": 1
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-late-real-ack.txt",
+      "runs": [
+        {
+          "command": "python3 scripts/check_control_system.py --env-file .local-runtime/stage8/acceptance/compose.env --output .local-runtime/stage8/late-real-ack.json",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-live-negative.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_security_probe",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_security_probe",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_security_probe",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-migration-existing.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m src.migrate",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-mongo-recovery.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -c 'from sqlalchemy import create_engine,select,func;from src.runtime import database_url;from src.outbox import outbox;e=create_engine(database_url());c=e.connect();n=c.scalar(select(func.count()).select_from(outbox).where(outbox.c.status!='\"'\"'delivered'\"'\"'));assert n>0;print({'\"'\"'committed_pending_while_mongo_absent'\"'\"':n})'",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env up -d --wait mongo",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -c 'import time;from sqlalchemy import create_engine,select;from src.runtime import database_url;from src.outbox import outbox;from src.mongo_repository import MongoRepository;e=create_engine(database_url());c=e.connect();rows=c.execute(select(outbox.c.device_id,outbox.c.key_epoch,outbox.c.sequence_number).limit(5000)).all();ids=[str(r.device_id)+'\"'\"':'\"'\"'+str(r.key_epoch)+'\"'\"':'\"'\"'+str(r.sequence_number) for r in rows];repo=MongoRepository('\"'\"'relay'\"'\"');end=time.monotonic()+45;n=0",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-mongo-validator.txt",
+      "runs": [
+        {
+          "command": "python3 scripts/verify_mongo_profile_upgrade.py --env-file .local-runtime/stage8/acceptance/compose.env --output .local-runtime/stage8/mongo-validator.json",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-mutations.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_mutations --output /tmp/control-mutations.json",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-pre-final-regression.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps tests",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-recovery-extended.txt",
+      "runs": [
+        {
+          "command": "python3 scripts/check_control_system.py --env-file .local-runtime/stage8/integration/compose.env --output .local-runtime/stage8/recovery-final.json --extended",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-recovery-startup.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env --profile control up -d --wait receiver outbox-relay web control-worker device-alpha device-beta device-gamma",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-recovery.txt",
+      "runs": [
+        {
+          "command": "python3 scripts/check_control_system.py --env-file .local-runtime/stage8/integration/compose.env --output .local-runtime/stage8/recovery-results.json",
+          "exit_code": 1
+        },
+        {
+          "command": "python3 scripts/check_control_system.py --env-file .local-runtime/stage8/integration/compose.env --output .local-runtime/stage8/recovery-results.json",
+          "exit_code": 1
+        },
+        {
+          "command": "python3 scripts/check_control_system.py --env-file .local-runtime/stage8/integration/compose.env --output .local-runtime/stage8/recovery-results.json",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-regression.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps tests",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-roundtrip.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe roundtrip",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-secret-audit.txt",
+      "runs": [
+        {
+          "command": "python3 scripts/audit_security.py --secrets-dir .local-runtime/stage8/integration --secrets-dir .local-runtime/stage8/integration/mqtt --secrets-dir .local-runtime/stage8/integration/mongo --secrets-dir .local-runtime/stage8/acceptance --secrets-dir .local-runtime/stage8/acceptance/mqtt --secrets-dir .local-runtime/stage8/acceptance/mongo --image lcm-stage8-acceptance-runtime --image lcm-stage8-acceptance-tests",
+          "exit_code": 0
+        },
+        {
+          "command": "python3 scripts/audit_security.py --secrets-dir .local-runtime/stage8/integration --secrets-dir .local-runtime/stage8/integration/mqtt --secrets-dir .local-runtime/stage8/integration/mongo --secrets-dir .local-runtime/stage8/acceptance --secrets-dir .local-runtime/stage8/acceptance/mqtt --secrets-dir .local-runtime/stage8/acceptance/mongo --image lcm-stage8-acceptance-runtime --image lcm-stage8-acceptance-tests",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-setup.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe setup",
+          "exit_code": 1
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe setup",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-shutdown.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env --profile '*' down --timeout 15",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-startup.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env --profile control up -d --wait postgres mongo receiver outbox-relay web",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env --profile control up -d --wait receiver outbox-relay web control-worker",
+          "exit_code": 0
+        },
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/integration/compose.env --profile control up -d --wait receiver outbox-relay web control-worker device-alpha device-beta device-gamma",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-static.txt",
+      "runs": [
+        {
+          "command": ".venv/bin/ruff check src tests scripts migrations",
+          "exit_code": 0
+        },
+        {
+          "command": ".venv/bin/ruff check src tests scripts migrations",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-switch-benchmark.txt",
+      "runs": [
+        {
+          "command": "python3 scripts/benchmark_switching.py --env-file .local-runtime/stage8/acceptance/compose.env --output .local-runtime/stage8/switch-benchmark.json",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-transport-security.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.mqtt_security_smoke",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "report": "docs/reports/stage8-web-security.txt",
+      "runs": [
+        {
+          "command": "docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.live_web_smoke",
+          "exit_code": 0
+        }
+      ]
+    }
+  ],
+  "expected_failures": [
+    "stage8-late-ack-before: focused test proves defect before fix",
+    "PG outage status probe: nonzero exit expected",
+    "Initial harness/configuration attempts are historical failures, not final passing evidence"
+  ]
+}

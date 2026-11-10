@@ -1,0 +1,15 @@
+
+UTC: 2026-11-10T14:15:12.174606+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.live_web_smoke
+ Container lcm-stage8-acceptance-tests-run-f4e34d3f7fea Creating
+ Container lcm-stage8-acceptance-tests-run-f4e34d3f7fea Created
+PASS: real anonymous Socket.IO connection rejected
+PASS: live CSRF, role restriction, safe redirect and cross-origin rejection
+PASS: logged-in Socket.IO receives live MQTT telemetry
+PASS: ML routes require login, separate protocol/rule/ML sources and preserve role visibility
+PASS: authorized DRY_RUN policy views, role restrictions and no applied configuration claims
+PASS: authorized live MongoDB history, history page and admin-only pipeline metrics
+POLICY_METRICS {"decisions": 4872, "intentions": {}, "mean_compute_ms": 0.0781026720196469, "mean_source_lag_seconds": 2.44157502832512, "mode": "DRY_RUN", "p95_compute_ms": 0.09984450152842328, "processed": {"accepted": 4848, "rate_limited": 6527, "stale": 24, "unattributed": 1}, "risk_counts": {"WATCH": 3}, "security_queue": {"capacity": 100000, "id": 1, "overflow": 0, "retained": 11404}, "security_queue_pending": 4, "suppressed": 2333, "switching_latency": null, "transitions": 3, "unsupported": 0}
+PASS: logout disconnects live Socket.IO and removes HTTP access
+
+EXIT CODE: 0

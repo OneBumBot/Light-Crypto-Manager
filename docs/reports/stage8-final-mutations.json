@@ -2,7 +2,7 @@
   "schema_version": 1,
   "environment": "temporary copies; real isolated PostgreSQL schemas; public fixture keys",
   "baseline_exit": 0,
-  "baseline_output": "...............................................................          [100%]\n63 passed in 3.04s\n",
+  "baseline_output": "...............................................................          [100%]\n63 passed in 3.35s\n",
   "results": [
     {
       "injected_defect": "ignore_control_mac",
@@ -18,7 +18,7 @@
       "expected": "behavioral assertion failure",
       "exit_code": 1,
       "observed": "killed",
-      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________________ test_monotonic_replay_gap_rejected ______________________\ntests/test_control_protocol.py:94: in test_monotonic_replay_gap_rejected\n    with pytest.raises(ValueError):s.execute(lower,conf())\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_protocol.py::test_monotonic_replay_gap_rejected - F...\n1 failed in 0.05s\n"
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________________ test_monotonic_replay_gap_rejected ______________________\ntests/test_control_protocol.py:94: in test_monotonic_replay_gap_rejected\n    with pytest.raises(ValueError):s.execute(lower,conf())\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_protocol.py::test_monotonic_replay_gap_rejected - F...\n1 failed in 0.06s\n"
     },
     {
       "injected_defect": "premature_effective",
@@ -42,7 +42,7 @@
       "expected": "behavioral assertion failure",
       "exit_code": 1,
       "observed": "killed",
-      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________ test_capability_rejection_creates_no_command _________________\ntests/test_control_storage.py:140: in test_capability_rejection_creates_no_command\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_storage.py::test_capability_rejection_creates_no_command\n1 failed in 0.50s\n"
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________ test_capability_rejection_creates_no_command _________________\ntests/test_control_storage.py:149: in test_capability_rejection_creates_no_command\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_storage.py::test_capability_rejection_creates_no_command\n1 failed in 0.49s\n"
     },
     {
       "injected_defect": "repeat_nonce_range",
@@ -50,7 +50,7 @@
       "expected": "behavioral assertion failure",
       "exit_code": 1,
       "observed": "killed",
-      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________ test_server_range_rollback_is_detected_on_device _______________\ntests/test_control_recovery.py:78: in test_server_range_rollback_is_detected_on_device\n    with pytest.raises(ValueError):s.accept_lease(1,10000)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_recovery.py::test_server_range_rollback_is_detected_on_device\n1 failed in 0.08s\n"
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________ test_server_range_rollback_is_detected_on_device _______________\ntests/test_control_recovery.py:78: in test_server_range_rollback_is_detected_on_device\n    with pytest.raises(ValueError):s.accept_lease(1,10000)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_recovery.py::test_server_range_rollback_is_detected_on_device\n1 failed in 0.09s\n"
     },
     {
       "injected_defect": "commit_before_atomic_completion",
@@ -58,7 +58,7 @@
       "expected": "behavioral assertion failure",
       "exit_code": 1,
       "observed": "killed",
-      "output_tail": "tivate\n    assert c.scalar(select(func.count()).select_from(m.commands))==1\nE   AssertionError: assert 2 == 1\nE    +  where 2 = scalar(<sqlalchemy.sql.selectable.Select object at 0x7ff101093ad0>)\nE    +    where scalar = <sqlalchemy.engine.base.Connection object at 0x7ff10218e060>.scalar\nE    +    and   <sqlalchemy.sql.selectable.Select object at 0x7ff101093ad0> = select_from(Table('live_control_commands', MetaData(), Column('id', String(length=36), table=<live_control_commands>, primary_key=...le=<live_control_commands>), Column('expires_at', DateTime(timezone=True), table=<live_control_commands>), schema=None))\nE    +      where select_from = <sqlalchemy.sql.selectable.Select object at 0x7ff101093bf0>.select_from\nE    +        where <sqlalchemy.sql.selectable.Select object at 0x7ff101093bf0> = select(<sqlalchemy.sql.functions.count at 0x7ff101092630; count>)\nE    +          where <sqlalchemy.sql.functions.count at 0x7ff101092630; count> = <sqlalchemy.sql.functions._FunctionGenerator object at 0x7ff101092ab0>()\nE    +            where <sqlalchemy.sql.functions._FunctionGenerator object at 0x7ff101092ab0> = func.count\nE    +      and   Table('live_control_commands', MetaData(), Column('id', String(length=36), table=<live_control_commands>, primary_key=...le=<live_control_commands>), Column('expires_at', DateTime(timezone=True), table=<live_control_commands>), schema=None) = m.commands\n=========================== short test summary info ============================\nFAILED tests/test_control_recovery.py::test_ack_transaction_rollback_does_not_queue_activate\n1 failed in 0.52s\n"
+      "output_tail": "tivate\n    assert c.scalar(select(func.count()).select_from(m.commands))==1\nE   AssertionError: assert 2 == 1\nE    +  where 2 = scalar(<sqlalchemy.sql.selectable.Select object at 0x7fa233550cb0>)\nE    +    where scalar = <sqlalchemy.engine.base.Connection object at 0x7fa23881be60>.scalar\nE    +    and   <sqlalchemy.sql.selectable.Select object at 0x7fa233550cb0> = select_from(Table('live_control_commands', MetaData(), Column('id', String(length=36), table=<live_control_commands>, primary_key=...le=<live_control_commands>), Column('expires_at', DateTime(timezone=True), table=<live_control_commands>), schema=None))\nE    +      where select_from = <sqlalchemy.sql.selectable.Select object at 0x7fa233517ec0>.select_from\nE    +        where <sqlalchemy.sql.selectable.Select object at 0x7fa233517ec0> = select(<sqlalchemy.sql.functions.count at 0x7fa233517b30; count>)\nE    +          where <sqlalchemy.sql.functions.count at 0x7fa233517b30; count> = <sqlalchemy.sql.functions._FunctionGenerator object at 0x7fa233517ad0>()\nE    +            where <sqlalchemy.sql.functions._FunctionGenerator object at 0x7fa233517ad0> = func.count\nE    +      and   Table('live_control_commands', MetaData(), Column('id', String(length=36), table=<live_control_commands>, primary_key=...le=<live_control_commands>), Column('expires_at', DateTime(timezone=True), table=<live_control_commands>), schema=None) = m.commands\n=========================== short test summary info ============================\nFAILED tests/test_control_recovery.py::test_ack_transaction_rollback_does_not_queue_activate\n1 failed in 0.52s\n"
     },
     {
       "injected_defect": "accept_contradictory_ack",

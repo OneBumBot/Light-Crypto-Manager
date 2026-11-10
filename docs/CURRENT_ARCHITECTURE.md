@@ -1,3 +1,17 @@
+# Текущая архитектура — дополнение этапа 8
+
+Два telemetry AEAD: Ascon-AEAD128 и AES-128-GCM, telemetry v2 сохранён.
+Отдельные opt-in control-worker и Python device agent выполняют manual admin
+PREPARE/ACTIVATE по MQTT/TLS+HMAC. Device ACK и telemetry-confirmed effective
+разделены. PostgreSQL теперь42таблицы (0007/0008 additive); live_control_evidence
+хранит минимальный authenticated receipt отдельно от Mongo sensor history и
+retained telemetry outbox. Новый Crypto UI /control, RBAC/CSRF сохранены.
+
+Policy остаётся DRY_RUN, RESEARCH/DEMO models untrusted; автоматически commands
+не исполняются. Схема потока/границы: ADAPTIVE_CRYPTO_ARCHITECTURE.md,
+STAGE8_RESULTS.md. Ниже историческая архитектура этапов5–7; её Ascon-only/
+нет-live-channel/число34таблицы больше не описывают opt-in слой этапа8.
+
 # Текущая архитектура — этап 7
 
 Сохранён MQTT TLS/ACL → Ascon telemetry v2 → PG replay/anomalies/outbox → Mongo.

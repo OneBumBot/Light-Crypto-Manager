@@ -1,3 +1,18 @@
+# Уточнение этапа 8 — Policy recommendation отдельно от live control
+
+Policy Engine/worker остаются DRY_RUN. RESEARCH/DEMO trusted_detector=false и
+CRITICAL/ALERT не дают права отправки команды. Registry поддерживает два проверенных
+software AEAD, но это не hierarchy стойкости. Только отдельный admin+CSRF manual
+control layer создаёт durable live intents. Его MQTT credentials/keys отсутствуют
+у Policy/web. Старый control_contract.py/AckSimulator остаётся simulation.
+
+policy_device_states.configured_profile/applied не заменяют live_control_devices
+и live_control_evidence. Реальные verified/requested/reported поля — /control;
+страница policy прямо разделяет эти источники. Подтверждение по telemetry не
+выводится из рекомендации. Архитектура: ADAPTIVE_CRYPTO_ARCHITECTURE.md.
+Ниже сохранено историческое описание этапа7; «нет live channel/только Ascon»
+относилось к тому этапу, а не к opt-in manual layer этапа8.
+
 # Policy Engine — этап 7
 
 Policy Engine формирует решения в DRY_RUN. Он не обучает ML, не расшифровывает

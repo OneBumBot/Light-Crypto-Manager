@@ -1,0 +1,20 @@
+
+UTC: 2026-11-10T14:23:51.190391+00:00
+$ .venv/bin/python -m src.research_stand.label_verification --dataset .local-runtime/ground-truth-fix/integration-v22/checked-dataset --captures .local-runtime/ground-truth-fix/corroborated-captures
+{
+  "schema_version": 2,
+  "reconciliation": "matched",
+  "physical_packets": 2269,
+  "class_counts": {
+    "unknown": 570,
+    "normal": 1509,
+    "controlled_violation": 190
+  },
+  "corroborated_connections": 39,
+  "independent_algorithm": true,
+  "malicious_packet_accuracy": null,
+  "real_attack_detection_unproven": true,
+  "files_modified": false
+}
+
+EXIT CODE: 0

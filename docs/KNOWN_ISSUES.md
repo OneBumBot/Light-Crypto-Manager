@@ -1,3 +1,22 @@
+# Актуальное уточнение этапа 8
+
+Устранены Ascon-only dispatch, отсутствие real device control, отсутствие
+telemetry-confirmed effective и missing durable crypto receipts. Реальные новые
+дефекты этапа (status length, Unicode MAC, late ACK metadata, retention reference)
+исправлены с отрицательными/PG/network tests; подробности STAGE8_RESULTS.md.
+
+Оставшиеся ограничения: software agents/x86_64, без ARM/hardware tests; HMAC control
+не шифрует metadata от broker; keys предварительно provisioned. Новый boot/range
+exhaustion требуют доступную PG/control authority; joint snapshot rollback
+требует новую epoch. PREPARE-only expiry/missing ledger не имеют универсального
+автоматического remote repair. Device outgoing queue не durable, не обещается
+lossless/exactly-once. Audit append-only на уровне приложения, владелец БД trusted.
+
+RF/IF научная достоверность/недостаточность dataset 7.5b-fix не исправлялись:
+RESEARCH/DEMO, trusted_detector=false, Policy DRY_RUN. «Магма»/CRISP/FastAPI и
+автоматическая ML actuation отсутствуют. Исторические проблемы/результаты ниже
+сохранены; «только Ascon/нет live channel» относятся к прошлым этапам.
+
 # Ограничения этапа 7.5
 
 Научный RF/IF benchmark новых данных заблокирован. MQTTset raw имеет только один

@@ -1,0 +1,39 @@
+{
+  "scenario": "late_authenticated_device_ack",
+  "status": "passed",
+  "source": "unchanged bytes from real device SQLite ledger",
+  "ack_wire_sha256": "b75e84161bbbe1c4d58fe13d799e6efe6a8755352e1be0ee9b95384d4fe64ccb",
+  "effective_event_unchanged": true,
+  "before": {
+    "id": "2bfdeda8-ffce-486f-bbde-743cf896e5d9",
+    "device_id": "alpha",
+    "old_profile": "ascon-aead128-v1",
+    "target_profile": "aes-128-gcm-v1",
+    "phase": "EFFECTIVE_CONFIRMED",
+    "actor": "admin:26",
+    "correlation_id": "8bac40dc-3263-4e53-824c-997ac9f84dd8",
+    "created_at": "2026-11-10T14:11:33.601416+00:00",
+    "deadline": "2026-11-10T14:13:33.601416+00:00",
+    "activated_at": "2026-11-10T14:11:33.686988+00:00",
+    "acknowledged_at": null,
+    "confirmed_at": "2026-11-10T14:11:34.210234+00:00",
+    "telemetry_event": "b7b4f64e-3a24-4237-a084-e97e6cfc4cfa",
+    "error": null
+  },
+  "after": {
+    "id": "2bfdeda8-ffce-486f-bbde-743cf896e5d9",
+    "device_id": "alpha",
+    "old_profile": "ascon-aead128-v1",
+    "target_profile": "aes-128-gcm-v1",
+    "phase": "EFFECTIVE_CONFIRMED",
+    "actor": "admin:26",
+    "correlation_id": "8bac40dc-3263-4e53-824c-997ac9f84dd8",
+    "created_at": "2026-11-10T14:11:33.601416+00:00",
+    "deadline": "2026-11-10T14:13:33.601416+00:00",
+    "activated_at": "2026-11-10T14:11:33.686988+00:00",
+    "acknowledged_at": "2026-11-10T14:11:36.681086+00:00",
+    "confirmed_at": "2026-11-10T14:11:34.210234+00:00",
+    "telemetry_event": "b7b4f64e-3a24-4237-a084-e97e6cfc4cfa",
+    "error": null
+  }
+}

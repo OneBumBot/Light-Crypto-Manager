@@ -1,3 +1,23 @@
+# Безопасность этапа 8
+
+Opt-in MANUAL_AUTHORIZED_CONTROL, отдельный Compose/control worker/device agent.
+Два AEAD с независимыми keys, Ascon reference не изменена. GCM nonce выдаётся из
+PG-backed boot ranges, rollback/missing device state fail closed. Command/status
+защищены standard HMAC-SHA-256 с per-device/per-direction256-bit keys; TLS обязателен,
+metadata от broker MAC не скрывает. Credential без MAC key не позволяет командовать.
+Точные command/status ACL, web только HTTP→PG, admin RBAC/CSRF/rate limit.
+
+PREPARE не применяет profile. ACK не делает effective. Только AEAD+AAD+replay+
+outbox/effective receipt commit подтверждают фактический profile; после grace
+старый запрещается. Нет auto rollback. Late authenticated ACK обновляет только
+reported/time, не confirmed evidence. Никакого ML auto-switch/trusted повышения.
+
+Модель доверия/ограничения: CRYPTO_KEY_AND_NONCE_MANAGEMENT.md, CONTROL_RECOVERY.md.
+Не заявляются FIPS/constant-time/аппаратный anti-rollback/защита от владельца всей
+PG authority. Реальные тесты/known-secret scan: STAGE8_RESULTS.md и reports/stage8-*.
+Старые разделы ниже исторические; их отсутствие live channel заменено новым
+явно включаемым manual layer, а не автоматическим управлением Policy.
+
 # Дополнение безопасности этапа 7
 
 Policy Engine работает в DRY_RUN и не получает control MQTT права/ключи.

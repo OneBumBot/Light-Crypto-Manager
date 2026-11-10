@@ -1,3 +1,13 @@
+# Граница этапа 8
+
+Manual crypto control не меняет ML feature versions/модели/метки. Telemetry Ascon
+и AES содержит те же проверенные sensor fields; profile не становится label атаки.
+Новые command/status TCP packets не добавляются в старые network captures/datasets
+или frozen plans. Пассивный observer по-прежнему не читает MQTT внутри TLS.
+RF/IF остаются RESEARCH/DEMO и trusted_detector=false; их signal не вызывает live
+command. Измеренная switching latency — характеристика управления, не ML quality.
+Исторический контракт ниже сохраняется для существующих экспериментов.
+
 # Дополнение7.5: tcp-packet-passive-v1 (offline)
 
 Отдельная новая schema, старая network-core-v1 ниже не меняется. Порядок5 numeric

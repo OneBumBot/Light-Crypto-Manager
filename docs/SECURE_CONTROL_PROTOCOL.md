@@ -16,11 +16,11 @@ key_reference profile:epoch, command_epoch/sequence. ACK привязан к э�
 идентичностям, result и SHA256 всей команды. Boot lease_request/grant — отдельные
 строго типизированные виды с request_id и случайным boot challenge.
 
-TTL ≤300s, future skew ≤5s, UTC; запрещены лишние/дубли JSON fields, bool вместо
+TTL ≤300 s, future skew ≤5 s, UTC; запрещены лишние/дубли JSON fields, bool вместо
 int, NaN/Infinity, неверные UUID/версии/subjects, неизвестные команды/profiles.
 До аутентификации claimed device не является доверенным. Topic выбирает ровно
 один разрешённый ключ, затем MAC и body binding проверяются; probing ключей нет.
-Максимальный envelope 8192bytes. Retained delivery отвергается; просроченность
+Максимальный envelope 8192 bytes. Retained delivery отвергается; просроченность
 проверяется независимо от MQTT retain flag.
 
 Topics: lcm/control/DEVICE/command и lcm/control/DEVICE/status (ACK и boot status).
@@ -30,6 +30,6 @@ device_USER read только свой command/write только свой statu
 research observer не получают command rights. Только MQTT/TLS с проверкой CA.
 
 PG command intents/bytes фиксируются до network publish. Worker claims с lease,
-повторяет те же bytes, ≤12 attempts/backoff≤10s/expiry. Broker PUBACK отдельно от
+повторяет те же bytes, ≤12 attempts/backoff≤10 s/expiry. Broker PUBACK отдельно от
 READY/APPLIED ACK и verified telemetry. At-least-once transport, идемпотентное
 исполнение; end-to-end exactly-once не заявляется.

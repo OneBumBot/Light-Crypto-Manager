@@ -17,7 +17,7 @@ SQLite FULL synchronous + BEGIN IMMEDIATE, private0600 и process lock. Installe
 а не повторная инициализация. Инициализация допустима только при fresh provisioning.
 Nonce ranges не восстанавливаются из файла в память после запуска, нужен новый
 challenge-bound grant. Временный отказ controller не блокирует уже выданный range;
-при исчерпании/новом boot без controller — fail closed. Queue ограничена128.
+при исчерпании/новом boot без controller — fail closed. Queue ограничена 128.
 
 Verified on software IoT device agent в Docker/x86_64. Raspberry Pi/ARM, физические
 сенсоры, secure element и восстановление snapshot всей работающей VM не проверены.
