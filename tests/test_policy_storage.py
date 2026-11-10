@@ -95,7 +95,7 @@ def test_stage6_upgrade_preserves_ml_and_replay(legacy_postgres_db):
     with engine.connect() as c:
         assert c.scalar(text("SELECT last_sequence FROM mqtt_replay_state WHERE device_id='policy-migration'"))==51
         assert c.scalar(text("SELECT status FROM ml_models WHERE model_id='preserved'"))=='disabled'
-        assert c.scalar(text('SELECT version_num FROM alembic_version'))=='0006_policy_control'
+        assert c.scalar(text('SELECT version_num FROM alembic_version'))=='0007_live_control'
 
 
 def test_policy_version_change_retains_guard_and_command_counter(postgres_db):

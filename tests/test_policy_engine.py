@@ -76,7 +76,7 @@ def test_unknown_preserves_guard_and_no_empty_queue_recovery():
 
 
 def test_profile_registry_minimum_and_capabilities():
-    assert [p['profile_id'] for p in registry()]==[ASCON]
+    assert [p['profile_id'] for p in registry()]==[ASCON,'aes-128-gcm-v1']
     for profile in ['magma','CRISP','unknown','plaintext']:
         assert recommend(profile,('mqtt_tls','aead','telemetry_v2'))['status']=='unsupported_profile'
     assert recommend(ASCON,('aead',))['status']=='minimum_protection_violation'

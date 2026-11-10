@@ -52,10 +52,12 @@ def enqueue(connection, message, now):
         sequence_number=message.sequence_number, crypto_profile=message.profile,
         measured_at=sensor['timestamp'], received_at=now.isoformat(),
         temperature=sensor['temperature'], humidity=sensor['humidity'], sensors={})
-    connection.execute(outbox.insert().values(id=str(uuid.uuid4()), device_id=message.device_id,
+    event_id=str(uuid.uuid4())
+    connection.execute(outbox.insert().values(id=event_id, device_id=message.device_id,
         key_epoch=message.key_epoch, sequence_number=message.sequence_number,
         payload=payload, created_at=now, available_at=now))
     record(connection, 'accepted', now)
+    return event_id
 
 
 def claim(engine, *, lease_seconds=30, max_attempts=12):

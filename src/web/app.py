@@ -697,6 +697,8 @@ def create_default_users():
 
 from src.policy.web import blueprint as policy_blueprint
 app.register_blueprint(policy_blueprint)
+from src.device_control.web import blueprint as control_blueprint
+app.register_blueprint(control_blueprint)
 
 
 def main():

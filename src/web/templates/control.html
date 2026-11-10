@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Защищённое управление профилями</h1>
+<p>Рекомендация Policy Engine не исполняется автоматически. Device reported и verified effective — разные состояния.</p>
+<label>Device ID <input id="control-device" maxlength="48"></label>
+<label>Профиль <select id="control-profile"><option value="aes-128-gcm-v1">AES-128-GCM</option><option value="ascon-aead128-v1">Ascon-AEAD128</option></select></label>
+{% if current_user.role == 'admin' %}<button id="control-switch" type="button">Авторизовать PREPARE / ACTIVATE</button>{% endif %}
+<button id="control-refresh" type="button">Обновить статус</button>
+<p id="control-message" role="status"></p><pre id="control-status"></pre>
+<script>
+const token = {{ csrf_token() | tojson }};
+async function refreshControl() {
+  const response = await fetch('/api/control', {credentials:'same-origin'});
+  document.getElementById('control-status').textContent = JSON.stringify(await response.json(), null, 2);
+}
+document.getElementById('control-refresh').onclick = refreshControl;
+const controlButton = document.getElementById('control-switch');
+if (controlButton) controlButton.onclick = async () => {
+  const device = document.getElementById('control-device').value;
+  const response = await fetch('/api/control/' + encodeURIComponent(device) + '/switch', {
+    method:'POST', credentials:'same-origin', headers:{'Content-Type':'application/json','X-CSRFToken':token},
+    body:JSON.stringify({profile:document.getElementById('control-profile').value,ttl:120})});
+  document.getElementById('control-message').textContent = JSON.stringify(await response.json());
+  await refreshControl();
+};
+refreshControl();
+</script>
+{% endblock %}

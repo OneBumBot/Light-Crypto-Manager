@@ -1,0 +1,45 @@
+
+UTC: 2026-11-10T12:56:43.464736+00:00
+$ docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe roundtrip
+ Container lcm-stage8-control-tests-run-771dd7e25477 Creating
+ Container lcm-stage8-control-tests-run-771dd7e25477 Created
+{
+  "environment": "real isolated software IoT agents, Docker MQTT TLS/PG/Mongo/HTTP",
+  "policy_mode": "DRY_RUN",
+  "measurements": [
+    {
+      "transition_id": "b406682d-7f4a-4cf1-9816-d09b93a682d9",
+      "target": "aes-128-gcm-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "telemetry_event": "88e15de1-4f40-41f3-814e-baa3a5b103c6",
+      "sequence_number": 34,
+      "full_http_to_effective_seconds": 0.6108870720017876,
+      "command_sequences": [
+        1,
+        2
+      ],
+      "authenticated_ack_count": 2,
+      "prepare_to_activate_seconds": 0.112249,
+      "activate_to_effective_seconds": 0.452439,
+      "activate_to_ack_seconds": 0.081922
+    },
+    {
+      "transition_id": "34e64e14-8f85-44ae-8ab0-ee444b4955b0",
+      "target": "ascon-aead128-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "telemetry_event": "92c4c326-d5e7-4609-8922-1fbab3680312",
+      "sequence_number": 40,
+      "full_http_to_effective_seconds": 0.6107940959991538,
+      "command_sequences": [
+        3,
+        4
+      ],
+      "authenticated_ack_count": 2,
+      "prepare_to_activate_seconds": 0.077856,
+      "activate_to_effective_seconds": 0.356971,
+      "activate_to_ack_seconds": 0.081893
+    }
+  ]
+}
+
+EXIT CODE: 0

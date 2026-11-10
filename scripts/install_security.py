@@ -34,6 +34,11 @@ for role in ['broker','publisher','receiver','web','smoke','tests']:
             acl+='user '+user+'\n'+''.join('topic write '+registry[d]['topic']+'\n' for d in devices)+'\n'
         for user in ['receiver','web','smoke']:
             acl+='user '+user+'\n'+''.join('topic read '+entry['topic']+'\n' for entry in registry.values())+'\n'
+        if (source/'controller.password').exists():
+            for name in registry:
+                if not (source/('device_'+name+'.password')).exists():continue
+                acl+='user device_'+name+'\ntopic read lcm/control/'+name+'/command\ntopic write lcm/control/'+name+'/status\n'
+            acl+='user controller\n'+''.join('topic write lcm/control/'+name+'/command\ntopic read lcm/control/'+name+'/status\n' for name in registry if (source/('device_'+name+'.password')).exists())
         acl+='user monitor\ntopic write lightcrypto/health\n'
         path=target/'acl'
         path.write_text(acl); path.chmod(0o600); os.chown(path,uid,uid)

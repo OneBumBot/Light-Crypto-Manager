@@ -42,3 +42,12 @@ def test_aes_v2_dispatch_and_binding(registry):
     assert len(base64.b64decode(packet['nonce']))==12
     packet['profile']='Ascon-AEAD128'
     with pytest.raises(InvalidTelemetry):decode_packet(packet,'iot/sensors/raspb1',registry)
+
+
+def test_cavp_cavs_14_count_zero():
+    # Exact CAVP file header Keylen=128 IVlen=96 PTlen=0 AADlen=0 Taglen=128 Count=0.
+    key=bytes.fromhex('11754cd72aec309bf52f7687212e8957')
+    nonce=bytes.fromhex('3c819d9a9bed087615030b65')
+    expected=bytes.fromhex('250327c674aaf477aef2675748cf6971')
+    assert encrypt(AES,key,nonce,b'',b'')==expected
+    assert decrypt(AES,key,nonce,b'',expected)==b''

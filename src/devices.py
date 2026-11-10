@@ -34,3 +34,5 @@ def require_enabled(connection,message,topic):
         devices.c.enabled.is_(True)).with_for_update(read=True)).first()
     if row is None:
         raise InvalidTelemetry('Device control binding is missing or disabled')
+    from src.device_control.server import authorize
+    authorize(connection,message)

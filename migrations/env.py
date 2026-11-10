@@ -9,7 +9,8 @@ from src.devices import metadata as device_metadata
 from src.ml_storage import metadata as ml_metadata
 from src.security_events import metadata as security_metadata
 from src.policy.models import metadata as policy_metadata
-metadata = [security_metadata, policy_metadata,db.metadata, replay_metadata, outbox_metadata, device_metadata, ml_metadata]
+from src.device_control.models import metadata as control_metadata
+metadata = [control_metadata,security_metadata, policy_metadata,db.metadata, replay_metadata, outbox_metadata, device_metadata, ml_metadata]
 
 connection = context.config.attributes.get('connection')
 

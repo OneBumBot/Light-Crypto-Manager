@@ -39,6 +39,7 @@ services:
       - ./deploy/mongo/init.js:/docker-entrypoint-initdb.d/init.js:ro
       - ./deploy/mongo/health.js:/health.js:ro
       - ./deploy/mongo/retention.js:/retention.js:ro
+      - ./deploy/mongo/upgrade_profiles.js:/upgrade_profiles.js:ro
     healthcheck:
       test: [CMD, mongosh, --quiet, --file, /health.js]
       interval: 5s

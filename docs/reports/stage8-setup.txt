@@ -1,0 +1,33 @@
+
+UTC: 2026-11-10T12:55:57.212225+00:00
+$ docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe setup
+ Container lcm-stage8-control-tests-run-66e3fb271053 Creating
+ Container lcm-stage8-control-tests-run-66e3fb271053 Created
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/scripts/control_system_probe.py", line 98, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/app/scripts/control_system_probe.py", line 30, in main
+    with app.app_context():seed_demo()
+                           ^^^^^^^^^^^
+  File "/app/scripts/seed_demo.py", line 37, in seed_demo
+    provision(db.session.connection(),{k:v for k,v in load_registry().items() if k in ['raspb1','smoke']})
+                                                      ^^^^^^^^^^^^^^^
+  File "/app/src/telemetry.py", line 89, in load_registry
+    if not path: raise ValueError('DEVICE_REGISTRY_FILE is required')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: DEVICE_REGISTRY_FILE is required
+
+
+EXIT CODE: 1
+
+UTC: 2026-11-10T12:56:10.656814+00:00
+$ docker compose --env-file .local-runtime/stage8/integration/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe setup
+ Container lcm-stage8-control-tests-run-b9fb9c8a124b Creating
+ Container lcm-stage8-control-tests-run-b9fb9c8a124b Created
+Device configurations provisioned; keys remain outside PostgreSQL
+{"setup": "committed", "devices": ["alpha", "beta", "gamma"], "keys_printed": false}
+
+EXIT CODE: 0

@@ -6,6 +6,7 @@ COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
 COPY src/web/requirements.txt /app/requirements/web.txt
 RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt \
     && useradd --system --uid 10001 --create-home lightcrypto
+COPY src/device_control /app/src/device_control
 COPY src/policy /app/src/policy
 COPY src/*.py /app/src/
 COPY src/publisher/*.py /app/src/publisher/
@@ -14,6 +15,7 @@ COPY src/web/*.py /app/src/web/
 COPY src/web/templates /app/src/web/templates
 COPY src/web/static /app/src/web/static
 COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+COPY scripts/install_control.py /app/scripts/
 COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
 COPY alembic.ini /app/alembic.ini
 COPY migrations /app/migrations
@@ -38,6 +40,7 @@ COPY tests/*.py /app/tests/
 COPY src/classifier/research /app/src/classifier/research
 COPY src/research_stand /app/src/research_stand
 COPY scripts/stand_state.py /app/scripts/stand_state.py
+COPY scripts/control_system_probe.py /app/scripts/
 COPY scripts/live_web_smoke.py scripts/dual_database_probe.py scripts/ml_system_probe.py scripts/policy_system_probe.py /app/scripts/
 COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
 COPY deploy/compose.env.example /app/deploy/compose.env.example

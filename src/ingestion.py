@@ -51,5 +51,7 @@ def process_packet(packet, registry, engine, topic, now=None):
         capture(connection, 'accepted', message, now)
         if cause is not None:
             capture(connection, 'physical_anomaly' if cause==0 else 'delivery_delay', message, now)
-        enqueue(connection, message, now)
+        event_id=enqueue(connection, message, now)
+        from src.device_control.server import observe
+        observe(connection,message,event_id)
     return sensor_data

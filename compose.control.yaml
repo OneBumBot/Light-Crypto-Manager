@@ -1,0 +1,101 @@
+# Explicitly opt in with -f compose.control.yaml --profile control.
+# No production volumes; use scripts.prepare_control with a fresh stage8 project.
+services:
+  control-init:
+    image: ${COMPOSE_PROJECT_NAME}-runtime
+    profiles: [control]
+    user: "0:0"
+    command: [python, -m, scripts.install_control]
+    volumes:
+      - ${CONTROL_INPUT_DIR:?fresh control provisioning required}:/input:ro
+      - control-security:/out/controller
+      - alpha-control:/out/alpha
+      - beta-control:/out/beta
+      - gamma-control:/out/gamma
+  control-worker:
+    image: ${COMPOSE_PROJECT_NAME}-runtime
+    profiles: [control]
+    init: true
+    command: [python, -m, src.device_control.worker]
+    cpus: 0.5
+    mem_limit: 256m
+    cap_drop: [ALL]
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-lightcrypto}:${POSTGRES_PASSWORD:?required}@postgres:5432/${POSTGRES_DB:-lightcrypto}
+      MQTT_HOST: broker
+      MQTT_PORT: '8883'
+      MQTT_USERNAME: controller
+      MQTT_PASSWORD_FILE: /run/control/controller.password
+      MQTT_CA_FILE: /run/control/ca.crt
+      CONTROL_KEYS_FILE: /run/control/control.json
+      CONTROL_MODE: ${CONTROL_MODE:-DISABLED}
+    volumes:
+      - control-security:/run/control:ro
+    depends_on:
+      control-init: {condition: service_completed_successfully}
+      init-db: {condition: service_completed_successfully}
+      broker: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import time;from pathlib import Path;p=Path('/tmp/control-ready');assert p.exists() and time.time()-p.stat().st_mtime<10"]
+      interval: 3s
+      retries: 15
+    stop_grace_period: 10s
+  device-alpha: &device
+    image: ${COMPOSE_PROJECT_NAME}-runtime
+    profiles: [control]
+    init: true
+    command: [python, -m, src.device_control.agent]
+    cpus: 0.25
+    mem_limit: 128m
+    cap_drop: [ALL]
+    environment: &device-env
+      MQTT_HOST: broker
+      MQTT_PORT: '8883'
+      MQTT_USERNAME: device_alpha
+      MQTT_PASSWORD_FILE: /device/device_alpha.password
+      MQTT_CA_FILE: /device/ca.crt
+      CONTROL_KEYS_FILE: /device/control.json
+      DEVICE_ID: alpha
+      DEVICE_STATE_FILE: /device/device.db
+      PUBLISH_INTERVAL: '0.5'
+    volumes: [alpha-control:/device]
+    depends_on:
+      control-init: {condition: service_completed_successfully}
+      receiver: {condition: service_healthy}
+      control-worker: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "from pathlib import Path;assert Path('/tmp/device-ready').exists()"]
+      interval: 3s
+      retries: 15
+    stop_grace_period: 10s
+  device-beta:
+    <<: *device
+    environment:
+      <<: *device-env
+      MQTT_USERNAME: device_beta
+      MQTT_PASSWORD_FILE: /device/device_beta.password
+      DEVICE_ID: beta
+    volumes: [beta-control:/device]
+  device-gamma:
+    <<: *device
+    environment:
+      <<: *device-env
+      MQTT_USERNAME: device_gamma
+      MQTT_PASSWORD_FILE: /device/device_gamma.password
+      DEVICE_ID: gamma
+    volumes: [gamma-control:/device]
+  web:
+    environment:
+      CONTROL_MODE: ${CONTROL_MODE:-DISABLED}
+  tests:
+    volumes:
+      - control-security:/run/control:ro
+    environment:
+      CONTROL_MODE: ${CONTROL_MODE:-DISABLED}
+      CONTROL_KEYS_FILE: /run/control/control.json
+      DEVICE_REGISTRY_FILE: /run/lcm/registry.json
+volumes:
+  control-security:
+  alpha-control:
+  beta-control:
+  gamma-control:

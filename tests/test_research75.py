@@ -166,7 +166,7 @@ def test_flow_manifest_and_policy_schema_are_closed(tmp_path):
     from src.policy.profiles import registry
     raw=dict(event(1,'anomaly','ml',anomaly=True).original,feature_version=VERSION)
     with pytest.raises(ValueError,match='feature schema'):validate_ml(raw)
-    assert [r['algorithm'] for r in registry()]==['Ascon-AEAD128']
+    assert [r['algorithm'] for r in registry()]==['Ascon-AEAD128','AES-128-GCM']
 
 
 def test_audited_packet_labels_preserve_normal_background(tmp_path):
