@@ -48,7 +48,8 @@ def add_command(c,device,t,phase):
 def request_switch(c,device,target,actor,*,ttl=120,mode=None):
     if mode!=MODE or type(actor) is not str or not actor.startswith('admin:'):raise ValueError('Explicit manual administrative authorization required')
     from src.policy.profiles import IMPLEMENTED
-    if target not in IMPLEMENTED or not IMPLEMENTED[target].activation_allowed:raise ValueError('Profile implementation not verified')
+    implementation=IMPLEMENTED.get(target) if type(target) is str else None
+    if implementation is None or not all([implementation.activation_allowed,implementation.server_implemented,implementation.device_implemented,implementation.known_vectors_passed,implementation.software_e2e_passed]):raise ValueError('Profile implementation not verified')
     if target not in PROFILES or type(ttl) is not int or not 15<=ttl<=300:raise ValueError('Unsupported control request')
     d=lock(c,device);n=now(c)
     from src.devices import devices as registry_devices

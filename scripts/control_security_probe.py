@@ -44,6 +44,8 @@ def main():
         raw=forced_wire(base,bytes.fromhex(config['alpha']['command_key']),'controller')
         invalid=json.loads(raw);invalid['mac']=('0' if invalid['mac'][0]!='0' else '1')+invalid['mac'][1:]
         bad.append(('invalid_mac',canonical(invalid),topic('alpha','controller')))
+        malformed=json.loads(raw);malformed['mac']='é'*64
+        bad.append(('invalid_unicode_mac',canonical(malformed),topic('alpha','controller')))
         bad.append(('wrong_key_direction',forced_wire(base,bytes.fromhex(config['alpha']['status_key']),'controller'),topic('alpha','controller')))
         bad.append(('wrong_device_topic',raw,topic('beta','controller')))
         for field,val in [('requested_profile','unavailable-profile'),('command_epoch',0),('command_sequence',base['data']['command_sequence']),('controller_identity','unauthorized-controller')]:
@@ -89,6 +91,11 @@ def main():
             current=c.execute(select(m.devices).where(m.devices.c.device_id=='alpha')).mappings().one()
             assert current['effective_profile']==initial['effective_profile'] and current['command_acknowledged']==initial['command_acknowledged']
             assert c.scalar(select(func.count()).select_from(m.acks))==ack_count
+        from src.outbox import outbox
+        with engine.connect() as c:first=c.scalar(select(func.max(outbox.c.sequence_number)).where(outbox.c.device_id=='alpha'))
+        time.sleep(1.2)
+        with engine.connect() as c:assert c.scalar(select(func.max(outbox.c.sequence_number)).where(outbox.c.device_id=='alpha'))>first
+        checks.append('device_continues_telemetry_after_invalid_control')
         assert all(hashlib.sha256(raw).hexdigest() in injected_status for raw in observed) # exclude our own adversarial status publications
         # Clear retained invalid command, never retained valid commands.
         controller.publish(topic('alpha','controller'),b'',qos=1,retain=True).wait_for_publish(3)

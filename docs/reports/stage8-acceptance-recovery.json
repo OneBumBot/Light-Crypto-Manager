@@ -1,0 +1,439 @@
+{
+  "schema_version": 1,
+  "project": "lcm-stage8-acceptance",
+  "environment": "real Docker software IoT agents; TLS mandatory",
+  "events": [
+    {
+      "scenario": "device_restart",
+      "status": "passed",
+      "before_reserved": 30000,
+      "after_reserved": 40000,
+      "effective": "aes-128-gcm-v1"
+    },
+    {
+      "scenario": "stale_device_state_restore",
+      "status": "passed",
+      "new_telemetry_with_stale_state": false,
+      "silent_downgrade": false
+    },
+    {
+      "scenario": "controller_restart_after_prepare",
+      "status": "passed",
+      "effective_event": "28e8c1f3-e618-465d-9b6b-b3e806732e96",
+      "transition": "40e077fd-2cfc-486f-9ab4-57ed746d8b61"
+    },
+    {
+      "scenario": "lost_activate_ack",
+      "status": "passed",
+      "acknowledged_at": null,
+      "telemetry_event": "669c2565-1a9a-4ace-b0fb-96dfef865942",
+      "silent_rollback": false
+    },
+    {
+      "scenario": "broker_outage",
+      "status": "passed",
+      "transition": "145a3223-a0b6-4f7b-a56d-d0d8a5b44440",
+      "false_effective_during_outage": false
+    },
+    {
+      "scenario": "postgres_outage_after_intent",
+      "status": "passed",
+      "probe_during_outage_exit": 1,
+      "transition": "07dccb9e-efa9-42d0-a650-2ba01a3fb11c"
+    },
+    {
+      "scenario": "postgres_outage_after_device_activation",
+      "status": "passed",
+      "telemetry_event": "a7359d71-77ee-4824-b8d0-b62ea9e948cd"
+    },
+    {
+      "scenario": "grace_expiry_manual_reconciliation",
+      "status": "passed",
+      "no_premature_effective": true,
+      "telemetry_event": "94b37109-4b7b-44fe-be17-78c3414dfddf"
+    },
+    {
+      "scenario": "lost_device_state",
+      "status": "passed",
+      "agent_exit": 1,
+      "accepted_with_missing_state": 0
+    }
+  ],
+  "final": {
+    "telemetry": {
+      "alpha": {
+        "accepted": 1738,
+        "max_sequence": 130007
+      },
+      "beta": {
+        "accepted": 1844,
+        "max_sequence": 20608
+      },
+      "gamma": {
+        "accepted": 1844,
+        "max_sequence": 20608
+      }
+    },
+    "devices": [
+      {
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "capabilities": [
+          "ascon-aead128-v1",
+          "aes-128-gcm-v1"
+        ],
+        "sequence_reserved": 140000,
+        "command_sequence": 38,
+        "command_acknowledged": 37,
+        "effective_profile": "aes-128-gcm-v1",
+        "reported_profile": "ascon-aead128-v1",
+        "effective_event": "94b37109-4b7b-44fe-be17-78c3414dfddf",
+        "pending_transition": null,
+        "effective_at": "2026-11-10T13:58:19.177401+00:00",
+        "last_request_at": "2026-11-10T13:58:01.074623+00:00"
+      },
+      {
+        "device_id": "beta",
+        "key_epoch": 1,
+        "capabilities": [
+          "ascon-aead128-v1",
+          "aes-128-gcm-v1"
+        ],
+        "sequence_reserved": 30000,
+        "command_sequence": 0,
+        "command_acknowledged": 0,
+        "effective_profile": "ascon-aead128-v1",
+        "reported_profile": null,
+        "effective_event": "cbb19c1c-fbe2-4f0a-b970-ddf978254c66",
+        "pending_transition": null,
+        "effective_at": "2026-11-10T13:42:39.844200+00:00",
+        "last_request_at": null
+      },
+      {
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "capabilities": [
+          "ascon-aead128-v1"
+        ],
+        "sequence_reserved": 30000,
+        "command_sequence": 0,
+        "command_acknowledged": 0,
+        "effective_profile": "ascon-aead128-v1",
+        "reported_profile": null,
+        "effective_event": "11fab25a-5027-4f88-8dc4-fcd86c846fcd",
+        "pending_transition": null,
+        "effective_at": "2026-11-10T13:42:39.918482+00:00",
+        "last_request_at": null
+      }
+    ],
+    "transitions": [
+      {
+        "id": "371902e7-f14d-4dab-9374-8fc0e6ef54f9",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "f5662b17-33f9-4071-a169-4540b9e50090",
+        "created_at": "2026-11-10T13:45:22.126036+00:00",
+        "deadline": "2026-11-10T13:47:22.126036+00:00",
+        "activated_at": "2026-11-10T13:45:22.214985+00:00",
+        "acknowledged_at": "2026-11-10T13:45:22.368158+00:00",
+        "confirmed_at": "2026-11-10T13:45:22.691695+00:00",
+        "telemetry_event": "20e0bb1e-a8b0-4532-8ab2-bb555ed59b76",
+        "error": null
+      },
+      {
+        "id": "69b4bdd7-b31c-4173-bcb6-11c1d7eafc41",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:2",
+        "correlation_id": "b52d706a-66f3-47eb-a6ad-b5d1bfde1ecf",
+        "created_at": "2026-11-10T13:48:16.505620+00:00",
+        "deadline": "2026-11-10T13:50:16.505620+00:00",
+        "activated_at": "2026-11-10T13:48:16.560190+00:00",
+        "acknowledged_at": "2026-11-10T13:48:16.643190+00:00",
+        "confirmed_at": "2026-11-10T13:48:16.714028+00:00",
+        "telemetry_event": "4226711d-541b-465d-b2cc-55ac5a3adecf",
+        "error": null
+      },
+      {
+        "id": "833888df-475a-4ee7-a65f-c0d5254a8035",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:3",
+        "correlation_id": "cec2aafd-848e-47fa-8fef-1f7f4d97d50f",
+        "created_at": "2026-11-10T13:48:18.607412+00:00",
+        "deadline": "2026-11-10T13:50:18.607412+00:00",
+        "activated_at": "2026-11-10T13:48:18.658005+00:00",
+        "acknowledged_at": "2026-11-10T13:48:18.739884+00:00",
+        "confirmed_at": "2026-11-10T13:48:18.749447+00:00",
+        "telemetry_event": "fe3e95fd-6438-4e94-a90f-e1719fd91a38",
+        "error": null
+      },
+      {
+        "id": "87d73021-15db-4828-ba1a-a3a1db533873",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:3",
+        "correlation_id": "5edef8f0-fc37-4521-83a6-67b8a31d443f",
+        "created_at": "2026-11-10T13:48:21.359378+00:00",
+        "deadline": "2026-11-10T13:50:21.359378+00:00",
+        "activated_at": "2026-11-10T13:48:21.465424+00:00",
+        "acknowledged_at": "2026-11-10T13:48:21.566109+00:00",
+        "confirmed_at": "2026-11-10T13:48:21.772760+00:00",
+        "telemetry_event": "bc4be2a2-4471-4ed4-bcb7-a972ec9efe3d",
+        "error": null
+      },
+      {
+        "id": "7a6cb267-a852-443f-a0c7-13bd872fc3f1",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:5",
+        "correlation_id": "1e859ecb-78f4-4cd1-8eec-c6d202fda6f7",
+        "created_at": "2026-11-10T13:53:23.110627+00:00",
+        "deadline": "2026-11-10T13:55:23.110627+00:00",
+        "activated_at": "2026-11-10T13:53:23.197199+00:00",
+        "acknowledged_at": "2026-11-10T13:53:23.279342+00:00",
+        "confirmed_at": "2026-11-10T13:53:23.652521+00:00",
+        "telemetry_event": "f7966924-9d14-4d6d-a861-329739ccee3e",
+        "error": null
+      },
+      {
+        "id": "874fabba-e4bd-4261-9d44-8b2f65c4eef7",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:5",
+        "correlation_id": "4e80c108-3c93-441b-a028-23cb7f45475e",
+        "created_at": "2026-11-10T13:53:26.269740+00:00",
+        "deadline": "2026-11-10T13:55:26.269740+00:00",
+        "activated_at": "2026-11-10T13:53:26.327466+00:00",
+        "acknowledged_at": "2026-11-10T13:53:26.409154+00:00",
+        "confirmed_at": "2026-11-10T13:53:26.680007+00:00",
+        "telemetry_event": "00f22fc3-ab6b-4d2e-a912-f07c85abecf3",
+        "error": null
+      },
+      {
+        "id": "f3ae0840-9244-4a2b-a8de-1c2875829d27",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:7",
+        "correlation_id": "09b9ed42-abd6-4a9d-985d-0059e07224a4",
+        "created_at": "2026-11-10T13:56:08.651876+00:00",
+        "deadline": "2026-11-10T13:58:08.651876+00:00",
+        "activated_at": "2026-11-10T13:56:08.787917+00:00",
+        "acknowledged_at": "2026-11-10T13:56:08.870004+00:00",
+        "confirmed_at": "2026-11-10T13:56:08.880846+00:00",
+        "telemetry_event": "64120da9-0373-4822-8afd-deefaf00ea15",
+        "error": null
+      },
+      {
+        "id": "41a55b7d-fba8-43c9-900a-4f9fbccf7c12",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:8",
+        "correlation_id": "f52c400d-be7e-44c3-93ff-859e74579e1b",
+        "created_at": "2026-11-10T13:56:29.656976+00:00",
+        "deadline": "2026-11-10T13:58:29.656976+00:00",
+        "activated_at": "2026-11-10T13:56:29.781968+00:00",
+        "acknowledged_at": "2026-11-10T13:56:29.865195+00:00",
+        "confirmed_at": "2026-11-10T13:56:30.235873+00:00",
+        "telemetry_event": "5f0d5c2f-3618-4d3d-8267-548b87d3ba44",
+        "error": null
+      },
+      {
+        "id": "40e077fd-2cfc-486f-9ab4-57ed746d8b61",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:9",
+        "correlation_id": "631bd650-8c67-461f-a15e-5cee8ea8ca81",
+        "created_at": "2026-11-10T13:56:35.414061+00:00",
+        "deadline": "2026-11-10T13:58:35.414061+00:00",
+        "activated_at": "2026-11-10T13:56:45.059170+00:00",
+        "acknowledged_at": "2026-11-10T13:56:45.142035+00:00",
+        "confirmed_at": "2026-11-10T13:56:45.150750+00:00",
+        "telemetry_event": "28e8c1f3-e618-465d-9b6b-b3e806732e96",
+        "error": null
+      },
+      {
+        "id": "d91b562f-abec-4799-be07-453a0711a966",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:10",
+        "correlation_id": "32b8cd3d-c4ef-4679-abe4-1a447975ada9",
+        "created_at": "2026-11-10T13:56:52.672888+00:00",
+        "deadline": "2026-11-10T13:58:52.672888+00:00",
+        "activated_at": "2026-11-10T13:56:52.802935+00:00",
+        "acknowledged_at": "2026-11-10T13:56:52.955338+00:00",
+        "confirmed_at": "2026-11-10T13:56:53.328367+00:00",
+        "telemetry_event": "39c00c40-87a8-42ce-8218-40943e2a000c",
+        "error": null
+      },
+      {
+        "id": "c8eebaab-9f55-4318-966c-96523f828bb2",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:11",
+        "correlation_id": "784afeb5-277d-40dd-ab64-0457dc82ae0e",
+        "created_at": "2026-11-10T13:56:58.431650+00:00",
+        "deadline": "2026-11-10T13:58:58.431650+00:00",
+        "activated_at": "2026-11-10T13:56:58.549166+00:00",
+        "acknowledged_at": null,
+        "confirmed_at": "2026-11-10T13:56:59.071922+00:00",
+        "telemetry_event": "669c2565-1a9a-4ace-b0fb-96dfef865942",
+        "error": null
+      },
+      {
+        "id": "62b874f1-86d0-4be9-80f0-c37f82b7455d",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:12",
+        "correlation_id": "28ba3c99-0c27-433a-a7fc-c5df264486c6",
+        "created_at": "2026-11-10T13:57:05.521568+00:00",
+        "deadline": "2026-11-10T13:59:05.521568+00:00",
+        "activated_at": "2026-11-10T13:57:05.572922+00:00",
+        "acknowledged_at": "2026-11-10T13:57:05.656074+00:00",
+        "confirmed_at": "2026-11-10T13:57:05.664542+00:00",
+        "telemetry_event": "1fffc16c-3985-423d-ac76-79b4a3a58733",
+        "error": null
+      },
+      {
+        "id": "145a3223-a0b6-4f7b-a56d-d0d8a5b44440",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:13",
+        "correlation_id": "6f2f17ee-8c1b-4136-8120-4d31eb8d6513",
+        "created_at": "2026-11-10T13:57:07.719546+00:00",
+        "deadline": "2026-11-10T13:59:07.719546+00:00",
+        "activated_at": "2026-11-10T13:57:17.317145+00:00",
+        "acknowledged_at": "2026-11-10T13:57:17.470181+00:00",
+        "confirmed_at": "2026-11-10T13:57:17.841105+00:00",
+        "telemetry_event": "37050fa9-3ac2-4818-800f-a09d94d80d94",
+        "error": null
+      },
+      {
+        "id": "33e160a9-6e1f-4f3e-a15a-e5e062948748",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:14",
+        "correlation_id": "0501ad68-ee2e-4a7f-a9be-ad359ddab336",
+        "created_at": "2026-11-10T13:57:21.490950+00:00",
+        "deadline": "2026-11-10T13:59:21.490950+00:00",
+        "activated_at": "2026-11-10T13:57:21.554183+00:00",
+        "acknowledged_at": "2026-11-10T13:57:21.636306+00:00",
+        "confirmed_at": "2026-11-10T13:57:21.912707+00:00",
+        "telemetry_event": "9e1b4be9-f3f0-4371-9ea7-66bde06309af",
+        "error": null
+      },
+      {
+        "id": "07dccb9e-efa9-42d0-a650-2ba01a3fb11c",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:15",
+        "correlation_id": "67ae2341-f0d2-496c-95ca-37c5fd78a194",
+        "created_at": "2026-11-10T13:57:23.603180+00:00",
+        "deadline": "2026-11-10T13:59:23.603180+00:00",
+        "activated_at": "2026-11-10T13:57:32.767367+00:00",
+        "acknowledged_at": "2026-11-10T13:57:32.849158+00:00",
+        "confirmed_at": "2026-11-10T13:57:32.969112+00:00",
+        "telemetry_event": "7ae80bd6-e278-4b67-978b-dda67f5d5dd9",
+        "error": null
+      },
+      {
+        "id": "31a6a050-56f9-4306-9b9a-aa97d575ab7b",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:16",
+        "correlation_id": "4e5739e1-e400-4146-91b3-5b62674a77c3",
+        "created_at": "2026-11-10T13:57:36.857658+00:00",
+        "deadline": "2026-11-10T13:59:36.857658+00:00",
+        "activated_at": "2026-11-10T13:57:36.934046+00:00",
+        "acknowledged_at": "2026-11-10T13:57:37.017307+00:00",
+        "confirmed_at": "2026-11-10T13:57:37.041774+00:00",
+        "telemetry_event": "cd710f26-4c1c-4470-95d5-2795a77a90c5",
+        "error": null
+      },
+      {
+        "id": "94bfafdb-785c-4aaf-acca-686c91246803",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:17",
+        "correlation_id": "601ecfb0-fe78-441c-9539-b3eea2102597",
+        "created_at": "2026-11-10T13:57:42.805035+00:00",
+        "deadline": "2026-11-10T13:59:42.805035+00:00",
+        "activated_at": "2026-11-10T13:57:42.943061+00:00",
+        "acknowledged_at": null,
+        "confirmed_at": "2026-11-10T13:57:48.998264+00:00",
+        "telemetry_event": "a7359d71-77ee-4824-b8d0-b62ea9e948cd",
+        "error": null
+      },
+      {
+        "id": "2e7a68c0-325f-493f-977d-73c0211f1933",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:18",
+        "correlation_id": "db7a5464-e9fb-4e0c-b799-2076fb783100",
+        "created_at": "2026-11-10T13:57:55.314806+00:00",
+        "deadline": "2026-11-10T13:59:55.314806+00:00",
+        "activated_at": "2026-11-10T13:57:55.444069+00:00",
+        "acknowledged_at": "2026-11-10T13:57:55.527187+00:00",
+        "confirmed_at": "2026-11-10T13:57:55.899023+00:00",
+        "telemetry_event": "5a63bfbc-7e4e-46bd-be00-7314465db50d",
+        "error": null
+      },
+      {
+        "id": "a3e7cc3a-37c8-42ab-acb8-dfb5eeec73e8",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:19",
+        "correlation_id": "10d8cd85-0360-4eda-ab06-7da731fba03a",
+        "created_at": "2026-11-10T13:58:01.074623+00:00",
+        "deadline": "2026-11-10T13:59:18.628932+00:00",
+        "activated_at": "2026-11-10T13:58:01.124273+00:00",
+        "acknowledged_at": null,
+        "confirmed_at": "2026-11-10T13:58:19.177401+00:00",
+        "telemetry_event": "94b37109-4b7b-44fe-be17-78c3414dfddf",
+        "error": "ReconciliationWindow"
+      }
+    ]
+  },
+  "no_volume_deleted": true,
+  "ml_models_trained": 0,
+  "policy_mode": "DRY_RUN"
+}

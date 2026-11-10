@@ -112,3 +112,17 @@ def test_independent_mac_vector():
     b=message('alpha','command',dict(command_id=u,transition_id=u,correlation_id=u,command_type='set_profile',phase='PREPARE',requested_profile=AES,
         source_version='admin-v1',controller_identity='lcm-manual-controller',profile_config_version=1,key_reference=AES+':1',command_epoch=1,command_sequence=1),now=n,message_id=u)
     assert json.loads(seal(b,KEY,'controller',now=n))['mac']=='17c0f0e26d8a35a9d819ed363fdf5e056547ed7559454fa23407c8db7964b3a8'
+
+
+def test_prior_positive_command_epoch_rejected(tmp_path):
+    # Positive previous epoch, not merely invalid epoch zero or a future epoch.
+    s=DeviceState(tmp_path/'state.db','alpha',2,initialize=True)
+    with pytest.raises(ValueError):s.execute(command(),conf())
+    assert s.read()['seq']==0 and s.read()['profile']==ASCON;s.close()
+
+
+@pytest.mark.parametrize('mac',['é'*64,'a','00'*33,None,123])
+def test_malformed_mac_is_bounded_value_error(mac):
+    import json
+    envelope=json.loads(seal(command(),KEY,'controller'));envelope['mac']=mac
+    with pytest.raises(ValueError):open_message(canonical(envelope),KEY,'controller','alpha',topic('alpha','controller'))

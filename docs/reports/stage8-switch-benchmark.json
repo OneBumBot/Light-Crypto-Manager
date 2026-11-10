@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "project": "lcm-stage8-acceptance",
+  "devices": 3,
+  "interval_seconds": 0.5,
+  "qos": 1,
+  "tls": true,
+  "sample_windows": [
+    {
+      "repeat": 0,
+      "profile": "ascon-aead128-v1",
+      "docker_cpu_ram_snapshots": [
+        {
+          "BlockIO": "0B / 549kB",
+          "CPUPerc": "7.75%",
+          "Container": "lcm-stage8-acceptance-device-alpha-1",
+          "ID": "45612268e114",
+          "MemPerc": "17.39%",
+          "MemUsage": "22.26MiB / 128MiB",
+          "Name": "lcm-stage8-acceptance-device-alpha-1",
+          "NetIO": "27kB / 89.2kB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.36%",
+          "Container": "lcm-stage8-acceptance-receiver-1",
+          "ID": "c3a4fbfd085f",
+          "MemPerc": "16.92%",
+          "MemUsage": "43.31MiB / 256MiB",
+          "Name": "lcm-stage8-acceptance-receiver-1",
+          "NetIO": "10.1MB / 6.62MB",
+          "PIDs": "2"
+        }
+      ],
+      "start": "2026-11-10T13:59:42.699709+00:00",
+      "end": "2026-11-10T13:59:50.699778+00:00",
+      "duration_seconds": 8.000069,
+      "wire_profile": "Ascon-AEAD128",
+      "pg_accepted": 15,
+      "mongo_stored": 15,
+      "undelivered_committed": 0,
+      "received_messages_per_second": 1.8749838282644813,
+      "delivery_latency_ms": {
+        "p50": 3.535,
+        "p95": 4.564,
+        "p99": 4.564
+      },
+      "pg_to_mongo_mean_ms": 396.0280666666667,
+      "global_outbox_backlog": 1,
+      "global_unattributed_rejected": 0,
+      "device_authenticated_replay": 0
+    },
+    {
+      "repeat": 0,
+      "profile": "aes-128-gcm-v1",
+      "docker_cpu_ram_snapshots": [
+        {
+          "BlockIO": "0B / 860kB",
+          "CPUPerc": "0.26%",
+          "Container": "lcm-stage8-acceptance-device-alpha-1",
+          "ID": "45612268e114",
+          "MemPerc": "17.13%",
+          "MemUsage": "21.93MiB / 128MiB",
+          "Name": "lcm-stage8-acceptance-device-alpha-1",
+          "NetIO": "36.5kB / 112kB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.32%",
+          "Container": "lcm-stage8-acceptance-receiver-1",
+          "ID": "c3a4fbfd085f",
+          "MemPerc": "17.02%",
+          "MemUsage": "43.58MiB / 256MiB",
+          "Name": "lcm-stage8-acceptance-receiver-1",
+          "NetIO": "10.6MB / 6.94MB",
+          "PIDs": "2"
+        }
+      ],
+      "start": "2026-11-10T14:00:00.327821+00:00",
+      "end": "2026-11-10T14:00:08.327913+00:00",
+      "duration_seconds": 8.000092,
+      "wire_profile": "AES-128-GCM",
+      "pg_accepted": 15,
+      "mongo_stored": 15,
+      "undelivered_committed": 0,
+      "received_messages_per_second": 1.874978437747966,
+      "delivery_latency_ms": {
+        "p50": 2.6189999999999998,
+        "p95": 3.5530000000000004,
+        "p99": 3.5530000000000004
+      },
+      "pg_to_mongo_mean_ms": 305.37333333333333,
+      "global_outbox_backlog": 3,
+      "global_unattributed_rejected": 0,
+      "device_authenticated_replay": 0
+    },
+    {
+      "repeat": 1,
+      "profile": "aes-128-gcm-v1",
+      "docker_cpu_ram_snapshots": [
+        {
+          "BlockIO": "0B / 860kB",
+          "CPUPerc": "7.74%",
+          "Container": "lcm-stage8-acceptance-device-alpha-1",
+          "ID": "45612268e114",
+          "MemPerc": "17.54%",
+          "MemUsage": "22.46MiB / 128MiB",
+          "Name": "lcm-stage8-acceptance-device-alpha-1",
+          "NetIO": "41.9kB / 129kB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "9.50%",
+          "Container": "lcm-stage8-acceptance-receiver-1",
+          "ID": "c3a4fbfd085f",
+          "MemPerc": "17.14%",
+          "MemUsage": "43.89MiB / 256MiB",
+          "Name": "lcm-stage8-acceptance-receiver-1",
+          "NetIO": "11MB / 7.2MB",
+          "PIDs": "2"
+        }
+      ],
+      "start": "2026-11-10T14:00:14.406846+00:00",
+      "end": "2026-11-10T14:00:22.406914+00:00",
+      "duration_seconds": 8.000068,
+      "wire_profile": "AES-128-GCM",
+      "pg_accepted": 15,
+      "mongo_stored": 15,
+      "undelivered_committed": 0,
+      "received_messages_per_second": 1.8749840626354675,
+      "delivery_latency_ms": {
+        "p50": 2.725,
+        "p95": 15.970000000000002,
+        "p99": 15.970000000000002
+      },
+      "pg_to_mongo_mean_ms": 346.4652,
+      "global_outbox_backlog": 0,
+      "global_unattributed_rejected": 0,
+      "device_authenticated_replay": 0
+    },
+    {
+      "repeat": 1,
+      "profile": "ascon-aead128-v1",
+      "docker_cpu_ram_snapshots": [
+        {
+          "BlockIO": "0B / 1.17MB",
+          "CPUPerc": "0.30%",
+          "Container": "lcm-stage8-acceptance-device-alpha-1",
+          "ID": "45612268e114",
+          "MemPerc": "17.11%",
+          "MemUsage": "21.89MiB / 128MiB",
+          "Name": "lcm-stage8-acceptance-device-alpha-1",
+          "NetIO": "51.4kB / 151kB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "1.99%",
+          "Container": "lcm-stage8-acceptance-receiver-1",
+          "ID": "c3a4fbfd085f",
+          "MemPerc": "16.82%",
+          "MemUsage": "43.07MiB / 256MiB",
+          "Name": "lcm-stage8-acceptance-receiver-1",
+          "NetIO": "11.5MB / 7.5MB",
+          "PIDs": "2"
+        }
+      ],
+      "start": "2026-11-10T14:00:31.087975+00:00",
+      "end": "2026-11-10T14:00:39.088047+00:00",
+      "duration_seconds": 8.000072,
+      "wire_profile": "Ascon-AEAD128",
+      "pg_accepted": 15,
+      "mongo_stored": 15,
+      "undelivered_committed": 0,
+      "received_messages_per_second": 1.8749831251518738,
+      "delivery_latency_ms": {
+        "p50": 3.044,
+        "p95": 4.105,
+        "p99": 4.105
+      },
+      "pg_to_mongo_mean_ms": 320.9497333333333,
+      "global_outbox_backlog": 1,
+      "global_unattributed_rejected": 0,
+      "device_authenticated_replay": 0
+    },
+    {
+      "repeat": 2,
+      "profile": "ascon-aead128-v1",
+      "docker_cpu_ram_snapshots": [
+        {
+          "BlockIO": "0B / 1.17MB",
+          "CPUPerc": "7.66%",
+          "Container": "lcm-stage8-acceptance-device-alpha-1",
+          "ID": "45612268e114",
+          "MemPerc": "17.49%",
+          "MemUsage": "22.38MiB / 128MiB",
+          "Name": "lcm-stage8-acceptance-device-alpha-1",
+          "NetIO": "56.7kB / 168kB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "9.30%",
+          "Container": "lcm-stage8-acceptance-receiver-1",
+          "ID": "c3a4fbfd085f",
+          "MemPerc": "17.07%",
+          "MemUsage": "43.69MiB / 256MiB",
+          "Name": "lcm-stage8-acceptance-receiver-1",
+          "NetIO": "11.9MB / 7.75MB",
+          "PIDs": "2"
+        }
+      ],
+      "start": "2026-11-10T14:00:45.147154+00:00",
+      "end": "2026-11-10T14:00:53.147221+00:00",
+      "duration_seconds": 8.000067,
+      "wire_profile": "Ascon-AEAD128",
+      "pg_accepted": 16,
+      "mongo_stored": 16,
+      "undelivered_committed": 0,
+      "received_messages_per_second": 1.9999832501402801,
+      "delivery_latency_ms": {
+        "p50": 4.890000000000001,
+        "p95": 6.159000000000001,
+        "p99": 6.159000000000001
+      },
+      "pg_to_mongo_mean_ms": 263.7051875,
+      "global_outbox_backlog": 0,
+      "global_unattributed_rejected": 0,
+      "device_authenticated_replay": 0
+    },
+    {
+      "repeat": 2,
+      "profile": "aes-128-gcm-v1",
+      "docker_cpu_ram_snapshots": [
+        {
+          "BlockIO": "0B / 1.45MB",
+          "CPUPerc": "0.26%",
+          "Container": "lcm-stage8-acceptance-device-alpha-1",
+          "ID": "45612268e114",
+          "MemPerc": "17.08%",
+          "MemUsage": "21.86MiB / 128MiB",
+          "Name": "lcm-stage8-acceptance-device-alpha-1",
+          "NetIO": "66.7kB / 191kB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.02%",
+          "Container": "lcm-stage8-acceptance-receiver-1",
+          "ID": "c3a4fbfd085f",
+          "MemPerc": "16.64%",
+          "MemUsage": "42.61MiB / 256MiB",
+          "Name": "lcm-stage8-acceptance-receiver-1",
+          "NetIO": "12.4MB / 8.07MB",
+          "PIDs": "2"
+        }
+      ],
+      "start": "2026-11-10T14:01:02.705915+00:00",
+      "end": "2026-11-10T14:01:10.705983+00:00",
+      "duration_seconds": 8.000068,
+      "wire_profile": "AES-128-GCM",
+      "pg_accepted": 16,
+      "mongo_stored": 16,
+      "undelivered_committed": 0,
+      "received_messages_per_second": 1.9999830001444987,
+      "delivery_latency_ms": {
+        "p50": 2.532,
+        "p95": 3.196,
+        "p99": 3.196
+      },
+      "pg_to_mongo_mean_ms": 232.6691875,
+      "global_outbox_backlog": 2,
+      "global_unattributed_rejected": 0,
+      "device_authenticated_replay": 0
+    }
+  ],
+  "measured_transition_history": [
+    {
+      "id": "5d2f7cdf-2942-48d8-8ec6-fefb1508f068",
+      "device_id": "alpha",
+      "old_profile": "aes-128-gcm-v1",
+      "target_profile": "ascon-aead128-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "actor": "admin:21",
+      "correlation_id": "2d6b6d98-e90b-4fc6-9851-d4b712eaca57",
+      "created_at": "2026-11-10T13:59:36.359638+00:00",
+      "deadline": "2026-11-10T14:01:36.359638+00:00",
+      "activated_at": "2026-11-10T13:59:36.471989+00:00",
+      "acknowledged_at": "2026-11-10T13:59:36.555116+00:00",
+      "confirmed_at": "2026-11-10T13:59:36.885457+00:00",
+      "telemetry_event": "67e5273d-52e6-4574-ba1c-cba2ae897b3c",
+      "error": null
+    },
+    {
+      "id": "bcd39ae9-c37b-4919-9ac4-ecc104ce86c7",
+      "device_id": "alpha",
+      "old_profile": "ascon-aead128-v1",
+      "target_profile": "aes-128-gcm-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "actor": "admin:22",
+      "correlation_id": "86dabbc0-5f56-4807-aae1-265977ff61d2",
+      "created_at": "2026-11-10T13:59:53.020737+00:00",
+      "deadline": "2026-11-10T14:01:53.020737+00:00",
+      "activated_at": "2026-11-10T13:59:53.148970+00:00",
+      "acknowledged_at": "2026-11-10T13:59:53.231187+00:00",
+      "confirmed_at": "2026-11-10T13:59:53.249213+00:00",
+      "telemetry_event": "e3493a8c-742b-4177-bb54-7c07d52d9de5",
+      "error": null
+    },
+    {
+      "id": "2b5a3098-4b2e-4fe5-b76e-2b2c48f7516d",
+      "device_id": "alpha",
+      "old_profile": "aes-128-gcm-v1",
+      "target_profile": "ascon-aead128-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "actor": "admin:23",
+      "correlation_id": "e8982cac-f7c5-466a-ba8f-cbec3435e830",
+      "created_at": "2026-11-10T14:00:24.739302+00:00",
+      "deadline": "2026-11-10T14:02:24.739302+00:00",
+      "activated_at": "2026-11-10T14:00:24.795106+00:00",
+      "acknowledged_at": "2026-11-10T14:00:24.877853+00:00",
+      "confirmed_at": "2026-11-10T14:00:25.017224+00:00",
+      "telemetry_event": "b067be7d-0b8a-492f-ab0c-bed0055f16ba",
+      "error": null
+    },
+    {
+      "id": "cd9ce735-57a9-4376-9b59-1ca38423c062",
+      "device_id": "alpha",
+      "old_profile": "ascon-aead128-v1",
+      "target_profile": "aes-128-gcm-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "actor": "admin:24",
+      "correlation_id": "26f35975-4e96-4a88-b4b9-aa21bdecede6",
+      "created_at": "2026-11-10T14:00:55.445853+00:00",
+      "deadline": "2026-11-10T14:02:55.445853+00:00",
+      "activated_at": "2026-11-10T14:00:55.571933+00:00",
+      "acknowledged_at": "2026-11-10T14:00:55.654289+00:00",
+      "confirmed_at": "2026-11-10T14:00:55.727833+00:00",
+      "telemetry_event": "838c8d45-7625-4567-8687-4df969798d41",
+      "error": null
+    }
+  ],
+  "limitations": [
+    "8-second windows at configured rate; not capacity benchmark",
+    "CPU/RAM snapshots are not peaks",
+    "Same host software agents; not Raspberry Pi",
+    "Authentication-only latency unavailable; microbenchmark reports authenticated decrypt",
+    "No inference/model training; no claim of all publisher loss from PG/Mongo parity"
+  ]
+}

@@ -3,7 +3,7 @@ import argparse,os,sys,shutil,subprocess,tempfile,json
 from pathlib import Path
 
 MUTATIONS=[
- ('ignore_control_mac','src/device_control/protocol.py',"if type(mac) is not str or not hmac.compare_digest(mac,expected):",'if False:', 'test_control_protocol.py::test_control_authenticated_direction_and_device'),
+ ('ignore_control_mac','src/device_control/protocol.py',"if not hmac.compare_digest(mac,expected):",'if False:', 'test_control_protocol.py::test_control_authenticated_direction_and_device'),
  ('disable_control_replay','src/device_control/state.py',"if d['command_epoch']!=self.epoch or seq<=s['seq']:",'if False:', 'test_control_protocol.py::test_monotonic_replay_gap_rejected'),
  ('premature_effective','src/device_control/server.py',".values(command_acknowledged=data['command_sequence'])",".values(command_acknowledged=data['command_sequence'],effective_profile=data['requested_profile'])",'test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade'),
  ('missing_device_binding','src/device_control/protocol.py',"body['device_id']!=device or ",'','test_control_protocol.py::test_authenticated_claimed_device_mismatch'),

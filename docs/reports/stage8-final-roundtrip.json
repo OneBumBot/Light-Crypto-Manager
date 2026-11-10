@@ -1,0 +1,38 @@
+{
+  "environment": "real isolated software IoT agents, Docker MQTT TLS/PG/Mongo/HTTP",
+  "policy_mode": "DRY_RUN",
+  "measurements": [
+    {
+      "transition_id": "7a6cb267-a852-443f-a0c7-13bd872fc3f1",
+      "target": "aes-128-gcm-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "telemetry_event": "f7966924-9d14-4d6d-a861-329739ccee3e",
+      "sequence_number": 20009,
+      "full_http_to_effective_seconds": 0.6112704779989144,
+      "command_sequences": [
+        9,
+        10
+      ],
+      "authenticated_ack_count": 2,
+      "prepare_to_activate_seconds": 0.086572,
+      "activate_to_effective_seconds": 0.455322,
+      "activate_to_ack_seconds": 0.082143
+    },
+    {
+      "transition_id": "874fabba-e4bd-4261-9d44-8b2f65c4eef7",
+      "target": "ascon-aead128-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "telemetry_event": "00f22fc3-ab6b-4d2e-a912-f07c85abecf3",
+      "sequence_number": 20015,
+      "full_http_to_effective_seconds": 0.6133650470001157,
+      "command_sequences": [
+        11,
+        12
+      ],
+      "authenticated_ack_count": 2,
+      "prepare_to_activate_seconds": 0.057726,
+      "activate_to_effective_seconds": 0.352541,
+      "activate_to_ack_seconds": 0.081688
+    }
+  ]
+}

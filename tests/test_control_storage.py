@@ -176,3 +176,13 @@ def test_receipt_failure_rolls_back_profile_replay_and_outbox(postgres_db,regist
         assert c.scalar(select(func.count()).select_from(outbox))==1
         assert c.scalar(select(func.count()).select_from(m.evidence))==1
     state.close()
+
+
+def test_activation_flag_cannot_override_missing_e2e_verification(postgres_db,registry,monkeypatch):
+    from dataclasses import replace
+    from src.policy.profiles import IMPLEMENTED
+    web=postgres_db;setup(web,registry);baseline(web,registry)
+    monkeypatch.setitem(IMPLEMENTED,AES,replace(IMPLEMENTED[AES],activation_allowed=True,software_e2e_passed=False))
+    with pytest.raises(ValueError):
+        with web.db.engine.begin() as c:server.request_switch(c,'raspb1',AES,'admin:1',mode=server.MODE)
+    with web.db.engine.connect() as c:assert c.scalar(select(func.count()).select_from(m.commands))==0

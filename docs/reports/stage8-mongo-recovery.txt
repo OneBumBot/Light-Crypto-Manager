@@ -1,0 +1,38 @@
+
+UTC: 2026-11-10T13:46:25.036517+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -c 'from sqlalchemy import create_engine,select,func;from src.runtime import database_url;from src.outbox import outbox;e=create_engine(database_url());c=e.connect();n=c.scalar(select(func.count()).select_from(outbox).where(outbox.c.status!='"'"'delivered'"'"'));assert n>0;print({'"'"'committed_pending_while_mongo_absent'"'"':n})'
+ Container lcm-stage8-acceptance-tests-run-54fc99dd1a53 Creating
+ Container lcm-stage8-acceptance-tests-run-54fc99dd1a53 Created
+{'committed_pending_while_mongo_absent': 1286}
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T13:46:31.357483+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env up -d --wait mongo
+ Container lcm-stage8-acceptance-mongo-1 Creating
+ Container lcm-stage8-acceptance-mongo-1 Created
+ Container lcm-stage8-acceptance-storage-init-1 Starting
+ Container lcm-stage8-acceptance-storage-init-1 Started
+ Container lcm-stage8-acceptance-storage-init-1 Waiting
+ Container lcm-stage8-acceptance-storage-init-1 Exited
+ Container lcm-stage8-acceptance-mongo-1 Starting
+ Container lcm-stage8-acceptance-mongo-1 Started
+ Container lcm-stage8-acceptance-mongo-1 Waiting
+ Container lcm-stage8-acceptance-storage-init-1 Waiting
+ Container lcm-stage8-acceptance-storage-init-1 Exited
+ Container lcm-stage8-acceptance-mongo-1 Healthy
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T13:47:34.546616+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -c 'import time;from sqlalchemy import create_engine,select;from src.runtime import database_url;from src.outbox import outbox;from src.mongo_repository import MongoRepository;e=create_engine(database_url());c=e.connect();rows=c.execute(select(outbox.c.device_id,outbox.c.key_epoch,outbox.c.sequence_number).limit(5000)).all();ids=[str(r.device_id)+'"'"':'"'"'+str(r.key_epoch)+'"'"':'"'"'+str(r.sequence_number) for r in rows];repo=MongoRepository('"'"'relay'"'"');end=time.monotonic()+45;n=0
+while time.monotonic()<end:
+ n=repo.collection.count_documents({'"'"'_id'"'"':{'"'"'\u0024in'"'"':ids}})
+ if n==len(ids):break
+ time.sleep(.3)
+assert n==len(ids),(n,len(ids));print({'"'"'snapshot_committed'"'"':len(ids),'"'"'mongo_present'"'"':n,'"'"'duplicates'"'"':repo.collection.count_documents({})-len(set(repo.collection.distinct('"'"'_id'"'"')))})'
+ Container lcm-stage8-acceptance-tests-run-fc189b846053 Creating
+ Container lcm-stage8-acceptance-tests-run-fc189b846053 Created
+{'snapshot_committed': 1695, 'mongo_present': 1695, 'duplicates': 0}
+
+EXIT CODE: 0

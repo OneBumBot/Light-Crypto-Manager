@@ -28,3 +28,71 @@ $ docker compose --env-file .local-runtime/stage8/integration/compose.env run --
 }
 
 EXIT CODE: 0
+
+UTC: 2026-11-10T13:48:27.387237+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_security_probe
+ Container lcm-stage8-acceptance-tests-run-4bdb8f150168 Creating
+ Container lcm-stage8-acceptance-tests-run-4bdb8f150168 Created
+{
+  "real_tls": true,
+  "checks": [
+    "invalid_mac",
+    "wrong_key_direction",
+    "wrong_device_topic",
+    "requested_profile",
+    "command_epoch",
+    "command_sequence",
+    "controller_identity",
+    "expired_and_retained",
+    "device_cannot_command_itself",
+    "device_cannot_status_other_device",
+    "controller_cannot_publish_telemetry",
+    "device_cannot_read_other_commands",
+    "ack_wrong_correlation_id",
+    "ack_wrong_requested_profile",
+    "duplicate_ack_no_new_record",
+    "anonymous_http_denied",
+    "viewer_http_control_denied",
+    "viewer_status_allowed"
+  ],
+  "invalid_commands_created_ack": 0,
+  "effective_unchanged": true,
+  "live_control_hmac": true
+}
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T13:53:33.472700+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_security_probe
+ Container lcm-stage8-acceptance-tests-run-7f7c7fdd4f30 Creating
+ Container lcm-stage8-acceptance-tests-run-7f7c7fdd4f30 Created
+{
+  "real_tls": true,
+  "checks": [
+    "invalid_mac",
+    "invalid_unicode_mac",
+    "wrong_key_direction",
+    "wrong_device_topic",
+    "requested_profile",
+    "command_epoch",
+    "command_sequence",
+    "controller_identity",
+    "expired_and_retained",
+    "device_cannot_command_itself",
+    "device_cannot_status_other_device",
+    "controller_cannot_publish_telemetry",
+    "device_cannot_read_other_commands",
+    "ack_wrong_correlation_id",
+    "ack_wrong_requested_profile",
+    "duplicate_ack_no_new_record",
+    "device_continues_telemetry_after_invalid_control",
+    "anonymous_http_denied",
+    "viewer_http_control_denied",
+    "viewer_status_allowed"
+  ],
+  "invalid_commands_created_ack": 0,
+  "effective_unchanged": true,
+  "live_control_hmac": true
+}
+
+EXIT CODE: 0

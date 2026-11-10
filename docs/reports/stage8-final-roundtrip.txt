@@ -1,0 +1,167 @@
+
+UTC: 2026-11-10T13:45:28.481129+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe roundtrip
+ Container lcm-stage8-acceptance-tests-run-61f75a241a8c Creating
+ Container lcm-stage8-acceptance-tests-run-61f75a241a8c Created
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/scripts/control_system_probe.py", line 116, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/app/scripts/control_system_probe.py", line 107, in main
+    switch(ASCON if a.action=='request-ascon' else AES)
+  File "/app/scripts/control_system_probe.py", line 94, in switch
+    wait(lambda:repo.collection.find_one({'_id':f"alpha:{event['key_epoch']}:{event['sequence_number']}"}))
+  File "/app/scripts/control_system_probe.py", line 17, in wait
+    result=predicate()
+           ^^^^^^^^^^^
+  File "/app/scripts/control_system_probe.py", line 94, in <lambda>
+    wait(lambda:repo.collection.find_one({'_id':f"alpha:{event['key_epoch']}:{event['sequence_number']}"}))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/collection.py", line 1728, in find_one
+    for result in cursor.limit(-1):
+                  ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/cursor.py", line 404, in __next__
+    return self.next()
+           ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/cursor.py", line 383, in next
+    if len(self._data) or self._refresh():
+                          ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/cursor.py", line 334, in _refresh
+    self._send_message(q)
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/cursor.py", line 237, in _send_message
+    response = client._run_operation(operation, self._run_with_conn, address=self._address)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/_csot.py", line 125, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 1994, in _run_operation
+    return self._retryable_read(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2116, in _retryable_read
+    return self._retry_internal(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/_csot.py", line 126, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2077, in _retry_internal
+    ).run()
+      ^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 2947, in run
+    res = self._read() if self._is_read else self._write()
+          ^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 3175, in _read
+    self._server = self._get_server()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 3120, in _get_server
+    return self._client._select_server(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/mongo_client.py", line 1917, in _select_server
+    server = topology.select_server(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/topology.py", line 357, in select_server
+    server = self._select_server(
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/topology.py", line 331, in _select_server
+    servers = self.select_servers(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/topology.py", line 249, in select_servers
+    server_descriptions = self._select_servers_loop(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pymongo/synchronous/topology.py", line 297, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: mongo:27017: [Errno -2] Name or service not known (configured timeouts: socketTimeoutMS: 2000.0ms, connectTimeoutMS: 2000.0ms), Timeout: 4.999977117000526s, Topology Description: <TopologyDescription id: 6af31ff2845d8e7df70cc0ac, topology_type: Unknown, servers: [<ServerDescription ('mongo', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('mongo:27017: [Errno -2] Name or service not known (configured timeouts: socketTimeoutMS: 2000.0ms, connectTimeoutMS: 2000.0ms)')>]>
+
+
+EXIT CODE: 1
+
+UTC: 2026-11-10T13:48:22.667950+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe roundtrip
+ Container lcm-stage8-acceptance-tests-run-74cf1d199e0c Creating
+ Container lcm-stage8-acceptance-tests-run-74cf1d199e0c Created
+{
+  "environment": "real isolated software IoT agents, Docker MQTT TLS/PG/Mongo/HTTP",
+  "policy_mode": "DRY_RUN",
+  "measurements": [
+    {
+      "transition_id": "833888df-475a-4ee7-a65f-c0d5254a8035",
+      "target": "aes-128-gcm-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "telemetry_event": "fe3e95fd-6438-4e94-a90f-e1719fd91a38",
+      "sequence_number": 10364,
+      "full_http_to_effective_seconds": 0.20689854900047067,
+      "command_sequences": [
+        5,
+        6
+      ],
+      "authenticated_ack_count": 2,
+      "prepare_to_activate_seconds": 0.050593,
+      "activate_to_effective_seconds": 0.091442,
+      "activate_to_ack_seconds": 0.081879
+    },
+    {
+      "transition_id": "87d73021-15db-4828-ba1a-a3a1db533873",
+      "target": "ascon-aead128-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "telemetry_event": "bc4be2a2-4471-4ed4-bcb7-a972ec9efe3d",
+      "sequence_number": 10370,
+      "full_http_to_effective_seconds": 0.6120639869986917,
+      "command_sequences": [
+        7,
+        8
+      ],
+      "authenticated_ack_count": 2,
+      "prepare_to_activate_seconds": 0.106046,
+      "activate_to_effective_seconds": 0.307336,
+      "activate_to_ack_seconds": 0.100685
+    }
+  ]
+}
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T13:53:27.571348+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe roundtrip
+ Container lcm-stage8-acceptance-tests-run-9c87bfc3baf7 Creating
+ Container lcm-stage8-acceptance-tests-run-9c87bfc3baf7 Created
+{
+  "environment": "real isolated software IoT agents, Docker MQTT TLS/PG/Mongo/HTTP",
+  "policy_mode": "DRY_RUN",
+  "measurements": [
+    {
+      "transition_id": "7a6cb267-a852-443f-a0c7-13bd872fc3f1",
+      "target": "aes-128-gcm-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "telemetry_event": "f7966924-9d14-4d6d-a861-329739ccee3e",
+      "sequence_number": 20009,
+      "full_http_to_effective_seconds": 0.6112704779989144,
+      "command_sequences": [
+        9,
+        10
+      ],
+      "authenticated_ack_count": 2,
+      "prepare_to_activate_seconds": 0.086572,
+      "activate_to_effective_seconds": 0.455322,
+      "activate_to_ack_seconds": 0.082143
+    },
+    {
+      "transition_id": "874fabba-e4bd-4261-9d44-8b2f65c4eef7",
+      "target": "ascon-aead128-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "telemetry_event": "00f22fc3-ab6b-4d2e-a912-f07c85abecf3",
+      "sequence_number": 20015,
+      "full_http_to_effective_seconds": 0.6133650470001157,
+      "command_sequences": [
+        11,
+        12
+      ],
+      "authenticated_ack_count": 2,
+      "prepare_to_activate_seconds": 0.057726,
+      "activate_to_effective_seconds": 0.352541,
+      "activate_to_ack_seconds": 0.081688
+    }
+  ]
+}
+
+EXIT CODE: 0

@@ -48,7 +48,7 @@ def main():
                             elif body['kind']=='ack':server.handle_ack(c,body)
                             else:raise ValueError('Unexpected status kind')
                         if response:client.publish(topic(device,'controller'),seal(response,bytes.fromhex(config[device]['command_key']),'controller'),qos=1)
-                    except ValueError:log.warning('Control input safely rejected')
+                    except (ValueError,TypeError,OverflowError):log.warning('Control input safely rejected')
                 with engine.begin() as c:cmd=server.claim(c,config)
                 if cmd:
                     outcome=client.publish(topic(cmd['device_id'],'controller'),cmd['wire'].encode(),qos=1,retain=False)

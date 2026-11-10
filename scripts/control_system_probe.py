@@ -52,6 +52,11 @@ def main():
         def configured():
             with engine.connect() as c:return {r['device_id']:dict(r) for r in c.execute(select(m.devices)).mappings()}
         wait(lambda:all(configured().get(d,{}).get('effective_event') for d in ['alpha','beta','gamma']))
+        from src.policy.models import worker_status as policy_workers, states as policy_states
+        with engine.connect() as c:
+            policy_modes=set(c.scalars(select(policy_workers.c.mode)))
+            assert policy_modes=={'DRY_RUN'}, 'Run the actual DRY_RUN policy worker for this probe'
+            assert c.scalar(select(func.count()).select_from(policy_states).where(policy_states.c.applied.is_not(None)))==0
         initial=configured();assert initial['beta']['effective_profile']==ASCON and initial['gamma']['effective_profile']==ASCON
         def switch(target):
             before=configured()['alpha']
@@ -77,6 +82,9 @@ def main():
                 event=c.execute(select(outbox).where(outbox.c.id==d['effective_event'])).mappings().one()
                 commands=c.execute(select(m.commands).where(m.commands.c.transition_id==tid).order_by(m.commands.c.sequence)).mappings().all()
                 ack_count=c.scalar(select(func.count()).select_from(m.acks).where(m.acks.c.command_id.in_([cmd['id'] for cmd in commands])))
+                from src.device_control.models import evidence
+                receipt=c.execute(select(evidence).where(evidence.c.event_id==d['effective_event'])).mappings().one()
+                assert receipt['profile']==target and receipt['sequence_number']==event['sequence_number'] and len(receipt['packet_sha256'])==64
                 assert len(commands)==2 and commands[1]['sequence']>commands[0]['sequence']
                 assert event['payload']['crypto_profile']==('AES-128-GCM' if target==AES else 'Ascon-AEAD128')
                 assert event['sequence_number']>0

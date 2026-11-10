@@ -1,0 +1,450 @@
+{
+  "schema_version": 1,
+  "python": "3.12.16",
+  "architecture": "x86_64",
+  "platform": "Linux-7.2.10-1-cachyos-bore-x86_64-with-glibc2.36",
+  "cryptography": "50.0.2",
+  "openssl": "OpenSSL 4.0.3 29 Sep 2026",
+  "cpu_count": 16,
+  "measurements": [
+    {
+      "repeat": 0,
+      "profile": "ascon-aead128-v1",
+      "payload_bytes": 64,
+      "ciphertext_bytes": 80,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 170.513,
+        "p95": 173.979,
+        "p99": 181.604
+      },
+      "authenticated_decryption_us": {
+        "p50": 171.885,
+        "p95": 174.5,
+        "p99": 175.362
+      },
+      "cpu_seconds": 0.102712614,
+      "wall_seconds": 0.10287743699882412,
+      "cpu_percent_of_one_core": 99.83978702849487,
+      "paired_encrypt_decrypt_per_second": 2916.0913097342127,
+      "peak_process_rss_kib": 27004
+    },
+    {
+      "repeat": 0,
+      "profile": "aes-128-gcm-v1",
+      "payload_bytes": 64,
+      "ciphertext_bytes": 80,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1.232,
+        "p95": 1.282,
+        "p99": 1.323
+      },
+      "authenticated_decryption_us": {
+        "p50": 1.243,
+        "p95": 1.282,
+        "p99": 1.332
+      },
+      "cpu_seconds": 0.0007953230000000006,
+      "wall_seconds": 0.0007958659989526495,
+      "cpu_percent_of_one_core": 99.9317725655621,
+      "paired_encrypt_decrypt_per_second": 376947.8786564529,
+      "peak_process_rss_kib": 28480
+    },
+    {
+      "repeat": 0,
+      "profile": "ascon-aead128-v1",
+      "payload_bytes": 256,
+      "ciphertext_bytes": 272,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 393.545,
+        "p95": 405.478,
+        "p99": 511.749
+      },
+      "authenticated_decryption_us": {
+        "p50": 395.278,
+        "p95": 404.546,
+        "p99": 452.546
+      },
+      "cpu_seconds": 0.237819834,
+      "wall_seconds": 0.23823358599838684,
+      "cpu_percent_of_one_core": 99.82632507643585,
+      "paired_encrypt_decrypt_per_second": 1259.2682880659463,
+      "peak_process_rss_kib": 27080
+    },
+    {
+      "repeat": 0,
+      "profile": "aes-128-gcm-v1",
+      "payload_bytes": 256,
+      "ciphertext_bytes": 272,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1.243,
+        "p95": 1.293,
+        "p99": 1.412
+      },
+      "authenticated_decryption_us": {
+        "p50": 1.262,
+        "p95": 1.303,
+        "p99": 1.352
+      },
+      "cpu_seconds": 0.0008074859999999962,
+      "wall_seconds": 0.0008094419972621836,
+      "cpu_percent_of_one_core": 99.75835238734791,
+      "paired_encrypt_decrypt_per_second": 370625.6915439341,
+      "peak_process_rss_kib": 28292
+    },
+    {
+      "repeat": 0,
+      "profile": "ascon-aead128-v1",
+      "payload_bytes": 1024,
+      "ciphertext_bytes": 1040,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1313.185,
+        "p95": 1346.278,
+        "p99": 1374.763
+      },
+      "authenticated_decryption_us": {
+        "p50": 1313.867,
+        "p95": 1335.878,
+        "p99": 1359.153
+      },
+      "cpu_seconds": 0.7871466330000001,
+      "wall_seconds": 0.788404091999837,
+      "cpu_percent_of_one_core": 99.8405057745645,
+      "paired_encrypt_decrypt_per_second": 380.51552883119996,
+      "peak_process_rss_kib": 27108
+    },
+    {
+      "repeat": 0,
+      "profile": "aes-128-gcm-v1",
+      "payload_bytes": 1024,
+      "ciphertext_bytes": 1040,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1.322,
+        "p95": 1.373,
+        "p99": 1.473
+      },
+      "authenticated_decryption_us": {
+        "p50": 1.342,
+        "p95": 1.393,
+        "p99": 1.422
+      },
+      "cpu_seconds": 0.0008550640000000026,
+      "wall_seconds": 0.0008657990001665894,
+      "cpu_percent_of_one_core": 98.76010480902366,
+      "paired_encrypt_decrypt_per_second": 346500.7466424385,
+      "peak_process_rss_kib": 28380
+    },
+    {
+      "repeat": 1,
+      "profile": "aes-128-gcm-v1",
+      "payload_bytes": 64,
+      "ciphertext_bytes": 80,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1.232,
+        "p95": 1.282,
+        "p99": 1.383
+      },
+      "authenticated_decryption_us": {
+        "p50": 1.232,
+        "p95": 1.272,
+        "p99": 1.322
+      },
+      "cpu_seconds": 0.000793197999999995,
+      "wall_seconds": 0.0007945039978949353,
+      "cpu_percent_of_one_core": 99.83562097882445,
+      "paired_encrypt_decrypt_per_second": 377594.0722700703,
+      "peak_process_rss_kib": 28492
+    },
+    {
+      "repeat": 1,
+      "profile": "ascon-aead128-v1",
+      "payload_bytes": 64,
+      "ciphertext_bytes": 80,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 168.789,
+        "p95": 172.146,
+        "p99": 173.689
+      },
+      "authenticated_decryption_us": {
+        "p50": 170.092,
+        "p95": 172.506,
+        "p99": 174.53
+      },
+      "cpu_seconds": 0.101727025,
+      "wall_seconds": 0.10187826800029143,
+      "cpu_percent_of_one_core": 99.85154537541706,
+      "paired_encrypt_decrypt_per_second": 2944.690814719601,
+      "peak_process_rss_kib": 26944
+    },
+    {
+      "repeat": 1,
+      "profile": "aes-128-gcm-v1",
+      "payload_bytes": 256,
+      "ciphertext_bytes": 272,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1.272,
+        "p95": 1.313,
+        "p99": 1.383
+      },
+      "authenticated_decryption_us": {
+        "p50": 1.272,
+        "p95": 1.312,
+        "p99": 1.353
+      },
+      "cpu_seconds": 0.0008159110000000025,
+      "wall_seconds": 0.0008173069982149173,
+      "cpu_percent_of_one_core": 99.82919536747346,
+      "paired_encrypt_decrypt_per_second": 367059.13525178534,
+      "peak_process_rss_kib": 28344
+    },
+    {
+      "repeat": 1,
+      "profile": "ascon-aead128-v1",
+      "payload_bytes": 256,
+      "ciphertext_bytes": 272,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 385.028,
+        "p95": 390.299,
+        "p99": 398.203
+      },
+      "authenticated_decryption_us": {
+        "p50": 387.894,
+        "p95": 392.673,
+        "p99": 400.157
+      },
+      "cpu_seconds": 0.23184788100000003,
+      "wall_seconds": 0.232163861997833,
+      "cpu_percent_of_one_core": 99.86389742352067,
+      "paired_encrypt_decrypt_per_second": 1292.1907717179522,
+      "peak_process_rss_kib": 27008
+    },
+    {
+      "repeat": 1,
+      "profile": "aes-128-gcm-v1",
+      "payload_bytes": 1024,
+      "ciphertext_bytes": 1040,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1.372,
+        "p95": 1.432,
+        "p99": 1.533
+      },
+      "authenticated_decryption_us": {
+        "p50": 1.402,
+        "p95": 1.443,
+        "p99": 1.483
+      },
+      "cpu_seconds": 0.0008892469999999958,
+      "wall_seconds": 0.000890215000254102,
+      "cpu_percent_of_one_core": 99.89126219465747,
+      "paired_encrypt_decrypt_per_second": 336997.2421430422,
+      "peak_process_rss_kib": 28124
+    },
+    {
+      "repeat": 1,
+      "profile": "ascon-aead128-v1",
+      "payload_bytes": 1024,
+      "ciphertext_bytes": 1040,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1288.489,
+        "p95": 1322.263,
+        "p99": 1388.829
+      },
+      "authenticated_decryption_us": {
+        "p50": 1289.571,
+        "p95": 1313.276,
+        "p99": 1324.317
+      },
+      "cpu_seconds": 0.773375821,
+      "wall_seconds": 0.7760266320001392,
+      "cpu_percent_of_one_core": 99.65841236745871,
+      "paired_encrypt_decrypt_per_second": 386.58467071777784,
+      "peak_process_rss_kib": 27004
+    },
+    {
+      "repeat": 2,
+      "profile": "ascon-aead128-v1",
+      "payload_bytes": 64,
+      "ciphertext_bytes": 80,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 169.742,
+        "p95": 172.947,
+        "p99": 176.254
+      },
+      "authenticated_decryption_us": {
+        "p50": 170.974,
+        "p95": 173.748,
+        "p99": 175.963
+      },
+      "cpu_seconds": 0.102207533,
+      "wall_seconds": 0.10235587200077134,
+      "cpu_percent_of_one_core": 99.85507524104702,
+      "paired_encrypt_decrypt_per_second": 2930.9505564833566,
+      "peak_process_rss_kib": 26944
+    },
+    {
+      "repeat": 2,
+      "profile": "aes-128-gcm-v1",
+      "payload_bytes": 64,
+      "ciphertext_bytes": 80,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1.222,
+        "p95": 1.282,
+        "p99": 1.413
+      },
+      "authenticated_decryption_us": {
+        "p50": 1.252,
+        "p95": 1.302,
+        "p99": 1.322
+      },
+      "cpu_seconds": 0.0007990390000000014,
+      "wall_seconds": 0.0008018779990379699,
+      "cpu_percent_of_one_core": 99.64595623756051,
+      "paired_encrypt_decrypt_per_second": 374121.7496426095,
+      "peak_process_rss_kib": 28144
+    },
+    {
+      "repeat": 2,
+      "profile": "ascon-aead128-v1",
+      "payload_bytes": 256,
+      "ciphertext_bytes": 272,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 385.189,
+        "p95": 391.791,
+        "p99": 404.506
+      },
+      "authenticated_decryption_us": {
+        "p50": 390.88,
+        "p95": 399.597,
+        "p99": 414.163
+      },
+      "cpu_seconds": 0.232809851,
+      "wall_seconds": 0.23337397700015572,
+      "cpu_percent_of_one_core": 99.75827381981183,
+      "paired_encrypt_decrypt_per_second": 1285.4903698187388,
+      "peak_process_rss_kib": 27452
+    },
+    {
+      "repeat": 2,
+      "profile": "aes-128-gcm-v1",
+      "payload_bytes": 256,
+      "ciphertext_bytes": 272,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1.303,
+        "p95": 1.352,
+        "p99": 1.393
+      },
+      "authenticated_decryption_us": {
+        "p50": 1.293,
+        "p95": 1.342,
+        "p99": 1.373
+      },
+      "cpu_seconds": 0.0008351269999999911,
+      "wall_seconds": 0.0008369440001843031,
+      "cpu_percent_of_one_core": 99.7829006260978,
+      "paired_encrypt_decrypt_per_second": 358446.9211009782,
+      "peak_process_rss_kib": 28116
+    },
+    {
+      "repeat": 2,
+      "profile": "ascon-aead128-v1",
+      "payload_bytes": 1024,
+      "ciphertext_bytes": 1040,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1293.378,
+        "p95": 1321.321,
+        "p99": 1325.599
+      },
+      "authenticated_decryption_us": {
+        "p50": 1293.358,
+        "p95": 1302.285,
+        "p99": 1312.164
+      },
+      "cpu_seconds": 0.776825982,
+      "wall_seconds": 0.7779287670018675,
+      "cpu_percent_of_one_core": 99.85824087645997,
+      "paired_encrypt_decrypt_per_second": 385.6394219180222,
+      "peak_process_rss_kib": 27124
+    },
+    {
+      "repeat": 2,
+      "profile": "aes-128-gcm-v1",
+      "payload_bytes": 1024,
+      "ciphertext_bytes": 1040,
+      "aad_bytes": 26,
+      "iterations": 300,
+      "warmup": 20,
+      "encryption_us": {
+        "p50": 1.343,
+        "p95": 1.403,
+        "p99": 1.523
+      },
+      "authenticated_decryption_us": {
+        "p50": 1.363,
+        "p95": 1.412,
+        "p99": 1.443
+      },
+      "cpu_seconds": 0.0008703530000000043,
+      "wall_seconds": 0.0008727109998289961,
+      "cpu_percent_of_one_core": 99.72980748157707,
+      "paired_encrypt_decrypt_per_second": 343756.40969207865,
+      "peak_process_rss_kib": 28448
+    }
+  ],
+  "limitations": [
+    "Ascon pure Python reference vs native optimized AESGCM: implementation comparison, not pure algorithm comparison",
+    "No separate authentication-only timing; decrypt includes AEAD verification",
+    "Software x86/host measurements, not Raspberry Pi/ARM or energy",
+    "Container CPU/RAM limits and background load documented separately",
+    "Ephemeral benchmark keys, no production telemetry/model training"
+  ]
+}

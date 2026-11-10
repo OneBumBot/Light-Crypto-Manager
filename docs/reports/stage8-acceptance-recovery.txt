@@ -1,0 +1,65 @@
+
+UTC: 2026-11-10T13:58:34.434278+00:00
+$ python3 scripts/check_control_system.py --env-file .local-runtime/stage8/acceptance/compose.env --output .local-runtime/stage8/acceptance-recovery.json --extended
+{
+  "events": [
+    {
+      "scenario": "device_restart",
+      "status": "passed",
+      "before_reserved": 30000,
+      "after_reserved": 40000,
+      "effective": "aes-128-gcm-v1"
+    },
+    {
+      "scenario": "stale_device_state_restore",
+      "status": "passed",
+      "new_telemetry_with_stale_state": false,
+      "silent_downgrade": false
+    },
+    {
+      "scenario": "controller_restart_after_prepare",
+      "status": "passed",
+      "effective_event": "28e8c1f3-e618-465d-9b6b-b3e806732e96",
+      "transition": "40e077fd-2cfc-486f-9ab4-57ed746d8b61"
+    },
+    {
+      "scenario": "lost_activate_ack",
+      "status": "passed",
+      "acknowledged_at": null,
+      "telemetry_event": "669c2565-1a9a-4ace-b0fb-96dfef865942",
+      "silent_rollback": false
+    },
+    {
+      "scenario": "broker_outage",
+      "status": "passed",
+      "transition": "145a3223-a0b6-4f7b-a56d-d0d8a5b44440",
+      "false_effective_during_outage": false
+    },
+    {
+      "scenario": "postgres_outage_after_intent",
+      "status": "passed",
+      "probe_during_outage_exit": 1,
+      "transition": "07dccb9e-efa9-42d0-a650-2ba01a3fb11c"
+    },
+    {
+      "scenario": "postgres_outage_after_device_activation",
+      "status": "passed",
+      "telemetry_event": "a7359d71-77ee-4824-b8d0-b62ea9e948cd"
+    },
+    {
+      "scenario": "grace_expiry_manual_reconciliation",
+      "status": "passed",
+      "no_premature_effective": true,
+      "telemetry_event": "94b37109-4b7b-44fe-be17-78c3414dfddf"
+    },
+    {
+      "scenario": "lost_device_state",
+      "status": "passed",
+      "agent_exit": 1,
+      "accepted_with_missing_state": 0
+    }
+  ],
+  "exit_code": 0
+}
+
+EXIT CODE: 0

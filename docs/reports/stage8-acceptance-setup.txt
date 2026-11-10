@@ -1,0 +1,37 @@
+
+UTC: 2026-11-10T13:42:32.763059+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env --profile control run --rm --no-deps control-init
+ Volume lcm-stage8-acceptance_gamma-control Creating
+ Volume lcm-stage8-acceptance_gamma-control Creating
+ Volume lcm-stage8-acceptance_alpha-control Creating
+ Volume lcm-stage8-acceptance_beta-control Creating
+ Volume lcm-stage8-acceptance_alpha-control Creating
+ Volume lcm-stage8-acceptance_beta-control Creating
+ Volume lcm-stage8-acceptance_control-security Creating
+ Volume lcm-stage8-acceptance_control-security Creating
+ Volume lcm-stage8-acceptance_gamma-control Created
+ Volume lcm-stage8-acceptance_gamma-control Created
+ Volume lcm-stage8-acceptance_beta-control Created
+ Volume lcm-stage8-acceptance_beta-control Created
+ Volume lcm-stage8-acceptance_control-security Created
+ Volume lcm-stage8-acceptance_control-security Created
+ Volume lcm-stage8-acceptance_alpha-control Created
+ Volume lcm-stage8-acceptance_alpha-control Created
+ Container lcm-stage8-acceptance-control-init-run-17564aedb3f5 Creating
+ Container lcm-stage8-acceptance-control-init-run-17564aedb3f5 Created
+Scoped live-control volumes installed; existing state preserved
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T13:42:33.734360+00:00
+$ docker compose --env-file .local-runtime/stage8/acceptance/compose.env run --rm --no-deps --entrypoint python tests -m scripts.control_system_probe setup
+ Volume lcm-stage8-acceptance_mongo-data Creating
+ Volume lcm-stage8-acceptance_mongo-data Creating
+ Volume lcm-stage8-acceptance_mongo-data Created
+ Volume lcm-stage8-acceptance_mongo-data Created
+ Container lcm-stage8-acceptance-tests-run-0ee1dcfcd5d0 Creating
+ Container lcm-stage8-acceptance-tests-run-0ee1dcfcd5d0 Created
+Device configurations provisioned; keys remain outside PostgreSQL
+{"setup": "committed", "devices": ["alpha", "beta", "gamma"], "keys_printed": false}
+
+EXIT CODE: 0
