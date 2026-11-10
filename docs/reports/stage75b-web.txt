@@ -1,0 +1,15 @@
+
+UTC: 2026-11-09T22:47:07.100159+00:00
+$ docker compose --env-file .local-runtime/stage75b-regression.env run --rm --no-deps -e WEB_EXPECT_ML=1 --entrypoint python tests -m scripts.live_web_smoke
+ Container lcm-stage7b-regression-tests-run-779a8a2a252b Creating
+ Container lcm-stage7b-regression-tests-run-779a8a2a252b Created
+PASS: real anonymous Socket.IO connection rejected
+PASS: live CSRF, role restriction, safe redirect and cross-origin rejection
+PASS: logged-in Socket.IO receives live MQTT telemetry
+PASS: ML routes require login, separate protocol/rule/ML sources and preserve role visibility
+PASS: authorized DRY_RUN policy views, role restrictions and no applied configuration claims
+PASS: authorized live MongoDB history, history page and admin-only pipeline metrics
+POLICY_METRICS {"decisions": 41, "intentions": {}, "mean_compute_ms": 0.061585609595257246, "mean_source_lag_seconds": 69.56958821951216, "mode": "DRY_RUN", "p95_compute_ms": 0.08871899626683444, "processed": {"accepted": 26, "rate_limited": 242, "stale": 15, "unattributed": 2}, "risk_counts": {"ALERT": 3, "WATCH": 1}, "security_queue": {"capacity": 100000, "id": 1, "overflow": 0, "retained": 188}, "security_queue_pending": 2, "suppressed": 0, "switching_latency": null, "transitions": 7, "unsupported": 0}
+PASS: logout disconnects live Socket.IO and removes HTTP access
+
+EXIT CODE: 0

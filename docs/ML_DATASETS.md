@@ -76,3 +76,22 @@ MQTT-specific поля в открытых captures могут относить�
 как источники ([описание создателей](https://www.yorku.ca/research/bccc/ucs-technical/cybersecurity-datasets-cds/bccc-mqtt-augmented-ids-2026-developed-and-designed-for-large-language-models-llm/)).
 Их нельзя считать независимым test по отношению к этим исходникам без проверки
 provenance и пересечений. Поэтому они не предложены как первоочередное дополнение.
+
+## Дополнение 7.5b: собственный лабораторный источник
+
+Отдельная ontology `lightcrypto-lab-v1`: Normal / ControlledViolation, реальные
+MQTT/TLS network packets от generated clients. Feature schema прежняя
+`tcp-packet-passive-v1`, five numeric fields. Это не физический normal baseline
+и не репрезентативный набор реальных атак.70captures собраны,59валидны после
+10прозрачных protocol-length exclusions и1quarantine. Prepared rows33848,
+unknown12547исключены. Источник хранится отдельно от внешних CSV и app PG/Mongo.
+
+История и hashes — [RESEARCH_75B_RESULTS.md](RESEARCH_75B_RESULTS.md), strict plan
+прошёл, но training/final evaluation не выполнялись. Dataset files private, их
+публикация не разрешалась. Отдельная проверка конфиденциальности нужна до sharing.
+
+MQTT_UAD, MQTTEEB-Dv2, IoT-SFCv2: добавлен только
+[аудит первоисточников](EXTERNAL_DATASET_AUDIT_75B.md). Получены небольшие metadata/
+header preview, не полные файлы. Лицензии version-specific; application MQTT
+поля нельзя считать пассивно доступными под TLS. Общий import/merge/external
+benchmark не выполнялись; packet/Zeek log granularity несовместимы напрямую.

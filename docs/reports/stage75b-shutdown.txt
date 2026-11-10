@@ -1,0 +1,149 @@
+
+UTC: 2026-11-10T08:20:45.489837+00:00
+$ docker compose --env-file .local-runtime/stage75b.env -f compose.yaml -f compose.research.yaml --profile '*' down --timeout 15
+ Container lcm-stage7b-lab-outbox-relay-1 Stopping
+ Container lcm-stage7b-lab-traffic-collector-1 Stopping
+ Container lcm-stage7b-lab-web-1 Stopping
+ Container lcm-stage7b-lab-mongo-1 Stopping
+ Container lcm-stage7b-lab-policy-worker-1 Stopping
+ Container lcm-stage7b-lab-traffic-collector-1 Stopped
+ Container lcm-stage7b-lab-traffic-collector-1 Removing
+ Container lcm-stage7b-lab-traffic-collector-1 Removed
+ Container lcm-stage7b-lab-lab-devices-1 Stopping
+ Container lcm-stage7b-lab-lab-devices-1 Stopped
+ Container lcm-stage7b-lab-lab-devices-1 Removing
+ Container lcm-stage7b-lab-lab-devices-1 Removed
+ Container lcm-stage7b-lab-research-init-1 Stopping
+ Container lcm-stage7b-lab-receiver-1 Stopping
+ Container lcm-stage7b-lab-research-init-1 Stopped
+ Container lcm-stage7b-lab-research-init-1 Removing
+ Container lcm-stage7b-lab-mongo-1 Stopped
+ Container lcm-stage7b-lab-mongo-1 Removing
+ Container lcm-stage7b-lab-research-init-1 Removed
+ Container lcm-stage7b-lab-research-provision-1 Stopping
+ Container lcm-stage7b-lab-research-provision-1 Stopped
+ Container lcm-stage7b-lab-research-provision-1 Removing
+ Container lcm-stage7b-lab-mongo-1 Removed
+ Container lcm-stage7b-lab-policy-worker-1 Stopped
+ Container lcm-stage7b-lab-policy-worker-1 Removing
+ Container lcm-stage7b-lab-web-1 Stopped
+ Container lcm-stage7b-lab-web-1 Removing
+ Container lcm-stage7b-lab-research-provision-1 Removed
+ Container lcm-stage7b-lab-receiver-1 Stopped
+ Container lcm-stage7b-lab-receiver-1 Removing
+ Container lcm-stage7b-lab-policy-worker-1 Removed
+ Container lcm-stage7b-lab-web-1 Removed
+ Container lcm-stage7b-lab-receiver-1 Removed
+ Container lcm-stage7b-lab-broker-1 Stopping
+ Container lcm-stage7b-lab-broker-1 Stopped
+ Container lcm-stage7b-lab-broker-1 Removing
+ Container lcm-stage7b-lab-broker-1 Removed
+ Container lcm-stage7b-lab-security-init-1 Stopping
+ Container lcm-stage7b-lab-security-init-1 Stopped
+ Container lcm-stage7b-lab-security-init-1 Removing
+ Container lcm-stage7b-lab-security-init-1 Removed
+ Container lcm-stage7b-lab-outbox-relay-1 Stopped
+ Container lcm-stage7b-lab-outbox-relay-1 Removing
+ Container lcm-stage7b-lab-outbox-relay-1 Removed
+ Container lcm-stage7b-lab-storage-init-1 Stopping
+ Container lcm-stage7b-lab-init-db-1 Stopping
+ Container lcm-stage7b-lab-storage-init-1 Stopped
+ Container lcm-stage7b-lab-init-db-1 Stopped
+ Container lcm-stage7b-lab-storage-init-1 Removing
+ Container lcm-stage7b-lab-init-db-1 Removing
+ Container lcm-stage7b-lab-init-db-1 Removed
+ Container lcm-stage7b-lab-postgres-1 Stopping
+ Container lcm-stage7b-lab-storage-init-1 Removed
+ Container lcm-stage7b-lab-postgres-1 Stopped
+ Container lcm-stage7b-lab-postgres-1 Removing
+ Container lcm-stage7b-lab-postgres-1 Removed
+ Network lcm-stage7b-lab_default Removing
+ Network lcm-stage7b-lab_default Removed
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T08:20:46.172997+00:00
+$ docker compose --env-file .local-runtime/stage75b-regression.env -f compose.yaml -f compose.research.yaml --profile '*' down --timeout 15
+ Container lcm-stage7b-regression-ml-worker-1 Stopping
+ Container lcm-stage7b-regression-web-1 Stopping
+ Container lcm-stage7b-regression-policy-worker-1 Stopping
+ Container lcm-stage7b-regression-publisher-1 Stopping
+ Container lcm-stage7b-regression-policy-worker-2 Stopping
+ Container lcm-stage7b-regression-mongo-1 Stopping
+ Container lcm-stage7b-regression-outbox-relay-1 Stopping
+ Container lcm-stage7b-regression-publisher-1 Stopped
+ Container lcm-stage7b-regression-publisher-1 Removing
+ Container lcm-stage7b-regression-publisher-1 Removed
+ Container lcm-stage7b-regression-receiver-1 Stopping
+ Container lcm-stage7b-regression-demo-setup-1 Stopping
+ Container lcm-stage7b-regression-demo-setup-1 Stopped
+ Container lcm-stage7b-regression-demo-setup-1 Removing
+ Container lcm-stage7b-regression-mongo-1 Stopped
+ Container lcm-stage7b-regression-mongo-1 Removing
+ Container lcm-stage7b-regression-demo-setup-1 Removed
+ Container lcm-stage7b-regression-mongo-1 Removed
+ Container lcm-stage7b-regression-policy-worker-2 Stopped
+ Container lcm-stage7b-regression-policy-worker-2 Removing
+ Container lcm-stage7b-regression-policy-worker-1 Stopped
+ Container lcm-stage7b-regression-policy-worker-1 Removing
+ Container lcm-stage7b-regression-policy-worker-2 Removed
+ Container lcm-stage7b-regression-receiver-1 Stopped
+ Container lcm-stage7b-regression-receiver-1 Removing
+ Container lcm-stage7b-regression-policy-worker-1 Removed
+ Container lcm-stage7b-regression-receiver-1 Removed
+ Container lcm-stage7b-regression-outbox-relay-1 Stopped
+ Container lcm-stage7b-regression-outbox-relay-1 Removing
+ Container lcm-stage7b-regression-ml-worker-1 Stopped
+ Container lcm-stage7b-regression-ml-worker-1 Removing
+ Container lcm-stage7b-regression-outbox-relay-1 Removed
+ Container lcm-stage7b-regression-ml-worker-1 Removed
+ Container lcm-stage7b-regression-web-1 Stopped
+ Container lcm-stage7b-regression-web-1 Removing
+ Container lcm-stage7b-regression-web-1 Removed
+ Container lcm-stage7b-regression-init-db-1 Stopping
+ Container lcm-stage7b-regression-broker-1 Stopping
+ Container lcm-stage7b-regression-storage-init-1 Stopping
+ Container lcm-stage7b-regression-init-db-1 Stopped
+ Container lcm-stage7b-regression-init-db-1 Removing
+ Container lcm-stage7b-regression-storage-init-1 Stopped
+ Container lcm-stage7b-regression-storage-init-1 Removing
+ Container lcm-stage7b-regression-init-db-1 Removed
+ Container lcm-stage7b-regression-postgres-1 Stopping
+ Container lcm-stage7b-regression-storage-init-1 Removed
+ Container lcm-stage7b-regression-broker-1 Stopped
+ Container lcm-stage7b-regression-broker-1 Removing
+ Container lcm-stage7b-regression-broker-1 Removed
+ Container lcm-stage7b-regression-security-init-1 Stopping
+ Container lcm-stage7b-regression-security-init-1 Stopped
+ Container lcm-stage7b-regression-security-init-1 Removing
+ Container lcm-stage7b-regression-postgres-1 Stopped
+ Container lcm-stage7b-regression-postgres-1 Removing
+ Container lcm-stage7b-regression-security-init-1 Removed
+ Container lcm-stage7b-regression-postgres-1 Removed
+ Network lcm-stage7b-regression_default Removing
+ Network lcm-stage7b-regression_default Removed
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T08:25:25.133959+00:00
+$ docker compose --env-file .local-runtime/stage75b-regression.env -f compose.yaml -f compose.research.yaml --profile '*' down --timeout 15
+ Container lcm-stage7b-regression-mongo-1 Stopping
+ Container lcm-stage7b-regression-security-init-1 Stopping
+ Container lcm-stage7b-regression-postgres-1 Stopping
+ Container lcm-stage7b-regression-security-init-1 Stopped
+ Container lcm-stage7b-regression-security-init-1 Removing
+ Container lcm-stage7b-regression-security-init-1 Removed
+ Container lcm-stage7b-regression-mongo-1 Stopped
+ Container lcm-stage7b-regression-mongo-1 Removing
+ Container lcm-stage7b-regression-mongo-1 Removed
+ Container lcm-stage7b-regression-storage-init-1 Stopping
+ Container lcm-stage7b-regression-storage-init-1 Stopped
+ Container lcm-stage7b-regression-storage-init-1 Removing
+ Container lcm-stage7b-regression-storage-init-1 Removed
+ Container lcm-stage7b-regression-postgres-1 Stopped
+ Container lcm-stage7b-regression-postgres-1 Removing
+ Container lcm-stage7b-regression-postgres-1 Removed
+ Network lcm-stage7b-regression_default Removing
+ Network lcm-stage7b-regression_default Removed
+
+EXIT CODE: 0

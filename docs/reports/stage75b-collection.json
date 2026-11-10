@@ -1,0 +1,3866 @@
+{
+  "schema_version": 1,
+  "stage": "7.5b",
+  "baseline_commit": "d4dc3aa",
+  "scope": "real lab network collection; simulated devices and controlled violations; no new real-data model training or final evaluation",
+  "sources": {
+    "origin": "own isolated MQTT TLS lab",
+    "external_sources": "audit only, no merge"
+  },
+  "feature_version": "tcp-packet-passive-v1",
+  "pilot": {
+    "captures": 4,
+    "observations": 1894,
+    "normal": 1441,
+    "controlled_violation": 99,
+    "unknown": 354,
+    "strict_plan": "rejected: capture support4/2 below gates"
+  },
+  "collection": {
+    "completed_primary_captures": 70,
+    "eligible_captures": 59,
+    "eligible_normal_runs": 29,
+    "eligible_mixed_runs": 30,
+    "provisioned_devices": 24,
+    "max_concurrent_clients": 20,
+    "primary_packets": 53738,
+    "primary_pcap_bytes": 15701928,
+    "eligible_packets": 46395,
+    "eligible_pcap_bytes": 13558922,
+    "eligible_duration_seconds": 382.94539880752563,
+    "primary_duration_seconds": 453.33679842948914,
+    "kernel_drops": 0,
+    "eligible_sent_messages": 10175,
+    "eligible_pipeline_deltas": {
+      "accepted": 10041,
+      "replay": 118,
+      "rejected": 87
+    },
+    "qos_retry_dup_connections": 76,
+    "generator_peak_rss_kib_max": 43136,
+    "collector_parent_peak_rss_kib_max": 23620,
+    "clock_drift_seconds_max": 1.723332388792187e-06,
+    "clock_margin_seconds_max": 5e-05,
+    "primary_capture_duration_seconds": 496.0024926662445,
+    "eligible_capture_duration_seconds": 418.77030539512634,
+    "collection_wall_envelope_seconds": 787.1514806747437,
+    "verified_controlled_activity_connections": 29
+  },
+  "dataset": {
+    "sha256": "d43b55330f8f70ad88f1ee12c52edbe7e341f7fa70076fcba5263717a22f49ad",
+    "manifest_sha256": "0784b30d339b65cec1842a8c64bcd6f4019d245cc25485556cf90603eb1a6811",
+    "validation": {
+      "schema_version": 1,
+      "status": "engineering_validated_scientific_quality_unproven",
+      "observations": 46395,
+      "known_rows": 33848,
+      "unknown_rows": 12547,
+      "unknown_fraction": 0.2704386248518159,
+      "captures": 59,
+      "class_capture_support": {
+        "0": 59,
+        "1": 29
+      },
+      "class_counts": {
+        "Normal": 32901,
+        "ControlledViolation": 947
+      },
+      "duplicate_vector_rows": 23662,
+      "conflicting_vectors": 152,
+      "feature_distributions": {
+        "0": {
+          "frame.len": {
+            "mean": 233.80848606425337,
+            "std": 228.127857172144
+          },
+          "tcp.len": {
+            "mean": 167.80848606425337,
+            "std": 228.127857172144
+          },
+          "tcp.flags": {
+            "mean": 21.20737971490228,
+            "std": 3.813486100307798
+          },
+          "tcp.window_size_value": {
+            "mean": 70.47348104920823,
+            "std": 4.757474082095088
+          },
+          "tcp.time_delta": {
+            "mean": 0.11762021810887206,
+            "std": 0.20974968990185952
+          }
+        },
+        "1": {
+          "frame.len": {
+            "mean": 235.94825765575501,
+            "std": 229.36492997896363
+          },
+          "tcp.len": {
+            "mean": 169.94825765575501,
+            "std": 229.36492997896363
+          },
+          "tcp.flags": {
+            "mean": 21.275607180570223,
+            "std": 3.798167262201713
+          },
+          "tcp.window_size_value": {
+            "mean": 70.45617740232312,
+            "std": 4.762757582630601
+          },
+          "tcp.time_delta": {
+            "mean": 0.10638787961985216,
+            "std": 0.20845669849625875
+          }
+        }
+      },
+      "shortcut_review": [
+        "Same device pool/config ranges for paired normal and mixed runs; identifiers excluded from five features",
+        "Short auth/ACL sessions and deterministic software TCP stack can create trivial shortcuts; later evaluate per-scenario and held-out host/device/load",
+        "No statistical evidence of shortcut absence; final ML test deferred"
+      ],
+      "quarantined": [
+        {
+          "capture_id": "primary-a-20-n",
+          "reason": "Invalid packet range: tcp.time_delta"
+        }
+      ]
+    },
+    "curated_exclusions": [
+      {
+        "capture_id": "primary-a-00-v",
+        "pcap_sha256": "38f71ffa315852def45a99e022c855f1027c04c07903673e43f64eab0530968a",
+        "reason": "pre-training protocol configuration shortcut: wrong password length33 vs48 or denied topic length31 vs18; replaced with same-length controlled action"
+      },
+      {
+        "capture_id": "primary-a-01-v",
+        "pcap_sha256": "a8159da64ef4d74dfa4ff50b7681e0fe70620837f4575b1def47c8ad444e1ee9",
+        "reason": "pre-training protocol configuration shortcut: wrong password length33 vs48 or denied topic length31 vs18; replaced with same-length controlled action"
+      },
+      {
+        "capture_id": "primary-a-06-v",
+        "pcap_sha256": "bc6b3a7906110c04a5f2b1cb8185f5b26fbd68b124e1dc20dbfab576c3c29490",
+        "reason": "pre-training protocol configuration shortcut: wrong password length33 vs48 or denied topic length31 vs18; replaced with same-length controlled action"
+      },
+      {
+        "capture_id": "primary-a-07-v",
+        "pcap_sha256": "018ca4d7d48ae7381dae31efe4eaf039d4c5fa301a9d28705b7cbc45d3f81dc9",
+        "reason": "pre-training protocol configuration shortcut: wrong password length33 vs48 or denied topic length31 vs18; replaced with same-length controlled action"
+      },
+      {
+        "capture_id": "primary-a-12-v",
+        "pcap_sha256": "55b2d55b0b8baa11d98a3de12e50bca5604df6dcb5c4115e973e8704d0260117",
+        "reason": "pre-training protocol configuration shortcut: wrong password length33 vs48 or denied topic length31 vs18; replaced with same-length controlled action"
+      },
+      {
+        "capture_id": "primary-a-13-v",
+        "pcap_sha256": "2919cf510a4fa60e5ed36691b1aee49845c53c5a63304a13e512d8eb74f50ef6",
+        "reason": "pre-training protocol configuration shortcut: wrong password length33 vs48 or denied topic length31 vs18; replaced with same-length controlled action"
+      },
+      {
+        "capture_id": "primary-a-18-v",
+        "pcap_sha256": "457e329f91a313de1e23ac9636b3ce22bfe364800428a0ae82dc5962ce7b7e75",
+        "reason": "pre-training protocol configuration shortcut: wrong password length33 vs48 or denied topic length31 vs18; replaced with same-length controlled action"
+      },
+      {
+        "capture_id": "primary-a-19-v",
+        "pcap_sha256": "2adb67925f8779699ef393fa74921d2e5f7eca02fdb9fd6a7a13713fc34412ac",
+        "reason": "pre-training protocol configuration shortcut: wrong password length33 vs48 or denied topic length31 vs18; replaced with same-length controlled action"
+      },
+      {
+        "capture_id": "primary-a-24-v",
+        "pcap_sha256": "e9eefc15145b34929b3c953dde1b3fe6bf58e2b37c86241c9635bd9be4d6562e",
+        "reason": "pre-training protocol configuration shortcut: wrong password length33 vs48 or denied topic length31 vs18; replaced with same-length controlled action"
+      },
+      {
+        "capture_id": "primary-a-25-v",
+        "pcap_sha256": "b7073f8d78bb47ec78259af9ca137f74dd7161dd3e5acc06fedc52c9f7ef5d1c",
+        "reason": "pre-training protocol configuration shortcut: wrong password length33 vs48 or denied topic length31 vs18; replaced with same-length controlled action"
+      }
+    ],
+    "quarantined": [
+      {
+        "capture_id": "primary-a-20-n",
+        "reason": "Invalid packet range: tcp.time_delta"
+      }
+    ]
+  },
+  "frozen_plan": {
+    "plan_sha256": "2a08ab6ee0689d67015db109d3b85740b0a2c9d61ffb1e5428e1b72cc9f4f54a",
+    "split_sha256": "65738b75aad7f7f5d6064fd51f68f222f08e76b2d6ca1033d08ad4ded6f93201",
+    "config_sha256": "d3e1e403952ada7a7a07f844fdfd508dd6dc21e469cf8681332f0e2296f5faec",
+    "config": {
+      "schema_version": 1,
+      "seed": 75,
+      "minimum_normal_rows": 1000,
+      "minimum_class_captures": 5,
+      "max_rows": 100000,
+      "validation_fpr_target": 0.05,
+      "model_version": "7.5.0",
+      "candidates": [
+        {
+          "candidate_id": "rf_baseline",
+          "algorithm": "rf",
+          "scaling": "none",
+          "parameters": {
+            "n_estimators": 100,
+            "max_depth": null,
+            "min_samples_split": 2,
+            "min_samples_leaf": 1,
+            "max_features": "sqrt",
+            "class_weight": null
+          }
+        },
+        {
+          "candidate_id": "rf_balanced",
+          "algorithm": "rf",
+          "scaling": "none",
+          "parameters": {
+            "n_estimators": 100,
+            "max_depth": null,
+            "min_samples_split": 2,
+            "min_samples_leaf": 1,
+            "max_features": "sqrt",
+            "class_weight": "balanced"
+          }
+        },
+        {
+          "candidate_id": "rf_subsample",
+          "algorithm": "rf",
+          "scaling": "none",
+          "parameters": {
+            "n_estimators": 100,
+            "max_depth": null,
+            "min_samples_split": 2,
+            "min_samples_leaf": 1,
+            "max_features": "sqrt",
+            "class_weight": "balanced_subsample"
+          }
+        },
+        {
+          "candidate_id": "rf_tuned_0",
+          "algorithm": "rf",
+          "scaling": "none",
+          "parameters": {
+            "n_estimators": 100,
+            "max_depth": 16,
+            "min_samples_leaf": 2,
+            "min_samples_split": 4,
+            "max_features": "sqrt",
+            "class_weight": "balanced"
+          }
+        },
+        {
+          "candidate_id": "rf_tuned_1",
+          "algorithm": "rf",
+          "scaling": "none",
+          "parameters": {
+            "n_estimators": 200,
+            "max_depth": 32,
+            "min_samples_leaf": 4,
+            "min_samples_split": 8,
+            "max_features": 0.8,
+            "class_weight": "balanced_subsample"
+          }
+        },
+        {
+          "candidate_id": "if_baseline",
+          "algorithm": "if",
+          "scaling": "none",
+          "parameters": {
+            "n_estimators": 100,
+            "max_samples": 256,
+            "max_features": 1.0
+          }
+        },
+        {
+          "candidate_id": "if_standard",
+          "algorithm": "if",
+          "scaling": "standard",
+          "parameters": {
+            "n_estimators": 100,
+            "max_samples": 256,
+            "max_features": 1.0
+          }
+        },
+        {
+          "candidate_id": "if_tuned_0",
+          "algorithm": "if",
+          "scaling": "none",
+          "parameters": {
+            "n_estimators": 200,
+            "max_samples": 1024,
+            "max_features": 0.75
+          }
+        },
+        {
+          "candidate_id": "if_tuned_1",
+          "algorithm": "if",
+          "scaling": "robust",
+          "parameters": {
+            "n_estimators": 200,
+            "max_samples": 256,
+            "max_features": 0.5
+          }
+        }
+      ]
+    },
+    "versions": {
+      "python": "3.12.16",
+      "numpy": "2.5.4",
+      "pandas": "2.3.3",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "joblib": "1.6.0"
+    },
+    "summary": {
+      "train": {
+        "rows": 6645,
+        "normal": 6452,
+        "attack": 193,
+        "captures": 36,
+        "class_groups": {
+          "0": 36,
+          "1": 17
+        },
+        "attack_types": {
+          "Normal": 6452,
+          "ControlledViolation": 193
+        }
+      },
+      "validation": {
+        "rows": 2082,
+        "normal": 2025,
+        "attack": 57,
+        "captures": 12,
+        "class_groups": {
+          "0": 12,
+          "1": 7
+        },
+        "attack_types": {
+          "Normal": 2025,
+          "ControlledViolation": 57
+        }
+      },
+      "test": {
+        "rows": 2035,
+        "normal": 1975,
+        "attack": 60,
+        "captures": 11,
+        "class_groups": {
+          "0": 11,
+          "1": 5
+        },
+        "attack_types": {
+          "Normal": 1975,
+          "ControlledViolation": 60
+        }
+      }
+    },
+    "before_duplicate_purge": {
+      "train": {
+        "rows": 20441,
+        "classes": {
+          "Normal": 19870,
+          "ControlledViolation": 571
+        }
+      },
+      "validation": {
+        "rows": 6803,
+        "classes": {
+          "Normal": 6632,
+          "ControlledViolation": 171
+        }
+      },
+      "test": {
+        "rows": 6604,
+        "classes": {
+          "Normal": 6399,
+          "ControlledViolation": 205
+        }
+      }
+    },
+    "duplicate_purged_rows": [
+      13796,
+      4721,
+      4569
+    ],
+    "capture_intersections": 0,
+    "session_intersections": 0,
+    "feature_fingerprint_intersections_after_purge": 0,
+    "independent_devices_verified": false,
+    "final_test_evaluated": false,
+    "file_sha256": "a4f8284151fb2beb53e7d45b2b30e017975eac68ad240eb239717901d001868f"
+  },
+  "integration": {
+    "devices": 24,
+    "distinct_passwords": 24,
+    "distinct_telemetry_keys": 24,
+    "categories": {
+      "replay": 158,
+      "rejected": 603,
+      "accepted": 12714
+    },
+    "mongo_records": 12714,
+    "policy_mode": "DRY_RUN",
+    "applied_configurations": 0,
+    "outbox_pending": 0,
+    "telemetry_profile": "Ascon-AEAD128"
+  },
+  "collector_failure": {
+    "status": "passed",
+    "stopped": true,
+    "duration": 2.1852359771728516,
+    "mongo_delta": 52
+  },
+  "runs": [
+    {
+      "capture_id": "corrected-a-00-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "corrected-a-00-v",
+        "scenario": "bad_credentials",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75000,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 480,
+      "pcap_sha256": "2ecc4ac727e6ec0cb3957d7934f12aeed519247022878929e1d5f29acb49daed",
+      "pcap_bytes": 140192,
+      "kernel_drops": 0,
+      "duration_seconds": 6.288625001907349,
+      "sent_messages": 131,
+      "pipeline_deltas": {
+        "accepted": 131,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 131,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38688,
+      "generator_user_cpu_seconds": 0.325195,
+      "collector_parent_peak_rss_kib": 22964,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 9.170908015221357e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.882876634597778,
+      "capture_started_at_utc": "2026-11-09T22:51:29.945302+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:51:36.828179+00:00",
+      "observation_classes": {
+        "unknown": 79,
+        "controlled_violation": 4,
+        "normal": 397
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "corrected-a-01-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "corrected-a-01-v",
+        "scenario": "forbidden_acl",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75001,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 594,
+      "pcap_sha256": "6d62463842edf1d19c1d0cfd1d99c5a03670852622ab0c89dd6677391e895247",
+      "pcap_bytes": 168460,
+      "kernel_drops": 0,
+      "duration_seconds": 6.526080369949341,
+      "sent_messages": 126,
+      "pipeline_deltas": {
+        "accepted": 125,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 125,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39184,
+      "generator_user_cpu_seconds": 0.309561,
+      "collector_parent_peak_rss_kib": 22840,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 7.604830898344517e-08,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.183378219604492,
+      "capture_started_at_utc": "2026-11-09T22:51:40.512831+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:51:47.696210+00:00",
+      "observation_classes": {
+        "unknown": 167,
+        "normal": 421,
+        "controlled_violation": 6
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "corrected-a-06-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "corrected-a-06-v",
+        "scenario": "bad_credentials",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75006,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 961,
+      "pcap_sha256": "506f77731b83d4ee65ae10d12ae1c29ce0f570275027c37365f0e6c4d0baa27c",
+      "pcap_bytes": 280358,
+      "kernel_drops": 0,
+      "duration_seconds": 6.315798282623291,
+      "sent_messages": 264,
+      "pipeline_deltas": {
+        "accepted": 264,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 264,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40864,
+      "generator_user_cpu_seconds": 0.408782,
+      "collector_parent_peak_rss_kib": 23588,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.9038270693272352e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.882928371429443,
+      "capture_started_at_utc": "2026-11-09T22:51:51.319321+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:51:58.202249+00:00",
+      "observation_classes": {
+        "unknown": 142,
+        "normal": 818,
+        "controlled_violation": 1
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "corrected-a-07-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "corrected-a-07-v",
+        "scenario": "forbidden_acl",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75007,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 960,
+      "pcap_sha256": "0225c1e2b5f2c1df4d1b883d8dbeac0e409d973a4d41c2359f7616377b707bc2",
+      "pcap_bytes": 272848,
+      "kernel_drops": 0,
+      "duration_seconds": 6.513371229171753,
+      "sent_messages": 200,
+      "pipeline_deltas": {
+        "accepted": 199,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 199,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41612,
+      "generator_user_cpu_seconds": 0.368679,
+      "collector_parent_peak_rss_kib": 23176,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 3.581735654734075e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.086629629135132,
+      "capture_started_at_utc": "2026-11-09T22:52:01.884782+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:52:08.971412+00:00",
+      "observation_classes": {
+        "unknown": 278,
+        "normal": 677,
+        "controlled_violation": 5
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "corrected-a-12-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "corrected-a-12-v",
+        "scenario": "bad_credentials",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75012,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 477,
+      "pcap_sha256": "3e6acd358ac198b46e32577a9ce51622db9c57d7f74550cf2176762001d5d3ce",
+      "pcap_bytes": 139314,
+      "kernel_drops": 0,
+      "duration_seconds": 6.3237433433532715,
+      "sent_messages": 132,
+      "pipeline_deltas": {
+        "accepted": 132,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 132,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38688,
+      "generator_user_cpu_seconds": 0.32032,
+      "collector_parent_peak_rss_kib": 23120,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 3.666500560939312e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.884850263595581,
+      "capture_started_at_utc": "2026-11-09T22:52:12.631337+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:52:19.516187+00:00",
+      "observation_classes": {
+        "unknown": 86,
+        "normal": 391
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "corrected-a-13-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "corrected-a-13-v",
+        "scenario": "forbidden_acl",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75013,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 587,
+      "pcap_sha256": "ee9d731262d5781c93593262dbb5ca10789585c865e9e9aa782c9ddf78fb01aa",
+      "pcap_bytes": 166826,
+      "kernel_drops": 0,
+      "duration_seconds": 6.465672731399536,
+      "sent_messages": 124,
+      "pipeline_deltas": {
+        "accepted": 123,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 123,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39388,
+      "generator_user_cpu_seconds": 0.299295,
+      "collector_parent_peak_rss_kib": 23328,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 4.1139719542115927e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.081878662109375,
+      "capture_started_at_utc": "2026-11-09T22:52:23.169296+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:52:30.251174+00:00",
+      "observation_classes": {
+        "unknown": 169,
+        "normal": 413,
+        "controlled_violation": 5
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "corrected-a-18-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "corrected-a-18-v",
+        "scenario": "bad_credentials",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75018,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 964,
+      "pcap_sha256": "ab817c9a9769f3cfe18299e71730b2f3e3b74f97dc73cef8349c9f6d75206223",
+      "pcap_bytes": 281148,
+      "kernel_drops": 0,
+      "duration_seconds": 6.279731273651123,
+      "sent_messages": 270,
+      "pipeline_deltas": {
+        "accepted": 270,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 270,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40600,
+      "generator_user_cpu_seconds": 0.441803,
+      "collector_parent_peak_rss_kib": 23564,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 4.213507054373622e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.8846657276153564,
+      "capture_started_at_utc": "2026-11-09T22:52:33.898611+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:52:40.783276+00:00",
+      "observation_classes": {
+        "unknown": 157,
+        "normal": 806,
+        "controlled_violation": 1
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "corrected-a-19-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "corrected-a-19-v",
+        "scenario": "forbidden_acl",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75019,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 966,
+      "pcap_sha256": "73b7fe3cbeda59235c6f9a1e42b4d904f619fe5794bffb27096ac0b03b4bad1c",
+      "pcap_bytes": 274444,
+      "kernel_drops": 0,
+      "duration_seconds": 6.522597312927246,
+      "sent_messages": 202,
+      "pipeline_deltas": {
+        "accepted": 201,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 201,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40796,
+      "generator_user_cpu_seconds": 0.376579,
+      "collector_parent_peak_rss_kib": 22960,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 7.92351784184575e-09,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.1849892139434814,
+      "capture_started_at_utc": "2026-11-09T22:52:44.470242+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:52:51.655231+00:00",
+      "observation_classes": {
+        "unknown": 261,
+        "normal": 698,
+        "controlled_violation": 7
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "corrected-a-24-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "corrected-a-24-v",
+        "scenario": "bad_credentials",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75024,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 483,
+      "pcap_sha256": "11b6f62690061743f44da091826e171c9ba8e9857b72115585e56cfc11838b1c",
+      "pcap_bytes": 140934,
+      "kernel_drops": 0,
+      "duration_seconds": 6.379760265350342,
+      "sent_messages": 135,
+      "pipeline_deltas": {
+        "accepted": 135,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 135,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38692,
+      "generator_user_cpu_seconds": 0.311542,
+      "collector_parent_peak_rss_kib": 22944,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 3.656459739431739e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.984570741653442,
+      "capture_started_at_utc": "2026-11-09T22:52:55.310622+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:53:02.295192+00:00",
+      "observation_classes": {
+        "unknown": 82,
+        "controlled_violation": 4,
+        "normal": 397
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "corrected-a-25-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "corrected-a-25-v",
+        "scenario": "forbidden_acl",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75025,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 589,
+      "pcap_sha256": "b3f74c8a51342bf062a7db8f72dbeb93c1fd1314de75a0993c7de07ce7b3b74f",
+      "pcap_bytes": 166398,
+      "kernel_drops": 0,
+      "duration_seconds": 6.520070791244507,
+      "sent_messages": 123,
+      "pipeline_deltas": {
+        "accepted": 122,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 122,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39688,
+      "generator_user_cpu_seconds": 0.311623,
+      "collector_parent_peak_rss_kib": 22780,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 4.6275818021968007e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.0845723152160645,
+      "capture_started_at_utc": "2026-11-09T22:53:05.947872+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:53:13.032444+00:00",
+      "observation_classes": {
+        "unknown": 180,
+        "normal": 404,
+        "controlled_violation": 5
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-00-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-00-n",
+        "scenario": "regular",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75000,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 532,
+      "pcap_sha256": "9344572384118f54a8bb1f735bef708d48bcffdfb2dfa3c3fb7edab88b4f2ed9",
+      "pcap_bytes": 153700,
+      "kernel_drops": 0,
+      "duration_seconds": 6.3292200565338135,
+      "sent_messages": 151,
+      "pipeline_deltas": {
+        "accepted": 151,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 151,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39212,
+      "generator_user_cpu_seconds": 0.329492,
+      "collector_parent_peak_rss_kib": 22520,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 4.6746572479605675e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.9873645305633545,
+      "capture_started_at_utc": "2026-11-09T22:40:05.880963+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:40:12.868328+00:00",
+      "observation_classes": {
+        "unknown": 76,
+        "normal": 456
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-00-v",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-00-v",
+        "scenario": "bad_credentials",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75000,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 477,
+      "pcap_sha256": "38f71ffa315852def45a99e022c855f1027c04c07903673e43f64eab0530968a",
+      "pcap_bytes": 139400,
+      "kernel_drops": 0,
+      "duration_seconds": 6.288093090057373,
+      "sent_messages": 131,
+      "pipeline_deltas": {
+        "accepted": 131,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 131,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39116,
+      "generator_user_cpu_seconds": 0.320071,
+      "collector_parent_peak_rss_kib": 22832,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.2349410098977387e-06,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.933031797409058,
+      "capture_started_at_utc": "2026-11-09T22:40:16.488199+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:40:23.421231+00:00"
+    },
+    {
+      "capture_id": "primary-a-01-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-01-n",
+        "scenario": "jitter",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75001,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 628,
+      "pcap_sha256": "46af9bf24df43c95a5143ad570ec40a707bf6d9ba6a50a213c33744680ce351e",
+      "pcap_bytes": 176664,
+      "kernel_drops": 0,
+      "duration_seconds": 6.545024871826172,
+      "sent_messages": 136,
+      "pipeline_deltas": {
+        "accepted": 136,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 136,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39712,
+      "generator_user_cpu_seconds": 0.312087,
+      "collector_parent_peak_rss_kib": 23080,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 5.041802069172263e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.0884575843811035,
+      "capture_started_at_utc": "2026-11-09T22:40:27.008733+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:40:34.097191+00:00",
+      "observation_classes": {
+        "unknown": 169,
+        "normal": 459
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-01-v",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-01-v",
+        "scenario": "forbidden_acl",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75001,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 586,
+      "pcap_sha256": "a8159da64ef4d74dfa4ff50b7681e0fe70620837f4575b1def47c8ad444e1ee9",
+      "pcap_bytes": 166810,
+      "kernel_drops": 0,
+      "duration_seconds": 6.533029556274414,
+      "sent_messages": 124,
+      "pipeline_deltas": {
+        "accepted": 123,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 123,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40012,
+      "generator_user_cpu_seconds": 0.31239,
+      "collector_parent_peak_rss_kib": 23336,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.0987278074026108e-06,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.132730960845947,
+      "capture_started_at_utc": "2026-11-09T22:40:37.690573+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:40:44.823304+00:00"
+    },
+    {
+      "capture_id": "primary-a-02-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-02-n",
+        "scenario": "reconnect",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75002,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 943,
+      "pcap_sha256": "cc5b02ddbb93ee0ed06120e4ae2abdfad4d74f77ab72346f5acc8bbcbf30aa48",
+      "pcap_bytes": 282750,
+      "kernel_drops": 0,
+      "duration_seconds": 6.686898946762085,
+      "sent_messages": 127,
+      "pipeline_deltas": {
+        "accepted": 127,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 127,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40972,
+      "generator_user_cpu_seconds": 0.341889,
+      "collector_parent_peak_rss_kib": 23040,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 5.982365109957755e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 32,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.288300037384033,
+      "capture_started_at_utc": "2026-11-09T22:40:48.430005+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:40:55.718305+00:00",
+      "observation_classes": {
+        "unknown": 412,
+        "normal": 531
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-02-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-02-v",
+        "scenario": "replay",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75002,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 672,
+      "pcap_sha256": "bcf65ea07a71806d1f491efd7792682b7c70ec4c486c9ae611b9df082d3b9135",
+      "pcap_bytes": 197096,
+      "kernel_drops": 0,
+      "duration_seconds": 6.694756984710693,
+      "sent_messages": 128,
+      "pipeline_deltas": {
+        "accepted": 120,
+        "replay": 8,
+        "rejected": 0
+      },
+      "mongo_delta": 120,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40904,
+      "generator_user_cpu_seconds": 0.324289,
+      "collector_parent_peak_rss_kib": 23380,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.3071257853880525e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 17,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.285967826843262,
+      "capture_started_at_utc": "2026-11-09T22:40:59.339230+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:41:06.625198+00:00",
+      "observation_classes": {
+        "unknown": 215,
+        "normal": 427,
+        "controlled_violation": 30
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-03-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-03-n",
+        "scenario": "restart",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75003,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 1570,
+      "pcap_sha256": "b8c1c0bb8e75299c4a2c7dcfde88fc8c02d22c2501c98d4126c480c628560934",
+      "pcap_bytes": 469604,
+      "kernel_drops": 0,
+      "duration_seconds": 6.346688270568848,
+      "sent_messages": 341,
+      "pipeline_deltas": {
+        "accepted": 341,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 341,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 42560,
+      "generator_user_cpu_seconds": 0.530418,
+      "collector_parent_peak_rss_kib": 23140,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 2.6433554012328386e-08,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 40,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.891323804855347,
+      "capture_started_at_utc": "2026-11-09T22:41:10.264163+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:41:17.155487+00:00",
+      "observation_classes": {
+        "unknown": 423,
+        "normal": 1147
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-03-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-03-v",
+        "scenario": "tampered",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75003,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 1222,
+      "pcap_sha256": "b211512c539ae931f96a20b9dbf3702de7647922bbfcff25afabd321c2fda92b",
+      "pcap_bytes": 355624,
+      "kernel_drops": 0,
+      "duration_seconds": 6.330744743347168,
+      "sent_messages": 342,
+      "pipeline_deltas": {
+        "accepted": 324,
+        "replay": 0,
+        "rejected": 18
+      },
+      "mongo_delta": 324,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 42348,
+      "generator_user_cpu_seconds": 0.484931,
+      "collector_parent_peak_rss_kib": 22764,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 2.3348547983914614e-08,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.888583660125732,
+      "capture_started_at_utc": "2026-11-09T22:41:21.273826+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:41:28.162410+00:00",
+      "observation_classes": {
+        "unknown": 179,
+        "normal": 989,
+        "controlled_violation": 54
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-04-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-04-n",
+        "scenario": "normal_burst",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75004,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 466,
+      "pcap_sha256": "633a25490fc4229b3b23898e1ec3d33fe2bea9b5712496db3e853bbb8dd102ab",
+      "pcap_bytes": 136272,
+      "kernel_drops": 0,
+      "duration_seconds": 6.253571271896362,
+      "sent_messages": 131,
+      "pipeline_deltas": {
+        "accepted": 131,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 131,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39016,
+      "generator_user_cpu_seconds": 0.317986,
+      "collector_parent_peak_rss_kib": 23212,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 9.7898009698838e-08,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.884042263031006,
+      "capture_started_at_utc": "2026-11-09T22:41:31.856149+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:41:38.740191+00:00",
+      "observation_classes": {
+        "unknown": 76,
+        "normal": 390
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-04-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-04-v",
+        "scenario": "bounded_rate",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75004,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 454,
+      "pcap_sha256": "014a797c54603ba799a75af074ae5b3ff8a1d54b337f81a829e81d84b3cc1454",
+      "pcap_bytes": 127496,
+      "kernel_drops": 0,
+      "duration_seconds": 6.43143892288208,
+      "sent_messages": 103,
+      "pipeline_deltas": {
+        "accepted": 103,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 103,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38780,
+      "generator_user_cpu_seconds": 0.281035,
+      "collector_parent_peak_rss_kib": 23260,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.301115844398737e-06,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.0314621925354,
+      "capture_started_at_utc": "2026-11-09T22:41:42.323825+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:41:49.355287+00:00",
+      "observation_classes": {
+        "unknown": 114,
+        "normal": 268,
+        "controlled_violation": 72
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-05-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-05-n",
+        "scenario": "qos1_retry",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75005,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 714,
+      "pcap_sha256": "226f57ebf1a429f478721b591344039818ac0de47aa576fc716d8a8dc71f28d7",
+      "pcap_bytes": 218860,
+      "kernel_drops": 0,
+      "duration_seconds": 6.643890142440796,
+      "sent_messages": 96,
+      "pipeline_deltas": {
+        "accepted": 96,
+        "replay": 12,
+        "rejected": 0
+      },
+      "mongo_delta": 96,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39496,
+      "generator_user_cpu_seconds": 0.295554,
+      "collector_parent_peak_rss_kib": 23168,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 6.835543899796903e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 24,
+      "qos_retry_dup_connections": 12,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.287020444869995,
+      "capture_started_at_utc": "2026-11-09T22:41:53.058501+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:42:00.345521+00:00",
+      "observation_classes": {
+        "unknown": 330,
+        "normal": 384
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-05-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-05-v",
+        "scenario": "pattern_change",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75005,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 497,
+      "pcap_sha256": "6acde3fcd69573d96e6c42c02e9f52a47928890dfaa4adc8d1bd21982d5ed8fe",
+      "pcap_bytes": 144134,
+      "kernel_drops": 0,
+      "duration_seconds": 6.685152053833008,
+      "sent_messages": 96,
+      "pipeline_deltas": {
+        "accepted": 96,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 96,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39744,
+      "generator_user_cpu_seconds": 0.301937,
+      "collector_parent_peak_rss_kib": 23320,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.3169483281672001e-08,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.1895911693573,
+      "capture_started_at_utc": "2026-11-09T22:42:03.958594+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:42:11.148185+00:00",
+      "observation_classes": {
+        "unknown": 153,
+        "normal": 317,
+        "controlled_violation": 27
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-06-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-06-n",
+        "scenario": "regular",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75006,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 1010,
+      "pcap_sha256": "6ccd52693a1614ba869d284bef1be7baa7be77a1f95a0394e730badeee7f2ad1",
+      "pcap_bytes": 293076,
+      "kernel_drops": 0,
+      "duration_seconds": 6.30268406867981,
+      "sent_messages": 281,
+      "pipeline_deltas": {
+        "accepted": 281,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 281,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41376,
+      "generator_user_cpu_seconds": 0.453414,
+      "collector_parent_peak_rss_kib": 23176,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 4.5631895773112774e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.889937162399292,
+      "capture_started_at_utc": "2026-11-09T22:42:14.826337+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:42:21.716274+00:00",
+      "observation_classes": {
+        "unknown": 145,
+        "normal": 865
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-06-v",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-06-v",
+        "scenario": "bad_credentials",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75006,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 967,
+      "pcap_sha256": "bc6b3a7906110c04a5f2b1cb8185f5b26fbd68b124e1dc20dbfab576c3c29490",
+      "pcap_bytes": 281828,
+      "kernel_drops": 0,
+      "duration_seconds": 6.302630186080933,
+      "sent_messages": 266,
+      "pipeline_deltas": {
+        "accepted": 266,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 266,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41480,
+      "generator_user_cpu_seconds": 0.44126,
+      "collector_parent_peak_rss_kib": 23056,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.2699165381491184e-06,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.884161710739136,
+      "capture_started_at_utc": "2026-11-09T22:42:25.594101+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:42:32.478263+00:00"
+    },
+    {
+      "capture_id": "primary-a-07-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-07-n",
+        "scenario": "jitter",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75007,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 862,
+      "pcap_sha256": "f1fd46b0a07a475db473bf048f1422fdeb7aa7d17cbaa13ce4ff204ce16b879f",
+      "pcap_bytes": 260768,
+      "kernel_drops": 0,
+      "duration_seconds": 6.453138113021851,
+      "sent_messages": 212,
+      "pipeline_deltas": {
+        "accepted": 212,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 212,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41424,
+      "generator_user_cpu_seconds": 0.408858,
+      "collector_parent_peak_rss_kib": 23604,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 2.3702159523963928e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.988847970962524,
+      "capture_started_at_utc": "2026-11-09T22:42:36.117441+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:42:43.106289+00:00",
+      "observation_classes": {
+        "unknown": 186,
+        "normal": 676
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-07-v",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-07-v",
+        "scenario": "forbidden_acl",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75007,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 836,
+      "pcap_sha256": "018ca4d7d48ae7381dae31efe4eaf039d4c5fa301a9d28705b7cbc45d3f81dc9",
+      "pcap_bytes": 253238,
+      "kernel_drops": 0,
+      "duration_seconds": 6.469982862472534,
+      "sent_messages": 199,
+      "pipeline_deltas": {
+        "accepted": 198,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 198,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41180,
+      "generator_user_cpu_seconds": 0.377698,
+      "collector_parent_peak_rss_kib": 23064,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 9.61525074671954e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.98431658744812,
+      "capture_started_at_utc": "2026-11-09T22:42:46.739940+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:42:53.724256+00:00"
+    },
+    {
+      "capture_id": "primary-a-08-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-08-n",
+        "scenario": "reconnect",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75008,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 480,
+      "pcap_sha256": "ef7ed2a944ff87681dd49ebbd2f59e7e6d675c60af7921f164bbf3f69e4edd81",
+      "pcap_bytes": 144496,
+      "kernel_drops": 0,
+      "duration_seconds": 6.661051273345947,
+      "sent_messages": 68,
+      "pipeline_deltas": {
+        "accepted": 68,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 68,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38036,
+      "generator_user_cpu_seconds": 0.27203499999999997,
+      "collector_parent_peak_rss_kib": 23244,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 3.5665289033204317e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.289889097213745,
+      "capture_started_at_utc": "2026-11-09T22:42:57.442288+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:43:04.732177+00:00",
+      "observation_classes": {
+        "unknown": 208,
+        "normal": 272
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-08-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-08-v",
+        "scenario": "replay",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75008,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 364,
+      "pcap_sha256": "ed9c59d50aecc9b3a4ad941b19ef8db0dd3889eb7e3b9cd0f6d77f3e0e21be1d",
+      "pcap_bytes": 106312,
+      "kernel_drops": 0,
+      "duration_seconds": 6.766289472579956,
+      "sent_messages": 70,
+      "pipeline_deltas": {
+        "accepted": 61,
+        "replay": 9,
+        "rejected": 0
+      },
+      "mongo_delta": 61,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38572,
+      "generator_user_cpu_seconds": 0.27091499999999996,
+      "collector_parent_peak_rss_kib": 23120,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 8.874194463714957e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 9,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.439539194107056,
+      "capture_started_at_utc": "2026-11-09T22:43:08.352485+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:43:15.792025+00:00",
+      "observation_classes": {
+        "unknown": 120,
+        "normal": 214,
+        "controlled_violation": 30
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-09-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-09-n",
+        "scenario": "restart",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75009,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 995,
+      "pcap_sha256": "62de360fdc0cbe1c3d976dfab71703610fdf114717ff0a631e4789720fb2b49f",
+      "pcap_bytes": 294438,
+      "kernel_drops": 0,
+      "duration_seconds": 6.344390630722046,
+      "sent_messages": 220,
+      "pipeline_deltas": {
+        "accepted": 220,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 220,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40772,
+      "generator_user_cpu_seconds": 0.392929,
+      "collector_parent_peak_rss_kib": 23328,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 5.382753442972898e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 24,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.885474681854248,
+      "capture_started_at_utc": "2026-11-09T22:43:19.368827+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:43:26.254302+00:00",
+      "observation_classes": {
+        "unknown": 282,
+        "normal": 713
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-09-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-09-v",
+        "scenario": "tampered",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75009,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 789,
+      "pcap_sha256": "658afc29aef9036f0c4dae8d6c478035073ac18577715d7e4575003582f97f38",
+      "pcap_bytes": 228138,
+      "kernel_drops": 0,
+      "duration_seconds": 6.313668251037598,
+      "sent_messages": 220,
+      "pipeline_deltas": {
+        "accepted": 203,
+        "replay": 0,
+        "rejected": 17
+      },
+      "mongo_delta": 203,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40224,
+      "generator_user_cpu_seconds": 0.385787,
+      "collector_parent_peak_rss_kib": 22988,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.6596459317952394e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.885139465332031,
+      "capture_started_at_utc": "2026-11-09T22:43:29.952176+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:43:36.837316+00:00",
+      "observation_classes": {
+        "unknown": 113,
+        "normal": 624,
+        "controlled_violation": 52
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-10-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-10-n",
+        "scenario": "normal_burst",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75010,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 1022,
+      "pcap_sha256": "83762ec1cabe72f0d3d0bd0db08e49b427a29a9852d9946c9dd2e7ef3c8ccd41",
+      "pcap_bytes": 284828,
+      "kernel_drops": 0,
+      "duration_seconds": 6.497657060623169,
+      "sent_messages": 244,
+      "pipeline_deltas": {
+        "accepted": 244,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 244,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41720,
+      "generator_user_cpu_seconds": 0.39146,
+      "collector_parent_peak_rss_kib": 23044,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 4.203830030746758e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.082046747207642,
+      "capture_started_at_utc": "2026-11-09T22:43:40.439931+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:43:47.521977+00:00",
+      "observation_classes": {
+        "unknown": 231,
+        "normal": 791
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-10-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-10-v",
+        "scenario": "bounded_rate",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75010,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 843,
+      "pcap_sha256": "62bfff39dc13fc13add92eded3c27eaa9e47032bc65345093189f1e65b6010ee",
+      "pcap_bytes": 237554,
+      "kernel_drops": 0,
+      "duration_seconds": 6.476853370666504,
+      "sent_messages": 184,
+      "pipeline_deltas": {
+        "accepted": 184,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 184,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41424,
+      "generator_user_cpu_seconds": 0.357226,
+      "collector_parent_peak_rss_kib": 23208,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.723332388792187e-06,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.090740442276001,
+      "capture_started_at_utc": "2026-11-09T22:43:51.159579+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:43:58.250319+00:00",
+      "observation_classes": {
+        "unknown": 230,
+        "normal": 538,
+        "controlled_violation": 75
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-11-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-11-n",
+        "scenario": "qos1_retry",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75011,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 1167,
+      "pcap_sha256": "f6857fdf949b6b84d08ec81bd3632ddb25857ce84f99be994cd417352be7c3a4",
+      "pcap_bytes": 359254,
+      "kernel_drops": 0,
+      "duration_seconds": 6.662168741226196,
+      "sent_messages": 153,
+      "pipeline_deltas": {
+        "accepted": 153,
+        "replay": 20,
+        "rejected": 0
+      },
+      "mongo_delta": 153,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40892,
+      "generator_user_cpu_seconds": 0.36837899999999996,
+      "collector_parent_peak_rss_kib": 23440,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.2222881196066737e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 40,
+      "qos_retry_dup_connections": 20,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.288717269897461,
+      "capture_started_at_utc": "2026-11-09T22:44:01.883957+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:44:09.172674+00:00",
+      "observation_classes": {
+        "unknown": 538,
+        "normal": 629
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-11-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-11-v",
+        "scenario": "pattern_change",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75011,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 823,
+      "pcap_sha256": "2214881a6b493846c441ebc2c3883fd27e620f7965914def634243bc7d053963",
+      "pcap_bytes": 236690,
+      "kernel_drops": 0,
+      "duration_seconds": 6.6359429359436035,
+      "sent_messages": 154,
+      "pipeline_deltas": {
+        "accepted": 154,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 154,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41072,
+      "generator_user_cpu_seconds": 0.354333,
+      "collector_parent_peak_rss_kib": 23208,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 2.7005444280803204e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.289300203323364,
+      "capture_started_at_utc": "2026-11-09T22:44:12.786002+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:44:20.075303+00:00",
+      "observation_classes": {
+        "unknown": 268,
+        "normal": 525,
+        "controlled_violation": 30
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-12-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-12-n",
+        "scenario": "regular",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75012,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 526,
+      "pcap_sha256": "611b6312ac3fc94392e37e528d5d501ee0a2427d5b24b745cc9e1db239ad5c7c",
+      "pcap_bytes": 152100,
+      "kernel_drops": 0,
+      "duration_seconds": 6.2084784507751465,
+      "sent_messages": 147,
+      "pipeline_deltas": {
+        "accepted": 147,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 147,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38880,
+      "generator_user_cpu_seconds": 0.316481,
+      "collector_parent_peak_rss_kib": 23280,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.1222437024116516e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.888458013534546,
+      "capture_started_at_utc": "2026-11-09T22:44:23.697740+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:44:30.586198+00:00",
+      "observation_classes": {
+        "unknown": 74,
+        "normal": 452
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-12-v",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-12-v",
+        "scenario": "bad_credentials",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75012,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 477,
+      "pcap_sha256": "55b2d55b0b8baa11d98a3de12e50bca5604df6dcb5c4115e973e8704d0260117",
+      "pcap_bytes": 139380,
+      "kernel_drops": 0,
+      "duration_seconds": 6.3305747509002686,
+      "sent_messages": 132,
+      "pipeline_deltas": {
+        "accepted": 132,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 132,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39064,
+      "generator_user_cpu_seconds": 0.320588,
+      "collector_parent_peak_rss_kib": 23040,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 2.191009116359055e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.880956411361694,
+      "capture_started_at_utc": "2026-11-09T22:44:34.222233+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:44:41.103189+00:00"
+    },
+    {
+      "capture_id": "primary-a-13-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-13-n",
+        "scenario": "jitter",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75013,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 623,
+      "pcap_sha256": "e3851dc0f0cba691fc96dabdaf2bd08f9cd56728de5080339bbaa48264e5aed2",
+      "pcap_bytes": 175774,
+      "kernel_drops": 0,
+      "duration_seconds": 6.460633277893066,
+      "sent_messages": 135,
+      "pipeline_deltas": {
+        "accepted": 135,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 135,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39964,
+      "generator_user_cpu_seconds": 0.330146,
+      "collector_parent_peak_rss_kib": 23476,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 7.16107024345547e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.085827350616455,
+      "capture_started_at_utc": "2026-11-09T22:44:44.731395+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:44:51.817223+00:00",
+      "observation_classes": {
+        "unknown": 164,
+        "normal": 459
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-13-v",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-13-v",
+        "scenario": "forbidden_acl",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75013,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 519,
+      "pcap_sha256": "2919cf510a4fa60e5ed36691b1aee49845c53c5a63304a13e512d8eb74f50ef6",
+      "pcap_bytes": 156452,
+      "kernel_drops": 0,
+      "duration_seconds": 6.403106927871704,
+      "sent_messages": 122,
+      "pipeline_deltas": {
+        "accepted": 121,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 121,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40264,
+      "generator_user_cpu_seconds": 0.316403,
+      "collector_parent_peak_rss_kib": 23232,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.376130967400968e-06,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.991040945053101,
+      "capture_started_at_utc": "2026-11-09T22:44:55.446158+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:45:02.437199+00:00"
+    },
+    {
+      "capture_id": "primary-a-14-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-14-n",
+        "scenario": "reconnect",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75014,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 934,
+      "pcap_sha256": "c6a39c2f337e4b640d76a1f301263a3b4c9d163d7b798a5f27e370dbba3a5ab3",
+      "pcap_bytes": 280916,
+      "kernel_drops": 0,
+      "duration_seconds": 6.691848039627075,
+      "sent_messages": 125,
+      "pipeline_deltas": {
+        "accepted": 125,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 125,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40620,
+      "generator_user_cpu_seconds": 0.333418,
+      "collector_parent_peak_rss_kib": 23368,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.2737291399389505e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 32,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.382402420043945,
+      "capture_started_at_utc": "2026-11-09T22:45:06.060911+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:45:13.443314+00:00",
+      "observation_classes": {
+        "unknown": 400,
+        "normal": 534
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-14-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-14-v",
+        "scenario": "replay",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75014,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 677,
+      "pcap_sha256": "f2d4d8d5edb1dd5b07648fe697caa5947c855a351e2a23258d4256a5b1de9360",
+      "pcap_bytes": 196914,
+      "kernel_drops": 0,
+      "duration_seconds": 6.687036037445068,
+      "sent_messages": 127,
+      "pipeline_deltas": {
+        "accepted": 119,
+        "replay": 8,
+        "rejected": 0
+      },
+      "mongo_delta": 119,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40684,
+      "generator_user_cpu_seconds": 0.314865,
+      "collector_parent_peak_rss_kib": 23276,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 4.015601007267833e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 17,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.388003826141357,
+      "capture_started_at_utc": "2026-11-09T22:45:17.043228+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:45:24.431231+00:00",
+      "observation_classes": {
+        "unknown": 228,
+        "normal": 420,
+        "controlled_violation": 29
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-15-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-15-n",
+        "scenario": "restart",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75015,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 1540,
+      "pcap_sha256": "aba48347d305605f9d3a03268fb9a22e52a0e5569f4670442e2695833942417c",
+      "pcap_bytes": 459476,
+      "kernel_drops": 0,
+      "duration_seconds": 6.337180137634277,
+      "sent_messages": 332,
+      "pipeline_deltas": {
+        "accepted": 332,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 332,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 42876,
+      "generator_user_cpu_seconds": 0.5046539999999999,
+      "collector_parent_peak_rss_kib": 23404,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 9.393625077791512e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 40,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.982673645019531,
+      "capture_started_at_utc": "2026-11-09T22:45:28.062814+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:45:35.045488+00:00",
+      "observation_classes": {
+        "unknown": 450,
+        "normal": 1090
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-15-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-15-v",
+        "scenario": "tampered",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75015,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 1210,
+      "pcap_sha256": "da162b49dded83688361d933a1b728e2956021a1d0824371637ab953c79eaf91",
+      "pcap_bytes": 352516,
+      "kernel_drops": 0,
+      "duration_seconds": 6.33586573600769,
+      "sent_messages": 335,
+      "pipeline_deltas": {
+        "accepted": 319,
+        "replay": 0,
+        "rejected": 16
+      },
+      "mongo_delta": 319,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41808,
+      "generator_user_cpu_seconds": 0.478155,
+      "collector_parent_peak_rss_kib": 23620,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 2.7298665372654796e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.885890483856201,
+      "capture_started_at_utc": "2026-11-09T22:45:38.696523+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:45:45.582413+00:00",
+      "observation_classes": {
+        "unknown": 193,
+        "normal": 971,
+        "controlled_violation": 46
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-16-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-16-n",
+        "scenario": "normal_burst",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75016,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 487,
+      "pcap_sha256": "fca829275be3858f3e0497ccbcbfeef708de1d27ea224d456eaeb8e7016be3f4",
+      "pcap_bytes": 141814,
+      "kernel_drops": 0,
+      "duration_seconds": 6.376352787017822,
+      "sent_messages": 135,
+      "pipeline_deltas": {
+        "accepted": 135,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 135,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39288,
+      "generator_user_cpu_seconds": 0.31401999999999997,
+      "collector_parent_peak_rss_kib": 22796,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 5.669789970852435e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.984804391860962,
+      "capture_started_at_utc": "2026-11-09T22:45:49.291473+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:45:56.276277+00:00",
+      "observation_classes": {
+        "unknown": 69,
+        "normal": 418
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-16-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-16-v",
+        "scenario": "bounded_rate",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75016,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 458,
+      "pcap_sha256": "a86724b578d13b1c4946fac46662672c03901220fb2c33a50217ba66659da818",
+      "pcap_bytes": 129388,
+      "kernel_drops": 0,
+      "duration_seconds": 6.558730363845825,
+      "sent_messages": 106,
+      "pipeline_deltas": {
+        "accepted": 106,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 106,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38656,
+      "generator_user_cpu_seconds": 0.30577499999999996,
+      "collector_parent_peak_rss_kib": 23324,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 3.6154233384877443e-08,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.187889337539673,
+      "capture_started_at_utc": "2026-11-09T22:45:59.943549+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:46:07.131438+00:00",
+      "observation_classes": {
+        "unknown": 105,
+        "controlled_violation": 78,
+        "normal": 275
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-17-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-17-n",
+        "scenario": "qos1_retry",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75017,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 715,
+      "pcap_sha256": "5007f5b40e528fc1ea3f57f29be8573a52f89d2f09d2c9cf1bd7524e87ec622b",
+      "pcap_bytes": 220138,
+      "kernel_drops": 0,
+      "duration_seconds": 6.708193302154541,
+      "sent_messages": 98,
+      "pipeline_deltas": {
+        "accepted": 98,
+        "replay": 12,
+        "rejected": 0
+      },
+      "mongo_delta": 98,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39148,
+      "generator_user_cpu_seconds": 0.324917,
+      "collector_parent_peak_rss_kib": 23468,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.4850229490548372e-08,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 24,
+      "qos_retry_dup_connections": 12,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.389270782470703,
+      "capture_started_at_utc": "2026-11-09T22:46:10.777962+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:46:18.167233+00:00",
+      "observation_classes": {
+        "unknown": 310,
+        "normal": 405
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-17-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-17-v",
+        "scenario": "pattern_change",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75017,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 503,
+      "pcap_sha256": "eacd66034f22dc15ceb846e697e0b6b319f5b65482ee32c65a9d4ee846851c54",
+      "pcap_bytes": 146258,
+      "kernel_drops": 0,
+      "duration_seconds": 6.6657774448394775,
+      "sent_messages": 99,
+      "pipeline_deltas": {
+        "accepted": 99,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 99,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39708,
+      "generator_user_cpu_seconds": 0.310791,
+      "collector_parent_peak_rss_kib": 23308,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 4.021640052087605e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.298961400985718,
+      "capture_started_at_utc": "2026-11-09T22:46:21.771302+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:46:29.070263+00:00",
+      "observation_classes": {
+        "unknown": 160,
+        "normal": 316,
+        "controlled_violation": 27
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-18-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-18-n",
+        "scenario": "regular",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75018,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 1007,
+      "pcap_sha256": "0970052f90f5df22091f7e9d81dce9cb02af43f25231df3ed7d67177c54e5e5f",
+      "pcap_bytes": 292306,
+      "kernel_drops": 0,
+      "duration_seconds": 6.3656005859375,
+      "sent_messages": 282,
+      "pipeline_deltas": {
+        "accepted": 282,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 282,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41584,
+      "generator_user_cpu_seconds": 0.43058199999999996,
+      "collector_parent_peak_rss_kib": 23352,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.370572135783732e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.992687463760376,
+      "capture_started_at_utc": "2026-11-09T22:46:32.654921+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:46:39.647609+00:00",
+      "observation_classes": {
+        "unknown": 143,
+        "normal": 864
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-18-v",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-18-v",
+        "scenario": "bad_credentials",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75018,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 961,
+      "pcap_sha256": "457e329f91a313de1e23ac9636b3ce22bfe364800428a0ae82dc5962ce7b7e75",
+      "pcap_bytes": 280376,
+      "kernel_drops": 0,
+      "duration_seconds": 6.362168073654175,
+      "sent_messages": 265,
+      "pipeline_deltas": {
+        "accepted": 265,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 265,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41840,
+      "generator_user_cpu_seconds": 0.43299899999999997,
+      "collector_parent_peak_rss_kib": 22852,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 2.813467290252447e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.979391098022461,
+      "capture_started_at_utc": "2026-11-09T22:46:43.260932+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:46:50.240323+00:00"
+    },
+    {
+      "capture_id": "primary-a-19-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-19-n",
+        "scenario": "jitter",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75019,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 993,
+      "pcap_sha256": "fac0caa582e26cd24ff92892099755eefb159127600a3d81ece9662b6953dccb",
+      "pcap_bytes": 280966,
+      "kernel_drops": 0,
+      "duration_seconds": 6.494847297668457,
+      "sent_messages": 210,
+      "pipeline_deltas": {
+        "accepted": 210,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 210,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41192,
+      "generator_user_cpu_seconds": 0.38906599999999997,
+      "collector_parent_peak_rss_kib": 23172,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 3.1566742109134793e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.1881232261657715,
+      "capture_started_at_utc": "2026-11-09T22:46:53.853259+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:47:01.041382+00:00",
+      "observation_classes": {
+        "unknown": 284,
+        "normal": 709
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-19-v",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-19-v",
+        "scenario": "forbidden_acl",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75019,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 967,
+      "pcap_sha256": "2adb67925f8779699ef393fa74921d2e5f7eca02fdb9fd6a7a13713fc34412ac",
+      "pcap_bytes": 274496,
+      "kernel_drops": 0,
+      "duration_seconds": 6.4860944747924805,
+      "sent_messages": 202,
+      "pipeline_deltas": {
+        "accepted": 201,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 201,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41156,
+      "generator_user_cpu_seconds": 0.39070499999999997,
+      "collector_parent_peak_rss_kib": 23480,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 9.13212716113776e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.191511631011963,
+      "capture_started_at_utc": "2026-11-09T22:47:04.636740+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:47:11.828252+00:00"
+    },
+    {
+      "capture_id": "primary-a-20-n",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-20-n",
+        "scenario": "reconnect",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75020,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 484,
+      "pcap_sha256": "9c0d0c833eefff4db521ef7509ef3144db13c666629e55f74a3c43aa915053b6",
+      "pcap_bytes": 143816,
+      "kernel_drops": 0,
+      "duration_seconds": 6.4025959968566895,
+      "sent_messages": 66,
+      "pipeline_deltas": {
+        "accepted": 66,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 66,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38356,
+      "generator_user_cpu_seconds": 0.27591299999999996,
+      "collector_parent_peak_rss_kib": 23204,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 6.761401891708374e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.182249546051025,
+      "capture_started_at_utc": "2026-11-09T22:47:15.739993+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:47:22.922243+00:00"
+    },
+    {
+      "capture_id": "primary-a-20-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-20-v",
+        "scenario": "replay",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75020,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 360,
+      "pcap_sha256": "c9a2a221e27897a4bca2cbc34c8c20b08898a487f5400d646cb9af61ee033aaa",
+      "pcap_bytes": 104860,
+      "kernel_drops": 0,
+      "duration_seconds": 6.6414031982421875,
+      "sent_messages": 68,
+      "pipeline_deltas": {
+        "accepted": 60,
+        "replay": 8,
+        "rejected": 0
+      },
+      "mongo_delta": 60,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38140,
+      "generator_user_cpu_seconds": 0.27085899999999996,
+      "collector_parent_peak_rss_kib": 23188,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 6.732370820827782e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 9,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.2889018058776855,
+      "capture_started_at_utc": "2026-11-09T22:47:26.538263+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:47:33.827164+00:00",
+      "observation_classes": {
+        "unknown": 122,
+        "normal": 209,
+        "controlled_violation": 29
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-21-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-21-n",
+        "scenario": "restart",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75021,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 978,
+      "pcap_sha256": "996a79be2c0b5f180e69d32e2c05ceb5da6f2b39a697aa04b0a521555029205d",
+      "pcap_bytes": 290400,
+      "kernel_drops": 0,
+      "duration_seconds": 6.305484294891357,
+      "sent_messages": 214,
+      "pipeline_deltas": {
+        "accepted": 214,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 214,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40540,
+      "generator_user_cpu_seconds": 0.39253099999999996,
+      "collector_parent_peak_rss_kib": 23212,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 8.301140042021871e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 24,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.883753776550293,
+      "capture_started_at_utc": "2026-11-09T22:47:37.441856+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:47:44.325610+00:00",
+      "observation_classes": {
+        "unknown": 271,
+        "normal": 707
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-21-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-21-v",
+        "scenario": "tampered",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75021,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 768,
+      "pcap_sha256": "61fc235b99c575727c80c07157e6614ae70fc408ba05cef0d9bc0e4c98bfaf71",
+      "pcap_bytes": 222468,
+      "kernel_drops": 0,
+      "duration_seconds": 6.31461763381958,
+      "sent_messages": 219,
+      "pipeline_deltas": {
+        "accepted": 201,
+        "replay": 0,
+        "rejected": 18
+      },
+      "mongo_delta": 201,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39956,
+      "generator_user_cpu_seconds": 0.387667,
+      "collector_parent_peak_rss_kib": 22560,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 5.111796781420708e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.979421138763428,
+      "capture_started_at_utc": "2026-11-09T22:47:47.929803+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:47:54.909224+00:00",
+      "observation_classes": {
+        "unknown": 117,
+        "normal": 600,
+        "controlled_violation": 51
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-22-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-22-n",
+        "scenario": "normal_burst",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75022,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 1020,
+      "pcap_sha256": "83c09e8729ccd1d4388b0bc6d041a2a204b289732aef8588632403b048557f77",
+      "pcap_bytes": 284180,
+      "kernel_drops": 0,
+      "duration_seconds": 6.497596740722656,
+      "sent_messages": 243,
+      "pipeline_deltas": {
+        "accepted": 243,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 243,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41504,
+      "generator_user_cpu_seconds": 0.391997,
+      "collector_parent_peak_rss_kib": 23000,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 8.622737368568778e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.0846264362335205,
+      "capture_started_at_utc": "2026-11-09T22:47:58.506822+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:48:05.591448+00:00",
+      "observation_classes": {
+        "unknown": 214,
+        "normal": 806
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-22-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-22-v",
+        "scenario": "bounded_rate",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75022,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 834,
+      "pcap_sha256": "a22c51ed24a251ccb62be8d6e1cb5702f9cf9ee8b761017a03bc151b1fa43032",
+      "pcap_bytes": 235212,
+      "kernel_drops": 0,
+      "duration_seconds": 6.503854274749756,
+      "sent_messages": 181,
+      "pipeline_deltas": {
+        "accepted": 181,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 181,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41060,
+      "generator_user_cpu_seconds": 0.356705,
+      "collector_parent_peak_rss_kib": 23024,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.0552539606578648e-06,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 16,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.08258581161499,
+      "capture_started_at_utc": "2026-11-09T22:48:09.185944+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:48:16.268529+00:00",
+      "observation_classes": {
+        "unknown": 224,
+        "normal": 550,
+        "controlled_violation": 60
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-23-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-23-n",
+        "scenario": "qos1_retry",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75023,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 1167,
+      "pcap_sha256": "62ff68d6b13efbb28dd0e26a86d911c5f5797d6f68296ef8b920fbcabee66b76",
+      "pcap_bytes": 359274,
+      "kernel_drops": 0,
+      "duration_seconds": 6.703613996505737,
+      "sent_messages": 153,
+      "pipeline_deltas": {
+        "accepted": 153,
+        "replay": 20,
+        "rejected": 0
+      },
+      "mongo_delta": 153,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41016,
+      "generator_user_cpu_seconds": 0.364455,
+      "collector_parent_peak_rss_kib": 23008,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 3.404929884709418e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 40,
+      "qos_retry_dup_connections": 20,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.386517524719238,
+      "capture_started_at_utc": "2026-11-09T22:48:19.895918+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:48:27.282436+00:00",
+      "observation_classes": {
+        "unknown": 549,
+        "normal": 618
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-23-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-23-v",
+        "scenario": "pattern_change",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75023,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 815,
+      "pcap_sha256": "1dc5a88820e94303b67dbac97a33ed42d48a86421f28448bf1fe395a74031653",
+      "pcap_bytes": 236254,
+      "kernel_drops": 0,
+      "duration_seconds": 6.75393533706665,
+      "sent_messages": 155,
+      "pipeline_deltas": {
+        "accepted": 155,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 155,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40960,
+      "generator_user_cpu_seconds": 0.35101,
+      "collector_parent_peak_rss_kib": 23312,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 2.2393942344933748e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.2865965366363525,
+      "capture_started_at_utc": "2026-11-09T22:48:30.900661+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:48:38.187258+00:00",
+      "observation_classes": {
+        "unknown": 268,
+        "normal": 515,
+        "controlled_violation": 32
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-24-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-24-n",
+        "scenario": "regular",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75024,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 541,
+      "pcap_sha256": "becf462dbd8476d07a836be919e7870061adf0a169e94885e0b3523417dd2c18",
+      "pcap_bytes": 156022,
+      "kernel_drops": 0,
+      "duration_seconds": 6.3109400272369385,
+      "sent_messages": 153,
+      "pipeline_deltas": {
+        "accepted": 153,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 153,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39340,
+      "generator_user_cpu_seconds": 0.325915,
+      "collector_parent_peak_rss_kib": 23408,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 4.992325557395816e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.8901567459106445,
+      "capture_started_at_utc": "2026-11-09T22:48:41.798076+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:48:48.688233+00:00",
+      "observation_classes": {
+        "unknown": 76,
+        "normal": 465
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-24-v",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-24-v",
+        "scenario": "bad_credentials",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75024,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 483,
+      "pcap_sha256": "e9eefc15145b34929b3c953dde1b3fe6bf58e2b37c86241c9635bd9be4d6562e",
+      "pcap_bytes": 140952,
+      "kernel_drops": 0,
+      "duration_seconds": 6.2866551876068115,
+      "sent_messages": 133,
+      "pipeline_deltas": {
+        "accepted": 133,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 133,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38972,
+      "generator_user_cpu_seconds": 0.32314699999999996,
+      "collector_parent_peak_rss_kib": 22904,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.6539706848561764e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.886000394821167,
+      "capture_started_at_utc": "2026-11-09T22:48:52.325227+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:48:59.211227+00:00"
+    },
+    {
+      "capture_id": "primary-a-25-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-25-n",
+        "scenario": "jitter",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75025,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 612,
+      "pcap_sha256": "9750fb3b03e2e64d72e7f4ebfadf29f9dd11760f7828ef9bf2c269c9b4c12768",
+      "pcap_bytes": 173144,
+      "kernel_drops": 0,
+      "duration_seconds": 6.506003379821777,
+      "sent_messages": 132,
+      "pipeline_deltas": {
+        "accepted": 132,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 132,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39844,
+      "generator_user_cpu_seconds": 0.31335799999999997,
+      "collector_parent_peak_rss_kib": 23200,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 3.64183506462723e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.0343663692474365,
+      "capture_started_at_utc": "2026-11-09T22:49:03.051840+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:49:10.086206+00:00",
+      "observation_classes": {
+        "unknown": 162,
+        "normal": 450
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-25-v",
+      "selected": false,
+      "config": {
+        "experiment_id": "primary-a-25-v",
+        "scenario": "forbidden_acl",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75025,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 586,
+      "pcap_sha256": "b7073f8d78bb47ec78259af9ca137f74dd7161dd3e5acc06fedc52c9f7ef5d1c",
+      "pcap_bytes": 166258,
+      "kernel_drops": 0,
+      "duration_seconds": 6.526468515396118,
+      "sent_messages": 123,
+      "pipeline_deltas": {
+        "accepted": 122,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 122,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40188,
+      "generator_user_cpu_seconds": 0.321542,
+      "collector_parent_peak_rss_kib": 23056,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 9.09603841137141e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.186796188354492,
+      "capture_started_at_utc": "2026-11-09T22:49:13.726423+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:49:20.913219+00:00"
+    },
+    {
+      "capture_id": "primary-a-26-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-26-n",
+        "scenario": "reconnect",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75026,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 945,
+      "pcap_sha256": "551322ea056147f425d252abcea9af7a9a9b272c7057d7bea388c5bc28fe6a11",
+      "pcap_bytes": 281910,
+      "kernel_drops": 0,
+      "duration_seconds": 6.782372951507568,
+      "sent_messages": 125,
+      "pipeline_deltas": {
+        "accepted": 125,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 125,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 41380,
+      "generator_user_cpu_seconds": 0.328627,
+      "collector_parent_peak_rss_kib": 23252,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 6.014888640493155e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 32,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.383349895477295,
+      "capture_started_at_utc": "2026-11-09T22:49:24.530921+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:49:31.914271+00:00",
+      "observation_classes": {
+        "unknown": 439,
+        "normal": 506
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-26-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-26-v",
+        "scenario": "replay",
+        "clients": 16,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75026,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 676,
+      "pcap_sha256": "e6414d7b29817c0661fc693fcce5878d12e343853cddb135d284a84712ac0791",
+      "pcap_bytes": 197444,
+      "kernel_drops": 0,
+      "duration_seconds": 6.697638034820557,
+      "sent_messages": 128,
+      "pipeline_deltas": {
+        "accepted": 119,
+        "replay": 9,
+        "rejected": 0
+      },
+      "mongo_delta": 119,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 40756,
+      "generator_user_cpu_seconds": 0.329615,
+      "collector_parent_peak_rss_kib": 23556,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.771841198205948e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 17,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.293294191360474,
+      "capture_started_at_utc": "2026-11-09T22:49:35.640913+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:49:42.934207+00:00",
+      "observation_classes": {
+        "unknown": 209,
+        "normal": 434,
+        "controlled_violation": 33
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-27-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-27-n",
+        "scenario": "restart",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75027,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 1566,
+      "pcap_sha256": "e29d94007a2d190829ded8f4fb1140e9809b1a32fa4fb950199cd98613275549",
+      "pcap_bytes": 467392,
+      "kernel_drops": 0,
+      "duration_seconds": 6.324286460876465,
+      "sent_messages": 334,
+      "pipeline_deltas": {
+        "accepted": 334,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 334,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 43136,
+      "generator_user_cpu_seconds": 0.496745,
+      "collector_parent_peak_rss_kib": 23184,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.4541219570674002e-06,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 40,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.893800735473633,
+      "capture_started_at_utc": "2026-11-09T22:49:46.579707+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:49:53.473508+00:00",
+      "observation_classes": {
+        "unknown": 455,
+        "normal": 1111
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-27-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-27-v",
+        "scenario": "tampered",
+        "clients": 20,
+        "duration": 6.0,
+        "interval": 0.3,
+        "jitter": 0.08,
+        "seed": 75027,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 1216,
+      "pcap_sha256": "01d719c15cce7fb1ac548330d3445dd916aefe16b1ffb36b36d3d4f6976162a4",
+      "pcap_bytes": 354112,
+      "kernel_drops": 0,
+      "duration_seconds": 6.316483020782471,
+      "sent_messages": 334,
+      "pipeline_deltas": {
+        "accepted": 316,
+        "replay": 0,
+        "rejected": 18
+      },
+      "mongo_delta": 316,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 42884,
+      "generator_user_cpu_seconds": 0.48441999999999996,
+      "collector_parent_peak_rss_kib": 23100,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.627777237445116e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 20,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.9927732944488525,
+      "capture_started_at_utc": "2026-11-09T22:49:57.245156+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:50:04.237930+00:00",
+      "observation_classes": {
+        "unknown": 182,
+        "normal": 980,
+        "controlled_violation": 54
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-28-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-28-n",
+        "scenario": "normal_burst",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75028,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 478,
+      "pcap_sha256": "9cc2bc0e33083dccffdd1168d559ddddcc064471b4c2f72e6c3893f3581a1a1c",
+      "pcap_bytes": 139356,
+      "kernel_drops": 0,
+      "duration_seconds": 6.4184184074401855,
+      "sent_messages": 135,
+      "pipeline_deltas": {
+        "accepted": 135,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 135,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39316,
+      "generator_user_cpu_seconds": 0.317416,
+      "collector_parent_peak_rss_kib": 23440,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 1.0355579433962703e-06,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.984643459320068,
+      "capture_started_at_utc": "2026-11-09T22:50:07.967720+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:50:14.952363+00:00",
+      "observation_classes": {
+        "unknown": 72,
+        "normal": 406
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-28-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-28-v",
+        "scenario": "bounded_rate",
+        "clients": 8,
+        "duration": 6.0,
+        "interval": 0.5,
+        "jitter": 0.08,
+        "seed": 75028,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 403,
+      "pcap_sha256": "01a7ca1617477f3ca23eb6cdd7c0b6554703733b92a8dfdce42383e1b0de931b",
+      "pcap_bytes": 119654,
+      "kernel_drops": 0,
+      "duration_seconds": 6.395650386810303,
+      "sent_messages": 104,
+      "pipeline_deltas": {
+        "accepted": 104,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 104,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 38936,
+      "generator_user_cpu_seconds": 0.28887199999999996,
+      "collector_parent_peak_rss_kib": 23152,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 6.911941454745829e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 8,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 6.986973524093628,
+      "capture_started_at_utc": "2026-11-09T22:50:18.625442+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:50:25.612416+00:00",
+      "observation_classes": {
+        "unknown": 72,
+        "normal": 262,
+        "controlled_violation": 69
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-29-n",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-29-n",
+        "scenario": "qos1_retry",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75029,
+        "violation": false,
+        "schema_version": 1
+      },
+      "packets": 718,
+      "pcap_sha256": "eaf6adfe5459e783b8e0e8f105dbbc98a9023dbfafe7847fece60ef880d8dccb",
+      "pcap_bytes": 220912,
+      "kernel_drops": 0,
+      "duration_seconds": 6.685174942016602,
+      "sent_messages": 99,
+      "pipeline_deltas": {
+        "accepted": 99,
+        "replay": 12,
+        "rejected": 0
+      },
+      "mongo_delta": 99,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39504,
+      "generator_user_cpu_seconds": 0.319046,
+      "collector_parent_peak_rss_kib": 23176,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 4.920148057863116e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 24,
+      "qos_retry_dup_connections": 12,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.181929349899292,
+      "capture_started_at_utc": "2026-11-09T22:50:29.260299+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:50:36.442228+00:00",
+      "observation_classes": {
+        "unknown": 317,
+        "normal": 401
+      },
+      "tcp_sequence_gap_packets": 0
+    },
+    {
+      "capture_id": "primary-a-29-v",
+      "selected": true,
+      "config": {
+        "experiment_id": "primary-a-29-v",
+        "scenario": "pattern_change",
+        "clients": 12,
+        "duration": 6.0,
+        "interval": 0.7,
+        "jitter": 0.08,
+        "seed": 75029,
+        "violation": true,
+        "schema_version": 1
+      },
+      "packets": 511,
+      "pcap_sha256": "1fe39b3f97a4a9ae65190879c01ce120badc9e3a6fd0d5689f93b37466f3cd03",
+      "pcap_bytes": 149086,
+      "kernel_drops": 0,
+      "duration_seconds": 6.700701475143433,
+      "sent_messages": 103,
+      "pipeline_deltas": {
+        "accepted": 103,
+        "replay": 0,
+        "rejected": 0
+      },
+      "mongo_delta": 103,
+      "outbox_pending_after": 0,
+      "generator_peak_rss_kib": 39724,
+      "generator_user_cpu_seconds": 0.290273,
+      "collector_parent_peak_rss_kib": 23264,
+      "clock": {
+        "source": "shared host CLOCK_REALTIME, Docker time namespaces unchanged",
+        "precision_seconds": 1e-09,
+        "wall_monotonic_drift_seconds": 5.768597475253046e-07,
+        "boundary_margin_seconds": 5e-05
+      },
+      "connections": 12,
+      "qos_retry_dup_connections": 0,
+      "tcpdump_version": "tcpdump version 4.99.3",
+      "tshark_version": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).",
+      "capture_duration_seconds": 7.3885369300842285,
+      "capture_started_at_utc": "2026-11-09T22:50:40.057651+00:00",
+      "capture_finished_at_utc": "2026-11-09T22:50:47.446188+00:00",
+      "observation_classes": {
+        "unknown": 149,
+        "normal": 331,
+        "controlled_violation": 31
+      },
+      "tcp_sequence_gap_packets": 0
+    }
+  ],
+  "limitations": [
+    "One x86_64 Docker host/kernel, generated clients, no ARM/physical network or real attacks evaluation",
+    "Post-fix auth/ACL replacements collected in a later batch; host scheduling/batch confounding remains, same pool/settings/toolchain retained",
+    "Disk budgets are monitored, not hard filesystem quotas; same host shared resources remain a limitation",
+    "27% unknown excluded fail-closed; 68% exact cross-partition fingerprint purge alters prevalence; narrow validation/test violation support",
+    "No empirical proof of absolute clock accuracy, packetwise maliciousness, statistical capture independence or absence of shortcuts",
+    "No new trained models, trusted detector changes, live Network IDS or crypto switching"
+  ],
+  "commands": {
+    "pilot": ".venv/bin/python -m src.research_stand.orchestrator --env-file .local-runtime/stage75b.env --output .local-runtime/stand75b/pilot-final --matrix pilot --prefix pilot-e",
+    "primary": ".venv/bin/python -m src.research_stand.orchestrator --env-file .local-runtime/stage75b.env --output .local-runtime/stand75b/primary --matrix primary --prefix primary-a",
+    "correction": "inline Python: for cfg in matrix(60,'primary-a'): if cfg.violation and cfg.scenario in {'bad_credentials','forbidden_acl'}: lab.experiment(replace(cfg,experiment_id=cfg.experiment_id.replace('primary-a','corrected-a'))); exclusion manifest stores original capture IDs/PCAP hashes and protocol-length confound reason",
+    "build": ".venv/bin/python -m src.research_stand.dataset build --root .local-runtime/stand75b/primary --selection .local-runtime/stand75b/selection.json --output .local-runtime/stand75b/dataset",
+    "validate": ".venv/bin/python -m src.research_stand.dataset validate --root .local-runtime/stand75b/dataset --captures .local-runtime/stand75b/primary",
+    "plan": ".venv/bin/python -m src.classifier.research.cli plan --data .local-runtime/stand75b/dataset/dataset.csv --manifest .local-runtime/stand75b/dataset/dataset.manifest.json --config configs/ml/research75.json --output .local-runtime/stand75b/plan.json",
+    "integration": ".venv/bin/python -m scripts.verify_research75b --env-file .local-runtime/stage75b.env --captures .local-runtime/stand75b/primary --dataset .local-runtime/stand75b/dataset --output .local-runtime/stand75b/integration.json --fault-id collector-fault-a"
+  },
+  "curation_sha256": "e640dd9527fea2e7d52d637f1c3cdc0f55211cee587959d5d9faedb8d99b0120",
+  "image_ids": {
+    "lcm-stage7b-lab-laboratory": "sha256:cb0c4c09c0f8ed8f223ac6b01d76c39cea6b6dc19ae1a6f97d1405de9f5b8a02",
+    "lcm-stage7b-regression-runtime": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+    "lcm-stage7b-regression-tests": "sha256:0e4e739e53f0754353f995214c627c210b1eacb6a29c29d38037d00257f8b76e"
+  },
+  "bounded_rebuild": {
+    "cpu_limit": 1,
+    "memory_limit_bytes": 805306368,
+    "network": "none",
+    "hashes_identical": {
+      "dataset.csv": true,
+      "observations.csv": true,
+      "dataset.manifest.json": true
+    }
+  },
+  "engineering_tests": {
+    "pytest_passed": 301,
+    "skipped": 0,
+    "previous_tests": 267,
+    "new_tests": 34,
+    "synthetic_unit_fixtures_are_not_real_attack_benchmarks": true
+  },
+  "final_verified_image_ids": {
+    "lcm-stage7b-lab-laboratory": "sha256:cb0c4c09c0f8ed8f223ac6b01d76c39cea6b6dc19ae1a6f97d1405de9f5b8a02",
+    "lcm-stage7b-regression-runtime": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+    "lcm-stage7b-regression-tests": "sha256:5f245e6c048f4163f2ee052c3d4f879554ae603a9d9f36d591c88121a09fa59e"
+  }
+}

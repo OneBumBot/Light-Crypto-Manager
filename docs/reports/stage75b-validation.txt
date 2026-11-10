@@ -1,0 +1,81 @@
+
+UTC: 2026-11-10T08:15:00.478402+00:00
+$ .venv/bin/python -m src.research_stand.dataset validate --root .local-runtime/stand75b/dataset --captures .local-runtime/stand75b/primary
+{
+  "schema_version": 1,
+  "status": "engineering_validated_scientific_quality_unproven",
+  "observations": 46395,
+  "known_rows": 33848,
+  "unknown_rows": 12547,
+  "unknown_fraction": 0.2704386248518159,
+  "captures": 59,
+  "class_capture_support": {
+    "0": 59,
+    "1": 29
+  },
+  "class_counts": {
+    "Normal": 32901,
+    "ControlledViolation": 947
+  },
+  "duplicate_vector_rows": 23662,
+  "conflicting_vectors": 152,
+  "feature_distributions": {
+    "0": {
+      "frame.len": {
+        "mean": 233.80848606425337,
+        "std": 228.127857172144
+      },
+      "tcp.len": {
+        "mean": 167.80848606425337,
+        "std": 228.127857172144
+      },
+      "tcp.flags": {
+        "mean": 21.20737971490228,
+        "std": 3.813486100307798
+      },
+      "tcp.window_size_value": {
+        "mean": 70.47348104920823,
+        "std": 4.757474082095088
+      },
+      "tcp.time_delta": {
+        "mean": 0.11762021810887206,
+        "std": 0.20974968990185952
+      }
+    },
+    "1": {
+      "frame.len": {
+        "mean": 235.94825765575501,
+        "std": 229.36492997896363
+      },
+      "tcp.len": {
+        "mean": 169.94825765575501,
+        "std": 229.36492997896363
+      },
+      "tcp.flags": {
+        "mean": 21.275607180570223,
+        "std": 3.798167262201713
+      },
+      "tcp.window_size_value": {
+        "mean": 70.45617740232312,
+        "std": 4.762757582630601
+      },
+      "tcp.time_delta": {
+        "mean": 0.10638787961985216,
+        "std": 0.20845669849625875
+      }
+    }
+  },
+  "shortcut_review": [
+    "Same device pool/config ranges for paired normal and mixed runs; identifiers excluded from five features",
+    "Short auth/ACL sessions and deterministic software TCP stack can create trivial shortcuts; later evaluate per-scenario and held-out host/device/load",
+    "No statistical evidence of shortcut absence; final ML test deferred"
+  ],
+  "quarantined": [
+    {
+      "capture_id": "primary-a-20-n",
+      "reason": "Invalid packet range: tcp.time_delta"
+    }
+  ]
+}
+
+EXIT CODE: 0

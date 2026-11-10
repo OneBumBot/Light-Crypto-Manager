@@ -1,0 +1,6 @@
+
+UTC: 2026-11-10T08:21:44.684616+00:00
+$ docker run --rm --network none --cpus 0.5 --memory 128m --user 0 -v lcm-stage7b-lab_research-data:/research lcm-stage7b-lab-laboratory python -c 'from pathlib import Path;import stat;p=Path('"'"'/research'"'"');paths=[p,*p.rglob('"'"'*'"'"')];assert not any(x.is_symlink() for x in paths);[(x.chmod(0o700 if x.is_dir() else 0o600)) for x in paths];assert all(stat.S_IMODE(x.stat().st_mode)==(0o700 if x.is_dir() else 0o600) for x in paths);print('"'"'PASS: research volume directories0700/files0600, content unchanged'"'"')'
+PASS: research volume directories0700/files0600, content unchanged
+
+EXIT CODE: 0

@@ -93,3 +93,17 @@ root. Новые Network artifacts не ставятся в telemetry worker. В
 Дальнейшие шаги — предоставить independent raw captures/локальные архивы2020,
 проверить labels/clock/link layer/session mapping, заморозить новый holdout и только
 потом выполнить реальный train/test. Основной этап8 автоматически не начинается.
+
+## Продолжение 7.5b — сбор совместимого источника
+
+Без переобучения предыдущих моделей добавлен отдельный MQTT/TLS lab. Из70основных
+captures59валидны; own Normal/ControlledViolation источник не объединён с внешними.
+Пять passive TCP fields/version сохранены. `prepare_split()` не изменялся:
+strict plan прошёл, train6645/validation2082/holdout2035 после duplicate purge.
+Frozen plan/данные/критические ограничения — RESEARCH_75B_RESULTS.md.
+
+Эти результаты **не исправляют задним числом baseline RF** и не дают новых ML
+scores. Достоверность real-attack detection и переносимость не установлены;
+lab-independent dataset остаётся отдельной задачей. Policy/source trust/crypto
+не менялись. Подготовленный holdout ещё не оценивался; обучение7.5c только по
+отдельной команде. Новые packet IDs/captures не означают независимость устройств.

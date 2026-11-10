@@ -344,3 +344,38 @@ S06 и другие оставшиеся проблемы безопасност
 проверены. Начальные ошибочные Docker-образы с ZIP/.git удалены адресно; контекст
 и COPY исправлены, новый образ проверен. Smoke Tag_Name укорочен под существующий
 лимит 30. Полные результаты/ошибки приведены в DEVELOPMENT_STATUS.md.
+
+## Этап 7.5b — устранённое и оставшиеся ограничения
+
+Устранено: отсутствовал изолированный TLS research collector/generator;
+не было verified connection-level смешанной разметки/unknown. Созданы lab,
+GT/builder/validator/watchdogs, no zero-fill, persistent counters, source hashes.
+Startup provisioning обязателен: первый неудачный пилот отдельно сохранён.
+Исправлены laboratory password/topic length shortcuts;10captures исключены
+явной hash-bound курацией до обучения, raw data не удалялись. Syntax error
+промежуточного447dec0 исправленe9d3241; проверки текущего кода успешны.
+
+Остаётся: crypto/ML/Policy контура приложение не менялись, Network IDS online
+по-прежнему отсутствует. Labels — controlled connection activity, не доказанная
+вредоносность каждого пакета. Unknown27.044%, один negative time_delta capture
+вquarantine.76normalQoS1DUP не означают атаку; Policy baseline replay semantics
+этим исследованием не переопределялись.
+
+59groups и strict split прошли, но statistical independence/real-world detection
+не доказаны; duplicate purge удаляет68.2%known rows и меняет prevalence. Последняя
+часть имеет только5positive capture groups/60violation rows. Post-fix batch,
+короткие auth/ACL sessions, общий host/kernel/software могут давать shortcuts.
+Нужны held-out host/device/scenario и отдельный совместимый внешний набор.
+Новые RF/IF не обучены, scientific final/external scores отсутствуют.
+
+Не проверено: ARM, IPv6, абсолютная clock/label accuracy, peak tshark RSS,
+реальные атаки/physical IoT baseline, live ML одновременно с collector fault в
+одном collecting project. Отдельный real ML recovery regression проходит.
+CPU/RAM hard quotas есть; disk limits — watchdog budgets с допустимым polling
+overshoot, не filesystem hard quota. Для жёсткой изоляции предпочтителен VM/host.
+Ни Packet PCAP, ни traces с анонимным отказом не подтверждают spoofed device ID.
+
+Внешний аудит7.5b: MQTT_UAD не хватает4passive fields; MQTTEEB-D raw/header/group
+audit не выполнен; IoT-SFC log granularity требует отдельного контракта и проверки
+лицензии конкретной версии. Источники не скачаны целиком/не смешаны с own lab.
+Доказательства и команды — docs/RESEARCH_75B_RESULTS.md и reports/stage75b-*.

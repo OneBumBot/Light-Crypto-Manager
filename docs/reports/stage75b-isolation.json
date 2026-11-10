@@ -1,0 +1,404 @@
+{
+  "schema_version": 1,
+  "all_active_project_networks_internal": true,
+  "lab_and_regression_projects_distinct": true,
+  "active_services_have_resource_limits": true,
+  "containers": [
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "traffic-collector",
+      "running": false,
+      "image_id": "sha256:cb0c4c09c0f8ed8f223ac6b01d76c39cea6b6dc19ae1a6f97d1405de9f5b8a02",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 268435456,
+      "network_names": [],
+      "cap_add": [
+        "CAP_NET_RAW"
+      ],
+      "cap_drop": [
+        "ALL"
+      ],
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "lab-devices",
+      "running": false,
+      "image_id": "sha256:cb0c4c09c0f8ed8f223ac6b01d76c39cea6b6dc19ae1a6f97d1405de9f5b8a02",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 268435456,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": [
+        "ALL"
+      ],
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "research-init",
+      "running": false,
+      "image_id": "sha256:cb0c4c09c0f8ed8f223ac6b01d76c39cea6b6dc19ae1a6f97d1405de9f5b8a02",
+      "nano_cpus": 500000000,
+      "memory_bytes": 201326592,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "web",
+      "running": true,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 500000000,
+      "memory_bytes": 268435456,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "receiver",
+      "running": true,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 268435456,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "mongo",
+      "running": true,
+      "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 805306368,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "broker",
+      "running": true,
+      "image_id": "sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+      "nano_cpus": 500000000,
+      "memory_bytes": 134217728,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "postgres",
+      "running": true,
+      "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 536870912,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "outbox-relay",
+      "running": true,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 268435456,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "research-provision",
+      "running": false,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 500000000,
+      "memory_bytes": 201326592,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "policy-worker",
+      "running": true,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 500000000,
+      "memory_bytes": 201326592,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "init-db",
+      "running": false,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 0,
+      "memory_bytes": 0,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "security-init",
+      "running": false,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 0,
+      "memory_bytes": 0,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-lab",
+      "service": "storage-init",
+      "running": false,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 0,
+      "memory_bytes": 0,
+      "network_names": [
+        "lcm-stage7b-lab_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "policy-worker",
+      "running": true,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 500000000,
+      "memory_bytes": 201326592,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "policy-worker",
+      "running": true,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 500000000,
+      "memory_bytes": 201326592,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "ml-worker",
+      "running": true,
+      "image_id": "sha256:d59fda5086878780cf7e5a856c3c379a226ad8f342bf261407f9df4d348617f2",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 805306368,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "receiver",
+      "running": true,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 268435456,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "publisher",
+      "running": false,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 0,
+      "memory_bytes": 0,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "web",
+      "running": true,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 500000000,
+      "memory_bytes": 268435456,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "outbox-relay",
+      "running": true,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 268435456,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "demo-setup",
+      "running": false,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 0,
+      "memory_bytes": 0,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "broker",
+      "running": true,
+      "image_id": "sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+      "nano_cpus": 500000000,
+      "memory_bytes": 134217728,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "mongo",
+      "running": true,
+      "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 805306368,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "init-db",
+      "running": false,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 0,
+      "memory_bytes": 0,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "security-init",
+      "running": false,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 0,
+      "memory_bytes": 0,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "storage-init",
+      "running": false,
+      "image_id": "sha256:49a8e1fd30285ca1b42403ee0cce9bcc26acebb1eca69584409172770639c874",
+      "nano_cpus": 0,
+      "memory_bytes": 0,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    },
+    {
+      "project": "lcm-stage7b-regression",
+      "service": "postgres",
+      "running": true,
+      "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "nano_cpus": 1000000000,
+      "memory_bytes": 536870912,
+      "network_names": [
+        "lcm-stage7b-regression_default"
+      ],
+      "cap_add": null,
+      "cap_drop": null,
+      "host_ports_published": false
+    }
+  ]
+}

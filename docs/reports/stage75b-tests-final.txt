@@ -1,0 +1,82 @@
+
+UTC: 2026-11-09T22:50:06.496680+00:00
+$ docker compose --env-file .local-runtime/stage75b-regression.env run --rm --no-deps tests
+ Container lcm-stage7b-regression-tests-run-09e8341a0cdb Creating
+ Container lcm-stage7b-regression-tests-run-09e8341a0cdb Created
+........................................................................ [ 24%]
+........................................................................ [ 48%]
+........................................................................ [ 72%]
+........................................................................ [ 96%]
+.........                                                                [100%]
+297 passed in 28.19s
+
+EXIT CODE: 0
+
+UTC: 2026-11-09T22:57:37.077520+00:00
+$ docker compose --env-file .local-runtime/stage75b-regression.env run --rm --no-deps tests
+ Container lcm-stage7b-regression-tests-run-6c0bddb33a43 Creating
+ Container lcm-stage7b-regression-tests-run-6c0bddb33a43 Created
+........................................................................ [ 24%]
+........................................................................ [ 48%]
+........................................................................ [ 72%]
+........................................................................ [ 96%]
+............                                                             [100%]
+300 passed in 27.22s
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T08:17:23.850991+00:00
+$ docker compose --env-file .local-runtime/stage75b-regression.env run --rm --no-deps tests
+ Container lcm-stage7b-regression-tests-run-ba61a023b350 Creating
+ Container lcm-stage7b-regression-tests-run-ba61a023b350 Created
+........................................................................ [ 24%]
+........................................................................ [ 48%]
+........................................................................ [ 72%]
+........................................................................ [ 96%]
+............                                                             [100%]
+300 passed in 29.17s
+
+EXIT CODE: 0
+
+UTC: 2026-11-10T08:22:25.553488+00:00
+$ docker compose --env-file .local-runtime/stage75b-regression.env run --rm tests
+ Network lcm-stage7b-regression_default Creating
+ Network lcm-stage7b-regression_default Creating
+ Network lcm-stage7b-regression_default Created
+ Network lcm-stage7b-regression_default Created
+ Container lcm-stage7b-regression-security-init-1 Creating
+ Container lcm-stage7b-regression-postgres-1 Creating
+ Container lcm-stage7b-regression-storage-init-1 Creating
+ Container lcm-stage7b-regression-postgres-1 Created
+ Container lcm-stage7b-regression-security-init-1 Created
+ Container lcm-stage7b-regression-storage-init-1 Created
+ Container lcm-stage7b-regression-mongo-1 Creating
+ Container lcm-stage7b-regression-mongo-1 Created
+ Container lcm-stage7b-regression-storage-init-1 Starting
+ Container lcm-stage7b-regression-postgres-1 Starting
+ Container lcm-stage7b-regression-security-init-1 Starting
+ Container lcm-stage7b-regression-storage-init-1 Started
+ Container lcm-stage7b-regression-storage-init-1 Waiting
+ Container lcm-stage7b-regression-postgres-1 Started
+ Container lcm-stage7b-regression-security-init-1 Started
+ Container lcm-stage7b-regression-storage-init-1 Exited
+ Container lcm-stage7b-regression-mongo-1 Starting
+ Container lcm-stage7b-regression-mongo-1 Started
+ Container lcm-stage7b-regression-postgres-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Waiting
+ Container lcm-stage7b-regression-mongo-1 Waiting
+ Container lcm-stage7b-regression-security-init-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Exited
+ Container lcm-stage7b-regression-security-init-1 Exited
+ Container lcm-stage7b-regression-postgres-1 Healthy
+ Container lcm-stage7b-regression-mongo-1 Healthy
+ Container lcm-stage7b-regression-tests-run-1a62a6d6c8a1 Creating
+ Container lcm-stage7b-regression-tests-run-1a62a6d6c8a1 Created
+........................................................................ [ 23%]
+........................................................................ [ 47%]
+........................................................................ [ 71%]
+........................................................................ [ 95%]
+.............                                                            [100%]
+301 passed in 28.65s
+
+EXIT CODE: 0

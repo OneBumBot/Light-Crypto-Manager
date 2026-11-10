@@ -1,0 +1,8 @@
+
+UTC: 2026-11-09T22:50:00.309636+00:00
+$ env UV_CACHE_DIR=.cache/uv PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers uv run --no-project --python .venv/bin/python --with playwright==1.56.0 python scripts/check_dom_xss.py
+PASS: real Chromium rejects DOM/attribute/script injection in view, edit, delete and notification flows (4 payloads)
+PASS: real Chromium renders ML scores/status/model metadata as text (4 injection payloads)
+PASS: Chromium policy reasons/source/configuration injection rendered as text (4 payloads)
+
+EXIT CODE: 0

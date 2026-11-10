@@ -1,0 +1,224 @@
+
+UTC: 2026-11-09T22:43:30.049177+00:00
+$ python3 scripts/check_ml_system.py --env-file .local-runtime/stage75b-regression.env
+ Container lcm-stage7b-regression-publisher-1 Running
+ Container lcm-stage7b-regression-receiver-1 Running
+ Container lcm-stage7b-regression-outbox-relay-1 Running
+ Container lcm-stage7b-regression-web-1 Running
+ Container lcm-stage7b-regression-mongo-1 Running
+ Container lcm-stage7b-regression-postgres-1 Running
+ Container lcm-stage7b-regression-broker-1 Running
+ Container lcm-stage7b-regression-outbox-relay-2 Stopping
+ Container lcm-stage7b-regression-outbox-relay-2 Stopped
+ Container lcm-stage7b-regression-outbox-relay-2 Removing
+ Container lcm-stage7b-regression-outbox-relay-2 Removed
+ Container lcm-stage7b-regression-security-init-1 Starting
+ Container lcm-stage7b-regression-storage-init-1 Starting
+ Container lcm-stage7b-regression-postgres-1 Waiting
+ Container lcm-stage7b-regression-security-init-1 Started
+ Container lcm-stage7b-regression-security-init-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Started
+ Container lcm-stage7b-regression-storage-init-1 Waiting
+ Container lcm-stage7b-regression-postgres-1 Healthy
+ Container lcm-stage7b-regression-init-db-1 Starting
+ Container lcm-stage7b-regression-init-db-1 Started
+ Container lcm-stage7b-regression-init-db-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Waiting
+ Container lcm-stage7b-regression-security-init-1 Waiting
+ Container lcm-stage7b-regression-init-db-1 Waiting
+ Container lcm-stage7b-regression-security-init-1 Exited
+ Container lcm-stage7b-regression-broker-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Waiting
+ Container lcm-stage7b-regression-init-db-1 Waiting
+ Container lcm-stage7b-regression-broker-1 Waiting
+ Container lcm-stage7b-regression-init-db-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Exited
+ Container lcm-stage7b-regression-storage-init-1 Exited
+ Container lcm-stage7b-regression-security-init-1 Exited
+ Container lcm-stage7b-regression-storage-init-1 Exited
+ Container lcm-stage7b-regression-broker-1 Healthy
+ Container lcm-stage7b-regression-broker-1 Healthy
+ Container lcm-stage7b-regression-init-db-1 Exited
+ Container lcm-stage7b-regression-demo-setup-1 Starting
+ Container lcm-stage7b-regression-init-db-1 Exited
+ Container lcm-stage7b-regression-init-db-1 Exited
+ Container lcm-stage7b-regression-init-db-1 Exited
+ Container lcm-stage7b-regression-demo-setup-1 Started
+ Container lcm-stage7b-regression-receiver-1 Waiting
+ Container lcm-stage7b-regression-demo-setup-1 Waiting
+ Container lcm-stage7b-regression-receiver-1 Healthy
+ Container lcm-stage7b-regression-demo-setup-1 Exited
+ Container lcm-stage7b-regression-publisher-1 Waiting
+ Container lcm-stage7b-regression-receiver-1 Waiting
+ Container lcm-stage7b-regression-outbox-relay-1 Waiting
+ Container lcm-stage7b-regression-broker-1 Waiting
+ Container lcm-stage7b-regression-web-1 Waiting
+ Container lcm-stage7b-regression-init-db-1 Waiting
+ Container lcm-stage7b-regression-security-init-1 Waiting
+ Container lcm-stage7b-regression-postgres-1 Waiting
+ Container lcm-stage7b-regression-demo-setup-1 Waiting
+ Container lcm-stage7b-regression-mongo-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Waiting
+ Container lcm-stage7b-regression-web-1 Healthy
+ Container lcm-stage7b-regression-publisher-1 Healthy
+ Container lcm-stage7b-regression-receiver-1 Healthy
+ Container lcm-stage7b-regression-outbox-relay-1 Healthy
+ Container lcm-stage7b-regression-init-db-1 Exited
+ Container lcm-stage7b-regression-demo-setup-1 Exited
+ Container lcm-stage7b-regression-broker-1 Healthy
+ Container lcm-stage7b-regression-postgres-1 Healthy
+ Container lcm-stage7b-regression-storage-init-1 Exited
+ Container lcm-stage7b-regression-mongo-1 Healthy
+ Container lcm-stage7b-regression-security-init-1 Exited
+ Container lcm-stage7b-regression-tests-run-3ceed47a7e0a Creating
+ Container lcm-stage7b-regression-tests-run-3ceed47a7e0a Created
+Device configurations provisioned; keys remain outside PostgreSQL
+ Image lcm-stage7b-regression-ml Pulling
+ Image lcm-stage7b-regression-ml pull access denied for lcm-stage7b-regression-ml, repository does not exist or may require 'docker login'
+time="2026-11-10T01:42:59+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image lcm-stage7b-regression-ml Building
+ Image lcm-stage7b-regression-ml Building
+Sending build context to Docker daemon  178.6kB
+
+Step 1/28 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/28 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/28 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/28 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/28 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/28 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/28 : COPY src/policy /app/src/policy
+ ---> Using cache
+ ---> 540a1c73e7f9
+Step 8/28 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> 24983e50b77f
+Step 9/28 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> eee94db346ba
+Step 10/28 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> a372853cffe1
+Step 11/28 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 55a7feebbc38
+Step 12/28 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 730157fc6e14
+Step 13/28 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 9e25003edb45
+Step 14/28 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 5facd874f81f
+Step 15/28 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 78f3c2a3fc5d
+Step 16/28 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 05d85317fb98
+Step 17/28 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 0a28f9e0f5b4
+Step 18/28 : USER 10001:10001
+ ---> Using cache
+ ---> a7068fd47866
+Step 19/28 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> c2f6b194cb16
+Step 20/28 : FROM runtime AS ml
+ ---> c2f6b194cb16
+Step 21/28 : USER root
+ ---> Using cache
+ ---> dabe44cf1201
+Step 22/28 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+ ---> Using cache
+ ---> a9249325e507
+Step 23/28 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> Using cache
+ ---> f2c438fdedf5
+Step 24/28 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> Using cache
+ ---> 3cba298bc136
+Step 25/28 : COPY scripts/install_ml_model.py scripts/export_ml_telemetry.py /app/scripts/
+ ---> Using cache
+ ---> da7b21977236
+Step 26/28 : USER 10001:10001
+ ---> Using cache
+ ---> 6bdcc571e3c0
+Step 27/28 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Using cache
+ ---> 01134ba04979
+Step 28/28 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> d59fda508687
+Successfully built d59fda508687
+Successfully tagged lcm-stage7b-regression-ml:latest
+ Image lcm-stage7b-regression-ml Built
+ Image lcm-stage7b-regression-ml Built
+ Volume lcm-stage7b-regression_ml-models Creating
+ Volume lcm-stage7b-regression_ml-models Creating
+ Volume lcm-stage7b-regression_ml-models Created
+ Volume lcm-stage7b-regression_ml-models Created
+ Container lcm-stage7b-regression-ml-worker-1 Creating
+ Container lcm-stage7b-regression-ml-worker-1 Created
+ Container lcm-stage7b-regression-ml-worker-1 Starting
+ Container lcm-stage7b-regression-ml-worker-1 Started
+ Container lcm-stage7b-regression-tests-run-df0aa23beed6 Creating
+ Container lcm-stage7b-regression-tests-run-df0aa23beed6 Created
+PASS: missing ML artifact reported unavailable; MQTT -> Mongo delivery continues
+ Container lcm-stage7b-regression-ml-model-init-run-4218d18db123 Creating
+ Container lcm-stage7b-regression-ml-model-init-run-4218d18db123 Created
+Trusted local model installed; model not deserialized by root
+ Container lcm-stage7b-regression-tests-run-53c5791b1e1a Creating
+ Container lcm-stage7b-regression-tests-run-53c5791b1e1a Created
+PASS: 24 controlled AEAD/TLS samples from three independent devices published
+ Container lcm-stage7b-regression-tests-run-986071f899c4 Creating
+ Container lcm-stage7b-regression-tests-run-986071f899c4 Created
+PASS: all controlled sources durably marked after Mongo confirmation
+ Container lcm-stage7b-regression-tests-run-58bd61734fbe Creating
+ Container lcm-stage7b-regression-tests-run-58bd61734fbe Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage7b-regression-ml-worker-1 Restarting
+ Container lcm-stage7b-regression-ml-worker-1 Started
+ Container lcm-stage7b-regression-tests-run-12dbe2281111 Creating
+ Container lcm-stage7b-regression-tests-run-12dbe2281111 Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage7b-regression-ml-worker-1 Stopping
+ Container lcm-stage7b-regression-ml-worker-1 Stopped
+ Container lcm-stage7b-regression-tests-run-d686e5795e01 Creating
+ Container lcm-stage7b-regression-tests-run-d686e5795e01 Created
+PASS: 24 controlled AEAD/TLS samples from three independent devices published
+ Container lcm-stage7b-regression-tests-run-c9dee215a2fc Creating
+ Container lcm-stage7b-regression-tests-run-c9dee215a2fc Created
+PASS: all controlled sources durably marked after Mongo confirmation
+ Container lcm-stage7b-regression-mongo-1 Stopping
+ Container lcm-stage7b-regression-mongo-1 Stopped
+ Container lcm-stage7b-regression-ml-worker-1 Starting
+ Container lcm-stage7b-regression-ml-worker-1 Started
+ Container lcm-stage7b-regression-tests-run-b767f314655f Creating
+ Container lcm-stage7b-regression-tests-run-b767f314655f Created
+PASS: actual Mongo outage creates retry state; committed ML events preserved
+ Container lcm-stage7b-regression-mongo-1 Starting
+ Container lcm-stage7b-regression-mongo-1 Started
+ Container lcm-stage7b-regression-mongo-1 Waiting
+ Container lcm-stage7b-regression-mongo-1 Healthy
+ Container lcm-stage7b-regression-tests-run-7c37a8cc3b2f Creating
+ Container lcm-stage7b-regression-tests-run-7c37a8cc3b2f Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+ Container lcm-stage7b-regression-tests-run-df3065fc92df Creating
+ Container lcm-stage7b-regression-tests-run-df3065fc92df Created
+PASS: per-device versioned scores persisted, unique identities and model hash verified
+PASS: optional ML, three devices, immutable reload, durable dedupe and Mongo recovery
+
+EXIT CODE: 0

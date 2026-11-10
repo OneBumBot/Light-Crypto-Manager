@@ -1,0 +1,807 @@
+
+UTC: 2026-11-09T22:42:16.393306+00:00
+$ python3 scripts/check_dual_database.py --env-file .local-runtime/stage75b-regression.env
+ Image lcm-stage7b-regression-runtime Pulling
+ Image lcm-stage7b-regression-runtime Pulling
+ Image lcm-stage7b-regression-runtime Pulling
+ Image lcm-stage7b-regression-runtime Pulling
+ Image lcm-stage7b-regression-runtime Pulling
+ Image lcm-stage7b-regression-runtime Pulling
+ Image lcm-stage7b-regression-runtime Pulling
+ Image lcm-stage7b-regression-runtime Pulling
+ Image lcm-stage7b-regression-runtime pull access denied for lcm-stage7b-regression-runtime, repository does not exist or may require 'docker login'
+ Image lcm-stage7b-regression-runtime pull access denied for lcm-stage7b-regression-runtime, repository does not exist or may require 'docker login'
+ Image lcm-stage7b-regression-runtime pull access denied for lcm-stage7b-regression-runtime, repository does not exist or may require 'docker login'
+ Image lcm-stage7b-regression-runtime pull access denied for lcm-stage7b-regression-runtime, repository does not exist or may require 'docker login'
+ Image lcm-stage7b-regression-runtime pull access denied for lcm-stage7b-regression-runtime, repository does not exist or may require 'docker login'
+ Image lcm-stage7b-regression-runtime pull access denied for lcm-stage7b-regression-runtime, repository does not exist or may require 'docker login'
+ Image lcm-stage7b-regression-runtime pull access denied for lcm-stage7b-regression-runtime, repository does not exist or may require 'docker login'
+ Image lcm-stage7b-regression-runtime pull access denied for lcm-stage7b-regression-runtime, repository does not exist or may require 'docker login'
+time="2026-11-10T01:41:18+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+Sending build context to Docker daemon  178.6kB
+
+Sending build context to Docker daemon  178.6kB
+
+Sending build context to Docker daemon  178.6kB
+
+Step 1/20 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/20 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/20 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/20 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/20 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/20 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/20 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/20 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/20 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/20 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/20 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/20 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/20 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/20 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/20 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/20 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/20 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/20 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/20 : COPY src/policy /app/src/policy
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/20 : COPY src/policy /app/src/policy
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/20 : COPY src/policy /app/src/policy
+ ---> Using cache
+ ---> 540a1c73e7f9
+Step 8/20 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> 540a1c73e7f9
+Step 8/20 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> 540a1c73e7f9
+Step 8/20 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> 24983e50b77f
+Step 9/20 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> 24983e50b77f
+Step 9/20 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> 24983e50b77f
+Step 9/20 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> eee94db346ba
+Step 10/20 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> eee94db346ba
+Step 10/20 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> eee94db346ba
+Step 10/20 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> a372853cffe1
+Step 11/20 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> a372853cffe1
+Step 11/20 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> a372853cffe1
+Step 11/20 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 55a7feebbc38
+Step 12/20 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 55a7feebbc38
+Step 12/20 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 55a7feebbc38
+Step 12/20 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 730157fc6e14
+Step 13/20 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 730157fc6e14
+Step 13/20 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 730157fc6e14
+Step 13/20 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 9e25003edb45
+Step 14/20 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 9e25003edb45
+Step 14/20 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 9e25003edb45
+Step 14/20 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 5facd874f81f
+Step 15/20 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 5facd874f81f
+Step 15/20 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 5facd874f81f
+Step 15/20 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 78f3c2a3fc5d
+Step 16/20 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 78f3c2a3fc5d
+Step 16/20 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 78f3c2a3fc5d
+Step 16/20 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 05d85317fb98
+Step 17/20 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 05d85317fb98
+Step 17/20 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 05d85317fb98
+Step 17/20 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 0a28f9e0f5b4
+Step 18/20 : USER 10001:10001
+ ---> Using cache
+ ---> 0a28f9e0f5b4
+Step 18/20 : USER 10001:10001
+ ---> Using cache
+ ---> 0a28f9e0f5b4
+Step 18/20 : USER 10001:10001
+ ---> Using cache
+ ---> a7068fd47866
+Step 19/20 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> a7068fd47866
+Step 19/20 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> a7068fd47866
+Step 19/20 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> c2f6b194cb16
+Step 20/20 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> c2f6b194cb16
+Step 20/20 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> c2f6b194cb16
+Step 20/20 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 49a8e1fd3028
+ ---> Using cache
+ ---> 49a8e1fd3028
+ ---> Using cache
+ ---> 49a8e1fd3028
+Successfully built 49a8e1fd3028
+Successfully built 49a8e1fd3028
+Successfully built 49a8e1fd3028
+Successfully tagged lcm-stage7b-regression-runtime:latest
+ Image lcm-stage7b-regression-runtime Built
+ Image lcm-stage7b-regression-runtime Built
+Successfully tagged lcm-stage7b-regression-runtime:latest
+ Image lcm-stage7b-regression-runtime Built
+ Image lcm-stage7b-regression-runtime Built
+Successfully tagged lcm-stage7b-regression-runtime:latest
+ Image lcm-stage7b-regression-runtime Built
+ Image lcm-stage7b-regression-runtime Built
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+Sending build context to Docker daemon  178.6kB
+
+Sending build context to Docker daemon  178.6kB
+
+Sending build context to Docker daemon  178.6kB
+
+Sending build context to Docker daemon  178.6kB
+
+Step 1/20 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/20 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/20 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+Step 1/20 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/20 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/20 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/20 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> 935c3c5b1235
+Step 2/20 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/20 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/20 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/20 : WORKDIR /app
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/20 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/20 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/20 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/20 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/20 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/20 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/20 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/20 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/20 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/20 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/20 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/20 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/20 : COPY src/policy /app/src/policy
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/20 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/20 : COPY src/policy /app/src/policy
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/20 : COPY src/policy /app/src/policy
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/20 : COPY src/policy /app/src/policy
+ ---> Using cache
+ ---> 540a1c73e7f9
+Step 8/20 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> 540a1c73e7f9
+Step 8/20 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> 540a1c73e7f9
+Step 8/20 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> 540a1c73e7f9
+Step 8/20 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> 24983e50b77f
+Step 9/20 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> 24983e50b77f
+Step 9/20 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> 24983e50b77f
+Step 9/20 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> 24983e50b77f
+Step 9/20 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> eee94db346ba
+Step 10/20 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> eee94db346ba
+Step 10/20 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> eee94db346ba
+Step 10/20 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> eee94db346ba
+Step 10/20 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> a372853cffe1
+Step 11/20 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> a372853cffe1
+Step 11/20 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> a372853cffe1
+Step 11/20 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> a372853cffe1
+Step 11/20 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 55a7feebbc38
+Step 12/20 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 55a7feebbc38
+Step 12/20 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 55a7feebbc38
+Step 12/20 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 55a7feebbc38
+Step 12/20 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 730157fc6e14
+Step 13/20 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 730157fc6e14
+Step 13/20 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 730157fc6e14
+Step 13/20 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 730157fc6e14
+Step 13/20 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 9e25003edb45
+Step 14/20 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 9e25003edb45
+Step 14/20 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 9e25003edb45
+Step 14/20 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 9e25003edb45
+Step 14/20 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 5facd874f81f
+Step 15/20 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 5facd874f81f
+Step 15/20 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 5facd874f81f
+Step 15/20 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 5facd874f81f
+Step 15/20 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 78f3c2a3fc5d
+Step 16/20 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 78f3c2a3fc5d
+Step 16/20 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 78f3c2a3fc5d
+Step 16/20 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 78f3c2a3fc5d
+Step 16/20 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 05d85317fb98
+Step 17/20 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 05d85317fb98
+Step 17/20 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 05d85317fb98
+Step 17/20 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 05d85317fb98
+Step 17/20 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 0a28f9e0f5b4
+Step 18/20 : USER 10001:10001
+ ---> Using cache
+ ---> 0a28f9e0f5b4
+Step 18/20 : USER 10001:10001
+ ---> Using cache
+ ---> 0a28f9e0f5b4
+Step 18/20 : USER 10001:10001
+ ---> Using cache
+ ---> 0a28f9e0f5b4
+Step 18/20 : USER 10001:10001
+ ---> Using cache
+ ---> a7068fd47866
+Step 19/20 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> a7068fd47866
+Step 19/20 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> a7068fd47866
+Step 19/20 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> a7068fd47866
+Step 19/20 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> c2f6b194cb16
+Step 20/20 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> c2f6b194cb16
+Step 20/20 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> c2f6b194cb16
+Step 20/20 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> c2f6b194cb16
+Step 20/20 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 49a8e1fd3028
+Successfully built 49a8e1fd3028
+ ---> Using cache
+ ---> 49a8e1fd3028
+Successfully built 49a8e1fd3028
+ ---> Using cache
+ ---> 49a8e1fd3028
+ ---> Using cache
+ ---> 49a8e1fd3028
+Successfully built 49a8e1fd3028
+Successfully tagged lcm-stage7b-regression-runtime:latest
+ Image lcm-stage7b-regression-runtime Built
+ Image lcm-stage7b-regression-runtime Built
+Successfully built 49a8e1fd3028
+Successfully tagged lcm-stage7b-regression-runtime:latest
+ Image lcm-stage7b-regression-runtime Built
+ Image lcm-stage7b-regression-runtime Built
+Successfully tagged lcm-stage7b-regression-runtime:latest
+ Image lcm-stage7b-regression-runtime Built
+ Image lcm-stage7b-regression-runtime Built
+Successfully tagged lcm-stage7b-regression-runtime:latest
+ Image lcm-stage7b-regression-runtime Built
+ Image lcm-stage7b-regression-runtime Built
+ Image lcm-stage7b-regression-runtime Building
+ Image lcm-stage7b-regression-runtime Building
+Sending build context to Docker daemon  178.6kB
+
+Step 1/20 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/20 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/20 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/20 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 55b78a10299f
+Step 5/20 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> 3354b49d9b3c
+Step 6/20 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> e9663efc8ab0
+Step 7/20 : COPY src/policy /app/src/policy
+ ---> Using cache
+ ---> 540a1c73e7f9
+Step 8/20 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> 24983e50b77f
+Step 9/20 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> eee94db346ba
+Step 10/20 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> a372853cffe1
+Step 11/20 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 55a7feebbc38
+Step 12/20 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 730157fc6e14
+Step 13/20 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 9e25003edb45
+Step 14/20 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 5facd874f81f
+Step 15/20 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> 78f3c2a3fc5d
+Step 16/20 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 05d85317fb98
+Step 17/20 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> 0a28f9e0f5b4
+Step 18/20 : USER 10001:10001
+ ---> Using cache
+ ---> a7068fd47866
+Step 19/20 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> c2f6b194cb16
+Step 20/20 : LABEL com.docker.compose.image.builder=classic
+ ---> Using cache
+ ---> 49a8e1fd3028
+Successfully built 49a8e1fd3028
+Successfully tagged lcm-stage7b-regression-runtime:latest
+ Image lcm-stage7b-regression-runtime Built
+ Image lcm-stage7b-regression-runtime Built
+ Network lcm-stage7b-regression_default Creating
+ Volume lcm-stage7b-regression_mongo-security Creating
+ Volume lcm-stage7b-regression_mosquitto-data Creating
+ Volume lcm-stage7b-regression_mongo-security Creating
+ Network lcm-stage7b-regression_default Creating
+ Volume lcm-stage7b-regression_mosquitto-data Creating
+ Volume lcm-stage7b-regression_broker-security Creating
+ Volume lcm-stage7b-regression_publisher-security Creating
+ Volume lcm-stage7b-regression_web-storage-security Creating
+ Volume lcm-stage7b-regression_publisher-security Creating
+ Volume lcm-stage7b-regression_publisher-state Creating
+ Volume lcm-stage7b-regression_test-security Creating
+ Volume lcm-stage7b-regression_postgres-data Creating
+ Volume lcm-stage7b-regression_postgres-data Creating
+ Volume lcm-stage7b-regression_test-security Creating
+ Volume lcm-stage7b-regression_mongo-data Creating
+ Volume lcm-stage7b-regression_broker-security Creating
+ Volume lcm-stage7b-regression_web-storage-security Creating
+ Volume lcm-stage7b-regression_publisher-state Creating
+ Volume lcm-stage7b-regression_smoke-state Creating
+ Volume lcm-stage7b-regression_test-storage-security Creating
+ Volume lcm-stage7b-regression_smoke-state Creating
+ Volume lcm-stage7b-regression_test-storage-security Creating
+ Volume lcm-stage7b-regression_web-security Creating
+ Volume lcm-stage7b-regression_mongo-data Creating
+ Volume lcm-stage7b-regression_web-security Creating
+ Volume lcm-stage7b-regression_relay-storage-security Creating
+ Volume lcm-stage7b-regression_relay-storage-security Creating
+ Volume lcm-stage7b-regression_receiver-security Creating
+ Volume lcm-stage7b-regression_receiver-security Creating
+ Volume lcm-stage7b-regression_smoke-security Creating
+ Volume lcm-stage7b-regression_smoke-security Creating
+ Volume lcm-stage7b-regression_mosquitto-data Created
+ Volume lcm-stage7b-regression_mosquitto-data Created
+ Volume lcm-stage7b-regression_mongo-data Created
+ Volume lcm-stage7b-regression_mongo-data Created
+ Volume lcm-stage7b-regression_smoke-state Created
+ Volume lcm-stage7b-regression_smoke-state Created
+ Volume lcm-stage7b-regression_test-storage-security Created
+ Volume lcm-stage7b-regression_test-storage-security Created
+ Volume lcm-stage7b-regression_relay-storage-security Created
+ Volume lcm-stage7b-regression_relay-storage-security Created
+ Network lcm-stage7b-regression_default Created
+ Network lcm-stage7b-regression_default Created
+ Volume lcm-stage7b-regression_test-security Created
+ Volume lcm-stage7b-regression_test-security Created
+ Volume lcm-stage7b-regression_postgres-data Created
+ Volume lcm-stage7b-regression_postgres-data Created
+ Container lcm-stage7b-regression-postgres-1 Creating
+ Volume lcm-stage7b-regression_publisher-state Created
+ Volume lcm-stage7b-regression_publisher-state Created
+ Volume lcm-stage7b-regression_web-storage-security Created
+ Volume lcm-stage7b-regression_web-storage-security Created
+ Volume lcm-stage7b-regression_smoke-security Created
+ Volume lcm-stage7b-regression_smoke-security Created
+ Volume lcm-stage7b-regression_receiver-security Created
+ Volume lcm-stage7b-regression_receiver-security Created
+ Volume lcm-stage7b-regression_broker-security Created
+ Volume lcm-stage7b-regression_broker-security Created
+ Volume lcm-stage7b-regression_publisher-security Created
+ Volume lcm-stage7b-regression_publisher-security Created
+ Volume lcm-stage7b-regression_mongo-security Created
+ Volume lcm-stage7b-regression_mongo-security Created
+ Container lcm-stage7b-regression-storage-init-1 Creating
+ Volume lcm-stage7b-regression_web-security Created
+ Volume lcm-stage7b-regression_web-security Created
+ Container lcm-stage7b-regression-security-init-1 Creating
+ Container lcm-stage7b-regression-postgres-1 Created
+ Container lcm-stage7b-regression-init-db-1 Creating
+ Container lcm-stage7b-regression-storage-init-1 Created
+ Container lcm-stage7b-regression-mongo-1 Creating
+ Container lcm-stage7b-regression-security-init-1 Created
+ Container lcm-stage7b-regression-broker-1 Creating
+ Container lcm-stage7b-regression-init-db-1 Created
+ Container lcm-stage7b-regression-outbox-relay-2 Creating
+ Container lcm-stage7b-regression-demo-setup-1 Creating
+ Container lcm-stage7b-regression-outbox-relay-1 Creating
+ Container lcm-stage7b-regression-mongo-1 Created
+ Container lcm-stage7b-regression-broker-1 Created
+ Container lcm-stage7b-regression-receiver-1 Creating
+ Container lcm-stage7b-regression-web-1 Creating
+ Container lcm-stage7b-regression-demo-setup-1 Created
+ Container lcm-stage7b-regression-outbox-relay-1 Created
+ Container lcm-stage7b-regression-outbox-relay-2 Created
+ Container lcm-stage7b-regression-web-1 Created
+ Container lcm-stage7b-regression-receiver-1 Created
+ Container lcm-stage7b-regression-publisher-1 Creating
+ Container lcm-stage7b-regression-publisher-1 Created
+ Container lcm-stage7b-regression-storage-init-1 Starting
+ Container lcm-stage7b-regression-postgres-1 Starting
+ Container lcm-stage7b-regression-security-init-1 Starting
+ Container lcm-stage7b-regression-storage-init-1 Started
+ Container lcm-stage7b-regression-storage-init-1 Waiting
+ Container lcm-stage7b-regression-postgres-1 Started
+ Container lcm-stage7b-regression-postgres-1 Waiting
+ Container lcm-stage7b-regression-security-init-1 Started
+ Container lcm-stage7b-regression-security-init-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Exited
+ Container lcm-stage7b-regression-mongo-1 Starting
+ Container lcm-stage7b-regression-mongo-1 Started
+ Container lcm-stage7b-regression-security-init-1 Exited
+ Container lcm-stage7b-regression-broker-1 Starting
+ Container lcm-stage7b-regression-broker-1 Started
+ Container lcm-stage7b-regression-postgres-1 Healthy
+ Container lcm-stage7b-regression-init-db-1 Starting
+ Container lcm-stage7b-regression-init-db-1 Started
+ Container lcm-stage7b-regression-storage-init-1 Waiting
+ Container lcm-stage7b-regression-init-db-1 Waiting
+ Container lcm-stage7b-regression-broker-1 Waiting
+ Container lcm-stage7b-regression-init-db-1 Waiting
+ Container lcm-stage7b-regression-broker-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Waiting
+ Container lcm-stage7b-regression-init-db-1 Waiting
+ Container lcm-stage7b-regression-security-init-1 Waiting
+ Container lcm-stage7b-regression-init-db-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Exited
+ Container lcm-stage7b-regression-storage-init-1 Exited
+ Container lcm-stage7b-regression-security-init-1 Exited
+ Container lcm-stage7b-regression-broker-1 Healthy
+ Container lcm-stage7b-regression-broker-1 Healthy
+ Container lcm-stage7b-regression-init-db-1 Exited
+ Container lcm-stage7b-regression-init-db-1 Exited
+ Container lcm-stage7b-regression-outbox-relay-2 Starting
+ Container lcm-stage7b-regression-web-1 Starting
+ Container lcm-stage7b-regression-init-db-1 Exited
+ Container lcm-stage7b-regression-receiver-1 Starting
+ Container lcm-stage7b-regression-init-db-1 Exited
+ Container lcm-stage7b-regression-demo-setup-1 Starting
+ Container lcm-stage7b-regression-outbox-relay-2 Started
+ Container lcm-stage7b-regression-outbox-relay-1 Starting
+ Container lcm-stage7b-regression-outbox-relay-1 Started
+ Container lcm-stage7b-regression-web-1 Started
+ Container lcm-stage7b-regression-receiver-1 Started
+ Container lcm-stage7b-regression-demo-setup-1 Started
+ Container lcm-stage7b-regression-receiver-1 Waiting
+ Container lcm-stage7b-regression-demo-setup-1 Waiting
+ Container lcm-stage7b-regression-demo-setup-1 Exited
+ Container lcm-stage7b-regression-receiver-1 Healthy
+ Container lcm-stage7b-regression-publisher-1 Starting
+ Container lcm-stage7b-regression-publisher-1 Started
+ Container lcm-stage7b-regression-security-init-1 Waiting
+ Container lcm-stage7b-regression-storage-init-1 Waiting
+ Container lcm-stage7b-regression-web-1 Waiting
+ Container lcm-stage7b-regression-postgres-1 Waiting
+ Container lcm-stage7b-regression-broker-1 Waiting
+ Container lcm-stage7b-regression-outbox-relay-2 Waiting
+ Container lcm-stage7b-regression-outbox-relay-1 Waiting
+ Container lcm-stage7b-regression-receiver-1 Waiting
+ Container lcm-stage7b-regression-demo-setup-1 Waiting
+ Container lcm-stage7b-regression-init-db-1 Waiting
+ Container lcm-stage7b-regression-mongo-1 Waiting
+ Container lcm-stage7b-regression-publisher-1 Waiting
+ Container lcm-stage7b-regression-init-db-1 Exited
+ Container lcm-stage7b-regression-web-1 Healthy
+ Container lcm-stage7b-regression-receiver-1 Healthy
+ Container lcm-stage7b-regression-demo-setup-1 Exited
+ Container lcm-stage7b-regression-security-init-1 Exited
+ Container lcm-stage7b-regression-broker-1 Healthy
+ Container lcm-stage7b-regression-storage-init-1 Exited
+ Container lcm-stage7b-regression-postgres-1 Healthy
+ Container lcm-stage7b-regression-mongo-1 Healthy
+ Container lcm-stage7b-regression-publisher-1 Healthy
+ Container lcm-stage7b-regression-outbox-relay-2 Healthy
+ Container lcm-stage7b-regression-outbox-relay-1 Healthy
+ Container lcm-stage7b-regression-tests-run-836fe13333b7 Creating
+ Container lcm-stage7b-regression-tests-run-836fe13333b7 Created
+Device configurations provisioned; keys remain outside PostgreSQL
+ Container lcm-stage7b-regression-tests-run-3a4472235aeb Creating
+ Container lcm-stage7b-regression-tests-run-3a4472235aeb Created
+PASS: publisher -> TLS broker -> ingestion -> PG outbox -> MongoDB
+ Container lcm-stage7b-regression-tests-run-53e0856122b4 Creating
+ Container lcm-stage7b-regression-tests-run-53e0856122b4 Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7b-regression-tests-run-82c3633b35f7 Creating
+ Container lcm-stage7b-regression-tests-run-82c3633b35f7 Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7b-regression-tests-run-39188b29a689 Creating
+ Container lcm-stage7b-regression-tests-run-39188b29a689 Created
+PASS: per-device identity cannot publish another provisioned device topic
+ Container lcm-stage7b-regression-mongo-1 Stopping
+ Container lcm-stage7b-regression-mongo-1 Stopped
+ Container lcm-stage7b-regression-tests-run-cefa9da22081 Creating
+ Container lcm-stage7b-regression-tests-run-cefa9da22081 Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7b-regression-tests-run-294f3606337e Creating
+ Container lcm-stage7b-regression-tests-run-294f3606337e Created
+PASS: MongoDB unavailable; all accepted events retained in PG outbox with delivery attempts
+ Container lcm-stage7b-regression-mongo-1 Starting
+ Container lcm-stage7b-regression-mongo-1 Started
+ Container lcm-stage7b-regression-mongo-1 Waiting
+ Container lcm-stage7b-regression-mongo-1 Healthy
+ Container lcm-stage7b-regression-tests-run-efabff0960fe Creating
+ Container lcm-stage7b-regression-tests-run-efabff0960fe Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7b-regression-postgres-1 Stopping
+ Container lcm-stage7b-regression-postgres-1 Stopped
+ Container lcm-stage7b-regression-tests-run-109d0979b1ae Creating
+ Container lcm-stage7b-regression-tests-run-109d0979b1ae Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7b-regression-postgres-1 Starting
+ Container lcm-stage7b-regression-postgres-1 Started
+ Container lcm-stage7b-regression-postgres-1 Waiting
+ Container lcm-stage7b-regression-postgres-1 Healthy
+ Container lcm-stage7b-regression-tests-run-b69e4ac283fd Creating
+ Container lcm-stage7b-regression-tests-run-b69e4ac283fd Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7b-regression-receiver-1 Recreate
+ Container lcm-stage7b-regression-receiver-1 Recreated
+ Container lcm-stage7b-regression-receiver-1 Starting
+ Container lcm-stage7b-regression-receiver-1 Started
+ Container lcm-stage7b-regression-receiver-1 Waiting
+ Container lcm-stage7b-regression-receiver-1 Healthy
+ Container lcm-stage7b-regression-outbox-relay-1 Restarting
+ Container lcm-stage7b-regression-outbox-relay-2 Restarting
+ Container lcm-stage7b-regression-outbox-relay-2 Started
+ Container lcm-stage7b-regression-outbox-relay-1 Started
+ Container lcm-stage7b-regression-tests-run-fd5987278d93 Creating
+ Container lcm-stage7b-regression-tests-run-fd5987278d93 Created
+PASS: replay after receiver/relay restart creates no additional outbox/Mongo records
+ Container lcm-stage7b-regression-tests-run-d7221b439386 Creating
+ Container lcm-stage7b-regression-tests-run-d7221b439386 Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7b-regression-outbox-relay-1 Stopping
+ Container lcm-stage7b-regression-outbox-relay-2 Stopping
+ Container lcm-stage7b-regression-publisher-1 Stopping
+ Container lcm-stage7b-regression-publisher-1 Stopped
+ Container lcm-stage7b-regression-outbox-relay-2 Stopped
+ Container lcm-stage7b-regression-outbox-relay-1 Stopped
+ Container lcm-stage7b-regression-tests-run-6503250a2927 Creating
+ Container lcm-stage7b-regression-tests-run-6503250a2927 Created
+PASS: three independent TLS identities/keys/topics published
+ Container lcm-stage7b-regression-tests-run-5dc09972dca8 Creating
+ Container lcm-stage7b-regression-tests-run-5dc09972dca8 Created
+EXPECTED: process exits after Mongo write before PG acknowledge
+
+ Container lcm-stage7b-regression-outbox-relay-2 Starting
+ Container lcm-stage7b-regression-outbox-relay-2 Started
+ Container lcm-stage7b-regression-outbox-relay-1 Starting
+ Container lcm-stage7b-regression-outbox-relay-1 Started
+ Container lcm-stage7b-regression-outbox-relay-2 Waiting
+ Container lcm-stage7b-regression-outbox-relay-1 Waiting
+ Container lcm-stage7b-regression-outbox-relay-2 Healthy
+ Container lcm-stage7b-regression-outbox-relay-1 Healthy
+ Container lcm-stage7b-regression-tests-run-90449c6bd2ff Creating
+ Container lcm-stage7b-regression-tests-run-90449c6bd2ff Created
+PASS: independent histories delivered exactly one document per identity; PG accepted events durable
+ Container lcm-stage7b-regression-publisher-1 Starting
+ Container lcm-stage7b-regression-publisher-1 Started
+PASS: multi-device TLS ingestion, Mongo/PG outage recovery, process crash, two relays and restarts
+
+EXIT CODE: 0

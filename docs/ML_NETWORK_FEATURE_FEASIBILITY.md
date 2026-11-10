@@ -59,3 +59,23 @@ binding=unattributed. Это не live Policy Signal; device mapping требу�
 TCP соединение publisher→broker отличается от broker→receiver. Paho MQTT message
 не содержит исходные TCP length/window/timing publisher: наблюдение subscriber
 соединения не может подменить client-side/broker-ingress collector.
+
+## Проверено на стенде 7.5b
+
+Добавлен opt-in **исследовательский**, не online IDS collector. Он разделяет
+network namespace с virtual publishers и собирает их исходные MQTT/TLS TCP
+соединения к отдельному broker; broker→receiver не подменяет этот capture point.
+Оффлайн tshark сохраняет5полей tcp-packet-passive-v1. TLS/Ascon не отключались,
+MQTT payload/topic/credentials не расшифровываются. Направления/IP/ports/stream IDs
+нужны только для ground truth, не для predictive features.
+
+59valid captures/46395packets; first tcp.time_delta0 — штатная семантика tshark,
+не заменённое missing значение. Один capture с отрицательной delta изолирован,
+схема не ослаблялась. Linktype Ethernet1/IPv4/x86_64 Docker host проверены;
+ARM/IPv6/другие capture tools/физические устройства не проверены.
+
+Стенд не стал доверенным network feature collector действующего Policy Worker.
+Нет новых fitted Network models/online IDS. Batch/host/kernel и короткие
+rejected connections остаются potential shortcuts. External MQTT_UAD header
+не содержит4из5требуемых полей; MQTTEEB-D raw header ещё не проверен; IoT-SFC
+смешивает Zeek logs. Подробности в EXTERNAL_DATASET_AUDIT_75B.md.
