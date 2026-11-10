@@ -214,3 +214,11 @@ real anomaly labels и независимая device/session оценка ост
 Изолированный lcm-stage6 остановлен после проверок (stage6-shutdown.txt).
 Команда down выполнена без --volumes: БД, счётчики, model volume и приватные
 материалы сохранены. Предыдущие контуры/volumes не удалялись.
+
+## 7.5b-fix — начат корректирующий аудит
+
+Исходный3282557, feature/mqtt-tls-ground-truth-hardening. Архив и модели сохранены:
+764file hashes в private ground-truth-fix/archive-hashes.json. Подтверждён реальный
+false acceptance логически изменённой метки старым validator после обновления
+hashes/counts. Прежняя готовность labels/научной оценки требует пересмотра;
+training/final holdout не запускаются. См.RESEARCH_TEST_AUDIT.md.
