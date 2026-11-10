@@ -272,7 +272,7 @@ def run(config, root):
                         record,
                         payload,
                         seq,
-                        "iot/sensors/forbidden-laboratory"
+                        "iot/sensors/lab000"
                         if actor and config.scenario == "forbidden_acl"
                         else None,
                     )

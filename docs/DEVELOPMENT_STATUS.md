@@ -1,4 +1,32 @@
-# Состояние разработки — этап 7.5
+# Состояние разработки — этап 7.5b
+
+Ветка `feature/mqtt-tls-dataset-collection`, исходный `d4dc3aa`.
+Инженерный контур и ограниченный лабораторный набор реализованы; доверенное
+обнаружение реальных атак не подтверждено. Реальные новые RF/IF не обучались,
+final holdout не оценивался, trusted_detector=false/Policy DRY_RUN сохранены.
+
+| Компонент | Статус | Фактическое доказательство / ограничение |
+|---|---|---|
+| Separate Compose lab | проверено интеграцией | Internal network, свои PG/Mongo/Mosquitto/Policy/volumes, без host ports |
+| Virtual devices | проверено интеграцией |24отдельных credentials/keys, до20одновременно, TLS/Ascon/v2/counters |
+| Bounded scenarios | проверено интеграцией |6normal+6controlled violations; ограничения CPU/RAM/time/rate/disk/load |
+| Passive collector | проверено интеграцией | publisher→broker eth0, tcpdump/tshark; kernel drops0; no TLS decryption |
+| Ground truth | частично подтверждено | socket tuple+SYN+clock+outcome; unknown сохранены, абсолютная точность не измерена |
+| Dataset / curation | проверено |70основных captures,10явных exclusions,1quarantine;59valid,46395packets |
+| Strict split | проверено |6645/2082/2035rows после purge;≥5групп каждого класса/часть, без leakage |
+| Frozen old models/reports | проверено хешами |13файлов неизменны; source crypto/ML/Policy/Outbox unchanged |
+| Full regression | проверено |301pytest + real TLS/ACL/storage/ML/Policy/web/Chromium |
+| Collector fault isolation | проверено | stopped clients2.185s,52сообщения дошли вMongo, applied0 |
+| External dataset additions | только аудит |MQTT_UAD/MQTTEEB-Dv2/IoT-SFCv2: лицензии/гранулярность/feature gaps; без merge |
+| New RF/IF quality | не проверено |Нет новых real-data models/metrics;7.5c только по команде |
+| Host/ARM/real attack generalization | не проверено |Один Docker host, лабораторные нарушения, возможные shortcuts |
+| Disk hard quota / peak tshark RSS | не проверено |Есть watchdog budget/CPU/RAM quotas, нет filesystem hard quota |
+
+Итог, команды и ограничения: [RESEARCH_75B_RESULTS.md](RESEARCH_75B_RESULTS.md).
+Полный machine report: [stage75b-collection.json](reports/stage75b-collection.json).
+Сырые данные в private `.local-runtime/stand75b/`, PCAP/CSV/keys не вGit/images.
+
+## Историческое состояние этапа 7.5
 
 Ветка feature/ml-research-improvement отc9250d8. Инженерная часть реализована,
 научная оценка улучшенного RF/IF **заблокирована недостатком пригодных independent
@@ -186,13 +214,3 @@ real anomaly labels и независимая device/session оценка ост
 Изолированный lcm-stage6 остановлен после проверок (stage6-shutdown.txt).
 Команда down выполнена без --volumes: БД, счётчики, model volume и приватные
 материалы сохранены. Предыдущие контуры/volumes не удалялись.
-
-## Этап 7.5b — исследовательский MQTT/TLS стенд
-
-Ветка `feature/mqtt-tls-dataset-collection`, исходный `d4dc3aa`.
-Изолированный Compose override, bounded generator/collector и per-connection
-разметка реализованы. Проверенный пилот:4 captures,1894 packets,1441 normal,
-99 controlled_violation,354 unknown. Потери ядра0. Strict plan ожидаемо отклонён
-из-за4/2 групп классов; пороги не менялись. Основной сбор/регрессии выполняются;
-итоговые доказательства будут в `RESEARCH_75B_RESULTS.md` и reports/stage75b-*.
-ML training и final test не запускаются. Старые отчёты/модели сохраняются.

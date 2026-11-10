@@ -1,5 +1,20 @@
 # Explicit opt-in override. Always use a fresh lcm-stage7b-* project and private config.
 services:
+  publisher:
+    cpus: '0.5'
+    mem_limit: 192m
+  tests:
+    cpus: '1.0'
+    mem_limit: 768m
+  security-init:
+    cpus: '0.5'
+    mem_limit: 192m
+  storage-init:
+    cpus: '0.5'
+    mem_limit: 192m
+  init-db:
+    cpus: '0.5'
+    mem_limit: 192m
   postgres:
     cpus: '1.0'
     mem_limit: 512m

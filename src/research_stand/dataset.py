@@ -22,6 +22,11 @@ def read(folder):
         or extractor["csv_sha256"] != sha(folder / "headers.csv")
     ):
         raise ValueError("Capture/extractor hash mismatch")
+    for item in [capture, extractor, truth]:
+        if type(item.get("schema_version")) is not int or item["schema_version"] != 1:
+            raise ValueError("Unsupported capture journal schema")
+    if truth.get("mode") != "CONTROLLED_LAB":
+        raise ValueError("Unverified ground truth origin")
     if (
         extractor["feature_version"] != VERSION
         or extractor["extractor_version"] != "lcm-tshark-tcp-v1"
@@ -33,7 +38,11 @@ def read(folder):
         raise ValueError("Capture loss or unavailable loss counter; quarantine")
     if capture["stop_reason"] not in ["duration", "orchestrator_stop"]:
         raise ValueError("Capture resource/failure limit reached; quarantine")
-    if truth["errors"] or not truth["all_clients_stopped"]:
+    if (
+        truth["errors"]
+        or not truth["all_clients_stopped"]
+        or any(r.get("closed_at") is None for r in truth["connections"])
+    ):
         raise ValueError("Incomplete generator run; quarantine")
     with (folder / "headers.csv").open() as f:
         rows = list(csv.DictReader(f))
@@ -57,7 +66,7 @@ def read(folder):
     return labeled, truth, capture, extractor
 
 
-def build(root, output):
+def build(root, output, selection=None):
     os.umask(0o077)
     root = Path(root)
     output = Path(output)
@@ -68,17 +77,41 @@ def build(root, output):
     )
     if not captures or len(captures) > 100:
         raise ValueError("Bounded1..100 completed captures required")
+    excluded = []
+    selection = (
+        json.loads(Path(selection).read_text())
+        if selection
+        else {"schema_version": 1, "excluded": []}
+    )
+    if selection.get("schema_version") != 1 or not isinstance(selection.get("excluded"), list):
+        raise ValueError("Invalid curation declaration")
+    excluded_ids = set()
+    for item in selection["excluded"]:
+        identity = item["capture_id"]
+        if identity in excluded_ids or Path(identity).name != identity or not item.get("reason"):
+            raise ValueError("Explicit unique exclusion reason required")
+        folder = root / identity
+        if sha(folder / "traffic.pcap") != item["pcap_sha256"]:
+            raise ValueError("Curated exclusion source mismatch")
+        excluded_ids.add(identity)
+        excluded.append(item)
     rows = []
     reports = []
     hashes = set()
     ids = set()
     quarantined = []
     for folder in captures:
+        if folder.name in excluded_ids:
+            continue
         try:
             labeled, truth, cap, ext = read(folder)
         except (ValueError, KeyError, FileNotFoundError) as e:
             quarantined.append(dict(capture_id=folder.name, reason=str(e)))
             continue
+        if len(rows) + len(labeled) > 100000:
+            raise ValueError(
+                "Dataset build resource bound100000 observations; no silent truncation"
+            )
         identity = truth["experiment"]["experiment_id"]
         if identity != folder.name or identity in ids or cap["pcap_sha256"] in hashes:
             raise ValueError("Duplicate/conflicting capture identity")
@@ -118,7 +151,6 @@ def build(root, output):
                 else None,
             )
             rows.append(row)
-        core = json.loads((folder / "core.json").read_text())
         reports.append(
             dict(
                 capture_id=identity,
@@ -184,6 +216,7 @@ def build(root, output):
         unknown_excluded=int(data.label.isna().sum()),
         raw_files=reports,
         quarantined=quarantined,
+        curated_exclusions=excluded,
         limitations=[
             "Controlled lab violations, not representative real attacks; labels refer to connection activity, not malicious content of each packet",
             "Repeated runs on one host do not prove statistical independence; paired background, same device pool and capture method reduce but do not eliminate shortcuts",
@@ -228,6 +261,12 @@ def validate(directory, captures_root=None):
                 if Path(name).name != name or sha(folder / name) != digest:
                     raise ValueError("Source capture integrity mismatch")
             read(folder)
+        for capture in manifest.get("curated_exclusions", []):
+            if (
+                sha(Path(captures_root) / capture["capture_id"] / "traffic.pcap")
+                != capture["pcap_sha256"]
+            ):
+                raise ValueError("Excluded source integrity mismatch")
     # No identifiers or raw MQTT fields can enter model inputs.
     if manifest["feature_order"] != FEATURES:
         raise ValueError("Provenance became predictive feature")
@@ -271,10 +310,13 @@ def main():
     p.add_argument("--root", required=True)
     p.add_argument("--output")
     p.add_argument("--captures")
+    p.add_argument("--selection")
     a = p.parse_args()
     print(
         json.dumps(
-            build(a.root, a.output) if a.command == "build" else validate(a.root, a.captures),
+            build(a.root, a.output, a.selection)
+            if a.command == "build"
+            else validate(a.root, a.captures),
             indent=2,
         )
     )

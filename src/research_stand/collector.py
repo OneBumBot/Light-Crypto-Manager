@@ -120,6 +120,7 @@ def capture(directory, duration):
 
 
 def extract(directory):
+    os.umask(0o077)
     pcap = directory / "traffic.pcap"
     output = directory / "headers.csv"
     if output.exists():

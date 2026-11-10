@@ -293,3 +293,78 @@ def test_retention_requires_explicit_safe_identity(tmp_path):
     (root / "capture").symlink_to(outside, target_is_directory=True)
     with pytest.raises(ValueError, match="Unsafe"):
         eligible(root, "capture", 30)
+
+
+def test_explicit_exclusion_must_match_original_capture_hash(tmp_path):
+    from src.research_stand.dataset import build
+
+    root = tmp_path / "raw"
+    folder = root / "fixture"
+    folder.mkdir(parents=True)
+    (folder / "ground-truth.json").write_text("{}")
+    (folder / "traffic.pcap").write_bytes(b"synthetic")
+    selection = tmp_path / "selection.json"
+    selection.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "excluded": [
+                    {
+                        "capture_id": "fixture",
+                        "pcap_sha256": "0" * 64,
+                        "reason": "synthetic unit test exclusion",
+                    }
+                ],
+            }
+        )
+    )
+    with pytest.raises(ValueError, match="exclusion source mismatch"):
+        build(root, tmp_path / "out", selection)
+
+
+def test_retention_is_only_an_age_check_without_deletion(tmp_path):
+    from src.research_stand.retention import eligible
+    from src.research_stand.collector import sha
+
+    folder = tmp_path / "fixture"
+    folder.mkdir()
+    pcap = folder / "traffic.pcap"
+    pcap.write_bytes(b"synthetic")
+    (folder / "capture.json").write_text(json.dumps({"pcap_sha256": sha(pcap)}))
+    (folder / "ground-truth.json").write_text(
+        json.dumps({"experiment": {"experiment_id": "fixture"}, "experiment_finished_at": 100})
+    )
+    assert not eligible(tmp_path, "fixture", 30, now=200)
+    assert eligible(tmp_path, "fixture", 30, now=100 + 31 * 86400)
+    assert pcap.exists()
+
+
+def test_invalid_test_credential_keeps_legitimate_length():
+    from src.research_stand.install import invalid_password
+
+    assert len(invalid_password(48)) == 48
+    assert any(c not in "0123456789abcdef" for c in invalid_password(48))
+    with pytest.raises(ValueError):
+        invalid_password(0)
+
+
+def test_header_exports_are_private_even_with_permissive_parent_umask(tmp_path, monkeypatch):
+    import os, stat
+    from src.research_stand import collector
+
+    (tmp_path / "traffic.pcap").write_bytes(b"synthetic fixture, not real network data")
+    monkeypatch.setattr(
+        collector.subprocess,
+        "run",
+        lambda cmd, stdout, **kwargs: stdout.write("synthetic header\n"),
+    )
+    monkeypatch.setattr(
+        collector.subprocess, "check_output", lambda *a, **k: "synthetic tool fixture\n"
+    )
+    previous = os.umask(0o022)
+    try:
+        collector.extract(tmp_path)
+        assert stat.S_IMODE((tmp_path / "headers.csv").stat().st_mode) == 0o600
+        assert stat.S_IMODE((tmp_path / "extractor.json").stat().st_mode) == 0o600
+    finally:
+        os.umask(previous)
