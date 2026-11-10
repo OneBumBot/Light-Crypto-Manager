@@ -505,3 +505,18 @@ def test_nonfinite_source_clock_is_not_silently_accepted(tmp_path):
     p.write_text(json.dumps(t))
     with pytest.raises(ValueError, match="Nonfinite"):
         build(raw, tmp_path / "out")
+
+
+def test_copied_pcap_cannot_inflate_independent_capture_support(tmp_path):
+    import shutil
+
+    raw = tmp_path / "raw"
+    source = fixture(raw)
+    clone = raw / "renamed"
+    shutil.copytree(source, clone)
+    p = clone / "ground-truth.json"
+    t = json.loads(p.read_text())
+    t["experiment"]["experiment_id"] = "renamed"
+    p.write_text(json.dumps(t))
+    with pytest.raises(ValueError, match="Duplicate source PCAP"):
+        build(raw, tmp_path / "out")

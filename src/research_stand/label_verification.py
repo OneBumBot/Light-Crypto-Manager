@@ -286,6 +286,7 @@ def reconcile(directory, captures):
         raise ValueError("Duplicate physical packet identity")
     if set(by_capture) != {r["capture_id"] for r in m["raw_files"]}:
         raise ValueError("Capture set mismatch")
+    seen_pcap = set()
     counts = Counter()
     connections = set()
     verified = set()
@@ -297,7 +298,12 @@ def reconcile(directory, captures):
             if Path(name).name != name or digest(folder / name) != value:
                 raise ValueError("Source evidence hash mismatch")
         raw, cap, _ = headers(folder)
+        if cap["pcap_sha256"] in seen_pcap:
+            raise ValueError("Duplicate source capture evidence")
+        seen_pcap.add(cap["pcap_sha256"])
         truth = load_json(folder / "ground-truth.json")
+        if truth["experiment"]["experiment_id"] != folder.name:
+            raise ValueError("Source experiment identity mismatch")
         core = load_json(folder / "core.json")
         core["mqtt_witness"] = (
             load_json(folder / "mqtt-observer.json")

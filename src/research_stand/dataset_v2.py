@@ -27,14 +27,22 @@ def build(captures, output, parent_manifest=None):
     )
     if not 1 <= len(names) <= 100:
         raise ValueError("Bounded1..100 captures")
+    seen_pcap = set()
     data = []
     sources = []
     for name in names:
         if Path(name).name != name:
             raise ValueError("Unsafe capture identity")
         folder = captures / name
+        if folder.is_symlink() or folder.resolve().parent != captures.resolve():
+            raise ValueError("Unsafe capture path")
         rows, cap, ext = headers(folder)
+        if cap["pcap_sha256"] in seen_pcap:
+            raise ValueError("Duplicate source PCAP cannot create independent captures")
+        seen_pcap.add(cap["pcap_sha256"])
         truth = load_json(folder / "ground-truth.json")
+        if truth["experiment"]["experiment_id"] != name:
+            raise ValueError("Capture/experiment identity mismatch")
         core = load_json(folder / "core.json")
         if (
             truth["errors"]
