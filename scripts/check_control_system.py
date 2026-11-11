@@ -7,8 +7,10 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--env-file',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--extended',action='store_true')
     a=p.parse_args();values=dict(line.split('=',1) for line in a.env_file.read_text().splitlines() if '=' in line and not line.startswith('#'))
     project=values.get('COMPOSE_PROJECT_NAME','')
-    if not project.startswith('lcm-stage8-'):p.error('Dedicated lcm-stage8-* project required')
+    if not project.startswith(('lcm-stage8-','lcm-stage9-demo-')):p.error('Dedicated stage8/stage9-demo project required')
     base=['docker','compose','--env-file',str(a.env_file),'-f','compose.yaml','-f','compose.control.yaml','--profile','control']
+    if project.startswith('lcm-stage9-demo-'):
+        base+=['-f','compose.stage9.yaml']
     events=[]
     def run(*parts,check=True):
         r=subprocess.run(base+list(parts),capture_output=True,text=True,timeout=160)

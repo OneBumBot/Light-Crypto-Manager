@@ -11,16 +11,18 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--directory',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
     if a.output.exists():p.error('Immutable output exists')
     d=Demo(a.directory);url=d.url();checks=[]
+    def reply(body):
+        return lambda route:route.fulfill(content_type='application/json',body=json.dumps(body))
     with sync_playwright() as pw:
         browser=pw.chromium.launch(headless=True)
-        ctx=browser.new_context(viewport=dict(width=1366,height=900));page=ctx.new_page();errors=[]
+        ctx=browser.new_context(viewport=dict(width=1366,height=900),timezone_id='Europe/Moscow');page=ctx.new_page();errors=[]
         page.on('pageerror',lambda e:errors.append(str(e)))
         # Demo remains usable without CDN. Test our bundled app assets and safe DOM.
         page.route('https://cdn.**/*',lambda route:route.abort())
         def login(role):
             page.goto(url+'/login');page.locator('[name=username]').fill('demo-'+role)
             page.locator('[name=password]').fill((d.root/'accounts'/(role+'.password')).read_text().strip())
-            page.locator('button[type=submit]').first.click();page.wait_for_url(url+'/')
+            page.locator('form input[type=submit], form button[type=submit]').first.click();page.wait_for_url(url+'/')
             page.wait_for_selector('#device-rows tr[data-device=alpha]')
         login('viewer');expect(page.locator('#device-rows tr')).to_have_count(3)
         page.locator('a[href="/devices/alpha"]').click();page.wait_for_selector('#effective-profile')
@@ -30,7 +32,7 @@ def main():
         assert page.locator('#switch-submit').count()==0
         checks+=['viewer_real_device_card','viewer_mongo_history','viewer_policy_dry_run','viewer_no_switch_control']
         # Same-origin logout still uses protected POST form.
-        page.locator('form[action="/logout"]').evaluate('(form)=>form.requestSubmit()');page.wait_for_url('**/login')
+        page.locator('form[action="/logout"] button').click();page.wait_for_url('**/login')
         login('admin');page.goto(url+'/devices/alpha');page.wait_for_selector('#effective-profile')
         def switch(label):
             page.locator('#target-profile').select_option(label=label)
@@ -113,14 +115,14 @@ def main():
             value['decisions']=[dict(result=dict(observed_risk='WATCH',reasons=[payload],used_signals=[]),created_at=api['checked_at'])]
             value['audit']=[dict(device_id='alpha',transition_id=value['transitions'][0]['id'],action=payload,at=api['checked_at'])]
             value['ml_events']=[dict(model_id=payload,model_version='test',status=payload,score=payload,threshold=None,evaluated_at=None)]
-            page.route('**/api/monitoring/alpha?*',lambda route,v=value:route.fulfill(json=v))
+            page.route('**/api/monitoring/alpha?*',reply(value))
             page.reload();expect(page.locator('#policy-decisions')).to_contain_text(payload)
             assert page.locator('#monitoring img,#monitoring svg,#monitoring [onfocus]').count()==0
             assert page.evaluate('window.__xss || 0')==0
             page.unroute('**/api/monitoring/alpha?*')
         checks.append('four_dom_attribute_script_audit_ml_injections')
-        for body in [None,{},dict(api,items=[dict(api['items'][0],device_id='beta')])]:
-            page.route('**/api/monitoring/alpha?*',lambda route,b=body:route.fulfill(json=b))
+        for body in [None,{},dict(api,items=[dict(api['items'][0],device_id='beta')]),dict(api,items=[dict(api['items'][0],device_id='<img src=x onerror=window.__xss=1>')])]:
+            page.route('**/api/monitoring/alpha?*',reply(body))
             page.reload();expect(page.locator('#snapshot-status')).to_contain_text('недоступно')
             expect(page.locator('#switch-submit')).to_be_disabled()
             assert page.locator('#effective-profile').count()==0

@@ -79,6 +79,8 @@ def test_monitoring_api_mongo_failure_independent_rbac_limits(postgres_db,regist
     viewer=login(web)
     response=viewer.get('/api/monitoring/raspb1');assert response.status_code==200
     data=response.json
+    assert len(data['items'])==1 and data['items'][0]['device_id']=='raspb1'
+    assert data['components']['ml']['trusted_detector'] is False
     assert data['components']['postgres']['status']=='available'
     assert data['components']['mongo']['status']=='unavailable'
     assert data['items'][0]['telemetry'] is not None

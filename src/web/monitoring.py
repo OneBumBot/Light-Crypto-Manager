@@ -92,7 +92,7 @@ def snapshot(connection, device=None, limit=50, offset=0):
     for model in models:
         model['trusted_detector']=False
         model['stale']=age(now,model['heartbeat_at'])>30
-    components['ml']=dict(status='disabled' if not models else ('research' if any(m['status']=='available' and not m['stale'] for m in models) else 'unavailable'), models=models,
+    components['ml']=dict(status='disabled' if os.environ.get('ML_MONITOR_MODE')=='DISABLED' else ('unknown' if not models else ('research' if any(m['status']=='available' and not m['stale'] for m in models) else 'unavailable')), models=models,
         trusted_detector=False,source='ml_models; отсутствие модели не означает норму')
     pending_ids = [r['pending_transition'] for r in managed.values() if r['pending_transition']]
     pending = {r['id']:r for r in rows(select(control.transitions).where(control.transitions.c.id.in_(pending_ids)))}
@@ -125,7 +125,7 @@ def snapshot(connection, device=None, limit=50, offset=0):
         profiles=PROFILES,control_mode=os.environ.get('CONTROL_MODE','DISABLED'),policy_mode='DRY_RUN',trusted_detector=False)
     if device:
         # Detail bounded per device; sensitive body/wire/MAC/fingerprints are never selected.
-        output['security']=rows(select(journal).where(journal.c.device_id==device).order_by(journal.c.occurred_at.desc()).limit(30))
+        output['security']=rows(select(journal).where(journal.c.device_id==device,journal.c.category!='accepted').order_by(journal.c.occurred_at.desc()).limit(30))
         output['transitions']=rows(select(control.transitions).where(control.transitions.c.device_id==device).order_by(control.transitions.c.created_at.desc()).limit(20))
         output['commands']=rows(select(*[control.commands.c[k] for k in ['id','transition_id','device_id','sequence','phase','status','attempts','expires_at']]).where(control.commands.c.device_id==device).order_by(control.commands.c.sequence.desc()).limit(40))
         ack_rows=rows(select(control.acks).where(control.acks.c.device_id==device).order_by(control.acks.c.received_at.desc()).limit(40))

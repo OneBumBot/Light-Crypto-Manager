@@ -2,6 +2,7 @@
 services:
   web:
     environment:
+      ML_MONITOR_MODE: DISABLED
       WEB_MQTT_ENABLED: "0" # UI polls PG admission; no cross-device in-memory buffer.
   receiver:
     environment:

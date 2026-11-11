@@ -136,9 +136,12 @@ def main():
     env=dict(line.split('=',1) for line in a.env_file.read_text().splitlines() if '=' in line and not line.startswith('#'))
     import re
     project=env.get('COMPOSE_PROJECT_NAME','')
-    if not re.fullmatch(r'lcm-stage8-fix-[a-z0-9-]+',project):p.error('Dedicated fix project required')
+    if not re.fullmatch(r'lcm-(?:stage8-fix-|stage9-demo-)[a-z0-9-]+',project):p.error('Dedicated fix/demo project required')
     if a.output.exists():p.error('Output already exists')
     base=['docker','compose','--env-file',str(a.env_file),'-f','compose.yaml','-f','compose.control.yaml','--profile','control']
+    if project.startswith('lcm-stage9-demo-'):
+        base += ['-f','compose.stage9.yaml']
+    receiver_id=project+'-receiver' if project.startswith('lcm-stage9-demo-') else 'lightcrypto-ingestion'
     def run(*parts):
         r=subprocess.run(base+list(parts),capture_output=True,text=True,timeout=120)
         if r.returncode:
@@ -156,7 +159,7 @@ def main():
         a.output.with_suffix('.logs.txt').write_text(logs)
         report['receiver_processing_failures']=logs.count('MQTT packet processing failed')
         report['receiver_subscription_acknowledgements']=logs.count('MQTT subscription acknowledged')
-        report['receiver_client_connections']=len(re.findall(r'New client connected .* as lightcrypto-ingestion ',logs))
+        report['receiver_client_connections']=len(re.findall(r'New client connected .* as '+re.escape(receiver_id)+' ',logs))
         if not a.baseline:
             assert report['receiver_processing_failures']==0
             assert report['receiver_subscription_acknowledgements']==0
