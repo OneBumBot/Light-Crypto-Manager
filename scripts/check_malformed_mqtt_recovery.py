@@ -113,8 +113,19 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--env-file',type=Path);p.add_argument('--output',type=Path)
     p.add_argument('--inside',action='store_true');p.add_argument('--baseline',action='store_true')
+    p.add_argument('--counters',action='store_true')
     p.add_argument('--profile',default='ascon-aead128-v1',choices=['ascon-aead128-v1','aes-128-gcm-v1'])
     a=p.parse_args()
+    if a.counters:
+        from sqlalchemy import create_engine,select,func
+        from src.runtime import database_url
+        from src.outbox import metrics
+        engine=create_engine(database_url())
+        try:
+            with engine.connect() as c:
+                print(json.dumps(dict(c.execute(select(metrics.c.kind,func.sum(metrics.c.count)).group_by(metrics.c.kind)).all())))
+        finally:engine.dispose()
+        return
     if a.inside:inside(a.profile,a.baseline);return
     if not a.env_file or not a.output:p.error('--env-file and --output required')
     env=dict(line.split('=',1) for line in a.env_file.read_text().splitlines() if '=' in line and not line.startswith('#'))
@@ -142,6 +153,21 @@ def main():
             assert report['receiver_client_connections']==0
             inspect=run('ps','--format','json','receiver').stdout
             assert 'healthy' in inspect
+            def counters():
+                r=run('run','--rm','--no-deps','-v',script+':/app/scripts/check_malformed_mqtt_recovery.py:ro',
+                      '--entrypoint','python','tests','-m','scripts.check_malformed_mqtt_recovery','--counters')
+                return json.loads(r.stdout[r.stdout.index('{'):])
+            before_restart=counters()
+            # Same persistent client/session: unacknowledged poison would redeliver here.
+            run('up','-d','--no-deps','--force-recreate','--wait','receiver')
+            time.sleep(5)
+            after_restart=counters()
+            assert after_restart==before_restart
+            report.update(explicit_receiver_restart=True,post_restart_observation_seconds=5,
+                          counters_before_restart=before_restart,counters_after_restart=after_restart,
+                          no_redelivery_after_receiver_restart=True)
+            restarted_logs=run('logs','--since',start,'receiver').stdout
+            a.output.with_suffix('.restart.logs.txt').write_text(restarted_logs)
         a.output.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
     finally:
         run('up','-d','--no-deps','--wait','device-alpha','device-beta','device-gamma')
