@@ -132,7 +132,8 @@ def decode_packet(raw, topic, registry):
     if type(raw) is not bytes or not 1<=len(raw)<=MAX_PACKET_BYTES: reject()
     packet=strict_json(raw)
     exact(packet,['schema_version','profile','nonce','associated_data','ciphertext'])
-    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile'] not in BY_ALGORITHM: reject()
+    if (type(packet['schema_version']) is not int or packet['schema_version']!=2
+            or type(packet['profile']) is not str or packet['profile'] not in BY_ALGORITHM): reject()
     def decode(name, maximum):
         value=packet[name]
         if type(value) is not str or len(value)>maximum*2: reject()

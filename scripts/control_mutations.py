@@ -3,6 +3,11 @@ import argparse,os,sys,shutil,subprocess,tempfile,json
 from pathlib import Path
 
 MUTATIONS=[
+ ('unhashable_outer_profile','src/telemetry.py',"type(packet['profile']) is not str or ",'','test_telemetry_security.py::test_outer_profile_exact_rejection'),
+ ('parser_raises_type_error','src/telemetry.py',"raise InvalidTelemetry('Invalid authenticated telemetry')","raise TypeError('Invalid authenticated telemetry')",'test_telemetry_security.py::test_outer_profile_exact_rejection'),
+ ('missing_profile_binding','src/telemetry.py'," or metadata['profile']!=packet['profile']",'','test_telemetry_security.py::test_aad_profile_binding_before_decrypt'),
+ ('missing_key_reference','src/device_control/protocol.py',"if type(d['key_reference']) is not str or d['key_reference']!=d['requested_profile']+':'+str(d['command_epoch']):raise ValueError('Key reference')",'pass','test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite'),
+ ('ack_after_pg_failure','src/brocker/mqtt_brocker.py',"logger.error(\"MQTT packet processing failed (%s)\", type(error).__name__)","client.ack(msg.mid,msg.qos)\n        logger.error(\"MQTT packet processing failed (%s)\", type(error).__name__)",'test_ingestion_ack.py::test_pg_failure_disconnects_without_ack'),
  ('ignore_control_mac','src/device_control/protocol.py',"if not hmac.compare_digest(mac,expected):",'if False:', 'test_control_protocol.py::test_control_authenticated_direction_and_device'),
  ('disable_control_replay','src/device_control/state.py',"if d['command_epoch']!=self.epoch or seq<=s['seq']:",'if False:', 'test_control_protocol.py::test_monotonic_replay_gap_rejected'),
  ('premature_effective','src/device_control/server.py',".values(command_acknowledged=data['command_sequence'])",".values(command_acknowledged=data['command_sequence'],effective_profile=data['requested_profile'])",'test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade'),

@@ -195,3 +195,29 @@ def test_activation_flag_cannot_override_missing_e2e_verification(postgres_db,re
     with pytest.raises(ValueError):
         with web.db.engine.begin() as c:server.request_switch(c,'raspb1',AES,'admin:1',mode=server.MODE)
     with web.db.engine.connect() as c:assert c.scalar(select(func.count()).select_from(m.commands))==0
+
+
+def test_malformed_packets_preserve_all_admission_state(postgres_db,registry):
+    import base64,copy
+    from test_telemetry_security import BAD_TYPES
+    web=postgres_db;setup(web,registry);seq=baseline(web,registry);engine=web.db.engine
+    tables=[replay_state,outbox,m.devices,m.evidence,m.transitions]
+    def snapshot():
+        with engine.connect() as c:
+            return [list(c.execute(select(t)).mappings()) for t in tables]
+    before=snapshot()
+    good=packet(registry,seq)
+    cases=[]
+    for value in [*BAD_TYPES,'unknown-profile']:
+        bad=copy.deepcopy(good);bad['profile']=value;cases.append(bad)
+    for field in ['device_id','topic','profile','key_epoch','sequence_number']:
+        for value in BAD_TYPES:
+            bad=copy.deepcopy(good)
+            ad=json.loads(base64.b64decode(bad['associated_data']));ad[field]=value
+            bad['associated_data']=base64.b64encode(canonical(ad)).decode();cases.append(bad)
+    # key_epoch=1 is structurally valid; force an authentication failure for every AAD case.
+    for bad in cases:
+        if bad==good:continue
+        with pytest.raises(InvalidTelemetry):process_packet(canonical(bad),registry,engine,'iot/sensors/raspb1')
+        assert snapshot()==before
+    assert process_packet(good,registry,engine,'iot/sensors/raspb1') is not None

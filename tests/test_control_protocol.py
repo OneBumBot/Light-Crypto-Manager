@@ -126,3 +126,39 @@ def test_malformed_mac_is_bounded_value_error(mac):
     import json
     envelope=json.loads(seal(command(),KEY,'controller'));envelope['mac']=mac
     with pytest.raises(ValueError):open_message(canonical(envelope),KEY,'controller','alpha',topic('alpha','controller'))
+
+
+@pytest.mark.parametrize('field', ['requested_profile', 'command_epoch', 'command_sequence',
+    'command_id', 'correlation_id', 'key_reference'])
+@pytest.mark.parametrize('value', [None, True, False, 0, 1.5, [], {}, ['aes-128-gcm-v1']])
+def test_authenticated_malformed_command_preserves_sqlite(tmp_path, field, value):
+    import hmac
+    from src.device_control.protocol import DOMAIN
+    b=command();b['data'][field]=value
+    signed=dict(domain=DOMAIN,direction='controller',topic=topic('alpha','controller'),body=b)
+    raw=canonical(dict(**signed,mac=hmac.new(KEY,canonical(signed),hashlib.sha256).hexdigest()))
+    s=DeviceState(tmp_path/'state.db','alpha',1,initialize=True)
+    before=s.read()
+    try:
+        with pytest.raises(ValueError):
+            body=open_message(raw,KEY,'controller','alpha',topic('alpha','controller'))
+            s.execute(body,conf())
+        assert s.read()==before
+        with s.transaction() as c:assert c.execute('SELECT count(*) FROM commands').fetchone()[0]==0
+    finally:s.close()
+
+
+@pytest.mark.parametrize('field', ['requested_profile','command_epoch','command_sequence',
+    'command_id','correlation_id','command_sha256','phase','result'])
+@pytest.mark.parametrize('value', [None,True,False,0,1.5,[],{},['READY']])
+def test_authenticated_malformed_ack_exact_rejection(field,value):
+    import hmac
+    from src.device_control.protocol import DOMAIN
+    b=command();d=b['data']
+    data={k:d[k] for k in ['command_id','transition_id','correlation_id','command_epoch',
+                         'command_sequence','requested_profile','phase']}
+    data.update(result='READY',command_sha256=hashlib.sha256(canonical(b)).hexdigest())
+    ack=message('alpha','ack',data);ack['data'][field]=value
+    signed=dict(domain=DOMAIN,direction='device',topic=topic('alpha','device'),body=ack)
+    raw=canonical(dict(**signed,mac=hmac.new(ACK_KEY,canonical(signed),hashlib.sha256).hexdigest()))
+    with pytest.raises(ValueError):open_message(raw,ACK_KEY,'device','alpha',topic('alpha','device'))

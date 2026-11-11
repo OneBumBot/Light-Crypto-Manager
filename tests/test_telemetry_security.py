@@ -15,6 +15,61 @@ from test_postgres import seed_device
 
 TOPIC='iot/sensors/raspb1'
 
+BAD_TYPES = [None, True, False, 0, 1, 1.5, [], {},
+             ['AES-128-GCM'], {'algorithm': 'AES-128-GCM'}]
+
+
+@pytest.mark.parametrize('profile', ['ascon-aead128-v1', 'aes-128-gcm-v1'])
+@pytest.mark.parametrize('value', [*BAD_TYPES, 'unknown-profile'])
+def test_outer_profile_exact_rejection(registry, profile, value):
+    registry['raspb1']['telemetry_keys'] = {'AES-128-GCM': 'ab'*16}
+    packet = encode_packet(sensor(), registry, 'raspb1', 1, profile=profile)
+    assert decode_packet(packet, TOPIC, registry).sequence_number == 1
+    packet['profile'] = value
+    with pytest.raises(InvalidTelemetry):
+        decode_packet(canonical(packet), TOPIC, registry)
+
+
+@pytest.mark.parametrize('profile', ['ascon-aead128-v1', 'aes-128-gcm-v1'])
+@pytest.mark.parametrize('field', ['device_id', 'topic', 'profile', 'key_epoch',
+                                  'sequence_number', 'schema_version'])
+@pytest.mark.parametrize('value', BAD_TYPES)
+def test_malformed_aad_types(registry, profile, field, value):
+    registry['raspb1']['key_epoch'] = 2
+    registry['raspb1']['telemetry_keys'] = {'AES-128-GCM': 'ab'*16}
+    packet = encode_packet(sensor(), registry, 'raspb1', 2, profile=profile)
+    ad = json.loads(base64.b64decode(packet['associated_data']))
+    ad[field] = value
+    packet['associated_data'] = base64.b64encode(canonical(ad)).decode()
+    with pytest.raises(InvalidTelemetry):
+        decode_packet(canonical(packet), TOPIC, registry)
+
+
+@pytest.mark.parametrize('field', ['nonce', 'ciphertext', 'associated_data'])
+@pytest.mark.parametrize('value', BAD_TYPES)
+def test_binary_fields_exact_rejection(registry, field, value):
+    packet = encode_packet(sensor(), registry, 'raspb1', 1)
+    packet[field] = value
+    with pytest.raises(InvalidTelemetry):
+        decode_packet(canonical(packet), TOPIC, registry)
+
+
+def test_aad_profile_binding_before_decrypt(registry):
+    from unittest.mock import patch
+    packet=encode_packet(sensor(),registry,'raspb1',1)
+    ad=json.loads(base64.b64decode(packet['associated_data']));ad['profile']='AES-128-GCM'
+    packet['associated_data']=base64.b64encode(canonical(ad)).decode()
+    with patch('src.telemetry.decrypt',return_value=canonical(sensor())) as decrypt:
+        with pytest.raises(InvalidTelemetry):decode_packet(canonical(packet),TOPIC,registry)
+    decrypt.assert_not_called()
+
+
+@pytest.mark.parametrize('value', [None,True,False,0,1,1.5,'text',[],{}])
+def test_aad_must_be_exact_object(registry,value):
+    packet=encode_packet(sensor(),registry,'raspb1',1)
+    packet['associated_data']=base64.b64encode(canonical(value)).decode()
+    with pytest.raises(InvalidTelemetry):decode_packet(canonical(packet),TOPIC,registry)
+
 
 def sensor():
     return {'temperature':65,'humidity':50,'timestamp':datetime.now(timezone.utc).isoformat()}

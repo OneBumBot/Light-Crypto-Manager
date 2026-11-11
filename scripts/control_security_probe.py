@@ -48,7 +48,10 @@ def main():
         bad.append(('invalid_unicode_mac',canonical(malformed),topic('alpha','controller')))
         bad.append(('wrong_key_direction',forced_wire(base,bytes.fromhex(config['alpha']['status_key']),'controller'),topic('alpha','controller')))
         bad.append(('wrong_device_topic',raw,topic('beta','controller')))
-        for field,val in [('requested_profile','unavailable-profile'),('command_epoch',0),('command_sequence',base['data']['command_sequence']),('controller_identity','unauthorized-controller')]:
+        for field,val in [('requested_profile','unavailable-profile'),('command_epoch',0),('command_sequence',base['data']['command_sequence']),('controller_identity','unauthorized-controller'),
+                          ('requested_profile',[]),('requested_profile',{}),('command_epoch',{}),
+                          ('command_sequence',[]),('command_id',{}),('correlation_id',[]),
+                          ('key_reference',[])]:
             b=copy.deepcopy(base);b['data'][field]=val
             if field=='command_sequence':b['message_id']=str(uuid.uuid4());b['data']['command_id']=b['message_id']
             bad.append((field,forced_wire(b,bytes.fromhex(config['alpha']['command_key']),'controller'),topic('alpha','controller')))
@@ -78,7 +81,9 @@ def main():
         assert ack is not None, 'A recent normal authenticated ACTIVATE ACK is required for this probe'
         # Authenticated but contradictory ACKs cannot advance durable state.
         if ack:
-            for field,val in [('correlation_id',str(uuid.uuid4())),('requested_profile','ascon-aead128-v1' if cmd['body']['data']['requested_profile']!='ascon-aead128-v1' else 'aes-128-gcm-v1')]:
+            for field,val in [('correlation_id',str(uuid.uuid4())),('requested_profile','ascon-aead128-v1' if cmd['body']['data']['requested_profile']!='ascon-aead128-v1' else 'aes-128-gcm-v1'),
+                              ('requested_profile',[]),('requested_profile',{}),('command_epoch',{}),
+                              ('command_sequence',[]),('command_id',{}),('correlation_id',[])]:
                 b=copy.deepcopy(ack['body']);b['message_id']=str(uuid.uuid4());b['created_at']=now.isoformat();b['expires_at']=(now+timedelta(seconds=60)).isoformat();b['data'][field]=val
                 forged=forced_wire(b,bytes.fromhex(config['alpha']['status_key']),'device');injected_status.add(hashlib.sha256(forged).hexdigest())
                 result=device.publish(topic('alpha','device'),forged,qos=1);result.wait_for_publish(3)
@@ -90,6 +95,7 @@ def main():
         with engine.connect() as c:
             current=c.execute(select(m.devices).where(m.devices.c.device_id=='alpha')).mappings().one()
             assert current['effective_profile']==initial['effective_profile'] and current['command_acknowledged']==initial['command_acknowledged']
+            assert current['effective_event']==initial['effective_event'] and current['reported_profile']==initial['reported_profile']
             assert c.scalar(select(func.count()).select_from(m.acks))==ack_count
         from src.outbox import outbox
         with engine.connect() as c:first=c.scalar(select(func.max(outbox.c.sequence_number)).where(outbox.c.device_id=='alpha'))
