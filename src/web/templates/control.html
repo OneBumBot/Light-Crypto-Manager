@@ -1,1 +1,51 @@
-{% extends "monitoring.html" %}
+{% extends "base.html" %}
+{% block title %}Управление шифрованием · LightCrypto{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/monitoring.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/control.css') }}">
+{% endblock %}
+{% block content %}
+<main id="crypto-control" data-admin="{{ 'true' if current_user.role == 'admin' else 'false' }}">
+  <header class="monitor-heading">
+    <div><p class="eyebrow">LIGHTCRYPTO / РУЧНОЕ УПРАВЛЕНИЕ</p><h1>Управление шифрованием</h1><p>Выберите устройство, запросите профиль и проследите его подтверждение.</p></div>
+    <button id="crypto-refresh" type="button">Обновить</button>
+  </header>
+  <p id="crypto-message" role="status" aria-live="polite">Загрузка подтверждённого состояния…</p>
+  <section class="crypto-selection" aria-labelledby="crypto-selection-title">
+    <div><h2 id="crypto-selection-title">1. Выберите устройство</h2><label for="crypto-device">Устройство из реестра</label><select id="crypto-device" disabled><option>Загрузка…</option></select></div>
+    <div id="crypto-worker" class="component">Проверяется Control Worker…</div>
+    <div class="actions"><button id="crypto-prev" type="button" disabled>Предыдущие</button><button id="crypto-next" type="button" disabled>Следующие</button></div>
+  </section>
+  <div id="crypto-content" hidden>
+    <section aria-labelledby="crypto-state-title">
+      <div class="section-title"><h2 id="crypto-state-title">Состояние устройства</h2><a id="crypto-device-link" href="/">Телеметрия и безопасность →</a></div>
+      <div class="crypto-grid">
+        <article><h3>Подтверждённый профиль</h3><p id="crypto-effective" class="crypto-profile">Нет текущих данных</p><p id="crypto-effective-note" class="hint"></p><dl id="crypto-receipt"></dl></article>
+        <article><h3>Что сообщило устройство</h3><p id="crypto-reported" class="crypto-profile">Нет текущих данных</p><p>Это отдельное сообщение ACK. Оно само по себе не подтверждает применение криптопрофиля.</p><dl id="crypto-ack"></dl></article>
+        <article><h3>Доступные возможности</h3><div id="crypto-capabilities"></div><p id="crypto-enabled"></p><p id="crypto-last-telemetry" class="hint"></p></article>
+      </div>
+    </section>
+    <section aria-labelledby="crypto-request-title">
+      <h2 id="crypto-request-title">2. Запросите переключение</h2>
+      <p>Ascon и AES — два поддерживаемых AEAD без ранжирования по «силе». Выбор делает администратор; рекомендация <a href="/policy">Policy DRY_RUN</a> не отправляет команду.</p>
+      {% if current_user.role == 'admin' %}
+      <form id="crypto-form" class="crypto-form">
+        <label for="crypto-target">Целевой профиль</label><select id="crypto-target" required disabled></select>
+        <button id="crypto-submit" type="submit" disabled>Запросить переключение</button>
+      </form>
+      <p id="crypto-blocked" class="hint"></p>
+      <button id="crypto-reconcile" type="button" hidden>Открыть окно сверки прежней ACTIVATE</button>
+      {% else %}<p id="crypto-readonly">Вы можете просматривать состояние и историю. Переключение доступно только администратору.</p>{% endif %}
+      <p id="crypto-request-message" role="status" aria-live="polite"></p>
+    </section>
+    <section aria-labelledby="crypto-operation-title">
+      <h2 id="crypto-operation-title">3. Дождитесь подтверждения</h2>
+      <div id="crypto-operation"></div>
+      <p class="hint">Запрос → PREPARE / READY → ACTIVATE / ACK → новая принятая AEAD-телеметрия. Только последний этап подтверждает effective. Быстрые промежуточные события сохраняются в истории.</p>
+    </section>
+    <section aria-labelledby="crypto-history-title"><h2 id="crypto-history-title">История переключений</h2><p>До 20 последних операций выбранного устройства. Команда, доставка брокером, ответ устройства и подтверждение телеметрией показаны раздельно.</p><div id="crypto-history"></div></section>
+  </div>
+  <dialog id="crypto-confirm"><form method="dialog"><h2>Подтвердите административное действие</h2><p id="crypto-confirm-text"></p><p>HTTP 202 означает сохранённый запрос. Дождитесь подтверждения новой телеметрией; ACK устройства недостаточно.</p><div class="actions"><button value="cancel">Отмена</button><button id="crypto-confirm-submit" value="confirm">Подтвердить запрос</button></div></form></dialog>
+</main>
+{% endblock %}
+{% block extra_js %}<script src="{{ url_for('static', filename='js/control.js') }}" defer></script>{% endblock %}
