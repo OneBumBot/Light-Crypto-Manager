@@ -56,18 +56,21 @@ def inside(profile, baseline=False):
         return encode_packet(dict(temperature=23,humidity=48,timestamp=datetime.now(timezone.utc).isoformat()),
             {device:config[device]['registry']},device,seq,profile=p)
     def delivered(device,seq):return repo.collection.count_documents({'_id':f'{device}:1:{seq}'})==1
+    def managed_mongo():return repo.collection.count_documents({'device_id':{'$in':list(config)}})
     def snapshot():
         with engine.connect() as c:
             return dict(replay=[dict(r) for r in c.execute(select(replay_state).order_by(replay_state.c.consumer,replay_state.c.device_id)).mappings()],
                 effective=[dict(r) for r in c.execute(select(m.devices.c.device_id,m.devices.c.effective_profile,m.devices.c.effective_event).order_by(m.devices.c.device_id)).mappings()],
-                evidence=count(m.evidence),outbox=count(outbox),mongo=repo.collection.count_documents({}),accepted=metric('accepted'))
+                evidence=count(m.evidence),outbox=count(outbox),mongo=managed_mongo(),
+                mongo_total=repo.collection.count_documents({}),accepted=metric('accepted'))
     try:
         from src.crypto_profiles import ASCON
         alpha=connect('alpha');beta=connect('beta');seq=next_seq('alpha');bseq=next_seq('beta')
         n=count(outbox);accepted=metric('accepted')
         publish(alpha,'alpha',packet('alpha',seq,profile));wait(lambda:delivered('alpha',seq))
         assert count(outbox)==n+1 and metric('accepted')==accepted+1
-        wait(lambda:repo.collection.count_documents({})==count(outbox))
+        # Regression Mongo fixtures deliberately retain their separate test_* identities.
+        wait(lambda:managed_mongo()==count(outbox))
         before=snapshot();rejects=metric('rejected');incoming=metric('incoming');observations=count(journal)
         good=packet('alpha',seq+1,profile);bad=[]
         for v in [[],{},None,True,1,1.5,['AES-128-GCM'],{'algorithm':'AES-128-GCM'},'unknown-profile']:
@@ -99,7 +102,8 @@ def inside(profile, baseline=False):
         replay=metric('replay');publish(alpha,'alpha',good);wait(lambda:metric('replay')==replay+1)
         publish(beta,'beta',packet('beta',bseq,ASCON));wait(lambda:delivered('beta',bseq))
         assert count(outbox)==before['outbox']+2 and metric('accepted')==before['accepted']+2
-        assert repo.collection.count_documents({})==before['mongo']+2
+        assert managed_mongo()==before['mongo']+2
+        assert repo.collection.count_documents({})==before['mongo_total']+2
         print(json.dumps(dict(profile=profile,malformed_sent=len(bad),rejected=len(bad),accepted=3,
             duplicate_admission=0,duplicate_replay=1,malformed_admission_state_unchanged=True,
             rejected_identity_null=True,neighbor_delivered=True,samples=samples,
@@ -123,7 +127,8 @@ def main():
         engine=create_engine(database_url())
         try:
             with engine.connect() as c:
-                print(json.dumps(dict(c.execute(select(metrics.c.kind,func.sum(metrics.c.count)).group_by(metrics.c.kind)).all())))
+                rows=c.execute(select(metrics.c.kind,func.sum(metrics.c.count)).group_by(metrics.c.kind)).all()
+                print(json.dumps({kind:int(total) for kind,total in rows}))
         finally:engine.dispose()
         return
     if a.inside:inside(a.profile,a.baseline);return
@@ -134,7 +139,12 @@ def main():
     if not re.fullmatch(r'lcm-stage8-fix-[a-z0-9-]+',project):p.error('Dedicated fix project required')
     if a.output.exists():p.error('Output already exists')
     base=['docker','compose','--env-file',str(a.env_file),'-f','compose.yaml','-f','compose.control.yaml','--profile','control']
-    def run(*parts):return subprocess.run(base+list(parts),capture_output=True,text=True,check=True,timeout=120)
+    def run(*parts):
+        r=subprocess.run(base+list(parts),capture_output=True,text=True,timeout=120)
+        if r.returncode:
+            a.output.with_suffix('.failure.txt').write_text(r.stdout+r.stderr)
+            raise RuntimeError(f'Compose {parts[0]} exited {r.returncode}; see {a.output.with_suffix(".failure.txt")}')
+        return r
     run('stop','device-alpha','device-beta','device-gamma')
     start=datetime.now(timezone.utc).isoformat();report={}
     try:
