@@ -21,7 +21,7 @@ def access():
 @blueprint.get('/control')
 @login_required
 def page():
-    access();return render_template('control.html')
+    access();return render_template('control.html', device=None)
 
 
 @blueprint.get('/api/control')

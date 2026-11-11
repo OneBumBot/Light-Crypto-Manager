@@ -11,7 +11,7 @@ class Config:
         os.environ.get("DATABASE_URL", "postgresql+psycopg://localhost/lightcrypto")
     )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_ENGINE_OPTIONS = {"pool_pre_ping": True}
+    SQLALCHEMY_ENGINE_OPTIONS = {"pool_pre_ping": True, "connect_args": {"connect_timeout": 2}, "pool_timeout": 3}
     MQTT_BROKER_URL = os.environ.get("MQTT_HOST", "localhost")
     MQTT_BROKER_PORT = int(os.environ.get("MQTT_PORT", "8883"))
     MQTT_USERNAME = os.environ.get("MQTT_USERNAME", "")

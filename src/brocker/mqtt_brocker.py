@@ -29,6 +29,7 @@ def set_mqtt_ready(ready):
 
 
 def on_connect(client, userdata, flags, reason_code, properties):
+    if userdata is not None: userdata['subscribed'] = False
     set_mqtt_ready(False)
     if reason_code == 0:
         client.subscribe(os.environ.get("MQTT_TOPIC", "iot/sensors/#"), qos=1)
@@ -38,17 +39,19 @@ def on_connect(client, userdata, flags, reason_code, properties):
 
 def on_subscribe(client, userdata, mid, reason_codes, properties):
     ready = bool(reason_codes) and all(not code.is_failure for code in reason_codes)
+    if userdata is not None: userdata['subscribed'] = ready
     set_mqtt_ready(ready)
     if ready:
         logger.info('MQTT subscription acknowledged')
 
 
 def on_disconnect(client, userdata, flags, reason_code, properties):
+    if userdata is not None: userdata['subscribed'] = False
     set_mqtt_ready(False)
 
 
 def connect_to_db():
-    engine = create_engine(database_url(), pool_pre_ping=True)
+    engine = create_engine(database_url(), pool_pre_ping=True, connect_args={'connect_timeout': 3})
     try:
         with engine.connect() as connection:
             connection.execute(text('SELECT 1'))
@@ -92,18 +95,30 @@ def main():
     registry = load_registry()
     engine = connect_to_db()
     import signal
-    from threading import Event
+    from threading import Event, Thread
     stop = Event()
+    context = {"registry": registry, "engine": engine, "subscribed": False}
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2,
                          client_id=os.environ.get('MQTT_CLIENT_ID','lightcrypto-ingestion'),
                          clean_session=False, manual_ack=True,
-                         userdata={"registry": registry, "engine": engine})
+                         userdata=context)
     client.on_connect = on_connect
     client.on_message = on_message
     client.on_subscribe = on_subscribe
     client.on_disconnect = on_disconnect
     client.reconnect_delay_set(min_delay=1, max_delay=30)
     configure_client(client)
+    def report_status():
+        from sqlalchemy.exc import SQLAlchemyError
+        from src.system_status import receiver_heartbeat
+        while not stop.is_set():
+            try:
+                receiver_heartbeat(engine, bool(context['subscribed'] and client.is_connected()))
+            except SQLAlchemyError:
+                logger.warning('Receiver diagnostic heartbeat unavailable')
+            stop.wait(2)
+    reporter = Thread(target=report_status, daemon=True)
+    reporter.start()
     def shutdown(*_):
         stop.set()
         client.disconnect()
@@ -120,6 +135,8 @@ def main():
             if not stop.is_set():
                 stop.wait(2)
     finally:
+        stop.set()
+        reporter.join(timeout=4)
         set_mqtt_ready(False)
         client.disconnect()
         engine.dispose()

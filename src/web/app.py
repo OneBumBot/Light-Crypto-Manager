@@ -413,7 +413,8 @@ def logout():
 @app.route('/')
 @login_required
 def index():
-    return render_template('dashboard.html')
+    if not current_user.has_table_access('sensor_data'): abort(403)
+    return render_template('monitoring.html', device=None)
 
 @app.route('/api/latest-data')
 @login_required
@@ -699,6 +700,8 @@ from src.policy.web import blueprint as policy_blueprint
 app.register_blueprint(policy_blueprint)
 from src.device_control.web import blueprint as control_blueprint
 app.register_blueprint(control_blueprint)
+from src.web.monitoring import blueprint as monitoring_blueprint
+app.register_blueprint(monitoring_blueprint)
 
 
 def main():
