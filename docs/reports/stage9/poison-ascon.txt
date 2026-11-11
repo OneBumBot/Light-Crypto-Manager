@@ -1,0 +1,77 @@
+{
+  "profile": "ascon-aead128-v1",
+  "malformed_sent": 17,
+  "rejected": 17,
+  "accepted": 3,
+  "duplicate_admission": 0,
+  "duplicate_replay": 1,
+  "malformed_admission_state_unchanged": true,
+  "rejected_identity_null": true,
+  "neighbor_delivered": true,
+  "samples": [
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    }
+  ],
+  "observation_seconds": 11.036896548997902,
+  "postgres_mongo_count_delta": 3,
+  "project": "lcm-stage9-demo-clean",
+  "exit_code": 0,
+  "receiver_processing_failures": 0,
+  "receiver_subscription_acknowledgements": 0,
+  "receiver_client_connections": 0,
+  "explicit_receiver_restart": true,
+  "post_restart_observation_seconds": 5,
+  "counters_before_restart": {
+    "incoming": 4476,
+    "replay": 1,
+    "rejected": 17,
+    "delivered": 4458,
+    "accepted": 4458
+  },
+  "counters_after_restart": {
+    "incoming": 4476,
+    "replay": 1,
+    "rejected": 17,
+    "delivered": 4458,
+    "accepted": 4458
+  },
+  "no_redelivery_after_receiver_restart": true
+}

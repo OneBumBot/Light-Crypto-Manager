@@ -1,0 +1,142 @@
+time="2026-11-11T21:55:37+03:00" level=warning msg="buildx Docker CLI plugin not found: falling back to the classic builder. BuildKit-only build features (multi-arch, secrets, ssh, additional contexts, ...) will not be available"
+ Image lcm-stage9-demo-20261111-tests Building 
+ Image lcm-stage9-demo-20261111-tests Building 
+Sending build context to Docker daemon  303.9kB
+Step 1/46 : FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
+ ---> 935c3c5b1235
+Step 2/46 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ ---> Using cache
+ ---> b664d672ad44
+Step 3/46 : WORKDIR /app
+ ---> Using cache
+ ---> 25f87010fd40
+Step 4/46 : COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
+ ---> Using cache
+ ---> 8379fb2b7118
+Step 5/46 : COPY src/web/requirements.txt /app/requirements/web.txt
+ ---> Using cache
+ ---> a3885ecec8c1
+Step 6/46 : RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt     && useradd --system --uid 10001 --create-home lightcrypto
+ ---> Using cache
+ ---> 9b986356975a
+Step 7/46 : COPY src/device_control /app/src/device_control
+ ---> Using cache
+ ---> aa1d789eda30
+Step 8/46 : COPY src/policy /app/src/policy
+ ---> Using cache
+ ---> 307c7d4ffce0
+Step 9/46 : COPY src/*.py /app/src/
+ ---> Using cache
+ ---> 0a1e0dee587f
+Step 10/46 : COPY src/publisher/*.py /app/src/publisher/
+ ---> Using cache
+ ---> a082b1069358
+Step 11/46 : COPY src/brocker/*.py /app/src/brocker/
+ ---> Using cache
+ ---> e7affb641074
+Step 12/46 : COPY src/web/*.py /app/src/web/
+ ---> Using cache
+ ---> 6417aa48c7e6
+Step 13/46 : COPY src/web/templates /app/src/web/templates
+ ---> Using cache
+ ---> 777de7de929f
+Step 14/46 : COPY src/web/static /app/src/web/static
+ ---> Using cache
+ ---> 80eae8fb627c
+Step 15/46 : COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
+ ---> Using cache
+ ---> 8ea191988a07
+Step 16/46 : COPY scripts/install_control.py /app/scripts/
+ ---> Using cache
+ ---> cee927008eb4
+Step 17/46 : COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
+ ---> Using cache
+ ---> bd265d6b5072
+Step 18/46 : COPY alembic.ini /app/alembic.ini
+ ---> Using cache
+ ---> 2a69f36c9c9d
+Step 19/46 : COPY migrations /app/migrations
+ ---> Using cache
+ ---> dc01a58c506b
+Step 20/46 : USER 10001:10001
+ ---> Using cache
+ ---> 923a8a3fe532
+Step 21/46 : CMD ["python", "-m", "src.brocker.mqtt_brocker"]
+ ---> Using cache
+ ---> 4fb828fb5feb
+Step 22/46 : FROM runtime AS ml
+ ---> 4fb828fb5feb
+Step 23/46 : USER root
+ ---> Using cache
+ ---> 74034a9fdb01
+Step 24/46 : COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
+ ---> Using cache
+ ---> 025b9d8ad9f8
+Step 25/46 : RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
+ ---> Using cache
+ ---> 25bd226a59f2
+Step 26/46 : COPY src/classifier/ml /app/src/classifier/ml
+ ---> Using cache
+ ---> ab01e9e9c74c
+Step 27/46 : COPY scripts/install_ml_model.py scripts/export_ml_telemetry.py /app/scripts/
+ ---> Using cache
+ ---> ed0a86d2db78
+Step 28/46 : USER 10001:10001
+ ---> Using cache
+ ---> 5563f96e56d3
+Step 29/46 : CMD ["python", "-m", "src.classifier.ml.worker"]
+ ---> Using cache
+ ---> a7de6f414fce
+Step 30/46 : FROM ml AS tests
+ ---> a7de6f414fce
+Step 31/46 : USER root
+ ---> Using cache
+ ---> 3a55f7b5a967
+Step 32/46 : COPY requirements/dev.txt /app/requirements/dev.txt
+ ---> Using cache
+ ---> 10284f1c3da7
+Step 33/46 : RUN pip install --no-cache-dir -r requirements/dev.txt
+ ---> Using cache
+ ---> 7acd04874fef
+Step 34/46 : COPY pyproject.toml /app/pyproject.toml
+ ---> Using cache
+ ---> 780a5d87e4d6
+Step 35/46 : COPY tests/*.py /app/tests/
+ ---> Using cache
+ ---> 223d093aa35b
+Step 36/46 : COPY src/classifier/research /app/src/classifier/research
+ ---> Using cache
+ ---> 1396125ea179
+Step 37/46 : COPY src/research_stand /app/src/research_stand
+ ---> Using cache
+ ---> 4b60c3749c1a
+Step 38/46 : COPY scripts/stand_state.py /app/scripts/stand_state.py
+ ---> Using cache
+ ---> 9557bf9db0c0
+Step 39/46 : COPY scripts/crypto_benchmark.py scripts/control_mutations.py scripts/control_system_probe.py scripts/control_security_probe.py /app/scripts/
+ ---> Using cache
+ ---> 824b37095c55
+Step 40/46 : COPY scripts/check_malformed_mqtt_recovery.py scripts/stage9_probe.py /app/scripts/
+ ---> c2e23d90fbe2
+Step 41/46 : COPY scripts/live_web_smoke.py scripts/dual_database_probe.py scripts/ml_system_probe.py scripts/policy_system_probe.py /app/scripts/
+ ---> d63b2af72888
+Step 42/46 : COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
+ ---> aa0ac2534ea4
+Step 43/46 : COPY deploy/compose.env.example /app/deploy/compose.env.example
+ ---> 70de2a0bc7d0
+Step 44/46 : USER 10001:10001
+ ---> Running in 1555d798dc19
+ ---> Removed intermediate container 1555d798dc19
+ ---> 786aad561a8a
+Step 45/46 : CMD ["python", "-m", "pytest", "-q", "-p", "no:cacheprovider"]
+ ---> Running in f94f0243bf1f
+ ---> Removed intermediate container f94f0243bf1f
+ ---> 8baf0d8bf427
+Step 46/46 : LABEL com.docker.compose.image.builder=classic
+ ---> Running in 4d80e9c0ab13
+ ---> Removed intermediate container 4d80e9c0ab13
+ ---> 9a656d269405
+Successfully built 9a656d269405
+Successfully tagged lcm-stage9-demo-20261111-tests:latest
+ Image lcm-stage9-demo-20261111-tests Built 
+ Image lcm-stage9-demo-20261111-tests Built 

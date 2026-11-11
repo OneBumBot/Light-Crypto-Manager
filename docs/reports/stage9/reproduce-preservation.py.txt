@@ -1,0 +1,18 @@
+import subprocess,json,hashlib
+from pathlib import Path
+base='d3cd219e39c719c6a53db057c58635f2b0410a8d'
+def git(*args):return subprocess.check_output(['git',*args])
+tracked=git('ls-tree','-r','--name-only',base).decode().splitlines()
+old_reports=[p for p in tracked if p.startswith('docs/reports/')]
+protected=[p for p in tracked if p.startswith(('src/web/ascon/','src/classifier/','src/research_stand/','src/policy/')) or p.startswith('src/device_control/') and p!='src/device_control/web.py' or p in ['src/crypto_profiles.py','src/telemetry.py','src/ingestion.py','src/outbox.py','src/outbox_relay.py','src/replay.py','src/security_events.py','src/mqtt_transport.py','uv.lock'] or p.startswith('migrations/') and p!='migrations/env.py']
+report_diff=[p for p in old_reports if Path(p).read_bytes()!=git('show',base+':'+p)]
+protected_diff=[p for p in protected if Path(p).read_bytes()!=git('show',base+':'+p)]
+private=json.loads(Path('.local-runtime/ground-truth-fix/archive-hashes.json').read_text())
+private_diff=[p for p,h in private.items() if not Path(p).is_file() or hashlib.sha256(Path(p).read_bytes()).hexdigest()!=h]
+old_volumes=json.loads(Path('docs/reports/stage8-fix/shutdown.json').read_text())['volumes_preserved']
+missing=[v for v in old_volumes if subprocess.run(['docker','volume','inspect',v],capture_output=True).returncode]
+main=git('rev-parse','main').decode().strip()
+result=dict(baseline=base,source_commit=git('rev-parse','HEAD').decode().strip(),historical_reports_checked=len(old_reports),historical_reports_changed=report_diff,protected_files_checked=len(protected),protected_files_changed=protected_diff,archived_private_files_checked=len(private),archived_private_files_changed=private_diff,stage8_fix_volumes_checked=len(old_volumes),old_volumes_missing=missing,old_volume_content_rehashed=False,old_runtime_volumes_mounted_by_new_projects=False,main_head=main,main_unchanged=main=='c352d817386a17fb244d3567b287af0412eed4e4',scientific_rf_if_training=False,synthetic_fits_in_preserved_tests=True,frozen_holdout_evaluation=False)
+Path('docs/reports/stage9/preservation.json').write_text(json.dumps(result,indent=2)+'\n')
+assert not report_diff and not protected_diff and not private_diff and not missing and result['main_unchanged']
+print(json.dumps(result,indent=2))

@@ -1,0 +1,30 @@
+{
+  "url": "http://127.0.0.1:32775",
+  "devices": [
+    {
+      "device_id": "alpha",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "0e706540-c5d2-49c7-abfc-83b446908957",
+      "sequence_reserved": 10000,
+      "command_sequence": 0
+    },
+    {
+      "device_id": "gamma",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "978bcf99-06df-4df0-bb16-2c5be5cccd90",
+      "sequence_reserved": 10000,
+      "command_sequence": 0
+    },
+    {
+      "device_id": "beta",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "dabbdd04-4008-4ef1-85f8-36e2325a1bda",
+      "sequence_reserved": 10000,
+      "command_sequence": 0
+    }
+  ],
+  "policy": "DRY_RUN",
+  "control": "MANUAL_AUTHORIZED_CONTROL",
+  "ml": "disabled; trusted_detector=false",
+  "accounts": "demo-admin / demo-operator / demo-viewer; passwords in private accounts directory"
+}

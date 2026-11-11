@@ -1,0 +1,81 @@
+{
+  "checks": [
+    "viewer_cannot_switch",
+    "operator_cannot_switch",
+    "csrf_required",
+    "unknown_device_rejected",
+    "gamma_unsupported_rejected",
+    "unknown_profile_rejected",
+    "three_real_fresh_aead_devices",
+    "mongo_history_identity",
+    "no_secrets_in_adapter",
+    "ml_absent_not_normal",
+    "policy_dry_run",
+    "no_automatic_policy_commands",
+    "isolated_network_volumes",
+    "cpu_ram_limits",
+    "three_active_agent_processes"
+  ],
+  "transitions_delta": 0,
+  "quiescent": {
+    "devices": [
+      {
+        "device_id": "alpha",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "8092ac60-1dcf-48f8-8bbe-71739f5c7673",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "gamma",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "5fb45f0a-4477-4852-842b-590e356059b9",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "beta",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "6005cadb-1e39-4d1e-ad14-a67103501a4b",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      }
+    ],
+    "outbox": {
+      "delivered": 214
+    },
+    "telemetry": {
+      "alpha": {
+        "accepted": 72,
+        "max_sequence": 72
+      },
+      "gamma": {
+        "accepted": 71,
+        "max_sequence": 71
+      },
+      "beta": {
+        "accepted": 71,
+        "max_sequence": 71
+      }
+    },
+    "transitions": 0,
+    "completed": 0,
+    "unknown": 0,
+    "authenticated_ack": 0,
+    "effective_receipts": 3,
+    "policy_modes": [
+      "DRY_RUN"
+    ],
+    "policy_applied": 0,
+    "counters": {
+      "delivered": 214,
+      "incoming": 214,
+      "accepted": 214
+    },
+    "migration": "0009_component_heartbeat",
+    "trusted_detector": false,
+    "active_publishers": "not_measured",
+    "mongo_managed": 214
+  },
+  "exit_code": 0
+}

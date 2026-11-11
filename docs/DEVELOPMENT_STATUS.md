@@ -1,3 +1,19 @@
+# Stage 9 — единый демонстрационный сценарий
+
+Ветка feature/system-integration-demo от d3cd219e39c719c6a53db057c58635f2b0410a8d.
+Объединены inventory/card/history/security/Policy/manual crypto UX в Flask.
+Новые bounded read-only snapshots и receiver heartbeat; прежние mutating control
+и Mongo history APIs переиспользованы. New/resume lab scripts создают отдельный
+lcm-stage9-demo-* project без reset прежних keys/nonce/SQL state.
+
+Проверки: STAGE9_RESULTS.md, browser desktop/mobile artifacts, реальные HTTP→HMAC→
+Device Agent→AEAD telemetry→PG/Mongo receipts, controlled service failures и
+поведенческие mutations. Полная регрессия 715 passed, 0 skipped; baseline 703
+сохранён, новые tests не заменяют проверку scientific IDS качества.
+
+Policy DRY_RUN, RF/IF RESEARCH/DEMO, trusted_detector=false. Этапы 10/7.5c не начаты.
+Ниже сохранены исторические итоги предыдущих этапов.
+
 # Этап 8-fix — MQTT input hardening
 
 Ветка `feature/adaptive-crypto-control-fix`, baseline `67eb3bcff937c2b0975b18444680e98af84e76fd`.

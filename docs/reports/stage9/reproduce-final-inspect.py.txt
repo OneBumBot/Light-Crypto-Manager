@@ -1,0 +1,25 @@
+import hashlib,json,platform,subprocess
+from pathlib import Path
+projects=['lcm-stage9-demo-20261111','lcm-stage9-demo-clean'];reports=[]
+core=['src/telemetry.py','src/crypto_profiles.py','src/brocker/mqtt_brocker.py','src/web/monitoring.py','src/system_status.py','src/device_control/server.py','src/device_control/protocol.py','src/device_control/agent.py']
+ui=['src/web/static/js/monitoring.js','src/web/static/css/monitoring.css','src/web/templates/monitoring.html','src/web/templates/base.html']
+for project in projects:
+ ids=subprocess.check_output(['docker','ps','-q','--filter','label=com.docker.compose.project='+project]).decode().split()
+ rows=json.loads(subprocess.check_output(['docker','inspect',*ids]));containers=[]
+ for row in rows:
+  cfg=row['HostConfig'];service=row['Config']['Labels']['com.docker.compose.service']
+  assert cfg['Memory'] and cfg['NanoCpus']
+  assert all(n.startswith(project+'_') for n in row['NetworkSettings']['Networks'])
+  for mount in row['Mounts']:
+   if mount['Type']=='volume' and mount.get('Name','').startswith('lcm-'):assert mount['Name'].startswith(project+'_')
+  containers.append(dict(service=service,image=row['Config']['Image'],image_id=row['Image'],memory_bytes=cfg['Memory'],nano_cpus=cfg['NanoCpus'],networks=list(row['NetworkSettings']['Networks']),volumes=[m.get('Name') for m in row['Mounts'] if m['Type']=='volume'],restart_count=row['RestartCount'],health=row['State'].get('Health',{}).get('Status')))
+ images={}
+ for target in ['runtime','tests']:
+  files=core+ui+([str(p) for p in Path('tests').glob('*.py')] if target=='tests' else [])
+  code="import json,platform,ssl,hashlib,cryptography,flask,importlib.metadata;from pathlib import Path;names="+repr(files)+";print(json.dumps(dict(python=platform.python_version(),architecture=platform.machine(),openssl=ssl.OPENSSL_VERSION,cryptography=cryptography.__version__,flask=importlib.metadata.version('Flask'),hashes={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in names})))"
+  value=json.loads(subprocess.check_output(['docker','run','--rm','--entrypoint','python',project+'-'+target,'-c',code]))
+  assert all(value['hashes'][p]==hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in files)
+  images[target]=value
+ reports.append(dict(project=project,containers=containers,images=images,active_agent_processes=sum(x['service'].startswith('device-') for x in containers)))
+Path('docs/reports/stage9/runtime-isolation.json').write_text(json.dumps(dict(source_commit=subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),docker_version=subprocess.check_output(['docker','version','--format','{{.Server.Version}}']).decode().strip(),projects=reports),indent=2)+'\n')
+print('PASS: both isolated projects, all runtime/test/UI source hashes, CPU/RAM and three active agents each')

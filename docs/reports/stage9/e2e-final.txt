@@ -1,0 +1,86 @@
+{
+  "checks": [
+    "viewer_cannot_switch",
+    "operator_cannot_switch",
+    "csrf_required",
+    "unknown_device_rejected",
+    "gamma_unsupported_rejected",
+    "unknown_profile_rejected",
+    "three_real_fresh_aead_devices",
+    "mongo_history_identity",
+    "no_secrets_in_adapter",
+    "ml_absent_not_normal",
+    "policy_dry_run",
+    "no_automatic_policy_commands",
+    "isolated_network_volumes",
+    "cpu_ram_limits",
+    "three_active_agent_processes",
+    "real_browser_e2e",
+    "real_tls_hmac_acl_forged_ack_negatives"
+  ],
+  "transitions_delta": 2,
+  "quiescent": {
+    "devices": [
+      {
+        "device_id": "beta",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "6005cadb-1e39-4d1e-ad14-a67103501a4b",
+        "sequence_reserved": 20000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "gamma",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "5fb45f0a-4477-4852-842b-590e356059b9",
+        "sequence_reserved": 20000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "alpha",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "e7de8762-5555-47b7-87e6-82e1be0fba69",
+        "sequence_reserved": 40000,
+        "command_sequence": 8
+      }
+    ],
+    "outbox": {
+      "delivered": 5195
+    },
+    "telemetry": {
+      "alpha": {
+        "accepted": 1681,
+        "max_sequence": 30039
+      },
+      "beta": {
+        "accepted": 1757,
+        "max_sequence": 11686
+      },
+      "gamma": {
+        "accepted": 1757,
+        "max_sequence": 11686
+      }
+    },
+    "transitions": 4,
+    "completed": 4,
+    "unknown": 0,
+    "authenticated_ack": 8,
+    "effective_receipts": 7,
+    "policy_modes": [
+      "DRY_RUN"
+    ],
+    "policy_applied": 0,
+    "counters": {
+      "delivered": 5195,
+      "accepted": 5195,
+      "replay": 1,
+      "delivery_retry": 6,
+      "incoming": 5196,
+      "delivery_error": 6
+    },
+    "migration": "0009_component_heartbeat",
+    "trusted_detector": false,
+    "active_publishers": "not_measured",
+    "mongo_managed": 5195
+  },
+  "exit_code": 0
+}

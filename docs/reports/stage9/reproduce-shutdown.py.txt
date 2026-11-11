@@ -1,0 +1,22 @@
+import json,time,subprocess,sys
+from pathlib import Path
+sys.path.insert(0,str(Path.cwd()))
+from scripts.stage9_common import Demo
+reports=[]
+for directory in ['/tmp/lcm-stage9-demo-20261111','/tmp/lcm-stage9-demo-clean']:
+ d=Demo(directory);d.run('stop','device-alpha','device-beta','device-gamma');end=time.monotonic()+45
+ while time.monotonic()<end:
+  state=d.probe('status');admitted=sum(v['accepted'] for v in state['telemetry'].values())
+  pending=sum(v for k,v in state['outbox'].items() if k!='delivered')
+  if pending==0 and state['mongo_managed']==admitted:break
+  time.sleep(.3)
+ else:raise AssertionError('Quiescent telemetry not fully delivered')
+ assert all(v['effective_profile']=='ascon-aead128-v1' for v in state['devices'])
+ assert state['unknown']==0 and state['transitions']==state['completed']
+ d.run('stop')
+ running=subprocess.check_output(['docker','ps','-q','--filter','label=com.docker.compose.project='+d.project]).decode().split()
+ volumes=subprocess.check_output(['docker','volume','ls','--filter','label=com.docker.compose.project='+d.project,'--format','{{.Name}}']).decode().split()
+ assert not running and volumes
+ reports.append(dict(project=d.project,final_quiescent=state,active_publishers_after_stop=0,running_containers=running,volumes_preserved=volumes,commands=d.commands,exit_code=0))
+Path('docs/reports/stage9/shutdown.json').write_text(json.dumps(dict(projects=reports,no_volume_deletion=True,exit_code=0),indent=2)+'\n')
+print(json.dumps(dict(projects=[dict(project=x['project'],pg_accepted=sum(v['accepted'] for v in x['final_quiescent']['telemetry'].values()),mongo=x['final_quiescent']['mongo_managed'],transitions=x['final_quiescent']['transitions'],acks=x['final_quiescent']['authenticated_ack'],receipts=x['final_quiescent']['effective_receipts']) for x in reports],running_containers=0,volume_deletion=False,exit_code=0),indent=2))

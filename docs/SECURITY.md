@@ -1,3 +1,23 @@
+# Stage 9: границы integrated dashboard
+
+Новые monitoring read routes требуют sensor_data permission и используют bounded
+PG snapshots; secrets/wire/control bodies не выдаются. UI строит DOM через
+textContent и safe DOM API; текущие values инвалидируются при backend failure.
+Admin confirmation не заменяет server RBAC/CSRF/capability/pending checks.
+Flask request handler не публикует MQTT; HMAC/ledger/nonce/effective authority прежние.
+
+Новая диагностическая component_heartbeats table не участвует в admission или
+авторизации. Receiver SUBACK/connection state передаётся независимым bounded SQL
+heartbeat; PG failure не приводит к ложному manual ACK. Worker/ML/Mongo failures
+показываются отдельно, отсутствие ML не является подтверждённой нормой.
+
+Stage 9 credentials генерируются заново в private directory; accounts setup получает
+пароли через stdin. Private keys не копируются в images; used-volume guard не
+позволяет молча создать пустой authority state при resume. Security свойства
+проверены целевыми PG/Chromium/mutation/live-TLS сценариями, не внешним pentest.
+См. STAGE9_RESULTS.md и STAGE9_DEMO_RUNBOOK.md. Ни auto ML control, ни scientific
+доверенности RF/IF, ни физического Raspberry Pi/production claim не добавлено.
+
 # Уточнение 8-fix: malformed telemetry
 
 Подтверждённый дефект parser позволял JSON list/object в outer profile вызвать

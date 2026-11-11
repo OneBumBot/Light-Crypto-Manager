@@ -1,0 +1,41 @@
+import subprocess,json,hashlib
+from pathlib import Path
+from datetime import datetime,timezone
+root=Path('docs/reports/stage9');baseline='d3cd219e39c719c6a53db057c58635f2b0410a8d'
+tracked=subprocess.check_output(['git','diff','--name-only',baseline]).decode().splitlines()
+untracked=subprocess.check_output(['git','ls-files','--others','--exclude-standard']).decode().splitlines()
+changed=sorted(set(tracked+untracked+[str(root/'manifest.json'),str(root/'changed-files.txt')]))
+(root/'changed-files.txt').write_text('\n'.join(changed)+'\n')
+checks=[]
+def add(name,command,exit_code,report,**extra):checks.append(dict(name=name,command=command,exit_code=exit_code,report=report,**extra))
+for suffix in ['20261111','clean']:
+ directory='/tmp/lcm-stage9-demo-'+suffix
+ add('prepare-'+suffix,['.venv/bin/python','-m','scripts.prepare_stage9_demo','--directory',directory,'--project','lcm-stage9-demo-'+suffix],0,'prepare.txt' if suffix=='20261111' else 'clean-prepare.txt')
+ add('start-'+suffix,['.venv/bin/python','-m','scripts.run_stage9_demo','--directory',directory,'start','--build'] if suffix=='clean' else ['.venv/bin/python','-m','scripts.run_stage9_demo','--directory',directory,'start'],0,'clean-start.txt' if suffix=='clean' else 'startup-stdin.txt')
+for stem,rc in [('startup',1),('startup-corrected',1)]:add(stem,['.venv/bin/python','-m','scripts.run_stage9_demo','--directory','/tmp/lcm-stage9-demo-20261111','start']+(['--build'] if stem=='startup' else []),rc,stem+'.txt',note='Preserved failed integration attempt; fixed without resetting used state')
+for stem,rc in [('e2e-backend',0),('e2e-browser-initial',1),('e2e-browser-retry',1),('e2e-final',0)]:
+ args=['.venv/bin/python','-m','scripts.check_stage9_demo','--directory','/tmp/lcm-stage9-demo-20261111','--output',str(root/(stem+'.json'))]
+ if stem!='e2e-backend':args+=['--browser']
+ add(stem,args,rc,stem+'.txt',recorded_source_commit=json.loads((root/(stem+'.json')).read_text()).get('git_commit') if (root/(stem+'.json')).exists() else 'see source evolution in STAGE9_RESULTS.md')
+for stem,profile in [('poison-ascon','ascon-aead128-v1'),('poison-aes','aes-128-gcm-v1')]:
+ args=['.venv/bin/python','-m','scripts.check_malformed_mqtt_recovery','--env-file','/tmp/lcm-stage9-demo-clean/compose.env','--output',str(root/(stem+'.json'))]
+ if profile!='ascon-aead128-v1':args+=['--profile',profile]
+ add(stem,args,0,stem+'.json',malformed_sent=17,rejected=17,accepted=3,duplicate_replay=1)
+add('extended-recovery',['.venv/bin/python','-m','scripts.check_control_system','--env-file','/tmp/lcm-stage9-demo-20261111/compose.env','--output',str(root/'recovery.json'),'--extended'],0,'recovery.json',scenarios=9,expected_failure_exit_codes=[1])
+for stem,suffix in [('resume','clean'),('resume-primary','20261111')]:
+ add(stem,['.venv/bin/python','-m','scripts.check_stage9_resume','--directory','/tmp/lcm-stage9-demo-'+suffix,'--output',str(root/(stem+'.json'))],0,stem+'.json')
+dc=lambda suffix:['docker','compose','--env-file','/tmp/lcm-stage9-demo-'+suffix+'/compose.env','-f','compose.yaml','-f','compose.control.yaml','-f','compose.stage9.yaml','--profile','control']
+for stem,suffix in [('regression-initial','clean'),('regression-final','clean'),('regression-presentation-final','20261111')]:
+ add(stem,dc(suffix)+['run','--rm','--no-deps','--entrypoint','python','tests','-m','pytest','-q','-p','no:cacheprovider'],0,stem+'.txt',passed=715,skipped=0)
+for stem,module,n,suffix in [('mutations-final','scripts.stage9_mutations',8,'20261111'),('preserved-mutations','scripts.control_mutations',14,'clean')]:
+ add(stem,dc(suffix)+['run','--rm','--no-deps','--entrypoint','python','tests','-m',module,'--output',('/tmp/stage9-final-mutations.json' if stem=='mutations-final' else '/tmp/stage8-preserved-mutations.json')],0,stem+'.json',behaviorally_detected=n,mutant_exit_codes=[1]*n)
+add('dom-mutations-final',['env','UV_CACHE_DIR=.cache/uv','PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers','uv','run','--no-project','--python','.venv/bin/python','--with','playwright==1.56.0','python','-m','scripts.stage9_dom_mutations','--directory','/tmp/lcm-stage9-demo-20261111','--output',str(root/'dom-mutations-final.json')],0,'dom-mutations-final.json',behaviorally_detected=3,mutant_exit_codes=[1]*3)
+add('static',['.venv/bin/ruff','check','src','scripts','tests'],0,'static-final.txt')
+add('secret-audit',['.venv/bin/python','/tmp/stage9-secrets.py'],0,'secret-audit.txt',method='known legacy/current secret/history/worktree/permissions + four image filesystems/configs')
+add('preservation',['.venv/bin/python','/tmp/stage9-preservation.py'],0,'preservation.json')
+add('isolation-source',['.venv/bin/python','/tmp/stage9-final-inspect.py'],0,'runtime-isolation.json')
+add('shutdown',['.venv/bin/python','/tmp/stage9-shutdown.py'],0,'shutdown.json',embedded_commands_in_report=True)
+reports={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(root.iterdir()) if p.is_file() and p.name!='manifest.json'}
+manifest=dict(schema_version=1,captured_at=datetime.now(timezone.utc).isoformat(),baseline=baseline,final_source_commit=subprocess.check_output(['git','rev-parse','HEAD']).decode().strip(),runtime_source_commit='4ce8e33609d1b37dd6d445760a3d6265bedf864a',branch='feature/system-integration-demo',projects=['lcm-stage9-demo-20261111','lcm-stage9-demo-clean'],checks=checks,changed_files=changed,report_sha256=reports,security_scope='manual control only; policy DRY_RUN; trusted_detector=false; no scientific RF/IF training; historical synthetic fits preserved',git_actions='local commits only; no push/merge/rebase/main changes')
+(root/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+print(len(reports),'report files,',len(checks),'check records,',len(changed),'changed files')

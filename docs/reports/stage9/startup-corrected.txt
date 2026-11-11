@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/run_stage9_demo.py", line 40, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/run_stage9_demo.py", line 33, in main
+    d.probe('setup')
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage9_common.py", line 31, in probe
+    r=self.run('run','--rm','--no-deps','-v',str(self.root/'accounts')+':/run/demo-accounts:ro',
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage9_common.py", line 27, in run
+    if check and r.returncode:raise RuntimeError('Demo command failed: '+args[0]+' ('+str(r.returncode)+'); '+r.stderr[-500:])
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Demo command failed: run (1); ^^^^^^^^
+  File "/usr/local/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/run/demo-accounts/admin.password'
+
+

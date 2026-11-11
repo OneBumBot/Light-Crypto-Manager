@@ -1,0 +1,504 @@
+{
+  "source_commit": "b18db3fa9d8dc4108027afc8948e573dd1591353",
+  "docker_version": "29.9.2",
+  "projects": [
+    {
+      "project": "lcm-stage9-demo-20261111",
+      "containers": [
+        {
+          "service": "device-gamma",
+          "image": "lcm-stage9-demo-20261111-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 134217728,
+          "nano_cpus": 250000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-20261111_gamma-control"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "device-beta",
+          "image": "lcm-stage9-demo-20261111-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 134217728,
+          "nano_cpus": 250000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-20261111_beta-control"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "outbox-relay",
+          "image": "lcm-stage9-demo-20261111-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 268435456,
+          "nano_cpus": 500000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-20261111_relay-storage-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "receiver",
+          "image": "lcm-stage9-demo-20261111-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 268435456,
+          "nano_cpus": 500000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-20261111_receiver-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "policy-worker",
+          "image": "lcm-stage9-demo-20261111-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 268435456,
+          "nano_cpus": 1000000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "web",
+          "image": "lcm-stage9-demo-20261111-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 268435456,
+          "nano_cpus": 500000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-20261111_web-security",
+            "lcm-stage9-demo-20261111_web-storage-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "device-alpha",
+          "image": "lcm-stage9-demo-20261111-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 134217728,
+          "nano_cpus": 250000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-20261111_alpha-control"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "control-worker",
+          "image": "lcm-stage9-demo-20261111-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 268435456,
+          "nano_cpus": 500000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-20261111_control-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "broker",
+          "image": "eclipse-mosquitto:2@sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+          "image_id": "sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+          "memory_bytes": 134217728,
+          "nano_cpus": 500000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-20261111_mosquitto-data",
+            "8653904d8f8729af9bebd22864d5afb867a9e7e5dd4cd8ea549cd2ae89e713f4",
+            "lcm-stage9-demo-20261111_broker-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "mongo",
+          "image": "mongo:8.0.17@sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+          "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+          "memory_bytes": 805306368,
+          "nano_cpus": 1000000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [
+            "f2f9db8430dbbebba214449bbaf6aa8fe7978bb6f343c75381b675f01495c625",
+            "lcm-stage9-demo-20261111_mongo-data",
+            "lcm-stage9-demo-20261111_mongo-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "postgres",
+          "image": "postgres:17-alpine@sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+          "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+          "memory_bytes": 805306368,
+          "nano_cpus": 1000000000,
+          "networks": [
+            "lcm-stage9-demo-20261111_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-20261111_postgres-data"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        }
+      ],
+      "images": {
+        "runtime": {
+          "python": "3.12.16",
+          "architecture": "x86_64",
+          "openssl": "OpenSSL 3.0.22 25 Aug 2026",
+          "cryptography": "50.0.2",
+          "flask": "3.1.3",
+          "hashes": {
+            "src/telemetry.py": "252d58b97c1db728e88394084ba57358aab12acab4ed3307cfc55a4df4694978",
+            "src/crypto_profiles.py": "e205615faaf3c8ab90812ebddd9d06d920f29e8db47cb58affc3dafdec53e6d3",
+            "src/brocker/mqtt_brocker.py": "77638383bd0a6facee27a8834799daa996fdd781aa88a9cdf5cbca66064a2625",
+            "src/web/monitoring.py": "a6a93d1bdeebbc8327f54081021d8d543bcf0b5fbce177ce6929abb1c6cc21aa",
+            "src/system_status.py": "8ce9264694b3ecbd3b734d194c9b3d6ceff091048262a5752d5983f3c3c3dd97",
+            "src/device_control/server.py": "471f46de98486d1c7b3474cbe485ca95fe10b7c1d8f0cd26d0e726bb0a2fd08a",
+            "src/device_control/protocol.py": "8b5a761654dbbeaf8f528f2da0f07d510f3f435d9ba629cbb8209a343e44784a",
+            "src/device_control/agent.py": "376d499029c86ece16dbc27624bd1ec0b2623c7e9cd8a220985804717a187d01",
+            "src/web/static/js/monitoring.js": "9b0840a0e81c36d4ab410cae351a8e00cc53ffcf42754eb415d20786604245d5",
+            "src/web/static/css/monitoring.css": "09830a5fc119b132a9de6267a9c887564c6baa65abcb966940c3f474b685efc9",
+            "src/web/templates/monitoring.html": "33e0b5952d678f6e1f9653900a83a434bbddc929557d07fb223a130ddcdfc53d",
+            "src/web/templates/base.html": "ad31101f182fd872ce44ac806d966027d75a9bd67ba52a5210366bbec447337f"
+          }
+        },
+        "tests": {
+          "python": "3.12.16",
+          "architecture": "x86_64",
+          "openssl": "OpenSSL 3.0.22 25 Aug 2026",
+          "cryptography": "50.0.2",
+          "flask": "3.1.3",
+          "hashes": {
+            "src/telemetry.py": "252d58b97c1db728e88394084ba57358aab12acab4ed3307cfc55a4df4694978",
+            "src/crypto_profiles.py": "e205615faaf3c8ab90812ebddd9d06d920f29e8db47cb58affc3dafdec53e6d3",
+            "src/brocker/mqtt_brocker.py": "77638383bd0a6facee27a8834799daa996fdd781aa88a9cdf5cbca66064a2625",
+            "src/web/monitoring.py": "a6a93d1bdeebbc8327f54081021d8d543bcf0b5fbce177ce6929abb1c6cc21aa",
+            "src/system_status.py": "8ce9264694b3ecbd3b734d194c9b3d6ceff091048262a5752d5983f3c3c3dd97",
+            "src/device_control/server.py": "471f46de98486d1c7b3474cbe485ca95fe10b7c1d8f0cd26d0e726bb0a2fd08a",
+            "src/device_control/protocol.py": "8b5a761654dbbeaf8f528f2da0f07d510f3f435d9ba629cbb8209a343e44784a",
+            "src/device_control/agent.py": "376d499029c86ece16dbc27624bd1ec0b2623c7e9cd8a220985804717a187d01",
+            "src/web/static/js/monitoring.js": "9b0840a0e81c36d4ab410cae351a8e00cc53ffcf42754eb415d20786604245d5",
+            "src/web/static/css/monitoring.css": "09830a5fc119b132a9de6267a9c887564c6baa65abcb966940c3f474b685efc9",
+            "src/web/templates/monitoring.html": "33e0b5952d678f6e1f9653900a83a434bbddc929557d07fb223a130ddcdfc53d",
+            "src/web/templates/base.html": "ad31101f182fd872ce44ac806d966027d75a9bd67ba52a5210366bbec447337f",
+            "tests/conftest.py": "0e2cde7f2f6881f30423292f74d374d0f5fc9e10693f010c090e7b8048bca496",
+            "tests/test_crypto.py": "0b0d722b99e33f9ef61ee2d04e184635945989372696aa200f4a0780d2a94c78",
+            "tests/test_runtime.py": "7e580b95583f13d3a8bc669457a6a146aff4fa5f4595a262d100e8f7c7309dbe",
+            "tests/test_postgres.py": "08d17c0c313d4331cdd2808007dc846733eda5f1f532e28a13fc157610c49679",
+            "tests/test_compose_support.py": "4982ef36dc19623bf587599025aa344cae9831d61043fb614f53273641fb3e08",
+            "tests/test_telemetry_security.py": "d3fbbc514b970724ac841462ca9a0abe8af7f8756bdfc83e26df3a96e72cb6c1",
+            "tests/web_helpers.py": "bc907fc1e979a2adcb0f7ab7579c88f6ee29098e8b1ded56e212fb665ca9eeec",
+            "tests/test_web_security.py": "e5ec736ebb39992f62fa9f49fefa816d3c8b692c1a5b42ec6df2342a5d27e407",
+            "tests/test_transport_security.py": "718ac11844c0276ba0e1ab2d8521d06ee2b31c33be35441998831cbba5eac53a",
+            "tests/test_migrations.py": "d61b3ae1b9baf3a8b939f893622af14489bdd3bcc0c7716b3b8d9f8e6d6be939",
+            "tests/test_outbox.py": "696ee58eaef28a174331b7b6192dc614715e94d64bbf1135154f4ad25a1f6ad3",
+            "tests/test_mongo_storage.py": "98d56c168cf5fa67fad2192c02388a303e01af480ff3300ef4e985e7e8210d59",
+            "tests/test_history_api.py": "f408882baab6888c41e093d66c1fad684635cf677171788a38beab6c619b8525",
+            "tests/test_ingestion_ack.py": "f145fd8712f331a949ef0588b2cde0c37a9cbb40dc3cfe8a9c86ac56750f6284",
+            "tests/ml_fixtures.py": "6baf416ce6e067fce55c1294c2ace8789b31ee107fde039294be6077283c007f",
+            "tests/test_ml_storage.py": "1ec8d8ad21b24d4e8d3e91763127f376d07aea2e7e44511f674aa433aefc7d0e",
+            "tests/test_ml_pipeline.py": "21e6b42462b19d8d3a660788e451474c2b48bdb7a944aad030c8cbed0ba9c882",
+            "tests/test_ml_inference.py": "e4f534644df6dc9aa6e0539252c1a4b7d9e4ecfb43f7f5922bffef3d569633c5",
+            "tests/test_ml_web.py": "350e04b5fd5606fed90f3d19e9e8313a86bf78e1e0c13a6747f592b41ea567b5",
+            "tests/test_policy_engine.py": "30dcc7cb2b6bf7f5eb107c8555e4f4b70908fd4d2b82ddc27cfa6752c595447b",
+            "tests/test_policy_storage.py": "f5ab1518b47f040a61ba6f0032b316df61103ea1e9633c9825bd47820bf13844",
+            "tests/test_policy_web.py": "091b7908ad8b6a43dda5289faa6ced231d76e6f0a39b006e160aff16e912f2f1",
+            "tests/test_research75.py": "7e3cb52bb0868d16a3e8767bb7479f9da9103b6c0fbd8f8331439d37181ac4d0",
+            "tests/test_research_stand.py": "be1beabb32cd4c22a8141de95fd2c9124f3f9ac48d02003360c149bee9a7c4bf",
+            "tests/test_ground_truth_hardening.py": "544c8b664be016e24804d30a4fc6d2e761ed7dc6e315c863cf44c17ac48ea93b",
+            "tests/test_aes_profiles.py": "2be84a08afc97ae147e8f27af4174cf4f28df46ef306683ff92c66616e0c2ed6",
+            "tests/test_control_protocol.py": "57610672657a121aa30e5deae3b01d3643e701e4adf74ae67fb60166bec1d86c",
+            "tests/test_control_storage.py": "94a9b381bd23f380615c1250609369be3e410ec1e7060200e98e842913f0b902",
+            "tests/test_control_recovery.py": "47ab016ade52ff284b85f68ae603c6d4bf61afd708a6d21a58505109c797a513",
+            "tests/test_control_migration.py": "c8c2e7e7e033b525f86496328d3e260f2277082382d7bed9686073cfc2c6944b",
+            "tests/test_monitoring.py": "b6f7334dd32c5353817116a78a40503335ea538285c30eea3ce25e096c4c60e9"
+          }
+        }
+      },
+      "active_agent_processes": 3
+    },
+    {
+      "project": "lcm-stage9-demo-clean",
+      "containers": [
+        {
+          "service": "control-worker",
+          "image": "lcm-stage9-demo-clean-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 268435456,
+          "nano_cpus": 500000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-clean_control-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "web",
+          "image": "lcm-stage9-demo-clean-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 268435456,
+          "nano_cpus": 500000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-clean_web-security",
+            "lcm-stage9-demo-clean_web-storage-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "outbox-relay",
+          "image": "lcm-stage9-demo-clean-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 268435456,
+          "nano_cpus": 500000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-clean_relay-storage-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "policy-worker",
+          "image": "lcm-stage9-demo-clean-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 268435456,
+          "nano_cpus": 1000000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "device-gamma",
+          "image": "lcm-stage9-demo-clean-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 134217728,
+          "nano_cpus": 250000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-clean_gamma-control"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "device-beta",
+          "image": "lcm-stage9-demo-clean-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 134217728,
+          "nano_cpus": 250000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-clean_beta-control"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "device-alpha",
+          "image": "lcm-stage9-demo-clean-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 134217728,
+          "nano_cpus": 250000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-clean_alpha-control"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "receiver",
+          "image": "lcm-stage9-demo-clean-runtime",
+          "image_id": "sha256:fa3dd43720ff2b2180ddb55133c4aa560f9edfb3dba7f1629c4fae10cfeedcc6",
+          "memory_bytes": 268435456,
+          "nano_cpus": 500000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-clean_receiver-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "broker",
+          "image": "eclipse-mosquitto:2@sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+          "image_id": "sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+          "memory_bytes": 134217728,
+          "nano_cpus": 500000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-clean_mosquitto-data",
+            "6c127b022e8c1075c85f193846eadd66c549f6878d197a558d71333936f1a1db",
+            "lcm-stage9-demo-clean_broker-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "mongo",
+          "image": "mongo:8.0.17@sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+          "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+          "memory_bytes": 805306368,
+          "nano_cpus": 1000000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [
+            "b3d623cfe5e028327afe4669af470dbc0950b2773df18f20bf8080b9a65fcc71",
+            "lcm-stage9-demo-clean_mongo-data",
+            "lcm-stage9-demo-clean_mongo-security"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        },
+        {
+          "service": "postgres",
+          "image": "postgres:17-alpine@sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+          "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+          "memory_bytes": 805306368,
+          "nano_cpus": 1000000000,
+          "networks": [
+            "lcm-stage9-demo-clean_default"
+          ],
+          "volumes": [
+            "lcm-stage9-demo-clean_postgres-data"
+          ],
+          "restart_count": 0,
+          "health": "healthy"
+        }
+      ],
+      "images": {
+        "runtime": {
+          "python": "3.12.16",
+          "architecture": "x86_64",
+          "openssl": "OpenSSL 3.0.22 25 Aug 2026",
+          "cryptography": "50.0.2",
+          "flask": "3.1.3",
+          "hashes": {
+            "src/telemetry.py": "252d58b97c1db728e88394084ba57358aab12acab4ed3307cfc55a4df4694978",
+            "src/crypto_profiles.py": "e205615faaf3c8ab90812ebddd9d06d920f29e8db47cb58affc3dafdec53e6d3",
+            "src/brocker/mqtt_brocker.py": "77638383bd0a6facee27a8834799daa996fdd781aa88a9cdf5cbca66064a2625",
+            "src/web/monitoring.py": "a6a93d1bdeebbc8327f54081021d8d543bcf0b5fbce177ce6929abb1c6cc21aa",
+            "src/system_status.py": "8ce9264694b3ecbd3b734d194c9b3d6ceff091048262a5752d5983f3c3c3dd97",
+            "src/device_control/server.py": "471f46de98486d1c7b3474cbe485ca95fe10b7c1d8f0cd26d0e726bb0a2fd08a",
+            "src/device_control/protocol.py": "8b5a761654dbbeaf8f528f2da0f07d510f3f435d9ba629cbb8209a343e44784a",
+            "src/device_control/agent.py": "376d499029c86ece16dbc27624bd1ec0b2623c7e9cd8a220985804717a187d01",
+            "src/web/static/js/monitoring.js": "9b0840a0e81c36d4ab410cae351a8e00cc53ffcf42754eb415d20786604245d5",
+            "src/web/static/css/monitoring.css": "09830a5fc119b132a9de6267a9c887564c6baa65abcb966940c3f474b685efc9",
+            "src/web/templates/monitoring.html": "33e0b5952d678f6e1f9653900a83a434bbddc929557d07fb223a130ddcdfc53d",
+            "src/web/templates/base.html": "ad31101f182fd872ce44ac806d966027d75a9bd67ba52a5210366bbec447337f"
+          }
+        },
+        "tests": {
+          "python": "3.12.16",
+          "architecture": "x86_64",
+          "openssl": "OpenSSL 3.0.22 25 Aug 2026",
+          "cryptography": "50.0.2",
+          "flask": "3.1.3",
+          "hashes": {
+            "src/telemetry.py": "252d58b97c1db728e88394084ba57358aab12acab4ed3307cfc55a4df4694978",
+            "src/crypto_profiles.py": "e205615faaf3c8ab90812ebddd9d06d920f29e8db47cb58affc3dafdec53e6d3",
+            "src/brocker/mqtt_brocker.py": "77638383bd0a6facee27a8834799daa996fdd781aa88a9cdf5cbca66064a2625",
+            "src/web/monitoring.py": "a6a93d1bdeebbc8327f54081021d8d543bcf0b5fbce177ce6929abb1c6cc21aa",
+            "src/system_status.py": "8ce9264694b3ecbd3b734d194c9b3d6ceff091048262a5752d5983f3c3c3dd97",
+            "src/device_control/server.py": "471f46de98486d1c7b3474cbe485ca95fe10b7c1d8f0cd26d0e726bb0a2fd08a",
+            "src/device_control/protocol.py": "8b5a761654dbbeaf8f528f2da0f07d510f3f435d9ba629cbb8209a343e44784a",
+            "src/device_control/agent.py": "376d499029c86ece16dbc27624bd1ec0b2623c7e9cd8a220985804717a187d01",
+            "src/web/static/js/monitoring.js": "9b0840a0e81c36d4ab410cae351a8e00cc53ffcf42754eb415d20786604245d5",
+            "src/web/static/css/monitoring.css": "09830a5fc119b132a9de6267a9c887564c6baa65abcb966940c3f474b685efc9",
+            "src/web/templates/monitoring.html": "33e0b5952d678f6e1f9653900a83a434bbddc929557d07fb223a130ddcdfc53d",
+            "src/web/templates/base.html": "ad31101f182fd872ce44ac806d966027d75a9bd67ba52a5210366bbec447337f",
+            "tests/conftest.py": "0e2cde7f2f6881f30423292f74d374d0f5fc9e10693f010c090e7b8048bca496",
+            "tests/test_crypto.py": "0b0d722b99e33f9ef61ee2d04e184635945989372696aa200f4a0780d2a94c78",
+            "tests/test_runtime.py": "7e580b95583f13d3a8bc669457a6a146aff4fa5f4595a262d100e8f7c7309dbe",
+            "tests/test_postgres.py": "08d17c0c313d4331cdd2808007dc846733eda5f1f532e28a13fc157610c49679",
+            "tests/test_compose_support.py": "4982ef36dc19623bf587599025aa344cae9831d61043fb614f53273641fb3e08",
+            "tests/test_telemetry_security.py": "d3fbbc514b970724ac841462ca9a0abe8af7f8756bdfc83e26df3a96e72cb6c1",
+            "tests/web_helpers.py": "bc907fc1e979a2adcb0f7ab7579c88f6ee29098e8b1ded56e212fb665ca9eeec",
+            "tests/test_web_security.py": "e5ec736ebb39992f62fa9f49fefa816d3c8b692c1a5b42ec6df2342a5d27e407",
+            "tests/test_transport_security.py": "718ac11844c0276ba0e1ab2d8521d06ee2b31c33be35441998831cbba5eac53a",
+            "tests/test_migrations.py": "d61b3ae1b9baf3a8b939f893622af14489bdd3bcc0c7716b3b8d9f8e6d6be939",
+            "tests/test_outbox.py": "696ee58eaef28a174331b7b6192dc614715e94d64bbf1135154f4ad25a1f6ad3",
+            "tests/test_mongo_storage.py": "98d56c168cf5fa67fad2192c02388a303e01af480ff3300ef4e985e7e8210d59",
+            "tests/test_history_api.py": "f408882baab6888c41e093d66c1fad684635cf677171788a38beab6c619b8525",
+            "tests/test_ingestion_ack.py": "f145fd8712f331a949ef0588b2cde0c37a9cbb40dc3cfe8a9c86ac56750f6284",
+            "tests/ml_fixtures.py": "6baf416ce6e067fce55c1294c2ace8789b31ee107fde039294be6077283c007f",
+            "tests/test_ml_storage.py": "1ec8d8ad21b24d4e8d3e91763127f376d07aea2e7e44511f674aa433aefc7d0e",
+            "tests/test_ml_pipeline.py": "21e6b42462b19d8d3a660788e451474c2b48bdb7a944aad030c8cbed0ba9c882",
+            "tests/test_ml_inference.py": "e4f534644df6dc9aa6e0539252c1a4b7d9e4ecfb43f7f5922bffef3d569633c5",
+            "tests/test_ml_web.py": "350e04b5fd5606fed90f3d19e9e8313a86bf78e1e0c13a6747f592b41ea567b5",
+            "tests/test_policy_engine.py": "30dcc7cb2b6bf7f5eb107c8555e4f4b70908fd4d2b82ddc27cfa6752c595447b",
+            "tests/test_policy_storage.py": "f5ab1518b47f040a61ba6f0032b316df61103ea1e9633c9825bd47820bf13844",
+            "tests/test_policy_web.py": "091b7908ad8b6a43dda5289faa6ced231d76e6f0a39b006e160aff16e912f2f1",
+            "tests/test_research75.py": "7e3cb52bb0868d16a3e8767bb7479f9da9103b6c0fbd8f8331439d37181ac4d0",
+            "tests/test_research_stand.py": "be1beabb32cd4c22a8141de95fd2c9124f3f9ac48d02003360c149bee9a7c4bf",
+            "tests/test_ground_truth_hardening.py": "544c8b664be016e24804d30a4fc6d2e761ed7dc6e315c863cf44c17ac48ea93b",
+            "tests/test_aes_profiles.py": "2be84a08afc97ae147e8f27af4174cf4f28df46ef306683ff92c66616e0c2ed6",
+            "tests/test_control_protocol.py": "57610672657a121aa30e5deae3b01d3643e701e4adf74ae67fb60166bec1d86c",
+            "tests/test_control_storage.py": "94a9b381bd23f380615c1250609369be3e410ec1e7060200e98e842913f0b902",
+            "tests/test_control_recovery.py": "47ab016ade52ff284b85f68ae603c6d4bf61afd708a6d21a58505109c797a513",
+            "tests/test_control_migration.py": "c8c2e7e7e033b525f86496328d3e260f2277082382d7bed9686073cfc2c6944b",
+            "tests/test_monitoring.py": "b6f7334dd32c5353817116a78a40503335ea538285c30eea3ce25e096c4c60e9"
+          }
+        }
+      },
+      "active_agent_processes": 3
+    }
+  ]
+}

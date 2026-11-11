@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_stage9_demo.py", line 99, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_stage9_demo.py", line 73, in main
+    if r.returncode:raise RuntimeError('Browser E2E failed; see '+str(a.output.with_suffix('.browser.txt')))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Browser E2E failed; see docs/reports/stage9/e2e-browser-initial.browser.txt

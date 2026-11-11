@@ -1,3 +1,17 @@
+# Дополнение Stage 9: единый локальный стенд
+
+Используются compose.yaml + compose.control.yaml + compose.stage9.yaml;
+project строго lcm-stage9-demo-*. Prepare создаёт новые credentials и 3 устройства,
+run_stage9_demo start --build применяет migrations до 0009, запускает TLS/PG/Mongo/
+receiver/relay/web/Policy DRY_RUN/Control MANUAL_AUTHORIZED_CONTROL и agents.
+ML выключен явно; web читает PG snapshots вместо собственного MQTT buffer.
+Loopback ports выделяются Docker, URL выводится после реальной telemetry readiness.
+
+Безопасные new/resume/stop commands, private account provisioning через stdin,
+CPU/RAM/log limits и missing-volume guard: STAGE9_DEMO_RUNBOOK.md.
+Stop сохраняет volumes. Исторические Compose инструкции ниже относятся к прошлым
+профилям и не заменяют Stage 9 runbook.
+
 # Этап 7: optional Policy Worker (DRY_RUN)
 
 Используйте существующие env/project/volumes/ключи/счётчики. Примените additive

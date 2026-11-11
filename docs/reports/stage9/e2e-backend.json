@@ -1,0 +1,498 @@
+{
+  "project": "lcm-stage9-demo-20261111",
+  "git_commit": "d2b438140c87e67a00a207eb3753d9487b105f6e",
+  "before": {
+    "devices": [
+      {
+        "device_id": "alpha",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "8092ac60-1dcf-48f8-8bbe-71739f5c7673",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "gamma",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "5fb45f0a-4477-4852-842b-590e356059b9",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "beta",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "6005cadb-1e39-4d1e-ad14-a67103501a4b",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      }
+    ],
+    "outbox": {
+      "delivered": 192
+    },
+    "telemetry": {
+      "alpha": {
+        "accepted": 64,
+        "max_sequence": 64
+      },
+      "gamma": {
+        "accepted": 64,
+        "max_sequence": 64
+      },
+      "beta": {
+        "accepted": 64,
+        "max_sequence": 64
+      }
+    },
+    "transitions": 0,
+    "completed": 0,
+    "unknown": 0,
+    "authenticated_ack": 0,
+    "effective_receipts": 3,
+    "policy_modes": [
+      "DRY_RUN"
+    ],
+    "policy_applied": 0,
+    "counters": {
+      "delivered": 192,
+      "incoming": 192,
+      "accepted": 192
+    },
+    "migration": "0009_component_heartbeat",
+    "trusted_detector": false,
+    "active_publishers": "not_measured",
+    "mongo_managed": 192
+  },
+  "after": {
+    "devices": [
+      {
+        "device_id": "alpha",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "8092ac60-1dcf-48f8-8bbe-71739f5c7673",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "gamma",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "5fb45f0a-4477-4852-842b-590e356059b9",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "beta",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "6005cadb-1e39-4d1e-ad14-a67103501a4b",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      }
+    ],
+    "outbox": {
+      "delivered": 207,
+      "pending": 3
+    },
+    "telemetry": {
+      "alpha": {
+        "accepted": 70,
+        "max_sequence": 70
+      },
+      "gamma": {
+        "accepted": 70,
+        "max_sequence": 70
+      },
+      "beta": {
+        "accepted": 70,
+        "max_sequence": 70
+      }
+    },
+    "transitions": 0,
+    "completed": 0,
+    "unknown": 0,
+    "authenticated_ack": 0,
+    "effective_receipts": 3,
+    "policy_modes": [
+      "DRY_RUN"
+    ],
+    "policy_applied": 0,
+    "counters": {
+      "delivered": 207,
+      "incoming": 210,
+      "accepted": 210
+    },
+    "migration": "0009_component_heartbeat",
+    "trusted_detector": false,
+    "active_publishers": "not_measured",
+    "mongo_managed": 207
+  },
+  "quiescent": {
+    "devices": [
+      {
+        "device_id": "alpha",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "8092ac60-1dcf-48f8-8bbe-71739f5c7673",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "gamma",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "5fb45f0a-4477-4852-842b-590e356059b9",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "beta",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "6005cadb-1e39-4d1e-ad14-a67103501a4b",
+        "sequence_reserved": 10000,
+        "command_sequence": 0
+      }
+    ],
+    "outbox": {
+      "delivered": 214
+    },
+    "telemetry": {
+      "alpha": {
+        "accepted": 72,
+        "max_sequence": 72
+      },
+      "gamma": {
+        "accepted": 71,
+        "max_sequence": 71
+      },
+      "beta": {
+        "accepted": 71,
+        "max_sequence": 71
+      }
+    },
+    "transitions": 0,
+    "completed": 0,
+    "unknown": 0,
+    "authenticated_ack": 0,
+    "effective_receipts": 3,
+    "policy_modes": [
+      "DRY_RUN"
+    ],
+    "policy_applied": 0,
+    "counters": {
+      "delivered": 214,
+      "incoming": 214,
+      "accepted": 214
+    },
+    "migration": "0009_component_heartbeat",
+    "trusted_detector": false,
+    "active_publishers": "not_measured",
+    "mongo_managed": 214
+  },
+  "active_publishers_measured": 3,
+  "infrastructure": [
+    {
+      "service": "device-beta",
+      "image": "lcm-stage9-demo-20261111-runtime",
+      "image_id": "sha256:040b44861a88e430a19ba3a571ceefec9f161d237565489072e22aaf23b6e96a",
+      "memory": 134217728,
+      "nano_cpus": 250000000,
+      "restart_count": 0
+    },
+    {
+      "service": "device-alpha",
+      "image": "lcm-stage9-demo-20261111-runtime",
+      "image_id": "sha256:040b44861a88e430a19ba3a571ceefec9f161d237565489072e22aaf23b6e96a",
+      "memory": 134217728,
+      "nano_cpus": 250000000,
+      "restart_count": 0
+    },
+    {
+      "service": "device-gamma",
+      "image": "lcm-stage9-demo-20261111-runtime",
+      "image_id": "sha256:040b44861a88e430a19ba3a571ceefec9f161d237565489072e22aaf23b6e96a",
+      "memory": 134217728,
+      "nano_cpus": 250000000,
+      "restart_count": 0
+    },
+    {
+      "service": "control-worker",
+      "image": "lcm-stage9-demo-20261111-runtime",
+      "image_id": "sha256:040b44861a88e430a19ba3a571ceefec9f161d237565489072e22aaf23b6e96a",
+      "memory": 268435456,
+      "nano_cpus": 500000000,
+      "restart_count": 0
+    },
+    {
+      "service": "web",
+      "image": "lcm-stage9-demo-20261111-runtime",
+      "image_id": "sha256:040b44861a88e430a19ba3a571ceefec9f161d237565489072e22aaf23b6e96a",
+      "memory": 268435456,
+      "nano_cpus": 500000000,
+      "restart_count": 0
+    },
+    {
+      "service": "outbox-relay",
+      "image": "lcm-stage9-demo-20261111-runtime",
+      "image_id": "sha256:040b44861a88e430a19ba3a571ceefec9f161d237565489072e22aaf23b6e96a",
+      "memory": 268435456,
+      "nano_cpus": 500000000,
+      "restart_count": 0
+    },
+    {
+      "service": "receiver",
+      "image": "lcm-stage9-demo-20261111-runtime",
+      "image_id": "sha256:040b44861a88e430a19ba3a571ceefec9f161d237565489072e22aaf23b6e96a",
+      "memory": 268435456,
+      "nano_cpus": 500000000,
+      "restart_count": 0
+    },
+    {
+      "service": "policy-worker",
+      "image": "lcm-stage9-demo-20261111-runtime",
+      "image_id": "sha256:040b44861a88e430a19ba3a571ceefec9f161d237565489072e22aaf23b6e96a",
+      "memory": 268435456,
+      "nano_cpus": 1000000000,
+      "restart_count": 0
+    },
+    {
+      "service": "broker",
+      "image": "eclipse-mosquitto:2@sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+      "image_id": "sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+      "memory": 134217728,
+      "nano_cpus": 500000000,
+      "restart_count": 0
+    },
+    {
+      "service": "mongo",
+      "image": "mongo:8.0.17@sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "memory": 805306368,
+      "nano_cpus": 1000000000,
+      "restart_count": 0
+    },
+    {
+      "service": "postgres",
+      "image": "postgres:17-alpine@sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "memory": 805306368,
+      "nano_cpus": 1000000000,
+      "restart_count": 0
+    }
+  ],
+  "checks": [
+    "viewer_cannot_switch",
+    "operator_cannot_switch",
+    "csrf_required",
+    "unknown_device_rejected",
+    "gamma_unsupported_rejected",
+    "unknown_profile_rejected",
+    "three_real_fresh_aead_devices",
+    "mongo_history_identity",
+    "no_secrets_in_adapter",
+    "ml_absent_not_normal",
+    "policy_dry_run",
+    "no_automatic_policy_commands",
+    "isolated_network_volumes",
+    "cpu_ram_limits",
+    "three_active_agent_processes"
+  ],
+  "browser_report": "not_measured",
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage9-demo-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage9-demo-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage9_probe",
+        "ready"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage9-demo-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage9_probe",
+        "status"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage9-demo-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage9_probe",
+        "status"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage9-demo-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "device-alpha",
+        "device-beta",
+        "device-gamma"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage9-demo-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage9_probe",
+        "status"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage9-demo-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "device-alpha",
+        "device-beta",
+        "device-gamma"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "exit_code": 0
+}

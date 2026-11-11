@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/run_stage9_demo.py", line 37, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/run_stage9_demo.py", line 28, in main
+    d.run('up','-d','--wait','--wait-timeout','120','postgres','mongo','broker','receiver','outbox-relay','web','policy-worker')
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage9_common.py", line 25, in run
+    if check and r.returncode:raise RuntimeError('Demo command failed: '+args[0]+' ('+str(r.returncode)+'); '+r.stderr[-500:])
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Demo command failed: up (1); m-stage9-demo-20261111-security-init-1 Error service "security-init" didn't complete successfully: exit 1
+ Container lcm-stage9-demo-20261111-storage-init-1 Exited 
+ Container lcm-stage9-demo-20261111-mongo-1 Starting 
+ Container lcm-stage9-demo-20261111-mongo-1 Started 
+ Container lcm-stage9-demo-20261111-postgres-1 Healthy 
+ Container lcm-stage9-demo-20261111-init-db-1 Starting 
+ Container lcm-stage9-demo-20261111-init-db-1 Started 
+service "security-init" didn't complete successfully: exit 1
+

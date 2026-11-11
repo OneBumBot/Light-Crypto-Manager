@@ -1,3 +1,16 @@
+# Текущая интеграция: Stage 9
+
+Flask `/` объединяет inventory, PG-accepted telemetry, Mongo history, security
+observations, Policy DRY_RUN и существующий manual control. Новые read-only shapes
+`/api/monitoring` и `/api/monitoring/<device>` не являются control authority.
+Effective берётся из существующего PG state + matching durable receipt, не ACK.
+
+Миграция 0009 добавляет только receiver diagnostic heartbeat. Остальные authority
+и протоколы неизменны. Source/status/freshness mapping, API bounds и flow diagram:
+STAGE9_SYSTEM_ARCHITECTURE.md. Демонстрация: STAGE9_DEMO_RUNBOOK.md.
+RF/IF RESEARCH/DEMO, trusted_detector=false; Policy не создаёт live commands.
+Историческое описание ниже сохранено.
+
 # Текущая архитектура — дополнение этапа 8
 
 Два telemetry AEAD: Ascon-AEAD128 и AES-128-GCM, telemetry v2 сохранён.

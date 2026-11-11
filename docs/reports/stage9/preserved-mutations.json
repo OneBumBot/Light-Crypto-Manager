@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "environment": "temporary copies; real isolated PostgreSQL schemas; public fixture keys",
+  "baseline_exit": 0,
+  "baseline_output": "........................................................................ [ 40%]\n........................................................................ [ 81%]\n................................                                         [100%]\n176 passed in 4.47s\n",
+  "results": [
+    {
+      "injected_defect": "unhashable_outer_profile",
+      "test": "test_telemetry_security.py::test_outer_profile_exact_rejection",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "est_telemetry_security.py:30: in test_outer_profile_exact_rejection\n    decode_packet(canonical(packet), TOPIC, registry)\nsrc/telemetry.py:136: in decode_packet\n    or packet['profile'] not in BY_ALGORITHM): reject()\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unhashable type: 'dict'\n__________ test_outer_profile_exact_rejection[value9-aes-128-gcm-v1] ___________\ntests/test_telemetry_security.py:30: in test_outer_profile_exact_rejection\n    decode_packet(canonical(packet), TOPIC, registry)\nsrc/telemetry.py:136: in decode_packet\n    or packet['profile'] not in BY_ALGORITHM): reject()\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unhashable type: 'dict'\n=========================== short test summary info ============================\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value6-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value6-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value7-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value7-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value8-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value8-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value9-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value9-aes-128-gcm-v1]\n8 failed, 14 passed in 0.23s\n"
+    },
+    {
+      "injected_defect": "parser_raises_type_error",
+      "test": "test_telemetry_security.py::test_outer_profile_exact_rejection",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "s/test_telemetry_security.py::test_outer_profile_exact_rejection[0-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[0-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[1-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[1-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[1.5-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[1.5-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value6-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value6-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value7-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value7-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value8-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value8-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value9-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value9-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[unknown-profile-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[unknown-profile-aes-128-gcm-v1]\n22 failed in 0.28s\n"
+    },
+    {
+      "injected_defect": "missing_profile_binding",
+      "test": "test_telemetry_security.py::test_aad_profile_binding_before_decrypt",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________________ test_aad_profile_binding_before_decrypt ____________________\ntests/test_telemetry_security.py:63: in test_aad_profile_binding_before_decrypt\n    with pytest.raises(InvalidTelemetry):decode_packet(canonical(packet),TOPIC,registry)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE InvalidTelemetry\n=========================== short test summary info ============================\nFAILED tests/test_telemetry_security.py::test_aad_profile_binding_before_decrypt\n1 failed in 0.25s\n"
+    },
+    {
+      "injected_defect": "missing_key_reference",
+      "test": "test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "T RAISE ValueError\n_ test_authenticated_malformed_command_preserves_sqlite[value6-key_reference] __\ntests/test_control_protocol.py:143: in test_authenticated_malformed_command_preserves_sqlite\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n_ test_authenticated_malformed_command_preserves_sqlite[value7-key_reference] __\ntests/test_control_protocol.py:143: in test_authenticated_malformed_command_preserves_sqlite\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[None-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[True-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[False-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[0-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[1.5-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[value5-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[value6-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[value7-key_reference]\n8 failed, 40 passed in 0.65s\n"
+    },
+    {
+      "injected_defect": "ack_after_pg_failure",
+      "test": "test_ingestion_ack.py::test_pg_failure_disconnects_without_ack",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________________ test_pg_failure_disconnects_without_ack ____________________\ntests/test_ingestion_ack.py:21: in test_pg_failure_disconnects_without_ack\n    client.ack.assert_not_called(); client.disconnect.assert_called_once()\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/usr/local/lib/python3.12/unittest/mock.py:910: in assert_not_called\n    raise AssertionError(msg)\nE   AssertionError: Expected 'ack' to not have been called. Called 1 times.\nE   Calls: [call(17, 1)].\n------------------------------ Captured log call -------------------------------\nERROR    src.brocker.mqtt_brocker:mqtt_brocker.py:84 MQTT packet processing failed (RuntimeError)\n=========================== short test summary info ============================\nFAILED tests/test_ingestion_ack.py::test_pg_failure_disconnects_without_ack\n1 failed in 0.10s\n"
+    },
+    {
+      "injected_defect": "ignore_control_mac",
+      "test": "test_control_protocol.py::test_control_authenticated_direction_and_device",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________ test_control_authenticated_direction_and_device ________________\ntests/test_control_protocol.py:27: in test_control_authenticated_direction_and_device\n    with pytest.raises(ValueError):open_message(raw,key,direction,device,t)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_protocol.py::test_control_authenticated_direction_and_device\n1 failed in 0.03s\n"
+    },
+    {
+      "injected_defect": "disable_control_replay",
+      "test": "test_control_protocol.py::test_monotonic_replay_gap_rejected",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________________ test_monotonic_replay_gap_rejected ______________________\ntests/test_control_protocol.py:94: in test_monotonic_replay_gap_rejected\n    with pytest.raises(ValueError):s.execute(lower,conf())\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_protocol.py::test_monotonic_replay_gap_rejected - F...\n1 failed in 0.05s\n"
+    },
+    {
+      "injected_defect": "premature_effective",
+      "test": "test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____ test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade ____\ntests/test_control_storage.py:63: in test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade\n    with web.db.engine.connect() as c:assert c.scalar(select(m.devices.c.effective_profile))==ASCON\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError: assert 'aes-128-gcm-v1' == 'ascon-aead128-v1'\nE     \nE     - ascon-aead128-v1\nE     + aes-128-gcm-v1\n=========================== short test summary info ============================\nFAILED tests/test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade\n1 failed in 0.57s\n"
+    },
+    {
+      "injected_defect": "missing_device_binding",
+      "test": "test_control_protocol.py::test_authenticated_claimed_device_mismatch",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n__________________ test_authenticated_claimed_device_mismatch __________________\ntests/test_control_protocol.py:104: in test_authenticated_claimed_device_mismatch\n    with pytest.raises(ValueError):open_message(raw,KEY,'controller','beta',topic('beta','controller'))\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_protocol.py::test_authenticated_claimed_device_mismatch\n1 failed in 0.03s\n"
+    },
+    {
+      "injected_defect": "unsupported_capability",
+      "test": "test_control_storage.py::test_capability_rejection_creates_no_command",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________ test_capability_rejection_creates_no_command _________________\ntests/test_control_storage.py:149: in test_capability_rejection_creates_no_command\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_storage.py::test_capability_rejection_creates_no_command\n1 failed in 0.53s\n"
+    },
+    {
+      "injected_defect": "repeat_nonce_range",
+      "test": "test_control_recovery.py::test_server_range_rollback_is_detected_on_device",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________ test_server_range_rollback_is_detected_on_device _______________\ntests/test_control_recovery.py:78: in test_server_range_rollback_is_detected_on_device\n    with pytest.raises(ValueError):s.accept_lease(1,10000)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_recovery.py::test_server_range_rollback_is_detected_on_device\n1 failed in 0.10s\n"
+    },
+    {
+      "injected_defect": "commit_before_atomic_completion",
+      "test": "test_control_recovery.py::test_ack_transaction_rollback_does_not_queue_activate",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "tivate\n    assert c.scalar(select(func.count()).select_from(m.commands))==1\nE   AssertionError: assert 2 == 1\nE    +  where 2 = scalar(<sqlalchemy.sql.selectable.Select object at 0x7f436a8df680>)\nE    +    where scalar = <sqlalchemy.engine.base.Connection object at 0x7f436a8d3350>.scalar\nE    +    and   <sqlalchemy.sql.selectable.Select object at 0x7f436a8df680> = select_from(Table('live_control_commands', MetaData(), Column('id', String(length=36), table=<live_control_commands>, primary_key=...le=<live_control_commands>), Column('expires_at', DateTime(timezone=True), table=<live_control_commands>), schema=None))\nE    +      where select_from = <sqlalchemy.sql.selectable.Select object at 0x7f436a8df5f0>.select_from\nE    +        where <sqlalchemy.sql.selectable.Select object at 0x7f436a8df5f0> = select(<sqlalchemy.sql.functions.count at 0x7f436a8de5d0; count>)\nE    +          where <sqlalchemy.sql.functions.count at 0x7f436a8de5d0; count> = <sqlalchemy.sql.functions._FunctionGenerator object at 0x7f436a8de6c0>()\nE    +            where <sqlalchemy.sql.functions._FunctionGenerator object at 0x7f436a8de6c0> = func.count\nE    +      and   Table('live_control_commands', MetaData(), Column('id', String(length=36), table=<live_control_commands>, primary_key=...le=<live_control_commands>), Column('expires_at', DateTime(timezone=True), table=<live_control_commands>), schema=None) = m.commands\n=========================== short test summary info ============================\nFAILED tests/test_control_recovery.py::test_ack_transaction_rollback_does_not_queue_activate\n1 failed in 0.58s\n"
+    },
+    {
+      "injected_defect": "accept_contradictory_ack",
+      "test": "test_control_recovery.py::test_forged_and_mismatched_ack_do_not_activate",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________________ test_forged_and_mismatched_ack_do_not_activate ________________\ntests/test_control_recovery.py:41: in test_forged_and_mismatched_ack_do_not_activate\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_recovery.py::test_forged_and_mismatched_ack_do_not_activate\n1 failed in 0.60s\n"
+    },
+    {
+      "injected_defect": "ignore_aes_authentication_failure",
+      "test": "test_aes_profiles.py::test_aes_rejects_modifications[tag]",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____________________ test_aes_rejects_modifications[tag] ______________________\ntests/test_aes_profiles.py:28: in test_aes_rejects_modifications\n    with pytest.raises(InvalidTag):decrypt(AES,key,nonce,ad,ct)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE InvalidTag\n=========================== short test summary info ============================\nFAILED tests/test_aes_profiles.py::test_aes_rejects_modifications[tag] - Fail...\n1 failed in 0.02s\n"
+    }
+  ],
+  "all_killed": true
+}

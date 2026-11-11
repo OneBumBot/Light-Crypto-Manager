@@ -1,0 +1,17 @@
+from pathlib import Path
+from playwright.sync_api import sync_playwright,expect
+from scripts.stage9_common import Demo
+root=Path('docs/reports/stage9');d=Demo('/tmp/lcm-stage9-demo-20261111');url=d.url()
+with sync_playwright() as p:
+ browser=p.chromium.launch(headless=True);ctx=browser.new_context(viewport=dict(width=1366,height=900),timezone_id='Europe/Moscow');page=ctx.new_page()
+ page.route('https://cdn.**/*',lambda r:r.abort())
+ page.goto(url+'/login');page.locator('[name=username]').fill('demo-admin');page.locator('[name=password]').fill((d.root/'accounts/admin.password').read_text().strip())
+ page.locator('form input[type=submit],form button[type=submit]').first.click();page.wait_for_url(url+'/');expect(page.locator('#device-rows tr')).to_have_count(3)
+ page.screenshot(path=str(root/'overview-final.png'),full_page=True)
+ page.goto(url+'/devices/alpha');expect(page.locator('#effective-profile')).to_have_text('Ascon-AEAD128');expect(page.locator('#history-rows tr').first).to_be_visible()
+ assert '"profile_id"' not in page.locator('#device-policy').inner_text()
+ page.screenshot(path=str(root/'device-alpha-final.png'),full_page=True)
+ page.set_viewport_size(dict(width=390,height=844));page.reload();expect(page.locator('#effective-profile')).to_have_text('Ascon-AEAD128');assert page.evaluate('document.documentElement.scrollWidth <= innerWidth+2')
+ page.screenshot(path=str(root/'device-alpha-mobile-final.png'),full_page=True)
+ browser.close()
+print('PASS: final real-data overview/device/mobile screenshots; no CDN; no raw recommendation JSON')

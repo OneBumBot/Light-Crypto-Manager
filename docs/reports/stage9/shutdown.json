@@ -1,0 +1,345 @@
+{
+  "projects": [
+    {
+      "project": "lcm-stage9-demo-20261111",
+      "final_quiescent": {
+        "devices": [
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "5fb45f0a-4477-4852-842b-590e356059b9",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "6005cadb-1e39-4d1e-ad14-a67103501a4b",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "6fc99964-bf65-4347-b991-eafcb88c9e98",
+            "sequence_reserved": 170000,
+            "command_sequence": 36
+          }
+        ],
+        "outbox": {
+          "delivered": 10025
+        },
+        "telemetry": {
+          "alpha": {
+            "accepted": 3217,
+            "max_sequence": 160266
+          },
+          "beta": {
+            "accepted": 3404,
+            "max_sequence": 30266
+          },
+          "gamma": {
+            "accepted": 3404,
+            "max_sequence": 30266
+          }
+        },
+        "transitions": 18,
+        "completed": 18,
+        "unknown": 0,
+        "authenticated_ack": 33,
+        "effective_receipts": 21,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "counters": {
+          "delivered": 10025,
+          "accepted": 10025,
+          "replay": 1,
+          "delivery_retry": 6,
+          "incoming": 10026,
+          "delivery_error": 6
+        },
+        "migration": "0009_component_heartbeat",
+        "trusted_detector": false,
+        "active_publishers": "not_measured",
+        "mongo_managed": 10025
+      },
+      "active_publishers_after_stop": 0,
+      "running_containers": [],
+      "volumes_preserved": [
+        "lcm-stage9-demo-20261111_alpha-control",
+        "lcm-stage9-demo-20261111_beta-control",
+        "lcm-stage9-demo-20261111_broker-security",
+        "lcm-stage9-demo-20261111_control-security",
+        "lcm-stage9-demo-20261111_gamma-control",
+        "lcm-stage9-demo-20261111_mongo-data",
+        "lcm-stage9-demo-20261111_mongo-security",
+        "lcm-stage9-demo-20261111_mosquitto-data",
+        "lcm-stage9-demo-20261111_postgres-data",
+        "lcm-stage9-demo-20261111_publisher-security",
+        "lcm-stage9-demo-20261111_publisher-state",
+        "lcm-stage9-demo-20261111_receiver-security",
+        "lcm-stage9-demo-20261111_relay-storage-security",
+        "lcm-stage9-demo-20261111_smoke-security",
+        "lcm-stage9-demo-20261111_smoke-state",
+        "lcm-stage9-demo-20261111_test-security",
+        "lcm-stage9-demo-20261111_test-storage-security",
+        "lcm-stage9-demo-20261111_web-security",
+        "lcm-stage9-demo-20261111_web-storage-security"
+      ],
+      "commands": [
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/tmp/lcm-stage9-demo-20261111/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "stop",
+            "device-alpha",
+            "device-beta",
+            "device-gamma"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/tmp/lcm-stage9-demo-20261111/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "run",
+            "--rm",
+            "-T",
+            "--no-deps",
+            "--entrypoint",
+            "python",
+            "tests",
+            "-m",
+            "scripts.stage9_probe",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/tmp/lcm-stage9-demo-20261111/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "stop"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "exit_code": 0
+    },
+    {
+      "project": "lcm-stage9-demo-clean",
+      "final_quiescent": {
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "b86ee9e9-1faf-4cca-a1f2-0a2bb1042e69",
+            "sequence_reserved": 40000,
+            "command_sequence": 4
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "dabbdd04-4008-4ef1-85f8-36e2325a1bda",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "978bcf99-06df-4df0-bb16-2c5be5cccd90",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          }
+        ],
+        "outbox": {
+          "delivered": 7938
+        },
+        "telemetry": {
+          "beta": {
+            "accepted": 2644,
+            "max_sequence": 30528
+          },
+          "alpha": {
+            "accepted": 2649,
+            "max_sequence": 30529
+          },
+          "gamma": {
+            "accepted": 2645,
+            "max_sequence": 30529
+          }
+        },
+        "transitions": 2,
+        "completed": 2,
+        "unknown": 0,
+        "authenticated_ack": 4,
+        "effective_receipts": 5,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "counters": {
+          "replay": 2,
+          "incoming": 7974,
+          "rejected": 34,
+          "delivered": 7938,
+          "accepted": 7938
+        },
+        "migration": "0009_component_heartbeat",
+        "trusted_detector": false,
+        "active_publishers": "not_measured",
+        "mongo_managed": 7938
+      },
+      "active_publishers_after_stop": 0,
+      "running_containers": [],
+      "volumes_preserved": [
+        "lcm-stage9-demo-clean_alpha-control",
+        "lcm-stage9-demo-clean_beta-control",
+        "lcm-stage9-demo-clean_broker-security",
+        "lcm-stage9-demo-clean_control-security",
+        "lcm-stage9-demo-clean_gamma-control",
+        "lcm-stage9-demo-clean_mongo-data",
+        "lcm-stage9-demo-clean_mongo-security",
+        "lcm-stage9-demo-clean_mosquitto-data",
+        "lcm-stage9-demo-clean_postgres-data",
+        "lcm-stage9-demo-clean_publisher-security",
+        "lcm-stage9-demo-clean_publisher-state",
+        "lcm-stage9-demo-clean_receiver-security",
+        "lcm-stage9-demo-clean_relay-storage-security",
+        "lcm-stage9-demo-clean_smoke-security",
+        "lcm-stage9-demo-clean_smoke-state",
+        "lcm-stage9-demo-clean_test-security",
+        "lcm-stage9-demo-clean_test-storage-security",
+        "lcm-stage9-demo-clean_web-security",
+        "lcm-stage9-demo-clean_web-storage-security"
+      ],
+      "commands": [
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/tmp/lcm-stage9-demo-clean/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "stop",
+            "device-alpha",
+            "device-beta",
+            "device-gamma"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/tmp/lcm-stage9-demo-clean/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "run",
+            "--rm",
+            "-T",
+            "--no-deps",
+            "--entrypoint",
+            "python",
+            "tests",
+            "-m",
+            "scripts.stage9_probe",
+            "status"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/tmp/lcm-stage9-demo-clean/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "stop"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "exit_code": 0
+    }
+  ],
+  "no_volume_deletion": true,
+  "exit_code": 0
+}

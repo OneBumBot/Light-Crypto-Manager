@@ -1,0 +1,39 @@
+{
+  "baseline_exit_code": 0,
+  "baseline": {
+    "checks": [
+      "recommendation_not_json_dump",
+      "ack_not_effective",
+      "stale_not_recent",
+      "mongo_failure_not_empty",
+      "stale_control_disables_submit",
+      "stale_policy_marked"
+    ],
+    "controlled_fixtures": true,
+    "exit_code": 0
+  },
+  "results": [
+    {
+      "injected_defect": "ui_ack_as_effective",
+      "expected": "DOM assertion failure",
+      "actual": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_stage9_dom.py\", line 38, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_stage9_dom.py\", line 26, in main\n    page.goto(url+'/devices/alpha');expect(page.locator('#effective-profile')).to_have_text('Ascon-AEAD128')\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/sync_api/_generated.py\", line 20011, in to_have_text\n    self._sync(\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/_impl/_sync_base.py\", line 115, in _sync\n    return task.result()\n           ^^^^^^^^^^^^^\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/_impl/_assertions.py\", line 561, in to_have_text\n    await self._expect_impl(\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/_impl/_assertions.py\", line 85, in _expect_impl\n    raise AssertionError(\nAssertionError: Locator expected to have text 'Ascon-AEAD128'\nActual value: AES-128-GCM \nCall log:\n  - Expect \"to_have_text\" with timeout 5000ms\n  - waiting for locator(\"#effective-profile\")\n    9 \u00d7 locator resolved to <dd id=\"effective-profile\">AES-128-GCM</dd>\n      - unexpected value \"AES-128-GCM\"\n\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "ui_stale_as_recent",
+      "expected": "DOM assertion failure",
+      "actual": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_stage9_dom.py\", line 38, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_stage9_dom.py\", line 28, in main\n    expect(page.locator('#device-status')).to_contain_text('\u0423\u0441\u0442\u0430\u0440\u0435\u043b\u043e')\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/sync_api/_generated.py\", line 19244, in to_contain_text\n    self._sync(\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/_impl/_sync_base.py\", line 115, in _sync\n    return task.result()\n           ^^^^^^^^^^^^^\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/_impl/_assertions.py\", line 229, in to_contain_text\n    await self._expect_impl(\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/_impl/_assertions.py\", line 85, in _expect_impl\n    raise AssertionError(\nAssertionError: Locator expected to contain text '\u0423\u0441\u0442\u0430\u0440\u0435\u043b\u043e'\nActual value: \u0421\u0432\u0435\u0436\u0430\u044f telemetry \nCall log:\n  - Expect \"to_contain_text\" with timeout 5000ms\n  - waiting for locator(\"#device-status\")\n    9 \u00d7 locator resolved to <span id=\"device-status\">\u2026</span>\n      - unexpected value \"\u0421\u0432\u0435\u0436\u0430\u044f telemetry\"\n\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "ui_mongo_failure_as_empty",
+      "expected": "DOM assertion failure",
+      "actual": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_stage9_dom.py\", line 38, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_stage9_dom.py\", line 29, in main\n    expect(page.locator('#history-status')).to_have_text('\u0418\u0441\u0442\u043e\u0440\u0438\u044f \u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430')\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/sync_api/_generated.py\", line 20011, in to_have_text\n    self._sync(\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/_impl/_sync_base.py\", line 115, in _sync\n    return task.result()\n           ^^^^^^^^^^^^^\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/_impl/_assertions.py\", line 561, in to_have_text\n    await self._expect_impl(\n  File \"/home/onebumbot/Projects/Light_Crypto_Manager/.cache/uv/archive-v0/Rrz2foN0QCz_sbYz/lib/python3.12/site-packages/playwright/_impl/_assertions.py\", line 85, in _expect_impl\n    raise AssertionError(\nAssertionError: Locator expected to have text '\u0418\u0441\u0442\u043e\u0440\u0438\u044f \u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430'\nActual value: \u0417\u0430 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0439 \u043f\u0435\u0440\u0438\u043e\u0434 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u0439 \u043d\u0435\u0442 \nCall log:\n  - Expect \"to_have_text\" with timeout 5000ms\n  - waiting for locator(\"#history-status\")\n    9 \u00d7 locator resolved to <p role=\"status\" id=\"history-status\">\u0417\u0430 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0439 \u043f\u0435\u0440\u0438\u043e\u0434 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u0439 \u043d\u0435\u0442</p>\n      - unexpected value \"\u0417\u0430 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0439 \u043f\u0435\u0440\u0438\u043e\u0434 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u0439 \u043d\u0435\u0442\"\n\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    }
+  ],
+  "all_killed": true
+}

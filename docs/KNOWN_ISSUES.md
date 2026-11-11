@@ -1,3 +1,29 @@
+# Stage 9: текущие ограничения
+
+* Software agents/x86_64, не physical Raspberry Pi и не production server.
+* Polling каждые 3 s: быстрые промежуточные фазы могут быть видны только через
+  durable audit; HTTP 202/ACK не означают effective.
+* Recent telemetry ≤15 s — admission freshness, не broker presence. Diagnostic
+  heartbeat не является криптографическим свидетельством устройства.
+* Policy recommendation stale при старом state/worker; ML missing не означает
+  норму. Политика остаётся DRY_RUN, research scores не дают actuation rights.
+* Histories ограничены, inventory paginated; большие production объёмы/retention
+  и query plans требуют отдельной эксплуатационной оценки.
+* Last receiver/worker heartbeat хранится, полная история component uptime и
+  прежних успешных Mongo probes не хранится. При отсутствии evidence — unknown.
+* Flask dev HTTP только loopback. Production TLS proxy/session deployment,
+  backup/restore/rotation и physical-device benchmarks требуют следующего этапа.
+* PREPARE-only expiry/lost SQLite/joint authority rollback сохраняют ограничения
+  CONTROL_RECOVERY.md; dashboard не добавляет небезопасный reset.
+* Lab TLS CA/server certificates выдаются на 30 дней; поздний resume требует
+  reviewed renewal либо нового независимого стенда, без отключения TLS.
+* Advanced legacy pages сохраняют прежние JSON diagnostics/CDN dependencies;
+  основной Stage 9 dashboard/nav/native charts работают без CDN.
+
+Найденные и исправленные integration/harness ошибки, включая installer legacy
+assumptions/private account transfer и browser fixture callback, описаны в
+STAGE9_RESULTS.md; прежние неуспешные журналы не удалялись.
+
 # Уточнение 8-fix
 
 Подтверждён и исправлен внешний TypeError на unhashable outer profile (list/dict).
