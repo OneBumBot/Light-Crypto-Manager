@@ -29,7 +29,8 @@ def main():
         expect(page.locator('#history-status')).to_have_text('История временно недоступна')
         expect(page.locator('#switch-submit')).to_be_disabled()
         expect(page.locator('#device-policy')).to_contain_text('Устаревшая')
-        checks=['ack_not_effective','stale_not_recent','mongo_failure_not_empty','stale_control_disables_submit','stale_policy_marked']
+        assert '"profile_id"' not in page.locator('#device-policy').inner_text()
+        checks=['recommendation_not_json_dump','ack_not_effective','stale_not_recent','mongo_failure_not_empty','stale_control_disables_submit','stale_policy_marked']
         browser.close()
     a.output.write_text(json.dumps(dict(checks=checks,controlled_fixtures=True,exit_code=0),indent=2)+'\n')
     print(json.dumps(dict(checks=checks,exit_code=0)))
