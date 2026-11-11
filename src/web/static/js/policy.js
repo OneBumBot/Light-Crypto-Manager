@@ -18,7 +18,7 @@
                 const response = await fetch('/api/policy/metrics');
                 if (response.ok) metrics.textContent = JSON.stringify(await response.json(), null, 2);
             }
-            document.getElementById('policyMessage').textContent = 'DRY_RUN: реальное управление отключено.';
+            document.getElementById('policyMessage').textContent = 'DRY_RUN: Policy Engine формирует рекомендации; команды не отправляет.';
         } catch (_) { document.getElementById('policyMessage').textContent = 'Политика временно недоступна.'; }
     }
     filters.addEventListener('submit', refresh);

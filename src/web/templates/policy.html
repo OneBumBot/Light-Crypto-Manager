@@ -1,23 +1,47 @@
 {% extends "base.html" %}
 {% block title %}Политика защиты{% endblock %}
+{% block extra_css %}
+<style>
+.policy-help, .policy-panel { background: white; border: 1px solid #d4e2e0; border-radius: 8px; padding: 18px; margin: 14px 0; }
+.policy-panel > summary { cursor: pointer; font-weight: 600; }
+.policy-panel pre { max-height: 420px; overflow: auto; margin-top: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
+#policyFilters { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+#policyAdmin label { display: block; margin: 10px 0; }
+#policyAdmin textarea { display: block; width: 100%; min-height: 120px; }
+</style>
+{% endblock %}
 {% block content %}
-<h2>Политика защиты — DRY_RUN</h2>
-<p>Рекомендация и запрос не означают применение. Policy Engine не исполняет live-команды. Реальные подтверждения доступны отдельно: <a href="/control">управление криптопрофилями</a>.</p>
-<p>Статусы разделены: recommended, requested, acknowledged, applied, failed, unsupported, simulated. Здесь показаны DRY_RUN намерения; они не заменяют authenticated ACK и verified effective из control layer.</p>
-<form id="policyFilters"><label>Устройство <input name="device_id" maxlength="48"></label><button>Обновить</button></form>
-<p id="policyMessage" role="status"></p>
-<h3>Риск и конфигурации</h3><pre id="policyOverview"></pre>
-<h3>Решения и причины</h3><pre id="policyDecisions"></pre>
-<h3>Исходные сигналы</h3><pre id="policySignals"></pre>
-<h3>Переходы</h3><pre id="policyTransitions"></pre>
-<h3>Управляющие намерения (без отправки)</h3><pre id="policyIntents"></pre>
+<h1>Политика защиты — DRY_RUN</h1>
+<section class="policy-help" aria-labelledby="policy-purpose">
+  <h2 id="policy-purpose">Для чего эта страница</h2>
+  <p>Policy Engine получает события системы, оценивает риск и формирует рекомендации. Здесь можно разобраться, <strong>почему появилась оценка</strong> и какие сигналы на неё повлияли.</p>
+  <p><strong>DRY_RUN: рекомендации не исполняются.</strong> Policy Engine не отправляет команды устройствам. Реальное переключение профиля отдельно подтверждает администратор в <a href="/">карточке устройства</a>.</p>
+  <h3>Как пользоваться</h3>
+  <ol>
+    <li>Укажите устройство, например <code>alpha</code>, и нажмите «Обновить». Пустое поле показывает все устройства.</li>
+    <li>Раскройте «Риск и конфигурации»: проверьте оценку <code>observed_risk</code>, версию правил и свежесть worker (<code>stale</code>).</li>
+    <li>В «Решениях и причинах» смотрите объяснения <code>reasons</code> и ссылки на сигналы <code>used_signals</code>. Сами сигналы находятся в следующем блоке.</li>
+    <li>«Переходы» показывают изменения оценки риска. «Управляющие намерения» — только предложения, без отправки устройствам.</li>
+  </ol>
+  <p>Для повседневного просмотра удобнее <a href="/">мониторинг и карточка устройства</a>: там те же сведения представлены без технического JSON.</p>
+  <p><code>UNKNOWN</code> — недостаточно данных; <code>WATCH</code> — требуется внимание; <code>ALERT</code>/<code>CRITICAL</code> — повышенная оценка по правилам, причины нужно проверить. <code>NORMAL</code> не доказывает отсутствие атак. Задержка доставки или высокая температура сами по себе не являются кибератакой.</p>
+  <p>При отключённом или устаревшем ML статус <code>UNKNOWN</code> допустим. RF/IF остаются RESEARCH/DEMO, <code>trusted_detector=false</code>. Рекомендация Policy и подтверждённый криптопрофиль — разные вещи.</p>
+</section>
+<form id="policyFilters"><label for="policy-device">Устройство</label><input id="policy-device" name="device_id" maxlength="48" placeholder="alpha, beta или gamma"><button type="submit">Обновить</button></form>
+<p id="policyMessage" role="status" aria-live="polite"></p>
+<details class="policy-panel"><summary>Риск и конфигурации · технический JSON</summary><pre id="policyOverview"></pre></details>
+<details class="policy-panel"><summary>Решения и причины · технический JSON</summary><pre id="policyDecisions"></pre></details>
+<details class="policy-panel"><summary>Исходные сигналы · технический JSON</summary><pre id="policySignals"></pre></details>
+<details class="policy-panel"><summary>Переходы оценки риска · технический JSON</summary><pre id="policyTransitions"></pre></details>
+<details class="policy-panel"><summary>Управляющие намерения — без отправки · технический JSON</summary><pre id="policyIntents"></pre></details>
 {% if current_user.role == 'admin' %}
-<h3>Версия политики (admin)</h3>
-<p>Декларативные JSON параметры; новая версия не меняет реальную конфигурацию устройства.</p>
+<details class="policy-panel"><summary>Изменить версию правил · администратор</summary>
+<p>Расширенная настройка: обычная демонстрация не требует изменения правил. Активация версии меняет правила оценки в DRY_RUN, а не криптопрофиль устройства.</p>
 <form id="policyAdmin"><label>Версия <input name="version" maxlength="64" required></label>
 <label>Параметры JSON <textarea name="rules" required>{}</textarea></label>
-<label><input type="checkbox" name="activate"> Активировать</label><button>Сохранить</button></form>
-<pre id="policyMetrics"></pre>
+<label><input type="checkbox" name="activate"> Использовать эту версию правил в DRY_RUN</label><button type="submit">Сохранить</button></form>
+</details>
+<details class="policy-panel"><summary>Метрики Policy · технический JSON</summary><pre id="policyMetrics"></pre></details>
 {% endif %}
 <script src="{{ url_for('static', filename='js/policy.js') }}" defer></script>
 {% endblock %}
