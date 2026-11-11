@@ -1,6 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime,timezone,timedelta
 import uuid
+import time
 import pytest
 from sqlalchemy import select,text,func
 from src.ml_storage import publish_observation,feed,feed_state,events,models,model_status,claim_one,complete,prune_feed
@@ -35,8 +36,17 @@ def test_claims_idempotent_fenced_and_model_versioned(postgres_db):
     engine=postgres_db.db.engine;model=manifest()
     assert model_status(engine,'unit-telemetry','1.0.0','available',model)
     for i in range(1,9):marker(engine,i)
+    def claim_ready(_):
+        # A concurrent snapshot can find a row whose event was just claimed.
+        # claim_one deliberately returns None after its locked recheck; workers poll.
+        deadline=time.monotonic()+5
+        while time.monotonic()<deadline:
+            job=claim_one(engine,model)
+            if job is not None:return job
+            time.sleep(.01)
+        pytest.fail('Eight available observations were not claimed before deadline')
     with ThreadPoolExecutor(max_workers=8) as pool:
-        jobs=list(pool.map(lambda _:claim_one(engine,model),range(8)))
+        jobs=list(pool.map(claim_ready,range(8)))
     assert len({job['id'] for job in jobs})==8
     assert claim_one(engine,model) is None
     old=jobs[0]
