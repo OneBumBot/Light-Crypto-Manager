@@ -1,0 +1,147 @@
+{
+  "project": "lcm-stage8-fix-20261111",
+  "before": {
+    "total": 13189,
+    "pending": 2,
+    "mongo": 13187
+  },
+  "during_outage": {
+    "total": 13216,
+    "pending": 24,
+    "mongo": null
+  },
+  "after": {
+    "total": 13249,
+    "pending": 0,
+    "mongo": 13249
+  },
+  "accepted_during_outage": 27,
+  "exit_code": 0,
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "run",
+        "--rm",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-c",
+        "import json\nfrom sqlalchemy import create_engine,select,func\nfrom src.runtime import database_url\nfrom src.outbox import outbox\nfrom src.mongo_repository import MongoRepository\nfrom pymongo.errors import PyMongoError\ne=create_engine(database_url())\nwith e.connect() as c:\n total=c.scalar(select(func.count()).select_from(outbox));pending=c.scalar(select(func.count()).select_from(outbox).where(outbox.c.status!='delivered'))\nr=MongoRepository(role='relay')\ntry:mongo=r.collection.count_documents({'device_id':{'$in':['alpha','beta','gamma']}})\nexcept PyMongoError:mongo=None\nfinally:r.close();e.dispose()\nprint(json.dumps(dict(total=total,pending=pending,mongo=mongo)))\n"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "stop",
+        "mongo"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "run",
+        "--rm",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-c",
+        "import json\nfrom sqlalchemy import create_engine,select,func\nfrom src.runtime import database_url\nfrom src.outbox import outbox\nfrom src.mongo_repository import MongoRepository\nfrom pymongo.errors import PyMongoError\ne=create_engine(database_url())\nwith e.connect() as c:\n total=c.scalar(select(func.count()).select_from(outbox));pending=c.scalar(select(func.count()).select_from(outbox).where(outbox.c.status!='delivered'))\nr=MongoRepository(role='relay')\ntry:mongo=r.collection.count_documents({'device_id':{'$in':['alpha','beta','gamma']}})\nexcept PyMongoError:mongo=None\nfinally:r.close();e.dispose()\nprint(json.dumps(dict(total=total,pending=pending,mongo=mongo)))\n"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "stop",
+        "device-alpha",
+        "device-beta",
+        "device-gamma"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "mongo"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "run",
+        "--rm",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-c",
+        "import json\nfrom sqlalchemy import create_engine,select,func\nfrom src.runtime import database_url\nfrom src.outbox import outbox\nfrom src.mongo_repository import MongoRepository\nfrom pymongo.errors import PyMongoError\ne=create_engine(database_url())\nwith e.connect() as c:\n total=c.scalar(select(func.count()).select_from(outbox));pending=c.scalar(select(func.count()).select_from(outbox).where(outbox.c.status!='delivered'))\nr=MongoRepository(role='relay')\ntry:mongo=r.collection.count_documents({'device_id':{'$in':['alpha','beta','gamma']}})\nexcept PyMongoError:mongo=None\nfinally:r.close();e.dispose()\nprint(json.dumps(dict(total=total,pending=pending,mongo=mongo)))\n"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

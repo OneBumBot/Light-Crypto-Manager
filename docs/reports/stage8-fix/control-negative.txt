@@ -1,0 +1,43 @@
+{
+  "real_tls": true,
+  "checks": [
+    "invalid_mac",
+    "invalid_unicode_mac",
+    "wrong_key_direction",
+    "wrong_device_topic",
+    "requested_profile",
+    "command_epoch",
+    "command_sequence",
+    "controller_identity",
+    "requested_profile",
+    "requested_profile",
+    "command_epoch",
+    "command_sequence",
+    "command_id",
+    "correlation_id",
+    "key_reference",
+    "expired_and_retained",
+    "device_cannot_command_itself",
+    "device_cannot_status_other_device",
+    "controller_cannot_publish_telemetry",
+    "device_cannot_read_other_commands",
+    "ack_wrong_correlation_id",
+    "ack_wrong_requested_profile",
+    "ack_wrong_requested_profile",
+    "ack_wrong_requested_profile",
+    "ack_wrong_command_epoch",
+    "ack_wrong_command_sequence",
+    "ack_wrong_command_id",
+    "ack_wrong_correlation_id",
+    "duplicate_ack_no_new_record",
+    "device_continues_telemetry_after_invalid_control",
+    "anonymous_http_denied",
+    "viewer_http_control_denied",
+    "viewer_status_allowed"
+  ],
+  "invalid_commands_created_ack": 0,
+  "effective_unchanged": true,
+  "live_control_hmac": true
+}
+ Container lcm-stage8-fix-20261111-tests-run-458cd75e73e9 Creating 
+ Container lcm-stage8-fix-20261111-tests-run-458cd75e73e9 Created 

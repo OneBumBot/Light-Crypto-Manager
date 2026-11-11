@@ -1,0 +1,99 @@
+{
+  "project": "lcm-stage8-fix-20261111",
+  "running_containers": [],
+  "volumes_preserved": [
+    "lcm-stage8-fix-20261111_alpha-control",
+    "lcm-stage8-fix-20261111_beta-control",
+    "lcm-stage8-fix-20261111_broker-security",
+    "lcm-stage8-fix-20261111_control-security",
+    "lcm-stage8-fix-20261111_gamma-control",
+    "lcm-stage8-fix-20261111_mongo-data",
+    "lcm-stage8-fix-20261111_mongo-security",
+    "lcm-stage8-fix-20261111_mosquitto-data",
+    "lcm-stage8-fix-20261111_postgres-data",
+    "lcm-stage8-fix-20261111_publisher-security",
+    "lcm-stage8-fix-20261111_publisher-state",
+    "lcm-stage8-fix-20261111_receiver-security",
+    "lcm-stage8-fix-20261111_relay-storage-security",
+    "lcm-stage8-fix-20261111_smoke-security",
+    "lcm-stage8-fix-20261111_smoke-state",
+    "lcm-stage8-fix-20261111_test-security",
+    "lcm-stage8-fix-20261111_test-storage-security",
+    "lcm-stage8-fix-20261111_web-security",
+    "lcm-stage8-fix-20261111_web-storage-security"
+  ],
+  "volume_deletion": false,
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "device-alpha",
+        "device-beta",
+        "device-gamma"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-c",
+        "import json,time\nfrom sqlalchemy import create_engine,select,func\nfrom src.runtime import database_url\nfrom src.outbox import outbox,metrics\nfrom src.security_events import journal\nfrom src.replay import replay_state\nfrom src.device_control import models as m\nfrom src.mongo_repository import MongoRepository\ne=create_engine(database_url());repo=MongoRepository(role='relay');end=time.monotonic()+30\ntry:\n while time.monotonic()<end:\n  with e.connect() as c:\n   total=c.scalar(select(func.count()).select_from(outbox));pending=c.scalar(select(func.count()).select_from(outbox).where(outbox.c.status!='delivered'))\n  mongo=repo.collection.count_documents({'device_id':{'$in':['alpha','beta','gamma']}})\n  if pending==0 and mongo==total:break\n  time.sleep(.2)\n else:raise AssertionError('Final main schema delivery did not drain')\n with e.connect() as c:\n  result=dict(total_admitted=total,pending=pending,managed_mongo=mongo,mongo_all=repo.collection.count_documents({}),\n   metrics={k:int(v) for k,v in c.execute(select(metrics.c.kind,func.sum(metrics.c.count)).group_by(metrics.c.kind))},\n   observations={k:int(v) for k,v in c.execute(select(journal.c.category,func.count()).group_by(journal.c.category))},\n   rejected_with_identity=c.scalar(select(func.count()).select_from(journal).where(journal.c.category=='rejected',journal.c.device_id.is_not(None))),\n   replay=[dict(r) for r in c.execute(select(replay_state)).mappings()],\n   effective=[dict(r) for r in c.execute(select(m.devices.c.device_id,m.devices.c.effective_profile,m.devices.c.effective_event)) .mappings()],\n   evidence=c.scalar(select(func.count()).select_from(m.evidence)))\n assert result['rejected_with_identity']==0\n print(json.dumps(result))\nfinally:repo.close();e.dispose()\n"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "exit_code": 0
+}

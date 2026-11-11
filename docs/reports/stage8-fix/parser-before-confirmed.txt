@@ -1,0 +1,71 @@
+ Container lcm-stage8-fix-20261111-tests-run-eb7ea6ef288a Creating 
+ Container lcm-stage8-fix-20261111-tests-run-eb7ea6ef288a Created 
+............FFFFFFFF..                                                   [100%]
+=================================== FAILURES ===================================
+_________ test_outer_profile_exact_rejection[value6-ascon-aead128-v1] __________
+tests/test_telemetry_security.py:30: in test_outer_profile_exact_rejection
+    decode_packet(canonical(packet), TOPIC, registry)
+src/telemetry.py:135: in decode_packet
+    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile'] not in BY_ALGORITHM: reject()
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: unhashable type: 'list'
+__________ test_outer_profile_exact_rejection[value6-aes-128-gcm-v1] ___________
+tests/test_telemetry_security.py:30: in test_outer_profile_exact_rejection
+    decode_packet(canonical(packet), TOPIC, registry)
+src/telemetry.py:135: in decode_packet
+    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile'] not in BY_ALGORITHM: reject()
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: unhashable type: 'list'
+_________ test_outer_profile_exact_rejection[value7-ascon-aead128-v1] __________
+tests/test_telemetry_security.py:30: in test_outer_profile_exact_rejection
+    decode_packet(canonical(packet), TOPIC, registry)
+src/telemetry.py:135: in decode_packet
+    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile'] not in BY_ALGORITHM: reject()
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: unhashable type: 'dict'
+__________ test_outer_profile_exact_rejection[value7-aes-128-gcm-v1] ___________
+tests/test_telemetry_security.py:30: in test_outer_profile_exact_rejection
+    decode_packet(canonical(packet), TOPIC, registry)
+src/telemetry.py:135: in decode_packet
+    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile'] not in BY_ALGORITHM: reject()
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: unhashable type: 'dict'
+_________ test_outer_profile_exact_rejection[value8-ascon-aead128-v1] __________
+tests/test_telemetry_security.py:30: in test_outer_profile_exact_rejection
+    decode_packet(canonical(packet), TOPIC, registry)
+src/telemetry.py:135: in decode_packet
+    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile'] not in BY_ALGORITHM: reject()
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: unhashable type: 'list'
+__________ test_outer_profile_exact_rejection[value8-aes-128-gcm-v1] ___________
+tests/test_telemetry_security.py:30: in test_outer_profile_exact_rejection
+    decode_packet(canonical(packet), TOPIC, registry)
+src/telemetry.py:135: in decode_packet
+    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile'] not in BY_ALGORITHM: reject()
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: unhashable type: 'list'
+_________ test_outer_profile_exact_rejection[value9-ascon-aead128-v1] __________
+tests/test_telemetry_security.py:30: in test_outer_profile_exact_rejection
+    decode_packet(canonical(packet), TOPIC, registry)
+src/telemetry.py:135: in decode_packet
+    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile'] not in BY_ALGORITHM: reject()
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: unhashable type: 'dict'
+__________ test_outer_profile_exact_rejection[value9-aes-128-gcm-v1] ___________
+tests/test_telemetry_security.py:30: in test_outer_profile_exact_rejection
+    decode_packet(canonical(packet), TOPIC, registry)
+src/telemetry.py:135: in decode_packet
+    if type(packet['schema_version']) is not int or packet['schema_version']!=2 or packet['profile'] not in BY_ALGORITHM: reject()
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: unhashable type: 'dict'
+=========================== short test summary info ============================
+FAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value6-ascon-aead128-v1]
+FAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value6-aes-128-gcm-v1]
+FAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value7-ascon-aead128-v1]
+FAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value7-aes-128-gcm-v1]
+FAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value8-ascon-aead128-v1]
+FAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value8-aes-128-gcm-v1]
+FAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value9-ascon-aead128-v1]
+FAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value9-aes-128-gcm-v1]
+8 failed, 14 passed, 200 deselected in 0.22s
+

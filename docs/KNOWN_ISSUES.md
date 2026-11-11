@@ -1,3 +1,25 @@
+# Уточнение 8-fix
+
+Подтверждён и исправлен внешний TypeError на unhashable outer profile (list/dict).
+В изолированном MQTT/TLS baseline наблюдались повторные доставки и подключения;
+после exact-type guard соответствующие негативные сценарии проходят. Подробности
+и границы выводов — STAGE8_FIX_RESULTS.md. Аналогичных подтверждённых сетевых
+ошибок типа в control paths аудит не выявил; прямые внутренние API и повреждённый
+приватный provisioning не считаются произвольным MQTT input.
+
+PREPARE-only expiry всё ещё блокирует admission: безопасного CANCEL/reset endpoint
+нет. UNKNOWN_OUTCOME при возможном ACTIVATE сохраняется; нужен оператор и новая
+аутентифицированная целевая telemetry в bounded reconcile window. Действия и
+необходимые доказательства описаны в CONTROL_RECOVERY.md. Нельзя сбрасывать nonce/
+replay/ledger или молча возвращать старый профиль.
+
+Первый 8-fix regression выявил нестабильное ожидание старого ML-storage теста:
+конкурентный claim допускает временный None. Тест теперь bounded polls как worker,
+проверяя все восемь уникальных claims и прежний fencing; ML runtime не изменён.
+RESEARCH/DEMO, trusted_detector=false и Policy DRY_RUN сохранены. Software/x86,
+короткие окна наблюдения, preprovisioned keys и отсутствие внешнего pentest остаются
+ограничениями; число прошедших тестов само по себе не доказывает защищённость.
+
 # Актуальное уточнение этапа 8
 
 Устранены Ascon-only dispatch, отсутствие real device control, отсутствие

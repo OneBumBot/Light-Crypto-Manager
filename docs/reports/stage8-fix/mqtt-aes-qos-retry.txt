@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_malformed_mqtt_recovery.py", line 180, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_malformed_mqtt_recovery.py", line 149, in main
+    r=run(*args);report=json.loads(r.stdout[r.stdout.index('{'):]);report.update(project=project,exit_code=r.returncode)
+      ^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_malformed_mqtt_recovery.py", line 141, in run
+    raise RuntimeError(f'Compose {parts[0]} exited {r.returncode}; see {a.output.with_suffix(".failure.txt")}')
+RuntimeError: Compose run exited 1; see docs/reports/stage8-fix/mqtt-aes-qos-retry.failure.txt

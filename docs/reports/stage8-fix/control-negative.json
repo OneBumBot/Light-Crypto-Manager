@@ -1,0 +1,199 @@
+{
+  "sqlite_unchanged": true,
+  "before": {
+    "state": [
+      [
+        1,
+        "alpha",
+        1,
+        "aes-128-gcm-v1",
+        6,
+        null
+      ]
+    ],
+    "commands": [
+      [
+        1,
+        "0560b3c772a365ed4d4c1e7363ae095905b4355bef159e7adec86ea5c2e04705",
+        "309158a4-9bcc-4087-a0ac-d2f62211d41b"
+      ],
+      [
+        2,
+        "9bd7e012889d9273e95d35c4f7eb2308a4d77d39c08e709ca4837e49be660a33",
+        "f81e5b56-a6a1-44f6-86b5-db1a9b1b9450"
+      ],
+      [
+        3,
+        "535c9ff09dad18353c00b6f4c5f4c32a54aba4cce8c29a7c9454f73b54911106",
+        "0d146846-2742-4239-803c-69d6db20d6ff"
+      ],
+      [
+        4,
+        "c4e2c021c04f6dfb77ea8c31b67f329d1ffaf3e57db7148c2d449ffe9a6d1efc",
+        "4410d317-8c7a-4f5b-be10-0b8c867a0983"
+      ],
+      [
+        5,
+        "2762fd400fd6074b56fbf5ab066c740d0dd71ee1c254c4d97758e6f828e772a2",
+        "465609d7-d2f7-451c-ab75-ad40b2e4f650"
+      ],
+      [
+        6,
+        "efb762643b8543a2f509ed45b0b9a3f22d8367c1c45c8b3ce4e0bafedee5ee74",
+        "e81d09af-6c38-468d-b711-b1d2ff0f31bc"
+      ]
+    ]
+  },
+  "after": {
+    "state": [
+      [
+        1,
+        "alpha",
+        1,
+        "aes-128-gcm-v1",
+        6,
+        null
+      ]
+    ],
+    "commands": [
+      [
+        1,
+        "0560b3c772a365ed4d4c1e7363ae095905b4355bef159e7adec86ea5c2e04705",
+        "309158a4-9bcc-4087-a0ac-d2f62211d41b"
+      ],
+      [
+        2,
+        "9bd7e012889d9273e95d35c4f7eb2308a4d77d39c08e709ca4837e49be660a33",
+        "f81e5b56-a6a1-44f6-86b5-db1a9b1b9450"
+      ],
+      [
+        3,
+        "535c9ff09dad18353c00b6f4c5f4c32a54aba4cce8c29a7c9454f73b54911106",
+        "0d146846-2742-4239-803c-69d6db20d6ff"
+      ],
+      [
+        4,
+        "c4e2c021c04f6dfb77ea8c31b67f329d1ffaf3e57db7148c2d449ffe9a6d1efc",
+        "4410d317-8c7a-4f5b-be10-0b8c867a0983"
+      ],
+      [
+        5,
+        "2762fd400fd6074b56fbf5ab066c740d0dd71ee1c254c4d97758e6f828e772a2",
+        "465609d7-d2f7-451c-ab75-ad40b2e4f650"
+      ],
+      [
+        6,
+        "efb762643b8543a2f509ed45b0b9a3f22d8367c1c45c8b3ce4e0bafedee5ee74",
+        "e81d09af-6c38-468d-b711-b1d2ff0f31bc"
+      ]
+    ]
+  },
+  "probe": {
+    "real_tls": true,
+    "checks": [
+      "invalid_mac",
+      "invalid_unicode_mac",
+      "wrong_key_direction",
+      "wrong_device_topic",
+      "requested_profile",
+      "command_epoch",
+      "command_sequence",
+      "controller_identity",
+      "requested_profile",
+      "requested_profile",
+      "command_epoch",
+      "command_sequence",
+      "command_id",
+      "correlation_id",
+      "key_reference",
+      "expired_and_retained",
+      "device_cannot_command_itself",
+      "device_cannot_status_other_device",
+      "controller_cannot_publish_telemetry",
+      "device_cannot_read_other_commands",
+      "ack_wrong_correlation_id",
+      "ack_wrong_requested_profile",
+      "ack_wrong_requested_profile",
+      "ack_wrong_requested_profile",
+      "ack_wrong_command_epoch",
+      "ack_wrong_command_sequence",
+      "ack_wrong_command_id",
+      "ack_wrong_correlation_id",
+      "duplicate_ack_no_new_record",
+      "device_continues_telemetry_after_invalid_control",
+      "anonymous_http_denied",
+      "viewer_http_control_denied",
+      "viewer_status_allowed"
+    ],
+    "invalid_commands_created_ack": 0,
+    "effective_unchanged": true,
+    "live_control_hmac": true
+  },
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "exec",
+        "-T",
+        "device-alpha",
+        "python",
+        "-c",
+        "import sqlite3,json;c=sqlite3.connect('/device/device.db');print(json.dumps(dict(state=c.execute('SELECT * FROM state').fetchall(),commands=c.execute('SELECT sequence,digest,command_id FROM commands ORDER BY sequence').fetchall())))"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "run",
+        "--rm",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.control_security_probe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage8-fix-20261111/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "--profile",
+        "control",
+        "exec",
+        "-T",
+        "device-alpha",
+        "python",
+        "-c",
+        "import sqlite3,json;c=sqlite3.connect('/device/device.db');print(json.dumps(dict(state=c.execute('SELECT * FROM state').fetchall(),commands=c.execute('SELECT sequence,digest,command_id FROM commands ORDER BY sequence').fetchall())))"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

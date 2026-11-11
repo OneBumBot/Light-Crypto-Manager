@@ -1,0 +1,52 @@
+[
+  {
+    "name": "roundtrip",
+    "command": [
+      "docker",
+      "compose",
+      "--env-file",
+      "/tmp/lcm-stage8-fix-20261111/compose.env",
+      "-f",
+      "compose.yaml",
+      "-f",
+      "compose.control.yaml",
+      "--profile",
+      "control",
+      "run",
+      "--rm",
+      "--no-deps",
+      "--entrypoint",
+      "python",
+      "tests",
+      "-m",
+      "scripts.control_system_probe",
+      "roundtrip"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "switch-aes",
+    "command": [
+      "docker",
+      "compose",
+      "--env-file",
+      "/tmp/lcm-stage8-fix-20261111/compose.env",
+      "-f",
+      "compose.yaml",
+      "-f",
+      "compose.control.yaml",
+      "--profile",
+      "control",
+      "run",
+      "--rm",
+      "--no-deps",
+      "--entrypoint",
+      "python",
+      "tests",
+      "-m",
+      "scripts.control_system_probe",
+      "switch-aes"
+    ],
+    "exit_code": 0
+  }
+]

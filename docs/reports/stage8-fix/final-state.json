@@ -1,0 +1,78 @@
+{
+  "total_admitted": 18486,
+  "pending": 0,
+  "managed_mongo": 18486,
+  "mongo_all": 18536,
+  "metrics": {
+    "incoming": 20787,
+    "delivery_error": 1,
+    "delivery_retry": 1,
+    "replay": 5,
+    "rejected": 87,
+    "delivered": 18486,
+    "accepted": 18486
+  },
+  "observations": {
+    "delivery_delay": 1120,
+    "replay": 5,
+    "rejected": 87,
+    "accepted": 18486
+  },
+  "rejected_with_identity": 0,
+  "replay": [
+    {
+      "consumer": "web",
+      "device_id": "alpha",
+      "key_epoch": 1,
+      "last_sequence": 201083
+    },
+    {
+      "consumer": "receiver",
+      "device_id": "alpha",
+      "key_epoch": 1,
+      "last_sequence": 201083
+    },
+    {
+      "consumer": "web",
+      "device_id": "gamma",
+      "key_epoch": 1,
+      "last_sequence": 91082
+    },
+    {
+      "consumer": "receiver",
+      "device_id": "gamma",
+      "key_epoch": 1,
+      "last_sequence": 91082
+    },
+    {
+      "consumer": "web",
+      "device_id": "beta",
+      "key_epoch": 1,
+      "last_sequence": 91083
+    },
+    {
+      "consumer": "receiver",
+      "device_id": "beta",
+      "key_epoch": 1,
+      "last_sequence": 91083
+    }
+  ],
+  "effective": [
+    {
+      "device_id": "alpha",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "0c54a1e7-2101-4508-98f9-8355bb720a04"
+    },
+    {
+      "device_id": "gamma",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "51488062-9cc5-4544-abf2-f4454371de5e"
+    },
+    {
+      "device_id": "beta",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "b2f34fb8-8201-4bc5-bd51-b2a57646c3f2"
+    }
+  ],
+  "evidence": 23
+}

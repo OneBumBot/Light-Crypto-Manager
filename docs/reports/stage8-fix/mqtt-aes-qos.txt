@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_malformed_mqtt_recovery.py", line 175, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_malformed_mqtt_recovery.py", line 144, in main
+    r=run(*args);report=json.loads(r.stdout[r.stdout.index('{'):]);report.update(project=project,exit_code=r.returncode)
+      ^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_malformed_mqtt_recovery.py", line 137, in run
+    def run(*parts):return subprocess.run(base+list(parts),capture_output=True,text=True,check=True,timeout=120)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['docker', 'compose', '--env-file', '/tmp/lcm-stage8-fix-20261111/compose.env', '-f', 'compose.yaml', '-f', 'compose.control.yaml', '--profile', 'control', 'run', '--rm', '--no-deps', '-v', '/home/onebumbot/Projects/Light_Crypto_Manager/scripts/check_malformed_mqtt_recovery.py:/app/scripts/check_malformed_mqtt_recovery.py:ro', '--entrypoint', 'python', 'tests', '-m', 'scripts.check_malformed_mqtt_recovery', '--inside', '--profile', 'aes-128-gcm-v1']' returned non-zero exit status 1.

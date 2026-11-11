@@ -1,0 +1,40 @@
+{
+  "environment": "real isolated software IoT agents, Docker MQTT TLS/PG/Mongo/HTTP",
+  "policy_mode": "DRY_RUN",
+  "measurements": [
+    {
+      "transition_id": "31b9eff3-6353-4880-8a10-b3820da99476",
+      "target": "aes-128-gcm-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "telemetry_event": "b6ac9993-7644-4363-834f-effa770a23f9",
+      "sequence_number": 190131,
+      "full_http_to_effective_seconds": 0.4084736320000957,
+      "command_sequences": [
+        37,
+        38
+      ],
+      "authenticated_ack_count": 2,
+      "prepare_to_activate_seconds": 0.051605,
+      "activate_to_effective_seconds": 0.152607,
+      "activate_to_ack_seconds": 0.082966
+    },
+    {
+      "transition_id": "563b3eb1-5b67-4795-bacb-b5a1e94041ed",
+      "target": "ascon-aead128-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "telemetry_event": "0c54a1e7-2101-4508-98f9-8355bb720a04",
+      "sequence_number": 190137,
+      "full_http_to_effective_seconds": 0.6088637599968934,
+      "command_sequences": [
+        39,
+        40
+      ],
+      "authenticated_ack_count": 2,
+      "prepare_to_activate_seconds": 0.094599,
+      "activate_to_effective_seconds": 0.403528,
+      "activate_to_ack_seconds": 0.08344
+    }
+  ]
+}
+ Container lcm-stage8-fix-20261111-tests-run-5a0d5da8659e Creating 
+ Container lcm-stage8-fix-20261111-tests-run-5a0d5da8659e Created 

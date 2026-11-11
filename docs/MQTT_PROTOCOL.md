@@ -1,3 +1,21 @@
+# Уточнение 8-fix: недоверенные типы и QoS 1
+
+Outer `profile` проверяется как точный `str` до membership в `BY_ALGORITHM`.
+Любой недопустимый JSON-тип, включая list/object, даёт `InvalidTelemetry`.
+Проверенные Ascon-AEAD128 и AES-128-GCM сохраняют прежний формат, параметры и AAD
+binding. Некорректный пакет не продвигает replay и не создаёт Outbox/effective
+receipt. Reject observation намеренно не содержит неподтверждённую identity.
+Receiver делает manual QoS1 ACK после durable reject audit либо успешного
+admission/replay commit. При ошибке PG/commit ACK не выдаётся: disconnect и
+persistent-session redelivery сохраняются. Broker PUBACK издателю подтверждает
+только приём брокером, а не application admission/ACK receiver.
+
+На исходном parser в изолированном TLS-стенде воспроизведены повторные подключения
+после list/object profile; после исправления bounded negative tests проверяют
+SQL/Mongo/evidence, последующую telemetry, connection logs и явный restart
+receiver с той же persistent session. Детали: STAGE8_FIX_RESULTS.md и
+MQTT_MALFORMED_INPUT_AUDIT.md. Это ограниченный эксперимент, не нагрузочный тест.
+
 # Этап 8 — действующее расширение telemetry v2
 
 Wire fields и AAD остаются прежними. Разрешены Ascon-AEAD128 (profile ID

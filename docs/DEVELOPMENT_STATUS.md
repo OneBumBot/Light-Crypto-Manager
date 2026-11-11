@@ -1,3 +1,14 @@
+# Этап 8-fix — MQTT input hardening
+
+Ветка `feature/adaptive-crypto-control-fix`, baseline `67eb3bcff937c2b0975b18444680e98af84e76fd`.
+Исправлен exact-type guard outer profile; добавлены malformed telemetry/AAD,
+подписанные control/ACK negatives, PG/SQLite invariants и real TLS poison probe.
+Проверены Ascon↔AES и recovery существующего протокола; новый recovery protocol
+не создавался. Фактические результаты/команды/exit codes — STAGE8_FIX_RESULTS.md.
+
+Этапы 9 и 7.5c не начаты. Policy DRY_RUN; RF/IF RESEARCH/DEMO,
+trusted_detector=false. Исторические результаты ниже сохранены как история.
+
 # Этап 8 — real manual crypto control проверен
 
 Ветка feature/adaptive-crypto-control, исходный f6f3c23. Реальные software IoT

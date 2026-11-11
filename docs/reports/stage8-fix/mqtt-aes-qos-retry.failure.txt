@@ -1,0 +1,17 @@
+ Container lcm-stage8-fix-20261111-tests-run-0434185c6652 Creating 
+ Container lcm-stage8-fix-20261111-tests-run-0434185c6652 Created 
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/app/scripts/check_malformed_mqtt_recovery.py", line 180, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/app/scripts/check_malformed_mqtt_recovery.py", line 129, in main
+    if a.inside:inside(a.profile,a.baseline);return
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/scripts/check_malformed_mqtt_recovery.py", line 70, in inside
+    wait(lambda:repo.collection.count_documents({})==count(outbox))
+  File "/app/scripts/check_malformed_mqtt_recovery.py", line 35, in wait
+    raise AssertionError('Missing application-level evidence')
+AssertionError: Missing application-level evidence
+

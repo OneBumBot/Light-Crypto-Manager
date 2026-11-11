@@ -1,3 +1,17 @@
+# Уточнение 8-fix: malformed telemetry
+
+Подтверждённый дефект parser позволял JSON list/object в outer profile вызвать
+TypeError до AEAD/admission. Receiver отключался без manual ACK; на отдельном
+TLS/ACL стенде воспроизведены повторные подключения в 10-секундном окне.
+Добавлена проверка точного строкового типа до dictionary lookup. Некорректные
+пакеты теперь проходят существующий durable reject audit и manual ACK path;
+инфраструктурные/commit errors по-прежнему оставляют пакет неподтверждённым.
+Проверены последующая telemetry, PG replay/Outbox/effective evidence, Mongo и
+отсутствие redelivery после явного receiver restart. Это свойства проверенных
+сценариев, не обещание доступности при неограниченном потоке или отказе PG.
+Аудит и воспроизводимые ограничения — MQTT_MALFORMED_INPUT_AUDIT.md,
+STAGE8_FIX_RESULTS.md. Криптографические параметры и control HMAC не изменены.
+
 # Безопасность этапа 8
 
 Opt-in MANUAL_AUTHORIZED_CONTROL, отдельный Compose/control worker/device agent.

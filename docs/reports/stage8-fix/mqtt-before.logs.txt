@@ -1,0 +1,57 @@
+receiver-1  | INFO:__main__:Telemetry accepted
+receiver-1  | ERROR:__main__:MQTT packet processing failed (TypeError)
+receiver-1  | ERROR:__main__:MQTT packet processing failed (TypeError)
+receiver-1  | ERROR:__main__:MQTT packet processing failed (TypeError)
+receiver-1  | ERROR:__main__:MQTT packet processing failed (TypeError)
+receiver-1  | ERROR:__main__:MQTT packet processing failed (TypeError)
+receiver-1  | ERROR:__main__:MQTT packet processing failed (TypeError)
+broker-1    | 1794404494: New connection from ::1:48414 on port 8883.
+broker-1    | 1794404494: New client connected from ::1:48414 as auto-5DD58597-F9A9-8F57-3E25-5DA11C2F6CF3 (p4, c1, k60, u'monitor').
+broker-1    | 1794404494: Client auto-5DD58597-F9A9-8F57-3E25-5DA11C2F6CF3 negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404494: Client auto-5DD58597-F9A9-8F57-3E25-5DA11C2F6CF3 [::1:48414] disconnected: connection closed by client.
+broker-1    | 1794404494: New connection from 172.18.0.10:51821 on port 8883.
+broker-1    | 1794404494: New client connected from 172.18.0.10:51821 as auto-31A83A78-5DFE-4923-41C4-0E38338469F5 (p5, c1, k30, u'device_alpha').
+broker-1    | 1794404494: Client auto-31A83A78-5DFE-4923-41C4-0E38338469F5 negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404494: New connection from 172.18.0.10:47049 on port 8883.
+broker-1    | 1794404494: New client connected from 172.18.0.10:47049 as auto-38F85DAB-2118-98F4-C4D5-EDDC4F1747B3 (p5, c1, k30, u'device_beta').
+broker-1    | 1794404494: Client auto-38F85DAB-2118-98F4-C4D5-EDDC4F1747B3 negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404494: Client lightcrypto-ingestion [172.18.0.9:40127] disconnected.
+broker-1    | 1794404496: New connection from 172.18.0.9:55121 on port 8883.
+broker-1    | 1794404496: Client lightcrypto-ingestion [172.18.0.9:40127] disconnected: session taken over.
+broker-1    | 1794404496: New client connected from 172.18.0.9:55121 as lightcrypto-ingestion (p4, c0, k60, u'receiver').
+broker-1    | 1794404496: Client lightcrypto-ingestion negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404497: Client lightcrypto-ingestion [172.18.0.9:55121] disconnected.
+broker-1    | 1794404497: New connection from ::1:48422 on port 8883.
+broker-1    | 1794404497: New client connected from ::1:48422 as auto-E818A170-B901-69FD-E651-DB9E5A773D11 (p4, c1, k60, u'monitor').
+broker-1    | 1794404497: Client auto-E818A170-B901-69FD-E651-DB9E5A773D11 negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404497: Client auto-E818A170-B901-69FD-E651-DB9E5A773D11 [::1:48422] disconnected: connection closed by client.
+broker-1    | 1794404499: New connection from 172.18.0.9:60033 on port 8883.
+broker-1    | 1794404499: Client lightcrypto-ingestion [172.18.0.9:55121] disconnected: session taken over.
+broker-1    | 1794404499: New client connected from 172.18.0.9:60033 as lightcrypto-ingestion (p4, c0, k60, u'receiver').
+broker-1    | 1794404499: Client lightcrypto-ingestion negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404499: Client lightcrypto-ingestion [172.18.0.9:60033] disconnected.
+broker-1    | 1794404500: New connection from ::1:48426 on port 8883.
+broker-1    | 1794404500: New client connected from ::1:48426 as auto-CFCC2CD3-B22B-E409-D2CB-5B8F6C79F3DF (p4, c1, k60, u'monitor').
+broker-1    | 1794404500: Client auto-CFCC2CD3-B22B-E409-D2CB-5B8F6C79F3DF negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404500: Client auto-CFCC2CD3-B22B-E409-D2CB-5B8F6C79F3DF [::1:48426] disconnected: connection closed by client.
+broker-1    | 1794404501: New connection from 172.18.0.9:57653 on port 8883.
+broker-1    | 1794404501: Client lightcrypto-ingestion [172.18.0.9:60033] disconnected: session taken over.
+broker-1    | 1794404501: New client connected from 172.18.0.9:57653 as lightcrypto-ingestion (p4, c0, k60, u'receiver').
+broker-1    | 1794404501: Client lightcrypto-ingestion negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404501: Client lightcrypto-ingestion [172.18.0.9:57653] disconnected.
+broker-1    | 1794404503: New connection from 172.18.0.9:45997 on port 8883.
+broker-1    | 1794404503: Client lightcrypto-ingestion [172.18.0.9:57653] disconnected: session taken over.
+broker-1    | 1794404503: New client connected from 172.18.0.9:45997 as lightcrypto-ingestion (p4, c0, k60, u'receiver').
+broker-1    | 1794404503: Client lightcrypto-ingestion negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404503: Client lightcrypto-ingestion [172.18.0.9:45997] disconnected.
+broker-1    | 1794404503: New connection from ::1:53682 on port 8883.
+broker-1    | 1794404503: New client connected from ::1:53682 as auto-4D6ECE66-9290-8DD4-A8C6-A92077B76DC0 (p4, c1, k60, u'monitor').
+broker-1    | 1794404503: Client auto-4D6ECE66-9290-8DD4-A8C6-A92077B76DC0 negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404503: Client auto-4D6ECE66-9290-8DD4-A8C6-A92077B76DC0 [::1:53682] disconnected: connection closed by client.
+broker-1    | 1794404505: Client auto-31A83A78-5DFE-4923-41C4-0E38338469F5 [172.18.0.10:51821] disconnected.
+broker-1    | 1794404505: Client auto-38F85DAB-2118-98F4-C4D5-EDDC4F1747B3 [172.18.0.10:47049] disconnected.
+broker-1    | 1794404505: New connection from 172.18.0.9:35071 on port 8883.
+broker-1    | 1794404505: Client lightcrypto-ingestion [172.18.0.9:45997] disconnected: session taken over.
+broker-1    | 1794404505: New client connected from 172.18.0.9:35071 as lightcrypto-ingestion (p4, c0, k60, u'receiver').
+broker-1    | 1794404505: Client lightcrypto-ingestion negotiated TLSv1.3 cipher TLS_AES_256_GCM_SHA384
+broker-1    | 1794404505: Client lightcrypto-ingestion [172.18.0.9:35071] disconnected.
