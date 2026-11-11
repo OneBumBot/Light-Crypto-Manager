@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timezone, timedelta
 from flask import Blueprint, abort, jsonify, render_template, request
 from flask_login import current_user, login_required
-from sqlalchemy import select, func, text, case
+from sqlalchemy import select, func, text, or_, and_
 from sqlalchemy.exc import SQLAlchemyError
 from pymongo.errors import PyMongoError
 from src.web.models import db
@@ -62,13 +62,13 @@ def snapshot(connection, device=None, limit=50, offset=0):
         (devices.c.device_id==outbox.c.device_id) & (devices.c.key_epoch==outbox.c.key_epoch))\
         .distinct(outbox.c.device_id).order_by(outbox.c.device_id, outbox.c.created_at.desc()).subquery()
     summary_row = c.execute(select(func.count().label('provisioned'),
-        func.count().filter(devices.c.enabled.is_(True), latest_telemetry.c.created_at >= now-timedelta(seconds=TELEMETRY_TTL)).label('recent'),
+        func.count().filter(devices.c.enabled.is_(True), latest_telemetry.c.created_at >= now-timedelta(seconds=TELEMETRY_TTL), latest_telemetry.c.created_at<=now).label('recent'),
         func.count().filter(devices.c.enabled.is_(False)).label('disabled'))
         .select_from(devices.outerjoin(latest_telemetry, devices.c.device_id==latest_telemetry.c.device_id))).mappings().one()
     summary = dict(summary_row)
     summary['without_recent'] = summary['provisioned']-summary['recent']-summary['disabled']
-    summary['active_transitions'] = c.scalar(select(func.count()).select_from(control.transitions).where(control.transitions.c.phase.in_(['PREPARED_SERVER','PREPARE_SENT','ACTIVATION_SENT','DEVICE_APPLIED'])))
-    summary['uncertain_transitions'] = c.scalar(select(func.count()).select_from(control.transitions).where(control.transitions.c.phase.in_(['UNKNOWN_OUTCOME','RECOVERY_REQUIRED'])))
+    summary['active_transitions'] = c.scalar(select(func.count()).select_from(control.transitions).where(control.transitions.c.phase.in_(['PREPARED_SERVER','PREPARE_SENT','ACTIVATION_SENT','DEVICE_APPLIED']),control.transitions.c.deadline>now))
+    summary['uncertain_transitions'] = c.scalar(select(func.count()).select_from(control.transitions).where(or_(control.transitions.c.phase.in_(['UNKNOWN_OUTCOME','RECOVERY_REQUIRED']),and_(control.transitions.c.phase.in_(['PREPARED_SERVER','PREPARE_SENT','ACTIVATION_SENT','DEVICE_APPLIED']),control.transitions.c.deadline<=now))))
     q = select(devices).order_by(devices.c.device_id).limit(limit).offset(offset)
     if device: q=q.where(devices.c.device_id==device)
     inventory = [dict(r) for r in c.execute(q).mappings()]

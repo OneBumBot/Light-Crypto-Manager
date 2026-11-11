@@ -107,3 +107,17 @@ def test_receiver_heartbeat_is_diagnostic_only(postgres_db):
         assert c.scalar(select(func.count()).select_from(replay_state))==0
         assert c.scalar(select(func.count()).select_from(outbox))==0
         assert c.scalar(select(func.count()).select_from(m.commands))==0
+
+
+@pytest.mark.postgres
+def test_expired_transition_snapshot_is_uncertain_not_active(postgres_db,registry):
+    web=postgres_db;setup(web,registry);baseline(web,registry);engine=web.db.engine
+    with engine.begin() as c:
+        tid=server.request_switch(c,'raspb1',AES,'admin:1',mode=server.MODE)
+        c.execute(update(m.transitions).where(m.transitions.c.id==tid).values(deadline=datetime.now(timezone.utc)-timedelta(seconds=1)))
+    with engine.connect() as c:
+        result=snapshot(c,'raspb1')
+        assert result['summary']['active_transitions']==0 and result['summary']['uncertain_transitions']==1
+        assert result['items'][0]['pending']['expired'] is True
+        assert result['items'][0]['effective_profile']==ASCON
+        assert c.scalar(select(m.transitions.c.phase))=='PREPARED_SERVER' # read adapter never writes FSM

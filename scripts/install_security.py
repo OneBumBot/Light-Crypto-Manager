@@ -28,7 +28,7 @@ for role in ['broker','publisher','receiver','web','smoke','tests']:
     if role == 'broker':
         registry=json.loads((source/'registry.json').read_text())
         acl=''
-        bindings={'publisher':['raspb1'],'smoke':['smoke']}
+        bindings={user:[device] for user,device in [('publisher','raspb1'),('smoke','smoke')] if device in registry}
         bindings.update({'device_'+name:[name] for name in registry if (source/('device_'+name+'.password')).exists()})
         for user, devices in bindings.items():
             acl+='user '+user+'\n'+''.join('topic write '+registry[d]['topic']+'\n' for d in devices)+'\n'
@@ -51,7 +51,7 @@ for role in ['broker','publisher','receiver','web','smoke','tests']:
         registry=json.loads((source/'registry.json').read_text())
         if role in ['publisher','smoke']:
             name = 'raspb1' if role=='publisher' else 'smoke'
-            registry={name:registry[name]}
+            registry={name:registry[name]} if name in registry else {}
         path=target/'registry.json'
         path.write_text(json.dumps(registry))
         path.chmod(0o600)

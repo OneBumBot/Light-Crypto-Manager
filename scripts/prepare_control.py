@@ -10,8 +10,15 @@ def main():
     a=p.parse_args()
     import re
     if not re.fullmatch(r'lcm-stage8-[a-z0-9-]{1,24}',a.project):p.error('Isolated stage8 project required')
-    os.umask(0o077);root=a.directory.resolve();root.mkdir(parents=True,mode=0o700,exist_ok=False)
-    subprocess.run(['python3','scripts/prepare_compose.py','--env-file',str(root/'compose.env'),'--project',a.project,'--mqtt-port','0','--web-port','0'],check=True)
+    prepare(a.directory, a.project)
+
+
+def prepare(directory, project):
+    import re
+    if not re.fullmatch(r'lcm-(?:stage8-|stage9-demo-)[a-z0-9-]{1,24}', project):
+        raise ValueError('Isolated control project required')
+    os.umask(0o077);root=Path(directory).resolve();root.mkdir(parents=True,mode=0o700,exist_ok=False)
+    subprocess.run(['python3','scripts/prepare_compose.py','--env-file',str(root/'compose.env'),'--project',project,'--mqtt-port','0','--web-port','0'],check=True)
     subprocess.run(['python3','scripts/prepare_security.py','--directory',str(root/'mqtt'),'--extra-device','alpha','--extra-device','beta','--extra-device','gamma'],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     subprocess.run(['python3','scripts/prepare_storage.py','--directory',str(root/'mongo')],check=True)
     registry=json.loads((root/'mqtt/registry.json').read_text());control={}
@@ -33,6 +40,6 @@ def main():
     env=(root/'compose.env').read_text().replace('MQTT_SECURITY_DIR=.local-runtime/security','MQTT_SECURITY_DIR='+str(root/'mqtt')).replace('MONGO_SECURITY_DIR=.local-runtime/mongo-security','MONGO_SECURITY_DIR='+str(root/'mongo'))
     env+='\nCONTROL_INPUT_DIR='+str(root)+'\nCONTROL_MODE=MANUAL_AUTHORIZED_CONTROL\n'
     (root/'compose.env').write_text(env)
-    print('Independent stage8 provisioning complete; values withheld')
+    print('Independent control provisioning complete; values withheld')
 
 if __name__=='__main__':main()
