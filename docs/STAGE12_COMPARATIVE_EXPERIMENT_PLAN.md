@@ -1,0 +1,9 @@
+# Stage12 predeclared experiment matrix
+
+Baseline20d298c, full suite868. No Stage8–11 volumes/keys reused. Host x86 software only. New cohort3: alpha/beta three profiles, gamma Ascon-only. Magma verdict computed before live integration; no Magma selectable target if negative.
+
+Micro: five independent fresh-key/process runs, rotated order; payload64/83/256/1024, AAD fixed128B and actual canonical telemetry AAD.1000 measured pairs +20 warmup, unique nonces. Implementations: Python Ascon reference, native AESGCM, pinned Go one-shot, bounded persistent Go; PyGOST research if KAT passes. Same host sequentially, one CPU bound process per run, services quiescent; raw timings retained. p99 descriptive1000-sample statistic, no independence/CI claims across within-run packets. Explicit key setup/startup/IPC probes, no subtractive algorithm timing estimate. Magma excluded from bulk AEAD runs because gate fails; no1000 encryptions with one Magma key.
+
+Network:3 software identities,1Hz, three static profiles, fixed20s observation windows, sequential implementations where applicable (one-shot vs persistent on Kuznyechik). No capacity claim. Count scheduled/formed/publish/queued/PUBACK separately; source identities reconciled with PG and Mongo after publisher quiescence. Bound journal50000 events, container CPU/RAM/log caps, Outbox ceiling unchanged, watchdog per command. Stop on command timeout, unavailable storage, any duplicate formed nonce, unexpected transition, or undrained committed cohort. No backend fallback.
+
+Actual HTTP chain Ascon→Kuznyechik→AES→Ascon; admin+CSRF, HMAC/TLS, real agents and receipts. Provider worker crash must not reset nonce/usage authorities. Controlled recovery and prior malformed/control probes reused, scoped only to new project. Baseline reports and historical datasets immutable. ML disabled/untrusted, Policy DRY_RUN.
