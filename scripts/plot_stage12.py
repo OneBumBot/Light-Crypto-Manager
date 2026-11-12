@@ -10,6 +10,8 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,default=Path('docs/reports/stage12'));a=p.parse_args();root=a.reports
     micro=json.loads((root/'comparative-final.json').read_text())['runs'];figdir=root/'figures';figdir.mkdir(exist_ok=True)
     ids=list(dict.fromkeys(r['implementation'] for r in micro));colors=dict(zip(ids,plt.cm.tab10.colors));labels={i:i.replace('kuz-','Kuz/').replace('ascon-','Ascon/').replace('aes-','AES/') for i in ids}
+    labels['kuz-go-one-shot']='Kuz/original Stage11 one-shot'
+    labels['kuz-go-worker']='Kuz/bounded Go worker'
     def save(fig,name):fig.tight_layout();fig.savefig(figdir/(name+'.png'),dpi=160);fig.savefig(figdir/(name+'.svg'));plt.close(fig)
     for key,name in [('encrypt_ns','encryption_payload'),('decrypt_ns','decryption_payload')]:
         fig,axes=plt.subplots(1,2,figsize=(13,5))
@@ -55,8 +57,8 @@ def main():
     fig,ax=plt.subplots(figsize=(10,4));ts=system['transitions'];ax.bar(range(len(ts)),[r['observed_effective_seconds'] for r in ts]);ax.set_xticks(range(len(ts)),[r['target'].replace('-v1','') for r in ts],rotation=20,ha='right');ax.set_ylabel('HTTP request to observed EFFECTIVE_CONFIRMED, s');save(fig,'switch_latency')
     final=json.loads((root/'final.json').read_text());fig,axes=plt.subplots(1,2,figsize=(10,4));u=final['usage'];axes[0].bar([r['device_id'] for r in u],[r['reserved_invocations'] for r in u]);axes[0].set_ylabel('Actual reserved MGM invocations (burned allowance)');axes[1].axis('off');axes[1].text(.05,.5,'Magma rotation: not implemented\nCost: not_measured\nNo live activation\nNo zero-cost bar fabricated');save(fig,'usage_rotation')
     with (root/'run-summary.csv').open('w',newline='') as f:
-        writer=csv.writer(f);writer.writerow(['repeat','implementation','profile','payload_bytes','aad_mode','median_encrypt_ns','median_decrypt_ns','pairs_per_second'])
-        for r in micro:writer.writerow([r['repeat'],r['implementation'],r['profile'],r['payload_bytes'],r['aad_mode'],r['encrypt_ns']['median'],r['decrypt_ns']['median'],r['pairs_per_second']])
+        writer=csv.writer(f);writer.writerow(['repeat','implementation','profile','payload_bytes','aad_mode','median_encrypt_ns','median_decrypt_ns','pairs_per_second','source_dataset'])
+        for r in micro:writer.writerow([r['repeat'],r['implementation'],r['profile'],r['payload_bytes'],r['aad_mode'],r['encrypt_ns']['median'],r['decrypt_ns']['median'],r['pairs_per_second'],r.get('source_dataset','not_recorded')])
     print('10 measured figure families exported; Magma absent from live plots')
 
 if __name__=='__main__':main()

@@ -42,7 +42,7 @@ def main():
     # PEM body lines are independently scanned too, including multiline/gzip logs.
     for value in private[:]:private.extend(line for line in value.splitlines() if len(line)>=48 and not line.startswith('-'))
     needles=[s.encode() for s in set(private) if len(s)>=16];leaks=[]
-    files=set(subprocess.check_output(['git','ls-files'],text=True).splitlines())|{str(f) for f in Path('docs/reports/stage11').rglob('*') if f.is_file()}
+    files=set(subprocess.check_output(['git','ls-files'],text=True).splitlines())|{str(f) for f in Path('docs/reports/stage12').rglob('*') if f.is_file()}
     for name in files:
         path=Path(name)
         if not path.is_file():continue
