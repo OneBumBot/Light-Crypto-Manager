@@ -16,8 +16,9 @@ class Lab:
         if env.get('COMPOSE_PROJECT_NAME')!=self.project or env.get('CONTROL_INPUT_DIR')!=str(self.root):raise ValueError('Lab identity mismatch')
         self.base=['docker','compose','--env-file',str(self.root/'compose.env'),'-f','compose.yaml','-f','compose.control.yaml','-f',str(self.root/'performance.compose.json'),'--profile','control','--profile','web','--profile','policy'];self.commands=[]
     def run(self,*args,check=True,timeout=180,input_data=None):
+        started=__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat()
         r=subprocess.run(self.base+list(args),capture_output=True,text=True,timeout=timeout,input=input_data)
-        self.commands.append(dict(command=self.base+list(args),exit_code=r.returncode))
+        self.commands.append(dict(command=self.base+list(args),exit_code=r.returncode,started_at=started,finished_at=__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat()))
         if r.returncode:
             p=self.root/'last-failure.txt';p.write_text(r.stdout+r.stderr);p.chmod(0o600)
             if check:raise RuntimeError('Lab command '+args[0]+' failed ('+str(r.returncode)+'); private last-failure.txt')

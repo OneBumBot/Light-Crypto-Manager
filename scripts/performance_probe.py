@@ -15,6 +15,7 @@ def snapshot(engine):
     with engine.connect() as c:
         result=dict(checked_at=c.scalar(select(func.clock_timestamp())).isoformat(),
             devices=[dict(r) for r in c.execute(select(m.devices.c.device_id,m.devices.c.effective_profile,m.devices.c.effective_event,m.devices.c.sequence_reserved,m.devices.c.command_sequence)).mappings()],
+            per_device={r.device_id:dict(count=r.n,last_sequence=r.seq) for r in c.execute(select(outbox.c.device_id,func.count().label('n'),func.max(outbox.c.sequence_number).label('seq')).group_by(outbox.c.device_id))},
             outbox={k:int(v) for k,v in c.execute(select(outbox.c.status,func.count()).group_by(outbox.c.status))},
             counters={k:int(v) for k,v in c.execute(select(metrics.c.kind,func.sum(metrics.c.count)).group_by(metrics.c.kind))},
             transitions=c.scalar(select(func.count()).select_from(m.transitions)),completed=c.scalar(select(func.count()).select_from(m.transitions).where(m.transitions.c.phase=='EFFECTIVE_CONFIRMED')),
@@ -33,10 +34,21 @@ def snapshot(engine):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans']);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage']);a=p.parse_args()
     engine=create_engine(database_url(),connect_args={'connect_timeout':2})
     try:
         if a.action=='snapshot':print(json.dumps(snapshot(engine),indent=2));return
+        if a.action=='transitions':
+            with engine.connect() as c:
+                rows=[dict(r) for r in c.execute(select(m.transitions).order_by(m.transitions.c.created_at).limit(100)).mappings()]
+                commands=[dict(r) for r in c.execute(select(m.commands.c.id,m.commands.c.transition_id,m.commands.c.phase,m.commands.c.status,m.commands.c.attempts,m.commands.c.available_at).limit(200)).mappings()]
+            print(json.dumps(dict(transitions=rows,commands=commands),default=lambda v:v.isoformat()));return
+        if a.action=='storage':
+            repo=MongoRepository('relay')
+            try:
+                print(json.dumps(dict(indexes=repo.collection.index_information(),history_explain=repo.collection.database.command('explain',{'find':repo.collection.name,'filter':{'device_id':'alpha'},'sort':{'measured_at':-1,'_id':-1},'limit':50},verbosity='executionStats')),default=str))
+            finally:repo.close()
+            return
         args=json.load(sys.stdin)
         if a.action=='export':
             start=datetime.fromisoformat(args['start']);end=datetime.fromisoformat(args['end'])
