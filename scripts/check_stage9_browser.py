@@ -7,12 +7,13 @@ from playwright.sync_api import sync_playwright,expect
 from scripts.stage9_common import Demo
 from scripts.performance_lab import Lab
 from scripts.kuz_lab import Lab as KuzLab
+from scripts.crypto_research_lab import Lab as ResearchLab
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--directory',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
     if a.output.exists():p.error('Immutable output exists')
-    d=(KuzLab(a.directory) if (a.directory/'stage11.json').exists() else Lab(a.directory) if (a.directory/'stage10.json').exists() else Demo(a.directory));url=d.url();checks=[]
+    d=(ResearchLab(a.directory) if (a.directory/'stage12.json').exists() else KuzLab(a.directory) if (a.directory/'stage11.json').exists() else Lab(a.directory) if (a.directory/'stage10.json').exists() else Demo(a.directory));url=d.url();checks=[]
     def reply(body):
         return lambda route:route.fulfill(content_type='application/json',body=json.dumps(body))
     with sync_playwright() as pw:
@@ -45,10 +46,10 @@ def main():
             expect(page.locator('#transition-history')).to_contain_text('EFFECTIVE_CONFIRMED')
             expect(page.locator('#transition-history')).to_contain_text('Authenticated device ACK')
             expect(page.locator('#transition-history')).to_contain_text('Verified telemetry')
-        if isinstance(d,KuzLab):
+        if isinstance(d,(KuzLab,ResearchLab)):
             switch('Kuznyechik-MGM');checks.append('browser_real_ascon_to_kuznyechik')
         switch('AES-128-GCM');checks.append('browser_real_ascon_or_kuznyechik_to_aes')
-        if isinstance(d,KuzLab):
+        if isinstance(d,(KuzLab,ResearchLab)):
             switch('Kuznyechik-MGM');checks.append('browser_real_aes_to_kuznyechik')
         page.goto(url+'/');page.wait_for_selector('#device-rows tr[data-device=beta]')
         for device in ['beta','gamma']:
@@ -147,7 +148,7 @@ def main():
         checks.append('dom_mongo_unavailable_not_empty');page.unroute('**/api/telemetry/history?*')
         assert not errors,errors
         browser.close()
-    a.output.write_text(json.dumps(dict(project=d.project,browser='Chromium via Playwright 1.56.0',real_crypto_switches=4 if isinstance(d,KuzLab) else 2,
+    a.output.write_text(json.dumps(dict(project=d.project,browser='Chromium via Playwright 1.56.0',real_crypto_switches=4 if isinstance(d,(KuzLab,ResearchLab)) else 2,
         checks=checks,page_errors=errors,commands=d.commands,fixture_injection_tests_separate=True,exit_code=0),indent=2)+'\n')
     print(json.dumps(dict(checks=checks,exit_code=0),indent=2))
 

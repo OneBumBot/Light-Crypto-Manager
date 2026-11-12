@@ -28,7 +28,7 @@ def main():
         ax.set_xticks(range(len(ids)),[labels[i] for i in ids],rotation=18,ha='right');ax.set_ylabel(ylabel);ax.set_title('83B / fixed AAD; independent-run points, median bars');save(fig,name)
     groups(rows,lambda r:r['pairs_per_second'],'throughput','Authenticated encrypt/decrypt pairs per second')
     cpu=json.loads((root/'cpu-benchmark.json').read_text())['runs'] if (root/'cpu-benchmark.json').exists() else rows
-    groups(cpu,lambda r:100*(r['python_cpu_seconds']+r['child_cpu_seconds'])/r['wall_seconds'],'cpu','Python + reaped child CPU / wall, % of one core')
+    groups(cpu,lambda r:1e6*(r['python_cpu_seconds']+r['child_cpu_seconds'])/r['iterations'],'cpu','Python + child CPU, us per authenticated pair')
     fig,ax=plt.subplots(figsize=(11,5))
     for x,impl in enumerate(ids):
         r=[v for v in rows if v['implementation']==impl];ax.scatter([x]*len(r),[v['python_rss_kib']/1024 for v in r],label='Python RSS' if x==0 else None,color='tab:blue')

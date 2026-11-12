@@ -23,7 +23,12 @@ class Worker:
                 remaining=deadline-time.monotonic()
                 if remaining<=0:raise ProviderUnavailable('Provider IPC timeout')
                 for key,_ in selector.select(remaining):
-                    if key.fileobj is self.process.stderr:raise ProviderUnavailable('Provider stderr/exit')
+                    if key.fileobj is self.process.stderr:
+                        try:noise=os.read(self.process.stderr.fileno(),1)
+                        except BlockingIOError:continue
+                        if noise:raise ProviderUnavailable('Provider stderr output')
+                        selector.unregister(self.process.stderr) # EOF may race a complete stdout response
+                        continue
                     try:
                         if write is not None:
                             n=os.write(fd,write[offset:]);offset+=n

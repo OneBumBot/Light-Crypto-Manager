@@ -98,3 +98,10 @@ def test_dispatch_missing_backend_never_falls_back(monkeypatch):
     from src.crypto_profiles import KUZ,encrypt as dispatch
     monkeypatch.setenv('LCM_KUZ_PROVIDER','/nonexistent/mgm-backend')
     with pytest.raises(ProviderUnavailable):dispatch(KUZ,b'k'*32,b'\0'*16,b'a',b'p')
+
+
+def test_stderr_eof_does_not_discard_complete_valid_response(tmp_path,monkeypatch):
+    path=tmp_path/'eof-worker'
+    path.write_text('#!'+sys.executable+'\nimport sys,os\nn=int.from_bytes(sys.stdin.buffer.read(4),"big");r=sys.stdin.buffer.read(n)\nos.close(2)\nout=r[:8]+b"\\0"+b"x"*17\nos.write(1,len(out).to_bytes(4,"big")+out)\n')
+    path.chmod(0o700);monkeypatch.setenv('LCM_KUZ_PROVIDER',str(path))
+    assert encrypt(b'k'*32,b'\0'*16,b'a',b'p')==b'x'*17

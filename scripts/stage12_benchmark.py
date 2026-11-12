@@ -50,7 +50,7 @@ def child(impl,size,aad_mode,count,candidate,cpu_scope=False):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--child');p.add_argument('--cpu-only',action='store_true');p.add_argument('--size',type=int);p.add_argument('--aad',default='fixed');p.add_argument('--candidate',required=True);p.add_argument('--output',type=Path);p.add_argument('--iterations',type=int,default=1000);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--child');p.add_argument('--go-refresh',action='store_true');p.add_argument('--cpu-only',action='store_true');p.add_argument('--size',type=int);p.add_argument('--aad',default='fixed');p.add_argument('--candidate',required=True);p.add_argument('--output',type=Path);p.add_argument('--iterations',type=int,default=1000);a=p.parse_args()
     if a.iterations!=1000:raise ValueError('Predeclared1000 samples required')
     if a.child:
         if a.child not in IDS or a.size not in [64,83,256,1024] or a.aad not in ['fixed','telemetry']:raise ValueError('Bounded matrix')
@@ -59,6 +59,7 @@ def main():
     runs=[]
     for repeat in range(5):
         order=IDS[repeat:]+IDS[:repeat]
+        if a.go_refresh:order=['kuz-go-one-shot','kuz-go-worker'] if repeat%2==0 else ['kuz-go-worker','kuz-go-one-shot']
         for aad in (['fixed'] if a.cpu_only else ['fixed','telemetry']):
             for size in ([83] if a.cpu_only else [64,83,256,1024]):
                 for impl in order:
