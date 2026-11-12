@@ -16,15 +16,34 @@ def operation(op,key,nonce,aad,data):
     if op==2 and (not 16<=len(data)<=4112 or len(aad)+len(data)-16==0):raise ValueError('Invalid MGM length')
     if op in [3,4] and (len(data)!=16 or aad):raise ValueError('Invalid block input')
     request=b'LCMKUZ01'+bytes([op])+key+nonce+struct.pack('!II',len(aad),len(data))+aad+data
+    backend=os.environ.get('LCM_KUZ_BACKEND','one-shot')
+    if backend=='persistent':
+        from src.kuz_worker import WORKER
+        response=WORKER.exchange(request)
+    elif backend!='one-shot':raise ProviderUnavailable('Unknown provider backend')
+    else:
+        response=_one_shot(request)
+    try:return _response(op,data,response)
+    except ProviderUnavailable:
+        if backend=='persistent':WORKER.close()
+        raise
+
+
+def _one_shot(request):
     try:
         # No keys in argv/env/logs, no shell; a fresh instance per operation.
         result=subprocess.run([binary_path()],input=request,capture_output=True,timeout=5,env={'GOMAXPROCS':'1','GODEBUG':'madvdontneed=1'})
     except (OSError,subprocess.TimeoutExpired):raise ProviderUnavailable('Kuznyechik provider unavailable') from None
-    if result.returncode or result.stderr or not 1<=len(result.stdout)<=4113:raise ProviderUnavailable('Kuznyechik provider failed')
-    status=result.stdout[0]
-    if status in [1,2] and len(result.stdout)==1:raise ValueError('MGM authentication/parameter rejection')
+    if result.returncode or result.stderr:raise ProviderUnavailable('Kuznyechik provider failed')
+    return result.stdout
+
+
+def _response(op,data,response):
+    if not 1<=len(response)<=4113:raise ProviderUnavailable('Kuznyechik provider response bounds')
+    status=response[0]
+    if status in [1,2] and len(response)==1:raise ValueError('MGM authentication/parameter rejection')
     if status!=0:raise ProviderUnavailable('Kuznyechik provider internal failure')
-    output=result.stdout[1:];expected=len(data)+(16 if op==1 else -16 if op==2 else 0)
+    output=response[1:];expected=len(data)+(16 if op==1 else -16 if op==2 else 0)
     if len(output)!=expected:raise ProviderUnavailable('Kuznyechik provider output bounds')
     return output
 

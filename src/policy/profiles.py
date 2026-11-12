@@ -30,7 +30,7 @@ IMPLEMENTED={ASCON:Profile(ASCON,1,'Ascon-AEAD128','implemented',
 
 def registry():
     from src.crypto_profiles import PROFILES
-    return [dict(asdict(p),implementation_status=p.status,
+    return [dict(asdict(p),implementation_status=p.status,cryptographic_validation_status='published_vectors_verified' if p.known_vectors_passed else 'unverified',lab_eligibility=p.activation_allowed,production_eligibility='not_assessed' if p.profile_id!= 'kuznyechik-mgm-v1' else 'not_approved',implementation_backends=['go-one-shot-v1','go-bounded-worker-v1'] if p.profile_id=='kuznyechik-mgm-v1' else ['python-reference-v1'] if p.profile_id==ASCON else ['cryptography-native-v1'],key_lifetime_requirements='durable per-key invocation/block/verification budget; reviewed rekey on exhaustion' if p.profile_id=='kuznyechik-mgm-v1' else 'existing nonce/epoch policy',
         aead_mode='MGM' if p.profile_id=='kuznyechik-mgm-v1' else 'GCM' if p.profile_id==AES else 'Ascon-AEAD128',
         key_bytes=PROFILES[p.profile_id]['key_bytes'],nonce_bytes=PROFILES[p.profile_id]['nonce_bytes'],tag_bytes=PROFILES[p.profile_id]['tag_bytes'],
         nonce_policy=p.parameters.get('nonce_policy','existing-v1'),usage_limits=p.parameters.get('usage_limits',{})) for p in IMPLEMENTED.values()]

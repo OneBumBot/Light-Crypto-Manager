@@ -6,6 +6,7 @@ import (
  "encoding/binary"
  "io"
  "os"
+ "time"
  "github.com/tarantool/go-gostcrypto/kuznyechik"
  "github.com/tarantool/go-gostcrypto/mgm"
 )
@@ -41,4 +42,19 @@ func invoke(raw []byte) (out []byte) {
  default:return []byte{2}
  }
 }
-func main(){ raw,err:=io.ReadAll(io.LimitReader(os.Stdin,65+1024+4112+1));if err!=nil{os.Stdout.Write([]byte{2});return};out:=invoke(raw);os.Stdout.Write(out) }
+func worker(){
+ // Parent cgroup limits memory/CPU; Go soft heap budget is inherited. No context/key cache.
+ timer:=time.AfterFunc(30*time.Second,func(){os.Exit(0)});defer timer.Stop()
+ for id:=uint64(1);id<=256;id++ {
+  header:=make([]byte,4);if _,err:=io.ReadFull(os.Stdin,header);err!=nil{return}
+  size:=binary.BigEndian.Uint32(header);if size<73 || size>8+65+1024+4112{return}
+  frame:=make([]byte,int(size));if _,err:=io.ReadFull(os.Stdin,frame);err!=nil{return}
+  if binary.BigEndian.Uint64(frame[:8])!=id{clear(frame);return}
+  output:=invoke(frame[8:]);response:=make([]byte,12+len(output))
+  binary.BigEndian.PutUint32(response[:4],uint32(8+len(output)))
+  binary.BigEndian.PutUint64(response[4:12],id);copy(response[12:],output)
+  clear(frame);clear(output)
+  if _,err:=os.Stdout.Write(response);err!=nil{clear(response);return};clear(response)
+ }
+}
+func main(){ if len(os.Args)==2 && os.Args[1]=="--worker"{worker();return};if len(os.Args)!=1{return};raw,err:=io.ReadAll(io.LimitReader(os.Stdin,65+1024+4112+1));if err!=nil{os.Stdout.Write([]byte{2});return};out:=invoke(raw);os.Stdout.Write(out) }
