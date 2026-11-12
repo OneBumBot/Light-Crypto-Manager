@@ -1,6 +1,14 @@
+FROM golang:1.27.3-bookworm@sha256:dc0963f32053e4bc451d24d87e3892d42d01021b61f093e98eb95c0352bb84b0 AS kuz-builder
+ENV CGO_ENABLED=0 GOTOOLCHAIN=local GOPROXY=off GOSUMDB=off
+WORKDIR /build/native/kuzprovider
+COPY third_party/go-gostcrypto /build/third_party/go-gostcrypto
+COPY native/kuzprovider /build/native/kuzprovider
+RUN go build -trimpath -buildvcs=false -ldflags=-buildid= -o /out/lcm-kuz-mgm .
+
 FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+COPY --from=kuz-builder /out/lcm-kuz-mgm /usr/local/bin/lcm-kuz-mgm
 WORKDIR /app
 COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
 COPY src/web/requirements.txt /app/requirements/web.txt
@@ -15,7 +23,7 @@ COPY src/web/*.py /app/src/web/
 COPY src/web/templates /app/src/web/templates
 COPY src/web/static /app/src/web/static
 COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
-COPY scripts/install_control.py scripts/install_stage10.py /app/scripts/
+COPY scripts/install_control.py scripts/install_stage10.py scripts/install_stage11.py /app/scripts/
 COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
 COPY alembic.ini /app/alembic.ini
 COPY migrations /app/migrations

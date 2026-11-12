@@ -9,6 +9,7 @@ from src.web.models import db
 from src.telemetry import strict_json,DEVICE
 from src.devices import devices as registered_devices
 from src.crypto_profiles import PROFILES
+from src.kuz_provider import ProviderUnavailable
 from . import models as m,server
 blueprint=Blueprint('control',__name__)
 
@@ -68,6 +69,7 @@ def switch(device):
             tid=server.request_switch(c,device,body['profile'],'admin:'+str(current_user.id),ttl=body['ttl'],mode=server.MODE)
         return jsonify(transition_id=tid,status='PREPARED_SERVER',effective_changed=False),202
     except (TypeError,ValueError):return jsonify(error='Недопустимый или конфликтующий запрос переключения'),409
+    except ProviderUnavailable:return jsonify(error='Криптографический provider временно недоступен'),503
     except SQLAlchemyError:return jsonify(error='Запрос временно недоступен'),503
 
 

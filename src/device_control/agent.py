@@ -23,7 +23,7 @@ def main():
     delay=float(os.environ.get('CONTROL_TEST_READY_DELAY','0'))
     if not 0<=delay<=5:raise ValueError('Bounded test delay')
     device=os.environ['DEVICE_ID'];config=load()[device]
-    state=DeviceState(os.environ['DEVICE_STATE_FILE'],device,config['command_epoch'])
+    state=DeviceState(os.environ['DEVICE_STATE_FILE'],device,config['command_epoch'],strict_authority='kuznyechik-mgm-v1' in config['capabilities'])
     inbox=queue.Queue(maxsize=128);stop=Event();connected=Event();boot=str(uuid.uuid4());grant=None;request=None
     seq=0;ready=Path('/tmp/device-ready');ready.unlink(missing_ok=True)
     interval=float(os.environ.get('PUBLISH_INTERVAL','.5'))

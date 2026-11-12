@@ -123,7 +123,7 @@
     } else op.append(el('p','Выберите поддерживаемый целевой профиль и подтвердите ручной запрос.'));
     if (admin) {
       const target=$('crypto-target'),old=target.value;target.replaceChildren();
-      for (const p of d.capabilities.filter(p=>p!==d.effective_profile)) { const o=el('option',profile(p));o.value=p;target.append(o); }
+      for (const p of d.capabilities.filter(p=>p!==d.effective_profile&&data.profiles[p]?.activation_allowed!==false)) { const o=el('option',profile(p));o.value=p;target.append(o); }
       if ([...target.options].some(o=>o.value===old)) target.value=old;
       let reason='';
       if (!d.enabled) reason='Устройство отключено в реестре.';

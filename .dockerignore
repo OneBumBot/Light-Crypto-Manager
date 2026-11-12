@@ -94,3 +94,18 @@ src/research_stand/**
 !src/device_control/
 !src/device_control/*.py
 !scripts/install_control.py
+
+# Pinned non-secret provider source only. Private verification clones stay excluded.
+!native/
+!native/kuzprovider/
+!native/kuzprovider/*.go
+!native/kuzprovider/go.mod
+!third_party/
+!third_party/go-gostcrypto/
+!third_party/go-gostcrypto/**
+**/.local-runtime
+**/.local-runtime/**
+**/.git
+**/.git/**
+**/__pycache__/**
+**/*.pyc

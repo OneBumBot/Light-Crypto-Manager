@@ -64,3 +64,16 @@ def test_mgm_length_rules_and_partial_blocks():
     with pytest.raises(ValueError):encrypt(KEY,NONCE,b'x'*1025,b'x')
     with pytest.raises(ValueError):encrypt(KEY,NONCE,b'x',b'x'*4097)
     for a,p in [(b'',b'x'),(b'a',b''),(b'a'*17,b'p'*31)]:assert decrypt(KEY,NONCE,a,encrypt(KEY,NONCE,a,p))==p
+
+
+@pytest.mark.parametrize('field',['nonce','aad','plaintext'])
+@pytest.mark.parametrize('bad',[None,True,False,1,1.5,[],{},'bytes'])
+def test_all_provider_inputs_have_exact_byte_types(field,bad):
+    values=dict(key=KEY,nonce=NONCE,aad=AAD,plaintext=PLAIN);values[field]=bad
+    with pytest.raises(ValueError):encrypt(**values)
+
+
+def test_provider_failure_is_not_an_invalid_tag(monkeypatch):
+    from src.kuz_provider import ProviderUnavailable
+    monkeypatch.setenv('LCM_KUZ_PROVIDER','/nonexistent/lcm-kuz-provider')
+    with pytest.raises(ProviderUnavailable):encrypt(KEY,NONCE,AAD,PLAIN)

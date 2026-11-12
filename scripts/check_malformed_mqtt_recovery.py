@@ -97,6 +97,9 @@ def inside(profile, baseline=False):
             p['associated_data']=base64.b64encode(canonical(ad)).decode();bad.append(p)
         for field in ['nonce','ciphertext','associated_data']:
             p=copy.deepcopy(good);p[field]={};bad.append(p)
+        if profile=='kuznyechik-mgm-v1':
+            p=copy.deepcopy(good);ct=base64.b64decode(p['ciphertext']);p['ciphertext']=base64.b64encode(ct[:-1]+bytes([ct[-1]^1])).decode();bad.append(p)
+            p=copy.deepcopy(good);p['associated_data']=base64.b64encode(base64.b64decode(p['associated_data'])+b' ').decode();bad.append(p)
         if baseline:bad=bad[:2]
         started=time.monotonic()
         for p in bad:publish(alpha,'alpha',p)
@@ -135,7 +138,7 @@ def main():
     p.add_argument('--env-file',type=Path);p.add_argument('--output',type=Path)
     p.add_argument('--inside',action='store_true');p.add_argument('--baseline',action='store_true')
     p.add_argument('--counters',action='store_true')
-    p.add_argument('--profile',default='ascon-aead128-v1',choices=['ascon-aead128-v1','aes-128-gcm-v1'])
+    p.add_argument('--profile',default='ascon-aead128-v1',choices=['ascon-aead128-v1','aes-128-gcm-v1','kuznyechik-mgm-v1'])
     a=p.parse_args()
     if a.counters:
         from sqlalchemy import create_engine,select,func
@@ -153,17 +156,20 @@ def main():
     env=dict(line.split('=',1) for line in a.env_file.read_text().splitlines() if '=' in line and not line.startswith('#'))
     import re
     project=env.get('COMPOSE_PROJECT_NAME','')
-    if not re.fullmatch(r'lcm-(?:stage8-fix-|stage9-demo-|stage10-performance-)[a-z0-9-]+',project):p.error('Dedicated fix/demo project required')
+    if not re.fullmatch(r'lcm-(?:stage8-fix-|stage9-demo-|stage10-performance-|stage11-kuznyechik-)[a-z0-9-]+',project):p.error('Dedicated fix/demo project required')
     if a.output.exists():p.error('Output already exists')
     base=['docker','compose','--env-file',str(a.env_file),'-f','compose.yaml','-f','compose.control.yaml','--profile','control']
     if project.startswith('lcm-stage9-demo-'):
         base += ['-f','compose.stage9.yaml']
+    if project.startswith('lcm-stage11-kuznyechik-'):
+        from scripts.kuz_lab import Lab
+        base=Lab(a.env_file.parent).base
     if project.startswith('lcm-stage10-performance-'):
         from scripts.performance_lab import Lab
         lab=Lab(a.env_file.parent)
         if len(lab.devices)!=3:p.error('Poison probe requires quiescent three-device lab')
         base=lab.base
-    receiver_id=project+'-receiver' if project.startswith(('lcm-stage9-demo-','lcm-stage10-performance-')) else 'lightcrypto-ingestion'
+    receiver_id=project+'-receiver' if project.startswith(('lcm-stage9-demo-','lcm-stage10-performance-','lcm-stage11-kuznyechik-')) else 'lightcrypto-ingestion'
     def run(*parts):
         r=subprocess.run(base+list(parts),capture_output=True,text=True,timeout=120)
         if r.returncode:

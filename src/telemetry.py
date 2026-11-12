@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 import re
 
-from src.crypto_profiles import ASCON, AES, PROFILES, BY_ALGORITHM, encrypt, decrypt
+from src.crypto_profiles import ASCON, AES, KUZ, PROFILES, BY_ALGORITHM, encrypt, decrypt
 from cryptography.exceptions import InvalidTag
 
 MAX_PACKET_BYTES = 8192
@@ -77,11 +77,14 @@ def validate_registry(registry):
         if len(key)!=16 or len(entry['key_hex'])!=32 or key in seen: reject()
         seen.add(key)
         if 'telemetry_keys' in entry:
-            exact(entry['telemetry_keys'], ['AES-128-GCM'])
-            try: aes=bytes.fromhex(entry['telemetry_keys']['AES-128-GCM'])
-            except (ValueError,TypeError): reject()
-            if len(aes)!=16 or len(entry['telemetry_keys']['AES-128-GCM'])!=32 or aes in seen: reject()
-            seen.add(aes)
+            keys=entry['telemetry_keys']
+            if type(keys) is not dict or not keys or any(type(k) is not str or k not in ['AES-128-GCM','Kuznyechik-MGM'] for k in keys): reject()
+            for algorithm,hexkey in keys.items():
+                try: key=bytes.fromhex(hexkey)
+                except (ValueError,TypeError): reject()
+                size=PROFILES[BY_ALGORITHM[algorithm]]['key_bytes']
+                if len(key)!=size or len(hexkey)!=size*2 or key in seen: reject()
+                seen.add(key)
     return registry
 
 
@@ -97,11 +100,11 @@ def canonical(value):
 
 def encode_packet(sensor, registry, device_id, sequence_number, *, profile=ASCON):
     validate_registry(registry)
-    if device_id not in registry: reject()
+    if type(device_id) is not str or device_id not in registry: reject()
     positive(sequence_number)
     validate_sensor(sensor)
     entry=registry[device_id]
-    if profile not in PROFILES: reject()
+    if type(profile) is not str or profile not in PROFILES: reject()
     algorithm=PROFILES[profile]['algorithm']
     key=entry['key_hex'] if profile==ASCON else entry.get('telemetry_keys',{}).get(algorithm)
     if key is None: reject()
@@ -109,6 +112,9 @@ def encode_packet(sensor, registry, device_id, sequence_number, *, profile=ASCON
               'sequence_number':sequence_number,'schema_version':2,'profile':algorithm}
     ad=canonical(metadata)
     nonce=os.urandom(16) if profile==ASCON else entry['key_epoch'].to_bytes(4,'big')+sequence_number.to_bytes(8,'big')
+    if profile==KUZ:
+        from src.kuz_usage import nonce as mgm_nonce
+        nonce=mgm_nonce(entry['key_epoch'],sequence_number)
     ciphertext=encrypt(profile,bytes.fromhex(key),nonce,ad,canonical(sensor))
     return {'schema_version':2,'profile':algorithm,'nonce':base64.b64encode(nonce).decode(),
             'associated_data':base64.b64encode(ad).decode(),
@@ -126,7 +132,7 @@ class VerifiedTelemetry:
     packet_sha256: str | None = None
 
 
-def decode_packet(raw, topic, registry):
+def decode_packet(raw, topic, registry, *, before_mgm_verify=None):
     if isinstance(raw,dict): raw=canonical(raw)
     if isinstance(raw,str): raw=raw.encode()
     if type(raw) is not bytes or not 1<=len(raw)<=MAX_PACKET_BYTES: reject()
@@ -159,6 +165,10 @@ def decode_packet(raw, topic, registry):
     if not key_hex: reject()
     key=bytes.fromhex(key_hex)
     if profile==AES and nonce!=metadata['key_epoch'].to_bytes(4,'big')+metadata['sequence_number'].to_bytes(8,'big'): reject()
+    if profile==KUZ:
+        from src.kuz_usage import nonce as mgm_nonce
+        if nonce!=mgm_nonce(metadata['key_epoch'],metadata['sequence_number']): reject()
+        if before_mgm_verify is not None:before_mgm_verify(device,metadata['key_epoch'],metadata['sequence_number'])
     try: plaintext=decrypt(profile,key,nonce,ad,ciphertext)
     except (InvalidTag,ValueError): reject()
     sensor=validate_sensor(strict_json(plaintext))

@@ -3,7 +3,7 @@ from datetime import timedelta
 import hashlib,uuid
 from sqlalchemy import select,update,func,or_,and_
 from sqlalchemy.dialects.postgresql import insert
-from src.crypto_profiles import ASCON,PROFILES,BY_ALGORITHM
+from src.crypto_profiles import ASCON,KUZ,PROFILES,BY_ALGORITHM
 from src.telemetry import canonical,InvalidTelemetry
 from src.replay import replay_state
 from . import models as m
@@ -21,7 +21,10 @@ def log(c,device,action,tid=None,**detail):
 def provision(c,config):
     for device,e in config.items():
         fingerprint=hashlib.sha256(canonical(e)).hexdigest()
-        c.execute(insert(m.devices).values(device_id=device,key_epoch=e['command_epoch'],capabilities=e['capabilities'],key_fingerprint=fingerprint).on_conflict_do_nothing())
+        added=c.execute(insert(m.devices).values(device_id=device,key_epoch=e['command_epoch'],capabilities=e['capabilities'],key_fingerprint=fingerprint).on_conflict_do_nothing().returning(m.devices.c.device_id)).scalar()
+        if added and 'Kuznyechik-MGM' in e['registry'].get('telemetry_keys',{}):
+            from src.kuz_usage import initialize_fresh
+            initialize_fresh(c,device,e['command_epoch'])
         row=c.execute(select(m.devices).where(m.devices.c.device_id==device).with_for_update()).mappings().one()
         if row['key_fingerprint']!=fingerprint:raise ValueError('Live provisioning conflict; explicit reviewed epoch migration required')
 
@@ -49,12 +52,19 @@ def request_switch(c,device,target,actor,*,ttl=120,mode=None):
     if mode!=MODE or type(actor) is not str or not actor.startswith('admin:'):raise ValueError('Explicit manual administrative authorization required')
     from src.policy.profiles import IMPLEMENTED
     implementation=IMPLEMENTED.get(target) if type(target) is str else None
+    if target==KUZ:
+        from src.kuz_release import allow_validation
+        allow_validation()
     if implementation is None or not all([implementation.activation_allowed,implementation.server_implemented,implementation.device_implemented,implementation.known_vectors_passed,implementation.software_e2e_passed]):raise ValueError('Profile implementation not verified')
     if target not in PROFILES or type(ttl) is not int or not 15<=ttl<=300:raise ValueError('Unsupported control request')
     d=lock(c,device);n=now(c)
     from src.devices import devices as registry_devices
     if not c.scalar(select(registry_devices.c.device_id).where(registry_devices.c.device_id==device,registry_devices.c.enabled.is_(True),registry_devices.c.key_epoch==d['key_epoch'])):raise ValueError('Device disabled')
     if target not in d['capabilities']:raise ValueError('Unsupported device profile')
+    if target==KUZ:
+        from src.kuz_usage import locked
+        u,_=locked(c,device,d['key_epoch'])
+        if not u['reserved_invocations'] or u['verify_attempts']>=u['max_verify_attempts']:raise ValueError('MGM budget unavailable')
     if not d['effective_profile'] or not d['effective_event']:raise ValueError('Verified baseline telemetry required')
     if d['pending_transition']:raise ValueError('Conflicting transition; recovery required')
     if d['effective_profile']==target:raise ValueError('Profile already effective')
@@ -81,6 +91,10 @@ def grant(c,body):
     pending=c.execute(select(m.transitions).where(m.transitions.c.id==d['pending_transition'])).mappings().first() if d['pending_transition'] else None
     permitted=pending['target_profile'] if pending and pending['phase'] in ['ACTIVATION_SENT','DEVICE_APPLIED'] and pending['deadline']>n else None
     if d['effective_profile'] and data['local_profile'] not in [d['effective_profile'],permitted]:raise ValueError('Device state rollback requires explicit recovery')
+    from src.kuz_usage import usage,reserve
+    if c.scalar(select(usage.c.device_id).where(usage.c.device_id==device,usage.c.key_epoch==d['key_epoch'])):
+        reserve(c,device,d['key_epoch'],body['message_id'],high+1,last)
+    elif KUZ in d['capabilities']:raise ValueError('MGM usage authority missing')
     reply=message(device,'lease_grant',dict(boot_id=data['boot_id'],request_id=body['message_id'],key_epoch=d['key_epoch'],first_sequence=high+1,last_sequence=last,
         effective_profile=d['effective_profile'],pending_profile=permitted,command_floor=d['command_acknowledged']),now=n)
     c.execute(m.leases.insert().values(request_id=body['message_id'],device_id=device,boot_id=data['boot_id'],body=reply,created_at=n))

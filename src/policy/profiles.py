@@ -28,7 +28,12 @@ IMPLEMENTED={ASCON:Profile(ASCON,1,'Ascon-AEAD128','implemented',
         ('mqtt_tls','aead','telemetry_v2'),'MQTT telemetry v2',True,'cryptography AESGCM; software agent verified, ARM unmeasured',server_implemented=True,device_implemented=True,known_vectors_passed=True,software_e2e_passed=True)}
 
 
-def registry():return [asdict(p) for p in IMPLEMENTED.values()]
+def registry():
+    from src.crypto_profiles import PROFILES
+    return [dict(asdict(p),implementation_status=p.status,
+        aead_mode='MGM' if p.profile_id=='kuznyechik-mgm-v1' else 'GCM' if p.profile_id==AES else 'Ascon-AEAD128',
+        key_bytes=PROFILES[p.profile_id]['key_bytes'],nonce_bytes=PROFILES[p.profile_id]['nonce_bytes'],tag_bytes=PROFILES[p.profile_id]['tag_bytes'],
+        nonce_policy=p.parameters.get('nonce_policy','existing-v1'),usage_limits=p.parameters.get('usage_limits',{})) for p in IMPLEMENTED.values()]
 
 
 def recommend(profile_id,capabilities,minimum=ASCON,*,simulation=False):
@@ -43,3 +48,14 @@ def recommend(profile_id,capabilities,minimum=ASCON,*,simulation=False):
     if not set(p.capabilities)<=set(capabilities):return {'profile_id':profile_id,'status':'unsupported_profile','applicable':False}
     return {'profile_id':profile_id,'status':'simulated' if profile_id=='simulated-profile' else 'recommended',
             'applicable':False,'reason':'Policy stays DRY_RUN; live control requires separate manual administrative authorization'}
+
+# Explicit lab validation only. Ordinary deployments retain the two released profiles.
+from src.kuz_release import validation_enabled
+if validation_enabled():
+    KUZ='kuznyechik-mgm-v1'
+    IMPLEMENTED[KUZ]=Profile(KUZ,1,'Kuznyechik-MGM','software_e2e_verified',
+        {'key_bytes':32,'nonce_bytes':16,'tag_bytes':16,'aead_mode':'MGM',
+         'nonce_policy':'epoch31-sequence64-LCM01','usage_limits':{'reserved_invocations':1048576,'blocks_per_invocation':320,'verify_attempts':1048576}},
+        ('mqtt_tls','aead','telemetry_v2'),'MQTT telemetry v2',True,
+        'Explicit isolated software validation; timing resistance and ARM not verified; no certification',
+        server_implemented=True,device_implemented=True,known_vectors_passed=True,software_e2e_passed=True)

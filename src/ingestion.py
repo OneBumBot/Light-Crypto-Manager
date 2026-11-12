@@ -25,7 +25,8 @@ INSERT_ANOMALY = text('''
 
 
 def process_packet(packet, registry, engine, topic, now=None):
-    message = decode_packet(packet, topic, registry)
+    from src.kuz_usage import verify_attempt
+    message = decode_packet(packet, topic, registry, before_mgm_verify=lambda d,e,s:verify_attempt(engine,d,e,s))
     sensor_data = message.sensor
     now = now or datetime.now(timezone.utc)
     delay = (now - datetime.fromisoformat(sensor_data['timestamp'])).total_seconds()

@@ -8,8 +8,8 @@ from .protocol import message
 
 
 class DeviceState:
-    def __init__(self,path,device,epoch,*,initialize=False):
-        self.path=Path(path);self.device=device;self.epoch=epoch
+    def __init__(self,path,device,epoch,*,initialize=False,strict_authority=False):
+        self.path=Path(path);self.device=device;self.epoch=epoch;self.strict_authority=strict_authority
         self.path.parent.mkdir(mode=0o700,parents=True,exist_ok=True)
         self.lock=open(str(self.path)+'.lock','a+b');os.chmod(str(self.path)+'.lock',0o600)
         fcntl.flock(self.lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -24,6 +24,8 @@ class DeviceState:
         with self.transaction() as c:
             c.execute('CREATE TABLE IF NOT EXISTS nonce_reservation (id INTEGER PRIMARY KEY CHECK(id=1), high INTEGER NOT NULL)')
             c.execute('INSERT OR IGNORE INTO nonce_reservation VALUES (1,0)')
+            c.execute('CREATE TABLE IF NOT EXISTS authority_failure (id INTEGER PRIMARY KEY CHECK(id=1), reason TEXT NOT NULL)')
+            if c.execute('SELECT 1 FROM authority_failure').fetchone():raise ValueError('Nonce authority blocked; reviewed rekey required')
         s=self.read()
         if s['device']!=device or s['epoch']!=epoch:raise ValueError('Device state provisioning mismatch')
 
@@ -41,9 +43,13 @@ class DeviceState:
 
     def accept_lease(self,first,last):
         with self.transaction() as c:
+            if c.execute('SELECT 1 FROM authority_failure').fetchone():raise ValueError('Nonce authority blocked; reviewed rekey required')
             high=c.execute('SELECT high FROM nonce_reservation WHERE id=1').fetchone()[0]
-            if first<=high:raise ValueError('Server nonce authority rollback; new epoch required')
-            c.execute('UPDATE nonce_reservation SET high=? WHERE id=1',(last,))
+            rollback=first<=high
+            if rollback and self.strict_authority:
+                c.execute("INSERT OR REPLACE INTO authority_failure VALUES (1,'Server range rollback')")
+            elif not rollback:c.execute('UPDATE nonce_reservation SET high=? WHERE id=1',(last,))
+        if rollback:raise ValueError('Server nonce authority rollback; new epoch required')
 
     def execute(self,body,config,*,now=None):
         from .protocol import validate
@@ -58,7 +64,12 @@ class DeviceState:
             if d['command_epoch']!=self.epoch or seq<=s['seq']:raise ValueError('Control replay rejected')
             if body['device_id']!=self.device:raise ValueError('Device command binding')
             target=d['requested_profile'];result='UNSUPPORTED';prepared=s['prepared'];profile=s['profile']
-            has_key=target==ASCON or config['registry'].get('telemetry_keys',{}).get('AES-128-GCM')
+            has_key=target==ASCON or config['registry'].get('telemetry_keys',{}).get(PROFILES[target]['algorithm'])
+            if target=='kuznyechik-mgm-v1' and has_key:
+                from src.kuz_provider import self_test
+                if not self_test():raise ValueError('Provider readiness failed')
+                high=c.execute('SELECT high FROM nonce_reservation WHERE id=1').fetchone()[0]
+                if high<=0:raise ValueError('MGM nonce authority unavailable')
             if target in config['capabilities'] and has_key:
                 if d['phase']=='PREPARE':
                     if prepared and strict_json(prepared)['transition_id']!=d['transition_id']:raise ValueError('Conflicting prepared transition')

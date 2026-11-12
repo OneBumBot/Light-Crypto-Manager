@@ -13,10 +13,10 @@ MUTATIONS=[
  ('premature_effective','src/device_control/server.py',".values(command_acknowledged=data['command_sequence'])",".values(command_acknowledged=data['command_sequence'],effective_profile=data['requested_profile'])",'test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade'),
  ('missing_device_binding','src/device_control/protocol.py',"body['device_id']!=device or ",'','test_control_protocol.py::test_authenticated_claimed_device_mismatch'),
  ('unsupported_capability','src/device_control/server.py',"if target not in d['capabilities']:",'if False:','test_control_storage.py::test_capability_rejection_creates_no_command'),
- ('repeat_nonce_range','src/device_control/state.py','if first<=high:','if False:','test_control_recovery.py::test_server_range_rollback_is_detected_on_device'),
+ ('repeat_nonce_range','src/device_control/state.py','rollback=first<=high','rollback=False','test_control_recovery.py::test_server_range_rollback_is_detected_on_device'),
  ('commit_before_atomic_completion','src/device_control/server.py','    return True\n\n\ndef authorize','    c.commit()\n    return True\n\n\ndef authorize','test_control_recovery.py::test_ack_transaction_rollback_does_not_queue_activate'),
  ('accept_contradictory_ack','src/device_control/server.py',"if data[field]!=source[field]:raise ValueError('ACK command binding')",'pass','test_control_recovery.py::test_forged_and_mismatched_ack_do_not_activate'),
- ('ignore_aes_authentication_failure','src/crypto_profiles.py','return AESGCM(key).decrypt(nonce, ciphertext, ad)',"try: return AESGCM(key).decrypt(nonce, ciphertext, ad)\n        except Exception: return b'unauthenticated'",'test_aes_profiles.py::test_aes_rejects_modifications[tag]'),
+ ('ignore_aes_authentication_failure','src/crypto_profiles.py',"lambda k,n,a,c: AESGCM(k).decrypt(n,c,a)","lambda k,n,a,c: b'unauthenticated'",'test_aes_profiles.py::test_aes_rejects_modifications[tag]'),
 ]
 
 
