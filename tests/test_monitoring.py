@@ -143,3 +143,26 @@ def test_database_failure_during_identity_load_returns_unavailable(postgres_db,m
     assert 'database unavailable' not in response.get_data(as_text=True)
     with client.session_transaction() as session:
         assert session['_user_id']=='1' # No anonymous downgrade or session reset.
+
+
+@pytest.mark.postgres
+@pytest.mark.parametrize('seconds,expected',[(1,False),(61,True),(-30,True),(None,True)])
+def test_fresh_policy_heartbeat_does_not_refresh_old_evidence(postgres_db,registry,seconds,expected):
+    from src.policy import models as policy
+    from src.policy.state import install
+    from src.policy.rules import Rules
+    from src.policy.engine import State
+    web=postgres_db;setup(web,registry);baseline(web,registry);engine=web.db.engine
+    now=datetime.now(timezone.utc)
+    stamp=(now-timedelta(seconds=seconds)).isoformat() if seconds is not None else None
+    with engine.begin() as c:
+        install(c,'freshness-test',Rules().payload(),now,activate=True)
+        c.execute(policy.worker_status.insert().values(worker_id='fresh',status='ready',mode='DRY_RUN',heartbeat_at=now))
+        c.execute(policy.states.insert().values(device_id='raspb1',version='freshness-test',state=State(last_event_at=stamp,last_telemetry_at=stamp).payload(),observed_risk='UNKNOWN',updated_at=now))
+    with engine.connect() as c:
+        result=snapshot(c,'raspb1')
+        p=result['items'][0]['policy']
+        assert result['components']['policy']['status']=='ready'
+        assert p['stale'] is expected and p['evidence_stale'] is expected
+        assert p['evidence_at']==stamp and p['mode']=='DRY_RUN' and p['applied'] is False
+        assert c.scalar(select(func.count()).select_from(m.commands))==0

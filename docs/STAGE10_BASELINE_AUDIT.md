@@ -26,3 +26,5 @@
 Хост: 16 logical CPU, около31GiB RAM/23GiB available при старте, x86_64 Linux; отдельные CPU/memory limits сохраняются. Рабочие и прежние Stage8/9 volumes не подключены. Все profiles остаются Ascon/AES; никаких будущих российских названий в live registry/UI.
 
 Гипотезы, не выводы: глобальный lock, pending count и latest DISTINCT ON могут ограничивать скорость при росте истории; pure Python Ascon дороже native AES в этом окружении; один relay может отставать при outage. Проверять измерениями/EXPLAIN. Не объявлять максимальную вместимость по `MAX_OUTBOX_PENDING` или успешным тестам.
+
+Уточнение control delivery из `server.claim`/worker: claim одного device/command, lease5s, максимум12 attempts, backoff до10s, общий deadline15..300s (по умолчанию120s), PUBACK wait отдельно. DEVICE_READY/DEVICE_APPLIED audit и immutable telemetry receipt являются разными наблюдениями. Stage8 `benchmark_switching.py` —8s windows и малое n; исторический отчёт сохранён, его p99 не используется как убедительное tail доказательство Stage10. Новые bounded windows и raw samples хранятся отдельно.

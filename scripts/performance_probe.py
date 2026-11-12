@@ -34,10 +34,22 @@ def snapshot(engine):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage','monitoring-plans','watermark']);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage','monitoring-plans','watermark','policy-diagnostics']);a=p.parse_args()
     engine=create_engine(database_url(),connect_args={'connect_timeout':2})
     try:
         if a.action=='snapshot':print(json.dumps(snapshot(engine),indent=2));return
+        if a.action=='policy-diagnostics':
+            from src.policy import models as policy
+            from src.security_events import journal,queue
+            with engine.connect() as c:
+                version=c.scalar(select(policy.versions.c.version).where(policy.versions.c.active.is_(True)))
+                total=c.scalar(select(func.count()).select_from(journal))
+                consumed=c.scalar(select(func.count()).select_from(policy.signals).where(policy.signals.c.version==version,policy.signals.c.event_id.like('security:%')))
+                lag=c.scalar(select(policy.decisions.c.source_lag_seconds).order_by(policy.decisions.c.created_at.desc()).limit(1))
+                capacity=dict(c.execute(select(queue)).mappings().one())
+                q=select(journal.c.id).where(~select(1).where(policy.signals.c.version==version,policy.signals.c.event_id=='security:'+journal.c.id).exists()).order_by(journal.c.occurred_at,journal.c.id).limit(1)
+                plan=c.execute(text('EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) '+str(q.compile(c,compile_kwargs={'literal_binds':True})))).scalar()
+            print(json.dumps(dict(active_version=version,observations=total,consumed=consumed,pending_observations=total-consumed,last_processed_source_lag_seconds=lag,capacity=capacity,actual_pending_select_plan=plan)));return
         if a.action=='monitoring-plans':
             from sqlalchemy import event
             from src.web.monitoring import snapshot as monitoring_snapshot

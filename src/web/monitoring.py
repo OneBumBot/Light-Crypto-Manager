@@ -16,6 +16,8 @@ from src.ml_storage import models as ml_models, events as ml_events
 from src.system_status import heartbeats
 from src.crypto_profiles import PROFILES, BY_ALGORITHM
 from src.telemetry import DEVICE
+from src.policy.rules import Rules
+from src.policy.signals import utc
 
 blueprint = Blueprint('monitoring', __name__)
 TELEMETRY_TTL = 15
@@ -80,6 +82,7 @@ def snapshot(connection, device=None, limit=50, offset=0):
     telemetry = indexed(select(latest_telemetry).where(latest_telemetry.c.device_id.in_(ids)))
     security = indexed(latest(journal, ids, journal.c.occurred_at).where(journal.c.category!='accepted'))
     active = c.execute(select(policy.versions).where(policy.versions.c.active.is_(True))).mappings().first()
+    active_rules=Rules.parse(active['config']) if active else None
     states = indexed(select(policy.states).where(policy.states.c.device_id.in_(ids), policy.states.c.version==active['version'])) if active else {}
     rec = c.execute(select(heartbeats).where(heartbeats.c.component=='receiver').order_by(heartbeats.c.checked_at.desc()).limit(1)).mappings().first()
     cw = c.execute(select(control.workers).order_by(control.workers.c.heartbeat.desc()).limit(1)).mappings().first()
@@ -106,7 +109,12 @@ def snapshot(connection, device=None, limit=50, offset=0):
         p=states.get(identity)
         if p:
             p={k:p[k] for k in ['version','observed_risk','recommended','state','updated_at']}
-            p['stale']=age(now,p['updated_at'])>30 or components['policy']['status']!='ready'
+            p['evidence_at']=p['state'].get('last_event_at')
+            evidence=utc(p['evidence_at']) if p['evidence_at'] else None
+            p['evidence_age_seconds']=age(now,evidence)
+            p['evidence_ttl_seconds']=active_rules.telemetry_fresh_seconds
+            p['evidence_stale']=evidence is None or not 0<=(now-evidence).total_seconds()<=p['evidence_ttl_seconds']
+            p['stale']=age(now,p['updated_at'])>30 or components['policy']['status']!='ready' or p['evidence_stale']
             p['mode']='DRY_RUN';p['applied']=False
         transition=pending.get(state.get('pending_transition'))
         if transition:

@@ -9,6 +9,7 @@ import sys
 import tempfile
 
 MUTATIONS=[
+ ('policy_heartbeat_refreshes_stale_evidence','src/web/monitoring.py'," or p['evidence_stale']",'','test_monitoring.py::test_fresh_policy_heartbeat_does_not_refresh_old_evidence'),
  ('identity_db_failure_unhandled','src/web/app.py',"    except SQLAlchemyError:\n        app.logger.warning('Authentication database temporarily unavailable')\n        abort(503, description='PostgreSQL недоступна. Актуальные права доступа проверить невозможно.')\n",'', 'test_monitoring.py::test_database_failure_during_identity_load_returns_unavailable'),
  ('ack_as_effective','src/web/monitoring.py',"effective_profile=state.get('effective_profile') if verified else None", "effective_profile=state.get('reported_profile') or state.get('effective_profile')",'test_monitoring.py::test_snapshot_ack_is_not_effective_and_identity_is_bound'),
  ('viewer_can_command','src/device_control/web.py',"if current_user.role!='admin':abort(403)",'if False:abort(403)','test_control_storage.py::test_control_web_roles_csrf_and_fields'),

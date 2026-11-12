@@ -35,9 +35,12 @@ def switch(lab,session,url,token,device,target):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--directory',required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--switch-only',action='store_true');a=p.parse_args()
     if a.output.exists():p.error('Immutable output exists')
-    lab=Lab(a.directory);session,url,token=login(lab);events=[];switches=[]
+    lab=Lab(a.directory);session,url,token=login(lab);events=[];switches=[];transport=[]
     for target in ['aes-128-gcm-v1','ascon-aead128-v1']:
         switches.append(switch(lab,session,url,token,'alpha',target))
+        if a.switch_only:
+            probe=lab.run('run','--rm','-T','--no-deps','-v',str(Path(__file__).resolve().parent/'performance_transport.py')+':/app/scripts/performance_transport.py:ro','--entrypoint','python','tests','-m','scripts.performance_transport')
+            transport.append(json.loads(probe.stdout))
     if a.switch_only:
         # Two distinct-device intents can coexist; never conflicting same-device commands.
         from concurrent.futures import ThreadPoolExecutor
@@ -80,7 +83,7 @@ def main():
         switches.append(switch(lab,session,url,token,'alpha','aes-128-gcm-v1'))
         switches.append(switch(lab,session,url,token,'alpha','ascon-aead128-v1'))
     transitions=lab.probe('transitions')
-    a.output.write_text(json.dumps(dict(project=lab.project,devices=len(lab.devices),switches=switches,faults=events,control_history=transitions,commands=lab.commands,exit_code=0),indent=2))
+    a.output.write_text(json.dumps(dict(project=lab.project,devices=len(lab.devices),switches=switches,faults=events,transport=transport,control_history=transitions,commands=lab.commands,exit_code=0),indent=2))
     print('Real transitions',len(switches),'fault scenarios',len(events),'exit 0')
 
 if __name__=='__main__':main()

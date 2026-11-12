@@ -34,7 +34,12 @@ def resources(lab):
 
 def observe(lab,seconds,output):
     if output.exists():raise ValueError('Immutable report exists')
-    output.mkdir(parents=True);session,url,_=login(lab);before=lab.probe('snapshot');start_wall=time.time();start=time.monotonic();samples=[];reason='duration_complete'
+    output.mkdir(parents=True)
+    source_sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+    source_dirty=bool(subprocess.check_output(['git','status','--porcelain'],text=True).strip())
+    source_files={p:__import__('hashlib').sha256(Path(p).read_bytes()).hexdigest() for p in subprocess.check_output(['git','ls-files','src','scripts','Dockerfile'],text=True).splitlines() if Path(p).is_file()}
+    image_versions=json.loads(lab.run('images','--format','json').stdout)
+    session,url,_=login(lab);before=lab.probe('snapshot');start_wall=time.time();start=time.monotonic();samples=[];reason='duration_complete'
     try:
         while time.monotonic()-start<seconds:
             row=dict(elapsed=time.monotonic()-start,wall=datetime.now(timezone.utc).isoformat(),**resources(lab))
@@ -49,12 +54,16 @@ def observe(lab,seconds,output):
                 reason='resource_stop';break
             time.sleep(max(0,min(10,seconds-(time.monotonic()-start))))
     finally:
-        end_wall=time.time();lab.run('stop',*lab.agents());drain=time.monotonic()+90
+        end_wall=time.time();lab.run('stop',*lab.agents());drain=time.monotonic()+90;quiet_since=None;last_incoming=None;quiescent=False
         while time.monotonic()<drain:
-            after=lab.probe('snapshot')
-            if not sum(v for k,v in after['outbox'].items() if k!='delivered'):break
+            after=lab.probe('snapshot');incoming=after['counters'].get('incoming',0)
+            if not sum(v for k,v in after['outbox'].items() if k!='delivered') and incoming==last_incoming:
+                quiet_since=quiet_since or time.monotonic()
+                if time.monotonic()-quiet_since>=10:quiescent=True;break
+            else:quiet_since=None
+            last_incoming=incoming
             time.sleep(2)
-    exported=lab.probe('export',start=datetime.fromtimestamp(start_wall,timezone.utc).isoformat(),end=datetime.fromtimestamp(end_wall,timezone.utc).isoformat())
+    exported=lab.probe('export',start=datetime.fromtimestamp(start_wall,timezone.utc).isoformat(),end=after['checked_at'])
     (output/'committed.json').write_text(json.dumps(exported,indent=2))
     journal=[]
     for device in lab.devices:
@@ -65,26 +74,27 @@ def observe(lab,seconds,output):
     (output/'agent-events.json').write_text(json.dumps(journal,indent=2))
     formed=[e for e in journal if e['kind']=='formed'];pubs=[e for e in journal if e['kind']=='publish'];acks={(e['device'],e['boot'],e['mid']) for e in journal if e['kind']=='puback' and e['success']}
     identity=lambda r:(r['device_id'],r['key_epoch'],r['sequence_number'])
-    pg={identity(r) for r in exported['rows']};fg={(e['device'],e['epoch'],e['sequence']) for e in formed}
+    pg_all={identity(r) for r in exported['rows']};window_rows=[r for r in exported['rows'] if datetime.fromisoformat(r['created_at']).timestamp()<=end_wall]
+    pg={identity(r) for r in window_rows};fg={(e['device'],e['epoch'],e['sequence']) for e in formed}
     nonces=[(e['device'],e['profile'],e['nonce']) for e in formed]
-    rows=exported['rows'];receive=[];deliver=[];full=[]
+    rows=window_rows;receive=[];deliver=[];full=[]
     for r in rows:
         measured=datetime.fromisoformat(r['payload']['measured_at']).timestamp();received=datetime.fromisoformat(r['created_at']).timestamp()
         receive.append(received-measured)
         if r['delivered_at']:
             delivered=datetime.fromisoformat(r['delivered_at']).timestamp();deliver.append(delivered-received);full.append(delivered-measured)
-    result=dict(project=lab.project,git_sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),source_dirty=subprocess.check_output(['git','status','--porcelain'],text=True).strip()!='',
+    result=dict(project=lab.project,git_sha=source_sha,source_dirty=source_dirty,
       devices=len(lab.devices),active_publishers_observed=len({e['device'] for e in formed}),requested_duration=seconds,duration=end_wall-start_wall,interval='see agent start journal/config; no assumption for resumed services',stop_reason=reason,
       planned=sum(e['count'] for e in journal if e['kind']=='scheduled'),formed=len(formed),publish_called=len(pubs),queued=sum(e['queued'] for e in pubs),puback_joined=sum((e['device'],e['boot'],e['mid']) in acks for e in pubs),
-      committed_in_time_window=len(rows),formed_matching_pg=len(fg&pg),formed_not_in_pg_window=len(fg-pg),nonce_duplicates=len(nonces)-len(set(nonces)),
+      drain_quiescent=quiescent,census_end=after['checked_at'],source_window_start=datetime.fromtimestamp(start_wall,timezone.utc).isoformat(),source_window_end=datetime.fromtimestamp(end_wall,timezone.utc).isoformat(),committed_in_time_window=len(rows),formed_matching_pg=len(fg&pg),formed_not_in_pg_window=len(fg-pg),formed_matching_pg_after_drain=len(fg&pg_all),formed_unconfirmed_after_drain=len(fg-pg_all),source_identity_duplicates=len(formed)-len(fg),nonce_duplicates=len(nonces)-len(set(nonces)),
       counters_delta={k:after['counters'].get(k,0)-before['counters'].get(k,0) for k in set(before['counters'])|set(after['counters'])},before=before,after=after,
       throughput=len(rows)/(end_wall-start_wall),cpu_percent=describe([s['cpu_percent'] for s in samples]),ram_mib=describe([s['ram_mib'] for s in samples]),
       measured_to_received_seconds=describe(receive),received_to_delivery_finish_seconds=describe(deliver),measured_to_delivery_finish_seconds=describe(full),
       http={route:describe([h['seconds'] for s in samples for h in s['http'] if h['route']==route]) for route in [h['route'] for h in samples[0]['http']]},
       reconnects=sum(e['kind']=='disconnect' for e in journal),db_reconnects='not_measured',pg_commit_latency='not_measured',mongo_commit_timestamp='not_measured',
       environment=dict(platform=platform.platform(),python=platform.python_version(),cpu_count=os.cpu_count(),cpu_model=next(l.split(':',1)[1].strip() for l in Path('/proc/cpuinfo').read_text().splitlines() if l.startswith('model name'))),commands=lab.commands,exit_code=0)
-    result['image_versions']=json.loads(lab.run('images','--format','json').stdout)
-    result['source_files']={p:__import__('hashlib').sha256(Path(p).read_bytes()).hexdigest() for p in subprocess.check_output(['git','ls-files','src','scripts','Dockerfile'],text=True).splitlines() if Path(p).is_file()}
+    result['image_versions']=image_versions
+    result['source_files']=source_files
     (output/'result.json').write_text(json.dumps(result,indent=2));print(json.dumps({k:result[k] for k in ['devices','duration','throughput','formed','formed_matching_pg','nonce_duplicates','stop_reason']},indent=2))
     with (output/'timings.csv').open('w') as f:
         writer=csv.writer(f);writer.writerow(['device_id','sequence','measured_at','received_at','delivery_finish_at'])
