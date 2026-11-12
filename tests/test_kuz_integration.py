@@ -110,10 +110,13 @@ def test_registry_keeps_profile_specific_key_lengths(registry,length):
     with pytest.raises(InvalidTelemetry):validate_registry(registry)
 
 
-def test_mgm_missing_capability_and_key_cannot_prepare(tmp_path,registry):
+@pytest.mark.parametrize('missing',['capability','key'])
+def test_mgm_missing_capability_and_key_cannot_prepare(tmp_path,registry,missing):
     from src.device_control.state import DeviceState
     from src.device_control.protocol import message,CONTROLLER
-    conf=config(registry);conf['capabilities']=[ASCON]
+    conf=config(registry)
+    if missing=='capability':conf['capabilities']=[ASCON]
+    else:conf['registry']['telemetry_keys'].pop('Kuznyechik-MGM')
     state=DeviceState(tmp_path/'state.db','raspb1',1,initialize=True)
     state.accept_lease(1,10000)
     cid=str(uuid.uuid4())
