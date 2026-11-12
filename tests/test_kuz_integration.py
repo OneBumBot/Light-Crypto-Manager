@@ -152,7 +152,12 @@ def test_additive_upgrade_preserves_existing_control_replay_and_receipts(legacy_
     cfg=Config('alembic.ini')
     with engine.begin() as c:
         cfg.attributes['connection']=c;command.upgrade(cfg,'0009_component_heartbeat')
-    conf=setup(web,registry);baseline(web,registry)
+    conf=setup(web,registry)
+    # Seed the old nonce authority without calling the new MGM-aware grant code
+    # against a deliberately pre-0010 schema. Admission still authenticates real Ascon.
+    with engine.begin() as c:c.execute(update(m.devices).values(sequence_reserved=10000))
+    from test_control_storage import packet
+    assert process_packet(packet(registry,1),registry,engine,'iot/sensors/raspb1')
     with engine.begin() as c:server.request_switch(c,'raspb1',AES,'admin:1',mode=server.MODE)
     tables=[m.devices,m.transitions,m.commands,m.evidence,replay_state,outbox]
     def snapshot():

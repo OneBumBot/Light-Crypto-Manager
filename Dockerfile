@@ -8,12 +8,14 @@ RUN go build -trimpath -buildvcs=false -ldflags=-buildid= -o /out/lcm-kuz-mgm .
 FROM python:3.12.16-slim-bookworm@sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df AS runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
-COPY --from=kuz-builder /out/lcm-kuz-mgm /usr/local/bin/lcm-kuz-mgm
 WORKDIR /app
 COPY requirements/publisher.txt requirements/receiver.txt /app/requirements/
 COPY src/web/requirements.txt /app/requirements/web.txt
 RUN pip install --no-cache-dir -r requirements/publisher.txt -r requirements/receiver.txt -r requirements/web.txt \
     && useradd --system --uid 10001 --create-home lightcrypto
+COPY --from=kuz-builder /out/lcm-kuz-mgm /usr/local/bin/lcm-kuz-mgm
+COPY --from=kuz-builder /usr/local/go/LICENSE /usr/share/licenses/lcm-kuz-mgm/GO-LICENSE
+COPY third_party/go-gostcrypto/LICENSE third_party/go-gostcrypto/PROVENANCE.json /usr/share/licenses/lcm-kuz-mgm/
 COPY src/device_control /app/src/device_control
 COPY src/policy /app/src/policy
 COPY src/*.py /app/src/

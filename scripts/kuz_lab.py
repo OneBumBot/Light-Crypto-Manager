@@ -85,7 +85,7 @@ def prepare(root,project,count):
     (root/'kuznyechik.compose.json').write_text(json.dumps(dict(services=services,volumes=volumes),indent=2))
     for path in root.rglob('*'):
         if path.is_file():path.chmod(0o600)
-    print('Fresh isolated performance inputs prepared:',project,'devices:',count,'secrets withheld')
+    print('Fresh isolated Stage11 inputs prepared:',project,'devices:',count,'secrets withheld')
 
 
 def main():
