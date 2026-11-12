@@ -168,3 +168,14 @@ def test_additive_upgrade_preserves_existing_control_replay_and_receipts(legacy_
     with pytest.raises(ValueError,match='provisioning conflict'):
         with engine.begin() as c:server.provision(c,{'raspb1':conf})
     with engine.connect() as c:assert c.scalar(select(func.count()).select_from(usage))==0
+
+
+@pytest.mark.parametrize('env,project,authorized',[
+    ('production','lcm-stage11-kuznyechik-test','1'),
+    ('test','lcm-stage10-performance-test','1'),
+    ('test','lcm-stage11-kuznyechik-test','0'),
+])
+def test_kuz_manual_request_requires_explicit_isolated_lab(monkeypatch,env,project,authorized):
+    monkeypatch.setenv('APP_ENV',env);monkeypatch.setenv('LCM_LAB_PROJECT',project);monkeypatch.setenv('LCM_KUZ_VALIDATION_AUTHORIZATION',authorized)
+    with pytest.raises(ValueError,match='explicitly authorized'):
+        server.request_switch(None,'alpha',KUZ,'admin:1',mode=server.MODE)
