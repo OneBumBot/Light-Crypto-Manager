@@ -34,10 +34,26 @@ def snapshot(engine):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage']);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage','monitoring-plans']);a=p.parse_args()
     engine=create_engine(database_url(),connect_args={'connect_timeout':2})
     try:
         if a.action=='snapshot':print(json.dumps(snapshot(engine),indent=2));return
+        if a.action=='monitoring-plans':
+            from sqlalchemy import event
+            from src.web.monitoring import snapshot as monitoring_snapshot
+            captured=[]
+            def capture(conn,cursor,statement,parameters,context,executemany):
+                if statement.startswith('SELECT'):captured.append((statement,parameters))
+            event.listen(engine,'before_cursor_execute',capture)
+            with engine.connect() as c:monitoring_snapshot(c,device='alpha')
+            event.remove(engine,'before_cursor_execute',capture)
+            plans=[]
+            with engine.begin() as c:
+                c.execute(text('SET LOCAL statement_timeout=10000'))
+                for statement,parameters in captured:
+                    plan=c.exec_driver_sql('EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) '+statement,parameters).scalar()
+                    plans.append(dict(sql=statement,plan=plan))
+            print(json.dumps(dict(query_count=len(captured),plans=plans)));return
         if a.action=='transitions':
             with engine.connect() as c:
                 rows=[dict(r) for r in c.execute(select(m.transitions).order_by(m.transitions.c.created_at).limit(100)).mappings()]

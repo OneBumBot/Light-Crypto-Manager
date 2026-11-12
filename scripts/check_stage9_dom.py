@@ -5,11 +5,12 @@ import argparse,copy,json,re
 from pathlib import Path
 from playwright.sync_api import sync_playwright,expect
 from scripts.stage9_common import Demo
+from scripts.performance_lab import Lab
 
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--directory',type=Path,required=True);p.add_argument('--script',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
-    d=Demo(a.directory);url=d.url();checks=[]
+    d=(Lab(a.directory) if (a.directory/'stage10.json').exists() else Demo(a.directory));url=d.url();checks=[]
     with sync_playwright() as pw:
         browser=pw.chromium.launch(headless=True);context=browser.new_context();page=context.new_page()
         page.route('https://cdn.**/*',lambda route:route.abort())

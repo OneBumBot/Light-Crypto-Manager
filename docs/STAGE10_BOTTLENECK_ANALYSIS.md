@@ -1,0 +1,9 @@
+# Stage10: ограничения и планы выполнения
+
+Входные гипотезы перечислены в BASELINE_AUDIT, методика — LOAD_TEST_PLAN. `reports/stage10/sql-plans-initial.json`: EXPLAIN(ANALYZE,BUFFERS,FORMAT JSON), отдельный лабораторный PG. На первоначальном объёме pending count .369ms, latest DISTINCT ON1.418ms, replay lookup .009ms, control row lock .021ms, outbox ready select .030ms, observation order .015ms, transition history .012ms. Это одиночные диагностические measurements, не tail latency под конкуренцией. Диагностические selects не идентичны полному ingestion transaction или worker claim/update; не выдавать их длительность за transaction latency.
+
+Особенности архитектуры: глобальный admission advisory lock + shared security-capacity row lock; pending count сканирует status/историю; одна relay claim/store/finish на строку; PostgreSQL1CPU и receiver/relay по.5CPU; Policy/monitoring конкурируют за тот же PostgreSQL. Latest selection сортирует накопленную историю; аддитивный индекс мог бы помочь на больших объёмах, но пока измерение не подтверждает необходимость. Нет оснований менять crypto/security guarantees ради throughput.
+
+Старая capacity Outbox — защита памяти/хранилища, не число поддерживаемых устройств. Нельзя экстраполировать из3/10/25 на10k. Один run/cohort не даёт предельную capacity или CI для независимых deployments. Частота .5s соответствует целевым6/20/50msg/s; наблюдаемая source generation может быть ниже из-за scheduler/device-budget. Это нужно отделять от потери уже сформированных сообщений.
+
+На Stage10 пока не внесены SQL migrations/indexes: исторические migrations сохранены. Повторные актуальные monitoring query plans и Mongo history explain сохраняются отдельно по выросшей истории. Если API укладывается в budget, index migration без измеренного выигрыша не нужна. PG commit timing и network-only latency не инструментированы: timestamp admission и post-Mongo finish — другие интервалы.

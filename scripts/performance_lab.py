@@ -15,6 +15,8 @@ class Lab:
         env=dict(l.split('=',1) for l in (self.root/'compose.env').read_text().splitlines() if '=' in l and not l.startswith('#'))
         if env.get('COMPOSE_PROJECT_NAME')!=self.project or env.get('CONTROL_INPUT_DIR')!=str(self.root):raise ValueError('Lab identity mismatch')
         self.base=['docker','compose','--env-file',str(self.root/'compose.env'),'-f','compose.yaml','-f','compose.control.yaml','-f',str(self.root/'performance.compose.json'),'--profile','control','--profile','web','--profile','policy'];self.commands=[]
+        if env.get('CONTROL_MODE')!='MANUAL_AUTHORIZED_CONTROL':raise ValueError('Manual control required')
+        if len(set(self.devices))!=len(self.devices) or any(type(d) is not str or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,47}',d) for d in self.devices):raise ValueError('Unique valid devices required')
     def run(self,*args,check=True,timeout=180,input_data=None):
         started=__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat()
         r=subprocess.run(self.base+list(args),capture_output=True,text=True,timeout=timeout,input=input_data)
