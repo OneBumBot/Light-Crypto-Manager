@@ -1,5 +1,5 @@
 """Bounded real MQTT cohort observation. Lab must already be running."""
-import argparse,csv,json,os,platform,re,shutil,statistics,subprocess,time
+import argparse,csv,json,os,platform,re,shutil,signal,statistics,subprocess,time
 from pathlib import Path
 from datetime import datetime,timezone
 import requests
@@ -61,6 +61,7 @@ def observe(lab,seconds,output):
         r=lab.run('run','--rm','--no-deps','--entrypoint','cat','device-'+device,'/device/research-events.jsonl',timeout=30)
         events=[dict(json.loads(x),device=device) for x in r.stdout.splitlines()]
         journal.extend(e for e in events if start_wall*1e9<=e['wall_ns']<=end_wall*1e9)
+        (output/(device+'-agent-settings.json')).write_text(json.dumps([e for e in events if e['kind']=='start'],indent=2))
     (output/'agent-events.json').write_text(json.dumps(journal,indent=2))
     formed=[e for e in journal if e['kind']=='formed'];pubs=[e for e in journal if e['kind']=='publish'];acks={(e['device'],e['boot'],e['mid']) for e in journal if e['kind']=='puback' and e['success']}
     identity=lambda r:(r['device_id'],r['key_epoch'],r['sequence_number'])
@@ -73,7 +74,7 @@ def observe(lab,seconds,output):
         if r['delivered_at']:
             delivered=datetime.fromisoformat(r['delivered_at']).timestamp();deliver.append(delivered-received);full.append(delivered-measured)
     result=dict(project=lab.project,git_sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),source_dirty=subprocess.check_output(['git','status','--porcelain'],text=True).strip()!='',
-      devices=len(lab.devices),requested_duration=seconds,duration=end_wall-start_wall,interval=.5,stop_reason=reason,
+      devices=len(lab.devices),active_publishers_observed=len({e['device'] for e in formed}),requested_duration=seconds,duration=end_wall-start_wall,interval='see agent start journal/config; no assumption for resumed services',stop_reason=reason,
       planned=sum(e['count'] for e in journal if e['kind']=='scheduled'),formed=len(formed),publish_called=len(pubs),queued=sum(e['queued'] for e in pubs),puback_joined=sum((e['device'],e['boot'],e['mid']) in acks for e in pubs),
       committed_in_time_window=len(rows),formed_matching_pg=len(fg&pg),formed_not_in_pg_window=len(fg-pg),nonce_duplicates=len(nonces)-len(set(nonces)),
       counters_delta={k:after['counters'].get(k,0)-before['counters'].get(k,0) for k in set(before['counters'])|set(after['counters'])},before=before,after=after,
@@ -93,6 +94,8 @@ def observe(lab,seconds,output):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--directory',required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--seconds',type=int,default=300);a=p.parse_args()
     if not 30<=a.seconds<=1800:p.error('Bounded 30..1800 seconds')
+    def terminate(*_):raise TimeoutError('External experiment watchdog')
+    signal.signal(signal.SIGTERM,terminate)
     observe(Lab(a.directory),a.seconds,a.output)
 
 if __name__=='__main__':main()

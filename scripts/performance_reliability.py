@@ -16,6 +16,8 @@ def wait(fn,seconds=60):
 
 
 def switch(lab,session,url,token,device,target):
+    # Honour existing per-device 2s administrative rate limit; exclude deliberate wait from latency.
+    time.sleep(2.05)
     start=time.time();r=session.post(url+'/api/control/'+device+'/switch',headers={'X-CSRFToken':token},json=dict(profile=target,ttl=120),timeout=8)
     assert r.status_code==202,(device,r.status_code,r.text[:120])
     tid=r.json()['transition_id'];intent=time.time()

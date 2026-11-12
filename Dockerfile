@@ -41,7 +41,7 @@ COPY src/classifier/research /app/src/classifier/research
 COPY src/research_stand /app/src/research_stand
 COPY scripts/stand_state.py /app/scripts/stand_state.py
 COPY scripts/crypto_benchmark.py scripts/control_mutations.py scripts/control_system_probe.py scripts/control_security_probe.py /app/scripts/
-COPY scripts/check_malformed_mqtt_recovery.py scripts/stage9_probe.py scripts/stage9_mutations.py scripts/performance_probe.py /app/scripts/
+COPY scripts/check_malformed_mqtt_recovery.py scripts/stage9_probe.py scripts/stage9_mutations.py scripts/performance_probe.py scripts/performance_lab.py /app/scripts/
 COPY scripts/live_web_smoke.py scripts/dual_database_probe.py scripts/ml_system_probe.py scripts/policy_system_probe.py /app/scripts/
 COPY scripts/prepare_compose.py /app/scripts/prepare_compose.py
 COPY deploy/compose.env.example /app/deploy/compose.env.example
