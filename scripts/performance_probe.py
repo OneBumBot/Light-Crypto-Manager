@@ -33,9 +33,15 @@ def snapshot(engine):
     return result
 
 
+def profile_counts(engine):
+    profile=outbox.c.payload['crypto_profile'].astext.label('profile')
+    with engine.connect() as c:
+        return [dict(r) for r in c.execute(select(outbox.c.device_id,profile,func.count().label('count')).group_by(outbox.c.device_id,profile).order_by(outbox.c.device_id,profile)).mappings()]
+
+
 def main():
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage','monitoring-plans','watermark','policy-diagnostics','environment']);a=p.parse_args()
-    engine=create_engine(database_url(),connect_args={'connect_timeout':2})
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage','monitoring-plans','watermark','policy-diagnostics','environment','profile-counts','policy-lag-window']);a=p.parse_args()
+    engine=create_engine(database_url(),connect_args={'connect_timeout':2,'options':'-c statement_timeout=5000 -c lock_timeout=2000'})
     try:
         if a.action=='snapshot':print(json.dumps(snapshot(engine),indent=2));return
         if a.action=='environment':
@@ -72,11 +78,19 @@ def main():
                     plan=c.exec_driver_sql('EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) '+statement,parameters).scalar()
                     plans.append(dict(sql=statement,plan=plan))
             print(json.dumps(dict(query_count=len(captured),plans=plans)));return
+        if a.action=='profile-counts':
+            print(json.dumps(dict(rows=profile_counts(engine))));return
         if a.action=='transitions':
             with engine.connect() as c:
                 rows=[dict(r) for r in c.execute(select(m.transitions).order_by(m.transitions.c.created_at).limit(100)).mappings()]
                 commands=[dict(r) for r in c.execute(select(m.commands.c.id,m.commands.c.transition_id,m.commands.c.phase,m.commands.c.status,m.commands.c.attempts,m.commands.c.available_at).limit(200)).mappings()]
-            print(json.dumps(dict(transitions=rows,commands=commands),default=lambda v:v.isoformat()));return
+            with engine.connect() as c:
+                audit=[]
+                for r in c.execute(select(m.audit).where(m.audit.c.transition_id.is_not(None)).order_by(m.audit.c.at).limit(1000)).mappings():
+                    safe={k:r[k] for k in ['id','device_id','transition_id','action','at']}
+                    safe['detail']={k:v for k,v in r['detail'].items() if k in ['command_id','attempt','ack','event','profile','sequence_number']}
+                    audit.append(safe)
+            print(json.dumps(dict(transitions=rows,commands=commands,audit=audit),default=lambda v:v.isoformat()));return
         if a.action=='storage':
             repo=MongoRepository('relay')
             try:
@@ -84,6 +98,12 @@ def main():
             finally:repo.close()
             return
         args=json.load(sys.stdin)
+        if a.action=='policy-lag-window':
+            from src.policy import models as policy
+            start=datetime.fromisoformat(args['start']);end=datetime.fromisoformat(args['end'])
+            with engine.connect() as c:
+                rows=[dict(r) for r in c.execute(select(policy.decisions.c.created_at,policy.decisions.c.source_lag_seconds).where(policy.decisions.c.created_at>=start,policy.decisions.c.created_at<=end).order_by(policy.decisions.c.created_at).limit(10000)).mappings()]
+            print(json.dumps(dict(rows=rows),default=lambda v:v.isoformat()));return
         if a.action=='watermark':
             cutoff=datetime.fromisoformat(args['before'])
             with engine.connect() as c:
