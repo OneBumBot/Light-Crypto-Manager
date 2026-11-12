@@ -1,5 +1,5 @@
 """Preservation and isolated lab evidence, never emit secret values."""
-import argparse,hashlib,json,subprocess
+import argparse,hashlib,json,gzip,subprocess
 from pathlib import Path
 from scripts.performance_lab import Lab
 
@@ -34,6 +34,7 @@ def main():
     for f in set(files):
         if not Path(f).is_file():continue
         data=Path(f).read_bytes()
+        if f.endswith('.gz'):data=gzip.decompress(data)
         if any(s in data for s in needles):leaks.append(f)
     assert not changed and not leaks and not any(l['private_permissions_failures'] for l in labs)
     report=dict(preserved_historical_files=len(baseline),changed_historical_files=changed,secret_values_scanned=len(needles),secret_leak_paths=leaks,labs=labs,main_sha=subprocess.check_output(['git','rev-parse','main'],text=True).strip(),exit_code=0)

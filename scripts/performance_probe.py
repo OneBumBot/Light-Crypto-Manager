@@ -34,10 +34,16 @@ def snapshot(engine):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage','monitoring-plans','watermark','policy-diagnostics']);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage','monitoring-plans','watermark','policy-diagnostics','environment']);a=p.parse_args()
     engine=create_engine(database_url(),connect_args={'connect_timeout':2})
     try:
         if a.action=='snapshot':print(json.dumps(snapshot(engine),indent=2));return
+        if a.action=='environment':
+            import platform,importlib.metadata as packages
+            from cryptography.hazmat.backends.openssl.backend import backend
+            with engine.connect() as c:
+                settings={name:c.scalar(text('SHOW '+name)) for name in ['max_connections','max_locks_per_transaction','shared_buffers','work_mem','statement_timeout']}
+            print(json.dumps(dict(python=platform.python_version(),python_compiler=platform.python_compiler(),openssl=backend.openssl_version_text(),packages={name:packages.version(name) for name in ['cryptography','paho-mqtt','SQLAlchemy','psycopg','pymongo','Flask']},postgres_settings=settings,clock_resolution_seconds=time.get_clock_info('time').resolution,clock_accuracy='not_measured',kernel=platform.release())));return
         if a.action=='policy-diagnostics':
             from src.policy import models as policy
             from src.security_events import journal,queue

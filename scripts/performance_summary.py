@@ -1,8 +1,13 @@
 """Derive per-device and per-run statistics without rewriting raw experiment reports."""
-import argparse,json,statistics
+import argparse,json,gzip
 from pathlib import Path
 from datetime import datetime
 from scripts.performance_run import describe
+
+
+def read_json(path):
+    if path.exists():return json.loads(path.read_text())
+    with gzip.open(str(path)+'.gz','rt') as f:return json.load(f)
 
 
 def main():
@@ -10,7 +15,7 @@ def main():
     if a.output.exists():p.error('Immutable summary exists')
     runs=[]
     for path in sorted(a.reports.glob('*/result.json')):
-        r=json.loads(path.read_text());raw=json.loads((path.parent/'committed.json').read_text())['rows'];events=json.loads((path.parent/'agent-events.json').read_text())
+        r=json.loads(path.read_text());raw=read_json(path.parent/'committed.json')['rows'];events=read_json(path.parent/'agent-events.json')
         devices={}
         for device in sorted({e['device'] for e in events if e['kind']=='formed'}):
             formed=[e for e in events if e['kind']=='formed' and e['device']==device];rows=[e for e in raw if e['device_id']==device]

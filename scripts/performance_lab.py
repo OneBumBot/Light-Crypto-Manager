@@ -30,6 +30,9 @@ class Lab:
         if not value.startswith('127.0.0.1:'):raise ValueError('Loopback binding required')
         return 'http://'+value
     def probe(self,action,**kwargs):
+        if action=='storage':
+            code="const fs=require('fs');db.getSiblingDB('admin').auth('root',fs.readFileSync('/run/mongo/root.password','utf8').trim());const t=db.getSiblingDB('telemetry');print(JSON.stringify({indexes:t.measurements.getIndexes(),history_explain:t.measurements.find({device_id:'alpha'}).sort({measured_at:-1,_id:-1}).limit(50).explain('executionStats')}));"
+            return json.loads(self.run('exec','-T','mongo','mongosh','--quiet','--eval',code).stdout)
         r=self.run('run','--rm','-T','--no-deps','-v',str(Path(__file__).resolve().parent/'performance_probe.py')+':/app/scripts/performance_probe.py:ro','--entrypoint','python','tests','-m','scripts.performance_probe',action,input_data=json.dumps(kwargs) if kwargs else None)
         return json.loads(r.stdout[r.stdout.index('{'):])
     def agents(self,n=None):return ['device-'+d for d in self.devices[:n]]

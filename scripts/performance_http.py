@@ -34,6 +34,13 @@ def main():
         assert s.post(u+'/api/control/alpha/switch',json=dict(profile='aes-128-gcm-v1',ttl=120),headers={'X-CSRFToken':t},timeout=8).status_code==403
     after=lab.probe('snapshot');assert before['transitions']==after['transitions'] and before['receipts']==after['receipts']
     checks+=['viewer_operator_denied','negative_requests_create_no_transition_or_receipt']
+    config=json.loads((lab.root/'control.json').read_text())
+    secrets=[value for cfg in config.values() for value in [cfg['command_key'],cfg['status_key'],cfg['registry']['key_hex'],cfg['registry']['telemetry_keys']['AES-128-GCM']]]
+    for route in ['/api/monitoring','/api/monitoring/alpha','/api/control?limit=50','/api/policy?limit=10','/api/telemetry/history?device_id=alpha&limit=50']:
+        response=session.get(url+route,timeout=8)
+        assert response.status_code==200
+        assert not any(secret in response.text for secret in secrets)
+    checks.append('live_api_contains_no_telemetry_or_control_keys')
     a.output.write_text(json.dumps(dict(project=lab.project,devices=len(lab.devices),checks=checks,timings=timings,transitions_before=before['transitions'],transitions_after=after['transitions'],exit_code=0),indent=2))
     print('Real HTTP checks:',len(checks),'exit 0')
 

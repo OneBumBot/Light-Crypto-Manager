@@ -7,3 +7,9 @@
 Старая capacity Outbox — защита памяти/хранилища, не число поддерживаемых устройств. Нельзя экстраполировать из3/10/25 на10k. Один run/cohort не даёт предельную capacity или CI для независимых deployments. Частота .5s соответствует целевым6/20/50msg/s; наблюдаемая source generation может быть ниже из-за scheduler/device-budget. Это нужно отделять от потери уже сформированных сообщений.
 
 На Stage10 пока не внесены SQL migrations/indexes: исторические migrations сохранены. Повторные актуальные monitoring query plans и Mongo history explain сохраняются отдельно по выросшей истории. Если API укладывается в budget, index migration без измеренного выигрыша не нужна. PG commit timing и network-only latency не инструментированы: timestamp admission и post-Mongo finish — другие интервалы.
+
+## Подтверждённое ограничение Policy
+
+`medium-policy-inflight.json`: 11723 security observations,6120 consumed,5603 pending, source lag последнего решения112.697s при25×2msg/s. Default worker batch32 и sleep1s создают верхнюю оценку≈32 processed events/s ещё до стоимости SQL; вход≈50/s её превосходит. Это не MQTT failure. В `policy-freshness-before.json` worker heartbeat ready и state updated недавно, но last_event_at старше207s, p.stale=false. Исправлен read-only freshness adapter: учитывает время реально учтённого события с TTL правил, missing/future также stale. Новые поля и DOM не меняют FSM/Policy commands.
+
+Default batch не увеличен ради более красивых результатов. Настройка batch до128 допустима существующим config, но должна измеряться отдельно с влиянием на PG/admission, fairness и source age; это не обещание пропускной способности. Другие будущие оптимизации: уменьшить повторные round-trips Policy на событие, batch-consume с сохранением exact-once и immutable decisions; только с дополнительным regression coverage. Нельзя пропускать security events или менять семантику FSM ради скорости.

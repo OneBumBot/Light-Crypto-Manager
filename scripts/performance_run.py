@@ -35,6 +35,12 @@ def resources(lab):
 def observe(lab,seconds,output):
     if output.exists():raise ValueError('Immutable report exists')
     output.mkdir(parents=True)
+    agent_ids=lab.run('ps','-q',*lab.agents()).stdout.split()
+    if not agent_ids:raise ValueError('No running software agents')
+    inspected=json.loads(subprocess.check_output(['docker','inspect',*agent_ids],text=True))
+    intervals={row['Config']['Labels']['com.docker.compose.service']:float(next(v.split('=',1)[1] for v in row['Config']['Env'] if v.startswith('PUBLISH_INTERVAL='))) for row in inspected}
+    if any(not .05<=v<=60 for v in intervals.values()) or sum(int(seconds/v)+1 for v in intervals.values())>100000:
+        lab.run('stop',*lab.agents());raise ValueError('Scheduled publication budget exceeds bounded experiment')
     source_sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
     source_dirty=bool(subprocess.check_output(['git','status','--porcelain'],text=True).strip())
     source_files={p:__import__('hashlib').sha256(Path(p).read_bytes()).hexdigest() for p in subprocess.check_output(['git','ls-files','src','scripts','Dockerfile'],text=True).splitlines() if Path(p).is_file()}
@@ -84,7 +90,7 @@ def observe(lab,seconds,output):
         if r['delivered_at']:
             delivered=datetime.fromisoformat(r['delivered_at']).timestamp();deliver.append(delivered-received);full.append(delivered-measured)
     result=dict(project=lab.project,git_sha=source_sha,source_dirty=source_dirty,
-      devices=len(lab.devices),active_publishers_observed=len({e['device'] for e in formed}),requested_duration=seconds,duration=end_wall-start_wall,interval='see agent start journal/config; no assumption for resumed services',stop_reason=reason,
+      devices=len(lab.devices),active_publishers_observed=len({e['device'] for e in formed}),requested_duration=seconds,duration=end_wall-start_wall,interval=intervals,stop_reason=reason,
       planned=sum(e['count'] for e in journal if e['kind']=='scheduled'),formed=len(formed),publish_called=len(pubs),queued=sum(e['queued'] for e in pubs),puback_joined=sum((e['device'],e['boot'],e['mid']) in acks for e in pubs),
       drain_quiescent=quiescent,census_end=after['checked_at'],source_window_start=datetime.fromtimestamp(start_wall,timezone.utc).isoformat(),source_window_end=datetime.fromtimestamp(end_wall,timezone.utc).isoformat(),committed_in_time_window=len(rows),formed_matching_pg=len(fg&pg),formed_not_in_pg_window=len(fg-pg),formed_matching_pg_after_drain=len(fg&pg_all),formed_unconfirmed_after_drain=len(fg-pg_all),source_identity_duplicates=len(formed)-len(fg),nonce_duplicates=len(nonces)-len(set(nonces)),
       counters_delta={k:after['counters'].get(k,0)-before['counters'].get(k,0) for k in set(before['counters'])|set(after['counters'])},before=before,after=after,

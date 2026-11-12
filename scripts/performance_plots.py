@@ -19,7 +19,11 @@ def main():
     ax.set(xlabel='Elapsed seconds',ylabel='Outbox not delivered',title='Observed backlog (sampled)');ax.legend();fig.tight_layout();fig.savefig(a.output/'outbox-backlog.png',dpi=160);plt.close(fig)
     switches=[];recoveries=[]
     for file in a.reports.glob('reliability-*.json'):
-        r=json.loads(file.read_text());switches.extend((r['devices'],s['observed_effective_seconds']) for s in r['switches']);recoveries.extend((s['service'],s['post_start_recovery_seconds']) for s in r['faults'])
+        r=json.loads(file.read_text())
+        if r.get('exit_code')!=0 or 'devices' not in r:continue
+        switches.extend((r['devices'],s['observed_effective_seconds']) for s in r['switches']);recoveries.extend((s['service'],s['post_start_recovery_seconds']) for s in r['faults'])
+    single=a.reports/'single-switches.json'
+    if single.exists():switches.extend((1,s['observed_effective_seconds']) for s in json.loads(single.read_text()))
     if switches:chart('switch-vs-load',[s[0] for s in switches],[s[1] for s in switches],'Software devices','HTTP request→observed verified effective seconds')
     if recoveries:chart('recovery-by-fault',[s[0] for s in recoveries],[s[1] for s in recoveries],'Fault scenario','After service start→observed drain seconds')
     micro=json.loads((a.reports/'crypto-microbenchmark.json').read_text())

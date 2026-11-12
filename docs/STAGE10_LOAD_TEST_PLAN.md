@@ -17,7 +17,7 @@ Fault tests проводятся последовательно, только л
 
 ## Воспроизводимый запуск
 
-Совместимый Linux/Docker ComposeV2, Python3.12–3.14, проектные зависимости `.venv`, Docker доступ и свободная RAM. Chromium: существующий Stage9 Playwright1.56.0/browser cache; matplotlib для графиков. Нужен internet только для первоначальной сборки зависимостей. Для постоянного стенда хранить private inputs на устойчивом диске, вне Git:
+Совместимый Linux/Docker ComposeV2, Python3.12–3.14, uv/OpenSSL, Docker доступ и свободная RAM. Host dependencies: `uv sync --frozen --group receiver --group web --group dev`. Для графиков дополнительно существующая `--group ml` (установка зависимостей не запускает обучение); эксперимент использовал matplotlib3.11.2. Никакой ML worker не включается. Chromium: существующий Stage9 Playwright1.56.0/browser cache; matplotlib для графиков. Нужен internet только для первоначальной сборки зависимостей. Для постоянного стенда хранить private inputs на устойчивом диске, вне Git:
 
 ```bash
 .venv/bin/python -m scripts.performance_lab prepare \
@@ -46,3 +46,5 @@ timeout 480 .venv/bin/python -m scripts.performance_run \
 ```
 
 Publishers должны быть запущены перед этими probes. Все output paths новые. Не запускать второй cohort параллельно. `stop` сохраняет volumes/credentials. Нельзя удалять Docker volumes или source inputs для «нового старта». `/tmp` использовался в текущем эксперименте как приватная lab sandbox; это не устойчивое место для эксплуатации/host reboot. Сохранить credentials и исходные volumes вместе; потеря keys/state требует recovery, не reset.
+
+Для новых runs collector проверяет расчётный бюджет публикаций по фактическому `PUBLISH_INTERVAL` работающих контейнеров (≤100000), фиксирует sourceSHA/hashes до окна, ждёт ограниченный drain и отсутствие incoming в течение10s. Source-window identity join и post-drain identity join разделены. Early prototype3/10/25 windows имеют собственные исходные метаданные и полностью сопоставленную formed population; их raw artifacts не переписаны.
