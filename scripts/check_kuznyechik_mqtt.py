@@ -44,6 +44,7 @@ def main():
             assert transition['phase'] not in ['UNKNOWN_OUTCOME','RECOVERY_REQUIRED'],transition
             time.sleep(.25)
         else:raise AssertionError('No verified effective telemetry')
+        effective_observed_seconds=time.monotonic()-t0
         receipt=next(e for e in status['effective_evidence'] if e['event_id']==transition['telemetry_event'])
         assert receipt['profile']==target and receipt['key_reference']==target+':1'
         assert status['items'][0]['effective_profile']==target
@@ -58,7 +59,7 @@ def main():
         assert all(x['device_id']=='alpha' for x in ack)
         neighbors=get('/api/control')['items']
         assert all(x['effective_profile']==ASCON for x in neighbors if x['device_id']!='alpha')
-        transitions.append(dict(transition=transition,receipt=receipt,request_to_effective_seconds=time.monotonic()-t0,authenticated_ack_observed=len(ack)))
+        transitions.append(dict(transition=transition,receipt=receipt,request_to_effective_seconds=effective_observed_seconds,full_verification_seconds=time.monotonic()-t0,authenticated_ack_observed=len(ack)))
         time.sleep(2.1)
     after=get('/api/control')
     # Allow bounded late authenticated ACK arrival before counting.
