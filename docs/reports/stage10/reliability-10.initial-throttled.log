@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_reliability.py", line 81, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_reliability.py", line 38, in main
+    switches.append(switch(lab,session,url,token,'alpha',target))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_reliability.py", line 20, in switch
+    assert r.status_code==202,(device,r.status_code,r.text[:120])
+           ^^^^^^^^^^^^^^^^^^
+AssertionError: ('alpha', 409, '{"error":"\\u041d\\u0435\\u0434\\u043e\\u043f\\u0443\\u0441\\u0442\\u0438\\u043c\\u044b\\u0439 \\u0438\\u043b\\u0438 \\u043a\\u043e\\u043d')

@@ -1,0 +1,78 @@
+{
+  "profile": "aes-128-gcm-v1",
+  "nonce_range_source": "authenticated MQTT lease_grant",
+  "malformed_sent": 17,
+  "rejected": 17,
+  "accepted": 3,
+  "duplicate_admission": 0,
+  "duplicate_replay": 1,
+  "malformed_admission_state_unchanged": true,
+  "rejected_identity_null": true,
+  "neighbor_delivered": true,
+  "samples": [
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    },
+    {
+      "incoming": 17,
+      "rejected": 17
+    }
+  ],
+  "observation_seconds": 11.033280448000369,
+  "postgres_mongo_count_delta": 3,
+  "project": "lcm-stage10-performance-base",
+  "exit_code": 0,
+  "receiver_processing_failures": 0,
+  "receiver_subscription_acknowledgements": 0,
+  "receiver_client_connections": 0,
+  "explicit_receiver_restart": true,
+  "post_restart_observation_seconds": 5,
+  "counters_before_restart": {
+    "incoming": 5083,
+    "replay": 3,
+    "rejected": 34,
+    "delivered": 5046,
+    "accepted": 5046
+  },
+  "counters_after_restart": {
+    "incoming": 5083,
+    "replay": 3,
+    "rejected": 34,
+    "delivered": 5046,
+    "accepted": 5046
+  },
+  "no_redelivery_after_receiver_restart": true
+}

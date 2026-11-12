@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/tmp/stage10-finish-medium.py", line 14, in <module>
+    (reports/('medium-'+action+'.json')).write_text(json.dumps(medium.probe(action,diagnostic=True),indent=2))
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_lab.py", line 33, in probe
+    r=self.run('run','--rm','-T','--no-deps','-v',str(Path(__file__).resolve().parent/'performance_probe.py')+':/app/scripts/performance_probe.py:ro','--entrypoint','python','tests','-m','scripts.performance_probe',action,input_data=json.dumps(kwargs) if kwargs else None)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_lab.py", line 26, in run
+    if check:raise RuntimeError('Lab command '+args[0]+' failed ('+str(r.returncode)+'); private last-failure.txt')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Lab command run failed (1); private last-failure.txt

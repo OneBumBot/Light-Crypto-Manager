@@ -1,6 +1,6 @@
 # Этап 10 — производительность, надёжность и подготовка ГОСТ
 
-Работа выполнена в `feature/system-performance-validation` от `feature/system-integration-demo`, исходный SHA `4ac5081a69199041fb8e34111b976da6c257ac93`. Проверенная версия кода перед итоговыми отчётами — `e3a6e47`. Версии каждого эксперимента, состояние рабочего дерева и Docker image IDs сохранены в JSON. Полный baseline после последних изменений UI: **715 passed, 0 skipped, exit 0**. Итоговая регрессия: **739 passed, 0 skipped, exit 0**, 37,35 с; после исправления ограничения логов выполнен дополнительный полный запуск, его журнал — `reports/stage10/final-regression-after-compose.txt`.
+Работа выполнена в `feature/system-performance-validation` от `feature/system-integration-demo`, исходный SHA `4ac5081a69199041fb8e34111b976da6c257ac93`. Проверенная версия приложения перед итоговыми отчётами — `e3a6e47`. Версии каждого эксперимента, состояние рабочего дерева и Docker image IDs сохранены в JSON. Полный baseline после последних изменений UI: **715 passed, 0 skipped, exit 0**. Итоговая регрессия: **739 passed, 0 skipped, exit 0**, 37,35 с; после исправления ограничения логов выполнен дополнительный полный запуск, его журнал — `reports/stage10/final-regression-after-compose.txt`.
 
 Выполнен только этап 10. Policy работает в `DRY_RUN`, управление — только `MANUAL_AUTHORIZED_CONTROL`. RF/IF остаются исследовательскими, `trusted_detector=false`. Новые алгоритмы не включены. Main, push, merge и rebase не затронуты. Количество тестов не является доказательством качества IDS или защищённости production-развёртывания.
 
@@ -26,7 +26,7 @@
 |25|124.9|1133|3.22|269.7 / 493.8 / 520.6|
 |50|179.0|1658|10.19|287.2 / 509.9 / 558.9|
 
-CPU указан в процентах одного ядра и суммирован по контейнерам проекта; RAM — Docker working set. Хост: 16 логических CPU, около 31 ГиБ RAM, общий Linux kernel контейнеров и collector. Полные версии Python, OpenSSL, пакетов и параметры PostgreSQL находятся в `environment.json`.
+В таблице CPU/RAM приведены средние, а в соответствующих графиках — медианы sampled values. CPU указан в процентах одного ядра и суммирован по контейнерам проекта; RAM — Docker working set. Хост: 16 логических CPU, около 31 ГиБ RAM, общий Linux kernel контейнеров и collector. Полные версии Python, OpenSSL, пакетов и параметры PostgreSQL находятся в `environment.json`.
 
 `measured→received` включает формирование, очередь, транспорт и проверку до timestamp admission. `delivered_at` ставится в PG после Mongo majority/journal write. Точное время PG commit, отдельная сетевая задержка и timestamp Mongo commit **не измерены**. Percentiles описывают зависимые сообщения конкретного прогона, а не доверительный интервал независимых развёртываний.
 
@@ -65,6 +65,10 @@ HTTP 202 и ACK отдельно от effective. Завершение требу
 
 Верхние оценки времени наблюдаемого drain после запуска сервиса: Mongo — 15,48 с; control — 34,21 с; policy — 10,77 с; PG — 24,84 с; broker — 1,33 с; устройство — 17,71 с; receiver — 6,07 с. Эти числа включают ожидание пустой очереди при продолжающемся входе ранней версией checker; это не точный service RTO. Окончательный checker проверяет доставку записей до watermark, не требуя постоянно нулевой очереди.
 
+Полный дополнительный source census двух fault-cohorts сопоставил 26 607 сформированных агентами пакетов с PG: неподтверждённых identities — 0. В семи интервалах от начала остановки до возврата сервиса сформировано/найдено соответственно: Mongo 481/481, control 346/346, policy 781/781, PG 240/240, broker 33/33, device 226/226, receiver 210/210. Журнал line-buffered, поэтому это доказательство по сохранённой наблюдаемой совокупности, а не гарантия учёта события при произвольной аварии до записи journal. Ранний неинструментированный прогрев в исходную совокупность не включён. Полные timestamps и identities hashes — `fault-source-census.json` и `fault-source-intervals.json`.
+
+В основных окнах reconnect агентов — 0. В полном журнале десяти агентов найдено 20 reconnect того же процесса, включая отдельный broker outage браузерного journey; намеренные stop/recreate сюда не включены. DB reconnect count не измерен. Максимальные наблюдавшиеся Outbox backlog: 3/10/25/52; PG connections: 11/8/9/11. Рост working memory за окна: 596→617 / 647→721 / 989→1191 / 1563→1700 MiB. Эти значения не доказывают отсутствие долгосрочной утечки; caches/history и фоновые probes различаются.
+
 Также повторены девять прежних настоящих recovery-сценариев: restart устройства на AES, отказ при восстановлении устаревшей SQLite, restart worker после PREPARE, потеря ACTIVATE ACK, broker outage, PG outage после intent и после применения устройством, grace expiry с ручной reconciliation, потеря SQLite. Все прошли. При потерянном состоянии agent завершился с exit 1 и не передавал новую принятую телеметрию — ожидаемый fail-closed результат. UNKNOWN_OUTCOME и необходимость новой аутентифицированной телеметрии сохранены; silent downgrade и произвольный reset отсутствуют.
 
 ## Найденные ошибки и ограничения
@@ -101,7 +105,7 @@ Chromium: отдельная криптостраница на 3 и 25 устр�
 
 Проверены 378 tracked historical hashes и 764 файла локального исследовательского архива: изменений нет. Проверены независимость новых ключей, права private files, конкретные новые secrets в Git/отчётах и runtime images; совпадений нет. Это инженерная проверка заданных значений и build allowlist, не внешний аудит. Main сохранён на `c352d817386a17fb244d3567b287af0412eed4e4`.
 
-Все созданные сервисы остановлены без удаления volumes. Private inputs сохранены на устойчивом диске: `.local-runtime/stage10/private/lcm-stage10-performance-{base,small,medium,extended}`; исходные `/tmp` copies также оставлены. Настоящий ledger находится в именованном device volume, а не в исходном seed SQLite. Resume возможен только с исходными SQL/device volumes и ключами; отсутствие used volume вызывает отказ.
+Все созданные сервисы остановлены без удаления volumes. Настоящие положительные TCP probes внутри своих Docker networks и отрицательные cross-project probes в обе стороны прошли (`network-isolation.json`). Private inputs сохранены на устойчивом диске: `.local-runtime/stage10/private/lcm-stage10-performance-{base,small,medium,extended}`; исходные `/tmp` copies также оставлены. Настоящий ledger находится в именованном device volume, а не в исходном seed SQLite. Resume возможен только с исходными SQL/device volumes и ключами; отсутствие used volume вызывает отказ.
 
 ```bash
 # Новый отдельный стенд:

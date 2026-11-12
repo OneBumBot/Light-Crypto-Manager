@@ -1,0 +1,60 @@
+{
+  "events": [
+    {
+      "scenario": "device_restart",
+      "status": "passed",
+      "before_reserved": 80000,
+      "after_reserved": 90000,
+      "effective": "aes-128-gcm-v1"
+    },
+    {
+      "scenario": "stale_device_state_restore",
+      "status": "passed",
+      "new_telemetry_with_stale_state": false,
+      "silent_downgrade": false
+    },
+    {
+      "scenario": "controller_restart_after_prepare",
+      "status": "passed",
+      "effective_event": "7476f499-91fa-47e8-a715-aa6e6c9fca0b",
+      "transition": "6d960e27-0735-4641-9aa0-e2b587526338"
+    },
+    {
+      "scenario": "lost_activate_ack",
+      "status": "passed",
+      "acknowledged_at": null,
+      "telemetry_event": "90e6e89f-475b-4630-b11b-85d030cf1d57",
+      "silent_rollback": false
+    },
+    {
+      "scenario": "broker_outage",
+      "status": "passed",
+      "transition": "2b6b2426-1243-4ab3-b7d2-c1f53b57641c",
+      "false_effective_during_outage": false
+    },
+    {
+      "scenario": "postgres_outage_after_intent",
+      "status": "passed",
+      "probe_during_outage_exit": 1,
+      "transition": "9df41aab-2a54-4d23-9337-e2dd8c23f88e"
+    },
+    {
+      "scenario": "postgres_outage_after_device_activation",
+      "status": "passed",
+      "telemetry_event": "74695976-3e01-418f-85f8-e55921c89b6b"
+    },
+    {
+      "scenario": "grace_expiry_manual_reconciliation",
+      "status": "passed",
+      "no_premature_effective": true,
+      "telemetry_event": "d5e9f1ee-98b0-4cc9-b050-628451ed2707"
+    },
+    {
+      "scenario": "lost_device_state",
+      "status": "passed",
+      "agent_exit": 1,
+      "accepted_with_missing_state": 0
+    }
+  ],
+  "exit_code": 0
+}
