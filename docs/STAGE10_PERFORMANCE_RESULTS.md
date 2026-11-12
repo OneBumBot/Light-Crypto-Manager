@@ -19,3 +19,18 @@ Software/device identities — не физические датчики: measure
 Прототипные3/10/25 collector reports сохраняют SHA/dirty/source metadata на момент завершения; приложения выполнялись из неизменяемых Docker image IDs, перечисленных в result. В окончательном collector source SHA/hashes фиксируются **до** окна, отдельно от image IDs. Изменения read-model/tests во время development не подменяются старым baselineSHA. Все raw timings сохранены; независимого repeat каждого deployment нет.
 
 Сравнение cohort scatter plots описательное: длительности300/300/900/300s, объёмы истории и прогрев различаются. Нельзя приписывать весь рост RAM/latency только числу устройств. Никакой линии экстраполяции/оценки максимальной capacity не строится. Более низкая latency при некоторых низких частотах зависит от фазы относительно .5s idle polling relay; это не доказательство эффективности AEAD. Additional single-agent60s windows — exploratory Ascon/AES и .5/1/2s intervals, не длительный stability proof.
+
+## Измеренные результаты
+
+Числа ниже получены из `reports/stage10/load-*/result.json`. Ограничения длительностей, фоновых probes и clock model выше сохраняются. PG в окне и source join после drain разделены.
+
+| Устройств | Фактическое окно, с | Formed | Source→PG после drain | PG msg/s | CPU mean, % одного core | RAM mean, MiB | Median end-to-end bound, мс |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 300.17 | 1790 | 1790 | 5.96 | 31.4 | 621 | 264.2 |
+| 10 | 300.94 | 5980 | 5980 | 19.87 | 61.6 | 699 | 265.1 |
+| 25 | 900.00 | 44716 | 44716 | 49.68 | 124.9 | 1133 | 269.7 |
+| 50 | 300.00 | 29818 | 29818 | 99.38 | 179.0 | 1658 | 287.2 |
+
+Во всех основных окнах observed nonce duplicates и MQTT reconnect агента — 0. Максимальные sampled Outbox backlog — 3/10/25/52, PG connections — 11/8/9/11. DB reconnect count не измерен. Итоговая доставка всех109868 committed записей подтверждена после drain; это не обещание доставки произвольных несформированных/несохранённых событий.
+
+Полные per-device/per-run statistics, raw timings и ciphertext sizes — `analysis-final.json`, `crypto-microbenchmark.json`/CSV.gz. Восемь графиков — `reports/stage10/figures/`. Итоговый контекст, microbenchmark и отдельные60s frequency windows: [STAGE10_RESULTS.md](STAGE10_RESULTS.md).
