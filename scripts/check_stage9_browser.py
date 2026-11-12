@@ -59,7 +59,7 @@ def main():
         expect(page.locator('#switch-submit')).to_be_disabled();checks+=['neighbors_unchanged','gamma_capability_picker']
         page.goto(url+'/devices/alpha');page.wait_for_selector('#effective-profile');switch('Ascon-AEAD128')
         page.reload();expect(page.locator('#effective-profile')).to_have_text('Ascon-AEAD128',timeout=15000)
-        checks+=['browser_real_aes_to_ascon','authoritative_after_reload']
+        checks+=['browser_real_kuznyechik_to_ascon' if isinstance(d,(KuzLab,ResearchLab)) else 'browser_real_aes_to_ascon','authoritative_after_reload']
         a.output.parent.mkdir(parents=True,exist_ok=True)
         page.screenshot(path=str(a.output.with_suffix('.desktop.png')),full_page=True)
         page.set_viewport_size(dict(width=390,height=844));page.reload();expect(page.locator('#device-title')).to_be_visible()
