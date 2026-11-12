@@ -124,3 +124,9 @@ runtime role, Mongo standalone/internal DB TLS отсутствует, productio
 ## Stage11 extension
 
 Crypto dispatch содержит три явных provider без else-fallback. Kuznyechik/MGM — pinned local Go executable через private bounded pipes; не сетевой crypto service. Fresh private provisioning добавляет32B key только alpha/beta, gamma Ascon-only. Receiver проверяет usage allowance до tag, затем существующий atomic replay/Outbox/effective transaction. PostgreSQL migration0010 хранит только metadata/counters, не ключи. Mongo validator расширяется explicit collMod. UI переиспользует monitoring/control/history APIs и показывает только supported/eligible targets; web не получает новый MGM/control key. [Provider boundary](CRYPTO_PROVIDER_ARCHITECTURE.md).
+
+## Stage12: implementation backend boundary
+
+Single `kuznyechik-mgm-v1` profile now has exact one-shot/persistent dispatch. Default remains one-shot. Opt-in bounded Go worker uses private framed pipes, request identity, serialization, time/frame/request/lifetime limits and no key cache. It owns no nonce, command or PG usage state. Failure is ProviderUnavailable, not invalid telemetry or automatic fallback. Crypto arithmetic, telemetry/control v2,0010 migration, Outbox and receipt authority remain unchanged.
+
+Registry separates algorithm/implementation/lab/production eligibility. The web implementation note describes the web process configuration, not authenticated sender backend. No Python or Magma research provider is live registered. [Design and real network evidence](STAGE12_SYSTEM_INTEGRATION.md), [results](STAGE12_RESULTS.md).

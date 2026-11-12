@@ -1,0 +1,17 @@
+# Provider optimization decision
+
+Three implementation IDs remain separate from the single profile `kuznyechik-mgm-v1`: original `go-one-shot-v1`, opt-in `go-bounded-worker-v1`, offline `pygost512-strict-research`. Wire algorithm, AEAD parameters, key_reference, ICN and PG authority do not change with backend.
+
+Default remains one-shot for compatibility; the dedicated Stage12 lab explicitly chooses persistent worker. No broad production eligibility change. Native binding/FFI was considered but not introduced: it would remove process isolation and require new ownership/concurrency/error/zeroization assurance. Python is research-only due raw API validation findings, variable-time implementation and separate GPL distribution review.
+
+Worker framing:4B BE length,8B strictly monotonic local request ID, existing bounded operation frame; response length/ID/status/data. Input<=5209B including ID, response<=4121B. Parent validates before reading body, uses nonblocking pipes/selectors and a5s total exchange deadline. One mutex/process, no network listener. Wrong ID, oversized/truncated/unknown response, stderr, crash or timeout → kill/reap and ProviderUnavailable; no same-call retry or fallback. Bad tag → ValueError without plaintext, worker may remain usable. Duplicate ID rejected natively, request257 rejected; parent recycles at256. Fork resets inherited pipes/lock safely.
+
+Fresh cipher/MGM instance per operation; **no key/context cache**. Buffers best-effort cleared after invocation/write; GC copies not guaranteed zeroized. Long-lived-memory risk is bounded in time by25s parent recycle/30s native timer and256 requests, not eliminated. Soft Go memory target32MiB operates inside existing service cgroup limits, not a standalone hard RSS guarantee. CPU/RAM caps and log bounds remain in Compose.
+
+KAT first exposed a stale executable-path cache bug. A changed executable now forces process replacement; missing backend does not silently keep the previous worker. Further tests cover simultaneous keys, partial frames, invalid status/plaintext-on-error, timeout, process death, max requests, fork and bad tag. Crypto math was not modified merely to improve timing.
+
+Measurements distinguish full integration path, direct native operation, key schedule, process startup and a separate noncrypto echo IPC experiment. No approximate startup subtraction is called algorithm time. All benchmark keys ephemeral and independent of lab provisioning.
+
+A second real adapter defect was reproduced with a dedicated red test: EOF on stderr could race a complete valid stdout response at process exit. EOF now unregisters stderr; actual stderr bytes still fail, truncated stdout still fails, complete ID/length-bound response is retained. Final Go measurements were repeated after this fix; original raw200-run data remain separate.
+
+Final paired same-binary comparison after EOF correction:83B/fixed AAD, updated executable one-shot1620.97us versus worker177.32us encryption (median of five run medians), about9.14×. Separately, the preserved original Stage11 executable measured2569.68us in a later batch; temporal variability and the difference between executables are not causally separated. Both hashes/batches are retained; see STAGE12_CRYPTO_COMPARISON.md. Full raw original/refreshed datasets and derived row provenance are retained. This is process/implementation optimization; no claim of reduced authentication strength checks or universal algorithm superiority.

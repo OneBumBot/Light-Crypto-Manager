@@ -1,0 +1,745 @@
+{
+  "project": "lcm-stage12-crypto-research-lab",
+  "events": [
+    {
+      "service": "receiver",
+      "before": {
+        "checked_at": "2026-11-12T19:09:52.102283+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "d99282f1-3b64-4162-8f16-86459db31017",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 1077,
+            "last_sequence": 10420
+          },
+          "alpha": {
+            "count": 1070,
+            "last_sequence": 30071
+          },
+          "gamma": {
+            "count": 1078,
+            "last_sequence": 10420
+          }
+        },
+        "outbox": {
+          "pending": 1,
+          "delivered": 3224
+        },
+        "counters": {
+          "incoming": 3225,
+          "delivered": 3224,
+          "accepted": 3225
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 9,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 66205363,
+        "pg_stats": {
+          "xact_commit": 79006,
+          "xact_rollback": 876,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3224
+      },
+      "after_kill": {
+        "checked_at": "2026-11-12T19:09:54.687886+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "d99282f1-3b64-4162-8f16-86459db31017",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 1079,
+            "last_sequence": 10422
+          },
+          "alpha": {
+            "count": 1071,
+            "last_sequence": 30072
+          },
+          "gamma": {
+            "count": 1080,
+            "last_sequence": 10422
+          }
+        },
+        "outbox": {
+          "delivered": 3230
+        },
+        "counters": {
+          "incoming": 3231,
+          "delivered": 3230,
+          "accepted": 3230
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 9,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 66295475,
+        "pg_stats": {
+          "xact_commit": 79192,
+          "xact_rollback": 878,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3230
+      },
+      "after": {
+        "checked_at": "2026-11-12T19:09:56.102796+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "d99282f1-3b64-4162-8f16-86459db31017",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 1081,
+            "last_sequence": 10424
+          },
+          "alpha": {
+            "count": 1074,
+            "last_sequence": 30075
+          },
+          "gamma": {
+            "count": 1082,
+            "last_sequence": 10424
+          }
+        },
+        "outbox": {
+          "pending": 7,
+          "delivered": 3230
+        },
+        "counters": {
+          "incoming": 3238,
+          "delivered": 3230,
+          "accepted": 3237
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 9,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 10,
+        "database_bytes": 69367475,
+        "pg_stats": {
+          "xact_commit": 79524,
+          "xact_rollback": 899,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3230
+      },
+      "worker_kill": "provider_child_killed",
+      "no_false_transition": true
+    },
+    {
+      "service": "device-alpha",
+      "before": {
+        "checked_at": "2026-11-12T19:09:57.512339+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "d99282f1-3b64-4162-8f16-86459db31017",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 1083,
+            "last_sequence": 10426
+          },
+          "alpha": {
+            "count": 1075,
+            "last_sequence": 30076
+          },
+          "gamma": {
+            "count": 1084,
+            "last_sequence": 10426
+          }
+        },
+        "outbox": {
+          "pending": 2,
+          "delivered": 3240
+        },
+        "counters": {
+          "incoming": 3243,
+          "delivered": 3240,
+          "accepted": 3242
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 9,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 10,
+        "database_bytes": 71366323,
+        "pg_stats": {
+          "xact_commit": 79976,
+          "xact_rollback": 984,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3240
+      },
+      "after_kill": {
+        "checked_at": "2026-11-12T19:10:00.256721+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "d99282f1-3b64-4162-8f16-86459db31017",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 1085,
+            "last_sequence": 10428
+          },
+          "alpha": {
+            "count": 1077,
+            "last_sequence": 30078
+          },
+          "gamma": {
+            "count": 1086,
+            "last_sequence": 10428
+          }
+        },
+        "outbox": {
+          "delivered": 3248
+        },
+        "counters": {
+          "incoming": 3249,
+          "delivered": 3248,
+          "accepted": 3248
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 9,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 70915763,
+        "pg_stats": {
+          "xact_commit": 80407,
+          "xact_rollback": 999,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3248
+      },
+      "after": {
+        "checked_at": "2026-11-12T19:10:09.346600+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "d99282f1-3b64-4162-8f16-86459db31017",
+            "sequence_reserved": 50000,
+            "command_sequence": 12
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 1095,
+            "last_sequence": 10438
+          },
+          "alpha": {
+            "count": 1083,
+            "last_sequence": 40006
+          },
+          "gamma": {
+            "count": 1095,
+            "last_sequence": 10437
+          }
+        },
+        "outbox": {
+          "delivered": 3273
+        },
+        "counters": {
+          "incoming": 3274,
+          "delivered": 3273,
+          "accepted": 3273
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 9,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 72054451,
+        "pg_stats": {
+          "xact_commit": 81299,
+          "xact_rollback": 1012,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3273
+      },
+      "worker_kill": "provider_child_killed",
+      "no_false_transition": true
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T19:09:48.274517+00:00",
+      "finished_at": "2026-11-12T19:09:48.301321+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T19:09:51.438417+00:00",
+      "finished_at": "2026-11-12T19:09:52.811983+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "exec",
+        "-T",
+        "receiver",
+        "python",
+        "-c",
+        "import os,signal;from pathlib import Path;ids=[]\nfor p in Path('/proc').iterdir():\n if not p.name.isdigit():continue\n try:a=(p/'cmdline').read_bytes().split(b'\\0')\n except (FileNotFoundError,PermissionError):continue\n if a and a[0].endswith(b'/lcm-kuz-mgm') and len(a)>1 and a[1]==b'--worker':ids.append(int(p.name))\nassert len(ids)==1, len(ids)\nos.kill(ids[0],signal.SIGKILL);print('provider_child_killed')"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T19:09:53.912115+00:00",
+      "finished_at": "2026-11-12T19:09:54.005835+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T19:09:54.005933+00:00",
+      "finished_at": "2026-11-12T19:09:55.410892+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T19:09:55.411024+00:00",
+      "finished_at": "2026-11-12T19:09:56.825821+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T19:09:56.825973+00:00",
+      "finished_at": "2026-11-12T19:09:58.233088+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "exec",
+        "-T",
+        "device-alpha",
+        "python",
+        "-c",
+        "import os,signal;from pathlib import Path;ids=[]\nfor p in Path('/proc').iterdir():\n if not p.name.isdigit():continue\n try:a=(p/'cmdline').read_bytes().split(b'\\0')\n except (FileNotFoundError,PermissionError):continue\n if a and a[0].endswith(b'/lcm-kuz-mgm') and len(a)>1 and a[1]==b'--worker':ids.append(int(p.name))\nassert len(ids)==1, len(ids)\nos.kill(ids[0],signal.SIGKILL);print('provider_child_killed')"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T19:09:59.333200+00:00",
+      "finished_at": "2026-11-12T19:09:59.560719+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T19:09:59.560811+00:00",
+      "finished_at": "2026-11-12T19:10:00.963893+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "device-alpha"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T19:10:02.964005+00:00",
+      "finished_at": "2026-11-12T19:10:08.670209+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage12/lab/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T19:10:08.670304+00:00",
+      "finished_at": "2026-11-12T19:10:10.075839+00:00"
+    }
+  ],
+  "exit_code": 0
+}

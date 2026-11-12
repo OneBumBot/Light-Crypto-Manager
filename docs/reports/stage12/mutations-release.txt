@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "environment": "temporary copies; real isolated PostgreSQL schemas; public fixture keys",
+  "baseline_exit": 0,
+  "baseline_output": "........................................................................ [ 40%]\n........................................................................ [ 81%]\n................................                                         [100%]\n176 passed in 3.81s\n",
+  "results": [
+    {
+      "injected_defect": "unhashable_outer_profile",
+      "test": "test_telemetry_security.py::test_outer_profile_exact_rejection",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "est_telemetry_security.py:30: in test_outer_profile_exact_rejection\n    decode_packet(canonical(packet), TOPIC, registry)\nsrc/telemetry.py:142: in decode_packet\n    or packet['profile'] not in BY_ALGORITHM): reject()\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unhashable type: 'dict'\n__________ test_outer_profile_exact_rejection[value9-aes-128-gcm-v1] ___________\ntests/test_telemetry_security.py:30: in test_outer_profile_exact_rejection\n    decode_packet(canonical(packet), TOPIC, registry)\nsrc/telemetry.py:142: in decode_packet\n    or packet['profile'] not in BY_ALGORITHM): reject()\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   TypeError: unhashable type: 'dict'\n=========================== short test summary info ============================\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value6-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value6-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value7-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value7-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value8-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value8-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value9-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value9-aes-128-gcm-v1]\n8 failed, 14 passed in 0.24s\n"
+    },
+    {
+      "injected_defect": "parser_raises_type_error",
+      "test": "test_telemetry_security.py::test_outer_profile_exact_rejection",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "s/test_telemetry_security.py::test_outer_profile_exact_rejection[0-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[0-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[1-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[1-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[1.5-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[1.5-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value6-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value6-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value7-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value7-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value8-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value8-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value9-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[value9-aes-128-gcm-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[unknown-profile-ascon-aead128-v1]\nFAILED tests/test_telemetry_security.py::test_outer_profile_exact_rejection[unknown-profile-aes-128-gcm-v1]\n22 failed in 0.28s\n"
+    },
+    {
+      "injected_defect": "missing_profile_binding",
+      "test": "test_telemetry_security.py::test_aad_profile_binding_before_decrypt",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________________ test_aad_profile_binding_before_decrypt ____________________\ntests/test_telemetry_security.py:63: in test_aad_profile_binding_before_decrypt\n    with pytest.raises(InvalidTelemetry):decode_packet(canonical(packet),TOPIC,registry)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE InvalidTelemetry\n=========================== short test summary info ============================\nFAILED tests/test_telemetry_security.py::test_aad_profile_binding_before_decrypt\n1 failed in 0.20s\n"
+    },
+    {
+      "injected_defect": "missing_key_reference",
+      "test": "test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "T RAISE ValueError\n_ test_authenticated_malformed_command_preserves_sqlite[value6-key_reference] __\ntests/test_control_protocol.py:143: in test_authenticated_malformed_command_preserves_sqlite\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n_ test_authenticated_malformed_command_preserves_sqlite[value7-key_reference] __\ntests/test_control_protocol.py:143: in test_authenticated_malformed_command_preserves_sqlite\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[None-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[True-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[False-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[0-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[1.5-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[value5-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[value6-key_reference]\nFAILED tests/test_control_protocol.py::test_authenticated_malformed_command_preserves_sqlite[value7-key_reference]\n8 failed, 40 passed in 0.63s\n"
+    },
+    {
+      "injected_defect": "ack_after_pg_failure",
+      "test": "test_ingestion_ack.py::test_pg_failure_disconnects_without_ack",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________________ test_pg_failure_disconnects_without_ack ____________________\ntests/test_ingestion_ack.py:21: in test_pg_failure_disconnects_without_ack\n    client.ack.assert_not_called(); client.disconnect.assert_called_once()\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n/usr/local/lib/python3.12/unittest/mock.py:910: in assert_not_called\n    raise AssertionError(msg)\nE   AssertionError: Expected 'ack' to not have been called. Called 1 times.\nE   Calls: [call(17, 1)].\n------------------------------ Captured log call -------------------------------\nERROR    src.brocker.mqtt_brocker:mqtt_brocker.py:84 MQTT packet processing failed (RuntimeError)\n=========================== short test summary info ============================\nFAILED tests/test_ingestion_ack.py::test_pg_failure_disconnects_without_ack\n1 failed in 0.11s\n"
+    },
+    {
+      "injected_defect": "ignore_control_mac",
+      "test": "test_control_protocol.py::test_control_authenticated_direction_and_device",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________ test_control_authenticated_direction_and_device ________________\ntests/test_control_protocol.py:27: in test_control_authenticated_direction_and_device\n    with pytest.raises(ValueError):open_message(raw,key,direction,device,t)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_protocol.py::test_control_authenticated_direction_and_device\n1 failed in 0.03s\n"
+    },
+    {
+      "injected_defect": "disable_control_replay",
+      "test": "test_control_protocol.py::test_monotonic_replay_gap_rejected",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________________ test_monotonic_replay_gap_rejected ______________________\ntests/test_control_protocol.py:94: in test_monotonic_replay_gap_rejected\n    with pytest.raises(ValueError):s.execute(lower,conf())\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_protocol.py::test_monotonic_replay_gap_rejected - F...\n1 failed in 0.05s\n"
+    },
+    {
+      "injected_defect": "premature_effective",
+      "test": "test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____ test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade ____\ntests/test_control_storage.py:63: in test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade\n    with web.db.engine.connect() as c:assert c.scalar(select(m.devices.c.effective_profile))==ASCON\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError: assert 'aes-128-gcm-v1' == 'ascon-aead128-v1'\nE     \nE     - ascon-aead128-v1\nE     + aes-128-gcm-v1\n=========================== short test summary info ============================\nFAILED tests/test_control_storage.py::test_effective_requires_real_telemetry_and_ack_loss_does_not_downgrade\n1 failed in 0.57s\n"
+    },
+    {
+      "injected_defect": "missing_device_binding",
+      "test": "test_control_protocol.py::test_authenticated_claimed_device_mismatch",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n__________________ test_authenticated_claimed_device_mismatch __________________\ntests/test_control_protocol.py:104: in test_authenticated_claimed_device_mismatch\n    with pytest.raises(ValueError):open_message(raw,KEY,'controller','beta',topic('beta','controller'))\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_protocol.py::test_authenticated_claimed_device_mismatch\n1 failed in 0.03s\n"
+    },
+    {
+      "injected_defect": "unsupported_capability",
+      "test": "test_control_storage.py::test_capability_rejection_creates_no_command",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________ test_capability_rejection_creates_no_command _________________\ntests/test_control_storage.py:149: in test_capability_rejection_creates_no_command\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_storage.py::test_capability_rejection_creates_no_command\n1 failed in 0.54s\n"
+    },
+    {
+      "injected_defect": "repeat_nonce_range",
+      "test": "test_control_recovery.py::test_server_range_rollback_is_detected_on_device",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________ test_server_range_rollback_is_detected_on_device _______________\ntests/test_control_recovery.py:78: in test_server_range_rollback_is_detected_on_device\n    with pytest.raises(ValueError):s.accept_lease(1,10000)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_recovery.py::test_server_range_rollback_is_detected_on_device\n1 failed in 0.10s\n"
+    },
+    {
+      "injected_defect": "commit_before_atomic_completion",
+      "test": "test_control_recovery.py::test_ack_transaction_rollback_does_not_queue_activate",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "tivate\n    assert c.scalar(select(func.count()).select_from(m.commands))==1\nE   AssertionError: assert 2 == 1\nE    +  where 2 = scalar(<sqlalchemy.sql.selectable.Select object at 0x7ff49ed46690>)\nE    +    where scalar = <sqlalchemy.engine.base.Connection object at 0x7ff49eebfd70>.scalar\nE    +    and   <sqlalchemy.sql.selectable.Select object at 0x7ff49ed46690> = select_from(Table('live_control_commands', MetaData(), Column('id', String(length=36), table=<live_control_commands>, primary_key=...le=<live_control_commands>), Column('expires_at', DateTime(timezone=True), table=<live_control_commands>), schema=None))\nE    +      where select_from = <sqlalchemy.sql.selectable.Select object at 0x7ff49ed46600>.select_from\nE    +        where <sqlalchemy.sql.selectable.Select object at 0x7ff49ed46600> = select(<sqlalchemy.sql.functions.count at 0x7ff49ed455e0; count>)\nE    +          where <sqlalchemy.sql.functions.count at 0x7ff49ed455e0; count> = <sqlalchemy.sql.functions._FunctionGenerator object at 0x7ff49ed45550>()\nE    +            where <sqlalchemy.sql.functions._FunctionGenerator object at 0x7ff49ed45550> = func.count\nE    +      and   Table('live_control_commands', MetaData(), Column('id', String(length=36), table=<live_control_commands>, primary_key=...le=<live_control_commands>), Column('expires_at', DateTime(timezone=True), table=<live_control_commands>), schema=None) = m.commands\n=========================== short test summary info ============================\nFAILED tests/test_control_recovery.py::test_ack_transaction_rollback_does_not_queue_activate\n1 failed in 0.57s\n"
+    },
+    {
+      "injected_defect": "accept_contradictory_ack",
+      "test": "test_control_recovery.py::test_forged_and_mismatched_ack_do_not_activate",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________________ test_forged_and_mismatched_ack_do_not_activate ________________\ntests/test_control_recovery.py:41: in test_forged_and_mismatched_ack_do_not_activate\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_recovery.py::test_forged_and_mismatched_ack_do_not_activate\n1 failed in 0.58s\n"
+    },
+    {
+      "injected_defect": "ignore_aes_authentication_failure",
+      "test": "test_aes_profiles.py::test_aes_rejects_modifications[tag]",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____________________ test_aes_rejects_modifications[tag] ______________________\ntests/test_aes_profiles.py:28: in test_aes_rejects_modifications\n    with pytest.raises(InvalidTag):decrypt(AES,key,nonce,ad,ct)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE InvalidTag\n=========================== short test summary info ============================\nFAILED tests/test_aes_profiles.py::test_aes_rejects_modifications[tag] - Fail...\n1 failed in 0.03s\n"
+    },
+    {
+      "injected_defect": "unknown_ascon_fallback",
+      "test": "test_provider_dispatch.py::test_unknown_never_reaches_ascon",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "llback\n_______________ test_unknown_never_reaches_ascon[Ascon-AEAD128] ________________\ntests/test_provider_dispatch.py:8: in test_unknown_never_reaches_ascon\n    with pytest.raises(ValueError):encrypt(value,b'k'*16,b'n'*16,b'ad',b'p')\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsrc/crypto_profiles.py:68: in encrypt\n    return PROVIDERS[profile][0](key,nonce,ad,plaintext)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_provider_dispatch.py:6: in bad\n    def bad(*args):raise AssertionError('Unexpected provider fallback')\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError: Unexpected provider fallback\n=========================== short test summary info ============================\nFAILED tests/test_provider_dispatch.py::test_unknown_never_reaches_ascon[None]\nFAILED tests/test_provider_dispatch.py::test_unknown_never_reaches_ascon[True]\nFAILED tests/test_provider_dispatch.py::test_unknown_never_reaches_ascon[False]\nFAILED tests/test_provider_dispatch.py::test_unknown_never_reaches_ascon[0]\nFAILED tests/test_provider_dispatch.py::test_unknown_never_reaches_ascon[1]\nFAILED tests/test_provider_dispatch.py::test_unknown_never_reaches_ascon[1.5]\nFAILED tests/test_provider_dispatch.py::test_unknown_never_reaches_ascon[value6]\nFAILED tests/test_provider_dispatch.py::test_unknown_never_reaches_ascon[value7]\nFAILED tests/test_provider_dispatch.py::test_unknown_never_reaches_ascon[unknown]\nFAILED tests/test_provider_dispatch.py::test_unknown_never_reaches_ascon[Ascon-AEAD128]\n10 failed in 0.04s\n"
+    },
+    {
+      "injected_defect": "mgm_ignores_tag_failure",
+      "test": "test_kuz_provider.py::test_authentication_failure_returns_no_plaintext[tag]",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____________ test_authentication_failure_returns_no_plaintext[tag] _____________\ntests/test_kuz_provider.py:44: in test_authentication_failure_returns_no_plaintext\n    with pytest.raises(ValueError):decrypt(key,nonce,aad,ct)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_kuz_provider.py::test_authentication_failure_returns_no_plaintext[tag]\n1 failed in 0.05s\n"
+    },
+    {
+      "injected_defect": "ignore_mgm_budget",
+      "test": "test_kuz_integration.py::test_reservation_is_atomic_idempotent_crash_burned_and_bounded",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "381: in _handle_dbapi_exception\n    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e\n/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2000: in _exec_single_context\n    self.dialect.do_execute(\n/usr/local/lib/python3.12/site-packages/sqlalchemy/engine/default.py:964: in do_execute\n    cursor.execute(statement, parameters)\n/usr/local/lib/python3.12/site-packages/psycopg/cursor.py:117: in execute\n    raise ex.with_traceback(None)\nE   sqlalchemy.exc.IntegrityError: (psycopg.errors.CheckViolation) new row for relation \"crypto_key_usage\" violates check constraint \"ck_mgm_budget\"\nE   DETAIL:  Failing row contains (raspb1, 1, kuznyechik-mgm-v1, kuznyechik-mgm-v1:1, epoch31-sequence64-LCM01, 40000, 12800000, 30000, 9600000, 0, 1048576, 2026-11-12 19:34:40.437533+00, 2026-11-12 19:34:40.463844+00).\nE   [SQL: UPDATE crypto_key_usage SET reserved_invocations=%(reserved_invocations)s::BIGINT, reserved_blocks=%(reserved_blocks)s::BIGINT, updated_at=clock_timestamp() WHERE crypto_key_usage.device_id = %(device_id_1)s::VARCHAR AND crypto_key_usage.key_epoch = %(key_epoch_1)s::INTEGER AND crypto_key_usage.profile_id = %(profile_id_1)s::VARCHAR]\nE   [parameters: {'reserved_invocations': 40000, 'reserved_blocks': 12800000, 'device_id_1': 'raspb1', 'key_epoch_1': 1, 'profile_id_1': 'kuznyechik-mgm-v1'}]\nE   (Background on this error at: https://sqlalche.me/e/20/gkpj)\n=========================== short test summary info ============================\nFAILED tests/test_kuz_integration.py::test_reservation_is_atomic_idempotent_crash_burned_and_bounded\n1 failed in 0.76s\n"
+    },
+    {
+      "injected_defect": "reuse_aes_key_for_kuz",
+      "test": "test_kuz_integration.py::test_mgm_malformed_aad_is_controlled",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "m_malformed_aad_is_controlled[0-sequence_number]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[0-device_id]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[0-topic]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[1.5-profile]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[1.5-key_epoch]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[1.5-sequence_number]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[1.5-device_id]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[1.5-topic]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[bad5-profile]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[bad5-key_epoch]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[bad5-sequence_number]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[bad5-device_id]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[bad5-topic]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[bad6-profile]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[bad6-key_epoch]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[bad6-sequence_number]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[bad6-device_id]\nFAILED tests/test_kuz_integration.py::test_mgm_malformed_aad_is_controlled[bad6-topic]\n35 failed in 0.26s\n"
+    },
+    {
+      "injected_defect": "legacy_ascon_broken",
+      "test": "test_provider_dispatch.py::test_legacy_ascon_dispatch_preserves_external_known_answer",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n__________ test_legacy_ascon_dispatch_preserves_external_known_answer __________\ntests/test_provider_dispatch.py:24: in test_legacy_ascon_dispatch_preserves_external_known_answer\n    assert encrypt(ASCON,key,nonce,b'',b'')==expected\nE   assert b'broken legacy ciphertext' == b\"O\\x9c'\\x82\\...\\xee\\x8b.\\xc6\"\nE     \nE     At index 0 diff: b'b' != b'O'\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_provider_dispatch.py::test_legacy_ascon_dispatch_preserves_external_known_answer\n1 failed in 0.02s\n"
+    },
+    {
+      "injected_defect": "legacy_aes_broken",
+      "test": "test_aes_profiles.py::test_cavp_cavs_14_count_zero",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________________ test_cavp_cavs_14_count_zero _________________________\ntests/test_aes_profiles.py:53: in test_cavp_cavs_14_count_zero\n    assert encrypt(AES,key,nonce,b'',b'')==expected\nE   assert b'broken ciphertext' == b\"%\\x03'\\xc6t...\\xf2gWH\\xcfiq\"\nE     \nE     At index 0 diff: b'b' != b'%'\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_aes_profiles.py::test_cavp_cavs_14_count_zero - assert b'br...\n1 failed in 0.03s\n"
+    },
+    {
+      "injected_defect": "discard_complete_response_on_stderr_eof",
+      "test": "test_kuz_worker.py::test_stderr_eof_does_not_discard_complete_valid_response",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________ test_stderr_eof_does_not_discard_complete_valid_response ___________\ntests/test_kuz_worker.py:107: in test_stderr_eof_does_not_discard_complete_valid_response\n    assert encrypt(b'k'*32,b'\\0'*16,b'a',b'p')==b'x'*17\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsrc/kuz_provider.py:51: in encrypt\n    def encrypt(key,nonce,aad,plaintext):return operation(1,key,nonce,aad,plaintext)\n                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsrc/kuz_provider.py:22: in operation\n    response=WORKER.exchange(request)\n             ^^^^^^^^^^^^^^^^^^^^^^^^\nsrc/kuz_worker.py:65: in exchange\n    self._stop();raise ProviderUnavailable('Persistent provider operation failed') from None\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   src.kuz_provider.ProviderUnavailable: Persistent provider operation failed\n=========================== short test summary info ============================\nFAILED tests/test_kuz_worker.py::test_stderr_eof_does_not_discard_complete_valid_response\n1 failed in 0.04s\n"
+    },
+    {
+      "injected_defect": "worker_mixes_device_responses",
+      "test": "test_kuz_worker.py::test_malformed_worker_never_returns_plaintext[wrong_id]",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________ test_malformed_worker_never_returns_plaintext[wrong_id] ____________\ntests/test_kuz_worker.py:48: in test_malformed_worker_never_returns_plaintext\n    with pytest.raises(ProviderUnavailable):encrypt(b'k'*32,b'\\0'*16,b'a',b'p')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ProviderUnavailable\n=========================== short test summary info ============================\nFAILED tests/test_kuz_worker.py::test_malformed_worker_never_returns_plaintext[wrong_id]\n1 failed in 0.03s\n"
+    },
+    {
+      "injected_defect": "provider_returns_plaintext_on_error",
+      "test": "test_kuz_worker.py::test_malformed_worker_never_returns_plaintext[plaintext_on_error]",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______ test_malformed_worker_never_returns_plaintext[plaintext_on_error] _______\ntests/test_kuz_worker.py:48: in test_malformed_worker_never_returns_plaintext\n    with pytest.raises(ProviderUnavailable):encrypt(b'k'*32,b'\\0'*16,b'a',b'p')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ProviderUnavailable\n=========================== short test summary info ============================\nFAILED tests/test_kuz_worker.py::test_malformed_worker_never_returns_plaintext[plaintext_on_error]\n1 failed in 0.10s\n"
+    },
+    {
+      "injected_defect": "missing_backend_silent_ascon",
+      "test": "test_kuz_worker.py::test_dispatch_missing_backend_never_falls_back",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________________ test_dispatch_missing_backend_never_falls_back ________________\ntests/test_kuz_worker.py:100: in test_dispatch_missing_backend_never_falls_back\n    with pytest.raises(ProviderUnavailable):dispatch(KUZ,b'k'*32,b'\\0'*16,b'a',b'p')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ProviderUnavailable\n=========================== short test summary info ============================\nFAILED tests/test_kuz_worker.py::test_dispatch_missing_backend_never_falls_back\n1 failed in 0.03s\n"
+    },
+    {
+      "injected_defect": "repeat_grant_burns_budget_again",
+      "test": "test_kuz_integration.py::test_reservation_is_atomic_idempotent_crash_burned_and_bounded",
+      "expected": "behavioral assertion failure",
+      "exit_code": 1,
+      "observed": "killed",
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________ test_reservation_is_atomic_idempotent_crash_burned_and_bounded ________\ntests/test_kuz_integration.py:37: in test_reservation_is_atomic_idempotent_crash_burned_and_bounded\n    with engine.begin() as c:assert server.grant(c,req)==first\n                                    ^^^^^^^^^^^^^^^^^^^\nsrc/device_control/server.py:87: in grant\n    reserve(c,device,d['key_epoch'],body['message_id'],old['body']['data']['first_sequence'],old['body']['data']['last_sequence'])\nsrc/kuz_usage.py:60: in reserve\n    if first<=high or count<=0:raise ValueError('MGM range reuse rejected')\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   ValueError: MGM range reuse rejected\n=========================== short test summary info ============================\nFAILED tests/test_kuz_integration.py::test_reservation_is_atomic_idempotent_crash_burned_and_bounded\n1 failed in 0.55s\n"
+    }
+  ],
+  "all_killed": true
+}
+ Container lcm-stage12-crypto-research-lab-tests-run-33b8a4a203a8 Creating 
+ Container lcm-stage12-crypto-research-lab-tests-run-33b8a4a203a8 Created 

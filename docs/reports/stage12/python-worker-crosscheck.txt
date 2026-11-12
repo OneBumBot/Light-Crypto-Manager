@@ -1,0 +1,20 @@
+{
+  "revision": "b06da69337882fb6adabdfa5d7513e2ce4ab7058",
+  "license": "GPL-3.0",
+  "version": "5.12",
+  "rfc7801_round_keys": 10,
+  "rfc7801_block": true,
+  "rfc9058_a1_examples": 2,
+  "crosscheck_cases": 31,
+  "invalid_tag_rejections": 93,
+  "parameter_negatives": 40,
+  "raw_api_length_unit_defect": true,
+  "raw_api_empty_plaintext_and_aad_accepted": true,
+  "live_registered": false,
+  "activation_allowed": false,
+  "source_hashes": {
+    "pygost/mgm.py": "42a18612f82326989011283051f62e8f5c66ede3733111eb0456631a2d8de5bf",
+    "pygost/gost3412.py": "eabadf41bd4a6cec482240a4725e5a37c496e22b16b037ff62c824b5d215ea87"
+  },
+  "exit_code": 0
+}

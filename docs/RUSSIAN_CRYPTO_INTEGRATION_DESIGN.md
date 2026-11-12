@@ -69,3 +69,9 @@ BY_ALGORITHM требует инъективного отображения: о�
 ## Дополнение Stage11
 
 Предыдущие разделы фиксируют design этапа10. Kuznyechik-MGM теперь реализован через pinned tarantool Go provider и проверен на software lab: [implementation](KUZNYECHIK_MGM_IMPLEMENTATION.md). Для новой версии используются key32B, full tag16B, ICN epoch31/sequence64/domain32 и отдельная durable usage authority, без изменения telemetryv2/HMAC wire. Допуск ограничен явно авторизованным Stage11 namespace, не глобальным production activation. Magma остаётся design-only: новый 64-bit budget/nonce анализ, independent KAT, provider/recovery validation всё ещё обязательны; реализация не начата.
+
+## Stage12 verified update
+
+Kuznyechik remains software-lab-only. An opt-in bounded local Go worker reduces IPC/startup overhead while preserving pinned cipher/MGM arithmetic and all key/nonce/usage/effective invariants. Python5.12 full MGM was independently cross-checked through a strict research wrapper; raw validation findings, timing behavior and licensing prevent automatic promotion. Official5.13 archive could not be verified due TLS download failure; no insecure download or assumption of identical behavior.
+
+Magma RFC8891/RFC9058 A.2 vectors pass offline, but combined aggregate confidentiality/integrity bounds and current10000 leases/rekey gaps give NOT_SUITABLE_FOR_CONTINUOUS_TELEMETRY. No live descriptor/capability/key/command/UI addition. A future design needs explicit versioned short grants, per-key/block/verification accounting and authenticated rekey; no truncation of global sequence. [Budget](MAGMA_MGM_SECURITY_BUDGET.md), [rotation](MAGMA_KEY_ROTATION_DESIGN.md), [provider review](STAGE12_PROVIDER_OPTIMIZATION.md).

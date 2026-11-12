@@ -1,0 +1,88 @@
+{
+  "committed": 7689,
+  "mongo": 7689,
+  "durable": {
+    "usage": [
+      {
+        "device_id": "beta",
+        "key_epoch": 1,
+        "profile_id": "kuznyechik-mgm-v1",
+        "key_reference": "kuznyechik-mgm-v1:1",
+        "nonce_policy": "epoch31-sequence64-LCM01",
+        "reserved_invocations": 60000,
+        "reserved_blocks": 19200000,
+        "max_invocations": 1048576,
+        "max_blocks": 335544320,
+        "verify_attempts": 0,
+        "max_verify_attempts": 1048576,
+        "created_at": "2026-11-12T18:39:57.282377+00:00",
+        "updated_at": "2026-11-12T19:34:36.895419+00:00"
+      },
+      {
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "profile_id": "kuznyechik-mgm-v1",
+        "key_reference": "kuznyechik-mgm-v1:1",
+        "nonce_policy": "epoch31-sequence64-LCM01",
+        "reserved_invocations": 180000,
+        "reserved_blocks": 57600000,
+        "max_invocations": 1048576,
+        "max_blocks": 335544320,
+        "verify_attempts": 302,
+        "max_verify_attempts": 1048576,
+        "created_at": "2026-11-12T18:39:57.280648+00:00",
+        "updated_at": "2026-11-12T19:40:01.931417+00:00"
+      }
+    ],
+    "reservations": 24,
+    "authenticated_acks": 52,
+    "effective_receipts": 30,
+    "transitions": 27,
+    "completed": 27,
+    "unknown_or_failed": 0,
+    "profile_counts": [
+      {
+        "profile": "Kuznyechik-MGM",
+        "count": 297
+      },
+      {
+        "profile": "Ascon-AEAD128",
+        "count": 7351
+      },
+      {
+        "profile": "AES-128-GCM",
+        "count": 41
+      }
+    ]
+  },
+  "agent_nonce_uniqueness": [
+    {
+      "device": "alpha",
+      "formed": 2508,
+      "duplicate_sequence": 0,
+      "duplicate_nonce_per_profile_key": 0,
+      "mgm_formed": 295,
+      "boots": 18,
+      "connect_observations": 20
+    },
+    {
+      "device": "beta",
+      "formed": 2589,
+      "duplicate_sequence": 0,
+      "duplicate_nonce_per_profile_key": 0,
+      "mgm_formed": 0,
+      "boots": 5,
+      "connect_observations": 7
+    },
+    {
+      "device": "gamma",
+      "formed": 2589,
+      "duplicate_sequence": 0,
+      "duplicate_nonce_per_profile_key": 0,
+      "mgm_formed": 0,
+      "boots": 5,
+      "connect_observations": 7
+    }
+  ],
+  "all_services_stopped": true
+}

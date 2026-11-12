@@ -1,0 +1,133 @@
+TEXT github.com/tarantool/go-gostcrypto/mgm.(*MGM).gfMul(SB) github.com/tarantool/go-gostcrypto@v0.0.0/mgm/mgm.go
+  mgm.go:276		0x4919c0		493b6610		CMPQ SP, 0x10(R14)						
+  mgm.go:276		0x4919c4		0f86d2010000		JBE 0x491b9c							
+  mgm.go:276		0x4919ca		55			PUSHQ BP							
+  mgm.go:276		0x4919cb		4889e5			MOVQ SP, BP							
+  mgm.go:276		0x4919ce		4883ec58		SUBQ $0x58, SP							
+  mgm.go:276		0x4919d2		4889b424a0000000	MOVQ SI, 0xa0(SP)						
+  mgm.go:282		0x4919da		48899c2488000000	MOVQ BX, 0x88(SP)						
+  mgm.go:282		0x4919e2		48898c2490000000	MOVQ CX, 0x90(SP)						
+  mgm.go:277		0x4919ea		488b5010		MOVQ 0x10(AX), DX						
+  mgm.go:282		0x4919ee		4883fa20		CMPQ DX, $0x20							
+  mgm.go:282		0x4919f2		7715			JA 0x491a09							
+  mgm.go:282		0x4919f4		488d7c2438		LEAQ 0x38(SP), DI						
+  mgm.go:282		0x4919f9		440f113f		MOVUPS X15, 0(DI)						
+  mgm.go:282		0x4919fd		440f117f10		MOVUPS X15, 0x10(DI)						
+  mgm.go:282		0x491a02		488d7c2438		LEAQ 0x38(SP), DI						
+  mgm.go:282		0x491a07		eb5f			JMP 0x491a68							
+  mgm.go:282		0x491a09		4889842480000000	MOVQ AX, 0x80(SP)						
+  mgm.go:277		0x491a11		4889542428		MOVQ DX, 0x28(SP)						
+  mgm.go:282		0x491a16		4c898424a8000000	MOVQ R8, 0xa8(SP)						
+  mgm.go:282		0x491a1e		4889b424a0000000	MOVQ SI, 0xa0(SP)						
+  mgm.go:282		0x491a26		488d05e3a10d00		LEAQ 0xda1e3(IP), AX						
+  mgm.go:282		0x491a2d		4889d3			MOVQ DX, BX							
+  mgm.go:282		0x491a30		4889d9			MOVQ BX, CX							
+  mgm.go:282		0x491a33		e888b4feff		CALL runtime.makeslice(SB)					
+  mgm.go:314		0x491a38		488b8c2490000000	MOVQ 0x90(SP), CX						
+  mgm.go:284		0x491a40		488b542428		MOVQ 0x28(SP), DX						
+  mgm.go:314		0x491a45		488b9c2488000000	MOVQ 0x88(SP), BX						
+  mgm.go:309		0x491a4d		488bb424a0000000	MOVQ 0xa0(SP), SI						
+  mgm.go:309		0x491a55		4c8b8424a8000000	MOVQ 0xa8(SP), R8						
+  mgm.go:284		0x491a5d		4889c7			MOVQ AX, DI							
+  mgm.go:302		0x491a60		488b842480000000	MOVQ 0x80(SP), AX						
+  mgm.go:284		0x491a68		4989d1			MOVQ DX, R9							
+  mgm.go:284		0x491a6b		48c1e203		SHLQ $0x3, DX							
+  mgm.go:284		0x491a6f		4889542420		MOVQ DX, 0x20(SP)						
+  mgm.go:285		0x491a74		4531d2			XORL R10, R10							
+  mgm.go:285		0x491a77		4c8b5c2470		MOVQ 0x70(SP), R11						
+  mgm.go:285		0x491a7c		4c8b642468		MOVQ 0x68(SP), R12						
+  mgm.go:285		0x491a81		eb10			JMP 0x491a93							
+  mgm.go:285		0x491a83		4c8b542430		MOVQ 0x30(SP), R10						
+  mgm.go:285		0x491a88		49ffc2			INCQ R10							
+  mgm.go:314		0x491a8b		488b8c2490000000	MOVQ 0x90(SP), CX						
+  mgm.go:285		0x491a93		4939d2			CMPQ R10, DX							
+  mgm.go:285		0x491a96		7d54			JGE 0x491aec							
+  mgm.go:289		0x491a98		4d85d2			TESTQ R10, R10							
+  mgm.go:289		0x491a9b		741b			JE 0x491ab8							
+  mgm.go:289		0x491a9d		0f1f00			NOPL 0(AX)							
+  mgm.go:290		0x491aa0		4d85c9			TESTQ R9, R9							
+  mgm.go:290		0x491aa3		0f86ed000000		JBE 0x491b96							
+  mgm.go:290		0x491aa9		440fb62f		MOVZX 0(DI), R13						
+  mgm.go:294		0x491aad		4d8d79ff		LEAQ -0x1(R9), R15						
+  mgm.go:294		0x491ab1		31d2			XORL DX, DX							
+  mgm.go:294		0x491ab3		e9b6000000		JMP 0x491b6e							
+  mgm.go:307		0x491ab8		4d89d5			MOVQ R10, R13							
+  mgm.go:307		0x491abb		49c1ea03		SHRQ $0x3, R10							
+  mgm.go:307		0x491abf		90			NOPL								
+  mgm.go:307		0x491ac0		4d39d3			CMPQ R11, R10							
+  mgm.go:307		0x491ac3		7673			JBE 0x491b38							
+  mgm.go:285		0x491ac5		4c896c2430		MOVQ R13, 0x30(SP)						
+  mgm.go:307		0x491aca		470fb63c14		MOVZX 0(R12)(R10*1), R15					
+  mgm.go:307		0x491acf		49c1e203		SHLQ $0x3, R10							
+  mgm.go:307		0x491ad3		4d29d5			SUBQ R10, R13							
+  mgm.go:307		0x491ad6		4c89e9			MOVQ R13, CX							
+  mgm.go:307		0x491ad9		41ba80ffffff		MOVL $-0x80, R10						
+  mgm.go:307		0x491adf		41d2ea			SHRL CL, R10							
+  mgm.go:307		0x491ae2		4584d7			TESTL R10, R15							
+  mgm.go:307		0x491ae5		749c			JE 0x491a83							
+  mgm.go:308		0x491ae7		4531d2			XORL R10, R10							
+  mgm.go:308		0x491aea		eb34			JMP 0x491b20							
+  mgm.go:314		0x491aec		4c39c9			CMPQ CX, R9							
+  mgm.go:314		0x491aef		490f4fc9		CMOVG R9, CX							
+  mgm.go:314		0x491af3		4839fb			CMPQ BX, DI							
+  mgm.go:314		0x491af6		740d			JE 0x491b05							
+  mgm.go:314		0x491af8		4889d8			MOVQ BX, AX							
+  mgm.go:314		0x491afb		4889fb			MOVQ DI, BX							
+  mgm.go:314		0x491afe		6690			NOPW								
+  mgm.go:314		0x491b00		e83bfcfeff		CALL runtime.memmove(SB)					
+  mgm.go:315		0x491b05		4883c458		ADDQ $0x58, SP							
+  mgm.go:315		0x491b09		5d			POPQ BP								
+  mgm.go:315		0x491b0a		c3			RET								
+  mgm.go:309		0x491b0b		460fb63c16		MOVZX 0(SI)(R10*1), R15						
+  mgm.go:309		0x491b10		4531ef			XORL R13, R15							
+  mgm.go:309		0x491b13		46883c17		MOVB R15, 0(DI)(R10*1)						
+  mgm.go:308		0x491b17		49ffc2			INCQ R10							
+  mgm.go:308		0x491b1a		660f1f440000		NOPW 0(AX)(AX*1)						
+  mgm.go:308		0x491b20		4d39ca			CMPQ R10, R9							
+  mgm.go:308		0x491b23		0f8d5affffff		JGE 0x491a83							
+  mgm.go:309		0x491b29		450fb62c3a		MOVZX 0(R10)(DI*1), R13						
+  mgm.go:309		0x491b2e		4d39d0			CMPQ R8, R10							
+  mgm.go:309		0x491b31		77d8			JA 0x491b0b							
+  mgm.go:309		0x491b33		e868f8feff		CALL runtime.panicBounds(SB)					
+  mgm.go:307		0x491b38		e863f8feff		CALL runtime.panicBounds(SB)					
+  mgm.go:295		0x491b3d		420fb61c3f		MOVZX 0(DI)(R15*1), BX						
+  mgm.go:295		0x491b42		885c241f		MOVB BL, 0x1f(SP)						
+  mgm.go:295		0x491b46		83e380			ANDL $-0x80, BX							
+  mgm.go:297		0x491b49		0fb64c241f		MOVZX 0x1f(SP), CX						
+  mgm.go:297		0x491b4e		01c9			ADDL CX, CX							
+  mgm.go:297		0x491b50		09d1			ORL DX, CX							
+  mgm.go:297		0x491b52		42880c3f		MOVB CL, 0(DI)(R15*1)						
+  mgm.go:295		0x491b56		c0eb07			SHRL $0x7, BL							
+  mgm.go:294		0x491b59		49ffcf			DECQ R15							
+  mgm.go:314		0x491b5c		488b8c2490000000	MOVQ 0x90(SP), CX						
+  mgm.go:294		0x491b64		89da			MOVL BX, DX							
+  mgm.go:314		0x491b66		488b9c2488000000	MOVQ 0x88(SP), BX						
+  mgm.go:294		0x491b6e		4d85ff			TESTQ R15, R15							
+  mgm.go:294		0x491b71		7dca			JGE 0x491b3d							
+  mgm.go:290		0x491b73		41f6c580		TESTL $0x80, R13						
+  mgm.go:301		0x491b77		7413			JE 0x491b8c							
+  mgm.go:302		0x491b79		410fb65439ff		MOVZX -0x1(R9)(DI*1), DX					
+  mgm.go:302		0x491b7f		440fb66820		MOVZX 0x20(AX), R13						
+  mgm.go:302		0x491b84		4131d5			XORL DX, R13							
+  mgm.go:302		0x491b87		45886c39ff		MOVB R13, -0x1(R9)(DI*1)					
+  mgm.go:285		0x491b8c		488b542420		MOVQ 0x20(SP), DX						
+  mgm.go:285		0x491b91		e922ffffff		JMP 0x491ab8							
+  mgm.go:290		0x491b96		e805f8feff		CALL runtime.panicBounds(SB)					
+  mgm.go:290		0x491b9b		90			NOPL								
+  mgm.go:276		0x491b9c		4889442420		MOVQ AX, 0x20(SP)						
+  mgm.go:276		0x491ba1		48895c2428		MOVQ BX, 0x28(SP)						
+  mgm.go:276		0x491ba6		48894c2430		MOVQ CX, 0x30(SP)						
+  mgm.go:276		0x491bab		48897c2438		MOVQ DI, 0x38(SP)						
+  mgm.go:276		0x491bb0		4889742440		MOVQ SI, 0x40(SP)						
+  mgm.go:276		0x491bb5		4c89442448		MOVQ R8, 0x48(SP)						
+  mgm.go:276		0x491bba		4c894c2450		MOVQ R9, 0x50(SP)						
+  mgm.go:276		0x491bbf		90			NOPL								
+  mgm.go:276		0x491bc0		e89bdbfeff		CALL runtime.morestack_noctxt.abi0(SB)				
+  mgm.go:276		0x491bc5		488b442420		MOVQ 0x20(SP), AX						
+  mgm.go:276		0x491bca		488b5c2428		MOVQ 0x28(SP), BX						
+  mgm.go:276		0x491bcf		488b4c2430		MOVQ 0x30(SP), CX						
+  mgm.go:276		0x491bd4		488b7c2438		MOVQ 0x38(SP), DI						
+  mgm.go:276		0x491bd9		488b742440		MOVQ 0x40(SP), SI						
+  mgm.go:276		0x491bde		4c8b442448		MOVQ 0x48(SP), R8						
+  mgm.go:276		0x491be3		4c8b4c2450		MOVQ 0x50(SP), R9						
+  mgm.go:276		0x491be8		e9d3fdffff		JMP github.com/tarantool/go-gostcrypto/mgm.(*MGM).gfMul(SB)	

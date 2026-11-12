@@ -13,3 +13,9 @@ Reliability: поочерёдные Mongo/control/policy/PG/broker/device/receiv
 ## Stage11: выполненная часть
 
 Три software implementation сравниваются по [STAGE11_CRYPTO_BENCHMARK](STAGE11_CRYPTO_BENCHMARK.md): Python reference Ascon, native cryptography AES, Go Kuznyechik/MGM с one-shot IPC. Одинаковые payload/AAD, warmup, три независимых ключа/process runs; raw timings сохранены. Результаты не означают ранжирование криптостойкости или ARM performance. Magma не реализована и в результаты не включена.
+
+## Stage12 execution and interpretation
+
+The plan was executed for Ascon/Python, AES/native, Kuznyechik/original-Go, Kuznyechik/bounded-Go and external PyGOST5.12 strict research. Five independent key/process repeats,4 payloads,2 AAD modes,1000 authenticated pairs/run; raw timings and row provenance retained. Additional paired same-binary Go control, separate CPU runs, native/startup/IPC probes and mixed-cohort MQTT windows are distinct datasets. No startup subtraction, correlated-packet CI or ARM extrapolation.
+
+Magma has public RFC vectors and a negative continuous-telemetry gate, so is absent from live/MQTT comparison. The original immutable Go executable was measured separately from the updated executable's one-shot mode; cross-batch variance is explicitly limited. [Predeclared matrix](STAGE12_COMPARATIVE_EXPERIMENT_PLAN.md), [comparison](STAGE12_CRYPTO_COMPARISON.md), [raw/figures](STAGE12_RESULTS.md).

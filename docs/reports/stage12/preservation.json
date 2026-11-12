@@ -1,0 +1,98 @@
+{
+  "project": "lcm-stage12-crypto-research-lab",
+  "source_sha": "bf8c7d5bfa84ed6120e0174c2b7500dc1da04af6",
+  "historical_tracked_files": 737,
+  "changed_historical": [],
+  "local_archive_files": 764,
+  "changed_archive": [],
+  "independent_keys": 14,
+  "historical_key_values_compared": 402,
+  "no_historical_key_reuse": true,
+  "private_permission_failures": [],
+  "secret_leaks": [],
+  "image_scan": {
+    "secret_found": false
+  },
+  "web_role_check": "web_has_no_mgm_or_control_keys",
+  "containers": [
+    {
+      "service": "broker",
+      "image_id": "sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+      "memory": 134217728,
+      "nano_cpus": 500000000,
+      "restart_count": 0
+    },
+    {
+      "service": "control-worker",
+      "image_id": "sha256:8c85d523c8e7e74f692c94b40a2f9ea95ec93a566ed833305d16bad8fecdc4b4",
+      "memory": 268435456,
+      "nano_cpus": 500000000,
+      "restart_count": 0
+    },
+    {
+      "service": "device-alpha",
+      "image_id": "sha256:8c85d523c8e7e74f692c94b40a2f9ea95ec93a566ed833305d16bad8fecdc4b4",
+      "memory": 134217728,
+      "nano_cpus": 250000000,
+      "restart_count": 0
+    },
+    {
+      "service": "device-beta",
+      "image_id": "sha256:8c85d523c8e7e74f692c94b40a2f9ea95ec93a566ed833305d16bad8fecdc4b4",
+      "memory": 134217728,
+      "nano_cpus": 250000000,
+      "restart_count": 0
+    },
+    {
+      "service": "device-gamma",
+      "image_id": "sha256:8c85d523c8e7e74f692c94b40a2f9ea95ec93a566ed833305d16bad8fecdc4b4",
+      "memory": 134217728,
+      "nano_cpus": 250000000,
+      "restart_count": 0
+    },
+    {
+      "service": "mongo",
+      "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "memory": 805306368,
+      "nano_cpus": 1000000000,
+      "restart_count": 0
+    },
+    {
+      "service": "outbox-relay",
+      "image_id": "sha256:8c85d523c8e7e74f692c94b40a2f9ea95ec93a566ed833305d16bad8fecdc4b4",
+      "memory": 268435456,
+      "nano_cpus": 500000000,
+      "restart_count": 0
+    },
+    {
+      "service": "policy-worker",
+      "image_id": "sha256:8c85d523c8e7e74f692c94b40a2f9ea95ec93a566ed833305d16bad8fecdc4b4",
+      "memory": 268435456,
+      "nano_cpus": 1000000000,
+      "restart_count": 0
+    },
+    {
+      "service": "postgres",
+      "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "memory": 805306368,
+      "nano_cpus": 1000000000,
+      "restart_count": 0
+    },
+    {
+      "service": "receiver",
+      "image_id": "sha256:8c85d523c8e7e74f692c94b40a2f9ea95ec93a566ed833305d16bad8fecdc4b4",
+      "memory": 268435456,
+      "nano_cpus": 500000000,
+      "restart_count": 0
+    },
+    {
+      "service": "web",
+      "image_id": "sha256:8c85d523c8e7e74f692c94b40a2f9ea95ec93a566ed833305d16bad8fecdc4b4",
+      "memory": 268435456,
+      "nano_cpus": 500000000,
+      "restart_count": 0
+    }
+  ],
+  "main_sha": "c352d817386a17fb244d3567b287af0412eed4e4",
+  "exit_code": 0
+}

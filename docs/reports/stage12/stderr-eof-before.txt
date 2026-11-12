@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_stderr_eof_does_not_discard_complete_valid_response ___________
+tests/test_kuz_worker.py:107: in test_stderr_eof_does_not_discard_complete_valid_response
+    assert encrypt(b'k'*32,b'\0'*16,b'a',b'p')==b'x'*17
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/kuz_provider.py:51: in encrypt
+    def encrypt(key,nonce,aad,plaintext):return operation(1,key,nonce,aad,plaintext)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/kuz_provider.py:22: in operation
+    response=WORKER.exchange(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+src/kuz_worker.py:60: in exchange
+    self._stop();raise ProviderUnavailable('Persistent provider operation failed') from None
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   src.kuz_provider.ProviderUnavailable: Persistent provider operation failed
+=========================== short test summary info ============================
+FAILED tests/test_kuz_worker.py::test_stderr_eof_does_not_discard_complete_valid_response
+1 failed in 0.03s

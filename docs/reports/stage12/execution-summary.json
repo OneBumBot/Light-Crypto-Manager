@@ -1,0 +1,152 @@
+{
+  "experiment_id": "stage12-crypto-research-lab",
+  "source_sha": "3f477e0e4416c50d0baea53e05c97344fc785733",
+  "runtime_validation_sha": "bf8c7d5bfa84ed6120e0174c2b7500dc1da04af6",
+  "baseline_sha": "20d298cc3b48f14920a00e9403bdaf0ff7e38c5a",
+  "branch": "feature/crypto-comparative-research",
+  "project": "lcm-stage12-crypto-research-lab",
+  "host": {
+    "cpu": "AMD Ryzen 7 9800X3D 8-Core Processor",
+    "platform": "Linux-7.2.10-1-cachyos-bore-x86_64-with-glibc2.44",
+    "python": "3.12.16",
+    "host_python_openssl": "OpenSSL 3.5.9 29 Sep 2026",
+    "meminfo_total": "MemTotal:       31904212 kB"
+  },
+  "container_environment": {
+    "python": "3.12.16",
+    "python_compiler": "GCC 12.2.0",
+    "openssl": "OpenSSL 4.0.3 29 Sep 2026",
+    "packages": {
+      "cryptography": "50.0.2",
+      "paho-mqtt": "2.1.0",
+      "SQLAlchemy": "2.0.57",
+      "psycopg": "3.3.8",
+      "pymongo": "4.19.0",
+      "Flask": "3.1.3"
+    },
+    "postgres_settings": {
+      "max_connections": "100",
+      "max_locks_per_transaction": "64",
+      "shared_buffers": "128MB",
+      "work_mem": "4MB",
+      "statement_timeout": "5s"
+    },
+    "clock_resolution_seconds": 1e-09,
+    "clock_accuracy": "not_measured",
+    "kernel": "7.2.10-1-cachyos-bore"
+  },
+  "baseline": {
+    "passed": 868,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  "final_regression": {
+    "passed": 882,
+    "skipped": 0,
+    "exit_code": 0,
+    "report": "regression-release.txt"
+  },
+  "mutations": {
+    "killed": 25,
+    "behavioral": true,
+    "baseline_exit": 0,
+    "runner_exit": 0,
+    "mutant_exits": 1,
+    "report": "mutations-release.json"
+  },
+  "magma": {
+    "verdict": "NOT_SUITABLE_FOR_CONTINUOUS_TELEMETRY",
+    "live_registered": false,
+    "rotation_implemented": false,
+    "rotation_cost": "not_measured",
+    "rfc8891_block": true,
+    "rfc9058_a2_examples": 2
+  },
+  "network": {
+    "devices": 3,
+    "static_windows": 5,
+    "window_seconds": 20,
+    "hz": 1,
+    "static_scheduled": 300,
+    "static_formed": 300,
+    "static_publish_calls": 300,
+    "static_queued": 300,
+    "static_puback": 300,
+    "static_pg_committed": 300,
+    "static_mongo_delivered": 300,
+    "static_identity_reconciliation": true,
+    "all_experiment_planned_messages": "not_measured",
+    "all_experiment_loss": "not_measured",
+    "final_pg": 7689,
+    "final_mongo": 7689,
+    "outbox_pending": 0,
+    "outbox_dead": 0,
+    "transitions": 27,
+    "confirmed": 27,
+    "authenticated_acks": 52,
+    "effective_receipts": 30,
+    "rejected": 19,
+    "replay": 1,
+    "all_services_stopped": true
+  },
+  "trust": {
+    "policy": "DRY_RUN",
+    "control": "MANUAL_AUTHORIZED_CONTROL",
+    "trusted_detector": false,
+    "kuz_lab_only": true,
+    "production_constant_time_verified": false,
+    "arm_tested": false
+  },
+  "selected_independent_micro_runs": 200,
+  "selected_independent_cpu_runs": 25,
+  "artifact_hashes": "evidence-index.json",
+  "limitations": [
+    "mixed three-device cohort, alpha target and two Ascon neighbors",
+    "same-host wall clock accuracy not_measured",
+    "microbenchmark batches collected at different times; no frequency/scheduler isolation",
+    "original versus updated one-shot timing difference cause not established",
+    "early logs without source/argv use hash and validation-context inventory; no invented historical provenance"
+  ],
+  "exit_code": 0,
+  "static_resource_snapshots": [
+    {
+      "profile": "ascon-aead128-v1",
+      "backend": "persistent",
+      "cpu_percent": 28.669999999999998,
+      "ram_mib": 606.308
+    },
+    {
+      "profile": "kuznyechik-mgm-v1",
+      "backend": "persistent",
+      "cpu_percent": 24.18,
+      "ram_mib": 626.419
+    },
+    {
+      "profile": "aes-128-gcm-v1",
+      "backend": "persistent",
+      "cpu_percent": 10.19,
+      "ram_mib": 628.259
+    },
+    {
+      "profile": "ascon-aead128-v1",
+      "backend": "persistent",
+      "cpu_percent": 18.69,
+      "ram_mib": 623.123
+    },
+    {
+      "profile": "kuznyechik-mgm-v1",
+      "backend": "one-shot",
+      "cpu_percent": 34.37,
+      "ram_mib": 652.354
+    }
+  ],
+  "commands_with_recorded_exits": {
+    "system": 38,
+    "service-recovery": 43,
+    "worker-recovery-release": 11,
+    "browser": 14,
+    "lost-ack": 5,
+    "sqlite-recovery": 26,
+    "final": 8
+  }
+}

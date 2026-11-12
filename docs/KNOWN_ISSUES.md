@@ -510,3 +510,14 @@ research volume — граница доверия, не tamper-proof recorder. O
 - Joint PG+SQLite rollback без внешнего monotonic anchor не обнаруживается; нужны новые ключи/эпоха после reviewed restore.
 - Magma-MGM остаётся непроверенным design-кандидатом, недоступна в UI/live pipeline.
 - Mongo schema upgrade явный; отсутствие нового enum даёт delivery error/backlog, не разрешение отключить validator.
+
+## Stage12 confirmed limitations
+
+- Whole-provider constant-time is unverified: compiled MGM GF multiplication includes a secret-dependent branch. No remote key-recovery exploit demonstrated; IPC optimization does not remove this. Kuznyechik lab-only remains.
+- Persistent worker increases possible key residency; no key cache, bounded lifetime and best-effort clear do not guarantee GC zeroization. GOMEMLIMIT is soft within service hard limits. No network crypto endpoint.
+- PyGOST5.12 raw size/empty-input API findings reproduced; strict wrapper is research-only. Official5.13 archive was not TLS-verifiable here; its behavior remains unverified.
+- Magma64-bit budget with aggregate authentication attempts is too short for current lease/rekey lifecycle. No live activation. Safe key rotation and versioned short grants are design only.
+- Immutable-original and updated one-shot measurements differ across batches; cause not established. CPU/frequency/scheduler isolation, clock accuracy, ARM/hardware and production certification are not claimed.
+- Early raw outputs do not all embed top-level source SHA/argv; original files retained, hash/source-context inventory and recorded nested argv supplied. No retroactive invented provenance.
+
+Fixed adapter availability bugs: stale executable-path cache and stderr-EOF/complete-stdout race, both covered by behavioral regressions. [Details and actual evidence](STAGE12_RESULTS.md).

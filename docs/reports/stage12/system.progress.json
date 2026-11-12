@@ -1,0 +1,4860 @@
+{
+  "windows": [
+    {
+      "before": {
+        "checked_at": "2026-11-12T19:05:54.585223+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "89846642-38c5-4956-9a62-c479541ec6e7",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 841,
+            "last_sequence": 10184
+          },
+          "alpha": {
+            "count": 842,
+            "last_sequence": 10184
+          },
+          "gamma": {
+            "count": 842,
+            "last_sequence": 10184
+          }
+        },
+        "outbox": {
+          "pending": 1,
+          "delivered": 2524
+        },
+        "counters": {
+          "incoming": 2525,
+          "delivered": 2524,
+          "accepted": 2525
+        },
+        "transitions": 0,
+        "completed": 0,
+        "unknown": 0,
+        "authenticated_ack": 0,
+        "receipts": 3,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 61167283,
+        "pg_stats": {
+          "xact_commit": 59678,
+          "xact_rollback": 812,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2524
+      },
+      "after": {
+        "checked_at": "2026-11-12T19:06:17.668774+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "89846642-38c5-4956-9a62-c479541ec6e7",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 865,
+            "last_sequence": 10207
+          },
+          "beta": {
+            "count": 864,
+            "last_sequence": 10207
+          },
+          "gamma": {
+            "count": 865,
+            "last_sequence": 10207
+          }
+        },
+        "outbox": {
+          "delivered": 2594
+        },
+        "counters": {
+          "incoming": 2594,
+          "delivered": 2594,
+          "accepted": 2594
+        },
+        "transitions": 0,
+        "completed": 0,
+        "unknown": 0,
+        "authenticated_ack": 0,
+        "receipts": 3,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 62060211,
+        "pg_stats": {
+          "xact_commit": 61588,
+          "xact_rollback": 820,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2594
+      },
+      "profile": "ascon-aead128-v1",
+      "backend": "persistent",
+      "device_count": 3,
+      "target": "alpha",
+      "background_profiles": "beta/gamma Ascon",
+      "configured_hz": 1,
+      "start_ns": 1794510355284161523,
+      "end_ns": 1794510375284227787,
+      "scheduled": 60,
+      "formed": 60,
+      "publish_calls": 60,
+      "queued": 60,
+      "broker_puback": 60,
+      "reconciliation": {
+        "source_formed": 60,
+        "pg_unique": 60,
+        "mongo_stored": 60,
+        "rows": [
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10201,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "18d5d279-b7ff-4978-aaf5-c854b8507ae6",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.47,
+            "pg_created_to_delivery_ms": 505.54699999999997
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10201,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "48917872-ff35-4712-9009-7ae3532fbacb",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.9499999999999997,
+            "pg_created_to_delivery_ms": 452.129
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10201,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "62c8900d-36a3-4795-b44d-755a8b8787c2",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.156,
+            "pg_created_to_delivery_ms": 265.09
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10202,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f519f020-a7c5-49c1-b28b-b9b4f302e21c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.136,
+            "pg_created_to_delivery_ms": 20.457
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10202,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "8b9df0a5-29c6-41b9-ba0d-e6132c7685ac",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.6740000000000004,
+            "pg_created_to_delivery_ms": 468.78700000000003
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10202,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "0c655254-5a80-485d-8063-9d5f00fb0406",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.271,
+            "pg_created_to_delivery_ms": 281.285
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10203,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "5a47210d-806e-4753-b7e2-0ed0ad9b3433",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.62,
+            "pg_created_to_delivery_ms": 36.892
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10203,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "1972cfea-a391-48c8-b18d-af68d5d9e790",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.15,
+            "pg_created_to_delivery_ms": 485.76000000000005
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10203,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "43290f00-a3aa-44b7-ac6f-a7848a8dc0ea",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.306,
+            "pg_created_to_delivery_ms": 298.43399999999997
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10204,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "d0a89c41-57de-4ce4-b145-1e95e6ad2d30",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.162,
+            "pg_created_to_delivery_ms": 497.08000000000004
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10204,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "6fa822b0-eef1-41dd-9aad-3de00d3e0cb1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 51.766,
+            "pg_created_to_delivery_ms": 475.40700000000004
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10204,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "17743886-0741-4529-a86f-aadf773bce7a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.904,
+            "pg_created_to_delivery_ms": 315.66499999999996
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10205,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "5abee612-1c49-49d9-9bb8-0789204216ef",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1159999999999997,
+            "pg_created_to_delivery_ms": 33.124
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10205,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e7dd25d4-b89d-45bc-911c-cc9c402c5dc9",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.648,
+            "pg_created_to_delivery_ms": 17.473
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10205,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f5385828-3e90-4b52-a76d-3067fe7bb5a9",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.6220000000000003,
+            "pg_created_to_delivery_ms": 331.70500000000004
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10193,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "085f9768-744f-4d40-b1f9-0643bfeef8ad",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.4450000000000003,
+            "pg_created_to_delivery_ms": 441.836
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10195,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "6e3e06ba-f297-4d4b-a6ba-4e59e9148210",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.068,
+            "pg_created_to_delivery_ms": 447.98900000000003
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10186,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e469e550-c24f-47ab-9a2a-bbbe00498cb0",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.164,
+            "pg_created_to_delivery_ms": 323.941
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10186,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f71dd869-cae0-48ed-843d-34f5c70f972c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 11.953,
+            "pg_created_to_delivery_ms": 250.68200000000002
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10186,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "bb45776a-076e-4698-aec3-9d660f9d5210",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.3080000000000003,
+            "pg_created_to_delivery_ms": 34.033
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10189,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "5a386db5-5285-40f7-8b3e-1fc52e5b87a1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.104,
+            "pg_created_to_delivery_ms": 374.817
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10189,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "6cdd195d-b719-4468-b13f-1b1b9649644a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.404,
+            "pg_created_to_delivery_ms": 282.877
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10189,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "0b8bf2e9-6cf7-4461-9af0-8a5edaeaba8a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.038,
+            "pg_created_to_delivery_ms": 82.81099999999999
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10190,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "ecd3b9bc-23e0-46c3-bca4-9d67fc20fe3e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.46,
+            "pg_created_to_delivery_ms": 389.276
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10190,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "d978e95a-e666-4694-b4a5-5e15ae5f5fbf",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.099,
+            "pg_created_to_delivery_ms": 298.801
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10190,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "4705175d-6be8-47a7-87f3-143e2bdf387b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.2039999999999997,
+            "pg_created_to_delivery_ms": 99.053
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10187,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "0d5c6227-278d-4dc2-a864-b56f6b5e3719",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.312,
+            "pg_created_to_delivery_ms": 341.775
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10187,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "8573d9b9-0da2-4e37-aa78-eef8b5fbcf1f",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.992,
+            "pg_created_to_delivery_ms": 277.466
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10187,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e571ef67-9df8-48a1-9a76-be61724c96b0",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.089,
+            "pg_created_to_delivery_ms": 52.127
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10188,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "80e3c7dc-c271-46d2-9fc1-76070532de7e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1229999999999998,
+            "pg_created_to_delivery_ms": 360.07800000000003
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10188,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "1a75711a-6f38-4824-a279-148a631f8ac1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.063,
+            "pg_created_to_delivery_ms": 294.879
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10188,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "0d1dc086-d22b-46d6-9d6d-cb7bb1bdcd57",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.993,
+            "pg_created_to_delivery_ms": 67.81
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10191,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "eb5ac6cd-9655-4ed3-845a-20eb15d5d57c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.191,
+            "pg_created_to_delivery_ms": 406.614
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10191,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e428defe-3917-4326-aa66-69e9d7ac0218",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.89,
+            "pg_created_to_delivery_ms": 316.257
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10191,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "94b37697-4316-4744-be8b-7f809e5aec26",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.041,
+            "pg_created_to_delivery_ms": 117.08300000000001
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10192,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "00df43dd-9816-4ae6-b792-337953a1b76b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.044,
+            "pg_created_to_delivery_ms": 425.101
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10192,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "77584787-ca07-4f7c-92f7-11bf79d17026",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.383,
+            "pg_created_to_delivery_ms": 334.083
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10192,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "a220dc54-8b75-4ce0-a98c-ab8ca71bd726",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.074,
+            "pg_created_to_delivery_ms": 134.703
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10193,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "19a3990c-98f8-4727-ad12-ebf09727f6bc",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.065,
+            "pg_created_to_delivery_ms": 350.872
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10193,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "b0028fe2-4d32-45c3-ab1e-611baf7f98a3",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 77.52499999999999,
+            "pg_created_to_delivery_ms": 75.86
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10194,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "97d1b0bf-a6ec-48c0-87f9-295eec5093d7",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.104,
+            "pg_created_to_delivery_ms": 432.32599999999996
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10194,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "1f328bb4-b89c-4671-bf8f-10973a604875",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.64,
+            "pg_created_to_delivery_ms": 366.935
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10194,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "35031f91-b90e-4cfe-b5ea-c5de603b2ee9",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.2590000000000003,
+            "pg_created_to_delivery_ms": 165.76
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10197,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "d74e5a9e-7b1b-4c45-89ec-4e89905a0e8c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.149,
+            "pg_created_to_delivery_ms": 479.85699999999997
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10197,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "49b523e3-db57-4dc2-84a2-15b554e74f21",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.0149999999999997,
+            "pg_created_to_delivery_ms": 414.51500000000004
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10197,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "5f636f9e-7b59-45d3-a704-eeb7d0457412",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.6319999999999997,
+            "pg_created_to_delivery_ms": 213.931
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10198,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "91f794aa-00ee-4021-8da8-d8a3fccaf493",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.439,
+            "pg_created_to_delivery_ms": 496.605
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10198,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "c7632563-925b-458f-8662-ca200de4b718",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.099,
+            "pg_created_to_delivery_ms": 431.07
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10198,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "43c4b4fa-f357-4bff-bb13-f339911150a2",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.423,
+            "pg_created_to_delivery_ms": 229.797
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10195,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "aaef996e-39c4-4333-892c-73e76de93e47",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.677,
+            "pg_created_to_delivery_ms": 381.945
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10195,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f4b82b5b-ab0e-4cee-901b-e75879a00203",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.8649999999999998,
+            "pg_created_to_delivery_ms": 181.231
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10196,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "601b0c05-576b-4542-ab0f-960bed5cac0b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.5149999999999997,
+            "pg_created_to_delivery_ms": 462.46999999999997
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10196,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "d652c2f6-2583-4876-a783-bf2dca3e62f1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.02,
+            "pg_created_to_delivery_ms": 397.383
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10196,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "90081704-98da-4309-ab3b-2accf9d23886",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.9619999999999997,
+            "pg_created_to_delivery_ms": 198.30100000000002
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10199,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e777cf4c-b8ad-4425-ac74-c6416085fe4a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 12.298,
+            "pg_created_to_delivery_ms": 465.36899999999997
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10199,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "68be1abc-d5d5-4609-84fa-dc4897030efd",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.599,
+            "pg_created_to_delivery_ms": 420.575
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10199,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "05586c3d-01f9-4e6f-9377-8777217a4983",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.694,
+            "pg_created_to_delivery_ms": 232.512
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10200,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "cad5748a-8b12-4dde-a53d-8bca6370503a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.571,
+            "pg_created_to_delivery_ms": 488.245
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10200,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "7aa44b3e-4dd5-4ae2-b2fc-22608b3be2ea",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 12.158000000000001,
+            "pg_created_to_delivery_ms": 426.20599999999996
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10200,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f3878843-4ac7-404f-90ae-41c9a2a2f3ec",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.092,
+            "pg_created_to_delivery_ms": 248.54399999999998
+          }
+        ]
+      },
+      "resources": {
+        "cpu_percent": 28.669999999999998,
+        "ram_mib": 606.308,
+        "containers": [
+          {
+            "BlockIO": "5.07MB / 0B",
+            "CPUPerc": "1.70%",
+            "Container": "ba464f3ea9cef0aa9da800fce44fb19ac757d8e2a3d5fbb70a4b366471dcfa8f",
+            "ID": "ba464f3ea9ce",
+            "MemPerc": "3.06%",
+            "MemUsage": "3.918MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-broker-1",
+            "NetIO": "448kB / 434kB",
+            "PIDs": "1"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "7.22%",
+            "Container": "e4af5cc7c6d052abf0b9cbab580c712a0587e4967e210bfdfaf355e78075b044",
+            "ID": "e4af5cc7c6d0",
+            "MemPerc": "16.60%",
+            "MemUsage": "42.49MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-control-worker-1",
+            "NetIO": "3.15MB / 2.85MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 270kB",
+            "CPUPerc": "0.16%",
+            "Container": "e3cc72145243627fb5819784d4a4f1a9a318d18675f105e741718e949c9d2e1e",
+            "ID": "e3cc72145243",
+            "MemPerc": "18.01%",
+            "MemUsage": "23.05MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-alpha-1",
+            "NetIO": "35.8kB / 122kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 254kB",
+            "CPUPerc": "0.16%",
+            "Container": "88e18670305f1293c2af619023df6998fddea977110e5057c14be5434459d43a",
+            "ID": "88e18670305f",
+            "MemPerc": "17.99%",
+            "MemUsage": "23.03MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-beta-1",
+            "NetIO": "35.8kB / 121kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 287kB",
+            "CPUPerc": "0.16%",
+            "Container": "eae30a3d2c1b3ed650e57a8d2bfe69a6141478db8f0d1d0c48192ac522e7703d",
+            "ID": "eae30a3d2c1b",
+            "MemPerc": "18.00%",
+            "MemUsage": "23.04MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-gamma-1",
+            "NetIO": "35.7kB / 122kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "11.7MB / 40.9MB",
+            "CPUPerc": "0.27%",
+            "Container": "94297f4fcb50b4ccf536e32182c2bec28dd26d31700daf9c23967f5794e6f6ee",
+            "ID": "94297f4fcb50",
+            "MemPerc": "19.47%",
+            "MemUsage": "149.5MiB / 768MiB",
+            "Name": "lcm-stage12-crypto-research-lab-mongo-1",
+            "NetIO": "410kB / 163kB",
+            "PIDs": "49"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.84%",
+            "Container": "13ac17a7e7d4577c103eb73bae23c0d7ea72a08dea254ae0197b14cebba59e6a",
+            "ID": "13ac17a7e7d4",
+            "MemPerc": "17.97%",
+            "MemUsage": "46.01MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-outbox-relay-1",
+            "NetIO": "2.7MB / 2.1MB",
+            "PIDs": "5"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.94%",
+            "Container": "62960ce89978f8b55a44bd6671c0be60b74758507b92bc4dc41d99f33b177387",
+            "ID": "62960ce89978",
+            "MemPerc": "15.74%",
+            "MemUsage": "40.29MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-policy-worker-1",
+            "NetIO": "9.03MB / 7.93MB",
+            "PIDs": "2"
+          },
+          {
+            "BlockIO": "16.9MB / 490MB",
+            "CPUPerc": "2.29%",
+            "Container": "15019dabb76988d1063f3c5404dbf717e2bd823779e95ebd944579fcedea2050",
+            "ID": "15019dabb769",
+            "MemPerc": "17.52%",
+            "MemUsage": "134.5MiB / 768MiB",
+            "Name": "lcm-stage12-crypto-research-lab-postgres-1",
+            "NetIO": "25.8MB / 23.7MB",
+            "PIDs": "13"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.17%",
+            "Container": "434d19e7a5d5af6802b4d09602695131a8d067e4f05a1780d8a240bc38afdea2",
+            "ID": "434d19e7a5d5",
+            "MemPerc": "17.03%",
+            "MemUsage": "43.61MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-receiver-1",
+            "NetIO": "2.81MB / 1.94MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "13.76%",
+            "Container": "fac1c45cdf4d95816219aacaa164ddb369dd856404e4d25ce1dff444633f6f3e",
+            "ID": "fac1c45cdf4d",
+            "MemPerc": "30.03%",
+            "MemUsage": "76.87MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-web-1",
+            "NetIO": "126kB / 123kB",
+            "PIDs": "5"
+          }
+        ]
+      }
+    },
+    {
+      "before": {
+        "checked_at": "2026-11-12T19:06:26.148974+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "a9cf9f65-6846-4e64-bc75-73a2276b2ddb",
+            "sequence_reserved": 20000,
+            "command_sequence": 2
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 873,
+            "last_sequence": 10215
+          },
+          "beta": {
+            "count": 873,
+            "last_sequence": 10216
+          },
+          "gamma": {
+            "count": 873,
+            "last_sequence": 10215
+          }
+        },
+        "outbox": {
+          "delivered": 2618,
+          "pending": 1
+        },
+        "counters": {
+          "incoming": 2620,
+          "delivered": 2618,
+          "accepted": 2619
+        },
+        "transitions": 1,
+        "completed": 1,
+        "unknown": 0,
+        "authenticated_ack": 2,
+        "receipts": 4,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 62420659,
+        "pg_stats": {
+          "xact_commit": 62293,
+          "xact_rollback": 826,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2618
+      },
+      "after": {
+        "checked_at": "2026-11-12T19:06:49.474857+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "a9cf9f65-6846-4e64-bc75-73a2276b2ddb",
+            "sequence_reserved": 20000,
+            "command_sequence": 2
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 896,
+            "last_sequence": 10238
+          },
+          "beta": {
+            "count": 896,
+            "last_sequence": 10239
+          },
+          "gamma": {
+            "count": 897,
+            "last_sequence": 10239
+          }
+        },
+        "outbox": {
+          "delivered": 2688,
+          "pending": 1
+        },
+        "counters": {
+          "incoming": 2689,
+          "delivered": 2688,
+          "accepted": 2689
+        },
+        "transitions": 1,
+        "completed": 1,
+        "unknown": 0,
+        "authenticated_ack": 2,
+        "receipts": 4,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 63157939,
+        "pg_stats": {
+          "xact_commit": 64208,
+          "xact_rollback": 831,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2688
+      },
+      "profile": "kuznyechik-mgm-v1",
+      "backend": "persistent",
+      "device_count": 3,
+      "target": "alpha",
+      "background_profiles": "beta/gamma Ascon",
+      "configured_hz": 1,
+      "start_ns": 1794510386837897151,
+      "end_ns": 1794510406837949522,
+      "scheduled": 60,
+      "formed": 60,
+      "publish_calls": 60,
+      "queued": 60,
+      "broker_puback": 60,
+      "reconciliation": {
+        "source_formed": 60,
+        "pg_unique": 60,
+        "mongo_stored": 60,
+        "rows": [
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10220,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "9614387a-cf2f-4eff-ad2b-b6bc5e4d5c9e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.246,
+            "pg_created_to_delivery_ms": 235.70499999999998
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10220,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "891d7761-df66-4741-a331-bdf16918bba4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.143,
+            "pg_created_to_delivery_ms": 455.229
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10221,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "d542c1f0-d267-437d-a618-a770347777ca",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.074,
+            "pg_created_to_delivery_ms": 250.622
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10221,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "b75b5557-e69c-486b-96e7-01374e6f4d2b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 4.944999999999999,
+            "pg_created_to_delivery_ms": 470.95500000000004
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10222,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "426bcd7e-dbe5-4dda-a576-d2b103bbbb45",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.12,
+            "pg_created_to_delivery_ms": 267.094
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10222,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "26ae7863-b456-4386-9ae2-1adee622b12b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.28,
+            "pg_created_to_delivery_ms": 225.77700000000002
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10222,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "94586371-fb2d-4669-a94b-0c8cb33ab9e3",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.736,
+            "pg_created_to_delivery_ms": 489.42600000000004
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10223,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "67deb850-c178-46ec-a838-9073084bf78f",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.52,
+            "pg_created_to_delivery_ms": 285.49
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10217,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "c93617b3-5b67-4f51-8690-e96dc6af7389",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.286,
+            "pg_created_to_delivery_ms": 431.229
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10218,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "37891a82-15e3-4316-98cd-88032b03084d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.179,
+            "pg_created_to_delivery_ms": 193.772
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10218,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "5133418d-7030-4686-8366-5cef2e66a7e5",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.64,
+            "pg_created_to_delivery_ms": 190.123
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10218,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "7fbc6191-83bc-4265-9957-0e266e86ff44",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.377,
+            "pg_created_to_delivery_ms": 448.10299999999995
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10219,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "ae70a560-0206-4aed-97d7-d04433bf88d0",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.439,
+            "pg_created_to_delivery_ms": 220.112
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10219,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "53e70e2d-d80d-4ff0-8a78-d89f0c7a71f9",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.69,
+            "pg_created_to_delivery_ms": 177.744
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10217,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "ce0714cf-8f5d-40cf-9024-1af2cdf13462",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.16,
+            "pg_created_to_delivery_ms": 178.865
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10217,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "6c4b769e-6491-4ca8-8ab2-04b6d678fb80",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.5260000000000002,
+            "pg_created_to_delivery_ms": 174.59
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10219,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "123b21ae-ccd5-43d2-b02f-e7f4fc348db4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.275,
+            "pg_created_to_delivery_ms": 439.96200000000005
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10220,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "59965f27-5e59-4215-aa81-9bd254a34c0e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.726,
+            "pg_created_to_delivery_ms": 192.963
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10221,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "c9e18b54-c356-434d-b7ee-8145abbaf483",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.6870000000000003,
+            "pg_created_to_delivery_ms": 208.231
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10223,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "0429f2bb-ac90-4511-9a3b-e2c6f01756b3",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.637,
+            "pg_created_to_delivery_ms": 14.889
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10223,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f4d9f4a8-58ca-433b-a9d2-92f59481f511",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.057,
+            "pg_created_to_delivery_ms": 244.842
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10225,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "5c67974a-08b4-4a29-b38b-9bda464f82e7",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 28.482,
+            "pg_created_to_delivery_ms": 504.90100000000007
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10226,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "ec205e52-288e-4afd-8e61-d00bbda9dc47",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.58,
+            "pg_created_to_delivery_ms": 318.326
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10224,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "9c07d788-2552-4f40-9231-454dd790ee7c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.375,
+            "pg_created_to_delivery_ms": 312.039
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10224,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "792e3434-1777-426b-9a4f-075de84d9c4c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.661,
+            "pg_created_to_delivery_ms": 269.792
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10224,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "9fd8b976-25a4-4b5b-bc3f-965a072b159b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 7.420000000000001,
+            "pg_created_to_delivery_ms": 500.899
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10225,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "61753826-8215-4983-9b9e-5a96aa8a0662",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.121,
+            "pg_created_to_delivery_ms": 311.108
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10226,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "ae3b618d-7b6d-49b1-afd9-e36c5374e33d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.189,
+            "pg_created_to_delivery_ms": 335.566
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10226,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "d082b3cd-c300-4d83-9a35-8e58f60124f8",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 4.606,
+            "pg_created_to_delivery_ms": 42.854000000000006
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10227,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e0159538-3433-46e5-a25f-e11c40767b7c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.6519999999999997,
+            "pg_created_to_delivery_ms": 350.663
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10227,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "4444918b-8546-4e11-b41d-26d09cf7b547",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 30.314,
+            "pg_created_to_delivery_ms": 307.973
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10229,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "a5bd4ff7-0a3e-4b72-aff7-7516108fb4a3",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.061000000000001,
+            "pg_created_to_delivery_ms": 71.848
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10230,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "dbee6bb9-8eb0-455b-b761-9aa7050ccf56",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.387,
+            "pg_created_to_delivery_ms": 418.28700000000003
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10230,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "8948df6a-1c23-4fd5-9bc1-f282877c8407",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.02,
+            "pg_created_to_delivery_ms": 376.054
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10230,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "bdbce61d-2a6f-4d1d-b4eb-e2857f4c27a8",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.2989999999999995,
+            "pg_created_to_delivery_ms": 95.64
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10231,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e3d738ed-c2d8-47bb-b431-49afa9ea257f",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.159,
+            "pg_created_to_delivery_ms": 442.48199999999997
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10232,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "350f1af5-7de7-4b9b-abbe-65487339a00f",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.4949999999999997,
+            "pg_created_to_delivery_ms": 458.97700000000003
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10225,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "a052337d-3bda-4a43-a3c6-8ce2a15686a2",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.0509999999999997,
+            "pg_created_to_delivery_ms": 294.423
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10227,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "1fe9215f-2f24-4f7b-9125-3f0ac390263c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.796,
+            "pg_created_to_delivery_ms": 58.888000000000005
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10228,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "0efa2b42-6dfe-42f6-8979-cc97698fec1c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.49,
+            "pg_created_to_delivery_ms": 368.17
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10228,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "46f237ce-71f7-4b19-89be-1aa30a952eb0",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.009,
+            "pg_created_to_delivery_ms": 361.78900000000004
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10228,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "64ddff0e-4be9-4708-aa90-4894728b82b1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.335,
+            "pg_created_to_delivery_ms": 85.298
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10229,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "b66eabd5-7312-4fe4-bad1-b3d97831bd28",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.245,
+            "pg_created_to_delivery_ms": 394.094
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10229,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "926871d3-97bc-4f6b-af5b-14eb26a8a053",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.841,
+            "pg_created_to_delivery_ms": 352.101
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10231,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "4f2e1a4d-885d-40ba-957b-08046ccd28c5",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.2,
+            "pg_created_to_delivery_ms": 112.038
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10231,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "bbb3b06c-afd9-45e1-83ac-a74beb9ad385",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.699,
+            "pg_created_to_delivery_ms": 401.067
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10233,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "efed5def-9a7d-4aef-899e-eeafdcffb996",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.183,
+            "pg_created_to_delivery_ms": 146.737
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10234,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "4aced931-80d6-4c60-b9e5-948c04e82069",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.2729999999999997,
+            "pg_created_to_delivery_ms": 502.15
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10234,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "a5e86407-a8b1-4ffd-8329-fc941fee8ba4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.675,
+            "pg_created_to_delivery_ms": 422.49399999999997
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10234,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "8c78a0c9-0d0a-4181-b43f-73e11bd2e582",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 4.745,
+            "pg_created_to_delivery_ms": 133.654
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10235,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "64f1008e-3cc4-4ce6-b7df-dd2eefa0958a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.438,
+            "pg_created_to_delivery_ms": 501.30300000000005
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10235,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "781d3afd-fe8b-4720-8897-8b300c8d1537",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1319999999999997,
+            "pg_created_to_delivery_ms": 447.57000000000005
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10232,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "712b2cf7-49ae-40bd-9755-2fbd07fef048",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1679999999999997,
+            "pg_created_to_delivery_ms": 417.104
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10232,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "aadc183b-0b26-4d22-baea-f4bddd7194d4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.593,
+            "pg_created_to_delivery_ms": 129.18099999999998
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10233,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "afd22424-f2fa-4194-9101-d651891c1987",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.5469999999999997,
+            "pg_created_to_delivery_ms": 475.779
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10233,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "1f9688b8-5a69-47ec-a0f5-021176b6ca0e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.094,
+            "pg_created_to_delivery_ms": 434.251
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10235,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "8c254e51-71b4-4598-9b4e-3227f8d4b684",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.346,
+            "pg_created_to_delivery_ms": 155.449
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10236,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "b405ec03-72fa-4343-848b-96c6dbbe0051",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.368,
+            "pg_created_to_delivery_ms": 15.687
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10236,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "46986d53-03d5-458d-849f-94340c0cf4db",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.6380000000000003,
+            "pg_created_to_delivery_ms": 463.384
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10236,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "6db95e4d-8ed9-4cdf-85f1-15699056e72c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.295,
+            "pg_created_to_delivery_ms": 172.287
+          }
+        ]
+      },
+      "resources": {
+        "cpu_percent": 24.18,
+        "ram_mib": 626.419,
+        "containers": [
+          {
+            "BlockIO": "5.07MB / 0B",
+            "CPUPerc": "0.03%",
+            "Container": "ba464f3ea9cef0aa9da800fce44fb19ac757d8e2a3d5fbb70a4b366471dcfa8f",
+            "ID": "ba464f3ea9ce",
+            "MemPerc": "2.64%",
+            "MemUsage": "3.379MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-broker-1",
+            "NetIO": "519kB / 504kB",
+            "PIDs": "1"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.43%",
+            "Container": "e4af5cc7c6d052abf0b9cbab580c712a0587e4967e210bfdfaf355e78075b044",
+            "ID": "e4af5cc7c6d0",
+            "MemPerc": "16.69%",
+            "MemUsage": "42.73MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-control-worker-1",
+            "NetIO": "3.66MB / 3.32MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 602kB",
+            "CPUPerc": "0.16%",
+            "Container": "e3cc72145243627fb5819784d4a4f1a9a318d18675f105e741718e949c9d2e1e",
+            "ID": "e3cc72145243",
+            "MemPerc": "28.44%",
+            "MemUsage": "36.4MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-alpha-1",
+            "NetIO": "41.8kB / 143kB",
+            "PIDs": "7"
+          },
+          {
+            "BlockIO": "8.19kB / 279kB",
+            "CPUPerc": "0.18%",
+            "Container": "88e18670305f1293c2af619023df6998fddea977110e5057c14be5434459d43a",
+            "ID": "88e18670305f",
+            "MemPerc": "18.00%",
+            "MemUsage": "23.04MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-beta-1",
+            "NetIO": "39.5kB / 140kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 315kB",
+            "CPUPerc": "0.14%",
+            "Container": "eae30a3d2c1b3ed650e57a8d2bfe69a6141478db8f0d1d0c48192ac522e7703d",
+            "ID": "eae30a3d2c1b",
+            "MemPerc": "18.04%",
+            "MemUsage": "23.09MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-gamma-1",
+            "NetIO": "39.3kB / 140kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "11.7MB / 47.2MB",
+            "CPUPerc": "0.27%",
+            "Container": "94297f4fcb50b4ccf536e32182c2bec28dd26d31700daf9c23967f5794e6f6ee",
+            "ID": "94297f4fcb50",
+            "MemPerc": "19.60%",
+            "MemUsage": "150.5MiB / 768MiB",
+            "Name": "lcm-stage12-crypto-research-lab-mongo-1",
+            "NetIO": "476kB / 188kB",
+            "PIDs": "49"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.01%",
+            "Container": "13ac17a7e7d4577c103eb73bae23c0d7ea72a08dea254ae0197b14cebba59e6a",
+            "ID": "13ac17a7e7d4",
+            "MemPerc": "18.00%",
+            "MemUsage": "46.08MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-outbox-relay-1",
+            "NetIO": "3.13MB / 2.44MB",
+            "PIDs": "5"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.30%",
+            "Container": "62960ce89978f8b55a44bd6671c0be60b74758507b92bc4dc41d99f33b177387",
+            "ID": "62960ce89978",
+            "MemPerc": "15.81%",
+            "MemUsage": "40.47MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-policy-worker-1",
+            "NetIO": "10.9MB / 9.59MB",
+            "PIDs": "2"
+          },
+          {
+            "BlockIO": "16.9MB / 548MB",
+            "CPUPerc": "3.21%",
+            "Container": "15019dabb76988d1063f3c5404dbf717e2bd823779e95ebd944579fcedea2050",
+            "ID": "15019dabb769",
+            "MemPerc": "17.65%",
+            "MemUsage": "135.5MiB / 768MiB",
+            "Name": "lcm-stage12-crypto-research-lab-postgres-1",
+            "NetIO": "28.6MB / 27.4MB",
+            "PIDs": "13"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.28%",
+            "Container": "434d19e7a5d5af6802b4d09602695131a8d067e4f05a1780d8a240bc38afdea2",
+            "ID": "434d19e7a5d5",
+            "MemPerc": "17.71%",
+            "MemUsage": "45.35MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-receiver-1",
+            "NetIO": "3.29MB / 2.28MB",
+            "PIDs": "7"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "15.17%",
+            "Container": "fac1c45cdf4d95816219aacaa164ddb369dd856404e4d25ce1dff444633f6f3e",
+            "ID": "fac1c45cdf4d",
+            "MemPerc": "31.20%",
+            "MemUsage": "79.88MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-web-1",
+            "NetIO": "528kB / 554kB",
+            "PIDs": "8"
+          }
+        ]
+      }
+    },
+    {
+      "before": {
+        "checked_at": "2026-11-12T19:06:56.933986+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "aes-128-gcm-v1",
+            "effective_event": "113238a3-9996-41b5-9fcc-ad6c4e8b070c",
+            "sequence_reserved": 20000,
+            "command_sequence": 4
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 904,
+            "last_sequence": 10246
+          },
+          "beta": {
+            "count": 903,
+            "last_sequence": 10246
+          },
+          "gamma": {
+            "count": 904,
+            "last_sequence": 10246
+          }
+        },
+        "outbox": {
+          "delivered": 2710,
+          "pending": 1
+        },
+        "counters": {
+          "incoming": 2711,
+          "delivered": 2710,
+          "accepted": 2711
+        },
+        "transitions": 2,
+        "completed": 2,
+        "unknown": 0,
+        "authenticated_ack": 4,
+        "receipts": 5,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 63403699,
+        "pg_stats": {
+          "xact_commit": 64815,
+          "xact_rollback": 836,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2710
+      },
+      "after": {
+        "checked_at": "2026-11-12T19:07:20.091869+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "aes-128-gcm-v1",
+            "effective_event": "113238a3-9996-41b5-9fcc-ad6c4e8b070c",
+            "sequence_reserved": 20000,
+            "command_sequence": 4
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 926,
+            "last_sequence": 10269
+          },
+          "alpha": {
+            "count": 927,
+            "last_sequence": 10269
+          },
+          "gamma": {
+            "count": 927,
+            "last_sequence": 10269
+          }
+        },
+        "outbox": {
+          "delivered": 2780
+        },
+        "counters": {
+          "incoming": 2780,
+          "delivered": 2780,
+          "accepted": 2780
+        },
+        "transitions": 2,
+        "completed": 2,
+        "unknown": 0,
+        "authenticated_ack": 4,
+        "receipts": 5,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 64173747,
+        "pg_stats": {
+          "xact_commit": 66686,
+          "xact_rollback": 841,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2780
+      },
+      "profile": "aes-128-gcm-v1",
+      "backend": "persistent",
+      "device_count": 3,
+      "target": "alpha",
+      "background_profiles": "beta/gamma Ascon",
+      "configured_hz": 1,
+      "start_ns": 1794510417637398223,
+      "end_ns": 1794510437637461951,
+      "scheduled": 60,
+      "formed": 60,
+      "publish_calls": 60,
+      "queued": 60,
+      "broker_puback": 60,
+      "reconciliation": {
+        "source_formed": 60,
+        "pg_unique": 60,
+        "mongo_stored": 60,
+        "rows": [
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10247,
+            "profile": "AES-128-GCM",
+            "outbox_id": "262cda27-9dde-4bd9-9698-1c0e87c642c4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.574,
+            "pg_created_to_delivery_ms": 241.983
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10248,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e7255604-8951-40e5-a090-5e3cf0c635be",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.97,
+            "pg_created_to_delivery_ms": 184.036
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10250,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "28cbd79e-6bd6-47a7-ab1d-3ce728b17d41",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.6069999999999998,
+            "pg_created_to_delivery_ms": 116.85
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10250,
+            "profile": "AES-128-GCM",
+            "outbox_id": "964092d8-5aec-4eef-8677-9abd760b3540",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.2529999999999997,
+            "pg_created_to_delivery_ms": 295.009
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10251,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "42881f77-1554-4bda-88dd-bbb098335445",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.484,
+            "pg_created_to_delivery_ms": 210.69299999999998
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10256,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e1492afd-4070-4947-bb12-767835dfc3e4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1719999999999997,
+            "pg_created_to_delivery_ms": 222.46699999999998
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10256,
+            "profile": "AES-128-GCM",
+            "outbox_id": "34a3279a-a2fd-4c8d-946d-84766278b75f",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.601,
+            "pg_created_to_delivery_ms": 389.05400000000003
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10257,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "83234f84-3a4c-46dd-b5cf-018088050164",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.964,
+            "pg_created_to_delivery_ms": 330.918
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10248,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e8cf30c5-8302-43f8-9511-5a7ddb08058e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.597,
+            "pg_created_to_delivery_ms": 81.062
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10248,
+            "profile": "AES-128-GCM",
+            "outbox_id": "7ca2cc97-e246-4a64-85e5-65f109ee24e1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.3289999999999997,
+            "pg_created_to_delivery_ms": 258.58599999999996
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10249,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "894c5742-0198-4e05-9aa4-225ef2889003",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.93,
+            "pg_created_to_delivery_ms": 200.67399999999998
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10249,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "2dda794e-9f00-4103-85c9-0ea9dcf966bf",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.226,
+            "pg_created_to_delivery_ms": 98.875
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10249,
+            "profile": "AES-128-GCM",
+            "outbox_id": "f1e1d6ab-ed03-4225-add4-bcd6749803be",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 40.796,
+            "pg_created_to_delivery_ms": 239.24300000000002
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10250,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "d9581b85-7fbd-46ad-9c81-fedaf0e1c8bc",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.19,
+            "pg_created_to_delivery_ms": 194.6
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10252,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "316a94ce-c539-4bfe-ac30-e0042e385824",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.041,
+            "pg_created_to_delivery_ms": 159.408
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10252,
+            "profile": "AES-128-GCM",
+            "outbox_id": "d45a3423-65e0-4619-b24f-39ef5a635f03",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.369,
+            "pg_created_to_delivery_ms": 338.666
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10253,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "6aa0cd16-af8d-47a1-8a6f-ef51bfa9099d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.098,
+            "pg_created_to_delivery_ms": 254.74
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10253,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "52f0cf72-b961-42ea-a4b9-84e6cd61e6db",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.738,
+            "pg_created_to_delivery_ms": 177.031
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10253,
+            "profile": "AES-128-GCM",
+            "outbox_id": "e4e41c15-59fc-4104-9762-8ec3c3984938",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.109,
+            "pg_created_to_delivery_ms": 355.80899999999997
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10254,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "00061bac-c649-47b3-a95d-6810399e8d0e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.242,
+            "pg_created_to_delivery_ms": 279.98699999999997
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10251,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f969f8c3-a9da-49f8-a11f-42cedaa57fb0",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.745,
+            "pg_created_to_delivery_ms": 132.745
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10251,
+            "profile": "AES-128-GCM",
+            "outbox_id": "87b451ce-1d8f-430a-8b14-928f85cbb149",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.265,
+            "pg_created_to_delivery_ms": 310.855
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10252,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "bc8a6b40-a33e-4f0f-ac17-21864f04e5cb",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.238,
+            "pg_created_to_delivery_ms": 226.96099999999998
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10254,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "bf1b9f36-2c7c-4aa7-a342-ad4905988c2b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.7390000000000003,
+            "pg_created_to_delivery_ms": 203.405
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10254,
+            "profile": "AES-128-GCM",
+            "outbox_id": "de5954c2-2f65-4810-ae47-f8c8c54adab9",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 30.616,
+            "pg_created_to_delivery_ms": 354.329
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10255,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "b20873f4-7b6f-4d1a-8bc3-111a3f44fe4c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.568,
+            "pg_created_to_delivery_ms": 296.956
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10255,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "407a055e-a99e-4623-b32b-3af4e5853cb2",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.807,
+            "pg_created_to_delivery_ms": 205.79600000000002
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10255,
+            "profile": "AES-128-GCM",
+            "outbox_id": "f2fd7617-659a-4193-9a8c-ab6afd6a213b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.317,
+            "pg_created_to_delivery_ms": 371.536
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10256,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "9d4bc6a1-1841-4362-a446-3b9a6a3081c1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.4459999999999997,
+            "pg_created_to_delivery_ms": 313.916
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10258,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "6764ba84-36b7-444d-8102-eaf68359bb85",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.044,
+            "pg_created_to_delivery_ms": 257.498
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10258,
+            "profile": "AES-128-GCM",
+            "outbox_id": "7d2209d4-479b-4862-88b7-edfb0bbbddcc",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.457,
+            "pg_created_to_delivery_ms": 425.37199999999996
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10259,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e1c0715e-bcb9-49fd-8f0e-f1c4d354e664",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.523,
+            "pg_created_to_delivery_ms": 415.578
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10259,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "dee7e05e-048f-4859-8058-3fc761044879",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.0140000000000002,
+            "pg_created_to_delivery_ms": 324.621
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10259,
+            "profile": "AES-128-GCM",
+            "outbox_id": "430cbefc-653b-4fb3-8191-d14abd7c63d0",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.475,
+            "pg_created_to_delivery_ms": 492.226
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10260,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "28d9e9a1-9fc6-4abd-998d-d850d151dca4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.184,
+            "pg_created_to_delivery_ms": 406.90500000000003
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10257,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "771c1099-d89e-4766-a1ac-c5240a1aae38",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.709,
+            "pg_created_to_delivery_ms": 240.175
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10257,
+            "profile": "AES-128-GCM",
+            "outbox_id": "96d89f78-442c-4153-8947-d160f348d644",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.388,
+            "pg_created_to_delivery_ms": 406.854
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10258,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "3fe9a008-0c1b-4c4a-a828-d50999ca3c8a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.264,
+            "pg_created_to_delivery_ms": 348.225
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10260,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "87e5f159-d9c8-458b-a04a-8a26deeb4179",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.66,
+            "pg_created_to_delivery_ms": 303.487
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10260,
+            "profile": "AES-128-GCM",
+            "outbox_id": "f83d245b-b7d2-4b7d-9105-8d9cc7eafd9c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.7399999999999998,
+            "pg_created_to_delivery_ms": 508.554
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10261,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "17d804b0-e36d-4279-a3bc-28eda5b298c4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.75,
+            "pg_created_to_delivery_ms": 423.515
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10261,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "c5548aa9-a6ee-4e78-87f5-e88adb01f883",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.058,
+            "pg_created_to_delivery_ms": 320.209
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10261,
+            "profile": "AES-128-GCM",
+            "outbox_id": "990138ef-8ffc-4cc9-86ab-500a29f62f02",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.563,
+            "pg_created_to_delivery_ms": 23.855
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10262,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "94fb054a-16d2-4667-adf1-977a1157aa25",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 13.672,
+            "pg_created_to_delivery_ms": 428.907
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10262,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "de9cdf69-6a6b-493e-a61d-1b56de1c50b5",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.653,
+            "pg_created_to_delivery_ms": 336.779
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10262,
+            "profile": "AES-128-GCM",
+            "outbox_id": "f707e771-5925-4a49-a125-d4405aef33e1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.7079999999999997,
+            "pg_created_to_delivery_ms": 40.836
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10263,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "d5cc2fa9-f338-4130-8466-688be71bede3",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1740000000000004,
+            "pg_created_to_delivery_ms": 456.064
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10263,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f1842dbe-bd5a-453c-bcdc-562a5cf2243a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.77,
+            "pg_created_to_delivery_ms": 353.714
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10263,
+            "profile": "AES-128-GCM",
+            "outbox_id": "c44fc1e8-4984-40c5-85d1-12793feb2dc9",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 11.415,
+            "pg_created_to_delivery_ms": 50.681999999999995
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10264,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e93bb3b6-9ab5-4b91-a274-fdd76e27ace0",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.375,
+            "pg_created_to_delivery_ms": 479.047
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10264,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "6843f093-3d84-4b38-9238-9366b356c856",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.052,
+            "pg_created_to_delivery_ms": 375.927
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10264,
+            "profile": "AES-128-GCM",
+            "outbox_id": "db60df18-aa83-4969-a622-b42707ed27d3",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.552,
+            "pg_created_to_delivery_ms": 81.129
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10265,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "aa9b9818-7b34-4b08-8c67-be6225a13774",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.763,
+            "pg_created_to_delivery_ms": 504.333
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10265,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "edc5ebd2-deef-4629-8a80-e91dee0a177f",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.777,
+            "pg_created_to_delivery_ms": 402.567
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10265,
+            "profile": "AES-128-GCM",
+            "outbox_id": "1351f641-0a9c-4f4e-94eb-d36e55f75a19",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.205,
+            "pg_created_to_delivery_ms": 109.327
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10266,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f8cf8a8a-26fb-4409-a1f0-be5c8eb3e1ec",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.176,
+            "pg_created_to_delivery_ms": 20.843
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10266,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f2f51dcd-87de-4a18-91b9-429b637bf274",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.7880000000000003,
+            "pg_created_to_delivery_ms": 420.06
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10266,
+            "profile": "AES-128-GCM",
+            "outbox_id": "d68df017-759c-4c79-b8ea-bf247a6b571e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.3280000000000003,
+            "pg_created_to_delivery_ms": 126.02499999999999
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10267,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "15802d0e-3bb1-4f32-a8cd-fc03bcddab58",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.836,
+            "pg_created_to_delivery_ms": 36.035
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10267,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "7b5e9113-bb9a-4d0b-b1b1-cc240ac80520",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1670000000000003,
+            "pg_created_to_delivery_ms": 436.532
+          }
+        ]
+      },
+      "resources": {
+        "cpu_percent": 10.19,
+        "ram_mib": 628.259,
+        "containers": [
+          {
+            "BlockIO": "5.07MB / 0B",
+            "CPUPerc": "0.02%",
+            "Container": "ba464f3ea9cef0aa9da800fce44fb19ac757d8e2a3d5fbb70a4b366471dcfa8f",
+            "ID": "ba464f3ea9ce",
+            "MemPerc": "2.58%",
+            "MemUsage": "3.309MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-broker-1",
+            "NetIO": "590kB / 573kB",
+            "PIDs": "1"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.39%",
+            "Container": "e4af5cc7c6d052abf0b9cbab580c712a0587e4967e210bfdfaf355e78075b044",
+            "ID": "e4af5cc7c6d0",
+            "MemPerc": "16.75%",
+            "MemUsage": "42.88MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-control-worker-1",
+            "NetIO": "4.17MB / 3.78MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 864kB",
+            "CPUPerc": "0.12%",
+            "Container": "e3cc72145243627fb5819784d4a4f1a9a318d18675f105e741718e949c9d2e1e",
+            "ID": "e3cc72145243",
+            "MemPerc": "28.43%",
+            "MemUsage": "36.39MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-alpha-1",
+            "NetIO": "49.4kB / 163kB",
+            "PIDs": "7"
+          },
+          {
+            "BlockIO": "8.19kB / 303kB",
+            "CPUPerc": "0.17%",
+            "Container": "88e18670305f1293c2af619023df6998fddea977110e5057c14be5434459d43a",
+            "ID": "88e18670305f",
+            "MemPerc": "18.00%",
+            "MemUsage": "23.04MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-beta-1",
+            "NetIO": "44.8kB / 159kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 340kB",
+            "CPUPerc": "0.16%",
+            "Container": "eae30a3d2c1b3ed650e57a8d2bfe69a6141478db8f0d1d0c48192ac522e7703d",
+            "ID": "eae30a3d2c1b",
+            "MemPerc": "18.00%",
+            "MemUsage": "23.04MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-gamma-1",
+            "NetIO": "44.8kB / 159kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "11.7MB / 52.3MB",
+            "CPUPerc": "0.26%",
+            "Container": "94297f4fcb50b4ccf536e32182c2bec28dd26d31700daf9c23967f5794e6f6ee",
+            "ID": "94297f4fcb50",
+            "MemPerc": "20.00%",
+            "MemUsage": "153.6MiB / 768MiB",
+            "Name": "lcm-stage12-crypto-research-lab-mongo-1",
+            "NetIO": "541kB / 212kB",
+            "PIDs": "49"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.02%",
+            "Container": "13ac17a7e7d4577c103eb73bae23c0d7ea72a08dea254ae0197b14cebba59e6a",
+            "ID": "13ac17a7e7d4",
+            "MemPerc": "18.20%",
+            "MemUsage": "46.59MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-outbox-relay-1",
+            "NetIO": "3.55MB / 2.77MB",
+            "PIDs": "5"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.13%",
+            "Container": "62960ce89978f8b55a44bd6671c0be60b74758507b92bc4dc41d99f33b177387",
+            "ID": "62960ce89978",
+            "MemPerc": "16.12%",
+            "MemUsage": "41.27MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-policy-worker-1",
+            "NetIO": "12.6MB / 11.2MB",
+            "PIDs": "2"
+          },
+          {
+            "BlockIO": "16.9MB / 601MB",
+            "CPUPerc": "4.80%",
+            "Container": "15019dabb76988d1063f3c5404dbf717e2bd823779e95ebd944579fcedea2050",
+            "ID": "15019dabb769",
+            "MemPerc": "17.68%",
+            "MemUsage": "135.8MiB / 768MiB",
+            "Name": "lcm-stage12-crypto-research-lab-postgres-1",
+            "NetIO": "31.3MB / 30.8MB",
+            "PIDs": "13"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.11%",
+            "Container": "434d19e7a5d5af6802b4d09602695131a8d067e4f05a1780d8a240bc38afdea2",
+            "ID": "434d19e7a5d5",
+            "MemPerc": "17.73%",
+            "MemUsage": "45.39MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-receiver-1",
+            "NetIO": "3.75MB / 2.6MB",
+            "PIDs": "7"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.01%",
+            "Container": "fac1c45cdf4d95816219aacaa164ddb369dd856404e4d25ce1dff444633f6f3e",
+            "ID": "fac1c45cdf4d",
+            "MemPerc": "30.06%",
+            "MemUsage": "76.95MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-web-1",
+            "NetIO": "842kB / 884kB",
+            "PIDs": "6"
+          }
+        ]
+      }
+    },
+    {
+      "before": {
+        "checked_at": "2026-11-12T19:07:28.567426+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "9520bfc7-f6b2-411d-b0cd-68b38b7dd9a2",
+            "sequence_reserved": 20000,
+            "command_sequence": 6
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 935,
+            "last_sequence": 10278
+          },
+          "alpha": {
+            "count": 935,
+            "last_sequence": 10277
+          },
+          "gamma": {
+            "count": 935,
+            "last_sequence": 10277
+          }
+        },
+        "outbox": {
+          "pending": 1,
+          "delivered": 2804
+        },
+        "counters": {
+          "incoming": 2805,
+          "delivered": 2804,
+          "accepted": 2805
+        },
+        "transitions": 3,
+        "completed": 3,
+        "unknown": 0,
+        "authenticated_ack": 6,
+        "receipts": 6,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 64501427,
+        "pg_stats": {
+          "xact_commit": 67420,
+          "xact_rollback": 847,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2804
+      },
+      "after": {
+        "checked_at": "2026-11-12T19:07:51.991661+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "9520bfc7-f6b2-411d-b0cd-68b38b7dd9a2",
+            "sequence_reserved": 20000,
+            "command_sequence": 6
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 958,
+            "last_sequence": 10301
+          },
+          "alpha": {
+            "count": 958,
+            "last_sequence": 10300
+          },
+          "gamma": {
+            "count": 959,
+            "last_sequence": 10301
+          }
+        },
+        "outbox": {
+          "pending": 2,
+          "delivered": 2873
+        },
+        "counters": {
+          "incoming": 2875,
+          "delivered": 2873,
+          "accepted": 2875
+        },
+        "transitions": 3,
+        "completed": 3,
+        "unknown": 0,
+        "authenticated_ack": 6,
+        "receipts": 6,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 65271475,
+        "pg_stats": {
+          "xact_commit": 69261,
+          "xact_rollback": 852,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2873
+      },
+      "profile": "ascon-aead128-v1",
+      "backend": "persistent",
+      "device_count": 3,
+      "target": "alpha",
+      "background_profiles": "beta/gamma Ascon",
+      "configured_hz": 1,
+      "start_ns": 1794510449258466296,
+      "end_ns": 1794510469258528365,
+      "scheduled": 60,
+      "formed": 60,
+      "publish_calls": 60,
+      "queued": 60,
+      "broker_puback": 60,
+      "reconciliation": {
+        "source_formed": 60,
+        "pg_unique": 60,
+        "mongo_stored": 60,
+        "rows": [
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10280,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "1422b621-3f21-401d-bada-bc752c3652d7",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.913,
+            "pg_created_to_delivery_ms": 146.715
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10280,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "56620baa-8cb4-45f7-a02f-c31550022efa",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.615,
+            "pg_created_to_delivery_ms": 92.367
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10280,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "0d96dc6b-3792-466d-b12d-4ce700315830",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1159999999999997,
+            "pg_created_to_delivery_ms": 218.909
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10281,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "17a9b6b4-9c72-41cc-b8f9-752b503f6432",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.27,
+            "pg_created_to_delivery_ms": 124.74499999999999
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10281,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "ca68f68a-285a-4704-88fb-71e85c4564b8",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.625,
+            "pg_created_to_delivery_ms": 108.293
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10281,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "a1db4a29-ecad-4af1-8c42-e9dfdda6f38a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.063,
+            "pg_created_to_delivery_ms": 234.732
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10284,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "47101099-f5bb-4d51-91a4-0a09afb0d569",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 12.227,
+            "pg_created_to_delivery_ms": 165.208
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10284,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "44b0c96d-9012-4d9b-aae8-6b6150fba322",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.605,
+            "pg_created_to_delivery_ms": 158.488
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10284,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "01180ef2-db9c-4446-95f7-4c6b6efebf2f",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.835,
+            "pg_created_to_delivery_ms": 284.433
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10285,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "99d35b5c-da93-4874-8cca-cf5100f459ce",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.248,
+            "pg_created_to_delivery_ms": 190.752
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10285,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "1daf72ff-b8cf-4f4b-927c-bd740cde8e7b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 11.787,
+            "pg_created_to_delivery_ms": 165.84099999999998
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10288,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "ccb76838-1095-4977-b42b-38aab8aaddf4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.6719999999999997,
+            "pg_created_to_delivery_ms": 236.06199999999998
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10279,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "31e624c5-683b-449d-9e22-ba84355ac1f7",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.2079999999999997,
+            "pg_created_to_delivery_ms": 131.42100000000002
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10285,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "1353dded-f27c-4ac9-b38f-865a3934fe23",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.054,
+            "pg_created_to_delivery_ms": 301.12
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10288,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "fd47b732-2074-4c20-8130-5be939ada578",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.099,
+            "pg_created_to_delivery_ms": 251.63799999999998
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10288,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "8f97d988-3b3d-43c7-bdcb-acdaf60da4a4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.948,
+            "pg_created_to_delivery_ms": 361.815
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10289,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "0556fa8e-abd4-467c-ad71-54797c2fbd31",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.407,
+            "pg_created_to_delivery_ms": 267.029
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10291,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "eb41efb4-2e21-44a0-a7da-d8cd3e9f9b67",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.0959999999999996,
+            "pg_created_to_delivery_ms": 298.911
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10279,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e087a65d-0acf-4c85-bf99-e8de87ea3eeb",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.5829999999999997,
+            "pg_created_to_delivery_ms": 77.17200000000001
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10279,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "23b0b579-1ee5-4b0f-820b-c021cb36816a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.9659999999999997,
+            "pg_created_to_delivery_ms": 232.95
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10282,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "c3af610e-61ab-4afa-89bb-835d9ee8f2f9",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.3579999999999997,
+            "pg_created_to_delivery_ms": 140.816
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10282,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "816db863-24ed-4dee-83b5-549b46257c55",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.735,
+            "pg_created_to_delivery_ms": 124.644
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10282,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "d2514bca-700d-4d67-a38f-ee11b40a1174",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.169,
+            "pg_created_to_delivery_ms": 250.26100000000002
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10283,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "72360b43-631f-4273-8939-351bb1c3e557",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.542,
+            "pg_created_to_delivery_ms": 156.182
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10283,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "a95641ed-3955-4475-b1c0-46da5dd32988",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.908,
+            "pg_created_to_delivery_ms": 141.524
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10283,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "1ed0d235-d95b-4e01-bfec-e06f3af72537",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.018,
+            "pg_created_to_delivery_ms": 268.261
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10286,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "1a58e99a-d715-4147-af87-57dcfbf5e753",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.828,
+            "pg_created_to_delivery_ms": 207.52100000000002
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10286,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "7cc291b4-db05-46fb-bc64-43744be4cffd",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.657,
+            "pg_created_to_delivery_ms": 191.378
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10286,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "44933ad2-9788-4e69-903a-996294bc2dc2",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.263999999999999,
+            "pg_created_to_delivery_ms": 315.444
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10287,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "0b94e223-b54c-43d5-9671-ce91b41a5cd7",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.3040000000000003,
+            "pg_created_to_delivery_ms": 223.799
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10287,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "d2ca20a1-7722-4b3e-b334-87ee18254e0a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 29.86,
+            "pg_created_to_delivery_ms": 181.537
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10287,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "fe5db688-67e6-4894-a013-386ecae49b10",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.965,
+            "pg_created_to_delivery_ms": 334.44800000000004
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10290,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "4cece897-4163-4585-a672-2a3f31ff0612",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.242,
+            "pg_created_to_delivery_ms": 283.161
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10290,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "44412dfe-e161-49db-9557-20a4e8190b49",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 17.402,
+            "pg_created_to_delivery_ms": 252.799
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10290,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "62ba57c4-3ea9-4697-9f70-5ffaa9fecf92",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.039,
+            "pg_created_to_delivery_ms": 393.115
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10289,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "fbf4c891-592d-4db7-ba32-6fc331965779",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.604,
+            "pg_created_to_delivery_ms": 251.77300000000002
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10289,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "62ff2554-c7a7-4ffa-a132-4931d7e34b78",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.764,
+            "pg_created_to_delivery_ms": 377.673
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10292,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "1120ce65-1b9c-45e3-bac2-9658281c6e14",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.236,
+            "pg_created_to_delivery_ms": 324.19
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10292,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "61553a2d-f70e-4ee5-9db8-15812ece07d5",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.826,
+            "pg_created_to_delivery_ms": 318.542
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10292,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "5f0c5b15-58d8-45bc-8a79-1b14400939d6",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.178,
+            "pg_created_to_delivery_ms": 443.712
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10293,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "758e5a9b-1f60-4214-8a9a-85b1dbc3d009",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.25,
+            "pg_created_to_delivery_ms": 348.925
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10293,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "78ae5913-5d8b-4850-9adf-c9f7ee520fb8",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.618,
+            "pg_created_to_delivery_ms": 334.307
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10293,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "26e60b6d-097a-495a-8e46-ae43bb5f2801",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.079,
+            "pg_created_to_delivery_ms": 460.315
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10296,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "2bf45cc3-a8d2-434d-8005-36540abf4c8e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1270000000000002,
+            "pg_created_to_delivery_ms": 385.51800000000003
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10296,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "d8902a09-0847-49c3-8ae7-463228261696",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.578,
+            "pg_created_to_delivery_ms": 381.454
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10296,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "bcd2a372-c0c6-437c-8611-65f030d40262",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.852,
+            "pg_created_to_delivery_ms": 494.967
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10297,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e105a7eb-02be-4ebf-89f5-6f14d748adf1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.0300000000000002,
+            "pg_created_to_delivery_ms": 401.723
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10297,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "deaf921e-7423-4f86-92e1-19117708b822",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.604,
+            "pg_created_to_delivery_ms": 397.7
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10297,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "319c680c-35b9-4b37-ad62-7a0bddefdd7b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.451,
+            "pg_created_to_delivery_ms": 9.792
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10291,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "7fe56564-7ea0-4e85-874e-d614e9148011",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.6879999999999997,
+            "pg_created_to_delivery_ms": 292.508
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10291,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f2302aee-f58e-45b6-ae09-6015339d5f5d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.072,
+            "pg_created_to_delivery_ms": 418.337
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10294,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "cd65f5f7-1814-4d2b-acdb-ac3e263938cf",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.095,
+            "pg_created_to_delivery_ms": 366.248
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10294,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "63d7f8d1-df39-4fbe-8039-1d273613d466",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.5860000000000003,
+            "pg_created_to_delivery_ms": 351.51
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10294,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "48df2cbc-ad61-4d0c-b79e-5cc63f36c90d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.299,
+            "pg_created_to_delivery_ms": 476.23199999999997
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10295,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e9be49c8-84e3-422b-9e25-5ad0389f0260",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.193,
+            "pg_created_to_delivery_ms": 382.27
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10295,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "6e3835d9-f0b5-429b-8174-938fac96ac29",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.782,
+            "pg_created_to_delivery_ms": 367.709
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10295,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "297a1234-5421-460f-aee6-d6f688345aac",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.0260000000000002,
+            "pg_created_to_delivery_ms": 478.883
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10298,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "c9120e29-721c-4d57-a264-c664f47dd83d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.989,
+            "pg_created_to_delivery_ms": 418.646
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10298,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "12d6712c-9c9e-44ac-9430-1b9072238c61",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.661,
+            "pg_created_to_delivery_ms": 414.55199999999996
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 10298,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "aa6066f8-c6d3-4f76-beb6-00a101b285ad",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.901,
+            "pg_created_to_delivery_ms": 26.464000000000002
+          }
+        ]
+      },
+      "resources": {
+        "cpu_percent": 18.69,
+        "ram_mib": 623.123,
+        "containers": [
+          {
+            "BlockIO": "5.07MB / 0B",
+            "CPUPerc": "0.03%",
+            "Container": "ba464f3ea9cef0aa9da800fce44fb19ac757d8e2a3d5fbb70a4b366471dcfa8f",
+            "ID": "ba464f3ea9ce",
+            "MemPerc": "2.56%",
+            "MemUsage": "3.273MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-broker-1",
+            "NetIO": "661kB / 643kB",
+            "PIDs": "1"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.14%",
+            "Container": "e4af5cc7c6d052abf0b9cbab580c712a0587e4967e210bfdfaf355e78075b044",
+            "ID": "e4af5cc7c6d0",
+            "MemPerc": "16.54%",
+            "MemUsage": "42.35MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-control-worker-1",
+            "NetIO": "4.69MB / 4.24MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 1.2MB",
+            "CPUPerc": "0.14%",
+            "Container": "e3cc72145243627fb5819784d4a4f1a9a318d18675f105e741718e949c9d2e1e",
+            "ID": "e3cc72145243",
+            "MemPerc": "26.56%",
+            "MemUsage": "34MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-alpha-1",
+            "NetIO": "55.7kB / 184kB",
+            "PIDs": "4"
+          },
+          {
+            "BlockIO": "8.19kB / 328kB",
+            "CPUPerc": "0.15%",
+            "Container": "88e18670305f1293c2af619023df6998fddea977110e5057c14be5434459d43a",
+            "ID": "88e18670305f",
+            "MemPerc": "18.00%",
+            "MemUsage": "23.04MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-beta-1",
+            "NetIO": "48.7kB / 178kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 365kB",
+            "CPUPerc": "0.14%",
+            "Container": "eae30a3d2c1b3ed650e57a8d2bfe69a6141478db8f0d1d0c48192ac522e7703d",
+            "ID": "eae30a3d2c1b",
+            "MemPerc": "18.06%",
+            "MemUsage": "23.12MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-gamma-1",
+            "NetIO": "48.7kB / 178kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "11.8MB / 58.2MB",
+            "CPUPerc": "0.25%",
+            "Container": "94297f4fcb50b4ccf536e32182c2bec28dd26d31700daf9c23967f5794e6f6ee",
+            "ID": "94297f4fcb50",
+            "MemPerc": "19.90%",
+            "MemUsage": "152.9MiB / 768MiB",
+            "Name": "lcm-stage12-crypto-research-lab-mongo-1",
+            "NetIO": "605kB / 236kB",
+            "PIDs": "49"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "6.69%",
+            "Container": "13ac17a7e7d4577c103eb73bae23c0d7ea72a08dea254ae0197b14cebba59e6a",
+            "ID": "13ac17a7e7d4",
+            "MemPerc": "18.53%",
+            "MemUsage": "47.44MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-outbox-relay-1",
+            "NetIO": "3.97MB / 3.09MB",
+            "PIDs": "5"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.95%",
+            "Container": "62960ce89978f8b55a44bd6671c0be60b74758507b92bc4dc41d99f33b177387",
+            "ID": "62960ce89978",
+            "MemPerc": "15.77%",
+            "MemUsage": "40.38MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-policy-worker-1",
+            "NetIO": "14.3MB / 12.7MB",
+            "PIDs": "2"
+          },
+          {
+            "BlockIO": "16.9MB / 662MB",
+            "CPUPerc": "2.36%",
+            "Container": "15019dabb76988d1063f3c5404dbf717e2bd823779e95ebd944579fcedea2050",
+            "ID": "15019dabb769",
+            "MemPerc": "17.72%",
+            "MemUsage": "136.1MiB / 768MiB",
+            "Name": "lcm-stage12-crypto-research-lab-postgres-1",
+            "NetIO": "34MB / 34.3MB",
+            "PIDs": "13"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "6.83%",
+            "Container": "434d19e7a5d5af6802b4d09602695131a8d067e4f05a1780d8a240bc38afdea2",
+            "ID": "434d19e7a5d5",
+            "MemPerc": "17.01%",
+            "MemUsage": "43.55MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-receiver-1",
+            "NetIO": "4.2MB / 2.91MB",
+            "PIDs": "4"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.01%",
+            "Container": "fac1c45cdf4d95816219aacaa164ddb369dd856404e4d25ce1dff444633f6f3e",
+            "ID": "fac1c45cdf4d",
+            "MemPerc": "30.07%",
+            "MemUsage": "76.97MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-web-1",
+            "NetIO": "1.27MB / 1.33MB",
+            "PIDs": "6"
+          }
+        ]
+      }
+    },
+    {
+      "before": {
+        "checked_at": "2026-11-12T19:08:09.261185+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "0444da8b-00ee-4d35-9e6a-122ed6a94dc9",
+            "sequence_reserved": 30000,
+            "command_sequence": 8
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 975,
+            "last_sequence": 10318
+          },
+          "alpha": {
+            "count": 972,
+            "last_sequence": 20009
+          },
+          "gamma": {
+            "count": 976,
+            "last_sequence": 10318
+          }
+        },
+        "outbox": {
+          "pending": 1,
+          "delivered": 2922
+        },
+        "counters": {
+          "incoming": 2923,
+          "delivered": 2922,
+          "accepted": 2923
+        },
+        "transitions": 4,
+        "completed": 4,
+        "unknown": 0,
+        "authenticated_ack": 8,
+        "receipts": 7,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 65574579,
+        "pg_stats": {
+          "xact_commit": 70664,
+          "xact_rollback": 860,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2922
+      },
+      "after": {
+        "checked_at": "2026-11-12T19:08:32.672050+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "043fd02f-4a3b-4888-8167-0f8dc6967186",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0deb7c51-f13c-489f-b233-aa62f808aa05",
+            "sequence_reserved": 20000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "0444da8b-00ee-4d35-9e6a-122ed6a94dc9",
+            "sequence_reserved": 30000,
+            "command_sequence": 8
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 995,
+            "last_sequence": 20032
+          },
+          "beta": {
+            "count": 998,
+            "last_sequence": 10341
+          },
+          "gamma": {
+            "count": 999,
+            "last_sequence": 10341
+          }
+        },
+        "outbox": {
+          "delivered": 2992
+        },
+        "counters": {
+          "incoming": 2992,
+          "delivered": 2992,
+          "accepted": 2992
+        },
+        "transitions": 4,
+        "completed": 4,
+        "unknown": 0,
+        "authenticated_ack": 8,
+        "receipts": 7,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 64427699,
+        "pg_stats": {
+          "xact_commit": 72617,
+          "xact_rollback": 864,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2992
+      },
+      "profile": "kuznyechik-mgm-v1",
+      "backend": "one-shot",
+      "device_count": 3,
+      "target": "alpha",
+      "background_profiles": "beta/gamma Ascon",
+      "configured_hz": 1,
+      "start_ns": 1794510489965177752,
+      "end_ns": 1794510509965241340,
+      "scheduled": 60,
+      "formed": 60,
+      "publish_calls": 60,
+      "queued": 60,
+      "broker_puback": 60,
+      "reconciliation": {
+        "source_formed": 60,
+        "pg_unique": 60,
+        "mongo_stored": 60,
+        "rows": [
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20011,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "7e0775fe-e3e8-4f78-a2b2-bb51f34fd748",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.338,
+            "pg_created_to_delivery_ms": 349.598
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10321,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f5a1b182-5c38-4d6d-9ad2-035a4df0cf89",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1069999999999998,
+            "pg_created_to_delivery_ms": 221.453
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10321,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "bbdd763d-b2cc-4296-ae27-324dfbd6605b",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.665,
+            "pg_created_to_delivery_ms": 186.67700000000002
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20012,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "70eaa36d-938d-4d2b-8a04-4b04eaf72a5f",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.049000000000001,
+            "pg_created_to_delivery_ms": 364.684
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10322,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "b2670282-7dc5-455c-aae2-67f167ee741d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.8800000000000003,
+            "pg_created_to_delivery_ms": 237.591
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10322,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "15470fbb-c00a-4555-b7da-c8d15795dc9c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.719,
+            "pg_created_to_delivery_ms": 203.913
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20013,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "6c8dcfbf-b78b-4b9a-82b6-bb7312ad1683",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.996,
+            "pg_created_to_delivery_ms": 379.295
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10323,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "15e8961b-aa5a-4ebd-bb64-b89e09690244",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.029,
+            "pg_created_to_delivery_ms": 254.97599999999997
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10323,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "90c764be-d878-4ef9-9474-057df82c0f6e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.714,
+            "pg_created_to_delivery_ms": 220.576
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20014,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "a1b7697c-2ca4-4049-90da-4a464f1a4986",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.667,
+            "pg_created_to_delivery_ms": 394.34000000000003
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10324,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "4389b17e-3579-4c3b-9e7b-af31f84834e9",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 5.236,
+            "pg_created_to_delivery_ms": 269.19
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10324,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "57cebf08-5851-4a3a-8139-9897c58412c1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.618,
+            "pg_created_to_delivery_ms": 236.899
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20015,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "48ff995b-b216-49d6-98da-85732ec1e211",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.027,
+            "pg_created_to_delivery_ms": 410.043
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10325,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "9665ca00-847c-41d1-80aa-d45eb418b896",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.077,
+            "pg_created_to_delivery_ms": 287.63
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10325,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "b9dce0da-ea0e-4d94-9f22-4a0dda74af80",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.7230000000000003,
+            "pg_created_to_delivery_ms": 252.322
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20016,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "03af6802-4927-4590-9e19-421ab9282469",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.084,
+            "pg_created_to_delivery_ms": 423.671
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10326,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "7d56e270-534f-4238-a9b0-91619307c462",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.108,
+            "pg_created_to_delivery_ms": 303.983
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10326,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f6bbc060-988c-422b-978e-eb1ec5a2214e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.664,
+            "pg_created_to_delivery_ms": 269.42
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20017,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "0a56d408-4796-4c8a-aee9-e4e33ce83ae2",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 7.991,
+            "pg_created_to_delivery_ms": 439.351
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10327,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e897b36a-c0bb-4196-b179-53100770cc90",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.0669999999999997,
+            "pg_created_to_delivery_ms": 320.319
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10327,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "701fe8c3-05e4-494a-8961-55c6966d9852",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.7720000000000002,
+            "pg_created_to_delivery_ms": 258.919
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20018,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "c12d33bc-1bc0-4eea-82a3-bc20a34858cb",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.129000000000001,
+            "pg_created_to_delivery_ms": 453.049
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10328,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "73877483-c9b0-45ac-9f85-db59467664fa",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.971,
+            "pg_created_to_delivery_ms": 336.052
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10328,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "315d60ad-b54d-4b41-9307-c5420cd7622d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.8440000000000003,
+            "pg_created_to_delivery_ms": 274.668
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20019,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "e3b1b821-091d-429a-b009-a319be0a0abe",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.67,
+            "pg_created_to_delivery_ms": 467.341
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10329,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "600c725a-dfa2-4e4d-bbb5-b05d2e8fe30d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.347,
+            "pg_created_to_delivery_ms": 351.619
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10329,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "dada1393-075a-45fb-bfc8-753d271d8c64",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.729,
+            "pg_created_to_delivery_ms": 290.771
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20020,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "1f28593a-2fc2-489d-98f8-6fed14284fa8",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.014999999999999,
+            "pg_created_to_delivery_ms": 482.411
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10330,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "42f2c822-38b3-4377-873a-08102fc9fc7c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.161,
+            "pg_created_to_delivery_ms": 368.624
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10330,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "6799fb9a-5c78-436d-9272-3b03d8162bcf",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.69,
+            "pg_created_to_delivery_ms": 307.674
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20021,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "db174cbd-c757-4cd5-b8a1-6ac135ba484e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.156,
+            "pg_created_to_delivery_ms": 498.32300000000004
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10331,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "87537e6d-c540-4879-bdf1-d9bed735a31d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1069999999999998,
+            "pg_created_to_delivery_ms": 321.005
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10331,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "035aaf7d-0310-45c8-a784-a70943374497",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 7.398,
+            "pg_created_to_delivery_ms": 320.853
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20022,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "7cb47c51-cd70-4a7e-87e5-358f2ec3d100",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 7.787,
+            "pg_created_to_delivery_ms": 12.491999999999999
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20023,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "c5804de0-78fc-4f48-a18f-42a67e8a171c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.106,
+            "pg_created_to_delivery_ms": 27.580000000000002
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10333,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "91457eda-b58c-47ed-9415-17d1703a7d75",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.938,
+            "pg_created_to_delivery_ms": 405.577
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10333,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "226abe91-f34a-4c95-ada2-01f4658cd397",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.727,
+            "pg_created_to_delivery_ms": 358.889
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20024,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "20c76ca8-0f65-4701-871a-5a198cf12d60",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 37.159,
+            "pg_created_to_delivery_ms": 13.061
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10334,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "001f8e67-5af7-447a-97ea-0e64d47f77e4",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.206,
+            "pg_created_to_delivery_ms": 420.966
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10334,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "eae04eff-f0db-43da-bb46-78ed599d643e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.715,
+            "pg_created_to_delivery_ms": 374.40299999999996
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20025,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "35826b9f-acc2-470b-9663-641af22df9d1",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 7.854,
+            "pg_created_to_delivery_ms": 55.994
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10335,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "153e9fa0-cf33-4df4-bfb9-625e3467d517",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.957,
+            "pg_created_to_delivery_ms": 436.591
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10335,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f6574bf1-f6cb-4f2e-9c74-2f45bb4bcc8d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.665,
+            "pg_created_to_delivery_ms": 389.90999999999997
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20026,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "85d79f1d-1281-4c9d-a4b6-4cfd3207158a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.141,
+            "pg_created_to_delivery_ms": 70.086
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10336,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "2fad344c-c3f7-4b09-9ad6-4da8a436b74c",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 41.369,
+            "pg_created_to_delivery_ms": 414.65999999999997
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10336,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f3e0be1a-1f23-4c07-9ee5-845ca0da8674",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.715,
+            "pg_created_to_delivery_ms": 406.07599999999996
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20027,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "5fb2b7cb-6321-43de-b64a-d0c0be3c869e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 7.881000000000001,
+            "pg_created_to_delivery_ms": 85.301
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10332,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "9cc207e8-c63a-4cfd-ae69-16fc17ac2b58",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.105,
+            "pg_created_to_delivery_ms": 387.905
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10320,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "e87e4438-93af-4f04-8c3e-2b899e57065d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.1020000000000003,
+            "pg_created_to_delivery_ms": 204.123
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10320,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "592f6f20-646b-4e17-b6ee-b7e2526d4d53",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.747,
+            "pg_created_to_delivery_ms": 169.97
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10332,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "eb867a43-02f0-4930-b135-017d4e84c78a",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.685,
+            "pg_created_to_delivery_ms": 341.431
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10337,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "7895dbde-a379-4c8c-8ae3-c167fe2bef40",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.161,
+            "pg_created_to_delivery_ms": 429.86
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10337,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "f4caaf79-47df-4c7d-b1d5-71ff475bad2e",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.662,
+            "pg_created_to_delivery_ms": 421.35699999999997
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20028,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "3f3e89ef-a2dc-4a58-84d9-db63e104693f",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.077000000000002,
+            "pg_created_to_delivery_ms": 98.87
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20010,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "cac43291-b08f-4df3-9b8b-f23d2a9dcd9d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 8.286999999999999,
+            "pg_created_to_delivery_ms": 347.117
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10338,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "c627ec58-11b5-44a0-b08e-fcec1c45f4b3",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.823,
+            "pg_created_to_delivery_ms": 445.024
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10338,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "ef2e20d5-b4ab-4a76-a50a-bcbefa7f7009",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.63,
+            "pg_created_to_delivery_ms": 436.298
+          },
+          {
+            "device": "alpha",
+            "epoch": 1,
+            "sequence": 20029,
+            "profile": "Kuznyechik-MGM",
+            "outbox_id": "89e55389-edc4-4e97-9581-21d645dfdd56",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 7.7,
+            "pg_created_to_delivery_ms": 112.41
+          },
+          {
+            "device": "beta",
+            "epoch": 1,
+            "sequence": 10339,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "9c6a725b-15f0-4a17-b0b6-1c48747d9b1d",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 2.641,
+            "pg_created_to_delivery_ms": 461.304
+          },
+          {
+            "device": "gamma",
+            "epoch": 1,
+            "sequence": 10339,
+            "profile": "Ascon-AEAD128",
+            "outbox_id": "8004d4e4-eac2-4ed3-b238-3a1a8b9ea9d7",
+            "status": "delivered",
+            "sensor_to_receiver_created_ms": 3.25,
+            "pg_created_to_delivery_ms": 469.10400000000004
+          }
+        ]
+      },
+      "resources": {
+        "cpu_percent": 34.37,
+        "ram_mib": 652.354,
+        "containers": [
+          {
+            "BlockIO": "5.07MB / 0B",
+            "CPUPerc": "1.74%",
+            "Container": "ba464f3ea9cef0aa9da800fce44fb19ac757d8e2a3d5fbb70a4b366471dcfa8f",
+            "ID": "ba464f3ea9ce",
+            "MemPerc": "2.67%",
+            "MemUsage": "3.414MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-broker-1",
+            "NetIO": "760kB / 739kB",
+            "PIDs": "1"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "7.22%",
+            "Container": "e4af5cc7c6d052abf0b9cbab580c712a0587e4967e210bfdfaf355e78075b044",
+            "ID": "e4af5cc7c6d0",
+            "MemPerc": "16.86%",
+            "MemUsage": "43.16MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-control-worker-1",
+            "NetIO": "5.36MB / 4.84MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "0B / 270kB",
+            "CPUPerc": "6.12%",
+            "Container": "414fcd4871b5cf03ccfc8275705a88a81bea9d956cbe649f1110ce5826170a66",
+            "ID": "414fcd4871b5",
+            "MemPerc": "25.74%",
+            "MemUsage": "32.95MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-alpha-1",
+            "NetIO": "12.5kB / 14.6kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 352kB",
+            "CPUPerc": "0.15%",
+            "Container": "88e18670305f1293c2af619023df6998fddea977110e5057c14be5434459d43a",
+            "ID": "88e18670305f",
+            "MemPerc": "18.38%",
+            "MemUsage": "23.52MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-beta-1",
+            "NetIO": "58.9kB / 203kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "8.19kB / 389kB",
+            "CPUPerc": "0.15%",
+            "Container": "eae30a3d2c1b3ed650e57a8d2bfe69a6141478db8f0d1d0c48192ac522e7703d",
+            "ID": "eae30a3d2c1b",
+            "MemPerc": "18.19%",
+            "MemUsage": "23.28MiB / 128MiB",
+            "Name": "lcm-stage12-crypto-research-lab-device-gamma-1",
+            "NetIO": "58.8kB / 203kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "11.8MB / 65.2MB",
+            "CPUPerc": "0.28%",
+            "Container": "94297f4fcb50b4ccf536e32182c2bec28dd26d31700daf9c23967f5794e6f6ee",
+            "ID": "94297f4fcb50",
+            "MemPerc": "19.90%",
+            "MemUsage": "152.8MiB / 768MiB",
+            "Name": "lcm-stage12-crypto-research-lab-mongo-1",
+            "NetIO": "687kB / 264kB",
+            "PIDs": "49"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "6.85%",
+            "Container": "13ac17a7e7d4577c103eb73bae23c0d7ea72a08dea254ae0197b14cebba59e6a",
+            "ID": "13ac17a7e7d4",
+            "MemPerc": "18.29%",
+            "MemUsage": "46.83MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-outbox-relay-1",
+            "NetIO": "4.51MB / 3.51MB",
+            "PIDs": "5"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.93%",
+            "Container": "62960ce89978f8b55a44bd6671c0be60b74758507b92bc4dc41d99f33b177387",
+            "ID": "62960ce89978",
+            "MemPerc": "15.90%",
+            "MemUsage": "40.71MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-policy-worker-1",
+            "NetIO": "16MB / 14.1MB",
+            "PIDs": "2"
+          },
+          {
+            "BlockIO": "16.9MB / 744MB",
+            "CPUPerc": "2.89%",
+            "Container": "15019dabb76988d1063f3c5404dbf717e2bd823779e95ebd944579fcedea2050",
+            "ID": "15019dabb769",
+            "MemPerc": "18.29%",
+            "MemUsage": "140.4MiB / 768MiB",
+            "Name": "lcm-stage12-crypto-research-lab-postgres-1",
+            "NetIO": "36.8MB / 38MB",
+            "PIDs": "18"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "6.57%",
+            "Container": "829b6234eba1b3dfc3b3550a84ad814aaade94f750782b4cd706b8e2cacd2b07",
+            "ID": "829b6234eba1",
+            "MemPerc": "20.60%",
+            "MemUsage": "52.73MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-receiver-1",
+            "NetIO": "384kB / 277kB",
+            "PIDs": "4"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.47%",
+            "Container": "fac1c45cdf4d95816219aacaa164ddb369dd856404e4d25ce1dff444633f6f3e",
+            "ID": "fac1c45cdf4d",
+            "MemPerc": "36.16%",
+            "MemUsage": "92.56MiB / 256MiB",
+            "Name": "lcm-stage12-crypto-research-lab-web-1",
+            "NetIO": "1.61MB / 1.68MB",
+            "PIDs": "9"
+          }
+        ]
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "device": "alpha",
+      "target": "kuznyechik-mgm-v1",
+      "transition_id": "596ecf18-feee-4289-8ab0-613deffc694c",
+      "request_started_at": "2026-11-12T19:06:20.431072+00:00",
+      "http_202_seconds": 0.016102313995361328,
+      "observed_effective_seconds": 2.0584208965301514,
+      "transition": {
+        "acknowledged_at": "2026-11-12T19:06:20.588648+00:00",
+        "activated_at": "2026-11-12T19:06:20.505710+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T19:06:21.695233+00:00",
+        "correlation_id": "430234d5-76a6-43b0-9a7c-5df7d64cae43",
+        "created_at": "2026-11-12T19:06:20.438095+00:00",
+        "deadline": "2026-11-12T19:08:20.438095+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "596ecf18-feee-4289-8ab0-613deffc694c",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "kuznyechik-mgm-v1",
+        "telemetry_event": "a9cf9f65-6846-4e64-bc75-73a2276b2ddb"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T19:06:21.697765+00:00",
+          "device_id": "alpha",
+          "id": "9218dd23-0165-47bb-8f4a-2f109659f09f",
+          "transition_id": "596ecf18-feee-4289-8ab0-613deffc694c"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T19:06:20.590930+00:00",
+          "device_id": "alpha",
+          "id": "6db5c2f5-f476-4985-a1cb-d5ba1315d0ef",
+          "transition_id": "596ecf18-feee-4289-8ab0-613deffc694c"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T19:06:20.546268+00:00",
+          "device_id": "alpha",
+          "id": "074ebea0-8f7b-4437-8214-7c368784fb1a",
+          "transition_id": "596ecf18-feee-4289-8ab0-613deffc694c"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T19:06:20.508806+00:00",
+          "device_id": "alpha",
+          "id": "c4f1eb61-9fcd-435b-833a-e25a2937d53c",
+          "transition_id": "596ecf18-feee-4289-8ab0-613deffc694c"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T19:06:20.463449+00:00",
+          "device_id": "alpha",
+          "id": "3027d111-d07a-476d-8b24-a40015ee36c9",
+          "transition_id": "596ecf18-feee-4289-8ab0-613deffc694c"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T19:06:20.445119+00:00",
+          "device_id": "alpha",
+          "id": "06e4a696-86e9-494c-9c19-c9149a9e17bb",
+          "transition_id": "596ecf18-feee-4289-8ab0-613deffc694c"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T19:08:20.438095+00:00",
+          "id": "b1c1c716-aa78-4b51-842c-5803037fb3f8",
+          "phase": "ACTIVATE",
+          "sequence": 2,
+          "status": "verified",
+          "transition_id": "596ecf18-feee-4289-8ab0-613deffc694c"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T19:08:20.438095+00:00",
+          "id": "a647cfd2-9947-41fa-851b-a86b5bdf11d0",
+          "phase": "PREPARE",
+          "sequence": 1,
+          "status": "acknowledged",
+          "transition_id": "596ecf18-feee-4289-8ab0-613deffc694c"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "b1c1c716-aa78-4b51-842c-5803037fb3f8",
+          "device_id": "alpha",
+          "id": "a7abbbd1-3313-4f0a-8bae-516601787269",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T19:06:20.588648+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "a647cfd2-9947-41fa-851b-a86b5bdf11d0",
+          "device_id": "alpha",
+          "id": "1ddd8cda-509a-41fb-8d56-a7821e15165f",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T19:06:20.505710+00:00",
+          "result": "READY"
+        }
+      ]
+    },
+    {
+      "device": "alpha",
+      "target": "aes-128-gcm-v1",
+      "transition_id": "637f3f81-696b-47a8-b445-3d1bf155dcf6",
+      "request_started_at": "2026-11-12T19:06:52.226872+00:00",
+      "http_202_seconds": 0.007802009582519531,
+      "observed_effective_seconds": 1.039182424545288,
+      "transition": {
+        "acknowledged_at": "2026-11-12T19:06:52.421606+00:00",
+        "activated_at": "2026-11-12T19:06:52.337729+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T19:06:52.691165+00:00",
+        "correlation_id": "da2e9565-c39c-4b7e-b3fc-ec020385884e",
+        "created_at": "2026-11-12T19:06:52.230555+00:00",
+        "deadline": "2026-11-12T19:08:52.230555+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "637f3f81-696b-47a8-b445-3d1bf155dcf6",
+        "old_profile": "kuznyechik-mgm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "aes-128-gcm-v1",
+        "telemetry_event": "113238a3-9996-41b5-9fcc-ad6c4e8b070c"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T19:06:52.692724+00:00",
+          "device_id": "alpha",
+          "id": "d0b6af57-0681-4932-acc1-1291d9720594",
+          "transition_id": "637f3f81-696b-47a8-b445-3d1bf155dcf6"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T19:06:52.423763+00:00",
+          "device_id": "alpha",
+          "id": "8b1ca283-8423-4a3c-b6c9-283e37131793",
+          "transition_id": "637f3f81-696b-47a8-b445-3d1bf155dcf6"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T19:06:52.379305+00:00",
+          "device_id": "alpha",
+          "id": "2093fa81-1d46-41ab-b886-60200bddd9e6",
+          "transition_id": "637f3f81-696b-47a8-b445-3d1bf155dcf6"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T19:06:52.339440+00:00",
+          "device_id": "alpha",
+          "id": "007187c7-7045-46f2-aea5-e9fadb1a5fa9",
+          "transition_id": "637f3f81-696b-47a8-b445-3d1bf155dcf6"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T19:06:52.296569+00:00",
+          "device_id": "alpha",
+          "id": "6f065461-61a7-4e21-9e13-32ed6f166f25",
+          "transition_id": "637f3f81-696b-47a8-b445-3d1bf155dcf6"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T19:06:52.232730+00:00",
+          "device_id": "alpha",
+          "id": "ad9eb709-e522-4f4d-9a72-de14b99e655f",
+          "transition_id": "637f3f81-696b-47a8-b445-3d1bf155dcf6"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T19:08:52.230555+00:00",
+          "id": "346ab5a1-aa46-4a4d-8a25-70011d39c480",
+          "phase": "ACTIVATE",
+          "sequence": 4,
+          "status": "verified",
+          "transition_id": "637f3f81-696b-47a8-b445-3d1bf155dcf6"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T19:08:52.230555+00:00",
+          "id": "9f8e237d-c168-4608-8864-cdfd4b02ea48",
+          "phase": "PREPARE",
+          "sequence": 3,
+          "status": "acknowledged",
+          "transition_id": "637f3f81-696b-47a8-b445-3d1bf155dcf6"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "346ab5a1-aa46-4a4d-8a25-70011d39c480",
+          "device_id": "alpha",
+          "id": "89dace53-4f62-42ad-bf0c-3d5b8b892f25",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T19:06:52.421606+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "9f8e237d-c168-4608-8864-cdfd4b02ea48",
+          "device_id": "alpha",
+          "id": "bbd4abce-77dd-45b4-9755-ce89f105f903",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T19:06:52.337729+00:00",
+          "result": "READY"
+        }
+      ]
+    },
+    {
+      "device": "alpha",
+      "target": "ascon-aead128-v1",
+      "transition_id": "2b290ff6-98e0-46f3-9503-a238b0ea3760",
+      "request_started_at": "2026-11-12T19:07:22.853316+00:00",
+      "http_202_seconds": 0.006083250045776367,
+      "observed_effective_seconds": 2.0546367168426514,
+      "transition": {
+        "acknowledged_at": "2026-11-12T19:07:23.072507+00:00",
+        "activated_at": "2026-11-12T19:07:22.921483+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T19:07:23.944096+00:00",
+        "correlation_id": "b467e542-9579-4fec-bd8a-8859426c8823",
+        "created_at": "2026-11-12T19:07:22.856175+00:00",
+        "deadline": "2026-11-12T19:09:22.856175+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "2b290ff6-98e0-46f3-9503-a238b0ea3760",
+        "old_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "9520bfc7-f6b2-411d-b0cd-68b38b7dd9a2"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T19:07:23.946313+00:00",
+          "device_id": "alpha",
+          "id": "5d686467-bf15-4a49-867a-cff746672295",
+          "transition_id": "2b290ff6-98e0-46f3-9503-a238b0ea3760"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T19:07:23.074240+00:00",
+          "device_id": "alpha",
+          "id": "dcc79ab8-cbe6-44a1-82be-f628107d7a52",
+          "transition_id": "2b290ff6-98e0-46f3-9503-a238b0ea3760"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T19:07:23.030616+00:00",
+          "device_id": "alpha",
+          "id": "330e9c77-7dc0-432f-af09-45c28e9dc3ca",
+          "transition_id": "2b290ff6-98e0-46f3-9503-a238b0ea3760"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T19:07:22.922927+00:00",
+          "device_id": "alpha",
+          "id": "ff3b51f3-01fe-4cd0-95c3-dd6de9a3062f",
+          "transition_id": "2b290ff6-98e0-46f3-9503-a238b0ea3760"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T19:07:22.879669+00:00",
+          "device_id": "alpha",
+          "id": "257c911b-6fce-4b1b-883b-ca2ebf340663",
+          "transition_id": "2b290ff6-98e0-46f3-9503-a238b0ea3760"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T19:07:22.857722+00:00",
+          "device_id": "alpha",
+          "id": "e809bf79-b42a-4159-91c9-21e153684907",
+          "transition_id": "2b290ff6-98e0-46f3-9503-a238b0ea3760"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T19:09:22.856175+00:00",
+          "id": "be2136a2-92a9-4c4d-945e-c590ea450655",
+          "phase": "ACTIVATE",
+          "sequence": 6,
+          "status": "verified",
+          "transition_id": "2b290ff6-98e0-46f3-9503-a238b0ea3760"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T19:09:22.856175+00:00",
+          "id": "be633357-9af2-423d-8d3c-a68f86292096",
+          "phase": "PREPARE",
+          "sequence": 5,
+          "status": "acknowledged",
+          "transition_id": "2b290ff6-98e0-46f3-9503-a238b0ea3760"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "be2136a2-92a9-4c4d-945e-c590ea450655",
+          "device_id": "alpha",
+          "id": "19eeaed8-2973-4a67-9bcd-3790e1b2048e",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T19:07:23.072507+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "be633357-9af2-423d-8d3c-a68f86292096",
+          "device_id": "alpha",
+          "id": "69698f9c-8658-4e23-8759-0e37139917a7",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T19:07:22.921483+00:00",
+          "result": "READY"
+        }
+      ]
+    },
+    {
+      "device": "alpha",
+      "target": "kuznyechik-mgm-v1",
+      "transition_id": "c22a2fff-c05a-4a8d-a87d-57a2c6132264",
+      "request_started_at": "2026-11-12T19:07:54.760364+00:00",
+      "http_202_seconds": 0.009083271026611328,
+      "observed_effective_seconds": 1.036632776260376,
+      "transition": {
+        "acknowledged_at": "2026-11-12T19:07:54.897464+00:00",
+        "activated_at": "2026-11-12T19:07:54.815490+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T19:07:55.071273+00:00",
+        "correlation_id": "0fb45a8d-3354-46c1-ac63-0a7bbdadb0d5",
+        "created_at": "2026-11-12T19:07:54.765379+00:00",
+        "deadline": "2026-11-12T19:09:54.765379+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "c22a2fff-c05a-4a8d-a87d-57a2c6132264",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "kuznyechik-mgm-v1",
+        "telemetry_event": "0444da8b-00ee-4d35-9e6a-122ed6a94dc9"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T19:07:55.072503+00:00",
+          "device_id": "alpha",
+          "id": "4ddb616b-0b40-496f-984d-55170dc17d49",
+          "transition_id": "c22a2fff-c05a-4a8d-a87d-57a2c6132264"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T19:07:54.898874+00:00",
+          "device_id": "alpha",
+          "id": "80223f5f-9b86-4379-a159-8dd72dd256f8",
+          "transition_id": "c22a2fff-c05a-4a8d-a87d-57a2c6132264"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T19:07:54.856188+00:00",
+          "device_id": "alpha",
+          "id": "bd69f9b5-dbf1-4f5c-abc4-b01fed73e625",
+          "transition_id": "c22a2fff-c05a-4a8d-a87d-57a2c6132264"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T19:07:54.816528+00:00",
+          "device_id": "alpha",
+          "id": "6dd33456-46ba-434f-8857-b7918f378fc7",
+          "transition_id": "c22a2fff-c05a-4a8d-a87d-57a2c6132264"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T19:07:54.774189+00:00",
+          "device_id": "alpha",
+          "id": "1f699642-81b4-4483-b44d-4adef3648daa",
+          "transition_id": "c22a2fff-c05a-4a8d-a87d-57a2c6132264"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T19:07:54.767696+00:00",
+          "device_id": "alpha",
+          "id": "854f04eb-cdde-4047-a746-219859408231",
+          "transition_id": "c22a2fff-c05a-4a8d-a87d-57a2c6132264"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T19:09:54.765379+00:00",
+          "id": "fef9bb1e-7cfd-4770-ab76-996abdeeac60",
+          "phase": "ACTIVATE",
+          "sequence": 8,
+          "status": "verified",
+          "transition_id": "c22a2fff-c05a-4a8d-a87d-57a2c6132264"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T19:09:54.765379+00:00",
+          "id": "e1764d6a-1aec-4d99-b935-976f7a450311",
+          "phase": "PREPARE",
+          "sequence": 7,
+          "status": "acknowledged",
+          "transition_id": "c22a2fff-c05a-4a8d-a87d-57a2c6132264"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "fef9bb1e-7cfd-4770-ab76-996abdeeac60",
+          "device_id": "alpha",
+          "id": "14a8faab-db96-4533-9a79-e59120ed6cf8",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T19:07:54.897464+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "e1764d6a-1aec-4d99-b935-976f7a450311",
+          "device_id": "alpha",
+          "id": "eec583fb-11e2-46ca-822c-f75219192977",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T19:07:54.815490+00:00",
+          "result": "READY"
+        }
+      ]
+    }
+  ]
+}

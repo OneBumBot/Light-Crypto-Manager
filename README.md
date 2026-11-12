@@ -63,3 +63,11 @@ Stop/resume сохраняют nonce/command authority и keys. Не удаля�
 Добавлен настоящий третий AEAD: pinned Go Kuznyechik/MGM, RFC7801/RFC9058 KAT, independent cross-check, per-key budget и подтверждение переключения по PostgreSQL AEAD receipts. Обычные deployments сохраняют Ascon/AES live eligibility; MGM требует отдельной явной test-lab authorization и provisioned ключей/capabilities. Timing resistance/ARM/сертификация не заявляются. Policy остаётся DRY_RUN, RF/IF untrusted.
 
 Запуск и остановка, приватные аккаунты и сохранение state: [STAGE11_RESULTS](docs/STAGE11_RESULTS.md). Подробности: [provider](docs/STAGE11_PROVIDER_SELECTION.md), [nonce/budget](docs/KUZNYECHIK_NONCE_AND_KEY_BUDGET.md), [verification matrix](docs/STAGE11_INTEGRATION_TESTS.md).
+
+## Этап 12: сравнение реализаций и ограниченный Kuznyechik worker
+
+Для лаборатории добавлен bounded local Go worker без сетевого порта; профиль и wire protocol не зависят от backend. Default — one-shot, выбор worker явный (`LCM_KUZ_BACKEND=persistent`), без fallback. Итоговая регрессия: **882 passed, 0 skipped**. Это не доказательство constant-time или качества IDS.
+
+Magma-MGM исследована по RFC и публичным векторам, но **не допускается к continuous telemetry/live control**: короткий budget 64-битного блока несовместим с текущим lease и отсутствующим rekey lifecycle. В UI остаются три прежних профиля. Kuznyechik сохраняет lab-only; side-channel зависимость MGM не объявлена устранённой. Policy DRY_RUN, ML untrusted.
+
+[Результаты, ограничения и графики](docs/STAGE12_RESULTS.md) · [Запуск/stop/resume](docs/STAGE12_SYSTEM_INTEGRATION.md) · [Команды и отчёты](docs/reports/stage12/COMMANDS.md) · [Magma budget](docs/MAGMA_MGM_SECURITY_BUDGET.md). Все Stage12 контейнеры после экспериментов остановлены, ключи и volumes сохранены.

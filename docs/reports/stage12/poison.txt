@@ -1,0 +1,82 @@
+{
+  "profile": "kuznyechik-mgm-v1",
+  "nonce_range_source": "authenticated MQTT lease_grant",
+  "malformed_sent": 19,
+  "rejected": 19,
+  "accepted": 3,
+  "duplicate_admission": 0,
+  "duplicate_replay": 1,
+  "malformed_admission_state_unchanged": true,
+  "rejected_identity_null": true,
+  "neighbor_delivered": true,
+  "samples": [
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    }
+  ],
+  "observation_seconds": 11.034773924999172,
+  "postgres_mongo_count_delta": 3,
+  "project": "lcm-stage12-crypto-research-lab",
+  "exit_code": 0,
+  "receiver_processing_failures": 0,
+  "receiver_subscription_acknowledgements": 0,
+  "receiver_client_connections": 0,
+  "explicit_receiver_restart": true,
+  "post_restart_observation_seconds": 5,
+  "counters_before_restart": {
+    "incoming": 5442,
+    "delivery_error": 6,
+    "replay": 1,
+    "delivery_retry": 6,
+    "rejected": 19,
+    "delivered": 5421,
+    "accepted": 5421
+  },
+  "counters_after_restart": {
+    "incoming": 5442,
+    "delivery_error": 6,
+    "replay": 1,
+    "delivery_retry": 6,
+    "rejected": 19,
+    "delivered": 5421,
+    "accepted": 5421
+  },
+  "no_redelivery_after_receiver_restart": true
+}

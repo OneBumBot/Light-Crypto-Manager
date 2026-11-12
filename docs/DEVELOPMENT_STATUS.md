@@ -312,3 +312,9 @@ real anomaly labels и независимая device/session оценка ост
 ## Stage11: Kuznyechik-MGM software integration
 
 Реальная реализация и сквозные Ascon→Kuznyechik→AES→Kuznyechik→Ascon переходы проверены через MQTT/TLS, настоящий Device Agent, HTTP admin, PG receipts и Mongo. Доступ ограничен явным isolated lab authorization; ARM/production/сертификация не заявляются. Policy DRY_RUN; RF/IF RESEARCH/DEMO, trusted_detector=false. Точные результаты, команды/exit codes и ограничения: [STAGE11_RESULTS](STAGE11_RESULTS.md). Этап12/Magma/7.5c не запускались.
+
+## Этап 12 — инженерная и сравнительная проверка
+
+Завершены аудит provider/Python кандидатов, bounded worker, KAT/negative/concurrency/crash/recovery/mutation проверки, независимые benchmark repeats и реальные Stage12 MQTT/HTTP/Chromium сценарии. Baseline868 → итог882 passed/0 skipped;25 поведенческих мутаций обнаружены. Новый изолированный cohort3:27/27 telemetry-confirmed transitions, PG/Mongo7689/7689 после drain. Не является новым capacity/IDS/constant-time доказательством.
+
+Magma исследована, live gate отрицательный; непрерывная активация запрещена, rekey не реализован. Три прежних AEAD сохранены, Kuznyechik lab-only, Policy DRY_RUN, trusted_detector=false. Стенд остановлен с сохранением volumes/keys. Подробные числа, команды, SHA и ограничения: [STAGE12_RESULTS](STAGE12_RESULTS.md). Этап13 не начат.
