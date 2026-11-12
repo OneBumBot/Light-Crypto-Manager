@@ -10,6 +10,7 @@ from src.security_events import journal,queue
 from .models import versions,states,signals,decisions,transitions,intents,worker_status
 from .profiles import registry
 from .state import install
+from .diagnostics import snapshot as throughput_snapshot
 
 blueprint=Blueprint('policy',__name__)
 
@@ -50,9 +51,10 @@ def overview():
             rows=c.execute(query).mappings().all()
             workers=c.execute(select(worker_status).order_by(worker_status.c.heartbeat_at.desc()).limit(50)).mappings().all()
             ver=c.execute(select(versions).order_by(versions.c.created_at.desc()).limit(50)).mappings().all()
+            diagnostics=throughput_snapshot(c,c.scalar(select(func.clock_timestamp())),active)
         now=datetime.now(timezone.utc)
         return jsonify(items=[serialize(r) for r in rows],versions=[serialize(r) for r in ver],active_version=active['version'] if active else None,
-            workers=[dict(serialize(w),stale=(now-w['heartbeat_at']).total_seconds()>30) for w in workers],profiles=registry(),
+            workers=[dict(serialize(w),stale=(now-w['heartbeat_at']).total_seconds()>30) for w in workers],profiles=registry(),diagnostics=diagnostics,
             mode='DRY_RUN',live_control_enabled=False,interpretation='Configured profile is not an authenticated device acknowledgement',limit=limit,offset=offset)
     except SQLAlchemyError:return jsonify(error='Политика временно недоступна'),503
 
@@ -96,8 +98,8 @@ def metrics():
             filter_=decisions.c.version==active
             timing=c.execute(select(func.avg(decisions.c.compute_ms),func.percentile_cont(0.95).within_group(decisions.c.compute_ms),
                 func.avg(decisions.c.source_lag_seconds)).where(filter_)).one()
-            consumed=exists(select(1).where(signals.c.version==active,signals.c.event_id=='security:'+journal.c.id))
-            backlog=c.scalar(select(func.count()).select_from(journal).where(~consumed))
+            diagnostics=throughput_snapshot(c,c.scalar(select(func.clock_timestamp())))
+            backlog=diagnostics['security_queue_pending']
             state=c.execute(select(queue)).mappings().first()
             result=dict(processed=dict(c.execute(select(signals.c.status,func.count()).where(signals.c.version==active).group_by(signals.c.status)).all()),
                 decisions=c.scalar(select(func.count()).select_from(decisions).where(filter_)),
@@ -108,6 +110,6 @@ def metrics():
                 risk_counts=dict(c.execute(select(states.c.observed_risk,func.count()).where(states.c.version==active).group_by(states.c.observed_risk)).all()),
                 mean_compute_ms=timing[0],p95_compute_ms=timing[1],mean_source_lag_seconds=timing[2],
                 security_queue_pending=backlog,security_queue=dict(state) if state else None,
-                mode='DRY_RUN',switching_latency=None)
+                diagnostics=diagnostics,mode='DRY_RUN',switching_latency=None)
         return jsonify(result)
     except SQLAlchemyError:return jsonify(error='Метрики политики временно недоступны'),503

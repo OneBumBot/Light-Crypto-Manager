@@ -97,6 +97,8 @@ def snapshot(connection, device=None, limit=50, offset=0):
         model['stale']=age(now,model['heartbeat_at'])>30
     components['ml']=dict(status='disabled' if os.environ.get('ML_MONITOR_MODE')=='DISABLED' else ('unknown' if not models else ('research' if any(m['status']=='available' and not m['stale'] for m in models) else 'unavailable')), models=models,
         trusted_detector=False,source='ml_models; отсутствие модели не означает норму')
+    from src.policy.diagnostics import snapshot as policy_diagnostics
+    components['policy']['processing']=policy_diagnostics(c,now,active)
     pending_ids = [r['pending_transition'] for r in managed.values() if r['pending_transition']]
     pending = {r['id']:r for r in rows(select(control.transitions).where(control.transitions.c.id.in_(pending_ids)))}
     receipt_ids = [r['effective_event'] for r in managed.values() if r['effective_event']]
@@ -108,13 +110,17 @@ def snapshot(connection, device=None, limit=50, offset=0):
         verified=bool(receipt and receipt['device_id']==identity and receipt['key_epoch']==item['key_epoch'] and receipt['profile']==state.get('effective_profile'))
         p=states.get(identity)
         if p:
-            p={k:p[k] for k in ['version','observed_risk','recommended','state','updated_at']}
+            p={k:p[k] for k in ['version','observed_risk','recommended','state','updated_at','revision']}
+            p['last_processed_authenticated_telemetry_at']=p['state'].get('last_telemetry_at')
             p['evidence_at']=p['state'].get('last_event_at')
             evidence=utc(p['evidence_at']) if p['evidence_at'] else None
             p['evidence_age_seconds']=age(now,evidence)
+            last_authenticated=utc(p['last_processed_authenticated_telemetry_at']) if p['last_processed_authenticated_telemetry_at'] else None
+            p['authenticated_telemetry_age_seconds']=age(now,last_authenticated)
+            p['authenticated_telemetry_stale']=last_authenticated is None or not 0<=(now-last_authenticated).total_seconds()<=active_rules.telemetry_fresh_seconds
             p['evidence_ttl_seconds']=active_rules.telemetry_fresh_seconds
             p['evidence_stale']=evidence is None or not 0<=(now-evidence).total_seconds()<=p['evidence_ttl_seconds']
-            p['stale']=age(now,p['updated_at'])>30 or components['policy']['status']!='ready' or p['evidence_stale']
+            p['stale']=age(now,p['updated_at'])>30 or components['policy']['status']!='ready' or p['evidence_stale'] or p['authenticated_telemetry_stale']
             p['mode']='DRY_RUN';p['applied']=False
         transition=pending.get(state.get('pending_transition'))
         if transition:

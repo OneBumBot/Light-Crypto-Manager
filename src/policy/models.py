@@ -42,7 +42,16 @@ intents=Table('policy_control_intents',metadata,
 worker_status=Table('policy_worker_status',metadata,
     Column('worker_id',String(64),primary_key=True),Column('status',String(24),nullable=False),
     Column('mode',String(16),nullable=False),Column('heartbeat_at',DateTime(timezone=True),nullable=False),
-    Column('diagnostic',String(80)))
+    Column('diagnostic',String(80)),Column('metrics',JSONB,nullable=False,server_default='{}'))
+pending=Table('policy_pending',metadata,
+    Column('event_id',String(160),primary_key=True),Column('kind',String(16),nullable=False),
+    Column('source_id',String(36),nullable=False),Column('sort_at',DateTime(timezone=True),nullable=False),
+    Column('payload',JSONB,nullable=False),
+    CheckConstraint("kind IN ('security','ml')",name='ck_policy_pending_kind'))
+Index('ix_policy_pending_order',pending.c.kind,pending.c.sort_at,pending.c.event_id)
+schedule=Table('policy_schedule',metadata,Column('id',Integer,primary_key=True),
+    Column('next_ml',Boolean,nullable=False,server_default='false'),CheckConstraint('id=1',name='ck_policy_schedule'))
+Index('ix_policy_signal_processed',signals.c.version,signals.c.created_at)
 audit=Table('policy_admin_audit',metadata,
     Column('id',String(36),primary_key=True),Column('actor',String(64),nullable=False),
     Column('action',String(32),nullable=False),Column('version',String(64),nullable=False),

@@ -25,7 +25,8 @@ COPY src/web/*.py /app/src/web/
 COPY src/web/templates /app/src/web/templates
 COPY src/web/static /app/src/web/static
 COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
-COPY scripts/install_control.py scripts/install_stage10.py scripts/install_stage11.py scripts/install_stage12.py /app/scripts/
+COPY scripts/install_control.py scripts/install_stage10.py scripts/install_stage11.py scripts/install_stage12.py scripts/install_stage13.py /app/scripts/
+COPY scripts/install_policy13_crypto.py /app/scripts/
 COPY scripts/provision_registry.py scripts/seed_demo.py scripts/mqtt_smoke.py scripts/install_storage.py scripts/install_security.py scripts/mqtt_security_smoke.py /app/scripts/
 COPY alembic.ini /app/alembic.ini
 COPY migrations /app/migrations

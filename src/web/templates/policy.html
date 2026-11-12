@@ -19,7 +19,7 @@
   <h3>Как пользоваться</h3>
   <ol>
     <li>Укажите устройство, например <code>alpha</code>, и нажмите «Обновить». Пустое поле показывает все устройства.</li>
-    <li>Раскройте «Риск и конфигурации»: проверьте оценку <code>observed_risk</code>, версию правил и свежесть worker (<code>stale</code>).</li>
+    <li>Сначала проверьте готовность worker, свежесть обработанных источников и задержку очереди. Затем раскройте «Риск и конфигурации»: проверьте <code>observed_risk</code> и версию правил. Свежий heartbeat не доказывает свежесть evidence.</li>
     <li>В «Решениях и причинах» смотрите объяснения <code>reasons</code> и ссылки на сигналы <code>used_signals</code>. Сами сигналы находятся в следующем блоке.</li>
     <li>«Переходы» показывают изменения оценки риска. «Управляющие намерения» — только предложения, без отправки устройствам.</li>
   </ol>
@@ -29,6 +29,13 @@
 </section>
 <form id="policyFilters"><label for="policy-device">Устройство</label><input id="policy-device" name="device_id" maxlength="48" placeholder="alpha, beta или gamma"><button type="submit">Обновить</button></form>
 <p id="policyMessage" role="status" aria-live="polite"></p>
+<section class="policy-panel" aria-labelledby="policy-diagnostic-title">
+  <h3 id="policy-diagnostic-title">Готовность и актуальность Policy</h3>
+  <p id="policyWorkerStatus" role="status">Состояние неизвестно</p>
+  <p id="policyEvidenceStatus">Обработанные источники: нет подтверждённых данных</p>
+  <p id="policyQueueStatus">Очередь: неизвестно</p>
+  <p>Heartbeat подтверждает работу процесса. Свежесть evidence и задержка очереди проверяются отдельно. Рекомендации остаются DRY_RUN.</p>
+</section>
 <details class="policy-panel"><summary>Риск и конфигурации · технический JSON</summary><pre id="policyOverview"></pre></details>
 <details class="policy-panel"><summary>Решения и причины · технический JSON</summary><pre id="policyDecisions"></pre></details>
 <details class="policy-panel"><summary>Исходные сигналы · технический JSON</summary><pre id="policySignals"></pre></details>

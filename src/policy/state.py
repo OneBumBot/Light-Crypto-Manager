@@ -1,5 +1,6 @@
 """Short serialized per-device decisions, atomic audit and immutable policy versions."""
 from datetime import timedelta
+from dataclasses import dataclass
 import hashlib
 import json
 import re
@@ -13,6 +14,13 @@ from .rules import Rules
 from .profiles import ASCON,IMPLEMENTED
 from .control_contract import Command
 from .signals import utc
+
+
+@dataclass(frozen=True)
+class BatchRules:
+    """Transaction-local parsed immutable rules, never a cross-transaction cache."""
+    version: str
+    rules: Rules
 
 
 def install(connection,version,config,now,actor='bootstrap',activate=False):
@@ -29,14 +37,23 @@ def install(connection,version,config,now,actor='bootstrap',activate=False):
         connection.execute(update(versions).where(versions.c.active.is_(True)).values(active=False))
         connection.execute(update(versions).where(versions.c.version==version).values(active=True))
         connection.execute(audit.insert().values(id=str(uuid.uuid4()),actor=actor,action='activate',version=version,at=now))
+        # Replay retained identities under the newly selected version, like the
+        # former version-scoped anti-join. Inserts racing activation enqueue
+        # independently, without consulting the active version or a high-water.
+        from .work_queue import seed
+        seed(connection,version)
     return rules
 
 
-def process(connection,signal,version,now,*,before_commit=None):
+def process(connection,signal,version,now,*,before_commit=None,batch_rules=None):
     signal.validate();now=utc(now);start=time.perf_counter()
     if signal.binding=='simulation' or signal.trust=='simulation':raise ValueError('Simulation signals forbidden in runtime persistence')
-    row=connection.execute(select(versions).where(versions.c.version==version)).mappings().one()
-    rules=Rules.parse(row['config'])
+    if batch_rules is None:
+        row=connection.execute(select(versions).where(versions.c.version==version)).mappings().one()
+        rules=Rules.parse(row['config'])
+    else:
+        if not isinstance(batch_rules,BatchRules) or batch_rules.version!=version:raise ValueError('Batch rules/version mismatch')
+        rules=batch_rules.rules
     # Never derive trusted identity from raw MQTT data here. Only internal adapters.
     if signal.device_id:
         previous=connection.execute(select(states).where(states.c.device_id==signal.device_id)
@@ -102,6 +119,7 @@ def process(connection,signal,version,now,*,before_commit=None):
 def prune(connection,days,now):
     """Explicit bounded audit retention. Never touches replay/ML/Mongo."""
     if type(days) is not int or days<1:raise ValueError('Explicit positive retention required')
+    connection.execute(text('SELECT pg_advisory_xact_lock(734819207)'))
     cutoff=utc(now)-timedelta(days=days)
     rows=connection.execute(select(decisions.c.id,decisions.c.event_id,decisions.c.version)
         .where(decisions.c.created_at<cutoff).order_by(decisions.c.created_at).limit(1000).with_for_update(skip_locked=True)).all()
