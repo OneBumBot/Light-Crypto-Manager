@@ -71,9 +71,12 @@ def poll_batch(engine,limit=32,prefer_ml=None,*,at=None,before_commit=None,after
                     if model is None:raise ValueError('Missing model registry')
                     signal=from_ml(row,model,now)
                     if not c.scalar(select(devices.c.device_id).where(devices.c.device_id==signal.device_id,devices.c.key_epoch==signal.key_epoch,devices.c.enabled.is_(True))):raise ValueError('Device binding unavailable')
-                    process(c,signal,version,now,batch_rules=context)
                 except ValueError:
                     c.execute(insert(signals).values(event_id=item['event_id'],version=version,source='ml',payload={'diagnostic':'SourceContractRejected'},status='rejected',created_at=now).on_conflict_do_nothing())
+                else:
+                    # A failure of the FSM/persistence is not malformed input.
+                    # Roll back the batch and retain its pending source identity.
+                    process(c,signal,version,now,batch_rules=context)
             c.execute(delete(pending).where(pending.c.event_id==item['event_id']))
             count+=1
             # Soft wall-time bound between events; DB statement/lock deadlines

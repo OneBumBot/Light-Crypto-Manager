@@ -31,7 +31,7 @@ add('restart_resets_guard_without_evidence',W,'        if maintenance:\n',"     
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--only');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--only');p.add_argument('--source-sha',required=True);a=p.parse_args()
     if a.output.exists():p.error('Immutable report exists')
     if not os.environ.get('TEST_DATABASE_URL'):p.error('Disposable PostgreSQL required')
     root=Path.cwd();env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1');results=[]
@@ -52,6 +52,6 @@ def main():
             killed=r.returncode==1 and not invalid
             results.append(dict(injected_defect=name,file=path,test=test,expected='behavioral failure',actual=r.stdout[-7000:]+r.stderr[-1500:],exit_code=r.returncode,behaviorally_detected=killed))
             a.output.with_suffix('.progress.json').write_text(json.dumps(results,indent=2))
-    report=dict(source_sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),source_hashes={p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in [W,S,E,D,M]},baseline_exit=baseline.returncode,baseline_output=baseline.stdout,results=results,all_killed=all(v['behaviorally_detected'] for v in results),exit_code=0 if all(v['behaviorally_detected'] for v in results) else 1)
+    report=dict(source_sha=a.source_sha,source_hashes={p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in [W,S,E,D,M]},baseline_exit=baseline.returncode,baseline_output=baseline.stdout,results=results,all_killed=all(v['behaviorally_detected'] for v in results),exit_code=0 if all(v['behaviorally_detected'] for v in results) else 1)
     a.output.write_text(json.dumps(report,indent=2));print(json.dumps(dict(killed=sum(v['behaviorally_detected'] for v in results),total=len(results),exit_code=report['exit_code'])));raise SystemExit(report['exit_code'])
 if __name__=='__main__':main()

@@ -150,7 +150,8 @@ def test_synthetic_stale_waits_for_committed_backlog_and_is_bounded(postgres_db)
         process(c,event(1,'replay'),'v1',T+timedelta(seconds=1))
         process(c,event(2,'replay'),'v1',T+timedelta(seconds=2))
         add(c,20,seconds=-80);add(c,21,seconds=90)
-    assert poll_batch(e,limit=1,at=T+timedelta(seconds=100))==1
+    ticks=iter([T+timedelta(seconds=100),T+timedelta(seconds=100,milliseconds=10)])
+    assert poll_batch(e,limit=1,at=lambda:next(ticks))==1
     with e.connect() as c:assert not list(c.scalars(select(m.signals.c.event_id).where(m.signals.c.event_id.like('stale:%'))))
     assert poll_batch(e,limit=1,at=T+timedelta(seconds=100))==1
     assert poll_batch(e,at=T+timedelta(seconds=200))==1
@@ -392,16 +393,22 @@ def test_upgrade_from_0010_preserves_existing_authorities_and_is_idempotent(lega
 
 
 def test_direct_state_concurrent_distinct_events_never_lose_evidence(postgres_db):
-    e=postgres_db.db.engine;setup(e);written=Event();release=Event()
+    from sqlalchemy import event as sql_event
+    e=postgres_db.db.engine;setup(e);read=Event();release=Event()
     with e.begin() as c:process(c,event(0),'v1',T)
-    def first():
-        with e.begin() as c:process(c,event(1),'v1',T+timedelta(seconds=1),before_commit=lambda:(written.set(),release.wait(5)))
-    def second():
-        with e.begin() as c:process(c,event(2),'v1',T+timedelta(seconds=2))
-    with ThreadPoolExecutor(max_workers=2) as pool:
-        f=pool.submit(first);assert written.wait(5);g=pool.submit(second);time.sleep(.1);release.set();f.result();g.result()
+    def barrier(c,cursor,statement,parameters,context,many):
+        if statement.lstrip().startswith('SELECT') and 'FROM policy_device_states' in statement and 'ORDER BY' not in statement and not read.is_set():
+            read.set();assert release.wait(5)
+    def attempt(n):
+        with e.begin() as c:process(c,event(n),'v1',T+timedelta(seconds=n))
+    sql_event.listen(e,'after_cursor_execute',barrier)
+    try:
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            first=pool.submit(attempt,1);assert read.wait(5);second=pool.submit(attempt,2);time.sleep(.2);release.set();first.result();second.result()
+    finally:sql_event.remove(e,'after_cursor_execute',barrier)
     with e.connect() as c:
-        assert c.scalar(select(m.states.c.state))['healthy_count']==3
+        state=c.scalar(select(m.states.c.state))
+        assert state['healthy_count']==3 and state['last_event_at']==(T+timedelta(seconds=2)).isoformat()
         assert c.scalar(select(m.states.c.revision))==3
 
 
@@ -410,3 +417,16 @@ def test_stage13_mgm_authorization_remains_explicit_lab_only(monkeypatch,app_env
     from src.kuz_release import validation_enabled
     monkeypatch.setenv('APP_ENV',app_env);monkeypatch.setenv('LCM_KUZ_VALIDATION_AUTHORIZATION',authorized);monkeypatch.setenv('LCM_LAB_PROJECT','lcm-stage13-policy-crypto')
     assert validation_enabled() is expected
+
+
+def test_ml_internal_fsm_failure_is_not_a_rejected_source(postgres_db,monkeypatch):
+    from src.policy import worker
+    e=postgres_db.db.engine;setup(e)
+    with e.begin() as c:ml_setup(c);ml_source(c,1)
+    def fail(*args,**kwargs):raise ValueError('Injected internal FSM failure')
+    monkeypatch.setattr(worker,'process',fail)
+    with pytest.raises(ValueError,match='internal FSM'):
+        worker.poll_batch(e,at=T+timedelta(seconds=2))
+    with e.connect() as c:
+        assert c.scalar(select(func.count()).select_from(m.pending))==1
+        assert c.scalar(select(func.count()).select_from(m.signals))==0

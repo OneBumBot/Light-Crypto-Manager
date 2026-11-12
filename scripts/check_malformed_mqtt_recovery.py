@@ -156,7 +156,7 @@ def main():
     env=dict(line.split('=',1) for line in a.env_file.read_text().splitlines() if '=' in line and not line.startswith('#'))
     import re
     project=env.get('COMPOSE_PROJECT_NAME','')
-    if not re.fullmatch(r'lcm-(?:stage8-fix-|stage9-demo-|stage10-performance-|stage11-kuznyechik-|stage12-crypto-research-)[a-z0-9-]+',project):p.error('Dedicated fix/demo project required')
+    if not re.fullmatch(r'lcm-(?:stage8-fix-|stage9-demo-|stage10-performance-|stage11-kuznyechik-|stage12-crypto-research-|stage13-policy-)[a-z0-9-]+',project):p.error('Dedicated fix/demo project required')
     if a.output.exists():p.error('Output already exists')
     base=['docker','compose','--env-file',str(a.env_file),'-f','compose.yaml','-f','compose.control.yaml','--profile','control']
     if project.startswith('lcm-stage9-demo-'):
@@ -164,6 +164,14 @@ def main():
     if project.startswith('lcm-stage12-crypto-research-'):
         from scripts.crypto_research_lab import Lab
         base=Lab(a.env_file.parent).base
+    if project.startswith('lcm-stage13-policy-'):
+        if (a.env_file.parent/'stage12.json').exists():
+            from scripts.policy13_crypto_lab import Lab
+        else:
+            from scripts.policy_lab import Lab
+        lab=Lab(a.env_file.parent)
+        if len(lab.devices)!=3:p.error('Poison probe requires quiescent three-device lab')
+        base=lab.base
     if project.startswith('lcm-stage11-kuznyechik-'):
         from scripts.kuz_lab import Lab
         base=Lab(a.env_file.parent).base
@@ -172,7 +180,7 @@ def main():
         lab=Lab(a.env_file.parent)
         if len(lab.devices)!=3:p.error('Poison probe requires quiescent three-device lab')
         base=lab.base
-    receiver_id=project+'-receiver' if project.startswith(('lcm-stage9-demo-','lcm-stage10-performance-','lcm-stage11-kuznyechik-','lcm-stage12-crypto-research-')) else 'lightcrypto-ingestion'
+    receiver_id=project+'-receiver' if project.startswith(('lcm-stage9-demo-','lcm-stage10-performance-','lcm-stage11-kuznyechik-','lcm-stage12-crypto-research-','lcm-stage13-policy-')) else 'lightcrypto-ingestion'
     def run(*parts):
         r=subprocess.run(base+list(parts),capture_output=True,text=True,timeout=120)
         if r.returncode:
