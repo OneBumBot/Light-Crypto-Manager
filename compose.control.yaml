@@ -24,6 +24,8 @@ services:
     logging: *control-logging
     cpus: 0.5
     mem_limit: 256m
+  policy-worker:
+    logging: *control-logging
   control-init:
     image: ${COMPOSE_PROJECT_NAME}-runtime
     profiles: [control]
