@@ -96,7 +96,7 @@
     const workerText={ready:'Готов к обработке команд',stale:'Heartbeat устарел — отправка недоступна',unavailable:'Недоступен',unknown:'Состояние неизвестно'};
     $('crypto-worker').append(el('p',workerText[worker?.status]||'Состояние неизвестно'),el('small','Последний heartbeat: '+time(worker?.checked_at)+' · допустимая свежесть 10 с'));
     $('crypto-effective').textContent=profile(d.effective_profile);
-    $('crypto-effective-note').textContent=(receipt?'Подтверждено сервером по принятой AEAD-телеметрии.':'Для управления нужна первая подтверждённая телеметрия.')+(data.profiles[d.effective_profile]?.lab_only?' Только software lab · '+data.profiles[d.effective_profile].implementation_id:'');
+    $('crypto-effective-note').textContent=(receipt?'Подтверждено сервером по принятой AEAD-телеметрии.':'Для управления нужна первая подтверждённая телеметрия.')+(data.profiles[d.effective_profile]?.lab_only?' Только software lab · backend web-процесса: '+data.profiles[d.effective_profile].implementation_id:'');
     fields('crypto-receipt',[['Подтверждено',time(receipt?.accepted_at)],['Telemetry event ID',receipt?.event_id||'Нет подтверждения'],['Эпоха / sequence',receipt?receipt.key_epoch+' / '+receipt.sequence_number:'Нет данных']]);
     $('crypto-reported').textContent=d.reported_profile?profile(d.reported_profile):'Отдельный ACK о применении ещё не получен';
     const lastAck=data.acks[0];fields('crypto-ack',[['Последний ответ',lastAck?lastAck.phase+' / '+lastAck.result:'ACK отсутствует'],['Получен',time(lastAck?.received_at)]]);
