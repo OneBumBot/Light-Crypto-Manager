@@ -6,7 +6,7 @@
 |---|---|---|
 | tarantool/go-gostcrypto `3791d459e0c35d051a691a3bd3a4a69f671258f5` | Kuznyechik `NewCipherCT`, MGM Seal/Open, полный tag16; BSD-2-Clause; Go>=1.24; нет внешних dependencies | Выбран для **явно разрешённого изолированного software validation**, не production |
 | drobotun/gostcrypto `60d5338553a61c9dd9cbe70bc3a96dd253a84630` | Python Kuznyechik; MIT; режимы ECB/CBC/CFB/OFB/CTR/MAC | Нет готового MGM API, не выбран |
-| gost-engine/engine | OpenSSL engine, отдельная сложность ABI/build; полнота пригодного MGM API в этом исследовании не установлена | Не выбран, не выдаётся за проверенный MGM provider |
+| gost-engine/engine `af2b7e69e855572202420ffc36bae06ccd70796b` | Apache2; Kuznyechik/MGM подтверждён в gost_grasshopper_cipher.c, опубликован test_mgm.c с нормативными vectors | Не выбран: C/OpenSSL ABI и безопасный Python one-shot wrapper здесь не собраны/не проверены; статус исходников не выдаётся за выполненный build/KAT |
 | pedroalbanese/gogost `44a1f1ec2524a739e2fb8032aab96371052124ef` | Независимый Kuznyechik/MGM, GPL-3.0, отдельный проверочный executable | Только cross-check; не vendored/linked в runtime. Канонический git.cypherpunks.su недоступен; проверен именно указанный fork |
 
 Источники: [RFC7801](https://www.rfc-editor.org/rfc/rfc7801), [RFC9058](https://www.rfc-editor.org/rfc/rfc9058), [выбранный upstream](https://github.com/tarantool/go-gostcrypto), [независимый fork](https://github.com/pedroalbanese/gogost). Значения из RFC проверяются побайтно, roundtrip не заменяет KAT.
@@ -33,3 +33,5 @@ Builder image: `golang:1.27.3-bookworm@sha256:dc0963f32053e4bc451d24d87e3892d42d
 - Независимый executable: 54 размера/сочетания AAD, полное совпадение ciphertext+tag; 108 отказов damaged tag, exit0. Ключи случайные и в отчёт не записываются. Повторные данные не считаются независимым security audit.
 
 Машиночитаемые результаты находятся в `docs/reports/stage11/`. Первая попытка переноса RFCplaintext содержала ошибку тестовой hex-константы, обнаруженную точным KAT; исправлена по строкам RFC. Это не дефект provider и не mutation detection.
+
+Исходные Git archive SHA256 всех четырёх рассмотренных ревизий: `docs/reports/stage11/provider-sources.json`. Для невыбранных кандидатов build, Python API, ARM и whole-provider side-channel status остаются not_verified, а не passed.

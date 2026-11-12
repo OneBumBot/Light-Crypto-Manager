@@ -119,3 +119,7 @@ Web фиксирует свой счётчик перед emit: повтор н�
 добавлена одна replay-таблица. Полная Alembic-переработка относится к этапу 5.
 Криптографический reference код остаётся pure Python; constant-time/сертификация
 всей реализации не утверждаются. Валидация протокола не зависит от assert/-O.
+
+## Stage11: Kuznyechik-MGM
+
+В явно разрешённом software lab добавлен wire `Kuznyechik-MGM`, profile ID `kuznyechik-mgm-v1`, nonce16B/full tag16B. Telemetryv2 и authenticated AAD сохраняются; новый key32B независим и отсутствует в packet/API. Receiver проверяет deterministic ICN, profile/key/AAD binding, MGM tag, usage allowance и replay admission. Unknown/type-invalid profiles безопасно отклоняются; нет fallback. [Совместимость](STAGE11_PROTOCOL_COMPATIBILITY.md), [nonce/budget](KUZNYECHIK_NONCE_AND_KEY_BUDGET.md).

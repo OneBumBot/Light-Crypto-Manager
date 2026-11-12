@@ -1,0 +1,1502 @@
+[
+  {
+    "service": "mongo",
+    "started_at": "2026-11-12T14:49:54.281781+00:00",
+    "restored_at": "2026-11-12T14:50:14.550185+00:00",
+    "held_seconds": 8,
+    "total_seconds": 22.433684969997557,
+    "recovery_seconds": 2.165280385997903,
+    "before": {
+      "checked_at": "2026-11-12T14:49:53.599017+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "beta": {
+          "count": 880,
+          "last_sequence": 30083
+        },
+        "alpha": {
+          "count": 880,
+          "last_sequence": 30083
+        },
+        "gamma": {
+          "count": 879,
+          "last_sequence": 20083
+        }
+      },
+      "outbox": {
+        "delivered": 2639
+      },
+      "counters": {
+        "replay": 1,
+        "incoming": 2659,
+        "rejected": 19,
+        "delivered": 2639,
+        "accepted": 2639
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 7,
+      "database_bytes": 45962931,
+      "pg_stats": {
+        "xact_commit": 56425,
+        "xact_rollback": 671,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 2639
+    },
+    "during": {
+      "checked_at": "2026-11-12T14:50:03.138604+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "beta": {
+          "count": 899,
+          "last_sequence": 30102
+        },
+        "alpha": {
+          "count": 899,
+          "last_sequence": 30102
+        },
+        "gamma": {
+          "count": 898,
+          "last_sequence": 20102
+        }
+      },
+      "outbox": {
+        "pending": 53,
+        "delivered": 2642,
+        "claimed": 1
+      },
+      "counters": {
+        "replay": 1,
+        "incoming": 2716,
+        "rejected": 19,
+        "delivery_error": 1,
+        "delivered": 2642,
+        "accepted": 2696
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 7,
+      "database_bytes": 51164851,
+      "pg_stats": {
+        "xact_commit": 58016,
+        "xact_rollback": 791,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": null
+    },
+    "after": {
+      "checked_at": "2026-11-12T14:50:15.201076+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 923,
+          "last_sequence": 30126
+        },
+        "beta": {
+          "count": 923,
+          "last_sequence": 30126
+        },
+        "gamma": {
+          "count": 922,
+          "last_sequence": 20126
+        }
+      },
+      "outbox": {
+        "delivered": 2765,
+        "pending": 3
+      },
+      "counters": {
+        "incoming": 2788,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 2765,
+        "accepted": 2768
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 7,
+      "database_bytes": 47724211,
+      "pg_stats": {
+        "xact_commit": 59797,
+        "xact_rollback": 808,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 2765
+    },
+    "false_effective": false,
+    "pre_restore_cohort_delivered": true
+  },
+  {
+    "service": "control-worker",
+    "started_at": "2026-11-12T14:50:18.045428+00:00",
+    "restored_at": "2026-11-12T14:50:35.396561+00:00",
+    "held_seconds": 12,
+    "total_seconds": 19.513490165001713,
+    "recovery_seconds": 2.1623581649982953,
+    "before": {
+      "checked_at": "2026-11-12T14:50:17.345911+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 927,
+          "last_sequence": 30130
+        },
+        "beta": {
+          "count": 928,
+          "last_sequence": 30131
+        },
+        "gamma": {
+          "count": 926,
+          "last_sequence": 20130
+        }
+      },
+      "outbox": {
+        "delivered": 2781
+      },
+      "counters": {
+        "incoming": 2801,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 2781,
+        "accepted": 2781
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 7,
+      "database_bytes": 47806131,
+      "pg_stats": {
+        "xact_commit": 60032,
+        "xact_rollback": 812,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 2781
+    },
+    "during": {
+      "checked_at": "2026-11-12T14:50:30.979838+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 954,
+          "last_sequence": 30157
+        },
+        "beta": {
+          "count": 955,
+          "last_sequence": 30158
+        },
+        "gamma": {
+          "count": 953,
+          "last_sequence": 20157
+        }
+      },
+      "outbox": {
+        "delivered": 2861,
+        "pending": 1
+      },
+      "counters": {
+        "incoming": 2882,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 2861,
+        "accepted": 2862
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 6,
+      "database_bytes": 48289459,
+      "pg_stats": {
+        "xact_commit": 61129,
+        "xact_rollback": 814,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 2861
+    },
+    "after": {
+      "checked_at": "2026-11-12T14:50:36.056161+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 964,
+          "last_sequence": 30167
+        },
+        "beta": {
+          "count": 965,
+          "last_sequence": 30168
+        },
+        "gamma": {
+          "count": 963,
+          "last_sequence": 20167
+        }
+      },
+      "outbox": {
+        "delivered": 2892
+      },
+      "counters": {
+        "incoming": 2912,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 2892,
+        "accepted": 2892
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 8,
+      "database_bytes": 48477875,
+      "pg_stats": {
+        "xact_commit": 61644,
+        "xact_rollback": 818,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 2892
+    },
+    "false_effective": false,
+    "pre_restore_cohort_delivered": true
+  },
+  {
+    "service": "policy-worker",
+    "started_at": "2026-11-12T14:50:38.901229+00:00",
+    "restored_at": "2026-11-12T14:51:18.144963+00:00",
+    "held_seconds": 32,
+    "total_seconds": 41.38343991799775,
+    "recovery_seconds": 2.139705772002344,
+    "before": {
+      "checked_at": "2026-11-12T14:50:38.204315+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 968,
+          "last_sequence": 30171
+        },
+        "beta": {
+          "count": 969,
+          "last_sequence": 30172
+        },
+        "gamma": {
+          "count": 968,
+          "last_sequence": 20172
+        }
+      },
+      "outbox": {
+        "delivered": 2904,
+        "pending": 1
+      },
+      "counters": {
+        "incoming": 2925,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 2904,
+        "accepted": 2905
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 8,
+      "database_bytes": 48535219,
+      "pg_stats": {
+        "xact_commit": 61879,
+        "xact_rollback": 822,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 2904
+    },
+    "during": {
+      "checked_at": "2026-11-12T14:51:11.758973+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1035,
+          "last_sequence": 30238
+        },
+        "beta": {
+          "count": 1036,
+          "last_sequence": 30239
+        },
+        "gamma": {
+          "count": 1034,
+          "last_sequence": 20238
+        }
+      },
+      "outbox": {
+        "delivered": 3103,
+        "pending": 2
+      },
+      "counters": {
+        "incoming": 3125,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3103,
+        "accepted": 3105
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 7,
+      "database_bytes": 48862899,
+      "pg_stats": {
+        "xact_commit": 65069,
+        "xact_rollback": 824,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3103
+    },
+    "after": {
+      "checked_at": "2026-11-12T14:51:18.796976+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1049,
+          "last_sequence": 30252
+        },
+        "beta": {
+          "count": 1050,
+          "last_sequence": 30253
+        },
+        "gamma": {
+          "count": 1048,
+          "last_sequence": 20252
+        }
+      },
+      "outbox": {
+        "delivered": 3146,
+        "pending": 1
+      },
+      "counters": {
+        "incoming": 3167,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3146,
+        "accepted": 3147
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 8,
+      "database_bytes": 48780979,
+      "pg_stats": {
+        "xact_commit": 66067,
+        "xact_rollback": 828,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3146
+    },
+    "false_effective": false,
+    "pre_restore_cohort_delivered": true
+  },
+  {
+    "service": "postgres",
+    "started_at": "2026-11-12T14:51:21.617607+00:00",
+    "restored_at": "2026-11-12T14:51:31.727280+00:00",
+    "held_seconds": 6,
+    "total_seconds": 12.266171190000023,
+    "recovery_seconds": 2.1564986820012564,
+    "before": {
+      "checked_at": "2026-11-12T14:51:20.916791+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1053,
+          "last_sequence": 30256
+        },
+        "beta": {
+          "count": 1054,
+          "last_sequence": 30257
+        },
+        "gamma": {
+          "count": 1052,
+          "last_sequence": 20256
+        }
+      },
+      "outbox": {
+        "delivered": 3159
+      },
+      "counters": {
+        "incoming": 3179,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3159,
+        "accepted": 3159
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 8,
+      "database_bytes": 49026739,
+      "pg_stats": {
+        "xact_commit": 66406,
+        "xact_rollback": 832,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3159
+    },
+    "during": null,
+    "after": {
+      "checked_at": "2026-11-12T14:51:32.377302+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1076,
+          "last_sequence": 30279
+        },
+        "beta": {
+          "count": 1076,
+          "last_sequence": 30279
+        },
+        "gamma": {
+          "count": 1075,
+          "last_sequence": 20279
+        }
+      },
+      "outbox": {
+        "delivered": 3226,
+        "pending": 1
+      },
+      "counters": {
+        "incoming": 3247,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3226,
+        "accepted": 3227
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 6,
+      "database_bytes": 49641139,
+      "pg_stats": {
+        "xact_commit": 67409,
+        "xact_rollback": 835,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3226
+    },
+    "false_effective": false,
+    "pre_restore_cohort_delivered": true
+  },
+  {
+    "service": "broker",
+    "started_at": "2026-11-12T14:51:35.188233+00:00",
+    "restored_at": "2026-11-12T14:51:46.433968+00:00",
+    "held_seconds": 6,
+    "total_seconds": 13.4088543129983,
+    "recovery_seconds": 2.163120083998365,
+    "before": {
+      "checked_at": "2026-11-12T14:51:34.515136+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1080,
+          "last_sequence": 30283
+        },
+        "beta": {
+          "count": 1081,
+          "last_sequence": 30284
+        },
+        "gamma": {
+          "count": 1079,
+          "last_sequence": 20283
+        }
+      },
+      "outbox": {
+        "delivered": 3238,
+        "pending": 2
+      },
+      "counters": {
+        "incoming": 3260,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3238,
+        "accepted": 3240
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 6,
+      "database_bytes": 49706675,
+      "pg_stats": {
+        "xact_commit": 67742,
+        "xact_rollback": 839,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3238
+    },
+    "during": {
+      "checked_at": "2026-11-12T14:51:42.044563+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1081,
+          "last_sequence": 30284
+        },
+        "beta": {
+          "count": 1082,
+          "last_sequence": 30285
+        },
+        "gamma": {
+          "count": 1081,
+          "last_sequence": 20285
+        }
+      },
+      "outbox": {
+        "delivered": 3244
+      },
+      "counters": {
+        "incoming": 3264,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3244,
+        "accepted": 3244
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 6,
+      "database_bytes": 49731251,
+      "pg_stats": {
+        "xact_commit": 68017,
+        "xact_rollback": 841,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3244
+    },
+    "after": {
+      "checked_at": "2026-11-12T14:51:47.091938+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1081,
+          "last_sequence": 30284
+        },
+        "beta": {
+          "count": 1082,
+          "last_sequence": 30285
+        },
+        "gamma": {
+          "count": 1081,
+          "last_sequence": 20285
+        }
+      },
+      "outbox": {
+        "delivered": 3244
+      },
+      "counters": {
+        "incoming": 3264,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3244,
+        "accepted": 3244
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 6,
+      "database_bytes": 49731251,
+      "pg_stats": {
+        "xact_commit": 68107,
+        "xact_rollback": 843,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3244
+    },
+    "false_effective": false,
+    "pre_restore_cohort_delivered": true
+  },
+  {
+    "service": "device-alpha",
+    "started_at": "2026-11-12T14:51:49.917380+00:00",
+    "restored_at": "2026-11-12T14:52:00.160544+00:00",
+    "held_seconds": 3,
+    "total_seconds": 12.379734681999253,
+    "recovery_seconds": 2.1365704639974865,
+    "before": {
+      "checked_at": "2026-11-12T14:51:49.237710+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1081,
+          "last_sequence": 30284
+        },
+        "beta": {
+          "count": 1082,
+          "last_sequence": 30285
+        },
+        "gamma": {
+          "count": 1081,
+          "last_sequence": 20285
+        }
+      },
+      "outbox": {
+        "delivered": 3244
+      },
+      "counters": {
+        "incoming": 3264,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3244,
+        "accepted": 3244
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 6,
+      "database_bytes": 49731251,
+      "pg_stats": {
+        "xact_commit": 68172,
+        "xact_rollback": 847,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3244
+    },
+    "during": {
+      "checked_at": "2026-11-12T14:51:53.790791+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 40000,
+          "command_sequence": 10
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1087,
+          "last_sequence": 30290
+        },
+        "beta": {
+          "count": 1095,
+          "last_sequence": 30298
+        },
+        "gamma": {
+          "count": 1094,
+          "last_sequence": 20298
+        }
+      },
+      "outbox": {
+        "delivered": 3276
+      },
+      "counters": {
+        "incoming": 3296,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3276,
+        "accepted": 3276
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 6,
+      "database_bytes": 49829555,
+      "pg_stats": {
+        "xact_commit": 68757,
+        "xact_rollback": 849,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3276
+    },
+    "after": {
+      "checked_at": "2026-11-12T14:52:00.814386+00:00",
+      "devices": [
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 50000,
+          "command_sequence": 10
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1098,
+          "last_sequence": 40011
+        },
+        "beta": {
+          "count": 1109,
+          "last_sequence": 30312
+        },
+        "gamma": {
+          "count": 1108,
+          "last_sequence": 20312
+        }
+      },
+      "outbox": {
+        "claimed": 1,
+        "delivered": 3312,
+        "pending": 2
+      },
+      "counters": {
+        "incoming": 3335,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3312,
+        "accepted": 3315
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 6,
+      "database_bytes": 49968819,
+      "pg_stats": {
+        "xact_commit": 69478,
+        "xact_rollback": 851,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3315
+    },
+    "false_effective": false,
+    "pre_restore_cohort_delivered": true
+  },
+  {
+    "service": "receiver",
+    "started_at": "2026-11-12T14:52:03.625423+00:00",
+    "restored_at": "2026-11-12T14:52:11.854914+00:00",
+    "held_seconds": 3,
+    "total_seconds": 10.381870667999465,
+    "recovery_seconds": 2.1523800260001735,
+    "before": {
+      "checked_at": "2026-11-12T14:52:02.930540+00:00",
+      "devices": [
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 50000,
+          "command_sequence": 10
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1102,
+          "last_sequence": 40015
+        },
+        "beta": {
+          "count": 1113,
+          "last_sequence": 30316
+        },
+        "gamma": {
+          "count": 1112,
+          "last_sequence": 20316
+        }
+      },
+      "outbox": {
+        "delivered": 3327
+      },
+      "counters": {
+        "incoming": 3347,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3327,
+        "accepted": 3327
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 6,
+      "database_bytes": 50026163,
+      "pg_stats": {
+        "xact_commit": 69711,
+        "xact_rollback": 855,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3327
+    },
+    "during": {
+      "checked_at": "2026-11-12T14:52:07.498424+00:00",
+      "devices": [
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 50000,
+          "command_sequence": 10
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 1104,
+          "last_sequence": 40017
+        },
+        "beta": {
+          "count": 1115,
+          "last_sequence": 30318
+        },
+        "gamma": {
+          "count": 1114,
+          "last_sequence": 20318
+        }
+      },
+      "outbox": {
+        "delivered": 3333
+      },
+      "counters": {
+        "incoming": 3353,
+        "delivery_error": 2,
+        "replay": 1,
+        "delivery_retry": 2,
+        "rejected": 19,
+        "delivered": 3333,
+        "accepted": 3333
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 4,
+      "database_bytes": 50050739,
+      "pg_stats": {
+        "xact_commit": 70070,
+        "xact_rollback": 857,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3333
+    },
+    "after": {
+      "checked_at": "2026-11-12T14:52:12.530188+00:00",
+      "devices": [
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+          "sequence_reserved": 40000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "alpha",
+          "effective_profile": "kuznyechik-mgm-v1",
+          "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+          "sequence_reserved": 50000,
+          "command_sequence": 10
+        }
+      ],
+      "per_device": {
+        "beta": {
+          "count": 1132,
+          "last_sequence": 30335
+        },
+        "alpha": {
+          "count": 1121,
+          "last_sequence": 40034
+        },
+        "gamma": {
+          "count": 1131,
+          "last_sequence": 20335
+        }
+      },
+      "outbox": {
+        "pending": 1,
+        "delivered": 3383
+      },
+      "counters": {
+        "incoming": 3405,
+        "delivery_error": 2,
+        "delivery_retry": 2,
+        "replay": 2,
+        "rejected": 19,
+        "delivered": 3383,
+        "accepted": 3384
+      },
+      "transitions": 5,
+      "completed": 5,
+      "unknown": 0,
+      "authenticated_ack": 10,
+      "receipts": 8,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 6,
+      "database_bytes": 50140851,
+      "pg_stats": {
+        "xact_commit": 70893,
+        "xact_rollback": 861,
+        "deadlocks": 0
+      },
+      "migration": "0010_mgm_key_usage",
+      "ml_trusted": false,
+      "mongo_managed": 3383
+    },
+    "false_effective": false,
+    "pre_restore_cohort_delivered": true
+  }
+]

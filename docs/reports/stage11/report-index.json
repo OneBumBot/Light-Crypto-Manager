@@ -1,0 +1,725 @@
+{
+  "index_source_sha": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+  "notes": [
+    "Abbreviated Lab.run commands resolve against the compose_base below; full executed argv/timestamps are embedded in primary JSON reports where available",
+    "Early integration reports recorded the baseline HEAD with dirty new files; they are not attributed to unchanged baseline source",
+    "Supplemental failures are retained, not counted as cryptographic/mutation security successes",
+    "Final full suite includes all original tests plus new Stage11 cases; no skipped tests",
+    "Final snapshot was collected after additional SQLite experiments; earlier snapshots remain separate",
+    "Release suite868 includes separately parameterized missing MGM key/capability; publishers were not started during this final test-only rebuild",
+    "Raw stdout/stderr text is preserved byte-for-byte, including Docker trailing spaces; git whitespace check excludes only these .txt evidence streams. Source, Markdown and JSON checks remain enabled."
+  ],
+  "compose_base": [
+    "docker",
+    "compose",
+    "--env-file",
+    ".local-runtime/stage11/live/compose.env",
+    "-f",
+    "compose.yaml",
+    "-f",
+    "compose.control.yaml",
+    "-f",
+    ".local-runtime/stage11/live/kuznyechik.compose.json",
+    "--profile",
+    "control",
+    "--profile",
+    "web",
+    "--profile",
+    "policy"
+  ],
+  "artifacts": [
+    {
+      "file": "baseline-prepare.txt",
+      "sha256": "e1fb2fc0c150b71647577ba132f6aac0216f2dc084abe761da5668e3334c7c7b",
+      "bytes": 227,
+      "command": ".venv/bin/python -m scripts.kuz_lab prepare --directory .local-runtime/stage11/baseline --project lcm-stage11-kuznyechik-baseline",
+      "exit_code": 0,
+      "source_identifier": "d226fbc56068caa5a2685d31a89eb0c85f8efe4c",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "baseline-regression.txt",
+      "sha256": "f135700dd8a2c9a0494274a898ec4ff0c06fb9dfc34a709bb1da3a1468aff4d1",
+      "bytes": 1052,
+      "command": "docker compose [dedicated Stage11 baseline config] run --rm --no-deps tests",
+      "exit_code": 0,
+      "source_identifier": "d226fbc56068caa5a2685d31a89eb0c85f8efe4c",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "baseline-start.txt",
+      "sha256": "95c5245ee6c88a253a59f46c1b903d2927d93d10c2f81e99941b046a37ed7939",
+      "bytes": 190,
+      "command": ".venv/bin/python -m scripts.kuz_lab start --directory .local-runtime/stage11/baseline --build",
+      "exit_code": 0,
+      "source_identifier": "d226fbc56068caa5a2685d31a89eb0c85f8efe4c",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "browser.desktop.png",
+      "sha256": "110faf19fe52aeafc86e3e15675f746fb98e1abdea340163b58ce8c8ce5698d1",
+      "bytes": 847691,
+      "command": "UV_CACHE_DIR=.cache/uv PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers uv run --offline --no-project --python .venv/bin/python --with playwright==1.56.0 python -m scripts.check_stage9_browser --directory .local-runtime/stage11/live --output docs/reports/stage11/browser.json",
+      "exit_code": 0,
+      "source_identifier": "80bcb01 runtime; later host harness c3416f2 source manifest",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "browser.json",
+      "sha256": "924d4aab9337b13f681257ff72829e34f12cb2d8e4396655ccef436359ba38cd",
+      "bytes": 11130,
+      "command": "UV_CACHE_DIR=.cache/uv PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers uv run --offline --no-project --python .venv/bin/python --with playwright==1.56.0 python -m scripts.check_stage9_browser --directory .local-runtime/stage11/live --output docs/reports/stage11/browser.json",
+      "exit_code": 0,
+      "source_identifier": "80bcb01 runtime; later host harness c3416f2 source manifest",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "browser.mobile.png",
+      "sha256": "26c00cec6a303da527c09a0889b86e4f643ec48e881d87d33a20b4f350e2f97e",
+      "bytes": 303100,
+      "command": "UV_CACHE_DIR=.cache/uv PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers uv run --offline --no-project --python .venv/bin/python --with playwright==1.56.0 python -m scripts.check_stage9_browser --directory .local-runtime/stage11/live --output docs/reports/stage11/browser.json",
+      "exit_code": 0,
+      "source_identifier": "80bcb01 runtime; later host harness c3416f2 source manifest",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "browser.txt",
+      "sha256": "8e0f4d5a5cc3ff9154b986306612ecb8db787f2580c876d7038101ab386f55f1",
+      "bytes": 947,
+      "command": "UV_CACHE_DIR=.cache/uv PLAYWRIGHT_BROWSERS_PATH=.local-runtime/browsers uv run --offline --no-project --python .venv/bin/python --with playwright==1.56.0 python -m scripts.check_stage9_browser --directory .local-runtime/stage11/live --output docs/reports/stage11/browser.json",
+      "exit_code": 0,
+      "source_identifier": "80bcb01 runtime; later host harness c3416f2 source manifest",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "changed-files.json",
+      "source_identifier": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+      "command": "derived evidence; refer to primary commands",
+      "exit_code": "not_measured",
+      "acceptance_evidence": false,
+      "sha256": "2bb3877fbdc15730b964cad5291c70c6bb6e1b09b1b871903880f42a7f7645e4",
+      "bytes": 14047
+    },
+    {
+      "file": "control-browser-first.txt",
+      "sha256": "dafc8b6566e628957476005e797b5cc9e96be2bcafc59a46bb090f558d0c9245",
+      "bytes": 2718,
+      "command": "uv run --offline --no-project --python .venv/bin/python --with playwright==1.56.0 python -m scripts.check_kuz_control_browser --directory .local-runtime/stage11/live --output docs/reports/stage11/control-browser.json",
+      "exit_code": 1,
+      "source_identifier": "5c743e2",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "control-browser-second.txt",
+      "sha256": "4f2e7b28eff39b2e7f035ff8cbff68ecc30971fe62f2fe53f0122dcfe9b795f9",
+      "bytes": 715,
+      "command": "same control-browser command; asynchronous snapshot wait harness failure",
+      "exit_code": 1,
+      "source_identifier": "5c743e2",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "control-browser.json",
+      "sha256": "d5972e3c7e4467307b5a3c6610c7663ebb9968b615e1a28a2c0a0faff406a57e",
+      "bytes": 1247,
+      "command": "uv run --offline --no-project --python .venv/bin/python --with playwright==1.56.0 python -m scripts.check_kuz_control_browser --directory .local-runtime/stage11/live --output docs/reports/stage11/control-browser.json",
+      "exit_code": 0,
+      "source_identifier": "5c743e2872d99479e41db1dd6307dfc49745d458",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "control-browser.txt",
+      "sha256": "257edf950588268413e91bdbb31e590b828a99e0de3a8f32b9b1d1c57f633b38",
+      "bytes": 42,
+      "command": "uv run --offline --no-project --python .venv/bin/python --with playwright==1.56.0 python -m scripts.check_kuz_control_browser --directory .local-runtime/stage11/live --output docs/reports/stage11/control-browser.json",
+      "exit_code": 0,
+      "source_identifier": "5c743e2; test harness changes before commit79aefc1",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "control-negatives.json",
+      "sha256": "8aa48c8b03c4ff016c1dc9d416af3d8a0c50682a2718ed5b2994f0719d64d1dd",
+      "bytes": 1308,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": 0,
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "control-security-final.txt",
+      "sha256": "5aeb137e1f8003a4126824bdbb779842ede2035b3d4002b58c021d5695e83744",
+      "bytes": 1267,
+      "command": "Lab(.local-runtime/stage11/live).run(run --rm -T --no-deps --entrypoint python tests -m scripts.control_security_probe)",
+      "exit_code": 0,
+      "source_identifier": "cf5e5c4",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "crypto-benchmark.json",
+      "sha256": "150cc370e7016cc626bf3a85bbfe694cd23dfa42b72bf8994df2108a2ae9943b",
+      "bytes": 376715,
+      "command": "LCM_KUZ_PROVIDER=$PWD/.local-runtime/stage11/bin/lcm-kuz-mgm .venv/bin/python -m scripts.benchmark_stage11 --output docs/reports/stage11/crypto-benchmark.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c93a29a26558513101f759a4bf85d44da61",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "crypto-benchmark.txt",
+      "sha256": "e42129fe20063d0a6817d5f7a1ea1dfb7086fd3b06b749caa6e1883d28c05fdb",
+      "bytes": 29,
+      "command": "LCM_KUZ_PROVIDER=$PWD/.local-runtime/stage11/bin/lcm-kuz-mgm .venv/bin/python -m scripts.benchmark_stage11 --output docs/reports/stage11/crypto-benchmark.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "crypto-regression.txt",
+      "sha256": "91af269fdc0fdd872fa7c196e2ee5c40af8dc8cfb118e28bda737856c700bdaa",
+      "bytes": 431,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": "not_measured",
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "docker-build-final.txt",
+      "sha256": "e7d6bb5e3775dfa442526166abe9dd7d9b9abd4944a041d5b43d9cbb715977b3",
+      "bytes": 19786,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": "not_measured",
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "docker-build.txt",
+      "sha256": "5733073ca06f04e2c503218fc9bc53548b22f66f13edd613ce17dd3a26f63d8f",
+      "bytes": 39330,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": "not_measured",
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "final-stand-snapshot-before-sqlite.json",
+      "sha256": "a4c37a5e2958d1e4bcbc7261b1476c2b75d06cf93468381d36758a118c341a40",
+      "bytes": 14606,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": 0,
+      "source_identifier": "c3416f2f525daa1251e0932f49f1c05052f9fff4",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "final-stand-snapshot-before-sqlite.txt",
+      "sha256": "24e1249365052e8cfb3460ecb87713e0bd922b4dc541381a3bff64496d613fb4",
+      "bytes": 2273,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": "not_measured",
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "final-stand-snapshot-first.txt",
+      "sha256": "9bbbdff0ad7a5a9d85ff740af656967257f23db815cfa91ff774090e78c98620",
+      "bytes": 696,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": "not_measured",
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "final-stand-snapshot.json",
+      "sha256": "ac13a8c549370682cbc953bbf388ac3fdd20ab03d525d6635c59dedccf87220c",
+      "bytes": 14607,
+      "command": "PYTHONPATH=$PWD .venv/bin/python /tmp/final_stage11.py; full executed Compose argv recorded in commands field",
+      "exit_code": 0,
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "final-stand-snapshot.txt",
+      "sha256": "c5616532426b4727d7676be6b1c7d6bc0c65e39a9fff4d9d96137b052e54d711",
+      "bytes": 2274,
+      "command": "PYTHONPATH=$PWD .venv/bin/python /tmp/final_stage11.py",
+      "exit_code": 0,
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "final-verification-before-sqlite.json",
+      "sha256": "864b6a57aaf6b73fb1a9bcc3bac6b4bf39fcdc246e85bd359b39dff883ee4e3f",
+      "bytes": 798,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": 0,
+      "source_identifier": "c3416f2f525daa1251e0932f49f1c05052f9fff4",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "final-verification.json",
+      "sha256": "9083225d7c6b3520c387f0a60ee109bed1bc147f6a9de97b2d10f93adbf29171",
+      "bytes": 856,
+      "command": "bounded host Python audit: immutable image IDs, git diff runtime sources, secret needles, docker ps Stage11 labels; exact assertions described in artifact",
+      "exit_code": 0,
+      "source_identifier": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "full-regression-final.txt",
+      "sha256": "548ebb893c1f380237654352feecf9902a3bafe4faef2cb42bcdcb36a4ecaa47",
+      "bytes": 1204,
+      "command": "Lab(.local-runtime/stage11/live).run(run --rm -T --no-deps tests)",
+      "exit_code": 0,
+      "source_identifier": "cf5e5c4a2952a832455cc830d1dc43358dee996c",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "full-regression-release.txt",
+      "source_identifier": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+      "command": "Lab(.local-runtime/stage11/live).run(run --rm -T --no-deps tests); pytest default CMD",
+      "exit_code": 0,
+      "acceptance_evidence": true,
+      "sha256": "ccecfab6045b16df93be1ee9d162ef74f194c6c4fce6db84f3531c60e8e52a2b",
+      "bytes": 1204
+    },
+    {
+      "file": "full-regression.txt",
+      "sha256": "59b4c3730faac2bd85007041967fb82762b42993db4ab7ffe1611f766e2ecad8",
+      "bytes": 1124,
+      "command": "Lab(.local-runtime/stage11/live).run(run --rm -T --no-deps tests)",
+      "exit_code": 0,
+      "source_identifier": "cf5e5c4a2952a832455cc830d1dc43358dee996c",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "go-image.txt",
+      "sha256": "cf63d08c36fe3dc331e026aa95583fcbcdb9254e43375a6a3fec6cc88e2d8865",
+      "bytes": 922,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": "not_measured",
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "independent-build.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": "not_measured",
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "independent-comparison-final.json",
+      "sha256": "0228e57182cea5088435d37f2e26c71ffb25471c9b81d0c1a2eb7b37ad0b82ca",
+      "bytes": 251,
+      "command": "LCM_KUZ_PROVIDER=<local executable> .venv/bin/python -m scripts.check_kuz_crosscheck --independent .local-runtime/stage11/bin/independent-mgm",
+      "exit_code": 0,
+      "source_identifier": "pinned primary and independent revisions in provider-sources.json",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "independent-comparison.json",
+      "sha256": "1d11481a0c8e86811d45d7a84830186dafbabe38634d14a0caf0ad541dfd009f",
+      "bytes": 251,
+      "command": "LCM_KUZ_PROVIDER=<local executable> .venv/bin/python -m scripts.check_kuz_crosscheck --independent .local-runtime/stage11/bin/independent-mgm",
+      "exit_code": 0,
+      "source_identifier": "pinned primary and independent revisions in provider-sources.json",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "key-schedule-kat.jsonl",
+      "sha256": "91de8947c97b08c63bd2f4d532bf8a02a14f55840fb51b1576a385990eaea156",
+      "bytes": 1397,
+      "command": "GOPROXY=off GOSUMDB=off GOCACHE=<private cache> go test -json ./kuznyechik (cwd third_party/go-gostcrypto)",
+      "exit_code": 0,
+      "source_identifier": "pinned Go revision + lcm_rfc7801_test.go",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "lost-ack.json",
+      "sha256": "b4fba7b0b01cf74094714ef2e7f19ab39cccc947712add1c6b69b940937d982d",
+      "bytes": 6858,
+      "command": ".venv/bin/python -m scripts.check_kuz_lostack --directory .local-runtime/stage11/live --output docs/reports/stage11/lost-ack.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "lost-ack.txt",
+      "sha256": "50a05341eb6e164fee0a5d43acd019099b7bbe3991cc271927cce09698b0e4ab",
+      "bytes": 43,
+      "command": ".venv/bin/python -m scripts.check_kuz_lostack --directory .local-runtime/stage11/live --output docs/reports/stage11/lost-ack.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "mgm-poison.json",
+      "sha256": "1a5c8cfde6536ea2b23370744b591d4cae992c5a08e4bd0873ee9096c8e183fa",
+      "bytes": 1562,
+      "command": ".venv/bin/python -m scripts.check_malformed_mqtt_recovery --env-file .local-runtime/stage11/live/compose.env --profile kuznyechik-mgm-v1 --output docs/reports/stage11/mgm-poison.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "mgm-poison.logs.txt",
+      "sha256": "a1cbb4ad19fae30e15832d74f68cae12c1cf1727901b91c005175f528a81603c",
+      "bytes": 3998,
+      "command": ".venv/bin/python -m scripts.check_malformed_mqtt_recovery --env-file .local-runtime/stage11/live/compose.env --profile kuznyechik-mgm-v1 --output docs/reports/stage11/mgm-poison.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "mgm-poison.restart.logs.txt",
+      "sha256": "413b03ee6d280efdcd511184a071aaed5c412e64d42799fcebbcd52c019b0363",
+      "bytes": 59,
+      "command": ".venv/bin/python -m scripts.check_malformed_mqtt_recovery --env-file .local-runtime/stage11/live/compose.env --profile kuznyechik-mgm-v1 --output docs/reports/stage11/mgm-poison.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "mgm-poison.txt",
+      "sha256": "1a5c8cfde6536ea2b23370744b591d4cae992c5a08e4bd0873ee9096c8e183fa",
+      "bytes": 1562,
+      "command": ".venv/bin/python -m scripts.check_malformed_mqtt_recovery --env-file .local-runtime/stage11/live/compose.env --profile kuznyechik-mgm-v1 --output docs/reports/stage11/mgm-poison.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "migration-upgrade.txt",
+      "sha256": "344cfe2094b5b518639b75f437c192b217cec407775325b785a000e3990973e0",
+      "bytes": 241,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": "not_measured",
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "mqtt-benchmark.json",
+      "sha256": "2b2057f9d3f550a3c016aa8ab3821185534aad3b644392754847b6c9e09464a2",
+      "bytes": 41429,
+      "command": ".venv/bin/python -m scripts.benchmark_kuz_mqtt --directory .local-runtime/stage11/live --output docs/reports/stage11/mqtt-benchmark.json",
+      "exit_code": 0,
+      "source_identifier": "cf5e5c4a2952a832455cc830d1dc43358dee996c",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "mqtt-benchmark.txt",
+      "sha256": "652526bff320faa589ffa910732dff9721cb25d38e69d0fa9e74af1d35e52935",
+      "bytes": 55,
+      "command": ".venv/bin/python -m scripts.benchmark_kuz_mqtt --directory .local-runtime/stage11/live --output docs/reports/stage11/mqtt-benchmark.json",
+      "exit_code": 0,
+      "source_identifier": "cf5e5c4",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "mutations-first.json",
+      "sha256": "9ef6e21bf1e33100a3974247657cdeda850280c7b21b6fd62d46acccb77bef15",
+      "bytes": 25917,
+      "command": "Lab(.local-runtime/stage11/live).run(run --rm -T --no-deps [readonly source mounts] --entrypoint python tests -m scripts.kuz_mutations --output /reports/mutations.json)",
+      "exit_code": 1,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "mutations-first.txt",
+      "sha256": "60a93c0c70865f304d207bf7400779aae2d2e11559606dcfdcf6c09857364e26",
+      "bytes": 26061,
+      "command": "Lab(.local-runtime/stage11/live).run(run --rm -T --no-deps [readonly source mounts] --entrypoint python tests -m scripts.kuz_mutations --output /reports/mutations.json)",
+      "exit_code": 1,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "mutations.json",
+      "sha256": "75b107beab4f9f18352bb98987cfee8a41a2357d90b9b30b3101dd9b50e0a757",
+      "bytes": 26550,
+      "command": "Lab(.local-runtime/stage11/live).run(run --rm -T --no-deps [readonly source mounts] --entrypoint python tests -m scripts.kuz_mutations --output /reports/mutations.json)",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "mutations.txt",
+      "sha256": "f903e1e0dc18612fdf14d2c92f24f3d5a6c9598f0f92dfdb6c35aa5099ca3c60",
+      "bytes": 26693,
+      "command": "Lab(.local-runtime/stage11/live).run(run --rm -T --no-deps [readonly source mounts] --entrypoint python tests -m scripts.kuz_mutations --output /reports/mutations.json)",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "native-frame-tests.jsonl",
+      "sha256": "85af369cee74f96c20c7ce030bd3647349a05f4a0e197a01526fb16516cce1e5",
+      "bytes": 1259,
+      "command": "GOPROXY=off GOSUMDB=off GOCACHE=<private cache> go test -json . (cwd native/kuzprovider)",
+      "exit_code": 0,
+      "source_identifier": "80bcb01",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "new-unit-tests.txt",
+      "sha256": "c13f4c2b9be3bb1ee5a86e429804e206b92f7ac616f87d71f7e2da3489743607",
+      "bytes": 193,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": "not_measured",
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "nonce-usage-results.json",
+      "source_identifier": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+      "command": "derived from primary artifacts and source manifest; see referenced commands",
+      "exit_code": 0,
+      "acceptance_evidence": false,
+      "sha256": "addbe034403fdbb7a7eb394561f25387e91d2373eed011740ca7bfbd4856a2b5",
+      "bytes": 2594
+    },
+    {
+      "file": "post-isolation-regression.txt",
+      "sha256": "31d4f1208e572480b5d107550b25710079b16c2f3b6ebb1225a0d7fb7c331d2a",
+      "bytes": 1204,
+      "command": "Lab(.local-runtime/stage11/live).run(run --rm -T --no-deps tests)",
+      "exit_code": 0,
+      "source_identifier": "c3416f2f525daa1251e0932f49f1c05052f9fff4",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "preservation-first.txt",
+      "sha256": "48d15e2e2f02b05148a128cc092ca6b57f42de75e4634ba866495aedf0c23ba6",
+      "bytes": 649,
+      "command": ".venv/bin/python -m scripts.verify_stage11_preservation --directory .local-runtime/stage11/live --output docs/reports/stage11/preservation.json",
+      "exit_code": 1,
+      "source_identifier": "cf5e5c4",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "preservation.json",
+      "sha256": "3526aafdde0a7c55b9162a7c8bc73e538298f1bd2c23eb8485ab1ca619f88301",
+      "bytes": 2916,
+      "command": ".venv/bin/python -m scripts.verify_stage11_preservation --directory .local-runtime/stage11/live --output docs/reports/stage11/preservation.json",
+      "exit_code": 0,
+      "source_identifier": "cf5e5c4a2952a832455cc830d1dc43358dee996c",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "preservation.txt",
+      "sha256": "a50de96195368aa2689790aca0e41d0f1f80239c49fcff83cc33dbbe37e29759",
+      "bytes": 86,
+      "command": ".venv/bin/python -m scripts.verify_stage11_preservation --directory .local-runtime/stage11/live --output docs/reports/stage11/preservation.json",
+      "exit_code": 0,
+      "source_identifier": "cf5e5c4; explicit volume overlay changes before c3416f2",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "provider-build-repeat.json",
+      "sha256": "4ca4ce44ac9bc06faea0726b645d04240c677a3027255af9783d5bc4429f3672",
+      "bytes": 233,
+      "command": ".venv/bin/python -m scripts.build_kuz_provider --output .local-runtime/stage11/bin/lcm-kuz-mgm-second",
+      "exit_code": 0,
+      "source_identifier": "pinned Go revision; native source in source-manifest",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "provider-build.json",
+      "sha256": "4ca4ce44ac9bc06faea0726b645d04240c677a3027255af9783d5bc4429f3672",
+      "bytes": 233,
+      "command": ".venv/bin/python -m scripts.build_kuz_provider",
+      "exit_code": 0,
+      "source_identifier": "pinned Go revision; native source in source-manifest",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "provider-kat-first.txt",
+      "sha256": "4b99d6daf7885873b1dddb5d84094041180d7e67bae6c157afad3e27e9d36be2",
+      "bytes": 729,
+      "command": "LCM_KUZ_PROVIDER=<local executable> .venv/bin/python -m pytest -q tests/test_kuz_provider.py",
+      "exit_code": 1,
+      "source_identifier": "d226fbc; new provider/test files dirty, erroneous copied plaintext hex",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "provider-kat-verified.txt",
+      "sha256": "ec72154b910189475c36e4d7697a42d167cc81eb4cd47dae9710449a6ed57b2d",
+      "bytes": 99,
+      "command": "LCM_KUZ_PROVIDER=<local executable> .venv/bin/python -m pytest -q tests/test_kuz_provider.py",
+      "exit_code": 0,
+      "source_identifier": "d226fbc; new provider/test files dirty",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "provider-selection.json",
+      "sha256": "2108c394d6538dac88ff5c17829c4f4a561e4c669e695c6deb8ed46f13823fad",
+      "bytes": 2095,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": 0,
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "provider-sources.json",
+      "sha256": "6ab999c514cc09c848fbb99871cbc3289cf135ceb554a6d45baa08d8d2f5e9ac",
+      "bytes": 1181,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": 0,
+      "source_identifier": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "provider-tests-initial.jsonl",
+      "sha256": "ac62c98f4528879c6bdd82c5596c1e02569c912ca6d095b7c6109d882a94e2d4",
+      "bytes": 145,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": "not_measured",
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "real-switching-final.json",
+      "sha256": "1c39c0215eeda20c39d3fc194a229610f261a79bd6591f8811de7ea9059e8f5f",
+      "bytes": 7755,
+      "command": ".venv/bin/python -m scripts.check_kuznyechik_mqtt --directory .local-runtime/stage11/live --output docs/reports/stage11/real-switching-final.json",
+      "exit_code": 0,
+      "source_identifier": "80bcb016a4899cd0c359823c69ffc96b5e4c2ad2",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "real-switching-final.txt",
+      "sha256": "cf001541984a85544bab17c4b95fea85adf92c71ea5d5504422f4c1e7037c5c7",
+      "bytes": 135,
+      "command": ".venv/bin/python -m scripts.check_kuznyechik_mqtt --directory .local-runtime/stage11/live --output docs/reports/stage11/real-switching-final.json",
+      "exit_code": 0,
+      "source_identifier": "80bcb01",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "real-switching-validated.json",
+      "sha256": "f67155168db5e0b71ef5f9df22d44c3bfb21d971a836fdd3e2ad20aee3088657",
+      "bytes": 7979,
+      "command": ".venv/bin/python -m scripts.check_kuznyechik_mqtt --directory .local-runtime/stage11/live --output docs/reports/stage11/real-switching-validated.json",
+      "exit_code": 0,
+      "source_identifier": "cf5e5c4a2952a832455cc830d1dc43358dee996c",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "real-switching-validated.txt",
+      "sha256": "cf001541984a85544bab17c4b95fea85adf92c71ea5d5504422f4c1e7037c5c7",
+      "bytes": 135,
+      "command": ".venv/bin/python -m scripts.check_kuznyechik_mqtt --directory .local-runtime/stage11/live --output docs/reports/stage11/real-switching-validated.json",
+      "exit_code": 0,
+      "source_identifier": "cf5e5c4a2952a832455cc830d1dc43358dee996c",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "real-switching.json",
+      "sha256": "7825a07c3676027fb2811fcbbaa2466471268c6c93cdfe8b7bc0f9cf1e99bb8f",
+      "bytes": 7746,
+      "command": ".venv/bin/python -m scripts.check_kuznyechik_mqtt --directory .local-runtime/stage11/live --output docs/reports/stage11/real-switching.json",
+      "exit_code": 0,
+      "source_identifier": "d226fbc56068caa5a2685d31a89eb0c85f8efe4c",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "real-switching.txt",
+      "sha256": "cf001541984a85544bab17c4b95fea85adf92c71ea5d5504422f4c1e7037c5c7",
+      "bytes": 135,
+      "command": ".venv/bin/python -m scripts.check_kuznyechik_mqtt --directory .local-runtime/stage11/live --output docs/reports/stage11/real-switching.json",
+      "exit_code": 0,
+      "source_identifier": "uncommitted_stage11_integration_on_d226fbc",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "regression-first.txt",
+      "sha256": "bf8142c0b9c0a132aea303018d44fb2498973cd114cdacf7eecb70347ea00358",
+      "bytes": 1124,
+      "command": "Lab(.local-runtime/stage11/live).run(run --rm -T --no-deps -v tests:/app/tests:ro tests)",
+      "exit_code": 0,
+      "source_identifier": "uncommitted_stage11_integration_on_d226fbc",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "reliability.json",
+      "sha256": "f9f0cb0190e70497130ee023b7204fa97fdbef41a46a81d7cbaa692d08e472bb",
+      "bytes": 85282,
+      "command": ".venv/bin/python -m scripts.check_kuz_reliability --directory .local-runtime/stage11/live --output docs/reports/stage11/reliability.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "reliability.progress.json",
+      "sha256": "e47d232ad6016e89e7ae9edc22e40e541e5d5d8c0061b99582af238743908030",
+      "bytes": 39586,
+      "command": ".venv/bin/python -m scripts.check_kuz_reliability --directory .local-runtime/stage11/live --output docs/reports/stage11/reliability.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "reliability.txt",
+      "sha256": "633d1caf8c18e22c78ce8ed503853853e3c6fcb24ff8d452343f755277907e10",
+      "bytes": 143,
+      "command": ".venv/bin/python -m scripts.check_kuz_reliability --directory .local-runtime/stage11/live --output docs/reports/stage11/reliability.json",
+      "exit_code": 0,
+      "source_identifier": "0a4e6c9; dirty integration",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "reproducible-local-build.json",
+      "sha256": "608d874f84537d7d90d35bcc15c506e1158679218d93fe40096f0277573ce876",
+      "bytes": 318,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": 0,
+      "source_identifier": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "source-manifest.json",
+      "sha256": "97c22c5d7bca3a94a6065fa46c818ce64ad6931b4bbffbc9509787829ca829cb",
+      "bytes": 26263,
+      "command": "not_measured; supplemental diagnostic/derived artifact, see primary references",
+      "exit_code": 0,
+      "source_identifier": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+      "acceptance_evidence": false
+    },
+    {
+      "file": "sqlite-recovery.json",
+      "sha256": "b5f3a64f5cde88106ebcdd194af0747c61ceaf6d4dbb4202707fbfa35ab46aff",
+      "bytes": 31454,
+      "command": ".venv/bin/python -m scripts.check_kuz_sqlite_recovery --directory .local-runtime/stage11/live --output docs/reports/stage11/sqlite-recovery.json",
+      "exit_code": 0,
+      "source_identifier": "c3416f2; new host harness committed1148137",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "sqlite-recovery.txt",
+      "sha256": "c45360b5d60fc923b2675476f159e1125c14019efaad78c16429f1aadb0d6975",
+      "bytes": 85,
+      "command": ".venv/bin/python -m scripts.check_kuz_sqlite_recovery --directory .local-runtime/stage11/live --output docs/reports/stage11/sqlite-recovery.json",
+      "exit_code": 0,
+      "source_identifier": "c3416f2; new host harness committed1148137",
+      "acceptance_evidence": true
+    },
+    {
+      "file": "summary.json",
+      "source_identifier": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+      "command": "derived from primary artifacts and source manifest; see referenced commands",
+      "exit_code": 0,
+      "acceptance_evidence": false,
+      "sha256": "93f6199abcf9cef06a587b4da0c9fb8764c5bd15ef9e80128a14866af4362cb8",
+      "bytes": 866
+    },
+    {
+      "file": "upstream-provider-tests.jsonl",
+      "sha256": "5eb36303032de558a64ed2ea837f3d6a455f5b00209ba89b108b92b373f61b23",
+      "bytes": 69630,
+      "command": "go test -json ./kuznyechik ./mgm (cwd pinned private upstream clone)",
+      "exit_code": 0,
+      "source_identifier": "3791d459e0c35d051a691a3bd3a4a69f671258f5",
+      "acceptance_evidence": true
+    }
+  ]
+}

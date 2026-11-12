@@ -57,3 +57,9 @@ Stop/resume сохраняют nonce/command authority и keys. Не удаля�
 
 Исторические исследования, PCAP, модели/frozen plans и отчёты прежних этапов
 сохраняются. Число прошедших тестов — не доказательство качества IDS.
+
+## Этап11: Kuznyechik-MGM в изолированном software lab
+
+Добавлен настоящий третий AEAD: pinned Go Kuznyechik/MGM, RFC7801/RFC9058 KAT, independent cross-check, per-key budget и подтверждение переключения по PostgreSQL AEAD receipts. Обычные deployments сохраняют Ascon/AES live eligibility; MGM требует отдельной явной test-lab authorization и provisioned ключей/capabilities. Timing resistance/ARM/сертификация не заявляются. Policy остаётся DRY_RUN, RF/IF untrusted.
+
+Запуск и остановка, приватные аккаунты и сохранение state: [STAGE11_RESULTS](docs/STAGE11_RESULTS.md). Подробности: [provider](docs/STAGE11_PROVIDER_SELECTION.md), [nonce/budget](docs/KUZNYECHIK_NONCE_AND_KEY_BUDGET.md), [verification matrix](docs/STAGE11_INTEGRATION_TESTS.md).

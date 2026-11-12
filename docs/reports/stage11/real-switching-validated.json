@@ -1,0 +1,231 @@
+{
+  "project": "lcm-stage11-kuznyechik-live",
+  "source_sha": "cf5e5c4a2952a832455cc830d1dc43358dee996c",
+  "before_devices": {
+    "alpha": "ascon-aead128-v1",
+    "beta": "ascon-aead128-v1",
+    "gamma": "ascon-aead128-v1"
+  },
+  "transitions": [
+    {
+      "transition": {
+        "acknowledged_at": "2026-11-12T15:06:23.065542+00:00",
+        "activated_at": "2026-11-12T15:06:22.981635+00:00",
+        "actor": "admin:1",
+        "age_seconds": 0.572054,
+        "confirmed_at": "2026-11-12T15:06:23.378906+00:00",
+        "correlation_id": "38ff3077-7313-4c40-8dec-15d3e0c5bc3a",
+        "created_at": "2026-11-12T15:06:22.901972+00:00",
+        "deadline": "2026-11-12T15:08:22.901972+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "b4e82729-de81-40d0-b968-7b66525754a4",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "kuznyechik-mgm-v1",
+        "telemetry_event": "b54991d3-9a80-4f83-b578-da7b8d1cb5a0"
+      },
+      "receipt": {
+        "accepted_at": "2026-11-12T15:06:23.378906+00:00",
+        "device_id": "alpha",
+        "event_id": "b54991d3-9a80-4f83-b578-da7b8d1cb5a0",
+        "key_epoch": 1,
+        "key_reference": "kuznyechik-mgm-v1:1",
+        "packet_sha256": "76fd42da0eede3296e4d2ad3bbd19150da6d11a8d0df00e9a6a8acc2b50f37c2",
+        "profile": "kuznyechik-mgm-v1",
+        "sequence_number": 110059
+      },
+      "request_to_effective_seconds": 0.5802481069986243,
+      "full_verification_seconds": 0.8610207999990962,
+      "authenticated_ack_observed": 2
+    },
+    {
+      "transition": {
+        "acknowledged_at": "2026-11-12T15:06:26.089649+00:00",
+        "activated_at": "2026-11-12T15:06:26.007569+00:00",
+        "actor": "admin:1",
+        "age_seconds": 0.269497,
+        "confirmed_at": "2026-11-12T15:06:26.114477+00:00",
+        "correlation_id": "2daa0b79-0c62-42ff-9bb5-c25980fdf993",
+        "created_at": "2026-11-12T15:06:25.862775+00:00",
+        "deadline": "2026-11-12T15:08:25.862775+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "1db14bce-95ff-4186-b127-3d8040924af0",
+        "old_profile": "kuznyechik-mgm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "aes-128-gcm-v1",
+        "telemetry_event": "af42fd62-d085-456a-9508-db9d09a9f021"
+      },
+      "receipt": {
+        "accepted_at": "2026-11-12T15:06:26.114477+00:00",
+        "device_id": "alpha",
+        "event_id": "af42fd62-d085-456a-9508-db9d09a9f021",
+        "key_epoch": 1,
+        "key_reference": "aes-128-gcm-v1:1",
+        "packet_sha256": "5eb63f065fe093283cb7550b46b0f929583f2f4e5875c6c1750de11671bbbc9f",
+        "profile": "aes-128-gcm-v1",
+        "sequence_number": 110065
+      },
+      "request_to_effective_seconds": 0.27652170800138265,
+      "full_verification_seconds": 0.5498552310018567,
+      "authenticated_ack_observed": 2
+    },
+    {
+      "transition": {
+        "acknowledged_at": "2026-11-12T15:06:28.777504+00:00",
+        "activated_at": "2026-11-12T15:06:28.625622+00:00",
+        "actor": "admin:1",
+        "age_seconds": 0.79314,
+        "confirmed_at": "2026-11-12T15:06:29.137471+00:00",
+        "correlation_id": "b80c6ebe-7f43-434f-8b23-8fc208f3a16b",
+        "created_at": "2026-11-12T15:06:28.516063+00:00",
+        "deadline": "2026-11-12T15:08:28.516063+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "31ee25e6-5f3a-4b5d-94cc-ab10150074ff",
+        "old_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "kuznyechik-mgm-v1",
+        "telemetry_event": "a56adfee-d734-41b2-8506-51ed92375787"
+      },
+      "receipt": {
+        "accepted_at": "2026-11-12T15:06:29.137471+00:00",
+        "device_id": "alpha",
+        "event_id": "a56adfee-d734-41b2-8506-51ed92375787",
+        "key_epoch": 1,
+        "key_reference": "kuznyechik-mgm-v1:1",
+        "packet_sha256": "3b92f086cea91829dfd56154e606188fc7b2e3885d5d7b3e9e9dbd928143204d",
+        "profile": "kuznyechik-mgm-v1",
+        "sequence_number": 110071
+      },
+      "request_to_effective_seconds": 0.8035946679992776,
+      "full_verification_seconds": 1.0726352169986058,
+      "authenticated_ack_observed": 2
+    },
+    {
+      "transition": {
+        "acknowledged_at": "2026-11-12T15:06:31.825000+00:00",
+        "activated_at": "2026-11-12T15:06:31.742192+00:00",
+        "actor": "admin:1",
+        "age_seconds": 0.524661,
+        "confirmed_at": "2026-11-12T15:06:32.154530+00:00",
+        "correlation_id": "e3788a56-ebc7-473f-b7aa-35151219870c",
+        "created_at": "2026-11-12T15:06:31.683746+00:00",
+        "deadline": "2026-11-12T15:08:31.683746+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "999363f1-4de9-4cfc-9282-eb29f336a058",
+        "old_profile": "kuznyechik-mgm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "e76cfd6f-2c15-4073-8e38-c9f565c478d8"
+      },
+      "receipt": {
+        "accepted_at": "2026-11-12T15:06:32.154530+00:00",
+        "device_id": "alpha",
+        "event_id": "e76cfd6f-2c15-4073-8e38-c9f565c478d8",
+        "key_epoch": 1,
+        "key_reference": "ascon-aead128-v1:1",
+        "packet_sha256": "bcc2be44d4a68c12796d78dea9bf428ed83adecb65b057c01efa0dfdb4283da0",
+        "profile": "ascon-aead128-v1",
+        "sequence_number": 110077
+      },
+      "request_to_effective_seconds": 0.5505810370013933,
+      "full_verification_seconds": 1.0770123360016441,
+      "authenticated_ack_observed": 2
+    }
+  ],
+  "checks": [
+    "viewer_cannot_switch",
+    "operator_cannot_switch",
+    "csrf_required",
+    "gamma_unsupported"
+  ],
+  "effective_profiles": {
+    "alpha": "ascon-aead128-v1",
+    "beta": "ascon-aead128-v1",
+    "gamma": "ascon-aead128-v1"
+  },
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T15:06:22.517954+00:00",
+      "finished_at": "2026-11-12T15:06:22.544611+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T15:06:22.624158+00:00",
+      "finished_at": "2026-11-12T15:06:22.649789+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T15:06:22.795651+00:00",
+      "finished_at": "2026-11-12T15:06:22.821616+00:00"
+    }
+  ],
+  "exit_code": 0
+}

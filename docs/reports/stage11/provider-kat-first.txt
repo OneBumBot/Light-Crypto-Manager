@@ -1,0 +1,12 @@
+.F...........................                                            [100%]
+=================================== FAILURES ===================================
+__________________ test_rfc9058_a11_exact_ciphertext_and_tag ___________________
+tests/test_kuz_provider.py:22: in test_rfc9058_a11_exact_ciphertext_and_tag
+    assert encrypt(KEY,NONCE,AAD,PLAIN)==CIPHER+TAG
+E   AssertionError: assert b'\xa9u{\x81G...\xe5\xa9V\x93' == b'\xa9u{\x81G...x0e)\xfc\xdbL'
+E     
+E     At index 59 diff: b'\xe8' != b'\x06'
+E     Use -v to get more diff
+=========================== short test summary info ============================
+FAILED tests/test_kuz_provider.py::test_rfc9058_a11_exact_ciphertext_and_tag
+1 failed, 28 passed in 0.06s

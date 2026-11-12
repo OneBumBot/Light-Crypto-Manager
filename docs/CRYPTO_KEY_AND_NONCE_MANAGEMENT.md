@@ -31,3 +31,7 @@ Trust boundary: PG durable authority и свежий process boot. Одновр�
 anti-rollback. Неограниченная offline работа после исчерпания range не обещается.
 Control HMAC не имеет encryption nonce; anti-replay обеспечивается отдельным
 command epoch/sequence/UUID/digest ledger, не telemetry replay-state.
+
+## Stage11: MGM authority
+
+Новый независимый256-bit telemetry key каждого device/profile/epoch. ICN=`epoch32BE || sequence64BE || 4c434d01`, MSB0; строгие пределы без truncation/modulo. Migration0010 добавляет per-key usage/reservation ledger, без backfill старого неизвестного использования. Grant целиком сгорает, рестарт запрашивает новый диапазон. Verification allowance расходуется до AEAD отдельным commit, без превращения PG outage в invalid packet. Исчерпание/потеря authority → fail closed/reviewed rekey. Для MGM-capable устройства обнаруженный PG rollback блокирует authority durable; совместный откат всех authorities требует новых ключей/эпохи. [Полное обоснование](KUZNYECHIK_NONCE_AND_KEY_BUDGET.md).

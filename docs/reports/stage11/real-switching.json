@@ -1,0 +1,227 @@
+{
+  "project": "lcm-stage11-kuznyechik-live",
+  "source_sha": "d226fbc56068caa5a2685d31a89eb0c85f8efe4c",
+  "before_devices": {
+    "alpha": "ascon-aead128-v1",
+    "beta": "ascon-aead128-v1",
+    "gamma": "ascon-aead128-v1"
+  },
+  "transitions": [
+    {
+      "transition": {
+        "acknowledged_at": "2026-11-12T14:43:03.355790+00:00",
+        "activated_at": "2026-11-12T14:43:03.273115+00:00",
+        "actor": "admin:1",
+        "age_seconds": 0.784033,
+        "confirmed_at": "2026-11-12T14:43:03.879670+00:00",
+        "correlation_id": "02eb4a17-d8b4-4e28-be0b-101f6af8c847",
+        "created_at": "2026-11-12T14:43:03.145284+00:00",
+        "deadline": "2026-11-12T14:45:03.145284+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "862ec84e-276b-4fdc-b438-1f49b7f9d8fc",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "kuznyechik-mgm-v1",
+        "telemetry_event": "6d01fb3d-6995-4734-999f-8c0ee8d5c709"
+      },
+      "receipt": {
+        "accepted_at": "2026-11-12T14:43:03.879670+00:00",
+        "device_id": "alpha",
+        "event_id": "6d01fb3d-6995-4734-999f-8c0ee8d5c709",
+        "key_epoch": 1,
+        "key_reference": "kuznyechik-mgm-v1:1",
+        "packet_sha256": "a8eb537ce6cc3b1467d17d9a8c8b0887ca63fd920a1b6f59fb10359873147a7a",
+        "profile": "kuznyechik-mgm-v1",
+        "sequence_number": 126
+      },
+      "request_to_effective_seconds": 1.3112358159996802,
+      "authenticated_ack_observed": 2
+    },
+    {
+      "transition": {
+        "acknowledged_at": "2026-11-12T14:43:06.727169+00:00",
+        "activated_at": "2026-11-12T14:43:06.603544+00:00",
+        "actor": "admin:1",
+        "age_seconds": 0.772329,
+        "confirmed_at": "2026-11-12T14:43:07.172194+00:00",
+        "correlation_id": "9b180f37-d488-44cf-96c9-b3a783627644",
+        "created_at": "2026-11-12T14:43:06.554240+00:00",
+        "deadline": "2026-11-12T14:45:06.554240+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "5b52aa27-003b-4ccc-891e-5f2cdd03acd1",
+        "old_profile": "kuznyechik-mgm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "aes-128-gcm-v1",
+        "telemetry_event": "b495d5cb-028b-4c1e-a5b3-68184c3a956f"
+      },
+      "receipt": {
+        "accepted_at": "2026-11-12T14:43:07.172194+00:00",
+        "device_id": "alpha",
+        "event_id": "b495d5cb-028b-4c1e-a5b3-68184c3a956f",
+        "key_epoch": 1,
+        "key_reference": "aes-128-gcm-v1:1",
+        "packet_sha256": "f007479bc899b6d790792fe2ac7d1afa62e89f3db57e805dfe7ea0e480398f69",
+        "profile": "aes-128-gcm-v1",
+        "sequence_number": 133
+      },
+      "request_to_effective_seconds": 1.0391933760001848,
+      "authenticated_ack_observed": 2
+    },
+    {
+      "transition": {
+        "acknowledged_at": "2026-11-12T14:43:09.871611+00:00",
+        "activated_at": "2026-11-12T14:43:09.768729+00:00",
+        "actor": "admin:1",
+        "age_seconds": 0.522667,
+        "confirmed_at": "2026-11-12T14:43:10.199402+00:00",
+        "correlation_id": "5cd39f30-131f-4ed1-9e95-4804c0a9933d",
+        "created_at": "2026-11-12T14:43:09.698395+00:00",
+        "deadline": "2026-11-12T14:45:09.698395+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "275efef5-8a57-4e5a-b73e-ef292f3b97f8",
+        "old_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "kuznyechik-mgm-v1",
+        "telemetry_event": "a2a82f64-1860-4143-9397-d05f1f44a588"
+      },
+      "receipt": {
+        "accepted_at": "2026-11-12T14:43:10.199402+00:00",
+        "device_id": "alpha",
+        "event_id": "a2a82f64-1860-4143-9397-d05f1f44a588",
+        "key_epoch": 1,
+        "key_reference": "kuznyechik-mgm-v1:1",
+        "packet_sha256": "98b2bafa97d048ec7084c5c9299508749370cba3d8571922579f820026ef640b",
+        "profile": "kuznyechik-mgm-v1",
+        "sequence_number": 139
+      },
+      "request_to_effective_seconds": 1.047810001000471,
+      "authenticated_ack_observed": 2
+    },
+    {
+      "transition": {
+        "acknowledged_at": "2026-11-12T14:43:12.988689+00:00",
+        "activated_at": "2026-11-12T14:43:12.905592+00:00",
+        "actor": "admin:1",
+        "age_seconds": 0.585667,
+        "confirmed_at": "2026-11-12T14:43:13.259380+00:00",
+        "correlation_id": "9d22e658-491e-466b-94fe-4bc376a41b43",
+        "created_at": "2026-11-12T14:43:12.841813+00:00",
+        "deadline": "2026-11-12T14:45:12.841813+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "397049bd-9a93-4aa3-8dbb-88fc5342c2a8",
+        "old_profile": "kuznyechik-mgm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "dc9d6f09-8dff-4c6d-a898-64b5299b0044"
+      },
+      "receipt": {
+        "accepted_at": "2026-11-12T14:43:13.259380+00:00",
+        "device_id": "alpha",
+        "event_id": "dc9d6f09-8dff-4c6d-a898-64b5299b0044",
+        "key_epoch": 1,
+        "key_reference": "ascon-aead128-v1:1",
+        "packet_sha256": "21938be76cfaca359b1b5b6c710159592e1174370c911369ccf78df9cb244094",
+        "profile": "ascon-aead128-v1",
+        "sequence_number": 145
+      },
+      "request_to_effective_seconds": 0.8525357930011523,
+      "authenticated_ack_observed": 2
+    }
+  ],
+  "checks": [
+    "viewer_cannot_switch",
+    "operator_cannot_switch",
+    "csrf_required",
+    "gamma_unsupported"
+  ],
+  "effective_profiles": {
+    "alpha": "ascon-aead128-v1",
+    "beta": "ascon-aead128-v1",
+    "gamma": "ascon-aead128-v1"
+  },
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:43:02.819801+00:00",
+      "finished_at": "2026-11-12T14:43:02.847396+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:43:02.946497+00:00",
+      "finished_at": "2026-11-12T14:43:02.973753+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:43:03.029929+00:00",
+      "finished_at": "2026-11-12T14:43:03.057599+00:00"
+    }
+  ],
+  "exit_code": 0
+}

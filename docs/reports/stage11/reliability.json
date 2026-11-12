@@ -1,0 +1,3009 @@
+{
+  "project": "lcm-stage11-kuznyechik-live",
+  "faults": [
+    {
+      "service": "mongo",
+      "started_at": "2026-11-12T14:49:54.281781+00:00",
+      "restored_at": "2026-11-12T14:50:14.550185+00:00",
+      "held_seconds": 8,
+      "total_seconds": 22.433684969997557,
+      "recovery_seconds": 2.165280385997903,
+      "before": {
+        "checked_at": "2026-11-12T14:49:53.599017+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 880,
+            "last_sequence": 30083
+          },
+          "alpha": {
+            "count": 880,
+            "last_sequence": 30083
+          },
+          "gamma": {
+            "count": 879,
+            "last_sequence": 20083
+          }
+        },
+        "outbox": {
+          "delivered": 2639
+        },
+        "counters": {
+          "replay": 1,
+          "incoming": 2659,
+          "rejected": 19,
+          "delivered": 2639,
+          "accepted": 2639
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 45962931,
+        "pg_stats": {
+          "xact_commit": 56425,
+          "xact_rollback": 671,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2639
+      },
+      "during": {
+        "checked_at": "2026-11-12T14:50:03.138604+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 899,
+            "last_sequence": 30102
+          },
+          "alpha": {
+            "count": 899,
+            "last_sequence": 30102
+          },
+          "gamma": {
+            "count": 898,
+            "last_sequence": 20102
+          }
+        },
+        "outbox": {
+          "pending": 53,
+          "delivered": 2642,
+          "claimed": 1
+        },
+        "counters": {
+          "replay": 1,
+          "incoming": 2716,
+          "rejected": 19,
+          "delivery_error": 1,
+          "delivered": 2642,
+          "accepted": 2696
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 51164851,
+        "pg_stats": {
+          "xact_commit": 58016,
+          "xact_rollback": 791,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": null
+      },
+      "after": {
+        "checked_at": "2026-11-12T14:50:15.201076+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 923,
+            "last_sequence": 30126
+          },
+          "beta": {
+            "count": 923,
+            "last_sequence": 30126
+          },
+          "gamma": {
+            "count": 922,
+            "last_sequence": 20126
+          }
+        },
+        "outbox": {
+          "delivered": 2765,
+          "pending": 3
+        },
+        "counters": {
+          "incoming": 2788,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 2765,
+          "accepted": 2768
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 47724211,
+        "pg_stats": {
+          "xact_commit": 59797,
+          "xact_rollback": 808,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2765
+      },
+      "false_effective": false,
+      "pre_restore_cohort_delivered": true
+    },
+    {
+      "service": "control-worker",
+      "started_at": "2026-11-12T14:50:18.045428+00:00",
+      "restored_at": "2026-11-12T14:50:35.396561+00:00",
+      "held_seconds": 12,
+      "total_seconds": 19.513490165001713,
+      "recovery_seconds": 2.1623581649982953,
+      "before": {
+        "checked_at": "2026-11-12T14:50:17.345911+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 927,
+            "last_sequence": 30130
+          },
+          "beta": {
+            "count": 928,
+            "last_sequence": 30131
+          },
+          "gamma": {
+            "count": 926,
+            "last_sequence": 20130
+          }
+        },
+        "outbox": {
+          "delivered": 2781
+        },
+        "counters": {
+          "incoming": 2801,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 2781,
+          "accepted": 2781
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 47806131,
+        "pg_stats": {
+          "xact_commit": 60032,
+          "xact_rollback": 812,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2781
+      },
+      "during": {
+        "checked_at": "2026-11-12T14:50:30.979838+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 954,
+            "last_sequence": 30157
+          },
+          "beta": {
+            "count": 955,
+            "last_sequence": 30158
+          },
+          "gamma": {
+            "count": 953,
+            "last_sequence": 20157
+          }
+        },
+        "outbox": {
+          "delivered": 2861,
+          "pending": 1
+        },
+        "counters": {
+          "incoming": 2882,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 2861,
+          "accepted": 2862
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 48289459,
+        "pg_stats": {
+          "xact_commit": 61129,
+          "xact_rollback": 814,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2861
+      },
+      "after": {
+        "checked_at": "2026-11-12T14:50:36.056161+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 964,
+            "last_sequence": 30167
+          },
+          "beta": {
+            "count": 965,
+            "last_sequence": 30168
+          },
+          "gamma": {
+            "count": 963,
+            "last_sequence": 20167
+          }
+        },
+        "outbox": {
+          "delivered": 2892
+        },
+        "counters": {
+          "incoming": 2912,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 2892,
+          "accepted": 2892
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 48477875,
+        "pg_stats": {
+          "xact_commit": 61644,
+          "xact_rollback": 818,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2892
+      },
+      "false_effective": false,
+      "pre_restore_cohort_delivered": true
+    },
+    {
+      "service": "policy-worker",
+      "started_at": "2026-11-12T14:50:38.901229+00:00",
+      "restored_at": "2026-11-12T14:51:18.144963+00:00",
+      "held_seconds": 32,
+      "total_seconds": 41.38343991799775,
+      "recovery_seconds": 2.139705772002344,
+      "before": {
+        "checked_at": "2026-11-12T14:50:38.204315+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 968,
+            "last_sequence": 30171
+          },
+          "beta": {
+            "count": 969,
+            "last_sequence": 30172
+          },
+          "gamma": {
+            "count": 968,
+            "last_sequence": 20172
+          }
+        },
+        "outbox": {
+          "delivered": 2904,
+          "pending": 1
+        },
+        "counters": {
+          "incoming": 2925,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 2904,
+          "accepted": 2905
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 48535219,
+        "pg_stats": {
+          "xact_commit": 61879,
+          "xact_rollback": 822,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 2904
+      },
+      "during": {
+        "checked_at": "2026-11-12T14:51:11.758973+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1035,
+            "last_sequence": 30238
+          },
+          "beta": {
+            "count": 1036,
+            "last_sequence": 30239
+          },
+          "gamma": {
+            "count": 1034,
+            "last_sequence": 20238
+          }
+        },
+        "outbox": {
+          "delivered": 3103,
+          "pending": 2
+        },
+        "counters": {
+          "incoming": 3125,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3103,
+          "accepted": 3105
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 48862899,
+        "pg_stats": {
+          "xact_commit": 65069,
+          "xact_rollback": 824,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3103
+      },
+      "after": {
+        "checked_at": "2026-11-12T14:51:18.796976+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1049,
+            "last_sequence": 30252
+          },
+          "beta": {
+            "count": 1050,
+            "last_sequence": 30253
+          },
+          "gamma": {
+            "count": 1048,
+            "last_sequence": 20252
+          }
+        },
+        "outbox": {
+          "delivered": 3146,
+          "pending": 1
+        },
+        "counters": {
+          "incoming": 3167,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3146,
+          "accepted": 3147
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 48780979,
+        "pg_stats": {
+          "xact_commit": 66067,
+          "xact_rollback": 828,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3146
+      },
+      "false_effective": false,
+      "pre_restore_cohort_delivered": true
+    },
+    {
+      "service": "postgres",
+      "started_at": "2026-11-12T14:51:21.617607+00:00",
+      "restored_at": "2026-11-12T14:51:31.727280+00:00",
+      "held_seconds": 6,
+      "total_seconds": 12.266171190000023,
+      "recovery_seconds": 2.1564986820012564,
+      "before": {
+        "checked_at": "2026-11-12T14:51:20.916791+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1053,
+            "last_sequence": 30256
+          },
+          "beta": {
+            "count": 1054,
+            "last_sequence": 30257
+          },
+          "gamma": {
+            "count": 1052,
+            "last_sequence": 20256
+          }
+        },
+        "outbox": {
+          "delivered": 3159
+        },
+        "counters": {
+          "incoming": 3179,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3159,
+          "accepted": 3159
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 49026739,
+        "pg_stats": {
+          "xact_commit": 66406,
+          "xact_rollback": 832,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3159
+      },
+      "during": null,
+      "after": {
+        "checked_at": "2026-11-12T14:51:32.377302+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1076,
+            "last_sequence": 30279
+          },
+          "beta": {
+            "count": 1076,
+            "last_sequence": 30279
+          },
+          "gamma": {
+            "count": 1075,
+            "last_sequence": 20279
+          }
+        },
+        "outbox": {
+          "delivered": 3226,
+          "pending": 1
+        },
+        "counters": {
+          "incoming": 3247,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3226,
+          "accepted": 3227
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 49641139,
+        "pg_stats": {
+          "xact_commit": 67409,
+          "xact_rollback": 835,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3226
+      },
+      "false_effective": false,
+      "pre_restore_cohort_delivered": true
+    },
+    {
+      "service": "broker",
+      "started_at": "2026-11-12T14:51:35.188233+00:00",
+      "restored_at": "2026-11-12T14:51:46.433968+00:00",
+      "held_seconds": 6,
+      "total_seconds": 13.4088543129983,
+      "recovery_seconds": 2.163120083998365,
+      "before": {
+        "checked_at": "2026-11-12T14:51:34.515136+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1080,
+            "last_sequence": 30283
+          },
+          "beta": {
+            "count": 1081,
+            "last_sequence": 30284
+          },
+          "gamma": {
+            "count": 1079,
+            "last_sequence": 20283
+          }
+        },
+        "outbox": {
+          "delivered": 3238,
+          "pending": 2
+        },
+        "counters": {
+          "incoming": 3260,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3238,
+          "accepted": 3240
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 49706675,
+        "pg_stats": {
+          "xact_commit": 67742,
+          "xact_rollback": 839,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3238
+      },
+      "during": {
+        "checked_at": "2026-11-12T14:51:42.044563+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1081,
+            "last_sequence": 30284
+          },
+          "beta": {
+            "count": 1082,
+            "last_sequence": 30285
+          },
+          "gamma": {
+            "count": 1081,
+            "last_sequence": 20285
+          }
+        },
+        "outbox": {
+          "delivered": 3244
+        },
+        "counters": {
+          "incoming": 3264,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3244,
+          "accepted": 3244
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 49731251,
+        "pg_stats": {
+          "xact_commit": 68017,
+          "xact_rollback": 841,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3244
+      },
+      "after": {
+        "checked_at": "2026-11-12T14:51:47.091938+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1081,
+            "last_sequence": 30284
+          },
+          "beta": {
+            "count": 1082,
+            "last_sequence": 30285
+          },
+          "gamma": {
+            "count": 1081,
+            "last_sequence": 20285
+          }
+        },
+        "outbox": {
+          "delivered": 3244
+        },
+        "counters": {
+          "incoming": 3264,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3244,
+          "accepted": 3244
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 49731251,
+        "pg_stats": {
+          "xact_commit": 68107,
+          "xact_rollback": 843,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3244
+      },
+      "false_effective": false,
+      "pre_restore_cohort_delivered": true
+    },
+    {
+      "service": "device-alpha",
+      "started_at": "2026-11-12T14:51:49.917380+00:00",
+      "restored_at": "2026-11-12T14:52:00.160544+00:00",
+      "held_seconds": 3,
+      "total_seconds": 12.379734681999253,
+      "recovery_seconds": 2.1365704639974865,
+      "before": {
+        "checked_at": "2026-11-12T14:51:49.237710+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1081,
+            "last_sequence": 30284
+          },
+          "beta": {
+            "count": 1082,
+            "last_sequence": 30285
+          },
+          "gamma": {
+            "count": 1081,
+            "last_sequence": 20285
+          }
+        },
+        "outbox": {
+          "delivered": 3244
+        },
+        "counters": {
+          "incoming": 3264,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3244,
+          "accepted": 3244
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 49731251,
+        "pg_stats": {
+          "xact_commit": 68172,
+          "xact_rollback": 847,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3244
+      },
+      "during": {
+        "checked_at": "2026-11-12T14:51:53.790791+00:00",
+        "devices": [
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 40000,
+            "command_sequence": 10
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1087,
+            "last_sequence": 30290
+          },
+          "beta": {
+            "count": 1095,
+            "last_sequence": 30298
+          },
+          "gamma": {
+            "count": 1094,
+            "last_sequence": 20298
+          }
+        },
+        "outbox": {
+          "delivered": 3276
+        },
+        "counters": {
+          "incoming": 3296,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3276,
+          "accepted": 3276
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 49829555,
+        "pg_stats": {
+          "xact_commit": 68757,
+          "xact_rollback": 849,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3276
+      },
+      "after": {
+        "checked_at": "2026-11-12T14:52:00.814386+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 50000,
+            "command_sequence": 10
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1098,
+            "last_sequence": 40011
+          },
+          "beta": {
+            "count": 1109,
+            "last_sequence": 30312
+          },
+          "gamma": {
+            "count": 1108,
+            "last_sequence": 20312
+          }
+        },
+        "outbox": {
+          "claimed": 1,
+          "delivered": 3312,
+          "pending": 2
+        },
+        "counters": {
+          "incoming": 3335,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3312,
+          "accepted": 3315
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 49968819,
+        "pg_stats": {
+          "xact_commit": 69478,
+          "xact_rollback": 851,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3315
+      },
+      "false_effective": false,
+      "pre_restore_cohort_delivered": true
+    },
+    {
+      "service": "receiver",
+      "started_at": "2026-11-12T14:52:03.625423+00:00",
+      "restored_at": "2026-11-12T14:52:11.854914+00:00",
+      "held_seconds": 3,
+      "total_seconds": 10.381870667999465,
+      "recovery_seconds": 2.1523800260001735,
+      "before": {
+        "checked_at": "2026-11-12T14:52:02.930540+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 50000,
+            "command_sequence": 10
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1102,
+            "last_sequence": 40015
+          },
+          "beta": {
+            "count": 1113,
+            "last_sequence": 30316
+          },
+          "gamma": {
+            "count": 1112,
+            "last_sequence": 20316
+          }
+        },
+        "outbox": {
+          "delivered": 3327
+        },
+        "counters": {
+          "incoming": 3347,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3327,
+          "accepted": 3327
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 50026163,
+        "pg_stats": {
+          "xact_commit": 69711,
+          "xact_rollback": 855,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3327
+      },
+      "during": {
+        "checked_at": "2026-11-12T14:52:07.498424+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 50000,
+            "command_sequence": 10
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1104,
+            "last_sequence": 40017
+          },
+          "beta": {
+            "count": 1115,
+            "last_sequence": 30318
+          },
+          "gamma": {
+            "count": 1114,
+            "last_sequence": 20318
+          }
+        },
+        "outbox": {
+          "delivered": 3333
+        },
+        "counters": {
+          "incoming": 3353,
+          "delivery_error": 2,
+          "replay": 1,
+          "delivery_retry": 2,
+          "rejected": 19,
+          "delivered": 3333,
+          "accepted": 3333
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 4,
+        "database_bytes": 50050739,
+        "pg_stats": {
+          "xact_commit": 70070,
+          "xact_rollback": 857,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3333
+      },
+      "after": {
+        "checked_at": "2026-11-12T14:52:12.530188+00:00",
+        "devices": [
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "c56f331a-ee8f-4823-9957-175036aca4ae",
+            "sequence_reserved": 40000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ec00eb50-f7f7-41b1-8881-92f708654ba2",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "kuznyechik-mgm-v1",
+            "effective_event": "469e595b-497c-4602-9098-6648ba9016d6",
+            "sequence_reserved": 50000,
+            "command_sequence": 10
+          }
+        ],
+        "per_device": {
+          "beta": {
+            "count": 1132,
+            "last_sequence": 30335
+          },
+          "alpha": {
+            "count": 1121,
+            "last_sequence": 40034
+          },
+          "gamma": {
+            "count": 1131,
+            "last_sequence": 20335
+          }
+        },
+        "outbox": {
+          "pending": 1,
+          "delivered": 3383
+        },
+        "counters": {
+          "incoming": 3405,
+          "delivery_error": 2,
+          "delivery_retry": 2,
+          "replay": 2,
+          "rejected": 19,
+          "delivered": 3383,
+          "accepted": 3384
+        },
+        "transitions": 5,
+        "completed": 5,
+        "unknown": 0,
+        "authenticated_ack": 10,
+        "receipts": 8,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 50140851,
+        "pg_stats": {
+          "xact_commit": 70893,
+          "xact_rollback": 861,
+          "deadlocks": 0
+        },
+        "migration": "0010_mgm_key_usage",
+        "ml_trusted": false,
+        "mongo_managed": 3383
+      },
+      "false_effective": false,
+      "pre_restore_cohort_delivered": true
+    }
+  ],
+  "switches": [
+    {
+      "device": "alpha",
+      "target": "ascon-aead128-v1",
+      "transition_id": "389f807e-4470-4fbb-8087-e9f587dd385f",
+      "request_started_at": "2026-11-12T14:52:16.058114+00:00",
+      "http_202_seconds": 0.023189067840576172,
+      "observed_effective_seconds": 1.069446325302124,
+      "transition": {
+        "acknowledged_at": "2026-11-12T14:52:16.231897+00:00",
+        "activated_at": "2026-11-12T14:52:16.149679+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T14:52:16.353064+00:00",
+        "correlation_id": "e52639f2-186d-490c-8436-56c6dcdc0629",
+        "created_at": "2026-11-12T14:52:16.074325+00:00",
+        "deadline": "2026-11-12T14:54:16.074325+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "389f807e-4470-4fbb-8087-e9f587dd385f",
+        "old_profile": "kuznyechik-mgm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "8a09536f-676f-4eb7-81fb-1501c30cede1"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T14:52:16.355853+00:00",
+          "device_id": "alpha",
+          "id": "31e53b5f-712d-4a27-818a-b5f3fbc58aa5",
+          "transition_id": "389f807e-4470-4fbb-8087-e9f587dd385f"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T14:52:16.234043+00:00",
+          "device_id": "alpha",
+          "id": "255edc2b-4c22-49ab-9a25-1a759b3b1270",
+          "transition_id": "389f807e-4470-4fbb-8087-e9f587dd385f"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T14:52:16.190546+00:00",
+          "device_id": "alpha",
+          "id": "ccf4b29a-32ac-48b2-b62e-deec8dce9b48",
+          "transition_id": "389f807e-4470-4fbb-8087-e9f587dd385f"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T14:52:16.152476+00:00",
+          "device_id": "alpha",
+          "id": "cc45db7e-bfbe-4f70-9308-00aca55285a4",
+          "transition_id": "389f807e-4470-4fbb-8087-e9f587dd385f"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T14:52:16.108965+00:00",
+          "device_id": "alpha",
+          "id": "e9d84883-ff0f-4883-8ded-474f1036764c",
+          "transition_id": "389f807e-4470-4fbb-8087-e9f587dd385f"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T14:52:16.078805+00:00",
+          "device_id": "alpha",
+          "id": "c7212164-9d3f-4417-b017-d11a65ec3ebf",
+          "transition_id": "389f807e-4470-4fbb-8087-e9f587dd385f"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T14:54:16.074325+00:00",
+          "id": "32b67eee-9468-4045-9ef9-4d383051607f",
+          "phase": "ACTIVATE",
+          "sequence": 12,
+          "status": "verified",
+          "transition_id": "389f807e-4470-4fbb-8087-e9f587dd385f"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T14:54:16.074325+00:00",
+          "id": "c3321f2c-c299-4254-b051-9f5fcfcc5f39",
+          "phase": "PREPARE",
+          "sequence": 11,
+          "status": "acknowledged",
+          "transition_id": "389f807e-4470-4fbb-8087-e9f587dd385f"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "32b67eee-9468-4045-9ef9-4d383051607f",
+          "device_id": "alpha",
+          "id": "d0c46f71-4c8c-41ce-9de4-e890ea7b20f2",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T14:52:16.231897+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "c3321f2c-c299-4254-b051-9f5fcfcc5f39",
+          "device_id": "alpha",
+          "id": "435ffb4f-3146-48e2-9ed4-13855e96408a",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T14:52:16.149679+00:00",
+          "result": "READY"
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:49:51.501252+00:00",
+      "finished_at": "2026-11-12T14:49:51.532366+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:49:51.628518+00:00",
+      "finished_at": "2026-11-12T14:49:52.965756+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:49:52.965884+00:00",
+      "finished_at": "2026-11-12T14:49:54.281738+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "mongo"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:49:54.281784+00:00",
+      "finished_at": "2026-11-12T14:49:54.462223+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:02.462400+00:00",
+      "finished_at": "2026-11-12T14:50:08.854583+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "mongo"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:08.854637+00:00",
+      "finished_at": "2026-11-12T14:50:14.550172+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:14.550268+00:00",
+      "finished_at": "2026-11-12T14:50:15.914188+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "watermark"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:15.914319+00:00",
+      "finished_at": "2026-11-12T14:50:16.715435+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:16.715785+00:00",
+      "finished_at": "2026-11-12T14:50:18.045386+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "control-worker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:18.045432+00:00",
+      "finished_at": "2026-11-12T14:50:18.303459+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:30.303680+00:00",
+      "finished_at": "2026-11-12T14:50:31.673853+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "control-worker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:31.714075+00:00",
+      "finished_at": "2026-11-12T14:50:35.396544+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:35.396654+00:00",
+      "finished_at": "2026-11-12T14:50:36.761210+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "watermark"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:36.761337+00:00",
+      "finished_at": "2026-11-12T14:50:37.558885+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:37.559369+00:00",
+      "finished_at": "2026-11-12T14:50:38.901189+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "policy-worker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:50:38.901232+00:00",
+      "finished_at": "2026-11-12T14:50:39.088050+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:11.088303+00:00",
+      "finished_at": "2026-11-12T14:51:12.447234+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "policy-worker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:12.463875+00:00",
+      "finished_at": "2026-11-12T14:51:18.144950+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:18.145043+00:00",
+      "finished_at": "2026-11-12T14:51:19.485705+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "watermark"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:19.485829+00:00",
+      "finished_at": "2026-11-12T14:51:20.284638+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:20.285187+00:00",
+      "finished_at": "2026-11-12T14:51:21.617566+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "postgres"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:21.617611+00:00",
+      "finished_at": "2026-11-12T14:51:22.007749+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "postgres"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:28.013273+00:00",
+      "finished_at": "2026-11-12T14:51:31.727264+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:31.727375+00:00",
+      "finished_at": "2026-11-12T14:51:33.072799+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "watermark"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:33.072932+00:00",
+      "finished_at": "2026-11-12T14:51:33.883747+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:33.884364+00:00",
+      "finished_at": "2026-11-12T14:51:35.188192+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "broker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:35.188237+00:00",
+      "finished_at": "2026-11-12T14:51:35.376597+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:41.376805+00:00",
+      "finished_at": "2026-11-12T14:51:42.731962+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "broker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:42.732007+00:00",
+      "finished_at": "2026-11-12T14:51:46.433953+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:46.434059+00:00",
+      "finished_at": "2026-11-12T14:51:47.786572+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "watermark"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:47.786695+00:00",
+      "finished_at": "2026-11-12T14:51:48.597057+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:48.597744+00:00",
+      "finished_at": "2026-11-12T14:51:49.917339+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "device-alpha"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:49.917383+00:00",
+      "finished_at": "2026-11-12T14:51:50.124608+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:53.124873+00:00",
+      "finished_at": "2026-11-12T14:51:54.466772+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "device-alpha"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:51:54.466815+00:00",
+      "finished_at": "2026-11-12T14:52:00.160530+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:52:00.160636+00:00",
+      "finished_at": "2026-11-12T14:52:01.488010+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "watermark"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:52:01.488134+00:00",
+      "finished_at": "2026-11-12T14:52:02.297075+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:52:02.297866+00:00",
+      "finished_at": "2026-11-12T14:52:03.625381+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "receiver"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:52:03.625426+00:00",
+      "finished_at": "2026-11-12T14:52:03.832274+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:52:06.832484+00:00",
+      "finished_at": "2026-11-12T14:52:08.175336+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "receiver"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:52:08.175377+00:00",
+      "finished_at": "2026-11-12T14:52:11.854897+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:52:11.855006+00:00",
+      "finished_at": "2026-11-12T14:52:13.212673+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "watermark"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T14:52:13.212798+00:00",
+      "finished_at": "2026-11-12T14:52:14.007261+00:00"
+    }
+  ],
+  "exit_code": 0
+}

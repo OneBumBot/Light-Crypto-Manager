@@ -1,0 +1,78 @@
+{
+  "profile": "kuznyechik-mgm-v1",
+  "nonce_range_source": "authenticated MQTT lease_grant",
+  "malformed_sent": 19,
+  "rejected": 19,
+  "accepted": 3,
+  "duplicate_admission": 0,
+  "duplicate_replay": 1,
+  "malformed_admission_state_unchanged": true,
+  "rejected_identity_null": true,
+  "neighbor_delivered": true,
+  "samples": [
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    },
+    {
+      "incoming": 19,
+      "rejected": 19
+    }
+  ],
+  "observation_seconds": 11.030853675998515,
+  "postgres_mongo_count_delta": 3,
+  "project": "lcm-stage11-kuznyechik-live",
+  "exit_code": 0,
+  "receiver_processing_failures": 0,
+  "receiver_subscription_acknowledgements": 0,
+  "receiver_client_connections": 0,
+  "explicit_receiver_restart": true,
+  "post_restart_observation_seconds": 5,
+  "counters_before_restart": {
+    "replay": 1,
+    "incoming": 1379,
+    "rejected": 19,
+    "delivered": 1359,
+    "accepted": 1359
+  },
+  "counters_after_restart": {
+    "replay": 1,
+    "incoming": 1379,
+    "rejected": 19,
+    "delivered": 1359,
+    "accepted": 1359
+  },
+  "no_redelivery_after_receiver_restart": true
+}

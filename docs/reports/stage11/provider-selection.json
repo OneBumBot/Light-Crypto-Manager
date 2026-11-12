@@ -1,0 +1,61 @@
+{
+  "source_sha": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+  "selected": {
+    "repository": "https://github.com/tarantool/go-gostcrypto",
+    "revision": "3791d459e0c35d051a691a3bd3a4a69f671258f5",
+    "license": "BSD-2-Clause",
+    "cipher": "NewCipherCT",
+    "aead": "MGM",
+    "tag_bytes": 16,
+    "cgo": false,
+    "external_modules": false,
+    "whole_aead_constant_time_verified": false,
+    "eligibility": "explicit_isolated_stage11_software_lab_only"
+  },
+  "candidates": [
+    {
+      "candidate": "go-gostcrypto",
+      "revision": "3791d459e0c35d051a691a3bd3a4a69f671258f5",
+      "git_archive_sha256": "6509529edd9224f726107e60eff6d1d3e47acd17bcae657df138edd0d088a0b7"
+    },
+    {
+      "candidate": "gogost-independent",
+      "revision": "44a1f1ec2524a739e2fb8032aab96371052124ef",
+      "git_archive_sha256": "e12ecd5833c316a49b52c3a83d8485caf439abd5cebb0ee1a7bbbc429be946a0"
+    },
+    {
+      "candidate": "gostcrypto",
+      "revision": "60d5338553a61c9dd9cbe70bc3a96dd253a84630",
+      "git_archive_sha256": "067fa31d683b8bc894531bd3f94165f8463343e426c4f6aad94ca378d7b44a24"
+    },
+    {
+      "candidate": "gost-engine",
+      "revision": "af2b7e69e855572202420ffc36bae06ccd70796b",
+      "git_archive_sha256": "1ebb4522a72190d611cfdae13255e4ac48efbc1a935e17efa6c5513e7f7cddf9"
+    }
+  ],
+  "independent_crosscheck": {
+    "cases": 54,
+    "matching_ciphertext_and_full_tag": 54,
+    "invalid_tag_rejections": 108,
+    "exit_code": 0,
+    "binaries": [
+      "5e715633b674a09235ab1bfcbe99f0f283835fb20a7789b869f3e590eb68527a",
+      "ec9f9aafcf920121b05f13c42cc4cf00758e62af93cd592cb2b944a5fcecede2"
+    ]
+  },
+  "kat": {
+    "rfc7801_round_keys": 10,
+    "rfc7801_block_encrypt_decrypt": true,
+    "rfc9058_a1_examples": [
+      1,
+      2
+    ],
+    "exact_expected_bytes_source": "tests/test_kuz_provider.py",
+    "full_regression": "868 passed, 0 skipped",
+    "key_schedule_artifact": "key-schedule-kat.jsonl",
+    "native_frames_artifact": "native-frame-tests.jsonl"
+  },
+  "exit_code": 0,
+  "verification_source_sha": "359320ed83dcba506b3c487aaff6f7a3c6005c73"
+}

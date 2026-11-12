@@ -120,3 +120,7 @@ real physical quality не проверена. Ни научное качест�
 pre-cutover history, source-clock quality, one Flask process/live50, shared PG
 runtime role, Mongo standalone/internal DB TLS отсутствует, production HTTPS/ARM64
 и массовые нагрузки не проверены. Полнота исторического ML не обещается.
+
+## Stage11 extension
+
+Crypto dispatch содержит три явных provider без else-fallback. Kuznyechik/MGM — pinned local Go executable через private bounded pipes; не сетевой crypto service. Fresh private provisioning добавляет32B key только alpha/beta, gamma Ascon-only. Receiver проверяет usage allowance до tag, затем существующий atomic replay/Outbox/effective transaction. PostgreSQL migration0010 хранит только metadata/counters, не ключи. Mongo validator расширяется explicit collMod. UI переиспользует monitoring/control/history APIs и показывает только supported/eligible targets; web не получает новый MGM/control key. [Provider boundary](CRYPTO_PROVIDER_ARCHITECTURE.md).

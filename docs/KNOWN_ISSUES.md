@@ -500,3 +500,13 @@ research volume — граница доверия, не tamper-proof recorder. O
 но использует существующую readonly web-role своего lab broker. Disk watchdog
 не hard quota. Все эти ограничения обязательны для дипломной интерпретации.
 Подробный итог/фактические commands/exit codes: RESEARCH_75B_FIX_RESULTS.md.
+
+## Stage11 limitations
+
+- Новый MGM provider пригоден только для явно разрешённого software lab. Whole-AEAD constant-time и независимый audit не подтверждены: MGM multiplication содержит secret-dependent branch; upstream CT Kuznyechik experimental.
+- One-shot Go process на операцию добавляет spawn/key-schedule overhead; не экстраполировать результаты на native persistent provider/ARM.
+- Python/Go GC не гарантирует zeroization всех копий ключей.
+- Budget намеренно расходуется на все committed grants MGM-key устройства, даже пока работает Ascon/AES; неиспользованный хвост сгорает. Rotation/recovery не выполняются silent reset.
+- Joint PG+SQLite rollback без внешнего monotonic anchor не обнаруживается; нужны новые ключи/эпоха после reviewed restore.
+- Magma-MGM остаётся непроверенным design-кандидатом, недоступна в UI/live pipeline.
+- Mongo schema upgrade явный; отсутствие нового enum даёт delivery error/backlog, не разрешение отключить validator.

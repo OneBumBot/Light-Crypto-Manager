@@ -33,3 +33,7 @@ PG command intents/bytes фиксируются до network publish. Worker cla
 повторяет те же bytes, ≤12 attempts/backoff≤10 s/expiry. Broker PUBACK отдельно от
 READY/APPLIED ACK и verified telemetry. At-least-once transport, идемпотентное
 исполнение; end-to-end exactly-once не заявляется.
+
+## Stage11: третий target без изменения HMAC wire
+
+`kuznyechik-mgm-v1` допускается только для явно provisioned Stage11 lab devices с key32B, capability, provider KAT/readiness и durable usage authority. Manual admin authorization/RBAC/CSRF, PREPARE/ACTIVATE, key_reference, TTL/replay/deadline и reconciliation сохранены. Каждый signed nonce grant консервативно расходует per-key MGM budget, даже если текущий профиль иной. DEVICE_APPLIED остаётся report, EFFECTIVE_CONFIRMED требует новой принятой AEAD telemetry. Нет автоматической ML/Policy команды.

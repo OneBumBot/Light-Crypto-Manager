@@ -1,0 +1,979 @@
+{
+  "project": "lcm-stage11-kuznyechik-live",
+  "source_sha": "cf5e5c4a2952a832455cc830d1dc43358dee996c",
+  "windows": [
+    {
+      "profile": "ascon-aead128-v1",
+      "start": "2026-11-12T15:07:47.046595+00:00",
+      "end": "2026-11-12T15:07:55.046662+00:00",
+      "duration_seconds": 8.000067,
+      "wire_profile": "Ascon-AEAD128",
+      "pg_accepted": 16,
+      "mongo_stored": 16,
+      "undelivered_committed": 0,
+      "received_messages_per_second": 1.9999832501402801,
+      "delivery_latency_ms": {
+        "p50": 3.642,
+        "p95": 4.822,
+        "p99": 4.822
+      },
+      "pg_to_mongo_mean_ms": 134.4950625,
+      "global_outbox_backlog": 3,
+      "global_unattributed_rejected": 0,
+      "device_authenticated_replay": 0,
+      "resources": {
+        "cpu_percent": 37.230000000000004,
+        "ram_mib": 651.7959999999999,
+        "containers": [
+          {
+            "BlockIO": "971kB / 0B",
+            "CPUPerc": "2.18%",
+            "Container": "b0cab1dbc9dfae8b281f2d14d007148000d3c2e5c06e77e293cfdab0d4936b8d",
+            "ID": "b0cab1dbc9df",
+            "MemPerc": "3.14%",
+            "MemUsage": "4.016MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-broker-1",
+            "NetIO": "2.1MB / 2.08MB",
+            "PIDs": "1"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.55%",
+            "Container": "5220625e7204b2d891196ba97bd64e0fb56d1cc093f8ce39668a68990e7d52f7",
+            "ID": "5220625e7204",
+            "MemPerc": "16.53%",
+            "MemUsage": "42.32MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-control-worker-1",
+            "NetIO": "2.1MB / 1.91MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "98.3kB / 2.32MB",
+            "CPUPerc": "0.37%",
+            "Container": "c76b65ea9e29187efa78d2d576d84543574c0326580dccd6b7c86ac404f20a6a",
+            "ID": "c76b65ea9e29",
+            "MemPerc": "25.93%",
+            "MemUsage": "33.19MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-device-alpha-1",
+            "NetIO": "46.7kB / 162kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "389kB / 254kB",
+            "CPUPerc": "0.35%",
+            "Container": "0c8412b5bdfbaec32cf0c03b409bad666024e3bd5edbd17b9ddf084f5b7fff3b",
+            "ID": "0c8412b5bdfb",
+            "MemPerc": "18.00%",
+            "MemUsage": "23.04MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-device-beta-1",
+            "NetIO": "37.2kB / 151kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "610kB / 238kB",
+            "CPUPerc": "0.30%",
+            "Container": "98a187aa4716717dd332ff1a3bbed2de9d65a823eaa6cdc868f3394a91cea05e",
+            "ID": "98a187aa4716",
+            "MemPerc": "18.21%",
+            "MemUsage": "23.3MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-device-gamma-1",
+            "NetIO": "37.3kB / 152kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "11.6MB / 244MB",
+            "CPUPerc": "0.43%",
+            "Container": "7500bc841fff7a2a3d843d49cf71548072763ac72bd957ba282476b581df37bc",
+            "ID": "7500bc841fff",
+            "MemPerc": "20.80%",
+            "MemUsage": "159.7MiB / 768MiB",
+            "Name": "lcm-stage11-kuznyechik-live-mongo-1",
+            "NetIO": "1.99MB / 966kB",
+            "PIDs": "52"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "8.97%",
+            "Container": "5f11511e7cdd5420bee279a445ea768272dfa2411a84991adcafb8ea6ebd0789",
+            "ID": "5f11511e7cdd",
+            "MemPerc": "18.01%",
+            "MemUsage": "46.11MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-outbox-relay-1",
+            "NetIO": "3.36MB / 2.6MB",
+            "PIDs": "5"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "9.11%",
+            "Container": "2bb4ade098b0036f047f535a59ee7e16e6d1b6aedd6a308c04bea406bc75b8af",
+            "ID": "2bb4ade098b0",
+            "MemPerc": "15.67%",
+            "MemUsage": "40.12MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-policy-worker-1",
+            "NetIO": "14.3MB / 8.75MB",
+            "PIDs": "2"
+          },
+          {
+            "BlockIO": "1.82MB / 1.47GB",
+            "CPUPerc": "11.72%",
+            "Container": "f9a5cff9315c2657905ed31ddfafafa454a47a7a21cd0a8e405b74488875a935",
+            "ID": "f9a5cff9315c",
+            "MemPerc": "20.72%",
+            "MemUsage": "159.1MiB / 768MiB",
+            "Name": "lcm-stage11-kuznyechik-live-postgres-1",
+            "NetIO": "71.9MB / 107MB",
+            "PIDs": "13"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "2.22%",
+            "Container": "1c9ac2bb0d0d52a318fa31f449ad1db14d3391fae4eaa4fe53b9fa097440a450",
+            "ID": "1c9ac2bb0d0d",
+            "MemPerc": "16.89%",
+            "MemUsage": "43.23MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-receiver-1",
+            "NetIO": "3.86MB / 2.68MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.03%",
+            "Container": "78db06fbd39fd08e2fb21fd012c4cb368a3d7e140edd231bb732ab7cb9f9385e",
+            "ID": "78db06fbd39f",
+            "MemPerc": "30.34%",
+            "MemUsage": "77.67MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-web-1",
+            "NetIO": "1.84MB / 2.19MB",
+            "PIDs": "8"
+          }
+        ]
+      }
+    },
+    {
+      "profile": "aes-128-gcm-v1",
+      "start": "2026-11-12T15:08:02.602012+00:00",
+      "end": "2026-11-12T15:08:10.602054+00:00",
+      "duration_seconds": 8.000042,
+      "wire_profile": "AES-128-GCM",
+      "pg_accepted": 16,
+      "mongo_stored": 16,
+      "undelivered_committed": 0,
+      "received_messages_per_second": 1.9999895000551247,
+      "delivery_latency_ms": {
+        "p50": 2.5010000000000003,
+        "p95": 3.414,
+        "p99": 3.414
+      },
+      "pg_to_mongo_mean_ms": 201.6683125,
+      "global_outbox_backlog": 3,
+      "global_unattributed_rejected": 0,
+      "device_authenticated_replay": 0,
+      "resources": {
+        "cpu_percent": 43.69,
+        "ram_mib": 653.694,
+        "containers": [
+          {
+            "BlockIO": "971kB / 0B",
+            "CPUPerc": "2.18%",
+            "Container": "b0cab1dbc9dfae8b281f2d14d007148000d3c2e5c06e77e293cfdab0d4936b8d",
+            "ID": "b0cab1dbc9df",
+            "MemPerc": "3.11%",
+            "MemUsage": "3.984MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-broker-1",
+            "NetIO": "2.18MB / 2.15MB",
+            "PIDs": "1"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.82%",
+            "Container": "5220625e7204b2d891196ba97bd64e0fb56d1cc093f8ce39668a68990e7d52f7",
+            "ID": "5220625e7204",
+            "MemPerc": "16.53%",
+            "MemUsage": "42.32MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-control-worker-1",
+            "NetIO": "2.36MB / 2.15MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "98.3kB / 2.87MB",
+            "CPUPerc": "0.24%",
+            "Container": "c76b65ea9e29187efa78d2d576d84543574c0326580dccd6b7c86ac404f20a6a",
+            "ID": "c76b65ea9e29",
+            "MemPerc": "25.92%",
+            "MemUsage": "33.18MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-device-alpha-1",
+            "NetIO": "55kB / 182kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "389kB / 254kB",
+            "CPUPerc": "0.34%",
+            "Container": "0c8412b5bdfbaec32cf0c03b409bad666024e3bd5edbd17b9ddf084f5b7fff3b",
+            "ID": "0c8412b5bdfb",
+            "MemPerc": "18.00%",
+            "MemUsage": "23.04MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-device-beta-1",
+            "NetIO": "43.3kB / 170kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "610kB / 238kB",
+            "CPUPerc": "0.30%",
+            "Container": "98a187aa4716717dd332ff1a3bbed2de9d65a823eaa6cdc868f3394a91cea05e",
+            "ID": "98a187aa4716",
+            "MemPerc": "18.39%",
+            "MemUsage": "23.54MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-device-gamma-1",
+            "NetIO": "43.4kB / 171kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "11.6MB / 249MB",
+            "CPUPerc": "20.45%",
+            "Container": "7500bc841fff7a2a3d843d49cf71548072763ac72bd957ba282476b581df37bc",
+            "ID": "7500bc841fff",
+            "MemPerc": "20.81%",
+            "MemUsage": "159.8MiB / 768MiB",
+            "Name": "lcm-stage11-kuznyechik-live-mongo-1",
+            "NetIO": "2.04MB / 983kB",
+            "PIDs": "52"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.98%",
+            "Container": "5f11511e7cdd5420bee279a445ea768272dfa2411a84991adcafb8ea6ebd0789",
+            "ID": "5f11511e7cdd",
+            "MemPerc": "18.13%",
+            "MemUsage": "46.41MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-outbox-relay-1",
+            "NetIO": "3.76MB / 2.9MB",
+            "PIDs": "5"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "2.20%",
+            "Container": "2bb4ade098b0036f047f535a59ee7e16e6d1b6aedd6a308c04bea406bc75b8af",
+            "ID": "2bb4ade098b0",
+            "MemPerc": "15.53%",
+            "MemUsage": "39.77MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-policy-worker-1",
+            "NetIO": "16.4MB / 9.98MB",
+            "PIDs": "2"
+          },
+          {
+            "BlockIO": "1.82MB / 1.51GB",
+            "CPUPerc": "11.51%",
+            "Container": "f9a5cff9315c2657905ed31ddfafafa454a47a7a21cd0a8e405b74488875a935",
+            "ID": "f9a5cff9315c",
+            "MemPerc": "20.78%",
+            "MemUsage": "159.6MiB / 768MiB",
+            "Name": "lcm-stage11-kuznyechik-live-postgres-1",
+            "NetIO": "74MB / 111MB",
+            "PIDs": "13"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "2.64%",
+            "Container": "1c9ac2bb0d0d52a318fa31f449ad1db14d3391fae4eaa4fe53b9fa097440a450",
+            "ID": "1c9ac2bb0d0d",
+            "MemPerc": "17.20%",
+            "MemUsage": "44.02MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-receiver-1",
+            "NetIO": "4.31MB / 2.98MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "0.03%",
+            "Container": "78db06fbd39fd08e2fb21fd012c4cb368a3d7e140edd231bb732ab7cb9f9385e",
+            "ID": "78db06fbd39f",
+            "MemPerc": "30.48%",
+            "MemUsage": "78.03MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-web-1",
+            "NetIO": "2.32MB / 2.65MB",
+            "PIDs": "8"
+          }
+        ]
+      }
+    },
+    {
+      "profile": "kuznyechik-mgm-v1",
+      "start": "2026-11-12T15:08:18.157780+00:00",
+      "end": "2026-11-12T15:08:26.157854+00:00",
+      "duration_seconds": 8.000074,
+      "wire_profile": "Kuznyechik-MGM",
+      "pg_accepted": 16,
+      "mongo_stored": 16,
+      "undelivered_committed": 0,
+      "received_messages_per_second": 1.9999815001711234,
+      "delivery_latency_ms": {
+        "p50": 9.589,
+        "p95": 10.964,
+        "p99": 10.964
+      },
+      "pg_to_mongo_mean_ms": 217.7826875,
+      "global_outbox_backlog": 3,
+      "global_unattributed_rejected": 0,
+      "device_authenticated_replay": 0,
+      "resources": {
+        "cpu_percent": 50.330000000000005,
+        "ram_mib": 664.024,
+        "containers": [
+          {
+            "BlockIO": "971kB / 0B",
+            "CPUPerc": "2.15%",
+            "Container": "b0cab1dbc9dfae8b281f2d14d007148000d3c2e5c06e77e293cfdab0d4936b8d",
+            "ID": "b0cab1dbc9df",
+            "MemPerc": "3.39%",
+            "MemUsage": "4.344MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-broker-1",
+            "NetIO": "2.25MB / 2.22MB",
+            "PIDs": "1"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "6.44%",
+            "Container": "5220625e7204b2d891196ba97bd64e0fb56d1cc093f8ce39668a68990e7d52f7",
+            "ID": "5220625e7204",
+            "MemPerc": "19.82%",
+            "MemUsage": "50.74MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-control-worker-1",
+            "NetIO": "2.63MB / 2.38MB",
+            "PIDs": "4"
+          },
+          {
+            "BlockIO": "98.3kB / 3.35MB",
+            "CPUPerc": "0.79%",
+            "Container": "c76b65ea9e29187efa78d2d576d84543574c0326580dccd6b7c86ac404f20a6a",
+            "ID": "c76b65ea9e29",
+            "MemPerc": "26.24%",
+            "MemUsage": "33.59MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-device-alpha-1",
+            "NetIO": "63.5kB / 203kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "389kB / 262kB",
+            "CPUPerc": "0.33%",
+            "Container": "0c8412b5bdfbaec32cf0c03b409bad666024e3bd5edbd17b9ddf084f5b7fff3b",
+            "ID": "0c8412b5bdfb",
+            "MemPerc": "18.00%",
+            "MemUsage": "23.04MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-device-beta-1",
+            "NetIO": "49.4kB / 189kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "610kB / 246kB",
+            "CPUPerc": "0.34%",
+            "Container": "98a187aa4716717dd332ff1a3bbed2de9d65a823eaa6cdc868f3394a91cea05e",
+            "ID": "98a187aa4716",
+            "MemPerc": "18.39%",
+            "MemUsage": "23.54MiB / 128MiB",
+            "Name": "lcm-stage11-kuznyechik-live-device-gamma-1",
+            "NetIO": "49.5kB / 189kB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "12.3MB / 257MB",
+            "CPUPerc": "0.40%",
+            "Container": "7500bc841fff7a2a3d843d49cf71548072763ac72bd957ba282476b581df37bc",
+            "ID": "7500bc841fff",
+            "MemPerc": "20.85%",
+            "MemUsage": "160.2MiB / 768MiB",
+            "Name": "lcm-stage11-kuznyechik-live-mongo-1",
+            "NetIO": "2.1MB / 1MB",
+            "PIDs": "52"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "1.91%",
+            "Container": "5f11511e7cdd5420bee279a445ea768272dfa2411a84991adcafb8ea6ebd0789",
+            "ID": "5f11511e7cdd",
+            "MemPerc": "18.08%",
+            "MemUsage": "46.28MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-outbox-relay-1",
+            "NetIO": "4.15MB / 3.19MB",
+            "PIDs": "5"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "2.32%",
+            "Container": "2bb4ade098b0036f047f535a59ee7e16e6d1b6aedd6a308c04bea406bc75b8af",
+            "ID": "2bb4ade098b0",
+            "MemPerc": "15.59%",
+            "MemUsage": "39.91MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-policy-worker-1",
+            "NetIO": "18.4MB / 11.2MB",
+            "PIDs": "2"
+          },
+          {
+            "BlockIO": "1.82MB / 1.55GB",
+            "CPUPerc": "11.47%",
+            "Container": "f9a5cff9315c2657905ed31ddfafafa454a47a7a21cd0a8e405b74488875a935",
+            "ID": "f9a5cff9315c",
+            "MemPerc": "20.79%",
+            "MemUsage": "159.7MiB / 768MiB",
+            "Name": "lcm-stage11-kuznyechik-live-postgres-1",
+            "NetIO": "76.1MB / 114MB",
+            "PIDs": "13"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "10.13%",
+            "Container": "1c9ac2bb0d0d52a318fa31f449ad1db14d3391fae4eaa4fe53b9fa097440a450",
+            "ID": "1c9ac2bb0d0d",
+            "MemPerc": "17.30%",
+            "MemUsage": "44.3MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-receiver-1",
+            "NetIO": "4.79MB / 3.3MB",
+            "PIDs": "3"
+          },
+          {
+            "BlockIO": "0B / 0B",
+            "CPUPerc": "14.05%",
+            "Container": "78db06fbd39fd08e2fb21fd012c4cb368a3d7e140edd231bb732ab7cb9f9385e",
+            "ID": "78db06fbd39f",
+            "MemPerc": "30.62%",
+            "MemUsage": "78.38MiB / 256MiB",
+            "Name": "lcm-stage11-kuznyechik-live-web-1",
+            "NetIO": "2.8MB / 3.11MB",
+            "PIDs": "8"
+          }
+        ]
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "device": "alpha",
+      "target": "aes-128-gcm-v1",
+      "transition_id": "b66fb71c-6a7a-4b9f-8d67-0815334328cd",
+      "request_started_at": "2026-11-12T15:07:59.911918+00:00",
+      "http_202_seconds": 0.008362770080566406,
+      "observed_effective_seconds": 1.0533254146575928,
+      "transition": {
+        "acknowledged_at": "2026-11-12T15:08:00.050644+00:00",
+        "activated_at": "2026-11-12T15:07:59.967879+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T15:08:00.469298+00:00",
+        "correlation_id": "1b7be893-d9c1-4a79-8aaa-3929bb3af0fd",
+        "created_at": "2026-11-12T15:07:59.915995+00:00",
+        "deadline": "2026-11-12T15:09:59.915995+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "b66fb71c-6a7a-4b9f-8d67-0815334328cd",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "aes-128-gcm-v1",
+        "telemetry_event": "4a4775a3-f546-47ac-8a55-518dcd3091a1"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T15:08:00.471217+00:00",
+          "device_id": "alpha",
+          "id": "509a1702-b288-4161-93fb-7f30e8031b35",
+          "transition_id": "b66fb71c-6a7a-4b9f-8d67-0815334328cd"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T15:08:00.052959+00:00",
+          "device_id": "alpha",
+          "id": "9b847ec0-ed2b-4bf2-89ac-39d143b24fd6",
+          "transition_id": "b66fb71c-6a7a-4b9f-8d67-0815334328cd"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T15:08:00.009316+00:00",
+          "device_id": "alpha",
+          "id": "582e9a21-e896-45eb-806c-2fc413986628",
+          "transition_id": "b66fb71c-6a7a-4b9f-8d67-0815334328cd"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T15:07:59.969929+00:00",
+          "device_id": "alpha",
+          "id": "f953a9ed-c332-4064-a209-780edc66e855",
+          "transition_id": "b66fb71c-6a7a-4b9f-8d67-0815334328cd"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T15:07:59.926007+00:00",
+          "device_id": "alpha",
+          "id": "29a498d2-7a3d-4bd8-8ff2-5274d7fcb122",
+          "transition_id": "b66fb71c-6a7a-4b9f-8d67-0815334328cd"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T15:07:59.918050+00:00",
+          "device_id": "alpha",
+          "id": "f0a7e555-bbce-4035-801c-6711b24d41f1",
+          "transition_id": "b66fb71c-6a7a-4b9f-8d67-0815334328cd"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T15:09:59.915995+00:00",
+          "id": "d48b7484-d102-4c9d-8481-b99a5b754473",
+          "phase": "ACTIVATE",
+          "sequence": 62,
+          "status": "verified",
+          "transition_id": "b66fb71c-6a7a-4b9f-8d67-0815334328cd"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T15:09:59.915995+00:00",
+          "id": "0702cc82-37d5-48a9-a0e5-3be3dac8bc6c",
+          "phase": "PREPARE",
+          "sequence": 61,
+          "status": "acknowledged",
+          "transition_id": "b66fb71c-6a7a-4b9f-8d67-0815334328cd"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "d48b7484-d102-4c9d-8481-b99a5b754473",
+          "device_id": "alpha",
+          "id": "458286e6-6e86-418f-850b-ccaa9710f29a",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T15:08:00.050644+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "0702cc82-37d5-48a9-a0e5-3be3dac8bc6c",
+          "device_id": "alpha",
+          "id": "399ed1a1-4f65-43f1-90b6-8ea7cf869cab",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T15:07:59.967879+00:00",
+          "result": "READY"
+        }
+      ]
+    },
+    {
+      "device": "alpha",
+      "target": "kuznyechik-mgm-v1",
+      "transition_id": "519b131a-eeae-4eea-b08e-da1b867c70f7",
+      "request_started_at": "2026-11-12T15:08:15.471067+00:00",
+      "http_202_seconds": 0.012635469436645508,
+      "observed_effective_seconds": 1.0566318035125732,
+      "transition": {
+        "acknowledged_at": "2026-11-12T15:08:15.657397+00:00",
+        "activated_at": "2026-11-12T15:08:15.574528+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T15:08:16.039368+00:00",
+        "correlation_id": "96b011c7-3278-4d2f-af71-ac227f29ce30",
+        "created_at": "2026-11-12T15:08:15.479087+00:00",
+        "deadline": "2026-11-12T15:10:15.479087+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "519b131a-eeae-4eea-b08e-da1b867c70f7",
+        "old_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "kuznyechik-mgm-v1",
+        "telemetry_event": "75738bd7-da72-4bb0-972b-7971120413a0"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T15:08:16.040843+00:00",
+          "device_id": "alpha",
+          "id": "e14d6bf2-39a2-45b5-bc99-c4f20a77d957",
+          "transition_id": "519b131a-eeae-4eea-b08e-da1b867c70f7"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T15:08:15.658549+00:00",
+          "device_id": "alpha",
+          "id": "665e267d-e89d-4f96-8488-69cc968c7212",
+          "transition_id": "519b131a-eeae-4eea-b08e-da1b867c70f7"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T15:08:15.615279+00:00",
+          "device_id": "alpha",
+          "id": "c9e51f1c-a5f9-492f-b0e1-6e63758e9211",
+          "transition_id": "519b131a-eeae-4eea-b08e-da1b867c70f7"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T15:08:15.575842+00:00",
+          "device_id": "alpha",
+          "id": "dededdf1-5dd9-48fd-a337-d03100b97c6d",
+          "transition_id": "519b131a-eeae-4eea-b08e-da1b867c70f7"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T15:08:15.533880+00:00",
+          "device_id": "alpha",
+          "id": "2b104fc3-8cc3-486e-96a1-68936560edb5",
+          "transition_id": "519b131a-eeae-4eea-b08e-da1b867c70f7"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T15:08:15.481811+00:00",
+          "device_id": "alpha",
+          "id": "faba3471-47cc-444a-afc1-b1e1e8b1e3dc",
+          "transition_id": "519b131a-eeae-4eea-b08e-da1b867c70f7"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T15:10:15.479087+00:00",
+          "id": "2ddef29f-4aa1-485a-9535-0f22239adcc7",
+          "phase": "ACTIVATE",
+          "sequence": 64,
+          "status": "verified",
+          "transition_id": "519b131a-eeae-4eea-b08e-da1b867c70f7"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T15:10:15.479087+00:00",
+          "id": "db5e4bb6-542b-449b-974b-4483d54cedb4",
+          "phase": "PREPARE",
+          "sequence": 63,
+          "status": "acknowledged",
+          "transition_id": "519b131a-eeae-4eea-b08e-da1b867c70f7"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "2ddef29f-4aa1-485a-9535-0f22239adcc7",
+          "device_id": "alpha",
+          "id": "62121cb3-669a-44a4-8663-2e5a90bc7272",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T15:08:15.657397+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "db5e4bb6-542b-449b-974b-4483d54cedb4",
+          "device_id": "alpha",
+          "id": "86466408-d146-4895-8108-da4c6c5e0f54",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T15:08:15.574528+00:00",
+          "result": "READY"
+        }
+      ]
+    },
+    {
+      "device": "alpha",
+      "target": "ascon-aead128-v1",
+      "transition_id": "9e3f119f-3781-4c7c-a75b-d2622357cb9a",
+      "request_started_at": "2026-11-12T15:08:31.023424+00:00",
+      "http_202_seconds": 0.006649494171142578,
+      "observed_effective_seconds": 1.0456459522247314,
+      "transition": {
+        "acknowledged_at": "2026-11-12T15:08:31.250420+00:00",
+        "activated_at": "2026-11-12T15:08:31.167262+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T15:08:31.674006+00:00",
+        "correlation_id": "e5a6dcff-82c4-4634-bc71-3dd25c1c7716",
+        "created_at": "2026-11-12T15:08:31.026582+00:00",
+        "deadline": "2026-11-12T15:10:31.026582+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "9e3f119f-3781-4c7c-a75b-d2622357cb9a",
+        "old_profile": "kuznyechik-mgm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "d77d6517-ada4-4015-87f8-e1007427787d"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T15:08:31.675253+00:00",
+          "device_id": "alpha",
+          "id": "e3e23508-ebe1-4aa1-a658-8123e377894d",
+          "transition_id": "9e3f119f-3781-4c7c-a75b-d2622357cb9a"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T15:08:31.251645+00:00",
+          "device_id": "alpha",
+          "id": "61fc2728-70cc-489d-b828-e9f80d368c10",
+          "transition_id": "9e3f119f-3781-4c7c-a75b-d2622357cb9a"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T15:08:31.207370+00:00",
+          "device_id": "alpha",
+          "id": "c7d203e9-261b-469a-bb93-88e583605bd4",
+          "transition_id": "9e3f119f-3781-4c7c-a75b-d2622357cb9a"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T15:08:31.168390+00:00",
+          "device_id": "alpha",
+          "id": "d6768603-716a-4718-8261-29053520c7b3",
+          "transition_id": "9e3f119f-3781-4c7c-a75b-d2622357cb9a"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T15:08:31.103834+00:00",
+          "device_id": "alpha",
+          "id": "3ea9e227-8e9d-4816-b01c-7a3146dc6a2d",
+          "transition_id": "9e3f119f-3781-4c7c-a75b-d2622357cb9a"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T15:08:31.028353+00:00",
+          "device_id": "alpha",
+          "id": "41ff3b81-09db-451c-9acc-5adc3fa76ab2",
+          "transition_id": "9e3f119f-3781-4c7c-a75b-d2622357cb9a"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T15:10:31.026582+00:00",
+          "id": "62798c33-0b84-4e73-a0a8-2a61639e2adc",
+          "phase": "ACTIVATE",
+          "sequence": 66,
+          "status": "verified",
+          "transition_id": "9e3f119f-3781-4c7c-a75b-d2622357cb9a"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T15:10:31.026582+00:00",
+          "id": "3f70c2b2-cc8e-430c-b445-be9d632ecbbc",
+          "phase": "PREPARE",
+          "sequence": 65,
+          "status": "acknowledged",
+          "transition_id": "9e3f119f-3781-4c7c-a75b-d2622357cb9a"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "62798c33-0b84-4e73-a0a8-2a61639e2adc",
+          "device_id": "alpha",
+          "id": "19db1e93-b1e7-4f14-823d-47917a980905",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T15:08:31.250420+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "3f70c2b2-cc8e-430c-b445-be9d632ecbbc",
+          "device_id": "alpha",
+          "id": "aff5d670-794e-4034-8a90-3bd19773c2ee",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T15:08:31.167262+00:00",
+          "result": "READY"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Single 8-second window per profile, not independent replicated network benchmark",
+    "Within-window p95/p99 descriptive only, sample too small for tail inference",
+    "Same-host wall clock; received timestamp precedes SQL commit; no isolated network/PG commit latency claim",
+    "docker stats snapshots, not peak CPU/RAM"
+  ],
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T15:07:45.261528+00:00",
+      "finished_at": "2026-11-12T15:07:45.286675+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-c",
+        "\nimport time,json,statistics\nfrom datetime import datetime,timezone\nfrom sqlalchemy import create_engine,select,func\nfrom src.runtime import database_url\nfrom src.outbox import outbox\nfrom src.security_events import journal\nfrom src.mongo_repository import MongoRepository\nengine=create_engine(database_url());start=datetime.now(timezone.utc);time.sleep(8);end=datetime.now(timezone.utc)\nwith engine.connect() as c:\n rows=[dict(r) for r in c.execute(select(outbox).where(outbox.c.device_id=='alpha',outbox.c.created_at>=start,outbox.c.created_at<end).order_by(outbox.c.sequence_number).limit(1000)).mappings()]\n backlog=c.scalar(select(func.count()).select_from(outbox).where(outbox.c.status!='delivered'))\n rejected=c.scalar(select(func.count()).select_from(journal).where(journal.c.category=='rejected',journal.c.occurred_at>=start,journal.c.occurred_at<end))\n replay=c.scalar(select(func.count()).select_from(journal).where(journal.c.category=='replay',journal.c.device_id=='alpha',journal.c.occurred_at>=start,journal.c.occurred_at<end))\nassert rows\nprofiles={r['payload']['crypto_profile'] for r in rows};assert len(profiles)==1\nlatencies=sorted((r['created_at']-datetime.fromisoformat(r['payload']['measured_at'])).total_seconds()*1000 for r in rows)\nrepo=MongoRepository('relay');deadline=time.monotonic()+5\nidentities=[f\"alpha:{r['key_epoch']}:{r['sequence_number']}\" for r in rows]\nwhile time.monotonic()<deadline and repo.collection.count_documents({'_id':{'$in':identities}})<len(rows):time.sleep(.2)\nmongo=repo.collection.count_documents({'_id':{'$in':identities}});repo.close()\ndef p(q):return latencies[min(len(latencies)-1,int((len(latencies)-1)*q))]\nwith engine.connect() as c:\n delivered=list(c.execute(select(outbox.c.created_at,outbox.c.delivered_at).where(outbox.c.id.in_([r['id'] for r in rows]))))\nrelay=[(r.delivered_at-r.created_at).total_seconds()*1000 for r in delivered if r.delivered_at]\nprint(json.dumps(dict(start=start.isoformat(),end=end.isoformat(),duration_seconds=(end-start).total_seconds(),wire_profile=list(profiles)[0],pg_accepted=len(rows),mongo_stored=mongo,undelivered_committed=len(rows)-mongo,received_messages_per_second=len(rows)/(end-start).total_seconds(),delivery_latency_ms=dict(p50=p(.5),p95=p(.95),p99=p(.99)),pg_to_mongo_mean_ms=statistics.mean(relay) if relay else None,global_outbox_backlog=backlog,global_unattributed_rejected=rejected,device_authenticated_replay=replay)))\n"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T15:07:46.416746+00:00",
+      "finished_at": "2026-11-12T15:07:55.738351+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "ps",
+        "-q"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T15:07:55.738390+00:00",
+      "finished_at": "2026-11-12T15:07:55.808487+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-c",
+        "\nimport time,json,statistics\nfrom datetime import datetime,timezone\nfrom sqlalchemy import create_engine,select,func\nfrom src.runtime import database_url\nfrom src.outbox import outbox\nfrom src.security_events import journal\nfrom src.mongo_repository import MongoRepository\nengine=create_engine(database_url());start=datetime.now(timezone.utc);time.sleep(8);end=datetime.now(timezone.utc)\nwith engine.connect() as c:\n rows=[dict(r) for r in c.execute(select(outbox).where(outbox.c.device_id=='alpha',outbox.c.created_at>=start,outbox.c.created_at<end).order_by(outbox.c.sequence_number).limit(1000)).mappings()]\n backlog=c.scalar(select(func.count()).select_from(outbox).where(outbox.c.status!='delivered'))\n rejected=c.scalar(select(func.count()).select_from(journal).where(journal.c.category=='rejected',journal.c.occurred_at>=start,journal.c.occurred_at<end))\n replay=c.scalar(select(func.count()).select_from(journal).where(journal.c.category=='replay',journal.c.device_id=='alpha',journal.c.occurred_at>=start,journal.c.occurred_at<end))\nassert rows\nprofiles={r['payload']['crypto_profile'] for r in rows};assert len(profiles)==1\nlatencies=sorted((r['created_at']-datetime.fromisoformat(r['payload']['measured_at'])).total_seconds()*1000 for r in rows)\nrepo=MongoRepository('relay');deadline=time.monotonic()+5\nidentities=[f\"alpha:{r['key_epoch']}:{r['sequence_number']}\" for r in rows]\nwhile time.monotonic()<deadline and repo.collection.count_documents({'_id':{'$in':identities}})<len(rows):time.sleep(.2)\nmongo=repo.collection.count_documents({'_id':{'$in':identities}});repo.close()\ndef p(q):return latencies[min(len(latencies)-1,int((len(latencies)-1)*q))]\nwith engine.connect() as c:\n delivered=list(c.execute(select(outbox.c.created_at,outbox.c.delivered_at).where(outbox.c.id.in_([r['id'] for r in rows]))))\nrelay=[(r.delivered_at-r.created_at).total_seconds()*1000 for r in delivered if r.delivered_at]\nprint(json.dumps(dict(start=start.isoformat(),end=end.isoformat(),duration_seconds=(end-start).total_seconds(),wire_profile=list(profiles)[0],pg_accepted=len(rows),mongo_stored=mongo,undelivered_committed=len(rows)-mongo,received_messages_per_second=len(rows)/(end-start).total_seconds(),delivery_latency_ms=dict(p50=p(.5),p95=p(.95),p99=p(.99)),pg_to_mongo_mean_ms=statistics.mean(relay) if relay else None,global_outbox_backlog=backlog,global_unattributed_rejected=rejected,device_authenticated_replay=replay)))\n"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T15:08:01.965395+00:00",
+      "finished_at": "2026-11-12T15:08:11.308576+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "ps",
+        "-q"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T15:08:11.308619+00:00",
+      "finished_at": "2026-11-12T15:08:11.378174+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-c",
+        "\nimport time,json,statistics\nfrom datetime import datetime,timezone\nfrom sqlalchemy import create_engine,select,func\nfrom src.runtime import database_url\nfrom src.outbox import outbox\nfrom src.security_events import journal\nfrom src.mongo_repository import MongoRepository\nengine=create_engine(database_url());start=datetime.now(timezone.utc);time.sleep(8);end=datetime.now(timezone.utc)\nwith engine.connect() as c:\n rows=[dict(r) for r in c.execute(select(outbox).where(outbox.c.device_id=='alpha',outbox.c.created_at>=start,outbox.c.created_at<end).order_by(outbox.c.sequence_number).limit(1000)).mappings()]\n backlog=c.scalar(select(func.count()).select_from(outbox).where(outbox.c.status!='delivered'))\n rejected=c.scalar(select(func.count()).select_from(journal).where(journal.c.category=='rejected',journal.c.occurred_at>=start,journal.c.occurred_at<end))\n replay=c.scalar(select(func.count()).select_from(journal).where(journal.c.category=='replay',journal.c.device_id=='alpha',journal.c.occurred_at>=start,journal.c.occurred_at<end))\nassert rows\nprofiles={r['payload']['crypto_profile'] for r in rows};assert len(profiles)==1\nlatencies=sorted((r['created_at']-datetime.fromisoformat(r['payload']['measured_at'])).total_seconds()*1000 for r in rows)\nrepo=MongoRepository('relay');deadline=time.monotonic()+5\nidentities=[f\"alpha:{r['key_epoch']}:{r['sequence_number']}\" for r in rows]\nwhile time.monotonic()<deadline and repo.collection.count_documents({'_id':{'$in':identities}})<len(rows):time.sleep(.2)\nmongo=repo.collection.count_documents({'_id':{'$in':identities}});repo.close()\ndef p(q):return latencies[min(len(latencies)-1,int((len(latencies)-1)*q))]\nwith engine.connect() as c:\n delivered=list(c.execute(select(outbox.c.created_at,outbox.c.delivered_at).where(outbox.c.id.in_([r['id'] for r in rows]))))\nrelay=[(r.delivered_at-r.created_at).total_seconds()*1000 for r in delivered if r.delivered_at]\nprint(json.dumps(dict(start=start.isoformat(),end=end.isoformat(),duration_seconds=(end-start).total_seconds(),wire_profile=list(profiles)[0],pg_accepted=len(rows),mongo_stored=mongo,undelivered_committed=len(rows)-mongo,received_messages_per_second=len(rows)/(end-start).total_seconds(),delivery_latency_ms=dict(p50=p(.5),p95=p(.95),p99=p(.99)),pg_to_mongo_mean_ms=statistics.mean(relay) if relay else None,global_outbox_backlog=backlog,global_unattributed_rejected=rejected,device_authenticated_replay=replay)))\n"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T15:08:17.527881+00:00",
+      "finished_at": "2026-11-12T15:08:26.884787+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage11/live/kuznyechik.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "ps",
+        "-q"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T15:08:26.884826+00:00",
+      "finished_at": "2026-11-12T15:08:26.954868+00:00"
+    }
+  ],
+  "exit_code": 0
+}

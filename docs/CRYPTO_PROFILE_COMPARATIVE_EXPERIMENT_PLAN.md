@@ -9,3 +9,7 @@ Pipeline: новые independent device identities/keys/SQLite, одинаков
 Метрики: encryption локальный perf_counter, measured→received hostCLOCK_REALTIME, PGcommit not_measured без отдельного инструмента; Outboxcreated→finish включает relay+Mongo+PGfinish. ACK и effective timestamps отдельно; count transitions/unknown/retry/receipts, per-device fairness, resource Docker stats, DBconnections/backlog, bounded HTTP API и realbrowser. Нет интерполяции missing data; отсутствующую Mongo историю обозначать unavailable.
 
 Reliability: поочерёдные Mongo/control/policy/PG/broker/device/receiver outages с сохранением исходных volumes; фиксировать before/during/after и backlogdrain. Никаких resetnonce/replay. Budget/stopconditions Stage10 сохранить либо ужесточить. Сравнение только при одинаковом workload; новые ошибки → остановить activation, сохранить evidence. Softwarex86 результаты не выдавать за физические RaspberryPi/энергопотребление/production capacity.
+
+## Stage11: выполненная часть
+
+Три software implementation сравниваются по [STAGE11_CRYPTO_BENCHMARK](STAGE11_CRYPTO_BENCHMARK.md): Python reference Ascon, native cryptography AES, Go Kuznyechik/MGM с one-shot IPC. Одинаковые payload/AAD, warmup, три независимых ключа/process runs; raw timings сохранены. Результаты не означают ранжирование криптостойкости или ARM performance. Magma не реализована и в результаты не включена.

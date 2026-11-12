@@ -1,0 +1,79 @@
+{
+  "source_sha": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+  "packet_snapshot_source": "1148137cd953a4f9f6f0f4c6a8f1e9afdcb1f613",
+  "durable_key_usage": [
+    {
+      "device_id": "alpha",
+      "key_epoch": 1,
+      "profile_id": "kuznyechik-mgm-v1",
+      "key_reference": "kuznyechik-mgm-v1:1",
+      "nonce_policy": "epoch31-sequence64-LCM01",
+      "reserved_invocations": 150000,
+      "reserved_blocks": 48000000,
+      "max_invocations": 1048576,
+      "max_blocks": 335544320,
+      "verify_attempts": 856,
+      "max_verify_attempts": 1048576,
+      "created_at": "2026-11-12T14:41:53.933192+00:00",
+      "updated_at": "2026-11-12T15:21:45.664404+00:00"
+    },
+    {
+      "device_id": "beta",
+      "key_epoch": 1,
+      "profile_id": "kuznyechik-mgm-v1",
+      "key_reference": "kuznyechik-mgm-v1:1",
+      "nonce_policy": "epoch31-sequence64-LCM01",
+      "reserved_invocations": 70000,
+      "reserved_blocks": 22400000,
+      "max_invocations": 1048576,
+      "max_blocks": 335544320,
+      "verify_attempts": 0,
+      "max_verify_attempts": 1048576,
+      "created_at": "2026-11-12T14:41:53.934941+00:00",
+      "updated_at": "2026-11-12T15:20:58.499979+00:00"
+    }
+  ],
+  "reservation_rows": 22,
+  "agent_journal_nonce_checks": [
+    {
+      "device": "alpha",
+      "formed": 3679,
+      "duplicate_sequence": 0,
+      "duplicate_nonce_per_profile_key": 0,
+      "mgm_formed": 850,
+      "boots": 15,
+      "connect_observations": 18
+    },
+    {
+      "device": "beta",
+      "formed": 3814,
+      "duplicate_sequence": 0,
+      "duplicate_nonce_per_profile_key": 0,
+      "mgm_formed": 0,
+      "boots": 6,
+      "connect_observations": 9
+    },
+    {
+      "device": "gamma",
+      "formed": 3816,
+      "duplicate_sequence": 0,
+      "duplicate_nonce_per_profile_key": 0,
+      "mgm_formed": 0,
+      "boots": 6,
+      "connect_observations": 9
+    }
+  ],
+  "unit_and_pg_tests": [
+    "test_icn_fixed_width_injective_and_bounds",
+    "test_reservation_is_atomic_idempotent_crash_burned_and_bounded",
+    "test_bad_tag_cannot_change_admission_outbox_evidence_or_replay",
+    "test_nonce_authority_rollback_latches_across_restart",
+    "test_additive_upgrade_preserves_existing_control_replay_and_receipts",
+    "test_kuz_manual_request_requires_explicit_isolated_lab"
+  ],
+  "full_suite_artifact": "full-regression-release.txt",
+  "real_stale_and_missing_sqlite_artifact": "sqlite-recovery.json",
+  "all_listed_tests_passed": true,
+  "scope": "Software lab; joint administrative PG+SQLite rollback requires reviewed rekey, not solved with a reset",
+  "exit_code": 0
+}

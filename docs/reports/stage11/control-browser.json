@@ -1,0 +1,43 @@
+{
+  "project": "lcm-stage11-kuznyechik-live",
+  "source_sha": "5c743e2872d99479e41db1dd6307dfc49745d458",
+  "checks": [
+    "viewer_encryption_page_read_only",
+    "four_real_control_page_switches_receipt_only",
+    "gamma_capability_bound",
+    "neighbor_unaffected"
+  ],
+  "real_crypto_switches": 4,
+  "effective_receipts": [
+    {
+      "accepted_at": "2026-11-12T15:04:04.272153+00:00",
+      "event_id": "e5be1ede-d247-4a2d-8844-622dbc7c099d",
+      "key_epoch": 1,
+      "profile": "kuznyechik-mgm-v1",
+      "sequence_number": 100525
+    },
+    {
+      "accepted_at": "2026-11-12T15:04:07.327418+00:00",
+      "event_id": "fb356d9f-5a40-4e04-961f-971295aa26ca",
+      "key_epoch": 1,
+      "profile": "aes-128-gcm-v1",
+      "sequence_number": 100531
+    },
+    {
+      "accepted_at": "2026-11-12T15:04:10.875767+00:00",
+      "event_id": "9bbda055-0314-4f11-90f9-5ade10be98e2",
+      "key_epoch": 1,
+      "profile": "kuznyechik-mgm-v1",
+      "sequence_number": 100538
+    },
+    {
+      "accepted_at": "2026-11-12T15:04:13.936680+00:00",
+      "event_id": "72261db9-8631-4f0d-87a7-28a6d1ff89ed",
+      "key_epoch": 1,
+      "profile": "ascon-aead128-v1",
+      "sequence_number": 100544
+    }
+  ],
+  "page_errors": [],
+  "exit_code": 0
+}

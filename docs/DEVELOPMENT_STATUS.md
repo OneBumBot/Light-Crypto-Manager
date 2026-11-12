@@ -308,3 +308,7 @@ real anomaly labels и независимая device/session оценка ост
 Изолированный lcm-stage6 остановлен после проверок (stage6-shutdown.txt).
 Команда down выполнена без --volumes: БД, счётчики, model volume и приватные
 материалы сохранены. Предыдущие контуры/volumes не удалялись.
+
+## Stage11: Kuznyechik-MGM software integration
+
+Реальная реализация и сквозные Ascon→Kuznyechik→AES→Kuznyechik→Ascon переходы проверены через MQTT/TLS, настоящий Device Agent, HTTP admin, PG receipts и Mongo. Доступ ограничен явным isolated lab authorization; ARM/production/сертификация не заявляются. Policy DRY_RUN; RF/IF RESEARCH/DEMO, trusted_detector=false. Точные результаты, команды/exit codes и ограничения: [STAGE11_RESULTS](STAGE11_RESULTS.md). Этап12/Magma/7.5c не запускались.

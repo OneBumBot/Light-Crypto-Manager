@@ -1,0 +1,638 @@
+{
+  "baseline_sha": "d226fbc56068caa5a2685d31a89eb0c85f8efe4c",
+  "validation_source_sha": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+  "entries": [
+    {
+      "status": "M",
+      "path": ".dockerignore"
+    },
+    {
+      "status": "M",
+      "path": "Dockerfile"
+    },
+    {
+      "status": "M",
+      "path": "README.md"
+    },
+    {
+      "status": "A",
+      "path": "deploy/mongo/upgrade_kuznyechik.js"
+    },
+    {
+      "status": "M",
+      "path": "docs/CRYPTO_KEY_AND_NONCE_MANAGEMENT.md"
+    },
+    {
+      "status": "M",
+      "path": "docs/CRYPTO_PROFILE_COMPARATIVE_EXPERIMENT_PLAN.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/CRYPTO_PROVIDER_ARCHITECTURE.md"
+    },
+    {
+      "status": "M",
+      "path": "docs/CURRENT_ARCHITECTURE.md"
+    },
+    {
+      "status": "M",
+      "path": "docs/DEVELOPMENT_STATUS.md"
+    },
+    {
+      "status": "M",
+      "path": "docs/KNOWN_ISSUES.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/KUZNYECHIK_MGM_IMPLEMENTATION.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/KUZNYECHIK_MGM_TEST_VECTORS.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/KUZNYECHIK_NONCE_AND_KEY_BUDGET.md"
+    },
+    {
+      "status": "M",
+      "path": "docs/MQTT_PROTOCOL.md"
+    },
+    {
+      "status": "M",
+      "path": "docs/RUSSIAN_CRYPTO_INTEGRATION_DESIGN.md"
+    },
+    {
+      "status": "M",
+      "path": "docs/SECURE_CONTROL_PROTOCOL.md"
+    },
+    {
+      "status": "M",
+      "path": "docs/SECURITY.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/STAGE11_CRYPTO_BENCHMARK.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/STAGE11_INTEGRATION_TESTS.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/STAGE11_PROTOCOL_COMPATIBILITY.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/STAGE11_PROVIDER_SELECTION.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/STAGE11_RESULTS.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/baseline-prepare.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/baseline-regression.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/baseline-start.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/browser.desktop.png"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/browser.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/browser.mobile.png"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/browser.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/changed-files.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/control-browser-first.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/control-browser-second.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/control-browser.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/control-browser.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/control-negatives.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/control-security-final.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/crypto-benchmark.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/crypto-benchmark.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/crypto-regression.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/docker-build-final.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/docker-build.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/final-stand-snapshot-before-sqlite.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/final-stand-snapshot-before-sqlite.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/final-stand-snapshot-first.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/final-stand-snapshot.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/final-stand-snapshot.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/final-verification-before-sqlite.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/final-verification.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/full-regression-final.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/full-regression-release.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/full-regression.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/go-image.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/independent-build.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/independent-comparison-final.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/independent-comparison.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/key-schedule-kat.jsonl"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/lost-ack.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/lost-ack.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/mgm-poison.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/mgm-poison.logs.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/mgm-poison.restart.logs.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/mgm-poison.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/migration-upgrade.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/mqtt-benchmark.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/mqtt-benchmark.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/mutations-first.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/mutations-first.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/mutations.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/mutations.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/native-frame-tests.jsonl"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/new-unit-tests.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/nonce-usage-results.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/post-isolation-regression.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/preservation-first.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/preservation.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/preservation.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/provider-build-repeat.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/provider-build.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/provider-kat-first.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/provider-kat-verified.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/provider-selection.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/provider-sources.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/provider-tests-initial.jsonl"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/real-switching-final.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/real-switching-final.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/real-switching-validated.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/real-switching-validated.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/real-switching.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/real-switching.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/regression-first.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/reliability.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/reliability.progress.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/reliability.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/report-index.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/reproducible-local-build.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/source-manifest.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/sqlite-recovery.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/sqlite-recovery.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/summary.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/reports/stage11/upstream-provider-tests.jsonl"
+    },
+    {
+      "status": "A",
+      "path": "migrations/versions/0010_mgm_key_usage.py"
+    },
+    {
+      "status": "A",
+      "path": "native/kuzprovider/go.mod"
+    },
+    {
+      "status": "A",
+      "path": "native/kuzprovider/main.go"
+    },
+    {
+      "status": "A",
+      "path": "native/kuzprovider/main_test.go"
+    },
+    {
+      "status": "A",
+      "path": "scripts/benchmark_kuz_mqtt.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/benchmark_stage11.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/build_kuz_provider.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/check_kuz_control_browser.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/check_kuz_crosscheck.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/check_kuz_lostack.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/check_kuz_reliability.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/check_kuz_sqlite_recovery.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/check_kuznyechik_mqtt.py"
+    },
+    {
+      "status": "M",
+      "path": "scripts/check_malformed_mqtt_recovery.py"
+    },
+    {
+      "status": "M",
+      "path": "scripts/check_stage9_browser.py"
+    },
+    {
+      "status": "M",
+      "path": "scripts/control_mutations.py"
+    },
+    {
+      "status": "M",
+      "path": "scripts/install_security.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/install_stage11.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/kuz_lab.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/kuz_mutations.py"
+    },
+    {
+      "status": "A",
+      "path": "scripts/verify_stage11_preservation.py"
+    },
+    {
+      "status": "M",
+      "path": "src/crypto_profiles.py"
+    },
+    {
+      "status": "M",
+      "path": "src/device_control/agent.py"
+    },
+    {
+      "status": "M",
+      "path": "src/device_control/config.py"
+    },
+    {
+      "status": "M",
+      "path": "src/device_control/server.py"
+    },
+    {
+      "status": "M",
+      "path": "src/device_control/state.py"
+    },
+    {
+      "status": "M",
+      "path": "src/device_control/web.py"
+    },
+    {
+      "status": "M",
+      "path": "src/ingestion.py"
+    },
+    {
+      "status": "A",
+      "path": "src/kuz_provider.py"
+    },
+    {
+      "status": "A",
+      "path": "src/kuz_release.py"
+    },
+    {
+      "status": "A",
+      "path": "src/kuz_usage.py"
+    },
+    {
+      "status": "M",
+      "path": "src/mongo_repository.py"
+    },
+    {
+      "status": "M",
+      "path": "src/policy/profiles.py"
+    },
+    {
+      "status": "M",
+      "path": "src/telemetry.py"
+    },
+    {
+      "status": "M",
+      "path": "src/web/static/js/control.js"
+    },
+    {
+      "status": "M",
+      "path": "src/web/static/js/monitoring.js"
+    },
+    {
+      "status": "M",
+      "path": "src/web/templates/control.html"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_kuz_integration.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_kuz_provider.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_policy_storage.py"
+    },
+    {
+      "status": "M",
+      "path": "tests/test_postgres.py"
+    },
+    {
+      "status": "A",
+      "path": "tests/test_provider_dispatch.py"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/LICENSE"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/PROVENANCE.json"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/go.mod"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/internal/alias/alias.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/internal/ct/ct.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/kuznyechik/bulk.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/kuznyechik/ctgrind_poison.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/kuznyechik/ctkuznyechik.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/kuznyechik/doc.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/kuznyechik/kuznyechik.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/kuznyechik/lcm_rfc7801_test.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/kuznyechik/simd_amd64.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/kuznyechik/simd_ctr_amd64.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/kuznyechik/simd_stub.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/mgm/doc.go"
+    },
+    {
+      "status": "A",
+      "path": "third_party/go-gostcrypto/mgm/mgm.go"
+    }
+  ]
+}

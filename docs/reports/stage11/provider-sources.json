@@ -1,0 +1,37 @@
+{
+  "candidates": [
+    {
+      "candidate": "go-gostcrypto",
+      "revision": "3791d459e0c35d051a691a3bd3a4a69f671258f5",
+      "git_archive_sha256": "6509529edd9224f726107e60eff6d1d3e47acd17bcae657df138edd0d088a0b7"
+    },
+    {
+      "candidate": "gogost-independent",
+      "revision": "44a1f1ec2524a739e2fb8032aab96371052124ef",
+      "git_archive_sha256": "e12ecd5833c316a49b52c3a83d8485caf439abd5cebb0ee1a7bbbc429be946a0"
+    },
+    {
+      "candidate": "gostcrypto",
+      "revision": "60d5338553a61c9dd9cbe70bc3a96dd253a84630",
+      "git_archive_sha256": "067fa31d683b8bc894531bd3f94165f8463343e426c4f6aad94ca378d7b44a24"
+    },
+    {
+      "candidate": "gost-engine",
+      "revision": "af2b7e69e855572202420ffc36bae06ccd70796b",
+      "git_archive_sha256": "1ebb4522a72190d611cfdae13255e4ac48efbc1a935e17efa6c5513e7f7cddf9"
+    }
+  ],
+  "selected": "go-gostcrypto",
+  "independent_verification_only": "gogost-independent",
+  "runtime_external_modules": false,
+  "exit_code": 0,
+  "source_sha": "359320ed83dcba506b3c487aaff6f7a3c6005c73",
+  "archive_command": [
+    "git",
+    "-C",
+    "<pinned candidate checkout>",
+    "archive",
+    "--format=tar",
+    "HEAD"
+  ]
+}

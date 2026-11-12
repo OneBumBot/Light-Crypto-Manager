@@ -203,3 +203,9 @@ worker/persistence датчиков и Alembic не добавлялись. Дл
 [Flask-WTF CSRF](https://github.com/pallets-eco/flask-wtf/blob/main/docs/csrf.md),
 [SQLAlchemy PostgreSQL upsert](https://docs.sqlalchemy.org/en/20/dialects/postgresql.html#insert-on-conflict-upsert),
 [Playwright browsers](https://playwright.dev/python/docs/browsers).
+
+## Stage11: проверенные свойства и пределы
+
+MGM tag/AAD/key/nonce negatives, independent RFC vectors и реальные MQTT malformed tests подтверждают отказ на проверенных входах без выдачи plaintext/admission. Explicit dispatch исключает unknown→Ascon fallback. Новые per-device32B keys не передаются в control packets, SQL/Mongo/API/images/logs; web role исключает MGM keys. Per-key grants и verification attempts имеют durable bounded accounting. ACK сам по себе не меняет verified effective; lost-ACK/UNKNOWN_OUTCOME recovery проверены настоящей telemetry.
+
+Это не доказательство полной защищённости или сертификации ГОСТ. Experimental CT cipher и ветвления MGM не позволяют заявлять whole-provider timing resistance. Допуск ограничен изолированным Stage11 software lab; не production/multitenant/physical IoT. Сохраняются TLS, HMAC, replay, nonce reservations, RBAC/CSRF, Policy DRY_RUN и ML untrusted. [Ограничения provider](STAGE11_PROVIDER_SELECTION.md), [budget/recovery](KUZNYECHIK_NONCE_AND_KEY_BUDGET.md).
