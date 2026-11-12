@@ -140,3 +140,26 @@ def test_ciphertext_cannot_be_relabelled(registry,source,target):
     ad=strict_json(base64.b64decode(p['associated_data']));ad['profile']=PROFILES[target]['algorithm'];p['profile']=ad['profile'];p['associated_data']=base64.b64encode(canonical(ad)).decode()
     if target==KUZ:p['nonce']=base64.b64encode(nonce(1,1)).decode()
     with pytest.raises(InvalidTelemetry):decode_packet(p,'iot/sensors/raspb1',registry)
+
+
+@pytest.mark.postgres
+def test_additive_upgrade_preserves_existing_control_replay_and_receipts(legacy_postgres_db,registry):
+    from alembic import command
+    from alembic.config import Config
+    from src.migrate import upgrade
+    from test_control_storage import setup,baseline
+    web=legacy_postgres_db;engine=web.db.engine
+    cfg=Config('alembic.ini')
+    with engine.begin() as c:
+        cfg.attributes['connection']=c;command.upgrade(cfg,'0009_component_heartbeat')
+    conf=setup(web,registry);baseline(web,registry)
+    with engine.begin() as c:server.request_switch(c,'raspb1',AES,'admin:1',mode=server.MODE)
+    tables=[m.devices,m.transitions,m.commands,m.evidence,replay_state,outbox]
+    def snapshot():
+        with engine.connect() as c:return [[dict(row) for row in c.execute(select(table)).mappings()] for table in tables]
+    before=snapshot();upgrade(engine);assert snapshot()==before;upgrade(engine);assert snapshot()==before
+    with engine.connect() as c:assert c.scalar(select(func.count()).select_from(usage))==0
+    conf['registry']['telemetry_keys']['Kuznyechik-MGM']=bytes(range(110,142)).hex();conf['capabilities'].append(KUZ)
+    with pytest.raises(ValueError,match='provisioning conflict'):
+        with engine.begin() as c:server.provision(c,{'raspb1':conf})
+    with engine.connect() as c:assert c.scalar(select(func.count()).select_from(usage))==0

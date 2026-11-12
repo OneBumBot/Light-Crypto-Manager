@@ -49,6 +49,13 @@ for role in ['broker','publisher','receiver','web','smoke','tests']:
         os.chown(path,uid,uid)
     if role in ['publisher','receiver','web','smoke']:
         registry=json.loads((source/'registry.json').read_text())
+        if role == 'web':
+            # Stage11 MGM is admitted only by the authoritative receiver.
+            # Legacy optional web decoding retains its existing Ascon/AES keys.
+            for entry in registry.values():
+                keys=entry.get('telemetry_keys',{})
+                keys.pop('Kuznyechik-MGM',None)
+                if not keys:entry.pop('telemetry_keys',None)
         if role in ['publisher','smoke']:
             name = 'raspb1' if role=='publisher' else 'smoke'
             registry={name:registry[name]} if name in registry else {}
