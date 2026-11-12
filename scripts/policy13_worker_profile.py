@@ -1,5 +1,5 @@
 """Lab-only bounded SQL/poll instrumentation, no SQL parameters or source payload logs."""
-import json,time
+import json,time,os
 from collections import deque
 from pathlib import Path
 from sqlalchemy import event
@@ -24,6 +24,9 @@ def rollback(c):metrics['rollbacks']+=1
 def wrap(name,series):
     original=getattr(worker,name)
     def measured(*args,**kw):
+        delay=int(os.environ.get('POLICY13_TEST_DELAY_MS','0')) if name=='poll_batch' else 0
+        if not 0<=delay<=1000 or (delay and os.environ.get('APP_ENV')!='test'):raise ValueError('Explicit bounded lab-only delay')
+        if delay:time.sleep(delay/1000)
         start=time.perf_counter()
         try:
             result=original(*args,**kw)

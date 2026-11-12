@@ -7,6 +7,16 @@ from .rules import Rules
 from .signals import utc
 
 
+def annotate_state(row,now,ttl,worker_ready):
+    """A recent ML event or state write cannot freshen old authenticated telemetry."""
+    value=dict(row);stamp=value['state'].get('last_telemetry_at')
+    age=(now-utc(stamp)).total_seconds() if stamp else None
+    fresh=age is not None and ttl is not None and 0<=age<=ttl and worker_ready
+    value.update(last_processed_authenticated_telemetry_at=stamp,processed_telemetry_age_seconds=age,
+        evidence_stale=not fresh,recommendation_status='dry_run_recommendation' if fresh else 'stale_or_unavailable')
+    return value
+
+
 def snapshot(c,now,active=None):
     active=active or c.execute(select(versions).where(versions.c.active.is_(True))).mappings().first()
     version=active['version'] if active else None

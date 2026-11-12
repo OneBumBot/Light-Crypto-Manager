@@ -10,7 +10,8 @@ from src.security_events import journal,queue
 from .models import versions,states,signals,decisions,transitions,intents,worker_status
 from .profiles import registry
 from .state import install
-from .diagnostics import snapshot as throughput_snapshot
+from .diagnostics import snapshot as throughput_snapshot,annotate_state
+from .rules import Rules
 
 blueprint=Blueprint('policy',__name__)
 
@@ -46,14 +47,14 @@ def overview():
         with db.engine.connect() as c:
             active=c.execute(select(versions).where(versions.c.active.is_(True))).mappings().first()
             query=select(states).order_by(states.c.updated_at.desc(),states.c.device_id).limit(limit).offset(offset)
-            if active:query=query.where(states.c.version==active['version'])
+            query=query.where(states.c.version==active['version'] if active else False)
             if device:query=query.where(states.c.device_id==device)
             rows=c.execute(query).mappings().all()
             workers=c.execute(select(worker_status).order_by(worker_status.c.heartbeat_at.desc()).limit(50)).mappings().all()
             ver=c.execute(select(versions).order_by(versions.c.created_at.desc()).limit(50)).mappings().all()
             diagnostics=throughput_snapshot(c,c.scalar(select(func.clock_timestamp())),active)
         now=datetime.now(timezone.utc)
-        return jsonify(items=[serialize(r) for r in rows],versions=[serialize(r) for r in ver],active_version=active['version'] if active else None,
+        return jsonify(items=[serialize(annotate_state(r,now,Rules.parse(active['config']).telemetry_fresh_seconds if active else None,diagnostics['worker_status']=='ready')) for r in rows],versions=[serialize(r) for r in ver],active_version=active['version'] if active else None,
             workers=[dict(serialize(w),stale=(now-w['heartbeat_at']).total_seconds()>30) for w in workers],profiles=registry(),diagnostics=diagnostics,
             mode='DRY_RUN',live_control_enabled=False,interpretation='Configured profile is not an authenticated device acknowledgement',limit=limit,offset=offset)
     except SQLAlchemyError:return jsonify(error='Политика временно недоступна'),503

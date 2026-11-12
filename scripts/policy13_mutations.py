@@ -29,6 +29,9 @@ add('policy_forges_manual_authorization_and_creates_live_command',S,'    if befo
 add('rollback_leaves_committed_processing_markers',W,'        if before_commit:before_commit()','        if before_commit:c.commit();before_commit()','test_batch_rollback_and_retry_leave_no_partial_fsm_or_marker')
 add('restart_resets_guard_without_evidence',W,'        if maintenance:\n',"        if not count:c.execute(update(states).values(state=states.c.state.op('||')({'guard':'NORMAL','risk':'NORMAL'}),observed_risk='NORMAL'))\n        if maintenance:\n",'test_retry_restart_does_not_duplicate_proposed_intent_or_guard')
 
+add('internal_fsm_error_is_misclassified_as_rejected_ml',W,"                    process(c,signal,version,now,batch_rules=context)\n            c.execute(delete(pending)","                    try:process(c,signal,version,now,batch_rules=context)\n                    except ValueError:\n                        c.execute(insert(signals).values(event_id=item['event_id'],version=version,source='ml',payload={'diagnostic':'SourceContractRejected'},status='rejected',created_at=now).on_conflict_do_nothing())\n            c.execute(delete(pending)",'test_ml_internal_fsm_failure_is_not_a_rejected_source')
+add('odd_batch_loses_durable_source_fairness',W,"if count:c.execute(update(schedule).where(schedule.c.id==1).values(next_ml=bool(turn)!=bool(count%2)))","if False:pass",'test_fair_turn_survives_odd_batch_rollback_and_restart')
+
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--only');p.add_argument('--source-sha',required=True);a=p.parse_args()

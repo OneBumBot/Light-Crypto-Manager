@@ -15,6 +15,7 @@ from policy13_vectors import T,traces,event
 from policy13_reference import process as sequential
 pytestmark=pytest.mark.postgres
 GOLDEN_RESULTS=[]
+UPGRADE_RESULTS=[]
 
 
 def normalize(value):
@@ -276,7 +277,7 @@ def test_policy_observations_cannot_create_live_control_commands(postgres_db,reg
         assert c.scalar(select(control.devices.c.effective_profile))=='ascon-aead128-v1'
 
 
-def test_full_queue_golden_matches_original_sequential_fair_poll(postgres_db):
+def test_full_queue_golden_matches_original_sequential_fair_poll(postgres_db,monkeypatch):
     from policy13_worker_reference import poll as original_poll
     from src.policy.worker import poll_batch
     from src.policy.work_queue import seed
@@ -290,14 +291,23 @@ def test_full_queue_golden_matches_original_sequential_fair_poll(postgres_db):
             c.execute(devices.insert().values(device_id=device,database_device_id=1000+n,topic='iot/sensors/'+device,key_epoch=1,crypto_profile='Ascon-AEAD128'))
             ml_source(c,n,device=device)
         for n in reversed(range(100)):add(c,n,seconds=n//4,device='dev'+str(n%10),category='replay' if n%3==0 else 'accepted')
+    processing=[]
+    def record(delegate):
+        def run(c,signal,version,now,**kwargs):
+            result=delegate(c,signal,version,now,**kwargs);processing.append(dict(signal=signal.payload(),result=normalize(result)));return result
+        return run
+    import policy13_worker_reference as reference_worker
+    from src.policy import worker as optimized_worker
+    monkeypatch.setattr(reference_worker,'process',record(sequential))
     def output():
         with e.connect() as c:
-            return dict(states=[normalize(dict(v)) for v in c.execute(select(m.states).order_by(m.states.c.device_id)).mappings()],
+            return dict(processing_trace=list(processing),states=[normalize(dict(v)) for v in c.execute(select(m.states).order_by(m.states.c.device_id)).mappings()],
                 signals=[tuple(v) for v in c.execute(select(m.signals.c.event_id,m.signals.c.status).order_by(m.signals.c.event_id))],
                 decisions=[normalize(dict(v)) for v in c.execute(select(m.decisions).order_by(m.decisions.c.event_id)).mappings()],
                 transitions=[tuple(v) for v in c.execute(select(m.transitions.c.device_id,m.transitions.c.from_state,m.transitions.c.to_state).order_by(m.transitions.c.device_id,m.transitions.c.at,m.transitions.c.to_state))])
     for index in range(110):assert original_poll(e,prefer_ml=bool(index%2),at=T+timedelta(seconds=40))
-    expected=output()
+    expected=output();processing.clear()
+    monkeypatch.setattr(optimized_worker,'process',record(process))
     with e.begin() as c:
         for table in [m.intents,m.transitions,m.decisions,m.signals,m.states,m.command_counters,m.pending]:c.execute(delete(table))
         seed(c,'v1')
@@ -375,13 +385,16 @@ def test_upgrade_from_0010_preserves_existing_authorities_and_is_idempotent(lega
     web=legacy_postgres_db;e=web.db.engine
     with e.begin() as c:
         config=Config('alembic.ini');config.attributes['connection']=c;command.upgrade(config,'0010_mgm_key_usage')
-        old_install(c,'active',Rules().payload(),T,activate=True);old_install(c,'inactive',Rules(strategy='fixed').payload(),T)
-        old_process(c,event(1,'replay'),'active',T+timedelta(seconds=1));old_process(c,event(2,'replay'),'active',T+timedelta(seconds=1))
+        old_install(c,'active',Rules(elevated_profile='simulated-future').payload(),T,activate=True);old_install(c,'inactive',Rules(strategy='fixed').payload(),T)
+        for n in [1,2,3]:old_process(c,event(n,'replay'),'active',T+timedelta(seconds=n))
+        old_process(c,event(4,'replay'),'active',T+timedelta(seconds=3))
+        old_process(c,event(5),'inactive',T+timedelta(seconds=5))
+        c.execute(text("INSERT INTO ml_models(model_id,model_version,status,mode,heartbeat_at) VALUES('preserved-research','v1','disabled','RESEARCH',:t)"),dict(t=T))
         capture(c,'rejected',now=T)
         initialize_fresh(c,'budget-test',1);reserve(c,'budget-test',1,str(uuid.uuid4()),1,100)
     control_setup(web,registry);baseline(web,registry)
     with e.begin() as c:server.request_switch(c,'raspb1',AES,'admin:upgrade-test',mode=server.MODE)
-    tables=['policy_versions','policy_device_states','policy_signals','policy_decisions','policy_transitions','policy_control_intents','policy_control_counters','mqtt_replay_state','telemetry_outbox','live_control_devices','live_control_transitions','live_control_commands','live_control_evidence','crypto_key_usage','crypto_usage_reservations']
+    tables=['ml_models','policy_versions','policy_device_states','policy_signals','policy_decisions','policy_transitions','policy_control_intents','policy_control_counters','mqtt_replay_state','telemetry_outbox','live_control_devices','live_control_transitions','live_control_commands','live_control_evidence','crypto_key_usage','crypto_usage_reservations']
     def contents():
         with e.connect() as c:return {t:sorted(str(v[0]) for v in c.execute(text('SELECT to_jsonb(t)::text FROM '+t+' t'))) for t in tables}
     before=contents();upgrade(e);assert contents()==before
@@ -390,6 +403,8 @@ def test_upgrade_from_0010_preserves_existing_authorities_and_is_idempotent(lega
         assert c.scalar(select(func.count()).select_from(m.signals).where(m.signals.c.status=='rate_limited'))==1
     upgrade(e);assert contents()==before
     with e.connect() as c:assert c.scalar(select(func.count()).select_from(m.pending))==pending
+    import hashlib
+    UPGRADE_RESULTS.append(dict(from_revision='0010_mgm_key_usage',to_revision='0011_policy_throughput',repeat_upgrade_preserved=True,authorities_unchanged=True,records={table:dict(count=len(rows),sha256=hashlib.sha256(json.dumps(rows,sort_keys=True).encode()).hexdigest()) for table,rows in before.items()}))
 
 
 def test_direct_state_concurrent_distinct_events_never_lose_evidence(postgres_db):
@@ -430,3 +445,34 @@ def test_ml_internal_fsm_failure_is_not_a_rejected_source(postgres_db,monkeypatc
     with e.connect() as c:
         assert c.scalar(select(func.count()).select_from(m.pending))==1
         assert c.scalar(select(func.count()).select_from(m.signals))==0
+
+
+def test_fair_turn_survives_odd_batch_rollback_and_restart(postgres_db):
+    from src.policy.worker import poll_batch
+    e=postgres_db.db.engine;setup(e)
+    with e.begin() as c:
+        ml_setup(c)
+        for n in range(4):add(c,n)
+        for n in range(1,4):ml_source(c,n)
+    assert poll_batch(e,limit=1,at=T+timedelta(seconds=10))==1
+    with e.connect() as c:assert c.scalar(select(m.schedule.c.next_ml)) is True
+    def fail():raise RuntimeError('Crash after odd claim')
+    with pytest.raises(RuntimeError,match='odd claim'):
+        poll_batch(e,limit=1,at=T+timedelta(seconds=10),before_commit=fail)
+    with e.connect() as c:
+        assert c.scalar(select(m.schedule.c.next_ml)) is True
+        assert c.scalar(select(func.count()).select_from(m.signals))==1
+    assert poll_batch(e,limit=1,at=T+timedelta(seconds=10))==1
+    with e.connect() as c:
+        assert c.scalar(select(m.schedule.c.next_ml)) is False
+        assert dict(c.execute(select(m.signals.c.source,func.count()).group_by(m.signals.c.source)).all())=={'protocol':1,'ml':1}
+
+
+def test_policy_read_adapter_never_freshens_telemetry_from_ml_or_recent_write():
+    from src.policy.diagnostics import annotate_state
+    row=dict(state={'last_event_at':(T+timedelta(seconds=200)).isoformat(),'last_telemetry_at':T.isoformat()},updated_at=T+timedelta(seconds=200),observed_risk='WATCH')
+    d=annotate_state(row,T+timedelta(seconds=200),60,True)
+    assert d['evidence_stale'] is True and d['recommendation_status']=='stale_or_unavailable'
+    assert d['processed_telemetry_age_seconds']==200
+    d=annotate_state({**row,'state':{'last_telemetry_at':(T+timedelta(seconds=199)).isoformat()}},T+timedelta(seconds=200),60,False)
+    assert d['evidence_stale'] is True
