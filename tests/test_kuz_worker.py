@@ -68,3 +68,33 @@ def test_native_partial_frame_and_duplicate_request_id():
     assert r.stdout==b''
     r=subprocess.run([binary_path(),'--worker'],input=frame[:-1],capture_output=True,timeout=5)
     assert r.stdout==b''
+
+
+def test_native_request_budget_is_enforced():
+    key=secrets.token_bytes(32);frames=[]
+    for i in range(1,258):
+        request=b'LCMKUZ01'+b'\1'+key+i.to_bytes(16,'big')+struct.pack('!II',1,1)+b'a'+b'p'
+        frames.append(struct.pack('!I',8+len(request))+struct.pack('!Q',i)+request)
+    r=subprocess.run([binary_path(),'--worker'],input=b''.join(frames),capture_output=True,timeout=5)
+    data=r.stdout;ids=[]
+    while data:
+        length=struct.unpack('!I',data[:4])[0];ids.append(struct.unpack('!Q',data[4:12])[0]);data=data[4+length:]
+    assert ids==list(range(1,257)) and r.returncode==0
+
+
+def test_forked_child_cannot_use_or_kill_parent_worker():
+    key=secrets.token_bytes(32);encrypt(key,b'\0'*16,b'a',b'p');parent=WORKER.process.pid
+    child=os.fork()
+    if child==0:
+        try:
+            assert encrypt(secrets.token_bytes(32),b'\0'*16,b'a',b'p');WORKER.close();os._exit(0)
+        except BaseException:os._exit(1)
+    _,status=os.waitpid(child,0);assert os.waitstatus_to_exitcode(status)==0
+    assert WORKER.process.pid==parent and WORKER.process.poll() is None
+    assert encrypt(key,b'\0'*15+b'\1',b'a',b'p')
+
+
+def test_dispatch_missing_backend_never_falls_back(monkeypatch):
+    from src.crypto_profiles import KUZ,encrypt as dispatch
+    monkeypatch.setenv('LCM_KUZ_PROVIDER','/nonexistent/mgm-backend')
+    with pytest.raises(ProviderUnavailable):dispatch(KUZ,b'k'*32,b'\0'*16,b'a',b'p')

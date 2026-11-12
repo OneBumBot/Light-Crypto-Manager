@@ -49,6 +49,21 @@ def main():
                 except ValueError:negatives+=1
                 else:raise AssertionError('Bad tag released plaintext')
             cases+=1
+    parameter_negatives=0
+    def rejected(k,n,a,d,dec=True):
+        nonlocal parameter_negatives
+        try:operation(implementation,k,n,a,d,dec)
+        except ValueError:parameter_negatives+=1
+        else:raise AssertionError('Invalid crypto parameters accepted')
+    rejected(bytes([KEY[0]^1])+KEY[1:],NONCE,AAD,CIPHER+TAG)
+    rejected(KEY,bytes([NONCE[0]^1])+NONCE[1:],AAD,CIPHER+TAG)
+    rejected(KEY,NONCE,AAD+b'x',CIPHER+TAG)
+    for bad in [None,True,1,1.5,[],{},'bytes']:
+        for i in range(4):
+            values=[KEY,NONCE,AAD,PLAIN];values[i]=bad;rejected(*values,dec=False)
+    for length in [0,16,31,33]:rejected(b'k'*length,NONCE,AAD,PLAIN,False)
+    rejected(KEY,b'0'*15,AAD,PLAIN,False);rejected(KEY,b'\x80'+b'0'*15,AAD,PLAIN,False)
+    rejected(KEY,NONCE,b'',b'',False);rejected(KEY,NONCE,b'a'*1025,b'p',False);rejected(KEY,NONCE,b'a',b'p'*4097,False)
     # Isolated raw upstream API defects: never used to admit telemetry.
     mode=MGM(block.encrypt,16,16)
     class Oversized:
@@ -57,7 +72,7 @@ def main():
     tag=mode._auth(bytearray(NONCE),b'',b'')
     empty_accepted=mode.open(NONCE,tag,b'')==b''
     candidate=Path(a.candidate)
-    report=dict(revision=subprocess.check_output(['git','-C',str(candidate),'rev-parse','HEAD'],text=True).strip(),license='GPL-3.0',version=(candidate/'VERSION').read_text().strip(),rfc7801_round_keys=10,rfc7801_block=True,rfc9058_a1_examples=2,crosscheck_cases=cases,invalid_tag_rejections=negatives,raw_api_length_unit_defect=True,raw_api_empty_plaintext_and_aad_accepted=empty_accepted,live_registered=False,activation_allowed=False,source_hashes={str(p.relative_to(candidate)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [candidate/'pygost/mgm.py',candidate/'pygost/gost3412.py']},exit_code=0)
+    report=dict(revision=subprocess.check_output(['git','-C',str(candidate),'rev-parse','HEAD'],text=True).strip(),license='GPL-3.0',version=(candidate/'VERSION').read_text().strip(),rfc7801_round_keys=10,rfc7801_block=True,rfc9058_a1_examples=2,crosscheck_cases=cases,invalid_tag_rejections=negatives,parameter_negatives=parameter_negatives,raw_api_length_unit_defect=True,raw_api_empty_plaintext_and_aad_accepted=empty_accepted,live_registered=False,activation_allowed=False,source_hashes={str(p.relative_to(candidate)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [candidate/'pygost/mgm.py',candidate/'pygost/gost3412.py']},exit_code=0)
     a.output.write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2))
 
 if __name__=='__main__':main()

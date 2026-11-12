@@ -2,6 +2,7 @@
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from src.web.ascon.ascon import ascon_encrypt, ascon_decrypt
 from src.kuz_release import validation_enabled
+import os
 
 ASCON = 'ascon-aead128-v1'
 AES = 'aes-128-gcm-v1'
@@ -12,7 +13,7 @@ PROFILES = {
     KUZ: dict(algorithm='Kuznyechik-MGM', key_bytes=32, nonce_bytes=16, tag_bytes=16,
               aead_mode='MGM',version=1,protocol_version=2,nonce_policy='epoch31-sequence64-LCM01',
               usage_limits=dict(reserved_invocations=1048576,blocks_per_invocation=320,verify_attempts=1048576),
-              implementation_status='software_e2e_verified',activation_allowed=validation_enabled()),
+              implementation_status='software_e2e_verified',implementation_id=('go-bounded-worker-v1' if os.environ.get('LCM_KUZ_BACKEND','one-shot')=='persistent' else 'go-one-shot-v1' if os.environ.get('LCM_KUZ_BACKEND','one-shot')=='one-shot' else 'unavailable'),production_eligibility='not_approved',lab_only=True,activation_allowed=validation_enabled() and os.environ.get('LCM_KUZ_BACKEND','one-shot') in ['one-shot','persistent']),
 }
 BY_ALGORITHM = {v['algorithm']: k for k,v in PROFILES.items()}
 
