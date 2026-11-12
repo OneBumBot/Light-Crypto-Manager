@@ -72,7 +72,9 @@ def prepare(root,project,count):
     (root/'compose.env').write_text(env)
     services={'web':{'environment':{'WEB_MQTT_ENABLED':'0','ML_MONITOR_MODE':'DISABLED'}},'receiver':{'environment':{'MQTT_CLIENT_ID':project+'-receiver'}},
         'control-init':{'command':['python','-m','scripts.install_stage11'],'volumes':[str(root)+':/input:ro','control-security:/out/controller']}}
-    volumes={}
+    volumes={'broker-logs':{},'mongo-config':{}}
+    services.setdefault('broker',{})['volumes']=['broker-logs:/mosquitto/log']
+    services.setdefault('mongo',{})['volumes']=['mongo-config:/data/configdb']
     for d in devices:
         volume=d+'-control';volumes[volume]={};services['control-init']['volumes'].append(volume+':/out/'+d)
         services['device-'+d]={'image':project+'-runtime','profiles':['control'],'init':True,'command':['python','-m','src.device_control.agent'],
