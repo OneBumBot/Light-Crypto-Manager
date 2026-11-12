@@ -50,7 +50,7 @@ def child(impl,size,aad_mode,count,candidate,cpu_scope=False):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--child');p.add_argument('--go-refresh',action='store_true');p.add_argument('--cpu-only',action='store_true');p.add_argument('--size',type=int);p.add_argument('--aad',default='fixed');p.add_argument('--candidate',required=True);p.add_argument('--output',type=Path);p.add_argument('--iterations',type=int,default=1000);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--child');p.add_argument('--only-one-shot',action='store_true');p.add_argument('--go-refresh',action='store_true');p.add_argument('--cpu-only',action='store_true');p.add_argument('--size',type=int);p.add_argument('--aad',default='fixed');p.add_argument('--candidate',required=True);p.add_argument('--output',type=Path);p.add_argument('--iterations',type=int,default=1000);a=p.parse_args()
     if a.iterations!=1000:raise ValueError('Predeclared1000 samples required')
     if a.child:
         if a.child not in IDS or a.size not in [64,83,256,1024] or a.aad not in ['fixed','telemetry']:raise ValueError('Bounded matrix')
@@ -60,6 +60,7 @@ def main():
     for repeat in range(5):
         order=IDS[repeat:]+IDS[:repeat]
         if a.go_refresh:order=['kuz-go-one-shot','kuz-go-worker'] if repeat%2==0 else ['kuz-go-worker','kuz-go-one-shot']
+        if a.only_one_shot:order=['kuz-go-one-shot']
         for aad in (['fixed'] if a.cpu_only else ['fixed','telemetry']):
             for size in ([83] if a.cpu_only else [64,83,256,1024]):
                 for impl in order:
@@ -67,7 +68,8 @@ def main():
                     runs.append(dict(repeat=repeat,**json.loads(r.stdout)))
                     a.output.with_suffix('.partial.json').write_text(json.dumps(runs))
                     a.output.with_suffix('.progress.json').write_text(json.dumps(dict(completed=len(runs),last=dict(repeat=repeat,implementation=impl,payload_bytes=size,aad=aad))))
-    report=dict(source_sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),environment=dict(python=platform.python_version(),platform=platform.platform()),cpu_scope='post-warmup worker reap; measured cold/recycle starts included' if a.cpu_only else 'original worker child CPU includes initial warmup lifetime; do not use for strict CPU comparison',runs=runs,
+    import hashlib
+    report=dict(provider_binary_sha256=hashlib.sha256(Path(os.environ['LCM_KUZ_PROVIDER']).read_bytes()).hexdigest(),source_sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),environment=dict(python=platform.python_version(),platform=platform.platform()),cpu_scope='post-warmup worker reap; measured cold/recycle starts included' if a.cpu_only else 'original worker child CPU includes initial warmup lifetime; do not use for strict CPU comparison',runs=runs,
         interpretation=['Five fresh-process/key runs; no packet-level independence or confidence interval claim','One pinned CPU affinity per process, no cgroup quota on host microbenchmark; same constraint for every backend','Go worker includes recycle/startup every256 requests; no cached keys/cipher context','PyGOST5.12 strict wrapper is research-only, not a live provider','No mathematical algorithm speed/strength or ARM inference'],exit_code=0)
     a.output.write_text(json.dumps(report,indent=2));print(json.dumps(dict(runs=len(runs),exit_code=0)))
 
