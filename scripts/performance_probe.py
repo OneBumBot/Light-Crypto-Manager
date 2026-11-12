@@ -1,0 +1,65 @@
+"""Bounded read-only authoritative performance snapshots/export, no fake telemetry."""
+import argparse,json,time,sys
+from datetime import datetime
+from sqlalchemy import create_engine,select,func,text
+from src.runtime import database_url
+from src.outbox import outbox,metrics
+from src.device_control import models as m
+from src.device_control.config import load
+from src.policy.models import worker_status,states
+from src.mongo_repository import MongoRepository
+from pymongo.errors import PyMongoError
+
+
+def snapshot(engine):
+    with engine.connect() as c:
+        result=dict(checked_at=c.scalar(select(func.clock_timestamp())).isoformat(),
+            devices=[dict(r) for r in c.execute(select(m.devices.c.device_id,m.devices.c.effective_profile,m.devices.c.effective_event,m.devices.c.sequence_reserved,m.devices.c.command_sequence)).mappings()],
+            outbox={k:int(v) for k,v in c.execute(select(outbox.c.status,func.count()).group_by(outbox.c.status))},
+            counters={k:int(v) for k,v in c.execute(select(metrics.c.kind,func.sum(metrics.c.count)).group_by(metrics.c.kind))},
+            transitions=c.scalar(select(func.count()).select_from(m.transitions)),completed=c.scalar(select(func.count()).select_from(m.transitions).where(m.transitions.c.phase=='EFFECTIVE_CONFIRMED')),
+            unknown=c.scalar(select(func.count()).select_from(m.transitions).where(m.transitions.c.phase.in_(['UNKNOWN_OUTCOME','RECOVERY_REQUIRED']))),
+            authenticated_ack=c.scalar(select(func.count()).select_from(m.acks)),receipts=c.scalar(select(func.count()).select_from(m.evidence)),
+            policy_modes=list(c.scalars(select(worker_status.c.mode).distinct())),policy_applied=c.scalar(select(func.count()).select_from(states).where(states.c.applied.is_not(None))),
+            pg_connections=c.scalar(text('SELECT count(*) FROM pg_stat_activity WHERE datname=current_database()')),
+            database_bytes=c.scalar(text('SELECT pg_database_size(current_database())')),
+            pg_stats=dict(c.execute(text('SELECT xact_commit,xact_rollback,deadlocks FROM pg_stat_database WHERE datname=current_database()')).mappings().one()),
+            migration=c.scalar(text('SELECT version_num FROM alembic_version')),ml_trusted=False)
+    repo=MongoRepository('relay')
+    try:result['mongo_managed']=repo.collection.count_documents({'device_id':{'$in':list(load())}},maxTimeMS=2000)
+    except PyMongoError:result['mongo_managed']=None
+    finally:repo.close()
+    return result
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans']);a=p.parse_args()
+    engine=create_engine(database_url(),connect_args={'connect_timeout':2})
+    try:
+        if a.action=='snapshot':print(json.dumps(snapshot(engine),indent=2));return
+        args=json.load(sys.stdin)
+        if a.action=='export':
+            start=datetime.fromisoformat(args['start']);end=datetime.fromisoformat(args['end'])
+            with engine.connect() as c:
+                rows=[dict(r) for r in c.execute(select(outbox.c.id,outbox.c.device_id,outbox.c.key_epoch,outbox.c.sequence_number,outbox.c.created_at,outbox.c.delivered_at,outbox.c.status,outbox.c.attempts,outbox.c.payload).where(outbox.c.created_at>=start,outbox.c.created_at<=end).order_by(outbox.c.device_id,outbox.c.sequence_number).limit(100001)).mappings()]
+                if len(rows)>100000:raise ValueError('Bounded export exceeded')
+            for r in rows:
+                for k in ['created_at','delivered_at']:
+                    if r[k]:r[k]=r[k].isoformat()
+            print(json.dumps(dict(rows=rows,snapshot=snapshot(engine))));return
+        queries={
+            'pending_count':"SELECT count(*) FROM telemetry_outbox WHERE status != 'delivered'",
+            'latest_distinct':"SELECT DISTINCT ON (device_id) device_id,id,created_at FROM telemetry_outbox ORDER BY device_id,created_at DESC",
+            'replay_lookup':"SELECT * FROM mqtt_replay_state WHERE consumer='receiver' AND device_id='alpha' AND key_epoch=1",
+            'control_lock':"SELECT * FROM live_control_devices WHERE device_id='alpha' FOR UPDATE",
+            'outbox_claim':"SELECT id FROM telemetry_outbox WHERE status='pending' AND available_at<=now() ORDER BY available_at,id LIMIT 1",
+            'policy_pending':"SELECT id FROM security_observations ORDER BY occurred_at,id LIMIT 1",
+            'transition_history':"SELECT id FROM live_control_transitions WHERE device_id='alpha' ORDER BY created_at DESC LIMIT 20"}
+        plans={}
+        with engine.begin() as c:
+            c.execute(text('SET LOCAL statement_timeout=10000'))
+            for name,q in queries.items():plans[name]=c.execute(text('EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) '+q)).scalar()
+        print(json.dumps(plans))
+    finally:engine.dispose()
+
+if __name__=='__main__':main()

@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright,expect
 from scripts.stage9_common import Demo
+from scripts.performance_lab import Lab
 
 
 def main():
@@ -14,7 +15,7 @@ def main():
     p.add_argument('--directory',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
     p.add_argument('--roundtrip',action='store_true');a=p.parse_args()
     if a.output.exists():p.error('Immutable report exists')
-    d=Demo(a.directory);url=d.url();checks=[];switches=0
+    d=(Lab(a.directory) if (a.directory/'stage10.json').exists() else Demo(a.directory));url=d.url();checks=[];switches=0
     with sync_playwright() as pw:
         browser=pw.chromium.launch(headless=True)
         context=browser.new_context(viewport=dict(width=1366,height=900),timezone_id='Europe/Moscow')
@@ -37,7 +38,7 @@ def main():
             r=context.request.post(url+'/api/control/alpha/switch',headers={'X-CSRFToken':token},data=dict(profile='aes-128-gcm-v1',ttl=120))
             assert r.status==403
             checks.append(role+'_readonly_and_server_forbidden');logout()
-        login('admin');expect(page.locator('#crypto-device option')).to_have_count(3)
+        login('admin');expect(page.locator('#crypto-device option')).to_have_count(len(d.devices) if isinstance(d,Lab) else 3)
         page.locator('#crypto-device').select_option('gamma')
         expect(page.locator('#crypto-state-title')).to_have_text('Состояние устройства gamma')
         expect(page.locator('#crypto-submit')).to_be_disabled()

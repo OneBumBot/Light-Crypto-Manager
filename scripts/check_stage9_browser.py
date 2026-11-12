@@ -5,12 +5,13 @@ import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright,expect
 from scripts.stage9_common import Demo
+from scripts.performance_lab import Lab
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--directory',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
     if a.output.exists():p.error('Immutable output exists')
-    d=Demo(a.directory);url=d.url();checks=[]
+    d=(Lab(a.directory) if (a.directory/'stage10.json').exists() else Demo(a.directory));url=d.url();checks=[]
     def reply(body):
         return lambda route:route.fulfill(content_type='application/json',body=json.dumps(body))
     with sync_playwright() as pw:
@@ -24,7 +25,7 @@ def main():
             page.locator('[name=password]').fill((d.root/'accounts'/(role+'.password')).read_text().strip())
             page.locator('form input[type=submit], form button[type=submit]').first.click();page.wait_for_url(url+'/')
             page.wait_for_selector('#device-rows tr[data-device=alpha]')
-        login('viewer');expect(page.locator('#device-rows tr')).to_have_count(3)
+        login('viewer');expect(page.locator('#device-rows tr')).to_have_count(len(d.devices) if isinstance(d,Lab) else 3)
         page.locator('a[href="/devices/alpha"]').click();page.wait_for_selector('#effective-profile')
         expect(page.locator('#effective-profile')).to_have_text('Ascon-AEAD128')
         expect(page.locator('#history-rows tr').first).to_be_visible()

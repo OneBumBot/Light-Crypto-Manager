@@ -9,6 +9,7 @@ from src.telemetry import encode_packet,canonical
 from .config import load
 from .protocol import topic,message,seal,open_message
 from .state import DeviceState
+from .research_journal import ResearchJournal
 
 log=logging.getLogger(__name__)
 
@@ -27,9 +28,13 @@ def main():
     seq=0;ready=Path('/tmp/device-ready');ready.unlink(missing_ok=True)
     interval=float(os.environ.get('PUBLISH_INTERVAL','.5'))
     if not .05<=interval<=60:raise ValueError('Bounded device interval required')
+    journal=ResearchJournal(os.environ.get('AGENT_EXPERIMENT_FILE'),maximum=int(os.environ.get('AGENT_EXPERIMENT_MAX_EVENTS','50000')))
+    journal.record('start',device=device,interval=interval)
+    opportunity=time.monotonic()
     client=mqtt.Client(mqtt.CallbackAPIVersion.VERSION2,client_id='live-device-'+device)
     configure_client(client)
     def connect(c,u,f,rc,p):
+        journal.record('connect',success=rc==0)
         if rc==0:c.subscribe(topic(device,'controller'),qos=1)
     def subscribed(c,u,mid,reasons,p):
         if reasons and all(not r.is_failure for r in reasons):connected.set()
@@ -38,7 +43,10 @@ def main():
         try:inbox.put_nowait((bytes(m.payload),m.topic))
         except queue.Full:stop.set()
     client.on_connect=connect;client.on_subscribe=subscribed;client.on_message=incoming
-    client.on_disconnect=lambda *_:connected.clear()
+    def disconnected(*_):
+        connected.clear();journal.record('disconnect')
+    client.on_disconnect=disconnected
+    client.on_publish=lambda c,u,mid,rc,p:journal.record('puback',mid=mid,success=not rc.is_failure)
     client.reconnect_delay_set(1,5)
     for s in [signal.SIGINT,signal.SIGTERM]:signal.signal(s,lambda *_:stop.set())
     next_publish=0;next_lease=0
@@ -46,6 +54,11 @@ def main():
         client.connect(os.environ.get('MQTT_HOST','broker'),int(os.environ.get('MQTT_PORT','8883')),30);client.loop_start()
         while not stop.is_set():
             n=time.monotonic()
+            if journal.exhausted:raise RuntimeError('Research journal budget exhausted; stopping lab publisher')
+            if n>=opportunity:
+                due=int((n-opportunity)/interval)+1
+                journal.record('scheduled',count=due)
+                opportunity+=due*interval
             if not connected.is_set():ready.unlink(missing_ok=True)
             elif grant:ready.touch()
             if connected.is_set() and (grant is None or seq>grant['data']['last_sequence']) and n>=next_lease:
@@ -83,12 +96,16 @@ def main():
             if connected.is_set() and grant and seq<=grant['data']['last_sequence'] and n>=next_publish:
                 sensor=dict(temperature=23.5,humidity=48.0,timestamp=datetime.now(timezone.utc).isoformat())
                 current=seq;seq+=1 # discard on any failure; ranges are never restored on a new process
+                build_start=time.perf_counter_ns()
                 packet=encode_packet(sensor,{device:config['registry']},device,current,profile=state.read()['profile'])
-                result=client.publish(config['registry']['topic'],canonical(packet),qos=1)
+                wire=canonical(packet)
+                journal.record('formed',device=device,epoch=config['registry']['key_epoch'],sequence=current,profile=packet['profile'],nonce=packet['nonce'],bytes=len(wire),build_ns=time.perf_counter_ns()-build_start)
+                result=client.publish(config['registry']['topic'],wire,qos=1)
+                journal.record('publish',device=device,epoch=config['registry']['key_epoch'],sequence=current,mid=result.mid,queued=result.rc==mqtt.MQTT_ERR_SUCCESS)
                 # Paho retransmits the same payload bytes. No retry calls encode_packet again.
                 if result.rc!=mqtt.MQTT_ERR_SUCCESS:log.warning('Telemetry publish not queued; sequence discarded')
                 next_publish=n+interval
     finally:
-        ready.unlink(missing_ok=True);client.disconnect();client.loop_stop();state.close()
+        ready.unlink(missing_ok=True);client.disconnect();client.loop_stop();state.close();journal.close()
 
 if __name__=='__main__':main()
