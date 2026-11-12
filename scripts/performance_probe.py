@@ -34,7 +34,7 @@ def snapshot(engine):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage','monitoring-plans']);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('action',choices=['snapshot','export','plans','transitions','storage','monitoring-plans','watermark']);a=p.parse_args()
     engine=create_engine(database_url(),connect_args={'connect_timeout':2})
     try:
         if a.action=='snapshot':print(json.dumps(snapshot(engine),indent=2));return
@@ -66,6 +66,11 @@ def main():
             finally:repo.close()
             return
         args=json.load(sys.stdin)
+        if a.action=='watermark':
+            cutoff=datetime.fromisoformat(args['before'])
+            with engine.connect() as c:
+                pending=c.scalar(select(func.count()).select_from(outbox).where(outbox.c.created_at<=cutoff,outbox.c.status!='delivered'))
+            print(json.dumps(dict(pending_before_watermark=pending)));return
         if a.action=='export':
             start=datetime.fromisoformat(args['start']);end=datetime.fromisoformat(args['end'])
             with engine.connect() as c:

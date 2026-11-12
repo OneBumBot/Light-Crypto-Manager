@@ -69,6 +69,9 @@ def load_user(user_id):
         user = db.session.get(User, int(user_id), populate_existing=True)
     except (ValueError, TypeError):
         return None
+    except SQLAlchemyError:
+        app.logger.warning('Authentication database temporarily unavailable')
+        abort(503, description='PostgreSQL недоступна. Актуальные права доступа проверить невозможно.')
     return user if user and user.is_active and user.role in {r.value for r in UserRole} else None
 
 @login_manager.unauthorized_handler

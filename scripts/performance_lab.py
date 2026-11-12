@@ -30,7 +30,7 @@ class Lab:
         if not value.startswith('127.0.0.1:'):raise ValueError('Loopback binding required')
         return 'http://'+value
     def probe(self,action,**kwargs):
-        r=self.run('run','--rm','-T','--no-deps','--entrypoint','python','tests','-m','scripts.performance_probe',action,input_data=json.dumps(kwargs) if kwargs else None)
+        r=self.run('run','--rm','-T','--no-deps','-v',str(Path(__file__).resolve().parent/'performance_probe.py')+':/app/scripts/performance_probe.py:ro','--entrypoint','python','tests','-m','scripts.performance_probe',action,input_data=json.dumps(kwargs) if kwargs else None)
         return json.loads(r.stdout[r.stdout.index('{'):])
     def agents(self,n=None):return ['device-'+d for d in self.devices[:n]]
 

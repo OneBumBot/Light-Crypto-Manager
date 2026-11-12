@@ -26,7 +26,9 @@ def inside(profile, baseline=False):
     from src.security_events import journal
     from src.mongo_repository import MongoRepository
     engine=create_engine(database_url());config=load();repo=MongoRepository(role='relay')
-    clients=[]
+    clients=[];grants={}
+    from src.device_control.protocol import topic as control_topic, message, seal, open_message
+    import uuid
     def wait(predicate, seconds=20):
         end=time.monotonic()+seconds
         while time.monotonic()<end:
@@ -40,18 +42,33 @@ def inside(profile, baseline=False):
     def connect(device):
         ready=Event();client=mqtt.Client(mqtt.CallbackAPIVersion.VERSION2,protocol=mqtt.MQTTv5)
         configure_client(client,username='device_'+device,password_file='/run/lcm/device_'+device+'.password',ca_file='/run/lcm/ca.crt')
-        client.on_connect=lambda c,u,f,r,p:ready.set() if r==0 else None
+        grants[device]=[]
+        client.on_connect=lambda c,u,f,r,p:c.subscribe(control_topic(device,'controller'),qos=1) if r==0 else None
+        client.on_subscribe=lambda c,u,mid,reasons,p:ready.set() if reasons and all(not r.is_failure for r in reasons) else None
+        def control_reply(c,u,mqtt_message):
+            try:body=open_message(bytes(mqtt_message.payload),bytes.fromhex(config[device]['command_key']),'controller',device,mqtt_message.topic)
+            except ValueError:return
+            if body['kind']=='lease_grant':grants[device].append(body)
+        client.on_message=control_reply
         client.connect('broker',8883,30);client.loop_start();clients.append(client);assert ready.wait(5)
         return client
     def publish(client,device,packet):
         r=client.publish(config[device]['registry']['topic'],canonical(packet),qos=1)
         r.wait_for_publish(4);assert r.is_published() # transport only; assertions below require SQL/Mongo
     def next_seq(device):
+        # Admission high-water alone is not a nonce-generation ledger. A formed but
+        # unadmitted AES packet may already have used max(admitted)+1. Burn a NEW
+        # authenticated boot range instead of generating into the previous lease.
         with engine.connect() as c:
-            seq=(c.scalar(select(func.max(outbox.c.sequence_number)).where(outbox.c.device_id==device)) or 0)+1
-            reserved=c.scalar(select(m.devices.c.sequence_reserved).where(m.devices.c.device_id==device))
-            assert seq+3<=reserved
-            return seq
+            local_profile=c.scalar(select(m.devices.c.effective_profile).where(m.devices.c.device_id==device))
+        request=message(device,'lease_request',dict(boot_id=str(uuid.uuid4()),key_epoch=config[device]['command_epoch'],local_profile=local_profile))
+        client=clients[['alpha','beta'].index(device)]
+        result=client.publish(control_topic(device,'device'),seal(request,bytes.fromhex(config[device]['status_key']),'device'),qos=1)
+        result.wait_for_publish(4)
+        wait(lambda:any(g['data']['request_id']==request['message_id'] for g in grants[device]))
+        grant=next(g['data'] for g in grants[device] if g['data']['request_id']==request['message_id'])
+        assert grant['last_sequence']-grant['first_sequence']>=3
+        return grant['first_sequence']
     def packet(device,seq,p):
         return encode_packet(dict(temperature=23,humidity=48,timestamp=datetime.now(timezone.utc).isoformat()),
             {device:config[device]['registry']},device,seq,profile=p)
@@ -104,7 +121,7 @@ def inside(profile, baseline=False):
         assert count(outbox)==before['outbox']+2 and metric('accepted')==before['accepted']+2
         assert managed_mongo()==before['mongo']+2
         assert repo.collection.count_documents({})==before['mongo_total']+2
-        print(json.dumps(dict(profile=profile,malformed_sent=len(bad),rejected=len(bad),accepted=3,
+        print(json.dumps(dict(profile=profile,nonce_range_source='authenticated MQTT lease_grant',malformed_sent=len(bad),rejected=len(bad),accepted=3,
             duplicate_admission=0,duplicate_replay=1,malformed_admission_state_unchanged=True,
             rejected_identity_null=True,neighbor_delivered=True,samples=samples,
             observation_seconds=time.monotonic()-started,postgres_mongo_count_delta=3),indent=2))
@@ -136,12 +153,17 @@ def main():
     env=dict(line.split('=',1) for line in a.env_file.read_text().splitlines() if '=' in line and not line.startswith('#'))
     import re
     project=env.get('COMPOSE_PROJECT_NAME','')
-    if not re.fullmatch(r'lcm-(?:stage8-fix-|stage9-demo-)[a-z0-9-]+',project):p.error('Dedicated fix/demo project required')
+    if not re.fullmatch(r'lcm-(?:stage8-fix-|stage9-demo-|stage10-performance-)[a-z0-9-]+',project):p.error('Dedicated fix/demo project required')
     if a.output.exists():p.error('Output already exists')
     base=['docker','compose','--env-file',str(a.env_file),'-f','compose.yaml','-f','compose.control.yaml','--profile','control']
     if project.startswith('lcm-stage9-demo-'):
         base += ['-f','compose.stage9.yaml']
-    receiver_id=project+'-receiver' if project.startswith('lcm-stage9-demo-') else 'lightcrypto-ingestion'
+    if project.startswith('lcm-stage10-performance-'):
+        from scripts.performance_lab import Lab
+        lab=Lab(a.env_file.parent)
+        if len(lab.devices)!=3:p.error('Poison probe requires quiescent three-device lab')
+        base=lab.base
+    receiver_id=project+'-receiver' if project.startswith(('lcm-stage9-demo-','lcm-stage10-performance-')) else 'lightcrypto-ingestion'
     def run(*parts):
         r=subprocess.run(base+list(parts),capture_output=True,text=True,timeout=120)
         if r.returncode:

@@ -20,16 +20,16 @@ def switch(lab,session,url,token,device,target):
     time.sleep(2.05)
     start=time.time();r=session.post(url+'/api/control/'+device+'/switch',headers={'X-CSRFToken':token},json=dict(profile=target,ttl=120),timeout=8)
     assert r.status_code==202,(device,r.status_code,r.text[:120])
-    tid=r.json()['transition_id'];intent=time.time()
+    tid=r.json()['transition_id'];intent=time.time();observed={}
     def effective():
-        r=session.get(url+'/api/monitoring/'+device,timeout=8);r.raise_for_status();v=r.json()
+        r=session.get(url+'/api/monitoring/'+device,timeout=8);r.raise_for_status();v=r.json();observed.update(v)
         t=next((t for t in v['transitions'] if t['id']==tid),None)
         if t and t['phase']=='EFFECTIVE_CONFIRMED':
             assert t['telemetry_event'] and t['confirmed_at']
             assert v['items'][0]['effective_profile']==target
             return t
     t=wait(effective,90)
-    return dict(device=device,target=target,transition_id=tid,http_202_seconds=intent-start,observed_effective_seconds=time.time()-start,transition=t)
+    return dict(device=device,target=target,transition_id=tid,request_started_at=datetime.fromtimestamp(start,timezone.utc).isoformat(),http_202_seconds=intent-start,observed_effective_seconds=time.time()-start,transition=t,audit=[a for a in observed['audit'] if a['transition_id']==tid],commands=[c for c in observed['commands'] if c['transition_id']==tid],acks=[a for a in observed['acks'] if a['command_id'] in {c['id'] for c in observed['commands'] if c['transition_id']==tid}])
 
 
 def main():
@@ -49,6 +49,7 @@ def main():
             switches.extend(pool.map(lambda d:one(d,'ascon-aead128-v1'),['alpha','beta']))
     else:
         for service,hold in [('mongo',12),('control-worker',12),('policy-worker',32),('postgres',8),('broker',8),('device-alpha',5),('receiver',5)]:
+            print('Fault start',service,flush=True)
             before=lab.probe('snapshot');started=datetime.now(timezone.utc).isoformat();t=time.monotonic();during=None
             try:
                 lab.run('stop',service);time.sleep(hold)
@@ -59,7 +60,7 @@ def main():
                     if service=='mongo':assert sum(v for k,v in during['outbox'].items() if k!='delivered')>0
                     assert during['completed']==before['completed']
                 if service=='postgres':
-                    r=session.get(url+'/api/monitoring',timeout=10);assert r.status_code==503
+                    r=session.get(url+'/api/monitoring',timeout=10);print('PG outage HTTP',r.status_code,flush=True);assert r.status_code==503
                 if service in ['control-worker','policy-worker']:
                     v=session.get(url+'/api/monitoring',timeout=10).json();key='control' if service=='control-worker' else 'policy'
                     assert v['components'][key]['status']!='ready'
@@ -67,13 +68,15 @@ def main():
             restored=datetime.now(timezone.utc).isoformat();recovery_start=time.monotonic()
             def recovered():
                 state=lab.probe('snapshot')
-                if state['counters'].get('accepted',0)>before['counters'].get('accepted',0) and not sum(v for k,v in state['outbox'].items() if k!='delivered'):
+                if state['counters'].get('accepted',0)>before['counters'].get('accepted',0) and lab.probe('watermark',before=restored)['pending_before_watermark']==0:
                     return state
             after=wait(recovered,100)
             assert all(d['effective_profile']=='ascon-aead128-v1' for d in after['devices'])
             assert after['completed']==before['completed']
             if service=='device-alpha':assert next(d for d in after['devices'] if d['device_id']=='alpha')['sequence_reserved']>next(d for d in before['devices'] if d['device_id']=='alpha')['sequence_reserved']
-            events.append(dict(service=service,start=started,restored=restored,held_seconds=hold,total_seconds=time.monotonic()-t,post_start_recovery_seconds=time.monotonic()-recovery_start,before=before,during=during,after=after,false_effective=False))
+            events.append(dict(service=service,start=started,restored=restored,held_seconds=hold,total_seconds=time.monotonic()-t,post_start_recovery_seconds=time.monotonic()-recovery_start,before=before,during=during,after=after,false_effective=False,pre_restore_cohort_delivered=True))
+            a.output.with_suffix('.progress.json').write_text(json.dumps(dict(switches=switches,faults=events),indent=2))
+            print('Fault recovered',service,flush=True)
         switches.append(switch(lab,session,url,token,'alpha','aes-128-gcm-v1'))
         switches.append(switch(lab,session,url,token,'alpha','ascon-aead128-v1'))
     transitions=lab.probe('transitions')

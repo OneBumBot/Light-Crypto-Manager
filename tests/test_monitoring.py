@@ -123,3 +123,23 @@ def test_expired_transition_snapshot_is_uncertain_not_active(postgres_db,registr
         assert result['items'][0]['pending']['expired'] is True
         assert result['items'][0]['effective_profile']==ASCON
         assert c.scalar(select(m.transitions.c.phase))=='PREPARED_SERVER' # read adapter never writes FSM
+
+
+@pytest.mark.postgres
+def test_database_failure_during_identity_load_returns_unavailable(postgres_db,monkeypatch):
+    from sqlalchemy.exc import OperationalError
+    web=postgres_db
+    client=web.app.test_client()
+    with client.session_transaction() as session:
+        session['_user_id']='1'
+        session['_fresh']=True
+    def failed_get(*args,**kwargs):
+        raise OperationalError('SELECT user',{},RuntimeError('database unavailable'))
+    monkeypatch.setattr(web.db.session,'get',failed_get)
+    response=client.get('/api/monitoring')
+    assert response.status_code==503
+    assert response.is_json
+    assert 'items' not in response.get_json()
+    assert 'database unavailable' not in response.get_data(as_text=True)
+    with client.session_transaction() as session:
+        assert session['_user_id']=='1' # No anonymous downgrade or session reset.

@@ -9,6 +9,7 @@ import sys
 import tempfile
 
 MUTATIONS=[
+ ('identity_db_failure_unhandled','src/web/app.py',"    except SQLAlchemyError:\n        app.logger.warning('Authentication database temporarily unavailable')\n        abort(503, description='PostgreSQL недоступна. Актуальные права доступа проверить невозможно.')\n",'', 'test_monitoring.py::test_database_failure_during_identity_load_returns_unavailable'),
  ('ack_as_effective','src/web/monitoring.py',"effective_profile=state.get('effective_profile') if verified else None", "effective_profile=state.get('reported_profile') or state.get('effective_profile')",'test_monitoring.py::test_snapshot_ack_is_not_effective_and_identity_is_bound'),
  ('viewer_can_command','src/device_control/web.py',"if current_user.role!='admin':abort(403)",'if False:abort(403)','test_control_storage.py::test_control_web_roles_csrf_and_fields'),
  ('stale_is_recent','src/web/monitoring.py',"return 'recent' if 0 <= (now-timestamp).total_seconds() <= TELEMETRY_TTL else 'stale'","return 'recent'",'test_monitoring.py::test_freshness_is_admission_age_not_presence'),
