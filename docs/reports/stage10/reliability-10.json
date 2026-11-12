@@ -1,0 +1,5886 @@
+{
+  "project": "lcm-stage10-performance-small",
+  "devices": 10,
+  "switches": [
+    {
+      "device": "alpha",
+      "target": "aes-128-gcm-v1",
+      "transition_id": "704b38a4-be6d-4ba8-81e1-d2f954e7cbfd",
+      "http_202_seconds": 0.02466607093811035,
+      "observed_effective_seconds": 1.1089882850646973,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:15:53.807790+00:00",
+        "activated_at": "2026-11-12T11:15:53.725905+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:15:53.827608+00:00",
+        "correlation_id": "3758023e-5058-47d8-adc4-1b1513644c53",
+        "created_at": "2026-11-12T11:15:53.626573+00:00",
+        "deadline": "2026-11-12T11:17:53.626573+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "704b38a4-be6d-4ba8-81e1-d2f954e7cbfd",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "aes-128-gcm-v1",
+        "telemetry_event": "78a431e6-33d6-4c96-a082-c7b7eed0e0c0"
+      }
+    },
+    {
+      "device": "alpha",
+      "target": "ascon-aead128-v1",
+      "transition_id": "f043a853-e68c-4d27-a225-a36bcf5fe0b9",
+      "http_202_seconds": 0.006131410598754883,
+      "observed_effective_seconds": 1.0942087173461914,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:15:56.931536+00:00",
+        "activated_at": "2026-11-12T11:15:56.834468+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:15:57.402789+00:00",
+        "correlation_id": "4d9c1c3a-8537-4c9b-9aed-5e22a1ca57b9",
+        "created_at": "2026-11-12T11:15:56.769681+00:00",
+        "deadline": "2026-11-12T11:17:56.769681+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "f043a853-e68c-4d27-a225-a36bcf5fe0b9",
+        "old_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697"
+      }
+    },
+    {
+      "device": "alpha",
+      "target": "aes-128-gcm-v1",
+      "transition_id": "0d388522-dccd-432f-a38f-7d5be938e6e8",
+      "http_202_seconds": 0.014816522598266602,
+      "observed_effective_seconds": 1.0915400981903076,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:20:08.969472+00:00",
+        "activated_at": "2026-11-12T11:20:08.886903+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:20:09.093747+00:00",
+        "correlation_id": "92522bfb-faac-4851-b377-4e8fe399f383",
+        "created_at": "2026-11-12T11:20:08.803106+00:00",
+        "deadline": "2026-11-12T11:22:08.803106+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "0d388522-dccd-432f-a38f-7d5be938e6e8",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "aes-128-gcm-v1",
+        "telemetry_event": "b6928164-ff35-47b7-b919-5fee2cea1484"
+      }
+    },
+    {
+      "device": "alpha",
+      "target": "ascon-aead128-v1",
+      "transition_id": "1ea71db5-3d94-4364-9d3f-68c5a6bc9053",
+      "http_202_seconds": 0.007094144821166992,
+      "observed_effective_seconds": 1.0602173805236816,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:20:12.078879+00:00",
+        "activated_at": "2026-11-12T11:20:11.997014+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:20:12.198022+00:00",
+        "correlation_id": "7fb218c6-f2c0-4092-815a-5caca08b54b0",
+        "created_at": "2026-11-12T11:20:11.937451+00:00",
+        "deadline": "2026-11-12T11:22:11.937451+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "1ea71db5-3d94-4364-9d3f-68c5a6bc9053",
+        "old_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "a7b60379-8fc0-47d1-98ab-3fd7dbef25c8"
+      }
+    }
+  ],
+  "faults": [
+    {
+      "service": "mongo",
+      "start": "2026-11-12T11:15:59.233076+00:00",
+      "restored": "2026-11-12T11:16:23.474913+00:00",
+      "held_seconds": 12,
+      "total_seconds": 39.72088433099998,
+      "post_start_recovery_seconds": 15.479047693999746,
+      "before": {
+        "checked_at": "2026-11-12T11:15:58.539339+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1595,
+            "last_sequence": 20024
+          },
+          "beta": {
+            "count": 1594,
+            "last_sequence": 20024
+          },
+          "dev009": {
+            "count": 1594,
+            "last_sequence": 20024
+          },
+          "dev007": {
+            "count": 1595,
+            "last_sequence": 20024
+          },
+          "dev010": {
+            "count": 1595,
+            "last_sequence": 20024
+          },
+          "dev006": {
+            "count": 1596,
+            "last_sequence": 20024
+          },
+          "dev005": {
+            "count": 1596,
+            "last_sequence": 20024
+          },
+          "alpha": {
+            "count": 1595,
+            "last_sequence": 20024
+          },
+          "dev004": {
+            "count": 1596,
+            "last_sequence": 20024
+          },
+          "gamma": {
+            "count": 1597,
+            "last_sequence": 20025
+          }
+        },
+        "outbox": {
+          "pending": 10,
+          "delivered": 15943
+        },
+        "counters": {
+          "delivery_retry": 4,
+          "incoming": 15954,
+          "delivery_error": 3,
+          "delivered": 15943,
+          "accepted": 15953
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 99358387,
+        "pg_stats": {
+          "xact_commit": 197021,
+          "xact_rollback": 263,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 15945
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:16:12.080463+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1622,
+            "last_sequence": 20051
+          },
+          "beta": {
+            "count": 1621,
+            "last_sequence": 20051
+          },
+          "dev009": {
+            "count": 1621,
+            "last_sequence": 20051
+          },
+          "dev007": {
+            "count": 1622,
+            "last_sequence": 20051
+          },
+          "dev010": {
+            "count": 1622,
+            "last_sequence": 20051
+          },
+          "dev006": {
+            "count": 1623,
+            "last_sequence": 20051
+          },
+          "dev005": {
+            "count": 1623,
+            "last_sequence": 20051
+          },
+          "alpha": {
+            "count": 1622,
+            "last_sequence": 20051
+          },
+          "dev004": {
+            "count": 1623,
+            "last_sequence": 20051
+          },
+          "gamma": {
+            "count": 1624,
+            "last_sequence": 20052
+          }
+        },
+        "outbox": {
+          "pending": 256,
+          "delivered": 15966,
+          "claimed": 1
+        },
+        "counters": {
+          "delivery_retry": 4,
+          "incoming": 16223,
+          "delivery_error": 5,
+          "delivered": 15966,
+          "accepted": 16223
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 100497075,
+        "pg_stats": {
+          "xact_commit": 199248,
+          "xact_rollback": 266,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": null
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:16:38.248586+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1674,
+            "last_sequence": 20103
+          },
+          "beta": {
+            "count": 1673,
+            "last_sequence": 20103
+          },
+          "dev009": {
+            "count": 1673,
+            "last_sequence": 20103
+          },
+          "dev007": {
+            "count": 1674,
+            "last_sequence": 20103
+          },
+          "dev010": {
+            "count": 1674,
+            "last_sequence": 20103
+          },
+          "dev006": {
+            "count": 1675,
+            "last_sequence": 20103
+          },
+          "dev005": {
+            "count": 1675,
+            "last_sequence": 20103
+          },
+          "alpha": {
+            "count": 1674,
+            "last_sequence": 20103
+          },
+          "dev004": {
+            "count": 1675,
+            "last_sequence": 20103
+          },
+          "gamma": {
+            "count": 1676,
+            "last_sequence": 20104
+          }
+        },
+        "outbox": {
+          "delivered": 16743
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 16743,
+          "delivery_error": 6,
+          "delivered": 16743,
+          "accepted": 16743
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 103208627,
+        "pg_stats": {
+          "xact_commit": 206501,
+          "xact_rollback": 280,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 16743
+      },
+      "false_effective": false
+    },
+    {
+      "service": "control-worker",
+      "start": "2026-11-12T11:16:40.313605+00:00",
+      "restored": "2026-11-12T11:16:57.769094+00:00",
+      "held_seconds": 12,
+      "total_seconds": 51.66931583099995,
+      "post_start_recovery_seconds": 34.21382720599922,
+      "before": {
+        "checked_at": "2026-11-12T11:16:39.627753+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1677,
+            "last_sequence": 20106
+          },
+          "beta": {
+            "count": 1676,
+            "last_sequence": 20106
+          },
+          "dev009": {
+            "count": 1676,
+            "last_sequence": 20106
+          },
+          "dev007": {
+            "count": 1677,
+            "last_sequence": 20106
+          },
+          "dev010": {
+            "count": 1677,
+            "last_sequence": 20106
+          },
+          "dev006": {
+            "count": 1677,
+            "last_sequence": 20105
+          },
+          "dev005": {
+            "count": 1677,
+            "last_sequence": 20105
+          },
+          "alpha": {
+            "count": 1676,
+            "last_sequence": 20105
+          },
+          "dev004": {
+            "count": 1678,
+            "last_sequence": 20106
+          },
+          "gamma": {
+            "count": 1678,
+            "last_sequence": 20106
+          }
+        },
+        "outbox": {
+          "pending": 4,
+          "delivered": 16766
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 16770,
+          "delivery_error": 6,
+          "delivered": 16766,
+          "accepted": 16770
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 103364275,
+        "pg_stats": {
+          "xact_commit": 206877,
+          "xact_rollback": 282,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 16766
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:16:53.239494+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1704,
+            "last_sequence": 20133
+          },
+          "beta": {
+            "count": 1703,
+            "last_sequence": 20133
+          },
+          "dev009": {
+            "count": 1703,
+            "last_sequence": 20133
+          },
+          "dev007": {
+            "count": 1704,
+            "last_sequence": 20133
+          },
+          "dev010": {
+            "count": 1703,
+            "last_sequence": 20132
+          },
+          "dev006": {
+            "count": 1704,
+            "last_sequence": 20132
+          },
+          "dev005": {
+            "count": 1704,
+            "last_sequence": 20132
+          },
+          "alpha": {
+            "count": 1703,
+            "last_sequence": 20132
+          },
+          "dev004": {
+            "count": 1705,
+            "last_sequence": 20133
+          },
+          "gamma": {
+            "count": 1705,
+            "last_sequence": 20133
+          }
+        },
+        "outbox": {
+          "pending": 5,
+          "delivered": 17033
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 17038,
+          "delivery_error": 6,
+          "delivered": 17033,
+          "accepted": 17038
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 104707763,
+        "pg_stats": {
+          "xact_commit": 209634,
+          "xact_rollback": 286,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 17033
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:17:31.293803+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1779,
+            "last_sequence": 20208
+          },
+          "beta": {
+            "count": 1778,
+            "last_sequence": 20208
+          },
+          "dev004": {
+            "count": 1780,
+            "last_sequence": 20208
+          },
+          "dev005": {
+            "count": 1780,
+            "last_sequence": 20208
+          },
+          "dev006": {
+            "count": 1780,
+            "last_sequence": 20208
+          },
+          "dev007": {
+            "count": 1780,
+            "last_sequence": 20209
+          },
+          "dev008": {
+            "count": 1780,
+            "last_sequence": 20209
+          },
+          "dev009": {
+            "count": 1779,
+            "last_sequence": 20209
+          },
+          "dev010": {
+            "count": 1779,
+            "last_sequence": 20208
+          },
+          "gamma": {
+            "count": 1781,
+            "last_sequence": 20209
+          }
+        },
+        "outbox": {
+          "delivered": 17796
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 17797,
+          "delivery_error": 6,
+          "delivered": 17796,
+          "accepted": 17796
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 107943603,
+        "pg_stats": {
+          "xact_commit": 218766,
+          "xact_rollback": 318,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 17796
+      },
+      "false_effective": false
+    },
+    {
+      "service": "policy-worker",
+      "start": "2026-11-12T11:17:33.331305+00:00",
+      "restored": "2026-11-12T11:18:12.714449+00:00",
+      "held_seconds": 32,
+      "total_seconds": 50.156083631,
+      "post_start_recovery_seconds": 10.77294062600049,
+      "before": {
+        "checked_at": "2026-11-12T11:17:32.654888+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1782,
+            "last_sequence": 20211
+          },
+          "beta": {
+            "count": 1781,
+            "last_sequence": 20211
+          },
+          "dev004": {
+            "count": 1783,
+            "last_sequence": 20211
+          },
+          "dev005": {
+            "count": 1783,
+            "last_sequence": 20211
+          },
+          "dev006": {
+            "count": 1783,
+            "last_sequence": 20211
+          },
+          "dev007": {
+            "count": 1782,
+            "last_sequence": 20211
+          },
+          "dev008": {
+            "count": 1782,
+            "last_sequence": 20211
+          },
+          "dev009": {
+            "count": 1781,
+            "last_sequence": 20211
+          },
+          "dev010": {
+            "count": 1782,
+            "last_sequence": 20211
+          },
+          "gamma": {
+            "count": 1784,
+            "last_sequence": 20212
+          }
+        },
+        "outbox": {
+          "delivered": 17816,
+          "pending": 7
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 17823,
+          "delivery_error": 6,
+          "delivered": 17816,
+          "accepted": 17823
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 108107443,
+        "pg_stats": {
+          "xact_commit": 219093,
+          "xact_rollback": 320,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 17816
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:18:06.184249+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1849,
+            "last_sequence": 20278
+          },
+          "beta": {
+            "count": 1848,
+            "last_sequence": 20278
+          },
+          "dev009": {
+            "count": 1848,
+            "last_sequence": 20278
+          },
+          "dev007": {
+            "count": 1849,
+            "last_sequence": 20278
+          },
+          "dev010": {
+            "count": 1848,
+            "last_sequence": 20277
+          },
+          "dev006": {
+            "count": 1849,
+            "last_sequence": 20277
+          },
+          "dev005": {
+            "count": 1849,
+            "last_sequence": 20277
+          },
+          "alpha": {
+            "count": 1848,
+            "last_sequence": 20277
+          },
+          "dev004": {
+            "count": 1849,
+            "last_sequence": 20277
+          },
+          "gamma": {
+            "count": 1850,
+            "last_sequence": 20278
+          }
+        },
+        "outbox": {
+          "pending": 4,
+          "delivered": 18482,
+          "claimed": 1
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 18487,
+          "delivery_error": 6,
+          "delivered": 18483,
+          "accepted": 18487
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 105051827,
+        "pg_stats": {
+          "xact_commit": 225959,
+          "xact_rollback": 322,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 18485
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:18:22.806667+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1882,
+            "last_sequence": 20311
+          },
+          "beta": {
+            "count": 1881,
+            "last_sequence": 20311
+          },
+          "dev009": {
+            "count": 1881,
+            "last_sequence": 20311
+          },
+          "dev007": {
+            "count": 1882,
+            "last_sequence": 20311
+          },
+          "dev010": {
+            "count": 1881,
+            "last_sequence": 20310
+          },
+          "dev006": {
+            "count": 1882,
+            "last_sequence": 20310
+          },
+          "dev005": {
+            "count": 1882,
+            "last_sequence": 20310
+          },
+          "alpha": {
+            "count": 1881,
+            "last_sequence": 20310
+          },
+          "dev004": {
+            "count": 1882,
+            "last_sequence": 20310
+          },
+          "gamma": {
+            "count": 1883,
+            "last_sequence": 20311
+          }
+        },
+        "outbox": {
+          "delivered": 18817
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 18817,
+          "delivery_error": 6,
+          "delivered": 18817,
+          "accepted": 18817
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 106575539,
+        "pg_stats": {
+          "xact_commit": 229955,
+          "xact_rollback": 334,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 18817
+      },
+      "false_effective": false
+    },
+    {
+      "service": "postgres",
+      "start": "2026-11-12T11:18:24.827676+00:00",
+      "restored": "2026-11-12T11:18:36.909350+00:00",
+      "held_seconds": 8,
+      "total_seconds": 36.91877772299995,
+      "post_start_recovery_seconds": 24.83710445199995,
+      "before": {
+        "checked_at": "2026-11-12T11:18:24.160449+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1885,
+            "last_sequence": 20314
+          },
+          "beta": {
+            "count": 1883,
+            "last_sequence": 20313
+          },
+          "dev009": {
+            "count": 1884,
+            "last_sequence": 20314
+          },
+          "dev007": {
+            "count": 1885,
+            "last_sequence": 20314
+          },
+          "dev010": {
+            "count": 1884,
+            "last_sequence": 20313
+          },
+          "dev006": {
+            "count": 1885,
+            "last_sequence": 20313
+          },
+          "dev005": {
+            "count": 1885,
+            "last_sequence": 20313
+          },
+          "alpha": {
+            "count": 1884,
+            "last_sequence": 20313
+          },
+          "dev004": {
+            "count": 1885,
+            "last_sequence": 20313
+          },
+          "gamma": {
+            "count": 1886,
+            "last_sequence": 20314
+          }
+        },
+        "outbox": {
+          "pending": 9,
+          "delivered": 18837
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 18846,
+          "delivery_error": 6,
+          "delivered": 18837,
+          "accepted": 18846
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 106714803,
+        "pg_stats": {
+          "xact_commit": 230275,
+          "xact_rollback": 336,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 18837
+      },
+      "during": null,
+      "after": {
+        "checked_at": "2026-11-12T11:19:01.072686+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1958,
+            "last_sequence": 20387
+          },
+          "beta": {
+            "count": 1957,
+            "last_sequence": 20387
+          },
+          "dev009": {
+            "count": 1957,
+            "last_sequence": 20387
+          },
+          "dev007": {
+            "count": 1958,
+            "last_sequence": 20387
+          },
+          "dev010": {
+            "count": 1957,
+            "last_sequence": 20386
+          },
+          "dev006": {
+            "count": 1958,
+            "last_sequence": 20386
+          },
+          "dev005": {
+            "count": 1958,
+            "last_sequence": 20386
+          },
+          "alpha": {
+            "count": 1957,
+            "last_sequence": 20386
+          },
+          "dev004": {
+            "count": 1958,
+            "last_sequence": 20386
+          },
+          "gamma": {
+            "count": 1959,
+            "last_sequence": 20387
+          }
+        },
+        "outbox": {
+          "delivered": 19577
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19578,
+          "delivery_error": 6,
+          "delivered": 19577,
+          "accepted": 19577
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 110851763,
+        "pg_stats": {
+          "xact_commit": 238357,
+          "xact_rollback": 358,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19577
+      },
+      "false_effective": false
+    },
+    {
+      "service": "broker",
+      "start": "2026-11-12T11:19:03.071372+00:00",
+      "restored": "2026-11-12T11:19:16.347048+00:00",
+      "held_seconds": 8,
+      "total_seconds": 14.608807785999488,
+      "post_start_recovery_seconds": 1.3331321149998985,
+      "before": {
+        "checked_at": "2026-11-12T11:19:02.399599+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1960,
+            "last_sequence": 20389
+          },
+          "beta": {
+            "count": 1960,
+            "last_sequence": 20390
+          },
+          "dev009": {
+            "count": 1960,
+            "last_sequence": 20390
+          },
+          "dev007": {
+            "count": 1961,
+            "last_sequence": 20390
+          },
+          "dev010": {
+            "count": 1960,
+            "last_sequence": 20389
+          },
+          "dev006": {
+            "count": 1961,
+            "last_sequence": 20389
+          },
+          "dev005": {
+            "count": 1961,
+            "last_sequence": 20389
+          },
+          "alpha": {
+            "count": 1960,
+            "last_sequence": 20389
+          },
+          "dev004": {
+            "count": 1961,
+            "last_sequence": 20389
+          },
+          "gamma": {
+            "count": 1962,
+            "last_sequence": 20390
+          }
+        },
+        "outbox": {
+          "pending": 6,
+          "delivered": 19600
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19606,
+          "delivery_error": 6,
+          "delivered": 19600,
+          "accepted": 19606
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 111195827,
+        "pg_stats": {
+          "xact_commit": 238712,
+          "xact_rollback": 360,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19600
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:19:11.935193+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "beta": {
+            "count": 1961,
+            "last_sequence": 20391
+          },
+          "dev009": {
+            "count": 1961,
+            "last_sequence": 20391
+          },
+          "dev007": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "dev010": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "dev006": {
+            "count": 1962,
+            "last_sequence": 20390
+          },
+          "dev005": {
+            "count": 1963,
+            "last_sequence": 20391
+          },
+          "alpha": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "dev004": {
+            "count": 1962,
+            "last_sequence": 20390
+          },
+          "gamma": {
+            "count": 1963,
+            "last_sequence": 20391
+          }
+        },
+        "outbox": {
+          "delivered": 19620
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19620,
+          "delivery_error": 6,
+          "delivered": 19620,
+          "accepted": 19620
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 113170099,
+        "pg_stats": {
+          "xact_commit": 239394,
+          "xact_rollback": 362,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19620
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:19:17.004533+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "beta": {
+            "count": 1961,
+            "last_sequence": 20391
+          },
+          "dev004": {
+            "count": 1962,
+            "last_sequence": 20390
+          },
+          "dev005": {
+            "count": 1963,
+            "last_sequence": 20391
+          },
+          "dev006": {
+            "count": 1962,
+            "last_sequence": 20390
+          },
+          "dev007": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "dev008": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "dev009": {
+            "count": 1961,
+            "last_sequence": 20391
+          },
+          "dev010": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "gamma": {
+            "count": 1963,
+            "last_sequence": 20391
+          }
+        },
+        "outbox": {
+          "delivered": 19620
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19620,
+          "delivery_error": 6,
+          "delivered": 19620,
+          "accepted": 19620
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 113809075,
+        "pg_stats": {
+          "xact_commit": 239719,
+          "xact_rollback": 364,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19620
+      },
+      "false_effective": false
+    },
+    {
+      "service": "device-alpha",
+      "start": "2026-11-12T11:19:19.014567+00:00",
+      "restored": "2026-11-12T11:19:31.281194+00:00",
+      "held_seconds": 5,
+      "total_seconds": 29.9768671060001,
+      "post_start_recovery_seconds": 17.710240026000065,
+      "before": {
+        "checked_at": "2026-11-12T11:19:18.323787+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1964,
+            "last_sequence": 20393
+          },
+          "beta": {
+            "count": 1963,
+            "last_sequence": 20393
+          },
+          "dev004": {
+            "count": 1964,
+            "last_sequence": 20392
+          },
+          "dev005": {
+            "count": 1965,
+            "last_sequence": 20393
+          },
+          "dev006": {
+            "count": 1964,
+            "last_sequence": 20392
+          },
+          "dev007": {
+            "count": 1964,
+            "last_sequence": 20393
+          },
+          "dev008": {
+            "count": 1964,
+            "last_sequence": 20393
+          },
+          "dev009": {
+            "count": 1963,
+            "last_sequence": 20393
+          },
+          "dev010": {
+            "count": 1964,
+            "last_sequence": 20393
+          },
+          "gamma": {
+            "count": 1965,
+            "last_sequence": 20393
+          }
+        },
+        "outbox": {
+          "delivered": 19620,
+          "pending": 21
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19642,
+          "delivery_error": 6,
+          "delivered": 19620,
+          "accepted": 19641
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 113915571,
+        "pg_stats": {
+          "xact_commit": 239859,
+          "xact_rollback": 366,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19620
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:19:24.891793+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1970,
+            "last_sequence": 20399
+          },
+          "beta": {
+            "count": 1981,
+            "last_sequence": 20411
+          },
+          "dev004": {
+            "count": 1982,
+            "last_sequence": 20410
+          },
+          "dev005": {
+            "count": 1983,
+            "last_sequence": 20411
+          },
+          "dev006": {
+            "count": 1982,
+            "last_sequence": 20410
+          },
+          "dev007": {
+            "count": 1982,
+            "last_sequence": 20411
+          },
+          "dev008": {
+            "count": 1982,
+            "last_sequence": 20411
+          },
+          "dev009": {
+            "count": 1981,
+            "last_sequence": 20411
+          },
+          "dev010": {
+            "count": 1982,
+            "last_sequence": 20411
+          },
+          "gamma": {
+            "count": 1983,
+            "last_sequence": 20411
+          }
+        },
+        "outbox": {
+          "delivered": 19799,
+          "pending": 9
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19808,
+          "delivery_error": 6,
+          "delivered": 19799,
+          "accepted": 19808
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 114407091,
+        "pg_stats": {
+          "xact_commit": 241644,
+          "xact_rollback": 368,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19799
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:19:48.305399+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 2013,
+            "last_sequence": 30043
+          },
+          "beta": {
+            "count": 2027,
+            "last_sequence": 20457
+          },
+          "dev004": {
+            "count": 2028,
+            "last_sequence": 20456
+          },
+          "dev005": {
+            "count": 2029,
+            "last_sequence": 20457
+          },
+          "dev006": {
+            "count": 2028,
+            "last_sequence": 20456
+          },
+          "dev007": {
+            "count": 2028,
+            "last_sequence": 20457
+          },
+          "dev008": {
+            "count": 2028,
+            "last_sequence": 20457
+          },
+          "dev009": {
+            "count": 2027,
+            "last_sequence": 20457
+          },
+          "dev010": {
+            "count": 2028,
+            "last_sequence": 20457
+          },
+          "gamma": {
+            "count": 2029,
+            "last_sequence": 20457
+          }
+        },
+        "outbox": {
+          "delivered": 20265
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 20265,
+          "delivery_error": 6,
+          "delivered": 20265,
+          "accepted": 20265
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 116414131,
+        "pg_stats": {
+          "xact_commit": 247227,
+          "xact_rollback": 384,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 20265
+      },
+      "false_effective": false
+    },
+    {
+      "service": "receiver",
+      "start": "2026-11-12T11:19:50.304644+00:00",
+      "restored": "2026-11-12T11:20:00.669263+00:00",
+      "held_seconds": 5,
+      "total_seconds": 16.436157215000094,
+      "post_start_recovery_seconds": 6.071539239000231,
+      "before": {
+        "checked_at": "2026-11-12T11:19:49.638622+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 2016,
+            "last_sequence": 30046
+          },
+          "beta": {
+            "count": 2030,
+            "last_sequence": 20460
+          },
+          "dev004": {
+            "count": 2031,
+            "last_sequence": 20459
+          },
+          "dev005": {
+            "count": 2032,
+            "last_sequence": 20460
+          },
+          "dev006": {
+            "count": 2031,
+            "last_sequence": 20459
+          },
+          "dev007": {
+            "count": 2031,
+            "last_sequence": 20460
+          },
+          "dev008": {
+            "count": 2031,
+            "last_sequence": 20460
+          },
+          "dev009": {
+            "count": 2030,
+            "last_sequence": 20460
+          },
+          "dev010": {
+            "count": 2031,
+            "last_sequence": 20460
+          },
+          "gamma": {
+            "count": 2032,
+            "last_sequence": 20460
+          }
+        },
+        "outbox": {
+          "delivered": 20285,
+          "pending": 10
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 20295,
+          "delivery_error": 6,
+          "delivered": 20285,
+          "accepted": 20295
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 116545203,
+        "pg_stats": {
+          "xact_commit": 247603,
+          "xact_rollback": 386,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 20285
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:19:56.188206+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 2018,
+            "last_sequence": 30048
+          },
+          "beta": {
+            "count": 2031,
+            "last_sequence": 20461
+          },
+          "dev004": {
+            "count": 2032,
+            "last_sequence": 20460
+          },
+          "dev005": {
+            "count": 2033,
+            "last_sequence": 20461
+          },
+          "dev006": {
+            "count": 2032,
+            "last_sequence": 20460
+          },
+          "dev007": {
+            "count": 2032,
+            "last_sequence": 20461
+          },
+          "dev008": {
+            "count": 2032,
+            "last_sequence": 20461
+          },
+          "dev009": {
+            "count": 2031,
+            "last_sequence": 20461
+          },
+          "dev010": {
+            "count": 2032,
+            "last_sequence": 20461
+          },
+          "gamma": {
+            "count": 2033,
+            "last_sequence": 20461
+          }
+        },
+        "outbox": {
+          "delivered": 20306
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 20306,
+          "delivery_error": 6,
+          "delivered": 20306,
+          "accepted": 20306
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 4,
+        "database_bytes": 116913843,
+        "pg_stats": {
+          "xact_commit": 248358,
+          "xact_rollback": 388,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 20306
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:20:06.035293+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 2049,
+            "last_sequence": 30079
+          },
+          "beta": {
+            "count": 2062,
+            "last_sequence": 20492
+          },
+          "dev004": {
+            "count": 2063,
+            "last_sequence": 20491
+          },
+          "dev005": {
+            "count": 2064,
+            "last_sequence": 20492
+          },
+          "dev006": {
+            "count": 2063,
+            "last_sequence": 20491
+          },
+          "dev007": {
+            "count": 2063,
+            "last_sequence": 20492
+          },
+          "dev008": {
+            "count": 2063,
+            "last_sequence": 20492
+          },
+          "dev009": {
+            "count": 2062,
+            "last_sequence": 20492
+          },
+          "dev010": {
+            "count": 2063,
+            "last_sequence": 20492
+          },
+          "gamma": {
+            "count": 2064,
+            "last_sequence": 20492
+          }
+        },
+        "outbox": {
+          "delivered": 20616
+        },
+        "counters": {
+          "delivered": 20616,
+          "accepted": 20616,
+          "replay": 1,
+          "delivery_retry": 7,
+          "incoming": 20617,
+          "delivery_error": 6
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 118134451,
+        "pg_stats": {
+          "xact_commit": 251545,
+          "xact_rollback": 396,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 20616
+      },
+      "false_effective": false
+    }
+  ],
+  "control_history": {
+    "transitions": [
+      {
+        "id": "3e014c89-5906-4ca0-9c95-c8848ea48bac",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "ff0fc09b-b5b3-4e7b-9a41-8dc4a8b427fa",
+        "created_at": "2026-11-12T11:07:58.570623+00:00",
+        "deadline": "2026-11-12T11:09:58.570623+00:00",
+        "activated_at": "2026-11-12T11:07:58.667568+00:00",
+        "acknowledged_at": "2026-11-12T11:07:58.750574+00:00",
+        "confirmed_at": "2026-11-12T11:07:58.867099+00:00",
+        "telemetry_event": "bf337775-1ca3-4d64-95fd-ff56432d0474",
+        "error": null
+      },
+      {
+        "id": "86a1e6e1-fbe3-4697-a453-b5d66e65b0d8",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "226708b9-d78d-441e-b7b6-3655f8408b8d",
+        "created_at": "2026-11-12T11:09:13.572790+00:00",
+        "deadline": "2026-11-12T11:11:13.572790+00:00",
+        "activated_at": "2026-11-12T11:09:13.688498+00:00",
+        "acknowledged_at": "2026-11-12T11:09:13.771528+00:00",
+        "confirmed_at": "2026-11-12T11:09:13.793800+00:00",
+        "telemetry_event": "4190dde7-5fae-43d9-97e5-b2317a89c2ac",
+        "error": null
+      },
+      {
+        "id": "a1506c77-ee1f-4cb0-b9a7-f5e1e325f013",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "c2ada1a2-53df-43d6-9553-65d0e239e5da",
+        "created_at": "2026-11-12T11:09:17.456351+00:00",
+        "deadline": "2026-11-12T11:11:17.456351+00:00",
+        "activated_at": "2026-11-12T11:09:17.514825+00:00",
+        "acknowledged_at": "2026-11-12T11:09:17.597925+00:00",
+        "confirmed_at": "2026-11-12T11:09:17.866159+00:00",
+        "telemetry_event": "09c03e62-00e8-4be3-857b-0c24142824e3",
+        "error": null
+      },
+      {
+        "id": "b945cbd3-41ce-4bde-a03e-7f31f037b9c0",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "b1e7dc2b-b44a-479c-af02-e21c64e481e3",
+        "created_at": "2026-11-12T11:09:20.547487+00:00",
+        "deadline": "2026-11-12T11:11:20.547487+00:00",
+        "activated_at": "2026-11-12T11:09:20.631483+00:00",
+        "acknowledged_at": "2026-11-12T11:09:20.714435+00:00",
+        "confirmed_at": "2026-11-12T11:09:20.895014+00:00",
+        "telemetry_event": "4868b74b-6f40-4fd4-9b8d-463d69b13f9b",
+        "error": null
+      },
+      {
+        "id": "704b38a4-be6d-4ba8-81e1-d2f954e7cbfd",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "3758023e-5058-47d8-adc4-1b1513644c53",
+        "created_at": "2026-11-12T11:15:53.626573+00:00",
+        "deadline": "2026-11-12T11:17:53.626573+00:00",
+        "activated_at": "2026-11-12T11:15:53.725905+00:00",
+        "acknowledged_at": "2026-11-12T11:15:53.807790+00:00",
+        "confirmed_at": "2026-11-12T11:15:53.827608+00:00",
+        "telemetry_event": "78a431e6-33d6-4c96-a082-c7b7eed0e0c0",
+        "error": null
+      },
+      {
+        "id": "f043a853-e68c-4d27-a225-a36bcf5fe0b9",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "4d9c1c3a-8537-4c9b-9aed-5e22a1ca57b9",
+        "created_at": "2026-11-12T11:15:56.769681+00:00",
+        "deadline": "2026-11-12T11:17:56.769681+00:00",
+        "activated_at": "2026-11-12T11:15:56.834468+00:00",
+        "acknowledged_at": "2026-11-12T11:15:56.931536+00:00",
+        "confirmed_at": "2026-11-12T11:15:57.402789+00:00",
+        "telemetry_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+        "error": null
+      },
+      {
+        "id": "0d388522-dccd-432f-a38f-7d5be938e6e8",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "92522bfb-faac-4851-b377-4e8fe399f383",
+        "created_at": "2026-11-12T11:20:08.803106+00:00",
+        "deadline": "2026-11-12T11:22:08.803106+00:00",
+        "activated_at": "2026-11-12T11:20:08.886903+00:00",
+        "acknowledged_at": "2026-11-12T11:20:08.969472+00:00",
+        "confirmed_at": "2026-11-12T11:20:09.093747+00:00",
+        "telemetry_event": "b6928164-ff35-47b7-b919-5fee2cea1484",
+        "error": null
+      },
+      {
+        "id": "1ea71db5-3d94-4364-9d3f-68c5a6bc9053",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "7fb218c6-f2c0-4092-815a-5caca08b54b0",
+        "created_at": "2026-11-12T11:20:11.937451+00:00",
+        "deadline": "2026-11-12T11:22:11.937451+00:00",
+        "activated_at": "2026-11-12T11:20:11.997014+00:00",
+        "acknowledged_at": "2026-11-12T11:20:12.078879+00:00",
+        "confirmed_at": "2026-11-12T11:20:12.198022+00:00",
+        "telemetry_event": "a7b60379-8fc0-47d1-98ab-3fd7dbef25c8",
+        "error": null
+      }
+    ],
+    "commands": [
+      {
+        "id": "49a5f334-8d3d-4cb3-a7a9-a974012c46a4",
+        "transition_id": "3e014c89-5906-4ca0-9c95-c8848ea48bac",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:07:59.627079+00:00"
+      },
+      {
+        "id": "2a0e721e-3f3f-4df6-8b35-1a43efaaf5f6",
+        "transition_id": "86a1e6e1-fbe3-4697-a453-b5d66e65b0d8",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:09:14.647623+00:00"
+      },
+      {
+        "id": "3db6bdf8-ee04-4b10-be9c-6cc0e2d9001b",
+        "transition_id": "b945cbd3-41ce-4bde-a03e-7f31f037b9c0",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:09:21.590683+00:00"
+      },
+      {
+        "id": "83d432ac-c59f-44b8-90d4-78a7eab06a2a",
+        "transition_id": "3e014c89-5906-4ca0-9c95-c8848ea48bac",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:07:59.708883+00:00"
+      },
+      {
+        "id": "127f778f-699e-4bbc-817b-c4ad1fa72891",
+        "transition_id": "86a1e6e1-fbe3-4697-a453-b5d66e65b0d8",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:09:14.729577+00:00"
+      },
+      {
+        "id": "c6aa1d29-0a2a-493f-804b-128d03081ce0",
+        "transition_id": "a1506c77-ee1f-4cb0-b9a7-f5e1e325f013",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:09:18.472471+00:00"
+      },
+      {
+        "id": "c9b98753-4a63-4526-897e-b89018658ce8",
+        "transition_id": "a1506c77-ee1f-4cb0-b9a7-f5e1e325f013",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:09:18.556715+00:00"
+      },
+      {
+        "id": "da09c621-ed7c-416f-be83-54f0bec526bf",
+        "transition_id": "0d388522-dccd-432f-a38f-7d5be938e6e8",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:20:09.929169+00:00"
+      },
+      {
+        "id": "57548cb4-5d4c-4684-bc0d-fc446178466d",
+        "transition_id": "b945cbd3-41ce-4bde-a03e-7f31f037b9c0",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:09:21.673533+00:00"
+      },
+      {
+        "id": "35e690d1-e669-4022-97af-bf3f22276aa1",
+        "transition_id": "704b38a4-be6d-4ba8-81e1-d2f954e7cbfd",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:15:54.685405+00:00"
+      },
+      {
+        "id": "994c28aa-2269-425d-93d9-34b5fa444c18",
+        "transition_id": "704b38a4-be6d-4ba8-81e1-d2f954e7cbfd",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:15:54.766881+00:00"
+      },
+      {
+        "id": "d2fb8c55-70ca-4892-b93b-f1b4d9439107",
+        "transition_id": "f043a853-e68c-4d27-a225-a36bcf5fe0b9",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:15:57.793397+00:00"
+      },
+      {
+        "id": "cc3429fe-db31-4024-a679-6a3de73ee299",
+        "transition_id": "f043a853-e68c-4d27-a225-a36bcf5fe0b9",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:15:57.876590+00:00"
+      },
+      {
+        "id": "77423056-3c67-47b9-9a58-1a876747a4f8",
+        "transition_id": "0d388522-dccd-432f-a38f-7d5be938e6e8",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:20:09.845140+00:00"
+      },
+      {
+        "id": "f674de04-e161-4c14-a8d4-037c7e5dc4f2",
+        "transition_id": "1ea71db5-3d94-4364-9d3f-68c5a6bc9053",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:20:12.956276+00:00"
+      },
+      {
+        "id": "4ea21ca6-c072-48b3-abd7-01967dd8be18",
+        "transition_id": "1ea71db5-3d94-4364-9d3f-68c5a6bc9053",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:20:13.037893+00:00"
+      }
+    ]
+  },
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:15:51.474724+00:00",
+      "finished_at": "2026-11-12T11:15:51.499361+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:15:57.860948+00:00",
+      "finished_at": "2026-11-12T11:15:59.233021+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "mongo"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:15:59.233079+00:00",
+      "finished_at": "2026-11-12T11:15:59.428733+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:11.428830+00:00",
+      "finished_at": "2026-11-12T11:16:17.763489+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "mongo"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:17.763550+00:00",
+      "finished_at": "2026-11-12T11:16:23.474898+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:23.474919+00:00",
+      "finished_at": "2026-11-12T11:16:24.850418+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:25.850548+00:00",
+      "finished_at": "2026-11-12T11:16:27.201211+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:28.201346+00:00",
+      "finished_at": "2026-11-12T11:16:29.548996+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:30.549148+00:00",
+      "finished_at": "2026-11-12T11:16:31.897147+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:32.897288+00:00",
+      "finished_at": "2026-11-12T11:16:34.238285+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:35.238430+00:00",
+      "finished_at": "2026-11-12T11:16:36.586023+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:37.586177+00:00",
+      "finished_at": "2026-11-12T11:16:38.953902+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:38.954345+00:00",
+      "finished_at": "2026-11-12T11:16:40.313555+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "control-worker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:40.313609+00:00",
+      "finished_at": "2026-11-12T11:16:40.532780+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:52.532901+00:00",
+      "finished_at": "2026-11-12T11:16:53.923886+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "control-worker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:53.961478+00:00",
+      "finished_at": "2026-11-12T11:16:57.769080+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:16:57.769101+00:00",
+      "finished_at": "2026-11-12T11:16:59.114369+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:00.114505+00:00",
+      "finished_at": "2026-11-12T11:17:01.451237+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:02.451364+00:00",
+      "finished_at": "2026-11-12T11:17:03.780164+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:04.780302+00:00",
+      "finished_at": "2026-11-12T11:17:06.107548+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:07.107674+00:00",
+      "finished_at": "2026-11-12T11:17:08.442512+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:09.442644+00:00",
+      "finished_at": "2026-11-12T11:17:10.852612+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:11.852739+00:00",
+      "finished_at": "2026-11-12T11:17:13.221411+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:14.221535+00:00",
+      "finished_at": "2026-11-12T11:17:15.558496+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:16.558620+00:00",
+      "finished_at": "2026-11-12T11:17:17.899959+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:18.900090+00:00",
+      "finished_at": "2026-11-12T11:17:20.237751+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:21.237888+00:00",
+      "finished_at": "2026-11-12T11:17:22.577476+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:23.577612+00:00",
+      "finished_at": "2026-11-12T11:17:24.901975+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:25.902103+00:00",
+      "finished_at": "2026-11-12T11:17:27.270493+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:28.270619+00:00",
+      "finished_at": "2026-11-12T11:17:29.619721+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:30.619852+00:00",
+      "finished_at": "2026-11-12T11:17:31.982840+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:31.983514+00:00",
+      "finished_at": "2026-11-12T11:17:33.331260+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "policy-worker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:17:33.331309+00:00",
+      "finished_at": "2026-11-12T11:17:33.520313+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:05.520426+00:00",
+      "finished_at": "2026-11-12T11:18:06.865213+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "policy-worker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:06.903326+00:00",
+      "finished_at": "2026-11-12T11:18:12.714435+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:12.714455+00:00",
+      "finished_at": "2026-11-12T11:18:14.092810+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:15.092942+00:00",
+      "finished_at": "2026-11-12T11:18:16.438685+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:17.438789+00:00",
+      "finished_at": "2026-11-12T11:18:18.811848+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:19.811980+00:00",
+      "finished_at": "2026-11-12T11:18:21.142929+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:22.143068+00:00",
+      "finished_at": "2026-11-12T11:18:23.487335+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:23.488144+00:00",
+      "finished_at": "2026-11-12T11:18:24.827626+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "postgres"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:24.827679+00:00",
+      "finished_at": "2026-11-12T11:18:25.188299+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "postgres"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:33.193792+00:00",
+      "finished_at": "2026-11-12T11:18:36.909336+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:36.909356+00:00",
+      "finished_at": "2026-11-12T11:18:38.302714+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:39.302852+00:00",
+      "finished_at": "2026-11-12T11:18:40.645950+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:41.646049+00:00",
+      "finished_at": "2026-11-12T11:18:42.998129+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:43.998257+00:00",
+      "finished_at": "2026-11-12T11:18:45.347531+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:46.347656+00:00",
+      "finished_at": "2026-11-12T11:18:47.677997+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:48.678122+00:00",
+      "finished_at": "2026-11-12T11:18:50.019925+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:51.020066+00:00",
+      "finished_at": "2026-11-12T11:18:52.343872+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:53.344002+00:00",
+      "finished_at": "2026-11-12T11:18:54.689010+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:55.689179+00:00",
+      "finished_at": "2026-11-12T11:18:57.034611+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:18:58.034747+00:00",
+      "finished_at": "2026-11-12T11:18:59.405916+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:00.406050+00:00",
+      "finished_at": "2026-11-12T11:19:01.746399+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:01.747304+00:00",
+      "finished_at": "2026-11-12T11:19:03.071325+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "broker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:03.071375+00:00",
+      "finished_at": "2026-11-12T11:19:03.266721+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:11.266820+00:00",
+      "finished_at": "2026-11-12T11:19:12.643132+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "broker"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:12.643183+00:00",
+      "finished_at": "2026-11-12T11:19:16.347035+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:16.347055+00:00",
+      "finished_at": "2026-11-12T11:19:17.680130+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:17.681251+00:00",
+      "finished_at": "2026-11-12T11:19:19.014521+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "device-alpha"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:19.014570+00:00",
+      "finished_at": "2026-11-12T11:19:19.206324+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:24.206406+00:00",
+      "finished_at": "2026-11-12T11:19:25.580999+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "device-alpha"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:25.581048+00:00",
+      "finished_at": "2026-11-12T11:19:31.281181+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:31.281200+00:00",
+      "finished_at": "2026-11-12T11:19:32.642329+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:33.642478+00:00",
+      "finished_at": "2026-11-12T11:19:34.978708+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:35.978833+00:00",
+      "finished_at": "2026-11-12T11:19:37.302317+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:38.302465+00:00",
+      "finished_at": "2026-11-12T11:19:39.648098+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:40.648224+00:00",
+      "finished_at": "2026-11-12T11:19:41.981082+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:42.981209+00:00",
+      "finished_at": "2026-11-12T11:19:44.308436+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:45.308563+00:00",
+      "finished_at": "2026-11-12T11:19:46.645448+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:47.645577+00:00",
+      "finished_at": "2026-11-12T11:19:48.991369+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:48.992613+00:00",
+      "finished_at": "2026-11-12T11:19:50.304597+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "receiver"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:50.304648+00:00",
+      "finished_at": "2026-11-12T11:19:50.511901+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:55.512002+00:00",
+      "finished_at": "2026-11-12T11:19:56.868282+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "--wait-timeout",
+        "90",
+        "receiver"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:19:56.868328+00:00",
+      "finished_at": "2026-11-12T11:20:00.669249+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:20:00.669269+00:00",
+      "finished_at": "2026-11-12T11:20:02.036705+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:20:03.036843+00:00",
+      "finished_at": "2026-11-12T11:20:04.380597+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:20:05.380736+00:00",
+      "finished_at": "2026-11-12T11:20:06.740748+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-small/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-small/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "transitions"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:20:12.994024+00:00",
+      "finished_at": "2026-11-12T11:20:13.812403+00:00"
+    }
+  ],
+  "exit_code": 0
+}

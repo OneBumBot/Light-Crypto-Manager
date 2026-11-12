@@ -1,3 +1,18 @@
+# Этап 10 — измерения и подготовка расширения
+
+Ветка `feature/system-performance-validation`, исходный SHA `4ac5081a69199041fb8e34111b976da6c257ac93`.
+Полный baseline после UI: 715 passed. После изменений: 739 passed, 0 skipped;
+реальные browser/TLS/PG/Mongo и recovery, 27 выявленных поведенческих мутаций.
+Данные, команды, exit codes и ограничения: [STAGE10_RESULTS.md](STAGE10_RESULTS.md).
+
+Проверены 3/10/25/50 программных устройств, 15 минут для 25 и 5 минут для других
+основных cohorts. Telemetry path работает на 50×2 Гц; Policy при 25/50 отстаёт.
+Исправлены HTTP503 при недоступной БД загрузки identity и отображение старого
+Policy evidence как свежего; FSM/криптопротоколы не менялись. Есть план ГОСТ,
+но новых активных алгоритмов нет. Этап 11 и 7.5c не начаты.
+Policy DRY_RUN, manual authorized control, RF/IF untrusted остаются обязательными.
+Ниже сохранена история предыдущих этапов.
+
 # Stage 9 — единый демонстрационный сценарий
 
 Ветка feature/system-integration-demo от d3cd219e39c719c6a53db057c58635f2b0410a8d.

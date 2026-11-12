@@ -1,0 +1,69 @@
+{
+  "checked_at": "2026-11-12T11:59:29.748085+00:00",
+  "devices": [
+    {
+      "device_id": "alpha",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "2c56172d-b727-4664-9fa6-a86d061ab3cf",
+      "sequence_reserved": 230000,
+      "command_sequence": 40
+    },
+    {
+      "device_id": "gamma",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "b1b0586c-b76f-4018-8f53-d6c52727f9c6",
+      "sequence_reserved": 60000,
+      "command_sequence": 0
+    },
+    {
+      "device_id": "beta",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "192f59b0-164c-4c9b-ac0c-587962f47ff0",
+      "sequence_reserved": 80000,
+      "command_sequence": 0
+    }
+  ],
+  "per_device": {
+    "beta": {
+      "count": 1682,
+      "last_sequence": 70087
+    },
+    "alpha": {
+      "count": 1947,
+      "last_sequence": 220087
+    },
+    "gamma": {
+      "count": 1678,
+      "last_sequence": 50087
+    }
+  },
+  "outbox": {
+    "delivered": 5307
+  },
+  "counters": {
+    "incoming": 5344,
+    "replay": 3,
+    "rejected": 34,
+    "delivered": 5307,
+    "accepted": 5307
+  },
+  "transitions": 20,
+  "completed": 20,
+  "unknown": 0,
+  "authenticated_ack": 37,
+  "receipts": 23,
+  "policy_modes": [
+    "DRY_RUN"
+  ],
+  "policy_applied": 0,
+  "pg_connections": 8,
+  "database_bytes": 95295155,
+  "pg_stats": {
+    "xact_commit": 129923,
+    "xact_rollback": 1906,
+    "deadlocks": 0
+  },
+  "migration": "0009_component_heartbeat",
+  "ml_trusted": false,
+  "mongo_managed": 5307
+}

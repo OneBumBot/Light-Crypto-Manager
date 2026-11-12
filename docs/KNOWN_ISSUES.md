@@ -1,3 +1,27 @@
+# Этап 10: измеренные ограничения
+
+* Проверены software x86 identities, не физические Raspberry Pi. Максимальная
+  вместимость не установлена; 50×2 Гц — пятиминутное подтверждённое окно telemetry.
+* Default Policy batch32 + sleep1s и поиск consumed prefix не успевают за 25/50×2 Гц.
+  Свежий heartbeat не гарантирует свежие источники; UI теперь явно помечает stale
+  evidence. Policy DRY_RUN, автоматических crypto commands нет.
+* Один run на cohort; неполная матрица частот, разные durations/истории/probes.
+  Нет 30-минутного результата, ARM/энергии и точного PG/Mongo commit timing.
+* Retention отключён. Security observation journal ограничен 100000 записями;
+  при исчерпании растёт overflow, что не является полным аудитом новых событий.
+  Обслуживание/архивирование/backup требуют отдельной эксплуатационной политики.
+* Одновременная остановка consumers может оставить durable Outbox pending.
+  Stop сохраняет данные, но не обещает drain при недоступной Mongo. Resume relay
+  доставил наблюдавшиеся 35 записей; только после drain сравнивать PG/Mongo totals.
+* MGM не готов к активации. Magma64-bit usage bounds и grant10000 несовместимы
+  по умолчанию; binding/ARM/KAT/usage accounting ещё не реализованы. Нельзя просто
+  добавить descriptor в нынешний ifAES/elseAscon dispatch.
+* Private inputs новых стендов сохранены в `.local-runtime/stage10/private/`.
+  Использовать вместе с исходными SQL/device volumes; seed SQLite не заменяет ledger.
+
+Подробности и реальные источники: [STAGE10_RESULTS.md](STAGE10_RESULTS.md).
+Ниже сохранена история ограничений предыдущих этапов.
+
 # Stage 9: текущие ограничения
 
 * Software agents/x86_64, не physical Raspberry Pi и не production server.

@@ -1,0 +1,3050 @@
+{
+  "switches": [
+    {
+      "device": "alpha",
+      "target": "aes-128-gcm-v1",
+      "transition_id": "704b38a4-be6d-4ba8-81e1-d2f954e7cbfd",
+      "http_202_seconds": 0.02466607093811035,
+      "observed_effective_seconds": 1.1089882850646973,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:15:53.807790+00:00",
+        "activated_at": "2026-11-12T11:15:53.725905+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:15:53.827608+00:00",
+        "correlation_id": "3758023e-5058-47d8-adc4-1b1513644c53",
+        "created_at": "2026-11-12T11:15:53.626573+00:00",
+        "deadline": "2026-11-12T11:17:53.626573+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "704b38a4-be6d-4ba8-81e1-d2f954e7cbfd",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "aes-128-gcm-v1",
+        "telemetry_event": "78a431e6-33d6-4c96-a082-c7b7eed0e0c0"
+      }
+    },
+    {
+      "device": "alpha",
+      "target": "ascon-aead128-v1",
+      "transition_id": "f043a853-e68c-4d27-a225-a36bcf5fe0b9",
+      "http_202_seconds": 0.006131410598754883,
+      "observed_effective_seconds": 1.0942087173461914,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:15:56.931536+00:00",
+        "activated_at": "2026-11-12T11:15:56.834468+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:15:57.402789+00:00",
+        "correlation_id": "4d9c1c3a-8537-4c9b-9aed-5e22a1ca57b9",
+        "created_at": "2026-11-12T11:15:56.769681+00:00",
+        "deadline": "2026-11-12T11:17:56.769681+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "f043a853-e68c-4d27-a225-a36bcf5fe0b9",
+        "old_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697"
+      }
+    }
+  ],
+  "faults": [
+    {
+      "service": "mongo",
+      "start": "2026-11-12T11:15:59.233076+00:00",
+      "restored": "2026-11-12T11:16:23.474913+00:00",
+      "held_seconds": 12,
+      "total_seconds": 39.72088433099998,
+      "post_start_recovery_seconds": 15.479047693999746,
+      "before": {
+        "checked_at": "2026-11-12T11:15:58.539339+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1595,
+            "last_sequence": 20024
+          },
+          "beta": {
+            "count": 1594,
+            "last_sequence": 20024
+          },
+          "dev009": {
+            "count": 1594,
+            "last_sequence": 20024
+          },
+          "dev007": {
+            "count": 1595,
+            "last_sequence": 20024
+          },
+          "dev010": {
+            "count": 1595,
+            "last_sequence": 20024
+          },
+          "dev006": {
+            "count": 1596,
+            "last_sequence": 20024
+          },
+          "dev005": {
+            "count": 1596,
+            "last_sequence": 20024
+          },
+          "alpha": {
+            "count": 1595,
+            "last_sequence": 20024
+          },
+          "dev004": {
+            "count": 1596,
+            "last_sequence": 20024
+          },
+          "gamma": {
+            "count": 1597,
+            "last_sequence": 20025
+          }
+        },
+        "outbox": {
+          "pending": 10,
+          "delivered": 15943
+        },
+        "counters": {
+          "delivery_retry": 4,
+          "incoming": 15954,
+          "delivery_error": 3,
+          "delivered": 15943,
+          "accepted": 15953
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 99358387,
+        "pg_stats": {
+          "xact_commit": 197021,
+          "xact_rollback": 263,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 15945
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:16:12.080463+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1622,
+            "last_sequence": 20051
+          },
+          "beta": {
+            "count": 1621,
+            "last_sequence": 20051
+          },
+          "dev009": {
+            "count": 1621,
+            "last_sequence": 20051
+          },
+          "dev007": {
+            "count": 1622,
+            "last_sequence": 20051
+          },
+          "dev010": {
+            "count": 1622,
+            "last_sequence": 20051
+          },
+          "dev006": {
+            "count": 1623,
+            "last_sequence": 20051
+          },
+          "dev005": {
+            "count": 1623,
+            "last_sequence": 20051
+          },
+          "alpha": {
+            "count": 1622,
+            "last_sequence": 20051
+          },
+          "dev004": {
+            "count": 1623,
+            "last_sequence": 20051
+          },
+          "gamma": {
+            "count": 1624,
+            "last_sequence": 20052
+          }
+        },
+        "outbox": {
+          "pending": 256,
+          "delivered": 15966,
+          "claimed": 1
+        },
+        "counters": {
+          "delivery_retry": 4,
+          "incoming": 16223,
+          "delivery_error": 5,
+          "delivered": 15966,
+          "accepted": 16223
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 100497075,
+        "pg_stats": {
+          "xact_commit": 199248,
+          "xact_rollback": 266,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": null
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:16:38.248586+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1674,
+            "last_sequence": 20103
+          },
+          "beta": {
+            "count": 1673,
+            "last_sequence": 20103
+          },
+          "dev009": {
+            "count": 1673,
+            "last_sequence": 20103
+          },
+          "dev007": {
+            "count": 1674,
+            "last_sequence": 20103
+          },
+          "dev010": {
+            "count": 1674,
+            "last_sequence": 20103
+          },
+          "dev006": {
+            "count": 1675,
+            "last_sequence": 20103
+          },
+          "dev005": {
+            "count": 1675,
+            "last_sequence": 20103
+          },
+          "alpha": {
+            "count": 1674,
+            "last_sequence": 20103
+          },
+          "dev004": {
+            "count": 1675,
+            "last_sequence": 20103
+          },
+          "gamma": {
+            "count": 1676,
+            "last_sequence": 20104
+          }
+        },
+        "outbox": {
+          "delivered": 16743
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 16743,
+          "delivery_error": 6,
+          "delivered": 16743,
+          "accepted": 16743
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 103208627,
+        "pg_stats": {
+          "xact_commit": 206501,
+          "xact_rollback": 280,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 16743
+      },
+      "false_effective": false
+    },
+    {
+      "service": "control-worker",
+      "start": "2026-11-12T11:16:40.313605+00:00",
+      "restored": "2026-11-12T11:16:57.769094+00:00",
+      "held_seconds": 12,
+      "total_seconds": 51.66931583099995,
+      "post_start_recovery_seconds": 34.21382720599922,
+      "before": {
+        "checked_at": "2026-11-12T11:16:39.627753+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1677,
+            "last_sequence": 20106
+          },
+          "beta": {
+            "count": 1676,
+            "last_sequence": 20106
+          },
+          "dev009": {
+            "count": 1676,
+            "last_sequence": 20106
+          },
+          "dev007": {
+            "count": 1677,
+            "last_sequence": 20106
+          },
+          "dev010": {
+            "count": 1677,
+            "last_sequence": 20106
+          },
+          "dev006": {
+            "count": 1677,
+            "last_sequence": 20105
+          },
+          "dev005": {
+            "count": 1677,
+            "last_sequence": 20105
+          },
+          "alpha": {
+            "count": 1676,
+            "last_sequence": 20105
+          },
+          "dev004": {
+            "count": 1678,
+            "last_sequence": 20106
+          },
+          "gamma": {
+            "count": 1678,
+            "last_sequence": 20106
+          }
+        },
+        "outbox": {
+          "pending": 4,
+          "delivered": 16766
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 16770,
+          "delivery_error": 6,
+          "delivered": 16766,
+          "accepted": 16770
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 103364275,
+        "pg_stats": {
+          "xact_commit": 206877,
+          "xact_rollback": 282,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 16766
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:16:53.239494+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1704,
+            "last_sequence": 20133
+          },
+          "beta": {
+            "count": 1703,
+            "last_sequence": 20133
+          },
+          "dev009": {
+            "count": 1703,
+            "last_sequence": 20133
+          },
+          "dev007": {
+            "count": 1704,
+            "last_sequence": 20133
+          },
+          "dev010": {
+            "count": 1703,
+            "last_sequence": 20132
+          },
+          "dev006": {
+            "count": 1704,
+            "last_sequence": 20132
+          },
+          "dev005": {
+            "count": 1704,
+            "last_sequence": 20132
+          },
+          "alpha": {
+            "count": 1703,
+            "last_sequence": 20132
+          },
+          "dev004": {
+            "count": 1705,
+            "last_sequence": 20133
+          },
+          "gamma": {
+            "count": 1705,
+            "last_sequence": 20133
+          }
+        },
+        "outbox": {
+          "pending": 5,
+          "delivered": 17033
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 17038,
+          "delivery_error": 6,
+          "delivered": 17033,
+          "accepted": 17038
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 104707763,
+        "pg_stats": {
+          "xact_commit": 209634,
+          "xact_rollback": 286,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 17033
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:17:31.293803+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1779,
+            "last_sequence": 20208
+          },
+          "beta": {
+            "count": 1778,
+            "last_sequence": 20208
+          },
+          "dev004": {
+            "count": 1780,
+            "last_sequence": 20208
+          },
+          "dev005": {
+            "count": 1780,
+            "last_sequence": 20208
+          },
+          "dev006": {
+            "count": 1780,
+            "last_sequence": 20208
+          },
+          "dev007": {
+            "count": 1780,
+            "last_sequence": 20209
+          },
+          "dev008": {
+            "count": 1780,
+            "last_sequence": 20209
+          },
+          "dev009": {
+            "count": 1779,
+            "last_sequence": 20209
+          },
+          "dev010": {
+            "count": 1779,
+            "last_sequence": 20208
+          },
+          "gamma": {
+            "count": 1781,
+            "last_sequence": 20209
+          }
+        },
+        "outbox": {
+          "delivered": 17796
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 17797,
+          "delivery_error": 6,
+          "delivered": 17796,
+          "accepted": 17796
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 107943603,
+        "pg_stats": {
+          "xact_commit": 218766,
+          "xact_rollback": 318,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 17796
+      },
+      "false_effective": false
+    },
+    {
+      "service": "policy-worker",
+      "start": "2026-11-12T11:17:33.331305+00:00",
+      "restored": "2026-11-12T11:18:12.714449+00:00",
+      "held_seconds": 32,
+      "total_seconds": 50.156083631,
+      "post_start_recovery_seconds": 10.77294062600049,
+      "before": {
+        "checked_at": "2026-11-12T11:17:32.654888+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1782,
+            "last_sequence": 20211
+          },
+          "beta": {
+            "count": 1781,
+            "last_sequence": 20211
+          },
+          "dev004": {
+            "count": 1783,
+            "last_sequence": 20211
+          },
+          "dev005": {
+            "count": 1783,
+            "last_sequence": 20211
+          },
+          "dev006": {
+            "count": 1783,
+            "last_sequence": 20211
+          },
+          "dev007": {
+            "count": 1782,
+            "last_sequence": 20211
+          },
+          "dev008": {
+            "count": 1782,
+            "last_sequence": 20211
+          },
+          "dev009": {
+            "count": 1781,
+            "last_sequence": 20211
+          },
+          "dev010": {
+            "count": 1782,
+            "last_sequence": 20211
+          },
+          "gamma": {
+            "count": 1784,
+            "last_sequence": 20212
+          }
+        },
+        "outbox": {
+          "delivered": 17816,
+          "pending": 7
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 17823,
+          "delivery_error": 6,
+          "delivered": 17816,
+          "accepted": 17823
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 108107443,
+        "pg_stats": {
+          "xact_commit": 219093,
+          "xact_rollback": 320,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 17816
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:18:06.184249+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1849,
+            "last_sequence": 20278
+          },
+          "beta": {
+            "count": 1848,
+            "last_sequence": 20278
+          },
+          "dev009": {
+            "count": 1848,
+            "last_sequence": 20278
+          },
+          "dev007": {
+            "count": 1849,
+            "last_sequence": 20278
+          },
+          "dev010": {
+            "count": 1848,
+            "last_sequence": 20277
+          },
+          "dev006": {
+            "count": 1849,
+            "last_sequence": 20277
+          },
+          "dev005": {
+            "count": 1849,
+            "last_sequence": 20277
+          },
+          "alpha": {
+            "count": 1848,
+            "last_sequence": 20277
+          },
+          "dev004": {
+            "count": 1849,
+            "last_sequence": 20277
+          },
+          "gamma": {
+            "count": 1850,
+            "last_sequence": 20278
+          }
+        },
+        "outbox": {
+          "pending": 4,
+          "delivered": 18482,
+          "claimed": 1
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 18487,
+          "delivery_error": 6,
+          "delivered": 18483,
+          "accepted": 18487
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 7,
+        "database_bytes": 105051827,
+        "pg_stats": {
+          "xact_commit": 225959,
+          "xact_rollback": 322,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 18485
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:18:22.806667+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1882,
+            "last_sequence": 20311
+          },
+          "beta": {
+            "count": 1881,
+            "last_sequence": 20311
+          },
+          "dev009": {
+            "count": 1881,
+            "last_sequence": 20311
+          },
+          "dev007": {
+            "count": 1882,
+            "last_sequence": 20311
+          },
+          "dev010": {
+            "count": 1881,
+            "last_sequence": 20310
+          },
+          "dev006": {
+            "count": 1882,
+            "last_sequence": 20310
+          },
+          "dev005": {
+            "count": 1882,
+            "last_sequence": 20310
+          },
+          "alpha": {
+            "count": 1881,
+            "last_sequence": 20310
+          },
+          "dev004": {
+            "count": 1882,
+            "last_sequence": 20310
+          },
+          "gamma": {
+            "count": 1883,
+            "last_sequence": 20311
+          }
+        },
+        "outbox": {
+          "delivered": 18817
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 18817,
+          "delivery_error": 6,
+          "delivered": 18817,
+          "accepted": 18817
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 106575539,
+        "pg_stats": {
+          "xact_commit": 229955,
+          "xact_rollback": 334,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 18817
+      },
+      "false_effective": false
+    },
+    {
+      "service": "postgres",
+      "start": "2026-11-12T11:18:24.827676+00:00",
+      "restored": "2026-11-12T11:18:36.909350+00:00",
+      "held_seconds": 8,
+      "total_seconds": 36.91877772299995,
+      "post_start_recovery_seconds": 24.83710445199995,
+      "before": {
+        "checked_at": "2026-11-12T11:18:24.160449+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1885,
+            "last_sequence": 20314
+          },
+          "beta": {
+            "count": 1883,
+            "last_sequence": 20313
+          },
+          "dev009": {
+            "count": 1884,
+            "last_sequence": 20314
+          },
+          "dev007": {
+            "count": 1885,
+            "last_sequence": 20314
+          },
+          "dev010": {
+            "count": 1884,
+            "last_sequence": 20313
+          },
+          "dev006": {
+            "count": 1885,
+            "last_sequence": 20313
+          },
+          "dev005": {
+            "count": 1885,
+            "last_sequence": 20313
+          },
+          "alpha": {
+            "count": 1884,
+            "last_sequence": 20313
+          },
+          "dev004": {
+            "count": 1885,
+            "last_sequence": 20313
+          },
+          "gamma": {
+            "count": 1886,
+            "last_sequence": 20314
+          }
+        },
+        "outbox": {
+          "pending": 9,
+          "delivered": 18837
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 18846,
+          "delivery_error": 6,
+          "delivered": 18837,
+          "accepted": 18846
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 8,
+        "database_bytes": 106714803,
+        "pg_stats": {
+          "xact_commit": 230275,
+          "xact_rollback": 336,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 18837
+      },
+      "during": null,
+      "after": {
+        "checked_at": "2026-11-12T11:19:01.072686+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1958,
+            "last_sequence": 20387
+          },
+          "beta": {
+            "count": 1957,
+            "last_sequence": 20387
+          },
+          "dev009": {
+            "count": 1957,
+            "last_sequence": 20387
+          },
+          "dev007": {
+            "count": 1958,
+            "last_sequence": 20387
+          },
+          "dev010": {
+            "count": 1957,
+            "last_sequence": 20386
+          },
+          "dev006": {
+            "count": 1958,
+            "last_sequence": 20386
+          },
+          "dev005": {
+            "count": 1958,
+            "last_sequence": 20386
+          },
+          "alpha": {
+            "count": 1957,
+            "last_sequence": 20386
+          },
+          "dev004": {
+            "count": 1958,
+            "last_sequence": 20386
+          },
+          "gamma": {
+            "count": 1959,
+            "last_sequence": 20387
+          }
+        },
+        "outbox": {
+          "delivered": 19577
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19578,
+          "delivery_error": 6,
+          "delivered": 19577,
+          "accepted": 19577
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 110851763,
+        "pg_stats": {
+          "xact_commit": 238357,
+          "xact_rollback": 358,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19577
+      },
+      "false_effective": false
+    },
+    {
+      "service": "broker",
+      "start": "2026-11-12T11:19:03.071372+00:00",
+      "restored": "2026-11-12T11:19:16.347048+00:00",
+      "held_seconds": 8,
+      "total_seconds": 14.608807785999488,
+      "post_start_recovery_seconds": 1.3331321149998985,
+      "before": {
+        "checked_at": "2026-11-12T11:19:02.399599+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1960,
+            "last_sequence": 20389
+          },
+          "beta": {
+            "count": 1960,
+            "last_sequence": 20390
+          },
+          "dev009": {
+            "count": 1960,
+            "last_sequence": 20390
+          },
+          "dev007": {
+            "count": 1961,
+            "last_sequence": 20390
+          },
+          "dev010": {
+            "count": 1960,
+            "last_sequence": 20389
+          },
+          "dev006": {
+            "count": 1961,
+            "last_sequence": 20389
+          },
+          "dev005": {
+            "count": 1961,
+            "last_sequence": 20389
+          },
+          "alpha": {
+            "count": 1960,
+            "last_sequence": 20389
+          },
+          "dev004": {
+            "count": 1961,
+            "last_sequence": 20389
+          },
+          "gamma": {
+            "count": 1962,
+            "last_sequence": 20390
+          }
+        },
+        "outbox": {
+          "pending": 6,
+          "delivered": 19600
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19606,
+          "delivery_error": 6,
+          "delivered": 19600,
+          "accepted": 19606
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 111195827,
+        "pg_stats": {
+          "xact_commit": 238712,
+          "xact_rollback": 360,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19600
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:19:11.935193+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "dev008": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "beta": {
+            "count": 1961,
+            "last_sequence": 20391
+          },
+          "dev009": {
+            "count": 1961,
+            "last_sequence": 20391
+          },
+          "dev007": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "dev010": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "dev006": {
+            "count": 1962,
+            "last_sequence": 20390
+          },
+          "dev005": {
+            "count": 1963,
+            "last_sequence": 20391
+          },
+          "alpha": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "dev004": {
+            "count": 1962,
+            "last_sequence": 20390
+          },
+          "gamma": {
+            "count": 1963,
+            "last_sequence": 20391
+          }
+        },
+        "outbox": {
+          "delivered": 19620
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19620,
+          "delivery_error": 6,
+          "delivered": 19620,
+          "accepted": 19620
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 113170099,
+        "pg_stats": {
+          "xact_commit": 239394,
+          "xact_rollback": 362,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19620
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:19:17.004533+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "beta": {
+            "count": 1961,
+            "last_sequence": 20391
+          },
+          "dev004": {
+            "count": 1962,
+            "last_sequence": 20390
+          },
+          "dev005": {
+            "count": 1963,
+            "last_sequence": 20391
+          },
+          "dev006": {
+            "count": 1962,
+            "last_sequence": 20390
+          },
+          "dev007": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "dev008": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "dev009": {
+            "count": 1961,
+            "last_sequence": 20391
+          },
+          "dev010": {
+            "count": 1962,
+            "last_sequence": 20391
+          },
+          "gamma": {
+            "count": 1963,
+            "last_sequence": 20391
+          }
+        },
+        "outbox": {
+          "delivered": 19620
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19620,
+          "delivery_error": 6,
+          "delivered": 19620,
+          "accepted": 19620
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 113809075,
+        "pg_stats": {
+          "xact_commit": 239719,
+          "xact_rollback": 364,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19620
+      },
+      "false_effective": false
+    },
+    {
+      "service": "device-alpha",
+      "start": "2026-11-12T11:19:19.014567+00:00",
+      "restored": "2026-11-12T11:19:31.281194+00:00",
+      "held_seconds": 5,
+      "total_seconds": 29.9768671060001,
+      "post_start_recovery_seconds": 17.710240026000065,
+      "before": {
+        "checked_at": "2026-11-12T11:19:18.323787+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1964,
+            "last_sequence": 20393
+          },
+          "beta": {
+            "count": 1963,
+            "last_sequence": 20393
+          },
+          "dev004": {
+            "count": 1964,
+            "last_sequence": 20392
+          },
+          "dev005": {
+            "count": 1965,
+            "last_sequence": 20393
+          },
+          "dev006": {
+            "count": 1964,
+            "last_sequence": 20392
+          },
+          "dev007": {
+            "count": 1964,
+            "last_sequence": 20393
+          },
+          "dev008": {
+            "count": 1964,
+            "last_sequence": 20393
+          },
+          "dev009": {
+            "count": 1963,
+            "last_sequence": 20393
+          },
+          "dev010": {
+            "count": 1964,
+            "last_sequence": 20393
+          },
+          "gamma": {
+            "count": 1965,
+            "last_sequence": 20393
+          }
+        },
+        "outbox": {
+          "delivered": 19620,
+          "pending": 21
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19642,
+          "delivery_error": 6,
+          "delivered": 19620,
+          "accepted": 19641
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 113915571,
+        "pg_stats": {
+          "xact_commit": 239859,
+          "xact_rollback": 366,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19620
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:19:24.891793+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 30000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 1970,
+            "last_sequence": 20399
+          },
+          "beta": {
+            "count": 1981,
+            "last_sequence": 20411
+          },
+          "dev004": {
+            "count": 1982,
+            "last_sequence": 20410
+          },
+          "dev005": {
+            "count": 1983,
+            "last_sequence": 20411
+          },
+          "dev006": {
+            "count": 1982,
+            "last_sequence": 20410
+          },
+          "dev007": {
+            "count": 1982,
+            "last_sequence": 20411
+          },
+          "dev008": {
+            "count": 1982,
+            "last_sequence": 20411
+          },
+          "dev009": {
+            "count": 1981,
+            "last_sequence": 20411
+          },
+          "dev010": {
+            "count": 1982,
+            "last_sequence": 20411
+          },
+          "gamma": {
+            "count": 1983,
+            "last_sequence": 20411
+          }
+        },
+        "outbox": {
+          "delivered": 19799,
+          "pending": 9
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 19808,
+          "delivery_error": 6,
+          "delivered": 19799,
+          "accepted": 19808
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 114407091,
+        "pg_stats": {
+          "xact_commit": 241644,
+          "xact_rollback": 368,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 19799
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:19:48.305399+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 2013,
+            "last_sequence": 30043
+          },
+          "beta": {
+            "count": 2027,
+            "last_sequence": 20457
+          },
+          "dev004": {
+            "count": 2028,
+            "last_sequence": 20456
+          },
+          "dev005": {
+            "count": 2029,
+            "last_sequence": 20457
+          },
+          "dev006": {
+            "count": 2028,
+            "last_sequence": 20456
+          },
+          "dev007": {
+            "count": 2028,
+            "last_sequence": 20457
+          },
+          "dev008": {
+            "count": 2028,
+            "last_sequence": 20457
+          },
+          "dev009": {
+            "count": 2027,
+            "last_sequence": 20457
+          },
+          "dev010": {
+            "count": 2028,
+            "last_sequence": 20457
+          },
+          "gamma": {
+            "count": 2029,
+            "last_sequence": 20457
+          }
+        },
+        "outbox": {
+          "delivered": 20265
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 20265,
+          "delivery_error": 6,
+          "delivered": 20265,
+          "accepted": 20265
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 116414131,
+        "pg_stats": {
+          "xact_commit": 247227,
+          "xact_rollback": 384,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 20265
+      },
+      "false_effective": false
+    },
+    {
+      "service": "receiver",
+      "start": "2026-11-12T11:19:50.304644+00:00",
+      "restored": "2026-11-12T11:20:00.669263+00:00",
+      "held_seconds": 5,
+      "total_seconds": 16.436157215000094,
+      "post_start_recovery_seconds": 6.071539239000231,
+      "before": {
+        "checked_at": "2026-11-12T11:19:49.638622+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 2016,
+            "last_sequence": 30046
+          },
+          "beta": {
+            "count": 2030,
+            "last_sequence": 20460
+          },
+          "dev004": {
+            "count": 2031,
+            "last_sequence": 20459
+          },
+          "dev005": {
+            "count": 2032,
+            "last_sequence": 20460
+          },
+          "dev006": {
+            "count": 2031,
+            "last_sequence": 20459
+          },
+          "dev007": {
+            "count": 2031,
+            "last_sequence": 20460
+          },
+          "dev008": {
+            "count": 2031,
+            "last_sequence": 20460
+          },
+          "dev009": {
+            "count": 2030,
+            "last_sequence": 20460
+          },
+          "dev010": {
+            "count": 2031,
+            "last_sequence": 20460
+          },
+          "gamma": {
+            "count": 2032,
+            "last_sequence": 20460
+          }
+        },
+        "outbox": {
+          "delivered": 20285,
+          "pending": 10
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 20295,
+          "delivery_error": 6,
+          "delivered": 20285,
+          "accepted": 20295
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 116545203,
+        "pg_stats": {
+          "xact_commit": 247603,
+          "xact_rollback": 386,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 20285
+      },
+      "during": {
+        "checked_at": "2026-11-12T11:19:56.188206+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 2018,
+            "last_sequence": 30048
+          },
+          "beta": {
+            "count": 2031,
+            "last_sequence": 20461
+          },
+          "dev004": {
+            "count": 2032,
+            "last_sequence": 20460
+          },
+          "dev005": {
+            "count": 2033,
+            "last_sequence": 20461
+          },
+          "dev006": {
+            "count": 2032,
+            "last_sequence": 20460
+          },
+          "dev007": {
+            "count": 2032,
+            "last_sequence": 20461
+          },
+          "dev008": {
+            "count": 2032,
+            "last_sequence": 20461
+          },
+          "dev009": {
+            "count": 2031,
+            "last_sequence": 20461
+          },
+          "dev010": {
+            "count": 2032,
+            "last_sequence": 20461
+          },
+          "gamma": {
+            "count": 2033,
+            "last_sequence": 20461
+          }
+        },
+        "outbox": {
+          "delivered": 20306
+        },
+        "counters": {
+          "delivery_retry": 7,
+          "incoming": 20306,
+          "delivery_error": 6,
+          "delivered": 20306,
+          "accepted": 20306
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 4,
+        "database_bytes": 116913843,
+        "pg_stats": {
+          "xact_commit": 248358,
+          "xact_rollback": 388,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 20306
+      },
+      "after": {
+        "checked_at": "2026-11-12T11:20:06.035293+00:00",
+        "devices": [
+          {
+            "device_id": "dev010",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev008",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev004",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev006",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev005",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "alpha",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "2bf6e43e-fd55-4b7b-9b0a-532528f6e697",
+            "sequence_reserved": 40000,
+            "command_sequence": 12
+          },
+          {
+            "device_id": "gamma",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "beta",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev009",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          },
+          {
+            "device_id": "dev007",
+            "effective_profile": "ascon-aead128-v1",
+            "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+            "sequence_reserved": 30000,
+            "command_sequence": 0
+          }
+        ],
+        "per_device": {
+          "alpha": {
+            "count": 2049,
+            "last_sequence": 30079
+          },
+          "beta": {
+            "count": 2062,
+            "last_sequence": 20492
+          },
+          "dev004": {
+            "count": 2063,
+            "last_sequence": 20491
+          },
+          "dev005": {
+            "count": 2064,
+            "last_sequence": 20492
+          },
+          "dev006": {
+            "count": 2063,
+            "last_sequence": 20491
+          },
+          "dev007": {
+            "count": 2063,
+            "last_sequence": 20492
+          },
+          "dev008": {
+            "count": 2063,
+            "last_sequence": 20492
+          },
+          "dev009": {
+            "count": 2062,
+            "last_sequence": 20492
+          },
+          "dev010": {
+            "count": 2063,
+            "last_sequence": 20492
+          },
+          "gamma": {
+            "count": 2064,
+            "last_sequence": 20492
+          }
+        },
+        "outbox": {
+          "delivered": 20616
+        },
+        "counters": {
+          "delivered": 20616,
+          "accepted": 20616,
+          "replay": 1,
+          "delivery_retry": 7,
+          "incoming": 20617,
+          "delivery_error": 6
+        },
+        "transitions": 6,
+        "completed": 6,
+        "unknown": 0,
+        "authenticated_ack": 12,
+        "receipts": 16,
+        "policy_modes": [
+          "DRY_RUN"
+        ],
+        "policy_applied": 0,
+        "pg_connections": 6,
+        "database_bytes": 118134451,
+        "pg_stats": {
+          "xact_commit": 251545,
+          "xact_rollback": 396,
+          "deadlocks": 0
+        },
+        "migration": "0009_component_heartbeat",
+        "ml_trusted": false,
+        "mongo_managed": 20616
+      },
+      "false_effective": false
+    }
+  ]
+}

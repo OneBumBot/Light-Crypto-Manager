@@ -1,0 +1,973 @@
+[
+  {
+    "elapsed": 1.4529996406054124e-06,
+    "wall": "2026-11-12T11:51:27.043461+00:00",
+    "cpu_percent": 36.65,
+    "ram_mib": 476.009,
+    "containers": [
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.01%",
+        "Container": "9f49231d9482f886dcdb537106b7caefbad7c7f2c892869b8b80342a08db4101",
+        "ID": "9f49231d9482",
+        "MemPerc": "2.69%",
+        "MemUsage": "3.449MiB / 128MiB",
+        "Name": "lcm-stage10-performance-base-broker-1",
+        "NetIO": "282kB / 278kB",
+        "PIDs": "1"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "8.79%",
+        "Container": "788a51edb6fff5fa4f47be342c9d3a36379cefb6a11cdf2c7969c2554f240c5b",
+        "ID": "788a51edb6ff",
+        "MemPerc": "16.42%",
+        "MemUsage": "42.05MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-control-worker-1",
+        "NetIO": "3.29MB / 2.98MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 643kB",
+        "CPUPerc": "0.15%",
+        "Container": "e10e6bd699884e1867099e560818c8f43f334fbc4185c07017f6eb2658454e69",
+        "ID": "e10e6bd69988",
+        "MemPerc": "17.38%",
+        "MemUsage": "22.24MiB / 128MiB",
+        "Name": "lcm-stage10-performance-base-device-alpha-1",
+        "NetIO": "10.6kB / 11.7kB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 21.7MB",
+        "CPUPerc": "0.25%",
+        "Container": "d37098b7210abd11208874604994ee090fd81d253e7325d528d01c87b0c5fc06",
+        "ID": "d37098b7210a",
+        "MemPerc": "19.58%",
+        "MemUsage": "150.4MiB / 768MiB",
+        "Name": "lcm-stage10-performance-base-mongo-1",
+        "NetIO": "337kB / 288kB",
+        "PIDs": "52"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.75%",
+        "Container": "43a7f5438a5a94e8de9c884dd0e7dffdac9c09699b91db68d946bfb34f4fe299",
+        "ID": "43a7f5438a5a",
+        "MemPerc": "17.82%",
+        "MemUsage": "45.61MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-outbox-relay-1",
+        "NetIO": "1.7MB / 1.35MB",
+        "PIDs": "5"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.57%",
+        "Container": "c58f06a97ac4fc3780e9f97f0dd53ee45a43e103b4f3a37a1d8c64fee7cf6600",
+        "ID": "c58f06a97ac4",
+        "MemPerc": "15.71%",
+        "MemUsage": "40.23MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-policy-worker-1",
+        "NetIO": "5.58MB / 3.93MB",
+        "PIDs": "2"
+      },
+      {
+        "BlockIO": "0B / 196MB",
+        "CPUPerc": "4.42%",
+        "Container": "1ff4a11bfbc66ff79e5ecbe3246d66962b9651fb14f6bcc074a98735010b8a7a",
+        "ID": "1ff4a11bfbc6",
+        "MemPerc": "6.77%",
+        "MemUsage": "51.96MiB / 768MiB",
+        "Name": "lcm-stage10-performance-base-postgres-1",
+        "NetIO": "9.72MB / 13.7MB",
+        "PIDs": "13"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "7.44%",
+        "Container": "dcc7b974e299ac45c18b6e0c62ce0b0f88874ea43615ec786015f5015e43fac1",
+        "ID": "dcc7b974e299",
+        "MemPerc": "16.38%",
+        "MemUsage": "41.95MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-receiver-1",
+        "NetIO": "1.62MB / 1.13MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "14.27%",
+        "Container": "ab4654c1299c01a1c5cd3ff63b49a5bf0c5be79b1011ef6087a8477acd987fd4",
+        "ID": "ab4654c1299c",
+        "MemPerc": "30.52%",
+        "MemUsage": "78.12MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-web-1",
+        "NetIO": "1.77MB / 1.91MB",
+        "PIDs": "8"
+      }
+    ],
+    "sql": {
+      "checked_at": "2026-11-12T11:51:29.779547+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b7bbc1d0-9da7-4510-a4e3-474a6a215d65",
+          "sequence_reserved": 60000,
+          "command_sequence": 8
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "192f59b0-164c-4c9b-ac0c-587962f47ff0",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b1b0586c-b76f-4018-8f53-d6c52727f9c6",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "beta": {
+          "count": 1230,
+          "last_sequence": 20013
+        },
+        "alpha": {
+          "count": 1514,
+          "last_sequence": 50012
+        },
+        "gamma": {
+          "count": 1229,
+          "last_sequence": 20013
+        }
+      },
+      "outbox": {
+        "delivered": 3973
+      },
+      "counters": {
+        "incoming": 3973,
+        "delivered": 3973,
+        "accepted": 3973
+      },
+      "transitions": 4,
+      "completed": 4,
+      "unknown": 0,
+      "authenticated_ack": 8,
+      "receipts": 7,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 8,
+      "database_bytes": 49346227,
+      "pg_stats": {
+        "xact_commit": 87055,
+        "xact_rollback": 765,
+        "deadlocks": 0
+      },
+      "migration": "0009_component_heartbeat",
+      "ml_trusted": false,
+      "mongo_managed": 3973
+    },
+    "http": [
+      {
+        "route": "/api/monitoring",
+        "status": 200,
+        "seconds": 0.03431123799964553,
+        "bytes": 14299
+      },
+      {
+        "route": "/api/monitoring/alpha",
+        "status": 200,
+        "seconds": 0.012391305999699398,
+        "bytes": 98486
+      },
+      {
+        "route": "/api/telemetry/history?device_id=alpha&limit=50",
+        "status": 200,
+        "seconds": 0.0022497850004583597,
+        "bytes": 11896
+      }
+    ]
+  },
+  {
+    "elapsed": 13.454412560000492,
+    "wall": "2026-11-12T11:51:40.497876+00:00",
+    "cpu_percent": 44.93,
+    "ram_mib": 481.866,
+    "containers": [
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "2.08%",
+        "Container": "9f49231d9482f886dcdb537106b7caefbad7c7f2c892869b8b80342a08db4101",
+        "ID": "9f49231d9482",
+        "MemPerc": "2.73%",
+        "MemUsage": "3.496MiB / 128MiB",
+        "Name": "lcm-stage10-performance-base-broker-1",
+        "NetIO": "292kB / 287kB",
+        "PIDs": "1"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "1.51%",
+        "Container": "788a51edb6fff5fa4f47be342c9d3a36379cefb6a11cdf2c7969c2554f240c5b",
+        "ID": "788a51edb6ff",
+        "MemPerc": "16.55%",
+        "MemUsage": "42.36MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-control-worker-1",
+        "NetIO": "3.5MB / 3.17MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 643kB",
+        "CPUPerc": "6.10%",
+        "Container": "e10e6bd699884e1867099e560818c8f43f334fbc4185c07017f6eb2658454e69",
+        "ID": "e10e6bd69988",
+        "MemPerc": "23.95%",
+        "MemUsage": "30.66MiB / 128MiB",
+        "Name": "lcm-stage10-performance-base-device-alpha-1",
+        "NetIO": "12.1kB / 19.6kB",
+        "PIDs": "4"
+      },
+      {
+        "BlockIO": "0B / 22.3MB",
+        "CPUPerc": "0.22%",
+        "Container": "d37098b7210abd11208874604994ee090fd81d253e7325d528d01c87b0c5fc06",
+        "ID": "d37098b7210a",
+        "MemPerc": "19.42%",
+        "MemUsage": "149.1MiB / 768MiB",
+        "Name": "lcm-stage10-performance-base-mongo-1",
+        "NetIO": "349kB / 306kB",
+        "PIDs": "52"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "7.87%",
+        "Container": "43a7f5438a5a94e8de9c884dd0e7dffdac9c09699b91db68d946bfb34f4fe299",
+        "ID": "43a7f5438a5a",
+        "MemPerc": "17.95%",
+        "MemUsage": "45.96MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-outbox-relay-1",
+        "NetIO": "1.78MB / 1.41MB",
+        "PIDs": "5"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "7.82%",
+        "Container": "c58f06a97ac4fc3780e9f97f0dd53ee45a43e103b4f3a37a1d8c64fee7cf6600",
+        "ID": "c58f06a97ac4",
+        "MemPerc": "15.44%",
+        "MemUsage": "39.52MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-policy-worker-1",
+        "NetIO": "5.87MB / 4.18MB",
+        "PIDs": "2"
+      },
+      {
+        "BlockIO": "0B / 205MB",
+        "CPUPerc": "1.89%",
+        "Container": "1ff4a11bfbc66ff79e5ecbe3246d66962b9651fb14f6bcc074a98735010b8a7a",
+        "ID": "1ff4a11bfbc6",
+        "MemPerc": "6.66%",
+        "MemUsage": "51.12MiB / 768MiB",
+        "Name": "lcm-stage10-performance-base-postgres-1",
+        "NetIO": "10.3MB / 14.4MB",
+        "PIDs": "13"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.48%",
+        "Container": "dcc7b974e299ac45c18b6e0c62ce0b0f88874ea43615ec786015f5015e43fac1",
+        "ID": "dcc7b974e299",
+        "MemPerc": "16.29%",
+        "MemUsage": "41.7MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-receiver-1",
+        "NetIO": "1.68MB / 1.17MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "16.96%",
+        "Container": "ab4654c1299c01a1c5cd3ff63b49a5bf0c5be79b1011ef6087a8477acd987fd4",
+        "ID": "ab4654c1299c",
+        "MemPerc": "30.45%",
+        "MemUsage": "77.95MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-web-1",
+        "NetIO": "1.91MB / 2.06MB",
+        "PIDs": "8"
+      }
+    ],
+    "sql": {
+      "checked_at": "2026-11-12T11:51:43.254625+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b7bbc1d0-9da7-4510-a4e3-474a6a215d65",
+          "sequence_reserved": 60000,
+          "command_sequence": 8
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "192f59b0-164c-4c9b-ac0c-587962f47ff0",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b1b0586c-b76f-4018-8f53-d6c52727f9c6",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "beta": {
+          "count": 1230,
+          "last_sequence": 20013
+        },
+        "alpha": {
+          "count": 1528,
+          "last_sequence": 50026
+        },
+        "gamma": {
+          "count": 1229,
+          "last_sequence": 20013
+        }
+      },
+      "outbox": {
+        "delivered": 3987
+      },
+      "counters": {
+        "incoming": 3987,
+        "delivered": 3987,
+        "accepted": 3987
+      },
+      "transitions": 4,
+      "completed": 4,
+      "unknown": 0,
+      "authenticated_ack": 8,
+      "receipts": 7,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 8,
+      "database_bytes": 49477299,
+      "pg_stats": {
+        "xact_commit": 87876,
+        "xact_rollback": 773,
+        "deadlocks": 0
+      },
+      "migration": "0009_component_heartbeat",
+      "ml_trusted": false,
+      "mongo_managed": 3987
+    },
+    "http": [
+      {
+        "route": "/api/monitoring",
+        "status": 200,
+        "seconds": 0.014672089999294258,
+        "bytes": 14301
+      },
+      {
+        "route": "/api/monitoring/alpha",
+        "status": 200,
+        "seconds": 0.011838385000373819,
+        "bytes": 98476
+      },
+      {
+        "route": "/api/telemetry/history?device_id=alpha&limit=50",
+        "status": 200,
+        "seconds": 0.002232040998933371,
+        "bytes": 11922
+      }
+    ]
+  },
+  {
+    "elapsed": 26.907079663998957,
+    "wall": "2026-11-12T11:51:53.950543+00:00",
+    "cpu_percent": 5.54,
+    "ram_mib": 477.363,
+    "containers": [
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.01%",
+        "Container": "9f49231d9482f886dcdb537106b7caefbad7c7f2c892869b8b80342a08db4101",
+        "ID": "9f49231d9482",
+        "MemPerc": "2.91%",
+        "MemUsage": "3.723MiB / 128MiB",
+        "Name": "lcm-stage10-performance-base-broker-1",
+        "NetIO": "301kB / 296kB",
+        "PIDs": "1"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "1.57%",
+        "Container": "788a51edb6fff5fa4f47be342c9d3a36379cefb6a11cdf2c7969c2554f240c5b",
+        "ID": "788a51edb6ff",
+        "MemPerc": "16.69%",
+        "MemUsage": "42.73MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-control-worker-1",
+        "NetIO": "3.71MB / 3.36MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 643kB",
+        "CPUPerc": "0.16%",
+        "Container": "e10e6bd699884e1867099e560818c8f43f334fbc4185c07017f6eb2658454e69",
+        "ID": "e10e6bd69988",
+        "MemPerc": "17.44%",
+        "MemUsage": "22.32MiB / 128MiB",
+        "Name": "lcm-stage10-performance-base-device-alpha-1",
+        "NetIO": "13.7kB / 27kB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 23.7MB",
+        "CPUPerc": "0.30%",
+        "Container": "d37098b7210abd11208874604994ee090fd81d253e7325d528d01c87b0c5fc06",
+        "ID": "d37098b7210a",
+        "MemPerc": "19.65%",
+        "MemUsage": "150.9MiB / 768MiB",
+        "Name": "lcm-stage10-performance-base-mongo-1",
+        "NetIO": "363kB / 326kB",
+        "PIDs": "52"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.48%",
+        "Container": "43a7f5438a5a94e8de9c884dd0e7dffdac9c09699b91db68d946bfb34f4fe299",
+        "ID": "43a7f5438a5a",
+        "MemPerc": "17.92%",
+        "MemUsage": "45.87MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-outbox-relay-1",
+        "NetIO": "1.86MB / 1.48MB",
+        "PIDs": "5"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.60%",
+        "Container": "c58f06a97ac4fc3780e9f97f0dd53ee45a43e103b4f3a37a1d8c64fee7cf6600",
+        "ID": "c58f06a97ac4",
+        "MemPerc": "15.46%",
+        "MemUsage": "39.58MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-policy-worker-1",
+        "NetIO": "6.15MB / 4.43MB",
+        "PIDs": "2"
+      },
+      {
+        "BlockIO": "0B / 217MB",
+        "CPUPerc": "1.94%",
+        "Container": "1ff4a11bfbc66ff79e5ecbe3246d66962b9651fb14f6bcc074a98735010b8a7a",
+        "ID": "1ff4a11bfbc6",
+        "MemPerc": "6.75%",
+        "MemUsage": "51.81MiB / 768MiB",
+        "Name": "lcm-stage10-performance-base-postgres-1",
+        "NetIO": "10.9MB / 15.2MB",
+        "PIDs": "13"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.41%",
+        "Container": "dcc7b974e299ac45c18b6e0c62ce0b0f88874ea43615ec786015f5015e43fac1",
+        "ID": "dcc7b974e299",
+        "MemPerc": "16.29%",
+        "MemUsage": "41.71MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-receiver-1",
+        "NetIO": "1.75MB / 1.22MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.07%",
+        "Container": "ab4654c1299c01a1c5cd3ff63b49a5bf0c5be79b1011ef6087a8477acd987fd4",
+        "ID": "ab4654c1299c",
+        "MemPerc": "30.75%",
+        "MemUsage": "78.72MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-web-1",
+        "NetIO": "2.06MB / 2.22MB",
+        "PIDs": "8"
+      }
+    ],
+    "sql": {
+      "checked_at": "2026-11-12T11:51:56.727398+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b7bbc1d0-9da7-4510-a4e3-474a6a215d65",
+          "sequence_reserved": 60000,
+          "command_sequence": 8
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "192f59b0-164c-4c9b-ac0c-587962f47ff0",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b1b0586c-b76f-4018-8f53-d6c52727f9c6",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "beta": {
+          "count": 1230,
+          "last_sequence": 20013
+        },
+        "alpha": {
+          "count": 1541,
+          "last_sequence": 50039
+        },
+        "gamma": {
+          "count": 1229,
+          "last_sequence": 20013
+        }
+      },
+      "outbox": {
+        "delivered": 4000
+      },
+      "counters": {
+        "incoming": 4000,
+        "delivered": 4000,
+        "accepted": 4000
+      },
+      "transitions": 4,
+      "completed": 4,
+      "unknown": 0,
+      "authenticated_ack": 8,
+      "receipts": 7,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 8,
+      "database_bytes": 49624755,
+      "pg_stats": {
+        "xact_commit": 88689,
+        "xact_rollback": 778,
+        "deadlocks": 0
+      },
+      "migration": "0009_component_heartbeat",
+      "ml_trusted": false,
+      "mongo_managed": 4000
+    },
+    "http": [
+      {
+        "route": "/api/monitoring",
+        "status": 200,
+        "seconds": 0.014537244000166538,
+        "bytes": 14302
+      },
+      {
+        "route": "/api/monitoring/alpha",
+        "status": 200,
+        "seconds": 0.013037213000643533,
+        "bytes": 98474
+      },
+      {
+        "route": "/api/telemetry/history?device_id=alpha&limit=50",
+        "status": 200,
+        "seconds": 0.002265955999973812,
+        "bytes": 11950
+      }
+    ]
+  },
+  {
+    "elapsed": 40.39557439199962,
+    "wall": "2026-11-12T11:52:07.439038+00:00",
+    "cpu_percent": 22.3,
+    "ram_mib": 479.42699999999996,
+    "containers": [
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.02%",
+        "Container": "9f49231d9482f886dcdb537106b7caefbad7c7f2c892869b8b80342a08db4101",
+        "ID": "9f49231d9482",
+        "MemPerc": "2.52%",
+        "MemUsage": "3.227MiB / 128MiB",
+        "Name": "lcm-stage10-performance-base-broker-1",
+        "NetIO": "312kB / 306kB",
+        "PIDs": "1"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "8.95%",
+        "Container": "788a51edb6fff5fa4f47be342c9d3a36379cefb6a11cdf2c7969c2554f240c5b",
+        "ID": "788a51edb6ff",
+        "MemPerc": "16.98%",
+        "MemUsage": "43.46MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-control-worker-1",
+        "NetIO": "3.92MB / 3.55MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 643kB",
+        "CPUPerc": "0.17%",
+        "Container": "e10e6bd699884e1867099e560818c8f43f334fbc4185c07017f6eb2658454e69",
+        "ID": "e10e6bd69988",
+        "MemPerc": "17.26%",
+        "MemUsage": "22.09MiB / 128MiB",
+        "Name": "lcm-stage10-performance-base-device-alpha-1",
+        "NetIO": "15.5kB / 36.1kB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 24.3MB",
+        "CPUPerc": "0.22%",
+        "Container": "d37098b7210abd11208874604994ee090fd81d253e7325d528d01c87b0c5fc06",
+        "ID": "d37098b7210a",
+        "MemPerc": "19.74%",
+        "MemUsage": "151.6MiB / 768MiB",
+        "Name": "lcm-stage10-performance-base-mongo-1",
+        "NetIO": "376kB / 344kB",
+        "PIDs": "52"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.56%",
+        "Container": "43a7f5438a5a94e8de9c884dd0e7dffdac9c09699b91db68d946bfb34f4fe299",
+        "ID": "43a7f5438a5a",
+        "MemPerc": "18.37%",
+        "MemUsage": "47.03MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-outbox-relay-1",
+        "NetIO": "1.94MB / 1.54MB",
+        "PIDs": "5"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.58%",
+        "Container": "c58f06a97ac4fc3780e9f97f0dd53ee45a43e103b4f3a37a1d8c64fee7cf6600",
+        "ID": "c58f06a97ac4",
+        "MemPerc": "15.49%",
+        "MemUsage": "39.66MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-policy-worker-1",
+        "NetIO": "6.44MB / 4.68MB",
+        "PIDs": "2"
+      },
+      {
+        "BlockIO": "0B / 225MB",
+        "CPUPerc": "3.87%",
+        "Container": "1ff4a11bfbc66ff79e5ecbe3246d66962b9651fb14f6bcc074a98735010b8a7a",
+        "ID": "1ff4a11bfbc6",
+        "MemPerc": "6.86%",
+        "MemUsage": "52.72MiB / 768MiB",
+        "Name": "lcm-stage10-performance-base-postgres-1",
+        "NetIO": "11.4MB / 16MB",
+        "PIDs": "13"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "7.91%",
+        "Container": "dcc7b974e299ac45c18b6e0c62ce0b0f88874ea43615ec786015f5015e43fac1",
+        "ID": "dcc7b974e299",
+        "MemPerc": "16.36%",
+        "MemUsage": "41.89MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-receiver-1",
+        "NetIO": "1.82MB / 1.27MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.02%",
+        "Container": "ab4654c1299c01a1c5cd3ff63b49a5bf0c5be79b1011ef6087a8477acd987fd4",
+        "ID": "ab4654c1299c",
+        "MemPerc": "30.37%",
+        "MemUsage": "77.75MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-web-1",
+        "NetIO": "2.21MB / 2.38MB",
+        "PIDs": "8"
+      }
+    ],
+    "sql": {
+      "checked_at": "2026-11-12T11:52:10.235560+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b7bbc1d0-9da7-4510-a4e3-474a6a215d65",
+          "sequence_reserved": 60000,
+          "command_sequence": 8
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "192f59b0-164c-4c9b-ac0c-587962f47ff0",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b1b0586c-b76f-4018-8f53-d6c52727f9c6",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "beta": {
+          "count": 1230,
+          "last_sequence": 20013
+        },
+        "alpha": {
+          "count": 1555,
+          "last_sequence": 50053
+        },
+        "gamma": {
+          "count": 1229,
+          "last_sequence": 20013
+        }
+      },
+      "outbox": {
+        "pending": 1,
+        "delivered": 4013
+      },
+      "counters": {
+        "incoming": 4014,
+        "delivered": 4013,
+        "accepted": 4014
+      },
+      "transitions": 4,
+      "completed": 4,
+      "unknown": 0,
+      "authenticated_ack": 8,
+      "receipts": 7,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 8,
+      "database_bytes": 49796787,
+      "pg_stats": {
+        "xact_commit": 89539,
+        "xact_rollback": 783,
+        "deadlocks": 0
+      },
+      "migration": "0009_component_heartbeat",
+      "ml_trusted": false,
+      "mongo_managed": 4013
+    },
+    "http": [
+      {
+        "route": "/api/monitoring",
+        "status": 200,
+        "seconds": 0.014252181999836466,
+        "bytes": 14302
+      },
+      {
+        "route": "/api/monitoring/alpha",
+        "status": 200,
+        "seconds": 0.012387488000968006,
+        "bytes": 98475
+      },
+      {
+        "route": "/api/telemetry/history?device_id=alpha&limit=50",
+        "status": 200,
+        "seconds": 0.002129226000761264,
+        "bytes": 11976
+      }
+    ]
+  },
+  {
+    "elapsed": 53.89027313800034,
+    "wall": "2026-11-12T11:52:20.933736+00:00",
+    "cpu_percent": 18.2,
+    "ram_mib": 475.98,
+    "containers": [
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.02%",
+        "Container": "9f49231d9482f886dcdb537106b7caefbad7c7f2c892869b8b80342a08db4101",
+        "ID": "9f49231d9482",
+        "MemPerc": "2.52%",
+        "MemUsage": "3.23MiB / 128MiB",
+        "Name": "lcm-stage10-performance-base-broker-1",
+        "NetIO": "321kB / 315kB",
+        "PIDs": "1"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "1.50%",
+        "Container": "788a51edb6fff5fa4f47be342c9d3a36379cefb6a11cdf2c7969c2554f240c5b",
+        "ID": "788a51edb6ff",
+        "MemPerc": "16.34%",
+        "MemUsage": "41.84MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-control-worker-1",
+        "NetIO": "4.13MB / 3.74MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 647kB",
+        "CPUPerc": "0.20%",
+        "Container": "e10e6bd699884e1867099e560818c8f43f334fbc4185c07017f6eb2658454e69",
+        "ID": "e10e6bd69988",
+        "MemPerc": "17.26%",
+        "MemUsage": "22.09MiB / 128MiB",
+        "Name": "lcm-stage10-performance-base-device-alpha-1",
+        "NetIO": "17kB / 44.1kB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 25MB",
+        "CPUPerc": "0.25%",
+        "Container": "d37098b7210abd11208874604994ee090fd81d253e7325d528d01c87b0c5fc06",
+        "ID": "d37098b7210a",
+        "MemPerc": "19.71%",
+        "MemUsage": "151.4MiB / 768MiB",
+        "Name": "lcm-stage10-performance-base-mongo-1",
+        "NetIO": "388kB / 363kB",
+        "PIDs": "52"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "6.43%",
+        "Container": "43a7f5438a5a94e8de9c884dd0e7dffdac9c09699b91db68d946bfb34f4fe299",
+        "ID": "43a7f5438a5a",
+        "MemPerc": "17.90%",
+        "MemUsage": "45.82MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-outbox-relay-1",
+        "NetIO": "2.02MB / 1.6MB",
+        "PIDs": "5"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "7.22%",
+        "Container": "c58f06a97ac4fc3780e9f97f0dd53ee45a43e103b4f3a37a1d8c64fee7cf6600",
+        "ID": "c58f06a97ac4",
+        "MemPerc": "15.79%",
+        "MemUsage": "40.41MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-policy-worker-1",
+        "NetIO": "6.73MB / 4.92MB",
+        "PIDs": "2"
+      },
+      {
+        "BlockIO": "0B / 234MB",
+        "CPUPerc": "2.02%",
+        "Container": "1ff4a11bfbc66ff79e5ecbe3246d66962b9651fb14f6bcc074a98735010b8a7a",
+        "ID": "1ff4a11bfbc6",
+        "MemPerc": "6.74%",
+        "MemUsage": "51.75MiB / 768MiB",
+        "Name": "lcm-stage10-performance-base-postgres-1",
+        "NetIO": "12MB / 16.7MB",
+        "PIDs": "13"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.53%",
+        "Container": "dcc7b974e299ac45c18b6e0c62ce0b0f88874ea43615ec786015f5015e43fac1",
+        "ID": "dcc7b974e299",
+        "MemPerc": "16.30%",
+        "MemUsage": "41.72MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-receiver-1",
+        "NetIO": "1.88MB / 1.31MB",
+        "PIDs": "3"
+      },
+      {
+        "BlockIO": "0B / 0B",
+        "CPUPerc": "0.03%",
+        "Container": "ab4654c1299c01a1c5cd3ff63b49a5bf0c5be79b1011ef6087a8477acd987fd4",
+        "ID": "ab4654c1299c",
+        "MemPerc": "30.36%",
+        "MemUsage": "77.72MiB / 256MiB",
+        "Name": "lcm-stage10-performance-base-web-1",
+        "NetIO": "2.35MB / 2.53MB",
+        "PIDs": "8"
+      }
+    ],
+    "sql": {
+      "checked_at": "2026-11-12T11:52:23.683136+00:00",
+      "devices": [
+        {
+          "device_id": "alpha",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b7bbc1d0-9da7-4510-a4e3-474a6a215d65",
+          "sequence_reserved": 60000,
+          "command_sequence": 8
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "192f59b0-164c-4c9b-ac0c-587962f47ff0",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b1b0586c-b76f-4018-8f53-d6c52727f9c6",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "beta": {
+          "count": 1230,
+          "last_sequence": 20013
+        },
+        "alpha": {
+          "count": 1568,
+          "last_sequence": 50066
+        },
+        "gamma": {
+          "count": 1229,
+          "last_sequence": 20013
+        }
+      },
+      "outbox": {
+        "delivered": 4027
+      },
+      "counters": {
+        "incoming": 4027,
+        "delivered": 4027,
+        "accepted": 4027
+      },
+      "transitions": 4,
+      "completed": 4,
+      "unknown": 0,
+      "authenticated_ack": 8,
+      "receipts": 7,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 8,
+      "database_bytes": 49927859,
+      "pg_stats": {
+        "xact_commit": 90354,
+        "xact_rollback": 788,
+        "deadlocks": 0
+      },
+      "migration": "0009_component_heartbeat",
+      "ml_trusted": false,
+      "mongo_managed": 4027
+    },
+    "http": [
+      {
+        "route": "/api/monitoring",
+        "status": 200,
+        "seconds": 0.013440078999337857,
+        "bytes": 14313
+      },
+      {
+        "route": "/api/monitoring/alpha",
+        "status": 200,
+        "seconds": 0.013014149000809994,
+        "bytes": 98484
+      },
+      {
+        "route": "/api/telemetry/history?device_id=alpha&limit=50",
+        "status": 200,
+        "seconds": 0.002258781998534687,
+        "bytes": 11984
+      }
+    ]
+  }
+]

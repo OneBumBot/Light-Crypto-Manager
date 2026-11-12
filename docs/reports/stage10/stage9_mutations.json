@@ -1,0 +1,87 @@
+{
+  "baseline_exit_code": 0,
+  "baseline": ".....................                                                    [100%]\n21 passed in 2.81s\n",
+  "results": [
+    {
+      "injected_defect": "policy_heartbeat_refreshes_stale_evidence",
+      "test": "test_monitoring.py::test_fresh_policy_heartbeat_does_not_refresh_old_evidence",
+      "expected": "behavioral assertion failure",
+      "actual": ".FFF                                                                     [100%]\n=================================== FAILURES ===================================\n______ test_fresh_policy_heartbeat_does_not_refresh_old_evidence[61-True] ______\ntests/test_monitoring.py:166: in test_fresh_policy_heartbeat_does_not_refresh_old_evidence\n    assert p['stale'] is expected and p['evidence_stale'] is expected\nE   assert (False is True)\n_____ test_fresh_policy_heartbeat_does_not_refresh_old_evidence[-30-True] ______\ntests/test_monitoring.py:166: in test_fresh_policy_heartbeat_does_not_refresh_old_evidence\n    assert p['stale'] is expected and p['evidence_stale'] is expected\nE   assert (False is True)\n_____ test_fresh_policy_heartbeat_does_not_refresh_old_evidence[None-True] _____\ntests/test_monitoring.py:166: in test_fresh_policy_heartbeat_does_not_refresh_old_evidence\n    assert p['stale'] is expected and p['evidence_stale'] is expected\nE   assert (False is True)\n=========================== short test summary info ============================\nFAILED tests/test_monitoring.py::test_fresh_policy_heartbeat_does_not_refresh_old_evidence[61-True]\nFAILED tests/test_monitoring.py::test_fresh_policy_heartbeat_does_not_refresh_old_evidence[-30-True]\nFAILED tests/test_monitoring.py::test_fresh_policy_heartbeat_does_not_refresh_old_evidence[None-True]\n3 failed, 1 passed in 0.93s\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "identity_db_failure_unhandled",
+      "test": "test_monitoring.py::test_database_failure_during_identity_load_returns_unavailable",
+      "expected": "behavioral assertion failure",
+      "actual": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________ test_database_failure_during_identity_load_returns_unavailable ________\ntests/test_monitoring.py:140: in test_database_failure_during_identity_load_returns_unavailable\n    assert response.status_code==503\nE   assert 500 == 503\nE    +  where 500 = <WrapperTestResponse streamed [500 INTERNAL SERVER ERROR]>.status_code\n------------------------------ Captured log call -------------------------------\nERROR    src.web.app:app.py:94 Request failed (OperationalError)\n=========================== short test summary info ============================\nFAILED tests/test_monitoring.py::test_database_failure_during_identity_load_returns_unavailable\n1 failed in 0.51s\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "ack_as_effective",
+      "test": "test_monitoring.py::test_snapshot_ack_is_not_effective_and_identity_is_bound",
+      "expected": "behavioral assertion failure",
+      "actual": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________ test_snapshot_ack_is_not_effective_and_identity_is_bound ___________\ntests/test_monitoring.py:42: in test_snapshot_ack_is_not_effective_and_identity_is_bound\n    assert d['device_id']=='raspb1' and d['effective_profile']==ASCON and d['reported_profile']==AES\nE   AssertionError: assert ('raspb1' == 'raspb1'\nE     \nE       raspb1 and 'aes-128-gcm-v1' == 'ascon-aead128-v1'\nE     \nE     - ascon-aead128-v1\nE     + aes-128-gcm-v1)\n=========================== short test summary info ============================\nFAILED tests/test_monitoring.py::test_snapshot_ack_is_not_effective_and_identity_is_bound\n1 failed in 0.59s\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "viewer_can_command",
+      "test": "test_control_storage.py::test_control_web_roles_csrf_and_fields",
+      "expected": "behavioral assertion failure",
+      "actual": "FF.                                                                      [100%]\n=================================== FAILURES ===================================\n_______________ test_control_web_roles_csrf_and_fields[operator] _______________\ntests/test_control_storage.py:143: in test_control_web_roles_csrf_and_fields\n    assert resp.status_code==(202 if role=='admin' else 403)\nE   assert 202 == 403\nE    +  where 202 = <WrapperTestResponse streamed [202 ACCEPTED]>.status_code\n________________ test_control_web_roles_csrf_and_fields[viewer] ________________\ntests/test_control_storage.py:143: in test_control_web_roles_csrf_and_fields\n    assert resp.status_code==(202 if role=='admin' else 403)\nE   assert 202 == 403\nE    +  where 202 = <WrapperTestResponse streamed [202 ACCEPTED]>.status_code\n=========================== short test summary info ============================\nFAILED tests/test_control_storage.py::test_control_web_roles_csrf_and_fields[operator]\nFAILED tests/test_control_storage.py::test_control_web_roles_csrf_and_fields[viewer]\n2 failed, 1 passed in 1.28s\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "stale_is_recent",
+      "test": "test_monitoring.py::test_freshness_is_admission_age_not_presence",
+      "expected": "behavioral assertion failure",
+      "actual": "..FF..                                                                   [100%]\n=================================== FAILURES ===================================\n_________ test_freshness_is_admission_age_not_presence[True-16-stale] __________\ntests/test_monitoring.py:19: in test_freshness_is_admission_age_not_presence\n    assert telemetry_state(enabled,stamp,now)==expected\nE   AssertionError: assert 'recent' == 'stale'\nE     \nE     - stale\nE     + recent\n_________ test_freshness_is_admission_age_not_presence[True--30-stale] _________\ntests/test_monitoring.py:19: in test_freshness_is_admission_age_not_presence\n    assert telemetry_state(enabled,stamp,now)==expected\nE   AssertionError: assert 'recent' == 'stale'\nE     \nE     - stale\nE     + recent\n=========================== short test summary info ============================\nFAILED tests/test_monitoring.py::test_freshness_is_admission_age_not_presence[True-16-stale]\nFAILED tests/test_monitoring.py::test_freshness_is_admission_age_not_presence[True--30-stale]\n2 failed, 4 passed in 0.21s\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "mongo_outage_as_available",
+      "test": "test_monitoring.py::test_monitoring_api_mongo_failure_independent_rbac_limits",
+      "expected": "behavioral assertion failure",
+      "actual": "F                                                                        [100%]\n=================================== FAILURES ===================================\n__________ test_monitoring_api_mongo_failure_independent_rbac_limits ___________\ntests/test_monitoring.py:85: in test_monitoring_api_mongo_failure_independent_rbac_limits\n    assert data['components']['mongo']['status']=='unavailable'\nE   AssertionError: assert 'available' == 'unavailable'\nE     \nE     - unavailable\nE     ? --\nE     + available\n=========================== short test summary info ============================\nFAILED tests/test_monitoring.py::test_monitoring_api_mongo_failure_independent_rbac_limits\n1 failed in 0.65s\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "research_trust_claim",
+      "test": "test_monitoring.py::test_monitoring_api_mongo_failure_independent_rbac_limits",
+      "expected": "behavioral assertion failure",
+      "actual": "F                                                                        [100%]\n=================================== FAILURES ===================================\n__________ test_monitoring_api_mongo_failure_independent_rbac_limits ___________\ntests/test_monitoring.py:83: in test_monitoring_api_mongo_failure_independent_rbac_limits\n    assert data['components']['ml']['trusted_detector'] is False\nE   assert True is False\n=========================== short test summary info ============================\nFAILED tests/test_monitoring.py::test_monitoring_api_mongo_failure_independent_rbac_limits\n1 failed in 0.66s\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "cross_device_result",
+      "test": "test_monitoring.py::test_monitoring_api_mongo_failure_independent_rbac_limits",
+      "expected": "behavioral assertion failure",
+      "actual": "F                                                                        [100%]\n=================================== FAILURES ===================================\n__________ test_monitoring_api_mongo_failure_independent_rbac_limits ___________\ntests/test_monitoring.py:82: in test_monitoring_api_mongo_failure_independent_rbac_limits\n    assert len(data['items'])==1 and data['items'][0]['device_id']=='raspb1'\nE   AssertionError: assert (2 == 1)\nE    +  where 2 = len([{'capabilities': ['ascon-aead128-v1', 'aes-128-gcm-v1'], 'device_id': 'raspb1', 'effective_evidence': {'accepted_at':...d128-v1', ...}, {'capabilities': [], 'device_id': 'smoke', 'effective_evidence': None, 'effective_profile': None, ...}])\n=========================== short test summary info ============================\nFAILED tests/test_monitoring.py::test_monitoring_api_mongo_failure_independent_rbac_limits\n1 failed in 0.66s\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "expired_still_active",
+      "test": "test_monitoring.py::test_expired_transition_snapshot_is_uncertain_not_active",
+      "expected": "behavioral assertion failure",
+      "actual": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________ test_expired_transition_snapshot_is_uncertain_not_active ___________\ntests/test_monitoring.py:122: in test_expired_transition_snapshot_is_uncertain_not_active\n    assert result['summary']['active_transitions']==0 and result['summary']['uncertain_transitions']==1\nE   assert (1 == 0)\n=========================== short test summary info ============================\nFAILED tests/test_monitoring.py::test_expired_transition_snapshot_is_uncertain_not_active\n1 failed in 0.56s\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    },
+    {
+      "injected_defect": "research_actor_can_authorize",
+      "test": "test_control_storage.py::test_research_and_simulated_sources_cannot_authorize",
+      "expected": "behavioral assertion failure",
+      "actual": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____________ test_research_and_simulated_sources_cannot_authorize _____________\ntests/test_control_storage.py:123: in test_research_and_simulated_sources_cannot_authorize\n    with pytest.raises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^\nE   Failed: DID NOT RAISE ValueError\n=========================== short test summary info ============================\nFAILED tests/test_control_storage.py::test_research_and_simulated_sources_cannot_authorize\n1 failed in 0.53s\n",
+      "exit_code": 1,
+      "behaviorally_detected": true
+    }
+  ],
+  "all_killed": true
+}

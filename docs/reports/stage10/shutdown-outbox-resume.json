@@ -1,0 +1,928 @@
+[
+  {
+    "project": "lcm-stage10-performance-small",
+    "before": {
+      "checked_at": "2026-11-12T12:04:50.734929+00:00",
+      "devices": [
+        {
+          "device_id": "dev010",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev008",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "alpha",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "476f7ba1-94b1-4947-9007-12d0443472bc",
+          "sequence_reserved": 50000,
+          "command_sequence": 20
+        },
+        {
+          "device_id": "dev004",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev006",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev005",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev009",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev007",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 2260,
+          "last_sequence": 40026
+        },
+        "beta": {
+          "count": 2306,
+          "last_sequence": 20736
+        },
+        "dev004": {
+          "count": 2307,
+          "last_sequence": 20735
+        },
+        "dev005": {
+          "count": 2308,
+          "last_sequence": 20736
+        },
+        "dev006": {
+          "count": 2307,
+          "last_sequence": 20735
+        },
+        "dev007": {
+          "count": 2307,
+          "last_sequence": 20736
+        },
+        "dev008": {
+          "count": 2307,
+          "last_sequence": 20736
+        },
+        "dev009": {
+          "count": 2306,
+          "last_sequence": 20736
+        },
+        "dev010": {
+          "count": 2307,
+          "last_sequence": 20736
+        },
+        "gamma": {
+          "count": 2308,
+          "last_sequence": 20736
+        }
+      },
+      "outbox": {
+        "delivered": 23013,
+        "pending": 10
+      },
+      "counters": {
+        "delivered": 23013,
+        "accepted": 23023,
+        "replay": 1,
+        "delivery_retry": 10,
+        "incoming": 23024,
+        "delivery_error": 9
+      },
+      "transitions": 10,
+      "completed": 10,
+      "unknown": 0,
+      "authenticated_ack": 20,
+      "receipts": 20,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 1,
+      "database_bytes": 115480243,
+      "pg_stats": {
+        "xact_commit": 279069,
+        "xact_rollback": 573,
+        "deadlocks": 0
+      },
+      "migration": "0009_component_heartbeat",
+      "ml_trusted": false,
+      "mongo_managed": 23013
+    },
+    "after": {
+      "checked_at": "2026-11-12T12:07:43.214696+00:00",
+      "devices": [
+        {
+          "device_id": "dev010",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "bf908ac7-15c6-4a2f-adf7-f5253697f171",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev008",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "e64b9561-4dbd-4af0-af50-c9725a2a427f",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "alpha",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "476f7ba1-94b1-4947-9007-12d0443472bc",
+          "sequence_reserved": 50000,
+          "command_sequence": 20
+        },
+        {
+          "device_id": "dev004",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ce699884-7227-48b4-a1b3-b25dc7f39abe",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev006",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ae4edeeb-e049-4464-b540-1490cd29f15e",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev005",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "d9b7b6e5-4985-40e4-b9ca-00fb01657086",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "85c31cea-f2d3-4d12-8498-f9e01de64462",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "0c236f16-99de-49fe-91c1-bb65ff98357b",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev009",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "cb24775f-70b5-44f5-95e7-384d9624c1b1",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev007",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "e0a57f84-b998-4472-9b1d-dfcbf764d3f5",
+          "sequence_reserved": 30000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 2260,
+          "last_sequence": 40026
+        },
+        "beta": {
+          "count": 2306,
+          "last_sequence": 20736
+        },
+        "dev004": {
+          "count": 2307,
+          "last_sequence": 20735
+        },
+        "dev005": {
+          "count": 2308,
+          "last_sequence": 20736
+        },
+        "dev006": {
+          "count": 2307,
+          "last_sequence": 20735
+        },
+        "dev007": {
+          "count": 2307,
+          "last_sequence": 20736
+        },
+        "dev008": {
+          "count": 2307,
+          "last_sequence": 20736
+        },
+        "dev009": {
+          "count": 2306,
+          "last_sequence": 20736
+        },
+        "dev010": {
+          "count": 2307,
+          "last_sequence": 20736
+        },
+        "gamma": {
+          "count": 2308,
+          "last_sequence": 20736
+        }
+      },
+      "outbox": {
+        "delivered": 23023
+      },
+      "counters": {
+        "delivered": 23023,
+        "accepted": 23023,
+        "replay": 1,
+        "delivery_retry": 10,
+        "incoming": 23024,
+        "delivery_error": 9
+      },
+      "transitions": 10,
+      "completed": 10,
+      "unknown": 0,
+      "authenticated_ack": 20,
+      "receipts": 20,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 2,
+      "database_bytes": 115496627,
+      "pg_stats": {
+        "xact_commit": 279138,
+        "xact_rollback": 585,
+        "deadlocks": 0
+      },
+      "migration": "0009_component_heartbeat",
+      "ml_trusted": false,
+      "mongo_managed": 23023
+    },
+    "retained_records_delivered": 10,
+    "no_new_admission": true
+  },
+  {
+    "project": "lcm-stage10-performance-medium",
+    "before": {
+      "checked_at": "2026-11-12T12:05:02.009083+00:00",
+      "devices": [
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "9e6e6a42-51ee-4705-9b9a-9c398d04eb4d",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev025",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "abd2c7ee-477e-4d49-a191-3f30a3cb7d8f",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev012",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "0f654ceb-7228-406c-a648-1795488c0751",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev017",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "3b2271ec-de5b-4dd4-b1bc-d4748dd28f0e",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev004",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "70c7f062-d5ce-4f40-b70e-a5f68a3cafb5",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev018",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "4b17b9d2-43f0-421d-9fe6-aa58ef694ded",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev024",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "d6f2ae67-8759-4752-9dee-5138812d57a7",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev013",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b5a56c02-c252-436b-9f8d-57e038f8b512",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev016",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "cdb50da7-bfc3-4613-a9a2-b293e35f2f0f",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev020",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "101838b1-70d5-40f5-947b-4099a3f3b6b2",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev022",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "4d0fbe71-bd4e-4370-b7b2-ab29410f1ea2",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev014",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "9c34ab14-0097-4121-a190-29b428a0d905",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev011",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "38cb9163-8d84-4461-a542-cc24dca5599c",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev010",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "3ece64ff-809f-4a87-8d43-0dfc717d8663",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev015",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "5bfdebf2-d2d0-45c5-98f5-a0b89b05834b",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev021",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "4bb38ad3-342e-4573-ae95-0e88beb2cc97",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev005",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ad3407f6-9ecb-4df5-87d0-d9126e995856",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev019",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "fd96d802-548d-426e-b877-01c27c31226f",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "24f99426-f5e3-4dc2-8c7f-ccdd7bdef6ff",
+          "sequence_reserved": 20000,
+          "command_sequence": 4
+        },
+        {
+          "device_id": "dev008",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "97c292b9-64cb-4ef8-b466-d744ef5741c1",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev023",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "092d1007-540d-4103-ad1d-78d9741de0d5",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "alpha",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b95d2cb4-833f-40a8-be62-29e4a01a9546",
+          "sequence_reserved": 20000,
+          "command_sequence": 12
+        },
+        {
+          "device_id": "dev009",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "422206c2-9476-42e9-b332-60399dc179a8",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev006",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "6da34a7e-91ca-43bc-b9ee-d2174d8a64fe",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev007",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "a5dcda0d-5c2b-49e0-b516-635c6a051cfa",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 2028,
+          "last_sequence": 10222
+        },
+        "beta": {
+          "count": 2027,
+          "last_sequence": 10221
+        },
+        "dev004": {
+          "count": 2024,
+          "last_sequence": 10219
+        },
+        "dev005": {
+          "count": 2027,
+          "last_sequence": 10221
+        },
+        "dev006": {
+          "count": 2028,
+          "last_sequence": 10222
+        },
+        "dev007": {
+          "count": 2028,
+          "last_sequence": 10222
+        },
+        "dev008": {
+          "count": 2027,
+          "last_sequence": 10220
+        },
+        "dev009": {
+          "count": 2026,
+          "last_sequence": 10220
+        },
+        "dev010": {
+          "count": 2029,
+          "last_sequence": 10222
+        },
+        "dev011": {
+          "count": 2024,
+          "last_sequence": 10219
+        },
+        "dev012": {
+          "count": 2027,
+          "last_sequence": 10220
+        },
+        "dev013": {
+          "count": 2028,
+          "last_sequence": 10221
+        },
+        "dev014": {
+          "count": 2024,
+          "last_sequence": 10220
+        },
+        "dev015": {
+          "count": 2024,
+          "last_sequence": 10219
+        },
+        "dev016": {
+          "count": 2025,
+          "last_sequence": 10220
+        },
+        "dev017": {
+          "count": 2026,
+          "last_sequence": 10220
+        },
+        "dev018": {
+          "count": 2028,
+          "last_sequence": 10221
+        },
+        "dev019": {
+          "count": 2024,
+          "last_sequence": 10219
+        },
+        "dev020": {
+          "count": 2025,
+          "last_sequence": 10220
+        },
+        "dev021": {
+          "count": 2027,
+          "last_sequence": 10222
+        },
+        "dev022": {
+          "count": 2023,
+          "last_sequence": 10218
+        },
+        "dev023": {
+          "count": 2029,
+          "last_sequence": 10222
+        },
+        "dev024": {
+          "count": 2028,
+          "last_sequence": 10221
+        },
+        "dev025": {
+          "count": 2028,
+          "last_sequence": 10221
+        },
+        "gamma": {
+          "count": 2027,
+          "last_sequence": 10219
+        }
+      },
+      "outbox": {
+        "delivered": 50636,
+        "pending": 25
+      },
+      "counters": {
+        "replay": 2,
+        "incoming": 50663,
+        "delivered": 50636,
+        "accepted": 50661
+      },
+      "transitions": 8,
+      "completed": 8,
+      "unknown": 0,
+      "authenticated_ack": 16,
+      "receipts": 33,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 1,
+      "database_bytes": 243242675,
+      "pg_stats": {
+        "xact_commit": 497805,
+        "xact_rollback": 653,
+        "deadlocks": 0
+      },
+      "migration": "0009_component_heartbeat",
+      "ml_trusted": false,
+      "mongo_managed": 50636
+    },
+    "after": {
+      "checked_at": "2026-11-12T12:07:51.397342+00:00",
+      "devices": [
+        {
+          "device_id": "gamma",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "9e6e6a42-51ee-4705-9b9a-9c398d04eb4d",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev025",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "abd2c7ee-477e-4d49-a191-3f30a3cb7d8f",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev012",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "0f654ceb-7228-406c-a648-1795488c0751",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev017",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "3b2271ec-de5b-4dd4-b1bc-d4748dd28f0e",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev004",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "70c7f062-d5ce-4f40-b70e-a5f68a3cafb5",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev018",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "4b17b9d2-43f0-421d-9fe6-aa58ef694ded",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev024",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "d6f2ae67-8759-4752-9dee-5138812d57a7",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev013",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b5a56c02-c252-436b-9f8d-57e038f8b512",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev016",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "cdb50da7-bfc3-4613-a9a2-b293e35f2f0f",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev020",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "101838b1-70d5-40f5-947b-4099a3f3b6b2",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev022",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "4d0fbe71-bd4e-4370-b7b2-ab29410f1ea2",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev014",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "9c34ab14-0097-4121-a190-29b428a0d905",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev011",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "38cb9163-8d84-4461-a542-cc24dca5599c",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev010",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "3ece64ff-809f-4a87-8d43-0dfc717d8663",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev015",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "5bfdebf2-d2d0-45c5-98f5-a0b89b05834b",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev021",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "4bb38ad3-342e-4573-ae95-0e88beb2cc97",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev005",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "ad3407f6-9ecb-4df5-87d0-d9126e995856",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev019",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "fd96d802-548d-426e-b877-01c27c31226f",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "beta",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "24f99426-f5e3-4dc2-8c7f-ccdd7bdef6ff",
+          "sequence_reserved": 20000,
+          "command_sequence": 4
+        },
+        {
+          "device_id": "dev008",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "97c292b9-64cb-4ef8-b466-d744ef5741c1",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev023",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "092d1007-540d-4103-ad1d-78d9741de0d5",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "alpha",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "b95d2cb4-833f-40a8-be62-29e4a01a9546",
+          "sequence_reserved": 20000,
+          "command_sequence": 12
+        },
+        {
+          "device_id": "dev009",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "422206c2-9476-42e9-b332-60399dc179a8",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev006",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "6da34a7e-91ca-43bc-b9ee-d2174d8a64fe",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        },
+        {
+          "device_id": "dev007",
+          "effective_profile": "ascon-aead128-v1",
+          "effective_event": "a5dcda0d-5c2b-49e0-b516-635c6a051cfa",
+          "sequence_reserved": 20000,
+          "command_sequence": 0
+        }
+      ],
+      "per_device": {
+        "alpha": {
+          "count": 2028,
+          "last_sequence": 10222
+        },
+        "beta": {
+          "count": 2027,
+          "last_sequence": 10221
+        },
+        "dev004": {
+          "count": 2024,
+          "last_sequence": 10219
+        },
+        "dev005": {
+          "count": 2027,
+          "last_sequence": 10221
+        },
+        "dev006": {
+          "count": 2028,
+          "last_sequence": 10222
+        },
+        "dev007": {
+          "count": 2028,
+          "last_sequence": 10222
+        },
+        "dev008": {
+          "count": 2027,
+          "last_sequence": 10220
+        },
+        "dev009": {
+          "count": 2026,
+          "last_sequence": 10220
+        },
+        "dev010": {
+          "count": 2029,
+          "last_sequence": 10222
+        },
+        "dev011": {
+          "count": 2024,
+          "last_sequence": 10219
+        },
+        "dev012": {
+          "count": 2027,
+          "last_sequence": 10220
+        },
+        "dev013": {
+          "count": 2028,
+          "last_sequence": 10221
+        },
+        "dev014": {
+          "count": 2024,
+          "last_sequence": 10220
+        },
+        "dev015": {
+          "count": 2024,
+          "last_sequence": 10219
+        },
+        "dev016": {
+          "count": 2025,
+          "last_sequence": 10220
+        },
+        "dev017": {
+          "count": 2026,
+          "last_sequence": 10220
+        },
+        "dev018": {
+          "count": 2028,
+          "last_sequence": 10221
+        },
+        "dev019": {
+          "count": 2024,
+          "last_sequence": 10219
+        },
+        "dev020": {
+          "count": 2025,
+          "last_sequence": 10220
+        },
+        "dev021": {
+          "count": 2027,
+          "last_sequence": 10222
+        },
+        "dev022": {
+          "count": 2023,
+          "last_sequence": 10218
+        },
+        "dev023": {
+          "count": 2029,
+          "last_sequence": 10222
+        },
+        "dev024": {
+          "count": 2028,
+          "last_sequence": 10221
+        },
+        "dev025": {
+          "count": 2028,
+          "last_sequence": 10221
+        },
+        "gamma": {
+          "count": 2027,
+          "last_sequence": 10219
+        }
+      },
+      "outbox": {
+        "delivered": 50661
+      },
+      "counters": {
+        "replay": 2,
+        "incoming": 50663,
+        "delivered": 50661,
+        "accepted": 50661
+      },
+      "transitions": 8,
+      "completed": 8,
+      "unknown": 0,
+      "authenticated_ack": 16,
+      "receipts": 33,
+      "policy_modes": [
+        "DRY_RUN"
+      ],
+      "policy_applied": 0,
+      "pg_connections": 2,
+      "database_bytes": 243250867,
+      "pg_stats": {
+        "xact_commit": 497934,
+        "xact_rollback": 665,
+        "deadlocks": 0
+      },
+      "migration": "0009_component_heartbeat",
+      "ml_trusted": false,
+      "mongo_managed": 50661
+    },
+    "retained_records_delivered": 25,
+    "no_new_admission": true
+  }
+]

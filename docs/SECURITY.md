@@ -1,3 +1,29 @@
+# Уточнения этапа 10
+
+Криптографические протоколы, nonce construction, HMAC, replay/Outbox транзакции,
+verified effective receipts, RBAC/CSRF и trust boundary ML/Policy сохранены.
+Новых live AEAD нет; подготовка ГОСТ не является реализацией или сертификацией.
+
+Подтверждены реальные TLS/ACL/replay и poison-message проверки при ограниченной
+нагрузке. Ошибка PG при загрузке identity возвращает503 без подмены прав/сессии;
+старые Policy events не становятся свежими от heartbeat. Аутентифицированный ACK
+по-прежнему не заменяет новую AEAD telemetry. Policy остаётся DRY_RUN.
+
+Новые стенды имеют независимые keys/state; nonce duplicates в наблюдаемых окнах0.
+Исследовательский журнал агента отключён по умолчанию и не используется для
+авторизации, nonce или replay. Poison probe резервирует новый authenticated boot
+range вместо вывода следующего nonce из admission high-water. Старый риск был
+внутренним ограничением test producer, а не доказанным сетевым повтором nonce.
+
+Preservation проверяет исторические hashes, конкретные новые secret values в
+Git/reports/runtime images и права private inputs. Это не внешний аудит и не
+доказательство отсутствия любого неизвестного секрета. Все datasets/models/
+frozen plans и прежние ключи сохранены. Планы MGM требуют отдельной проверки
+bounds, providers, KAT, usage reservations и recovery до права активации.
+
+Доказательства и ограничения: [STAGE10_RESULTS.md](STAGE10_RESULTS.md).
+Ниже — исторические security notes.
+
 # Stage 9: границы integrated dashboard
 
 Новые monitoring read routes требуют sensor_data permission и используют bounded

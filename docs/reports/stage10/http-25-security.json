@@ -1,0 +1,51 @@
+{
+  "project": "lcm-stage10-performance-medium",
+  "devices": 25,
+  "checks": [
+    "real_pagination_no_device_aliases",
+    "first_last_device_identity_and_receipt",
+    "bounded_invalid_queries_rejected",
+    "csrf_required",
+    "unknown_device_rejected",
+    "unsupported_device_rejected",
+    "draft_gost_profiles_cannot_activate",
+    "viewer_operator_denied",
+    "negative_requests_create_no_transition_or_receipt",
+    "live_api_contains_no_telemetry_or_control_keys"
+  ],
+  "timings": [
+    {
+      "route": "inventory",
+      "offset": 0,
+      "bytes": 54747,
+      "seconds": 0.039085157000954496
+    },
+    {
+      "route": "inventory",
+      "offset": 7,
+      "bytes": 54757,
+      "seconds": 0.03439060899836477
+    },
+    {
+      "route": "inventory",
+      "offset": 14,
+      "bytes": 54758,
+      "seconds": 0.03398530799859145
+    },
+    {
+      "route": "inventory",
+      "offset": 21,
+      "bytes": 31950,
+      "seconds": 0.031196989000818576
+    },
+    {
+      "route": "inventory",
+      "offset": 28,
+      "bytes": 1586,
+      "seconds": 0.025719359000504483
+    }
+  ],
+  "transitions_before": 0,
+  "transitions_after": 0,
+  "exit_code": 0
+}

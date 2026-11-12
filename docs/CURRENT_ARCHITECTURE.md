@@ -1,3 +1,21 @@
+# Текущая архитектура после этапа 10
+
+Рабочий контур этапа 9 сохранён: два AEAD, MQTT/TLS/ACL, PG admission/replay/
+Outbox, Mongo history, Flask и durable manual control с telemetry receipts.
+Новых SQL migrations, профилей, provider dispatch или Policy FSM не добавлено.
+
+Изменения: opt-in bounded исследовательский журнал software agent (по умолчанию
+выключен), отдельный `lcm-stage10-performance-*` adapter с независимыми volumes/
+keys, ограниченные SQL/HTTP/resource probes. Журнал наблюдений не является nonce
+или command authority. Ошибка БД при загрузке identity даёт HTTP503. Monitoring
+разделяет свежесть Policy heartbeat и last_event_at по TTL правил; это read-only
+оценка, не изменение решения FSM. Policy logs ограничены resource overlay.
+
+Измерения и узкие места: [STAGE10_RESULTS.md](STAGE10_RESULTS.md).
+Будущий provider/usage/nonce контракт: [RUSSIAN_CRYPTO_INTEGRATION_DESIGN.md](RUSSIAN_CRYPTO_INTEGRATION_DESIGN.md).
+Draft ГОСТ-профили отсутствуют в live registry/UI; research ML не авторизует команды.
+Ниже сохранено историческое описание.
+
 # Текущая интеграция: Stage 9
 
 Flask `/` объединяет inventory, PG-accepted telemetry, Mongo history, security

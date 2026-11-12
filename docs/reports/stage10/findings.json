@@ -1,0 +1,58 @@
+[
+  {
+    "issue": "identity PG outage",
+    "reproduced": "HTTP500 before fix",
+    "fix": "SQLAlchemyError -> HTTP503; session preserved",
+    "evidence": [
+      "auth-pg-original-http.txt",
+      "auth-pg-regression.txt"
+    ],
+    "network_exploit_claim": false
+  },
+  {
+    "issue": "Policy freshness under backlog",
+    "reproduced": "fresh heartbeat and stale=false with event age >207s",
+    "fix": "read-only event TTL; missing/future stale",
+    "evidence": [
+      "policy-freshness-before.json",
+      "policy-freshness-regression.txt",
+      "policy-backlog-browser.json"
+    ]
+  },
+  {
+    "issue": "checker rate limit",
+    "reproduced": "HTTP409 on immediate reverse request",
+    "fix": "honour existing 2-second limiter",
+    "system_security_defect": false
+  },
+  {
+    "issue": "diagnostic GROUP BY bind expressions",
+    "reproduced": "PostgreSQL GroupingError",
+    "fix": "reuse labelled expression",
+    "evidence": [
+      "profile-counts-regression.txt"
+    ],
+    "production_ingestion_affected": false
+  },
+  {
+    "issue": "relay listIndexes privilege",
+    "reproduced": "Unauthorized code13",
+    "fix": "separate lab admin diagnostic; no role expansion",
+    "system_security_defect": false
+  },
+  {
+    "issue": "Policy logging limit",
+    "reproduced": "rendered logging null before fix",
+    "fix": "json-file5m x2; inspected stopped containers",
+    "evidence": [
+      "policy-logging-limits.json"
+    ]
+  },
+  {
+    "issue": "test producer nonce selection",
+    "reproduced": "unsafe derivation from admission high-water identified by audit",
+    "actual_nonce_reuse_reproduced": false,
+    "fix": "fresh authenticated MQTT boot lease",
+    "production_agent_changed": false
+  }
+]

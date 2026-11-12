@@ -1,0 +1,1123 @@
+{
+  "project": "lcm-stage10-performance-medium",
+  "devices": 25,
+  "switches": [
+    {
+      "device": "alpha",
+      "target": "aes-128-gcm-v1",
+      "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37",
+      "request_started_at": "2026-11-12T11:38:26.704785+00:00",
+      "http_202_seconds": 0.008128881454467773,
+      "observed_effective_seconds": 1.1398382186889648,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:38:26.862458+00:00",
+        "activated_at": "2026-11-12T11:38:26.780861+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:38:26.872026+00:00",
+        "correlation_id": "ecf3c70c-b26c-412c-8da4-6cf6e3aa0b8b",
+        "created_at": "2026-11-12T11:38:26.707869+00:00",
+        "deadline": "2026-11-12T11:40:26.707869+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "b3835125-9491-435c-8fc4-6d0abb9efb37",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "aes-128-gcm-v1",
+        "telemetry_event": "560a480c-88b9-4271-96b2-13b3e98137a6"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T11:38:26.874100+00:00",
+          "device_id": "alpha",
+          "id": "34984ae0-4239-433a-90ec-edc5082dec48",
+          "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T11:38:26.864434+00:00",
+          "device_id": "alpha",
+          "id": "b834816d-f0bf-4de0-ba5e-16f39e2e356b",
+          "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:26.821457+00:00",
+          "device_id": "alpha",
+          "id": "ed8faf4e-a2fd-4679-b1ec-d6b8773e253e",
+          "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T11:38:26.783584+00:00",
+          "device_id": "alpha",
+          "id": "b822cb5b-cecd-4bc5-9f25-3bd77e205572",
+          "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:26.740207+00:00",
+          "device_id": "alpha",
+          "id": "f0262b7d-3b4d-4315-8f99-ebdc17febf14",
+          "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T11:38:26.711027+00:00",
+          "device_id": "alpha",
+          "id": "4c95af35-7458-4191-8a52-8d9ea4a00fd5",
+          "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T11:40:26.707869+00:00",
+          "id": "e0cf8e97-8d4a-49b1-84ca-4ec035ced1ba",
+          "phase": "ACTIVATE",
+          "sequence": 2,
+          "status": "verified",
+          "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T11:40:26.707869+00:00",
+          "id": "e14f9ea6-63b7-4145-8723-4d78b9054659",
+          "phase": "PREPARE",
+          "sequence": 1,
+          "status": "acknowledged",
+          "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "e0cf8e97-8d4a-49b1-84ca-4ec035ced1ba",
+          "device_id": "alpha",
+          "id": "81922e48-d7d1-4a85-aa5f-0527aaf1ab7a",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T11:38:26.862458+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "e14f9ea6-63b7-4145-8723-4d78b9054659",
+          "device_id": "alpha",
+          "id": "49b4a22c-8820-48ad-bca4-dcdb59b851f9",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T11:38:26.780861+00:00",
+          "result": "READY"
+        }
+      ]
+    },
+    {
+      "device": "alpha",
+      "target": "ascon-aead128-v1",
+      "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c",
+      "request_started_at": "2026-11-12T11:38:32.402879+00:00",
+      "http_202_seconds": 0.03380918502807617,
+      "observed_effective_seconds": 1.1786115169525146,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:38:32.787082+00:00",
+        "activated_at": "2026-11-12T11:38:32.703651+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:38:32.960435+00:00",
+        "correlation_id": "7f276582-0e6e-488e-b911-00087ef88287",
+        "created_at": "2026-11-12T11:38:32.432393+00:00",
+        "deadline": "2026-11-12T11:40:32.432393+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c",
+        "old_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "729fedfb-1e1d-420e-b8c3-747fac9203df"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T11:38:32.961931+00:00",
+          "device_id": "alpha",
+          "id": "ae24dedf-ff72-4c6a-b1b2-6a6d8d4d1212",
+          "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T11:38:32.789200+00:00",
+          "device_id": "alpha",
+          "id": "8cad2c1c-da27-4437-a3fa-1077903fbb85",
+          "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:32.745215+00:00",
+          "device_id": "alpha",
+          "id": "183cf61e-0687-4b59-a1dd-2d18d60ac27e",
+          "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T11:38:32.732130+00:00",
+          "device_id": "alpha",
+          "id": "1153a361-530f-47f7-ab02-c40ff6a56fed",
+          "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:32.536430+00:00",
+          "device_id": "alpha",
+          "id": "eb17314a-0aa4-479d-af8c-ae9d5754c54d",
+          "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T11:38:32.434504+00:00",
+          "device_id": "alpha",
+          "id": "b5eea26f-5ddd-4bd8-9fe9-3fc6902d313e",
+          "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T11:40:32.432393+00:00",
+          "id": "c32ca5c4-2ab7-4bf5-b122-31f77eeefa16",
+          "phase": "ACTIVATE",
+          "sequence": 4,
+          "status": "verified",
+          "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T11:40:32.432393+00:00",
+          "id": "b3944832-88e3-4f2d-880f-c5879f535ec4",
+          "phase": "PREPARE",
+          "sequence": 3,
+          "status": "acknowledged",
+          "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "c32ca5c4-2ab7-4bf5-b122-31f77eeefa16",
+          "device_id": "alpha",
+          "id": "9f3d3b88-3312-4755-8a55-2f356134f57d",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T11:38:32.787082+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "b3944832-88e3-4f2d-880f-c5879f535ec4",
+          "device_id": "alpha",
+          "id": "58843f8e-ed59-46c6-865c-8d203219c5db",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T11:38:32.703651+00:00",
+          "result": "READY"
+        }
+      ]
+    },
+    {
+      "device": "alpha",
+      "target": "aes-128-gcm-v1",
+      "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e",
+      "request_started_at": "2026-11-12T11:38:37.924484+00:00",
+      "http_202_seconds": 0.03862953186035156,
+      "observed_effective_seconds": 1.2276365756988525,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:38:38.176578+00:00",
+        "activated_at": "2026-11-12T11:38:38.009852+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:38:38.504120+00:00",
+        "correlation_id": "8566ab2b-f39d-4795-aff7-5829adf2fde0",
+        "created_at": "2026-11-12T11:38:37.958230+00:00",
+        "deadline": "2026-11-12T11:40:37.958230+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "aes-128-gcm-v1",
+        "telemetry_event": "08904beb-bac2-46eb-825c-a9b4688f82cf"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T11:38:38.505570+00:00",
+          "device_id": "alpha",
+          "id": "981e90bc-bf27-4720-8ad0-436589c25994",
+          "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T11:38:38.178165+00:00",
+          "device_id": "alpha",
+          "id": "2e6a4580-cd09-4ee9-842a-e25092a5a412",
+          "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:38.135269+00:00",
+          "device_id": "alpha",
+          "id": "3830345b-c7dd-414c-9ff5-2f353fee2b4e",
+          "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T11:38:38.011509+00:00",
+          "device_id": "alpha",
+          "id": "2b47b037-fd20-4c01-bf4b-03e662da5116",
+          "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:37.969072+00:00",
+          "device_id": "alpha",
+          "id": "ca9ef66e-9a15-4c0d-831c-cbd70bac602d",
+          "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T11:38:37.960950+00:00",
+          "device_id": "alpha",
+          "id": "2c54ead9-0ab8-4298-a70b-2dc3bf61c4a7",
+          "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T11:40:37.958230+00:00",
+          "id": "ad52f827-d8db-43ff-86d7-fe24fd00cd49",
+          "phase": "ACTIVATE",
+          "sequence": 6,
+          "status": "verified",
+          "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T11:40:37.958230+00:00",
+          "id": "66ca117a-7d2e-41d7-8535-6ab53999aab9",
+          "phase": "PREPARE",
+          "sequence": 5,
+          "status": "acknowledged",
+          "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "ad52f827-d8db-43ff-86d7-fe24fd00cd49",
+          "device_id": "alpha",
+          "id": "988687b6-9f9d-490f-8d7e-6947408ac126",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T11:38:38.176578+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "66ca117a-7d2e-41d7-8535-6ab53999aab9",
+          "device_id": "alpha",
+          "id": "ccbc60cb-5722-4261-9628-103e48aa221e",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T11:38:38.009852+00:00",
+          "result": "READY"
+        }
+      ]
+    },
+    {
+      "device": "beta",
+      "target": "aes-128-gcm-v1",
+      "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6",
+      "request_started_at": "2026-11-12T11:38:37.924608+00:00",
+      "http_202_seconds": 0.03915524482727051,
+      "observed_effective_seconds": 1.2254717350006104,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:38:38.327983+00:00",
+        "activated_at": "2026-11-12T11:38:38.093601+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:38:38.537131+00:00",
+        "correlation_id": "6ee56ef2-1e29-4dde-b454-5d2ae597fdc2",
+        "created_at": "2026-11-12T11:38:37.958331+00:00",
+        "deadline": "2026-11-12T11:40:37.958331+00:00",
+        "device_id": "beta",
+        "error": null,
+        "id": "35830bb3-5490-49ec-b67f-adab044780e6",
+        "old_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "aes-128-gcm-v1",
+        "telemetry_event": "1ecb9514-4ffa-4e37-bd16-2cdfe0ab5a91"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T11:38:38.538468+00:00",
+          "device_id": "beta",
+          "id": "af7a9c24-c3ee-4240-afbe-c53030a2c085",
+          "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T11:38:38.329482+00:00",
+          "device_id": "beta",
+          "id": "4e8b143b-b464-4259-960f-a35c35c17af7",
+          "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:38.217214+00:00",
+          "device_id": "beta",
+          "id": "56838ab4-19c6-4925-893c-fc30ee2dcc18",
+          "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T11:38:38.095082+00:00",
+          "device_id": "beta",
+          "id": "632c2151-032b-445d-979e-4d5d77701a49",
+          "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:38.051899+00:00",
+          "device_id": "beta",
+          "id": "577a517b-66e8-4794-bd09-02f78016dec6",
+          "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T11:38:37.961298+00:00",
+          "device_id": "beta",
+          "id": "3124befc-9e80-4ec9-941e-4cdcb98f6845",
+          "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "beta",
+          "expires_at": "2026-11-12T11:40:37.958331+00:00",
+          "id": "cff5d92e-74da-4c4a-ad4b-f9bcf6d07b5c",
+          "phase": "ACTIVATE",
+          "sequence": 2,
+          "status": "verified",
+          "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6"
+        },
+        {
+          "attempts": 1,
+          "device_id": "beta",
+          "expires_at": "2026-11-12T11:40:37.958331+00:00",
+          "id": "a62f21db-9be9-4c38-9235-ac64a4ae4a5f",
+          "phase": "PREPARE",
+          "sequence": 1,
+          "status": "acknowledged",
+          "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "cff5d92e-74da-4c4a-ad4b-f9bcf6d07b5c",
+          "device_id": "beta",
+          "id": "f41cdc3c-e55f-4e7c-aa72-eaf89cc2ecb3",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T11:38:38.327983+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "a62f21db-9be9-4c38-9235-ac64a4ae4a5f",
+          "device_id": "beta",
+          "id": "ed0e9f2e-efc0-41c2-9a97-2cf01b0105f4",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T11:38:38.093601+00:00",
+          "result": "READY"
+        }
+      ]
+    },
+    {
+      "device": "alpha",
+      "target": "ascon-aead128-v1",
+      "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252",
+      "request_started_at": "2026-11-12T11:38:41.399552+00:00",
+      "http_202_seconds": 0.03547239303588867,
+      "observed_effective_seconds": 1.1985235214233398,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:38:41.681482+00:00",
+        "activated_at": "2026-11-12T11:38:41.631336+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:38:42.067465+00:00",
+        "correlation_id": "87faa23e-28b4-4a18-b208-e1a0b6dd015b",
+        "created_at": "2026-11-12T11:38:41.403711+00:00",
+        "deadline": "2026-11-12T11:40:41.403711+00:00",
+        "device_id": "alpha",
+        "error": null,
+        "id": "eba60c94-661f-4e45-9bc4-0309cc130252",
+        "old_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "de8bbeed-6f2a-4e65-814b-1bfbac3ea0f7"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T11:38:42.068612+00:00",
+          "device_id": "alpha",
+          "id": "38b31347-ed12-47c6-998f-84cb3f949815",
+          "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T11:38:41.683184+00:00",
+          "device_id": "alpha",
+          "id": "ca21ca68-2516-4c0e-a60a-8a8198807faf",
+          "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:41.639690+00:00",
+          "device_id": "alpha",
+          "id": "3a4ab769-363c-43a5-bf8f-b4bef08ccae1",
+          "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T11:38:41.633250+00:00",
+          "device_id": "alpha",
+          "id": "c97da8b0-fe23-4388-bfdd-c1e9a5e678e5",
+          "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:41.537700+00:00",
+          "device_id": "alpha",
+          "id": "070a346b-22d6-4447-9f0f-d3bc01b332dd",
+          "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T11:38:41.432895+00:00",
+          "device_id": "alpha",
+          "id": "ea37ad46-ff1d-4042-b393-1751f0b83ee4",
+          "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T11:40:41.403711+00:00",
+          "id": "c71aa16b-c0a8-478e-b2cc-dd0cfec9f826",
+          "phase": "ACTIVATE",
+          "sequence": 8,
+          "status": "verified",
+          "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252"
+        },
+        {
+          "attempts": 1,
+          "device_id": "alpha",
+          "expires_at": "2026-11-12T11:40:41.403711+00:00",
+          "id": "99cba34c-c821-4199-b3c9-e104e679b9c2",
+          "phase": "PREPARE",
+          "sequence": 7,
+          "status": "acknowledged",
+          "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "c71aa16b-c0a8-478e-b2cc-dd0cfec9f826",
+          "device_id": "alpha",
+          "id": "2377f12a-ff84-4926-b9c4-2a8df024877d",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T11:38:41.681482+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "99cba34c-c821-4199-b3c9-e104e679b9c2",
+          "device_id": "alpha",
+          "id": "6da10c7d-c946-46da-b4b4-631e36b31543",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T11:38:41.631336+00:00",
+          "result": "READY"
+        }
+      ]
+    },
+    {
+      "device": "beta",
+      "target": "ascon-aead128-v1",
+      "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3",
+      "request_started_at": "2026-11-12T11:38:41.399458+00:00",
+      "http_202_seconds": 0.03581976890563965,
+      "observed_effective_seconds": 1.1989045143127441,
+      "transition": {
+        "acknowledged_at": "2026-11-12T11:38:41.856414+00:00",
+        "activated_at": "2026-11-12T11:38:41.773536+00:00",
+        "actor": "admin:1",
+        "confirmed_at": "2026-11-12T11:38:42.090656+00:00",
+        "correlation_id": "fd8482fe-5725-4dc9-8d6e-dad1b2500020",
+        "created_at": "2026-11-12T11:38:41.403576+00:00",
+        "deadline": "2026-11-12T11:40:41.403576+00:00",
+        "device_id": "beta",
+        "error": null,
+        "id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3",
+        "old_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "target_profile": "ascon-aead128-v1",
+        "telemetry_event": "24f99426-f5e3-4dc2-8c7f-ccdd7bdef6ff"
+      },
+      "audit": [
+        {
+          "action": "EFFECTIVE_CONFIRMED",
+          "at": "2026-11-12T11:38:42.091600+00:00",
+          "device_id": "beta",
+          "id": "e71063ea-1cb7-44e3-8fa3-c3b38c3b0563",
+          "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3"
+        },
+        {
+          "action": "DEVICE_REPORTED_APPLIED",
+          "at": "2026-11-12T11:38:41.857813+00:00",
+          "device_id": "beta",
+          "id": "36201801-3880-46ec-b197-2ae4574b514c",
+          "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:41.831053+00:00",
+          "device_id": "beta",
+          "id": "941d04c5-4b02-4304-995d-d17d40b4303c",
+          "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3"
+        },
+        {
+          "action": "DEVICE_READY",
+          "at": "2026-11-12T11:38:41.774594+00:00",
+          "device_id": "beta",
+          "id": "6d15f9b7-c4a1-40b1-93fb-44f5484d030a",
+          "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3"
+        },
+        {
+          "action": "BROKER_PUBACK",
+          "at": "2026-11-12T11:38:41.732082+00:00",
+          "device_id": "beta",
+          "id": "b43b3e51-3654-4cbc-9959-f511216a4105",
+          "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3"
+        },
+        {
+          "action": "PREPARED_SERVER",
+          "at": "2026-11-12T11:38:41.432757+00:00",
+          "device_id": "beta",
+          "id": "abd96e5b-e4c8-4d73-9318-a4ab34193add",
+          "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3"
+        }
+      ],
+      "commands": [
+        {
+          "attempts": 1,
+          "device_id": "beta",
+          "expires_at": "2026-11-12T11:40:41.403576+00:00",
+          "id": "7788b4a3-cfdb-454c-b398-da8fa275fdcb",
+          "phase": "ACTIVATE",
+          "sequence": 4,
+          "status": "verified",
+          "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3"
+        },
+        {
+          "attempts": 1,
+          "device_id": "beta",
+          "expires_at": "2026-11-12T11:40:41.403576+00:00",
+          "id": "aa6ade73-e709-4409-8a43-a8ce6633cfd0",
+          "phase": "PREPARE",
+          "sequence": 3,
+          "status": "acknowledged",
+          "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3"
+        }
+      ],
+      "acks": [
+        {
+          "command_id": "7788b4a3-cfdb-454c-b398-da8fa275fdcb",
+          "device_id": "beta",
+          "id": "3d764dff-1a87-4c1d-9607-f2910aaa3fe6",
+          "phase": "ACTIVATE",
+          "received_at": "2026-11-12T11:38:41.856414+00:00",
+          "result": "DEVICE_APPLIED"
+        },
+        {
+          "command_id": "aa6ade73-e709-4409-8a43-a8ce6633cfd0",
+          "device_id": "beta",
+          "id": "1dda773f-b8da-4494-89ac-18d6146b56b3",
+          "phase": "PREPARE",
+          "received_at": "2026-11-12T11:38:41.773536+00:00",
+          "result": "READY"
+        }
+      ]
+    }
+  ],
+  "faults": [],
+  "transport": [
+    {
+      "real_tls": true,
+      "profile": "AES-128-GCM",
+      "captured_device": "alpha",
+      "captured_epoch": 1,
+      "captured_sequence": 10022,
+      "unique_identity_count": 1,
+      "checks": [
+        "actual_packet_replay_no_duplicate_admission_or_effective",
+        "device_cannot_publish_neighbor",
+        "web_cannot_publish_telemetry",
+        "incorrect_password_denied",
+        "untrusted_ca_denied"
+      ],
+      "exit_code": 0
+    },
+    {
+      "real_tls": true,
+      "profile": "Ascon-AEAD128",
+      "captured_device": "alpha",
+      "captured_epoch": 1,
+      "captured_sequence": 10033,
+      "unique_identity_count": 1,
+      "checks": [
+        "actual_packet_replay_no_duplicate_admission_or_effective",
+        "device_cannot_publish_neighbor",
+        "web_cannot_publish_telemetry",
+        "incorrect_password_denied",
+        "untrusted_ca_denied"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "control_history": {
+    "transitions": [
+      {
+        "id": "b3835125-9491-435c-8fc4-6d0abb9efb37",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "ecf3c70c-b26c-412c-8da4-6cf6e3aa0b8b",
+        "created_at": "2026-11-12T11:38:26.707869+00:00",
+        "deadline": "2026-11-12T11:40:26.707869+00:00",
+        "activated_at": "2026-11-12T11:38:26.780861+00:00",
+        "acknowledged_at": "2026-11-12T11:38:26.862458+00:00",
+        "confirmed_at": "2026-11-12T11:38:26.872026+00:00",
+        "telemetry_event": "560a480c-88b9-4271-96b2-13b3e98137a6",
+        "error": null
+      },
+      {
+        "id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "7f276582-0e6e-488e-b911-00087ef88287",
+        "created_at": "2026-11-12T11:38:32.432393+00:00",
+        "deadline": "2026-11-12T11:40:32.432393+00:00",
+        "activated_at": "2026-11-12T11:38:32.703651+00:00",
+        "acknowledged_at": "2026-11-12T11:38:32.787082+00:00",
+        "confirmed_at": "2026-11-12T11:38:32.960435+00:00",
+        "telemetry_event": "729fedfb-1e1d-420e-b8c3-747fac9203df",
+        "error": null
+      },
+      {
+        "id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "8566ab2b-f39d-4795-aff7-5829adf2fde0",
+        "created_at": "2026-11-12T11:38:37.958230+00:00",
+        "deadline": "2026-11-12T11:40:37.958230+00:00",
+        "activated_at": "2026-11-12T11:38:38.009852+00:00",
+        "acknowledged_at": "2026-11-12T11:38:38.176578+00:00",
+        "confirmed_at": "2026-11-12T11:38:38.504120+00:00",
+        "telemetry_event": "08904beb-bac2-46eb-825c-a9b4688f82cf",
+        "error": null
+      },
+      {
+        "id": "35830bb3-5490-49ec-b67f-adab044780e6",
+        "device_id": "beta",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "6ee56ef2-1e29-4dde-b454-5d2ae597fdc2",
+        "created_at": "2026-11-12T11:38:37.958331+00:00",
+        "deadline": "2026-11-12T11:40:37.958331+00:00",
+        "activated_at": "2026-11-12T11:38:38.093601+00:00",
+        "acknowledged_at": "2026-11-12T11:38:38.327983+00:00",
+        "confirmed_at": "2026-11-12T11:38:38.537131+00:00",
+        "telemetry_event": "1ecb9514-4ffa-4e37-bd16-2cdfe0ab5a91",
+        "error": null
+      },
+      {
+        "id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3",
+        "device_id": "beta",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "fd8482fe-5725-4dc9-8d6e-dad1b2500020",
+        "created_at": "2026-11-12T11:38:41.403576+00:00",
+        "deadline": "2026-11-12T11:40:41.403576+00:00",
+        "activated_at": "2026-11-12T11:38:41.773536+00:00",
+        "acknowledged_at": "2026-11-12T11:38:41.856414+00:00",
+        "confirmed_at": "2026-11-12T11:38:42.090656+00:00",
+        "telemetry_event": "24f99426-f5e3-4dc2-8c7f-ccdd7bdef6ff",
+        "error": null
+      },
+      {
+        "id": "eba60c94-661f-4e45-9bc4-0309cc130252",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "correlation_id": "87faa23e-28b4-4a18-b208-e1a0b6dd015b",
+        "created_at": "2026-11-12T11:38:41.403711+00:00",
+        "deadline": "2026-11-12T11:40:41.403711+00:00",
+        "activated_at": "2026-11-12T11:38:41.631336+00:00",
+        "acknowledged_at": "2026-11-12T11:38:41.681482+00:00",
+        "confirmed_at": "2026-11-12T11:38:42.067465+00:00",
+        "telemetry_event": "de8bbeed-6f2a-4e65-814b-1bfbac3ea0f7",
+        "error": null
+      }
+    ],
+    "commands": [
+      {
+        "id": "e14f9ea6-63b7-4145-8723-4d78b9054659",
+        "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:27.740576+00:00"
+      },
+      {
+        "id": "c32ca5c4-2ab7-4bf5-b122-31f77eeefa16",
+        "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:33.745544+00:00"
+      },
+      {
+        "id": "e0cf8e97-8d4a-49b1-84ca-4ec035ced1ba",
+        "transition_id": "b3835125-9491-435c-8fc4-6d0abb9efb37",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:27.822136+00:00"
+      },
+      {
+        "id": "b3944832-88e3-4f2d-880f-c5879f535ec4",
+        "transition_id": "54a6d4db-6508-4613-aa8b-a25e4897ea5c",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:33.536746+00:00"
+      },
+      {
+        "id": "aa6ade73-e709-4409-8a43-a8ce6633cfd0",
+        "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:42.732558+00:00"
+      },
+      {
+        "id": "66ca117a-7d2e-41d7-8535-6ab53999aab9",
+        "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:38.969667+00:00"
+      },
+      {
+        "id": "a62f21db-9be9-4c38-9235-ac64a4ae4a5f",
+        "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:39.052301+00:00"
+      },
+      {
+        "id": "ad52f827-d8db-43ff-86d7-fe24fd00cd49",
+        "transition_id": "16e084df-6c80-4fdf-a57d-71d5a1e1d98e",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:39.135630+00:00"
+      },
+      {
+        "id": "cff5d92e-74da-4c4a-ad4b-f9bcf6d07b5c",
+        "transition_id": "35830bb3-5490-49ec-b67f-adab044780e6",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:39.217546+00:00"
+      },
+      {
+        "id": "99cba34c-c821-4199-b3c9-e104e679b9c2",
+        "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252",
+        "phase": "PREPARE",
+        "status": "acknowledged",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:42.538117+00:00"
+      },
+      {
+        "id": "c71aa16b-c0a8-478e-b2cc-dd0cfec9f826",
+        "transition_id": "eba60c94-661f-4e45-9bc4-0309cc130252",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:42.640009+00:00"
+      },
+      {
+        "id": "7788b4a3-cfdb-454c-b398-da8fa275fdcb",
+        "transition_id": "8eb99b8f-9806-4a4c-84cd-ab8f05d69af3",
+        "phase": "ACTIVATE",
+        "status": "verified",
+        "attempts": 1,
+        "available_at": "2026-11-12T11:38:42.831464+00:00"
+      }
+    ]
+  },
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-medium/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-medium/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:38:24.583263+00:00",
+      "finished_at": "2026-11-12T11:38:24.609011+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-medium/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-medium/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_transport.py:/app/scripts/performance_transport.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_transport"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:38:27.844723+00:00",
+      "finished_at": "2026-11-12T11:38:30.352816+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-medium/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-medium/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_transport.py:/app/scripts/performance_transport.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_transport"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:38:33.581583+00:00",
+      "finished_at": "2026-11-12T11:38:35.797381+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-medium/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-medium/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:38:35.798386+00:00",
+      "finished_at": "2026-11-12T11:38:35.824413+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-medium/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-medium/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:38:35.798496+00:00",
+      "finished_at": "2026-11-12T11:38:35.824906+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-medium/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-medium/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:38:39.152263+00:00",
+      "finished_at": "2026-11-12T11:38:39.180629+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-medium/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-medium/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:38:39.152362+00:00",
+      "finished_at": "2026-11-12T11:38:39.180707+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/tmp/lcm-stage10-performance-medium/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/tmp/lcm-stage10-performance-medium/performance.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "transitions"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-12T11:38:42.598583+00:00",
+      "finished_at": "2026-11-12T11:38:43.497522+00:00"
+    }
+  ],
+  "exit_code": 0
+}

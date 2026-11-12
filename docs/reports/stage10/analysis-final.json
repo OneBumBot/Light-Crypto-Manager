@@ -1,0 +1,4041 @@
+{
+  "runs": [
+    {
+      "experiment_id": "load-10",
+      "project": "lcm-stage10-performance-small",
+      "duration": 300.93821120262146,
+      "provisioned_devices": 10,
+      "active_publishers_observed": 10,
+      "per_device": {
+        "alpha": {
+          "formed": 598,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 598,
+            "mean": 813347.897993311,
+            "median": 693481.5,
+            "stddev": 2046490.9126458445,
+            "min": 568509,
+            "max": 50670549,
+            "p95": 1031357,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 598,
+            "mean": 425.5785953177257,
+            "median": 426.0,
+            "stddev": 1.229049570881188,
+            "min": 422,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.003811444816053512,
+            "median": 0.0029315,
+            "stddev": 0.005388826328194488,
+            "min": 0.002426,
+            "max": 0.069277,
+            "p95": 0.003993,
+            "p99": "insufficient_samples"
+          }
+        },
+        "beta": {
+          "formed": 598,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 598,
+            "mean": 884071.1070234113,
+            "median": 681874.5,
+            "stddev": 2574116.886424111,
+            "min": 581123,
+            "max": 51212004,
+            "p95": 1022421,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 598,
+            "mean": 422,
+            "median": 422.0,
+            "stddev": 0.0,
+            "min": 422,
+            "max": 422,
+            "p95": 422,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.0059932976588628764,
+            "median": 0.003044,
+            "stddev": 0.009951484194500579,
+            "min": 0.002401,
+            "max": 0.135194,
+            "p95": 0.012179,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev004": {
+          "formed": 598,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 598,
+            "mean": 875076.0518394649,
+            "median": 650740.0,
+            "stddev": 3170601.469146781,
+            "min": 559442,
+            "max": 69092555,
+            "p95": 939022,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 598,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.004440423076923077,
+            "median": 0.0029205,
+            "stddev": 0.007976399420909075,
+            "min": 0.002389,
+            "max": 0.121177,
+            "p95": 0.008365,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev005": {
+          "formed": 598,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 598,
+            "mean": 799984.3762541806,
+            "median": 702263.0,
+            "stddev": 1299272.8479472245,
+            "min": 590261,
+            "max": 32338251,
+            "p95": 1049843,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 598,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.004161821070234113,
+            "median": 0.0029145,
+            "stddev": 0.009598659441913404,
+            "min": 0.002362,
+            "max": 0.152108,
+            "p95": 0.004295,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev006": {
+          "formed": 598,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 598,
+            "mean": 822821.5585284281,
+            "median": 699512.5,
+            "stddev": 1521732.3325050198,
+            "min": 596122,
+            "max": 33463167,
+            "p95": 1084077,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 598,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.004514959866220736,
+            "median": 0.0029795000000000004,
+            "stddev": 0.008455691875131437,
+            "min": 0.002486,
+            "max": 0.134226,
+            "p95": 0.008244,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev007": {
+          "formed": 598,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 598,
+            "mean": 758817.0685618729,
+            "median": 686683.0,
+            "stddev": 749264.9520645362,
+            "min": 589830,
+            "max": 18788914,
+            "p95": 1004717,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 598,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.005090351170568562,
+            "median": 0.0029595,
+            "stddev": 0.009482130711567234,
+            "min": 0.002438,
+            "max": 0.120254,
+            "p95": 0.011102,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev008": {
+          "formed": 598,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 598,
+            "mean": 698076.762541806,
+            "median": 657032.0,
+            "stddev": 127795.11731839593,
+            "min": 542489,
+            "max": 1396160,
+            "p95": 1017862,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 598,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.005047155518394649,
+            "median": 0.002986,
+            "stddev": 0.011833384706086386,
+            "min": 0.0024,
+            "max": 0.137851,
+            "p95": 0.0091,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev009": {
+          "formed": 598,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 598,
+            "mean": 789983.8628762541,
+            "median": 699587.5,
+            "stddev": 1380778.6423432569,
+            "min": 597024,
+            "max": 34378866,
+            "p95": 1006601,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 598,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.005324827759197325,
+            "median": 0.0030065,
+            "stddev": 0.010641411434203264,
+            "min": 0.002386,
+            "max": 0.140199,
+            "p95": 0.009737,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev010": {
+          "formed": 598,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 598,
+            "mean": 721463.6973244147,
+            "median": 686753.0,
+            "stddev": 116778.80035065032,
+            "min": 581714,
+            "max": 1437067,
+            "p95": 1000489,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 598,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.00459805016722408,
+            "median": 0.002944,
+            "stddev": 0.011449226122823734,
+            "min": 0.002477,
+            "max": 0.153297,
+            "p95": 0.006028,
+            "p99": "insufficient_samples"
+          }
+        },
+        "gamma": {
+          "formed": 598,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 598,
+            "mean": 970216.322742475,
+            "median": 714611.0,
+            "stddev": 3875089.316922353,
+            "min": 592815,
+            "max": 69233954,
+            "p95": 991432,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 598,
+            "mean": 425.5785953177257,
+            "median": 426.0,
+            "stddev": 1.229049570881188,
+            "min": 422,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.004179354515050167,
+            "median": 0.0029775,
+            "stddev": 0.007464099148270613,
+            "min": 0.002415,
+            "max": 0.118916,
+            "p95": 0.006716,
+            "p99": "insufficient_samples"
+          }
+        }
+      },
+      "scheduled": 6018,
+      "formed": 5980,
+      "queued": 5980,
+      "puback_joined": 5980,
+      "pg_window": 5980,
+      "source_joined": 5980,
+      "source_unmatched_window": 0,
+      "pg_total_after": 6343,
+      "mongo_total_after": 6343,
+      "backlog_after": {},
+      "rate": 19.871188760318876,
+      "cpu": {
+        "n": 23,
+        "mean": 61.6,
+        "median": 56.57,
+        "stddev": 22.07179298232351,
+        "min": 29.41,
+        "max": 114.44,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "ram": {
+        "n": 23,
+        "mean": 698.9199130434782,
+        "median": 701.453,
+        "stddev": 21.24709981901924,
+        "min": 646.829,
+        "max": 729.956,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "delivery_latency": {
+        "n": 5980,
+        "mean": 0.26473929973749016,
+        "median": 0.2651338577270508,
+        "stddev": 0.1453962715176969,
+        "min": 0.01031494140625,
+        "max": 0.6241469383239746,
+        "p95": 0.4898800849914551,
+        "p99": 0.5098400115966797
+      },
+      "nonce_duplicates": 0,
+      "reconnects": 0
+    },
+    {
+      "experiment_id": "load-25",
+      "project": "lcm-stage10-performance-medium",
+      "duration": 900.0000660419464,
+      "provisioned_devices": 25,
+      "active_publishers_observed": 25,
+      "per_device": {
+        "alpha": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 758697.3499161543,
+            "median": 668716,
+            "stddev": 923058.554912666,
+            "min": 555976,
+            "max": 34656757,
+            "p95": 1105576,
+            "p99": 1244997
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 425.8166573504751,
+            "median": 426,
+            "stddev": 0.8367481302163112,
+            "min": 422,
+            "max": 426,
+            "p95": 426,
+            "p99": 426
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.008381668529904974,
+            "median": 0.003117,
+            "stddev": 0.01635889946305384,
+            "min": 0.00237,
+            "max": 0.199019,
+            "p95": 0.033951,
+            "p99": 0.087941
+          }
+        },
+        "beta": {
+          "formed": 1788,
+          "pg_window": 1788,
+          "build_ns": {
+            "n": 1788,
+            "mean": 866644.0631991051,
+            "median": 660606.5,
+            "stddev": 3097263.8885696046,
+            "min": 565530,
+            "max": 85168184,
+            "p95": 1079608,
+            "p99": 1207139
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 422,
+            "median": 422.0,
+            "stddev": 0.0,
+            "min": 422,
+            "max": 422,
+            "p95": 422,
+            "p99": 422
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1788,
+            "mean": 0.008629323266219239,
+            "median": 0.0033265,
+            "stddev": 0.015411926213816322,
+            "min": 0.002381,
+            "max": 0.246635,
+            "p95": 0.030329,
+            "p99": 0.085346
+          }
+        },
+        "dev004": {
+          "formed": 1788,
+          "pg_window": 1788,
+          "build_ns": {
+            "n": 1788,
+            "mean": 804413.8808724832,
+            "median": 657800.5,
+            "stddev": 2273723.94828708,
+            "min": 557197,
+            "max": 83433775,
+            "p95": 1102808,
+            "p99": 1236126
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 427.80313199105143,
+            "median": 426.0,
+            "stddev": 1.9908439635243516,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1788,
+            "mean": 0.008843812639821029,
+            "median": 0.0033664999999999997,
+            "stddev": 0.01634520111133616,
+            "min": 0.002328,
+            "max": 0.193289,
+            "p95": 0.028414,
+            "p99": 0.091499
+          }
+        },
+        "dev005": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 841941.9938513136,
+            "median": 671078,
+            "stddev": 3445904.719821889,
+            "min": 563810,
+            "max": 134079258,
+            "p95": 1058035,
+            "p99": 1215270
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.8043599776411,
+            "median": 426,
+            "stddev": 1.99096476902705,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.009300209614309671,
+            "median": 0.003413,
+            "stddev": 0.017000688174786574,
+            "min": 0.002389,
+            "max": 0.276372,
+            "p95": 0.035184,
+            "p99": 0.09134
+          }
+        },
+        "dev006": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 732397.5707098938,
+            "median": 666215,
+            "stddev": 421748.3336981721,
+            "min": 558891,
+            "max": 17549695,
+            "p95": 1072795,
+            "p99": 1223461
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.8043599776411,
+            "median": 426,
+            "stddev": 1.99096476902705,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.00957736221352711,
+            "median": 0.003432,
+            "stddev": 0.015539756438411401,
+            "min": 0.002384,
+            "max": 0.162476,
+            "p95": 0.033987,
+            "p99": 0.083294
+          }
+        },
+        "dev007": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 802233.0229178312,
+            "median": 632233,
+            "stddev": 2782407.5029042056,
+            "min": 541367,
+            "max": 69081971,
+            "p95": 1047814,
+            "p99": 1175257
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.8043599776411,
+            "median": 426,
+            "stddev": 1.99096476902705,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.009186041363890441,
+            "median": 0.003382,
+            "stddev": 0.01764410953881638,
+            "min": 0.00234,
+            "max": 0.246849,
+            "p95": 0.033431,
+            "p99": 0.099475
+          }
+        },
+        "dev008": {
+          "formed": 1788,
+          "pg_window": 1788,
+          "build_ns": {
+            "n": 1788,
+            "mean": 862567.4457494407,
+            "median": 670681.5,
+            "stddev": 3839813.5721476832,
+            "min": 563640,
+            "max": 135322713,
+            "p95": 1075979,
+            "p99": 1208550
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 427.8076062639821,
+            "median": 426.0,
+            "stddev": 1.9912815785366715,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1788,
+            "mean": 0.008038017337807606,
+            "median": 0.00326,
+            "stddev": 0.014575802911621909,
+            "min": 0.002373,
+            "max": 0.185665,
+            "p95": 0.028174,
+            "p99": 0.085831
+          }
+        },
+        "dev009": {
+          "formed": 1790,
+          "pg_window": 1790,
+          "build_ns": {
+            "n": 1790,
+            "mean": 753299.7502793296,
+            "median": 652654.0,
+            "stddev": 1518369.9788859813,
+            "min": 541818,
+            "max": 64640846,
+            "p95": 1081665,
+            "p99": 1211210
+          },
+          "payload_bytes": {
+            "n": 1790,
+            "mean": 427.8033519553073,
+            "median": 426.0,
+            "stddev": 1.9908650925683644,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1790,
+            "mean": 0.008199206145251397,
+            "median": 0.0031535,
+            "stddev": 0.016066664856790303,
+            "min": 0.002363,
+            "max": 0.198282,
+            "p95": 0.03345,
+            "p99": 0.084482
+          }
+        },
+        "dev010": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 869340.5461151481,
+            "median": 671422,
+            "stddev": 2467527.1373070558,
+            "min": 571578,
+            "max": 67110436,
+            "p95": 1113790,
+            "p99": 1264439
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.80659586361094,
+            "median": 426,
+            "stddev": 1.9911833306808018,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.008387833426495248,
+            "median": 0.003187,
+            "stddev": 0.01688883903595226,
+            "min": 0.002404,
+            "max": 0.242284,
+            "p95": 0.034452,
+            "p99": 0.091019
+          }
+        },
+        "dev011": {
+          "formed": 1789,
+          "pg_window": 1790,
+          "build_ns": {
+            "n": 1789,
+            "mean": 744008.3091112353,
+            "median": 639116,
+            "stddev": 1612595.2609044767,
+            "min": 562211,
+            "max": 68624968,
+            "p95": 1069595,
+            "p99": 1211907
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.7998882057015,
+            "median": 426,
+            "stddev": 1.9905200350326568,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1790,
+            "mean": 0.00726130782122905,
+            "median": 0.003161,
+            "stddev": 0.014560514554675613,
+            "min": 0.002318,
+            "max": 0.189235,
+            "p95": 0.020759,
+            "p99": 0.085049
+          }
+        },
+        "dev012": {
+          "formed": 1788,
+          "pg_window": 1788,
+          "build_ns": {
+            "n": 1788,
+            "mean": 782101.25,
+            "median": 624806.5,
+            "stddev": 2670676.1232269746,
+            "min": 543067,
+            "max": 83788457,
+            "p95": 1034101,
+            "p99": 1153556
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 427.8076062639821,
+            "median": 426.0,
+            "stddev": 1.9912815785366715,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1788,
+            "mean": 0.009240427293064877,
+            "median": 0.003216,
+            "stddev": 0.01736947518280895,
+            "min": 0.002347,
+            "max": 0.182731,
+            "p95": 0.036818,
+            "p99": 0.098207
+          }
+        },
+        "dev013": {
+          "formed": 1788,
+          "pg_window": 1788,
+          "build_ns": {
+            "n": 1788,
+            "mean": 836922.2158836689,
+            "median": 629564.5,
+            "stddev": 3925141.709836269,
+            "min": 546791,
+            "max": 135216248,
+            "p95": 1056353,
+            "p99": 1182502
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 427.8076062639821,
+            "median": 426.0,
+            "stddev": 1.9912815785366715,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1788,
+            "mean": 0.009071585570469798,
+            "median": 0.0035830000000000002,
+            "stddev": 0.01600025382937137,
+            "min": 0.002307,
+            "max": 0.158925,
+            "p95": 0.027798,
+            "p99": 0.092651
+          }
+        },
+        "dev014": {
+          "formed": 1788,
+          "pg_window": 1788,
+          "build_ns": {
+            "n": 1788,
+            "mean": 798729.4401565995,
+            "median": 674274.5,
+            "stddev": 1796216.5533286575,
+            "min": 588344,
+            "max": 68869896,
+            "p95": 1121756,
+            "p99": 1244956
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 427.80089485458615,
+            "median": 426.0,
+            "stddev": 1.9906213465653386,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1788,
+            "mean": 0.007956143736017897,
+            "median": 0.003116,
+            "stddev": 0.016362835232745537,
+            "min": 0.002347,
+            "max": 0.142239,
+            "p95": 0.027753,
+            "p99": 0.093728
+          }
+        },
+        "dev015": {
+          "formed": 1788,
+          "pg_window": 1788,
+          "build_ns": {
+            "n": 1788,
+            "mean": 724967.0218120805,
+            "median": 663056.0,
+            "stddev": 146538.52584127776,
+            "min": 562257,
+            "max": 1459603,
+            "p95": 1094374,
+            "p99": 1218509
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 427.80313199105143,
+            "median": 426.0,
+            "stddev": 1.9908439635243516,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1788,
+            "mean": 0.0077202863534675615,
+            "median": 0.0031555,
+            "stddev": 0.01568951996302163,
+            "min": 0.002325,
+            "max": 0.284534,
+            "p95": 0.025832,
+            "p99": 0.084556
+          }
+        },
+        "dev016": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 880039.6579094466,
+            "median": 625613,
+            "stddev": 4170361.054619166,
+            "min": 530942,
+            "max": 133584359,
+            "p95": 1051023,
+            "p99": 1173885
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.8021240916713,
+            "median": 426,
+            "stddev": 1.9907436707594244,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.008564745108999442,
+            "median": 0.00336,
+            "stddev": 0.01522428236726793,
+            "min": 0.002353,
+            "max": 0.154307,
+            "p95": 0.030602,
+            "p99": 0.085434
+          }
+        },
+        "dev017": {
+          "formed": 1788,
+          "pg_window": 1788,
+          "build_ns": {
+            "n": 1788,
+            "mean": 766559.2897091722,
+            "median": 634134.5,
+            "stddev": 3176167.746712667,
+            "min": 552436,
+            "max": 134869012,
+            "p95": 1055414,
+            "p99": 1176486
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 427.80536912751677,
+            "median": 426.0,
+            "stddev": 1.991064040567417,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1788,
+            "mean": 0.008631055369127517,
+            "median": 0.003183,
+            "stddev": 0.015736823612396398,
+            "min": 0.002334,
+            "max": 0.185235,
+            "p95": 0.03448,
+            "p99": 0.085761
+          }
+        },
+        "dev018": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 771251.7523756288,
+            "median": 679770,
+            "stddev": 1618783.0601080023,
+            "min": 584569,
+            "max": 68955010,
+            "p95": 1097366,
+            "p99": 1226938
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.80659586361094,
+            "median": 426,
+            "stddev": 1.9911833306808018,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.008848566238121856,
+            "median": 0.003232,
+            "stddev": 0.01693609059003694,
+            "min": 0.002397,
+            "max": 0.235888,
+            "p95": 0.033381,
+            "p99": 0.099876
+          }
+        },
+        "dev019": {
+          "formed": 1788,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1788,
+            "mean": 833895.7572706935,
+            "median": 635613.0,
+            "stddev": 4437274.443625514,
+            "min": 558626,
+            "max": 133837704,
+            "p95": 1015396,
+            "p99": 1159902
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 427.80089485458615,
+            "median": 426.0,
+            "stddev": 1.9906213465653386,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.007827163219675796,
+            "median": 0.003234,
+            "stddev": 0.015116731627266329,
+            "min": 0.002331,
+            "max": 0.170613,
+            "p95": 0.021723,
+            "p99": 0.082461
+          }
+        },
+        "dev020": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 768175.4376746786,
+            "median": 653574,
+            "stddev": 1652782.8296117524,
+            "min": 565724,
+            "max": 68319451,
+            "p95": 1096026,
+            "p99": 1188205
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.8021240916713,
+            "median": 426,
+            "stddev": 1.9907436707594244,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.008226465064281721,
+            "median": 0.003178,
+            "stddev": 0.015375065440777895,
+            "min": 0.002339,
+            "max": 0.172659,
+            "p95": 0.034968,
+            "p99": 0.082411
+          }
+        },
+        "dev021": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 832293.4153158189,
+            "median": 662673,
+            "stddev": 2933225.1486080782,
+            "min": 547075,
+            "max": 85375219,
+            "p95": 1068568,
+            "p99": 1206247
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.8021240916713,
+            "median": 426,
+            "stddev": 1.9907436707594244,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.0076037333705981,
+            "median": 0.003118,
+            "stddev": 0.014445896485721626,
+            "min": 0.00233,
+            "max": 0.153951,
+            "p95": 0.027069,
+            "p99": 0.085011
+          }
+        },
+        "dev022": {
+          "formed": 1788,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1788,
+            "mean": 817463.8786353468,
+            "median": 660088.0,
+            "stddev": 3289694.4961586716,
+            "min": 563069,
+            "max": 134726038,
+            "p95": 1066369,
+            "p99": 1230025
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 427.80089485458615,
+            "median": 426.0,
+            "stddev": 1.9906213465653386,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.008890493012856344,
+            "median": 0.003524,
+            "stddev": 0.01544192276874717,
+            "min": 0.002353,
+            "max": 0.191239,
+            "p95": 0.032457,
+            "p99": 0.086438
+          }
+        },
+        "dev023": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 708355.8166573505,
+            "median": 633619,
+            "stddev": 802705.7828927641,
+            "min": 543486,
+            "max": 34158103,
+            "p95": 1033730,
+            "p99": 1165398
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.80659586361094,
+            "median": 426,
+            "stddev": 1.9911833306808018,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.00809672889882616,
+            "median": 0.003058,
+            "stddev": 0.015185063169794405,
+            "min": 0.002309,
+            "max": 0.196961,
+            "p95": 0.029454,
+            "p99": 0.078257
+          }
+        },
+        "dev024": {
+          "formed": 1788,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1788,
+            "mean": 777399.2466442953,
+            "median": 668615.5,
+            "stddev": 1182544.5079224233,
+            "min": 563610,
+            "max": 34016262,
+            "p95": 1106249,
+            "p99": 1238699
+          },
+          "payload_bytes": {
+            "n": 1788,
+            "mean": 427.80536912751677,
+            "median": 426.0,
+            "stddev": 1.991064040567417,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.0076919239798770266,
+            "median": 0.003205,
+            "stddev": 0.015627688905056735,
+            "min": 0.002398,
+            "max": 0.227408,
+            "p95": 0.024139,
+            "p99": 0.092613
+          }
+        },
+        "dev025": {
+          "formed": 1789,
+          "pg_window": 1789,
+          "build_ns": {
+            "n": 1789,
+            "mean": 897054.185019564,
+            "median": 670606,
+            "stddev": 3791566.343244347,
+            "min": 560715,
+            "max": 134155153,
+            "p95": 1118318,
+            "p99": 1244302
+          },
+          "payload_bytes": {
+            "n": 1789,
+            "mean": 427.80659586361094,
+            "median": 426,
+            "stddev": 1.9911833306808018,
+            "min": 426,
+            "max": 430,
+            "p95": 430,
+            "p99": 430
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1789,
+            "mean": 0.007644013974287311,
+            "median": 0.003106,
+            "stddev": 0.015080750480205725,
+            "min": 0.00237,
+            "max": 0.231648,
+            "p95": 0.029167,
+            "p99": 0.080011
+          }
+        },
+        "gamma": {
+          "formed": 1790,
+          "pg_window": 1790,
+          "build_ns": {
+            "n": 1790,
+            "mean": 726474.4586592179,
+            "median": 627727.5,
+            "stddev": 1609645.6239553741,
+            "min": 553387,
+            "max": 68530189,
+            "p95": 1057763,
+            "p99": 1141884
+          },
+          "payload_bytes": {
+            "n": 1790,
+            "mean": 425.81899441340784,
+            "median": 426.0,
+            "stddev": 0.8316524022974625,
+            "min": 422,
+            "max": 426,
+            "p95": 426,
+            "p99": 426
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 1790,
+            "mean": 0.008670135754189944,
+            "median": 0.00312,
+            "stddev": 0.0167232885713817,
+            "min": 0.002369,
+            "max": 0.229416,
+            "p95": 0.037545,
+            "p99": 0.090412
+          }
+        }
+      },
+      "scheduled": 45000,
+      "formed": 44716,
+      "queued": 44716,
+      "puback_joined": 44716,
+      "pg_window": 44716,
+      "source_joined": 44716,
+      "source_unmatched_window": 0,
+      "pg_total_after": 45150,
+      "mongo_total_after": 45150,
+      "backlog_after": {},
+      "rate": 49.684440798603134,
+      "cpu": {
+        "n": 66,
+        "mean": 124.91166666666666,
+        "median": 119.79,
+        "stddev": 37.233955866751245,
+        "min": 59.35,
+        "max": 221.17000000000002,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "ram": {
+        "n": 66,
+        "mean": 1132.8579545454545,
+        "median": 1161.8964999999998,
+        "stddev": 63.33135872011877,
+        "min": 989.212,
+        "max": 1291.414,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "delivery_latency": {
+        "n": 44716,
+        "mean": 0.26938846646827663,
+        "median": 0.2696906328201294,
+        "stddev": 0.1455971194041694,
+        "min": 0.009176015853881836,
+        "max": 0.6964671611785889,
+        "p95": 0.49381399154663086,
+        "p99": 0.5205621719360352
+      },
+      "nonce_duplicates": 0,
+      "reconnects": 0
+    },
+    {
+      "experiment_id": "load-3",
+      "project": "lcm-stage10-performance-base",
+      "duration": 300.17415285110474,
+      "provisioned_devices": 3,
+      "active_publishers_observed": 3,
+      "per_device": {
+        "alpha": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 801772.1979865772,
+            "median": 778618.0,
+            "stddev": 138881.61433085348,
+            "min": 263150,
+            "max": 1531157,
+            "p95": 1119004,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 425.8993288590604,
+            "median": 426.0,
+            "stddev": 0.999125442401078,
+            "min": 416,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "AES-128-GCM",
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.0042119110738255035,
+            "median": 0.003285,
+            "stddev": 0.006559089065965801,
+            "min": 0.002122,
+            "max": 0.118112,
+            "p95": 0.004488,
+            "p99": "insufficient_samples"
+          }
+        },
+        "beta": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 750818.91959799,
+            "median": 724676,
+            "stddev": 124374.3963026335,
+            "min": 561326,
+            "max": 1400558,
+            "p95": 1042248,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.004628778894472362,
+            "median": 0.003109,
+            "stddev": 0.009777752083346115,
+            "min": 0.002429,
+            "max": 0.135706,
+            "p95": 0.008629,
+            "p99": "insufficient_samples"
+          }
+        },
+        "gamma": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 850658.2010050251,
+            "median": 767116,
+            "stddev": 1304456.8310085628,
+            "min": 571395,
+            "max": 32490556,
+            "p95": 1107452,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.004335948073701842,
+            "median": 0.0031,
+            "stddev": 0.007414167411903286,
+            "min": 0.002528,
+            "max": 0.108407,
+            "p95": 0.007521,
+            "p99": "insufficient_samples"
+          }
+        }
+      },
+      "scheduled": 1800,
+      "formed": 1790,
+      "queued": 1790,
+      "puback_joined": 1790,
+      "pg_window": 1790,
+      "source_joined": 1790,
+      "source_unmatched_window": 0,
+      "pg_total_after": 3649,
+      "mongo_total_after": 3649,
+      "backlog_after": {},
+      "rate": 5.9632049695094596,
+      "cpu": {
+        "n": 23,
+        "mean": 31.438260869565216,
+        "median": 31.04,
+        "stddev": 11.938755322734714,
+        "min": 13.32,
+        "max": 59.22,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "ram": {
+        "n": 23,
+        "mean": 621.4439565217391,
+        "median": 615.445,
+        "stddev": 33.21707533165636,
+        "min": 595.909,
+        "max": 770.613,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "delivery_latency": {
+        "n": 1790,
+        "mean": 0.26275388581792736,
+        "median": 0.26417243480682373,
+        "stddev": 0.14543337717392615,
+        "min": 0.010020017623901367,
+        "max": 0.563788890838623,
+        "p95": 0.4885380268096924,
+        "p99": 0.5086050033569336
+      },
+      "nonce_duplicates": 0,
+      "reconnects": 0
+    },
+    {
+      "experiment_id": "load-50",
+      "project": "lcm-stage10-performance-extended",
+      "duration": 300.00004839897156,
+      "provisioned_devices": 50,
+      "active_publishers_observed": 50,
+      "per_device": {
+        "alpha": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 685671.5604026846,
+            "median": 671531.5,
+            "stddev": 74111.13182499117,
+            "min": 604469,
+            "max": 1252841,
+            "p95": 795392,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 425.4563758389262,
+            "median": 426.0,
+            "stddev": 1.3719064645898162,
+            "min": 422,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.011837870805369128,
+            "median": 0.0071605,
+            "stddev": 0.017700280626890514,
+            "min": 0.002446,
+            "max": 0.161137,
+            "p95": 0.033976,
+            "p99": "insufficient_samples"
+          }
+        },
+        "beta": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 678922.1224832215,
+            "median": 659824.0,
+            "stddev": 87403.30404358037,
+            "min": 548553,
+            "max": 1205802,
+            "p95": 857991,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 422,
+            "median": 422.0,
+            "stddev": 0.0,
+            "min": 422,
+            "max": 422,
+            "p95": 422,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.010239751677852349,
+            "median": 0.003693,
+            "stddev": 0.017935765614835997,
+            "min": 0.002389,
+            "max": 0.168115,
+            "p95": 0.039054,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev004": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 733959.8473154362,
+            "median": 632462.5,
+            "stddev": 2028615.924269691,
+            "min": 581596,
+            "max": 50150706,
+            "p95": 764764,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.024151770134228187,
+            "median": 0.0162935,
+            "stddev": 0.027318711997072732,
+            "min": 0.002357,
+            "max": 0.205528,
+            "p95": 0.076198,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev005": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 693453.6426174496,
+            "median": 613060.0,
+            "stddev": 1403941.8143196898,
+            "min": 571957,
+            "max": 34856677,
+            "p95": 734095,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.013547912751677852,
+            "median": 0.0072825,
+            "stddev": 0.021902955805037296,
+            "min": 0.002378,
+            "max": 0.170338,
+            "p95": 0.046951,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev006": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 678163.4127516778,
+            "median": 666491.5,
+            "stddev": 67039.30658979935,
+            "min": 590854,
+            "max": 1225319,
+            "p95": 760335,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.01884121979865772,
+            "median": 0.0114945,
+            "stddev": 0.02454938878200626,
+            "min": 0.00241,
+            "max": 0.210526,
+            "p95": 0.062284,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev007": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 674122.7533557047,
+            "median": 621176.0,
+            "stddev": 745973.6795135781,
+            "min": 574172,
+            "max": 18747252,
+            "p95": 806483,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.00984387269681742,
+            "median": 0.003446,
+            "stddev": 0.017820001302469322,
+            "min": 0.002424,
+            "max": 0.172504,
+            "p95": 0.039723,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev008": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 626542.2231543624,
+            "median": 604454.0,
+            "stddev": 71747.54897011483,
+            "min": 564253,
+            "max": 1106814,
+            "p95": 779422,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.016296345637583892,
+            "median": 0.009647,
+            "stddev": 0.0226281933885194,
+            "min": 0.002365,
+            "max": 0.170458,
+            "p95": 0.054869,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev009": {
+          "formed": 597,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 597,
+            "mean": 671728.3031825796,
+            "median": 640388,
+            "stddev": 101406.4202919605,
+            "min": 574873,
+            "max": 1462230,
+            "p95": 921020,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.013744138795986622,
+            "median": 0.0079035,
+            "stddev": 0.019780453565123573,
+            "min": 0.002444,
+            "max": 0.153773,
+            "p95": 0.04962,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev010": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 699983.86599665,
+            "median": 620660,
+            "stddev": 1401953.0981949484,
+            "min": 587086,
+            "max": 34854927,
+            "p95": 800712,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.023444845896147405,
+            "median": 0.015322,
+            "stddev": 0.02440349893151335,
+            "min": 0.002345,
+            "max": 0.21691,
+            "p95": 0.067001,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev011": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 835450.2010050251,
+            "median": 639125,
+            "stddev": 3510782.808264357,
+            "min": 596835,
+            "max": 84615735,
+            "p95": 855736,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.011818850921273032,
+            "median": 0.007206,
+            "stddev": 0.01726084431157826,
+            "min": 0.002384,
+            "max": 0.15087,
+            "p95": 0.036612,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev012": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 794409.4848993289,
+            "median": 668781.5,
+            "stddev": 2834680.284865026,
+            "min": 580233,
+            "max": 69854785,
+            "p95": 799340,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.016688041946308727,
+            "median": 0.008057,
+            "stddev": 0.026363280428872028,
+            "min": 0.002397,
+            "max": 0.234781,
+            "p95": 0.064092,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev013": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 713477.6661073825,
+            "median": 628309.5,
+            "stddev": 1387771.4894392851,
+            "min": 582398,
+            "max": 34464246,
+            "p95": 830068,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.023623909547738693,
+            "median": 0.007554,
+            "stddev": 0.03269469961237574,
+            "min": 0.002387,
+            "max": 0.222421,
+            "p95": 0.096409,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev014": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 723396.1812080537,
+            "median": 652610.5,
+            "stddev": 1386573.5227771415,
+            "min": 580354,
+            "max": 34469304,
+            "p95": 774633,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.019776835845896148,
+            "median": 0.011323,
+            "stddev": 0.026029773278872757,
+            "min": 0.002344,
+            "max": 0.226159,
+            "p95": 0.068669,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev015": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 675292.4355108878,
+            "median": 660024,
+            "stddev": 77827.7930755331,
+            "min": 575815,
+            "max": 1274873,
+            "p95": 771366,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.0250284824120603,
+            "median": 0.016315,
+            "stddev": 0.028137765562092715,
+            "min": 0.002406,
+            "max": 0.207678,
+            "p95": 0.087479,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev016": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 642016.3819095477,
+            "median": 622874,
+            "stddev": 65014.30429101356,
+            "min": 581465,
+            "max": 1159113,
+            "p95": 760054,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.02562004690117253,
+            "median": 0.017311,
+            "stddev": 0.028756339001565625,
+            "min": 0.002427,
+            "max": 0.210727,
+            "p95": 0.07467,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev017": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 887722.2600671141,
+            "median": 637272.0,
+            "stddev": 5460926.150113481,
+            "min": 589070,
+            "max": 133965462,
+            "p95": 794009,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.015667693467336683,
+            "median": 0.004318,
+            "stddev": 0.026875474697443523,
+            "min": 0.002412,
+            "max": 0.213318,
+            "p95": 0.073738,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev018": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 676171.0100671141,
+            "median": 657765.5,
+            "stddev": 85658.11365294832,
+            "min": 576206,
+            "max": 1197316,
+            "p95": 855647,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.010483575503355705,
+            "median": 0.005122,
+            "stddev": 0.0185887441473996,
+            "min": 0.002426,
+            "max": 0.18717,
+            "p95": 0.035006,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev019": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 730810.3048576214,
+            "median": 662970,
+            "stddev": 1398783.7196908866,
+            "min": 567189,
+            "max": 34799437,
+            "p95": 798938,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.03198831323283082,
+            "median": 0.021964,
+            "stddev": 0.03174625503481652,
+            "min": 0.002427,
+            "max": 0.237005,
+            "p95": 0.103941,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev020": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 721916.0067114094,
+            "median": 639005.0,
+            "stddev": 1364431.1952224972,
+            "min": 574653,
+            "max": 33880276,
+            "p95": 915320,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.02045085259631491,
+            "median": 0.003523,
+            "stddev": 0.03178573593502683,
+            "min": 0.00239,
+            "max": 0.21396,
+            "p95": 0.09207,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev021": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 702483.4865771813,
+            "median": 624948.0,
+            "stddev": 1389755.355417193,
+            "min": 574793,
+            "max": 34520040,
+            "p95": 744966,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.014833850671140939,
+            "median": 0.009736999999999999,
+            "stddev": 0.021653334887978357,
+            "min": 0.00244,
+            "max": 0.209641,
+            "p95": 0.045461,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev022": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 647781.6510067114,
+            "median": 623545.0,
+            "stddev": 76930.87414913643,
+            "min": 566197,
+            "max": 1112194,
+            "p95": 805942,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.012534442211055277,
+            "median": 0.005092,
+            "stddev": 0.020962658236357398,
+            "min": 0.002406,
+            "max": 0.172777,
+            "p95": 0.05043,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev023": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 918737.6510067114,
+            "median": 668897.0,
+            "stddev": 4847257.45098048,
+            "min": 586796,
+            "max": 117677027,
+            "p95": 865075,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.015370897651006712,
+            "median": 0.0091315,
+            "stddev": 0.022923727040114465,
+            "min": 0.002383,
+            "max": 0.207947,
+            "p95": 0.051739,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev024": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 711522.5453020134,
+            "median": 628389.5,
+            "stddev": 1411039.1875697281,
+            "min": 580243,
+            "max": 35045682,
+            "p95": 839516,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.014654651591289782,
+            "median": 0.003473,
+            "stddev": 0.02611976502399302,
+            "min": 0.002398,
+            "max": 0.211853,
+            "p95": 0.070909,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev025": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 687190.3171140939,
+            "median": 672463.5,
+            "stddev": 73170.4624022088,
+            "min": 580424,
+            "max": 1182368,
+            "p95": 781857,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.036084688442211056,
+            "median": 0.026697,
+            "stddev": 0.03290313554278777,
+            "min": 0.002451,
+            "max": 0.22334,
+            "p95": 0.111194,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev026": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 785161.4060402685,
+            "median": 657590.0,
+            "stddev": 2769918.479034351,
+            "min": 564023,
+            "max": 68258855,
+            "p95": 843814,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.012409602348993288,
+            "median": 0.005944,
+            "stddev": 0.019030240473482795,
+            "min": 0.002379,
+            "max": 0.177517,
+            "p95": 0.042997,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev027": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 651738.5192629816,
+            "median": 633805,
+            "stddev": 61078.43633907049,
+            "min": 587818,
+            "max": 1147902,
+            "p95": 721151,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.03265716917922948,
+            "median": 0.024291,
+            "stddev": 0.03033593955206539,
+            "min": 0.00242,
+            "max": 0.272196,
+            "p95": 0.093747,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev028": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 725372.1963087248,
+            "median": 642556.5,
+            "stddev": 1362020.7106713888,
+            "min": 589000,
+            "max": 33850568,
+            "p95": 834146,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.026923053691275168,
+            "median": 0.0165695,
+            "stddev": 0.0309824749690401,
+            "min": 0.002343,
+            "max": 0.230988,
+            "p95": 0.095681,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev029": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 839667.6934673367,
+            "median": 626480,
+            "stddev": 3677278.6042040917,
+            "min": 555767,
+            "max": 83811266,
+            "p95": 757730,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.02424921105527638,
+            "median": 0.015008,
+            "stddev": 0.028918327338373854,
+            "min": 0.002437,
+            "max": 0.260513,
+            "p95": 0.080854,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev030": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 756627.6661073825,
+            "median": 651412.5,
+            "stddev": 2036003.5840812284,
+            "min": 601854,
+            "max": 50335145,
+            "p95": 834236,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.03415372864321608,
+            "median": 0.024928,
+            "stddev": 0.032085432364499095,
+            "min": 0.002497,
+            "max": 0.233053,
+            "p95": 0.104351,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev031": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 665338.6661073825,
+            "median": 650331.5,
+            "stddev": 66541.72987156325,
+            "min": 577878,
+            "max": 1194611,
+            "p95": 743193,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.02654857956448911,
+            "median": 0.011649,
+            "stddev": 0.03423213063317899,
+            "min": 0.002352,
+            "max": 0.230797,
+            "p95": 0.103193,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev032": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 902188.7788944724,
+            "median": 629347,
+            "stddev": 3957478.195954553,
+            "min": 591704,
+            "max": 84286977,
+            "p95": 763060,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.021558862646566163,
+            "median": 0.013242,
+            "stddev": 0.02848764100373375,
+            "min": 0.002432,
+            "max": 0.230719,
+            "p95": 0.072885,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev033": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 663131.9112227806,
+            "median": 644505,
+            "stddev": 122482.14101502576,
+            "min": 592887,
+            "max": 3287930,
+            "p95": 723505,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.02749060636515913,
+            "median": 0.016551,
+            "stddev": 0.030961408798092133,
+            "min": 0.00241,
+            "max": 0.230885,
+            "p95": 0.089513,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev034": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 682901.4991624791,
+            "median": 630238,
+            "stddev": 742772.7169249256,
+            "min": 586816,
+            "max": 18712240,
+            "p95": 787327,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.024165691792294806,
+            "median": 0.014378,
+            "stddev": 0.02817116232825658,
+            "min": 0.002421,
+            "max": 0.21955,
+            "p95": 0.085395,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev035": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 668470.675041876,
+            "median": 649394,
+            "stddev": 85918.25796872747,
+            "min": 567749,
+            "max": 1172579,
+            "p95": 843894,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.014970428810720268,
+            "median": 0.007234,
+            "stddev": 0.02382166342504123,
+            "min": 0.002343,
+            "max": 0.247115,
+            "p95": 0.057837,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev036": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 659741.5536912752,
+            "median": 647892.0,
+            "stddev": 64660.74350615326,
+            "min": 552210,
+            "max": 1402807,
+            "p95": 736691,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.03122865268456376,
+            "median": 0.0216345,
+            "stddev": 0.030427876425130868,
+            "min": 0.002367,
+            "max": 0.229169,
+            "p95": 0.099169,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev037": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 686197.1107382551,
+            "median": 632026.5,
+            "stddev": 735804.9065190951,
+            "min": 580634,
+            "max": 18522463,
+            "p95": 803999,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.028519850921273033,
+            "median": 0.015784,
+            "stddev": 0.033595541882249294,
+            "min": 0.002434,
+            "max": 0.218017,
+            "p95": 0.10193,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev038": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 1001585.5661641541,
+            "median": 649865,
+            "stddev": 5947828.0109627135,
+            "min": 579672,
+            "max": 118887610,
+            "p95": 783760,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.028202718592964825,
+            "median": 0.019586,
+            "stddev": 0.028758238743335166,
+            "min": 0.002375,
+            "max": 0.259621,
+            "p95": 0.087949,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev039": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 853395.7416107382,
+            "median": 641194.0,
+            "stddev": 4830865.542778165,
+            "min": 566758,
+            "max": 118579159,
+            "p95": 752310,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.034237194304857624,
+            "median": 0.025958,
+            "stddev": 0.0316967493533045,
+            "min": 0.002421,
+            "max": 0.234091,
+            "p95": 0.095236,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev040": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 843597.6599664992,
+            "median": 654344,
+            "stddev": 4143859.1281917244,
+            "min": 587427,
+            "max": 101905341,
+            "p95": 835027,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.021861755443886098,
+            "median": 0.012303,
+            "stddev": 0.027653337447046535,
+            "min": 0.002326,
+            "max": 0.232273,
+            "p95": 0.070425,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev041": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 660164.9429530201,
+            "median": 635002.0,
+            "stddev": 81620.79385645599,
+            "min": 594330,
+            "max": 1191014,
+            "p95": 790583,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.023457926298157454,
+            "median": 0.008169,
+            "stddev": 0.03292645846333176,
+            "min": 0.002409,
+            "max": 0.230296,
+            "p95": 0.098228,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev042": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 758695.4891122278,
+            "median": 659533,
+            "stddev": 2041125.9954811803,
+            "min": 590001,
+            "max": 50515302,
+            "p95": 796965,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.01662262311557789,
+            "median": 0.009803,
+            "stddev": 0.022005534113364103,
+            "min": 0.002354,
+            "max": 0.172785,
+            "p95": 0.053219,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev043": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 642820.2651006711,
+            "median": 623841.0,
+            "stddev": 67474.08008425901,
+            "min": 584221,
+            "max": 1224678,
+            "p95": 743593,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.025516668341708543,
+            "median": 0.016095,
+            "stddev": 0.028900648991816904,
+            "min": 0.002442,
+            "max": 0.233878,
+            "p95": 0.083926,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev044": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 735938.4882550335,
+            "median": 661297.5,
+            "stddev": 1376178.231494992,
+            "min": 571336,
+            "max": 34214537,
+            "p95": 787147,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.022648502512562813,
+            "median": 0.009115,
+            "stddev": 0.03192248824013705,
+            "min": 0.002424,
+            "max": 0.227207,
+            "p95": 0.09507,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev045": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 696505.2197986577,
+            "median": 672333.0,
+            "stddev": 86540.01841718897,
+            "min": 597135,
+            "max": 1215210,
+            "p95": 859565,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.013861073701842546,
+            "median": 0.004905,
+            "stddev": 0.023217632675800185,
+            "min": 0.002339,
+            "max": 0.187656,
+            "p95": 0.062312,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev046": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 701912.0738255034,
+            "median": 675754.0,
+            "stddev": 90422.39406581127,
+            "min": 583329,
+            "max": 1228636,
+            "p95": 902806,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.011842666666666666,
+            "median": 0.003494,
+            "stddev": 0.02413247010586597,
+            "min": 0.002409,
+            "max": 0.232089,
+            "p95": 0.053198,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev047": {
+          "formed": 596,
+          "pg_window": 596,
+          "build_ns": {
+            "n": 596,
+            "mean": 802516.6996644295,
+            "median": 635493.0,
+            "stddev": 3413521.053956546,
+            "min": 569783,
+            "max": 83966928,
+            "p95": 822514,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 596,
+            "mean": 0.0143785855704698,
+            "median": 0.007609,
+            "stddev": 0.023525837045044247,
+            "min": 0.002386,
+            "max": 0.200118,
+            "p95": 0.054571,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev048": {
+          "formed": 596,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 596,
+            "mean": 750985.6593959732,
+            "median": 674707.5,
+            "stddev": 1428508.3776664713,
+            "min": 584622,
+            "max": 35496720,
+            "p95": 839816,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 596,
+            "mean": 426,
+            "median": 426.0,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.013456530988274706,
+            "median": 0.003271,
+            "stddev": 0.0242092123539044,
+            "min": 0.002323,
+            "max": 0.174757,
+            "p95": 0.06266,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev049": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 652350.324958124,
+            "median": 633033,
+            "stddev": 72473.93693624296,
+            "min": 578530,
+            "max": 1167800,
+            "p95": 754004,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.028683433835845897,
+            "median": 0.018347,
+            "stddev": 0.03179206814079344,
+            "min": 0.002394,
+            "max": 0.222345,
+            "p95": 0.096579,
+            "p99": "insufficient_samples"
+          }
+        },
+        "dev050": {
+          "formed": 597,
+          "pg_window": 598,
+          "build_ns": {
+            "n": 597,
+            "mean": 761473.3852596314,
+            "median": 617314,
+            "stddev": 1806378.9425632742,
+            "min": 561077,
+            "max": 36099376,
+            "p95": 811232,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 598,
+            "mean": 0.015147511705685618,
+            "median": 0.008702499999999998,
+            "stddev": 0.020839839476735674,
+            "min": 0.002371,
+            "max": 0.183573,
+            "p95": 0.054929,
+            "p99": "insufficient_samples"
+          }
+        },
+        "gamma": {
+          "formed": 597,
+          "pg_window": 597,
+          "build_ns": {
+            "n": 597,
+            "mean": 650728.2328308207,
+            "median": 624648,
+            "stddev": 87438.20312110746,
+            "min": 578469,
+            "max": 1199660,
+            "p95": 819939,
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 597,
+            "mean": 425.47738693467335,
+            "median": 426,
+            "stddev": 1.349213494244142,
+            "min": 422,
+            "max": 426,
+            "p95": 426,
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 597,
+            "mean": 0.01709265661641541,
+            "median": 0.005557,
+            "stddev": 0.027913114483857526,
+            "min": 0.002388,
+            "max": 0.225857,
+            "p95": 0.080865,
+            "p99": "insufficient_samples"
+          }
+        }
+      },
+      "scheduled": 29999,
+      "formed": 29818,
+      "queued": 29818,
+      "puback_joined": 29816,
+      "pg_window": 29815,
+      "source_joined": 29815,
+      "source_unmatched_window": 3,
+      "pg_total_after": 30877,
+      "mongo_total_after": 30877,
+      "backlog_after": {},
+      "rate": 99.38331729983217,
+      "cpu": {
+        "n": 22,
+        "mean": 178.9659090909091,
+        "median": 177.28500000000003,
+        "stddev": 35.34124794453439,
+        "min": 112.72,
+        "max": 251.79,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "ram": {
+        "n": 22,
+        "mean": 1658.086409090909,
+        "median": 1660.092,
+        "stddev": 59.68116325438123,
+        "min": 1563.393,
+        "max": 1787.471,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "delivery_latency": {
+        "n": 29815,
+        "mean": 0.28410482102745477,
+        "median": 0.28719210624694824,
+        "stddev": 0.1477021414328475,
+        "min": 0.008853912353515625,
+        "max": 0.7277359962463379,
+        "p95": 0.5099499225616455,
+        "p99": 0.5589189529418945
+      },
+      "nonce_duplicates": 0,
+      "reconnects": 0
+    },
+    {
+      "experiment_id": "static-single-aes-2hz",
+      "project": "lcm-stage10-performance-base",
+      "duration": 60.000051498413086,
+      "provisioned_devices": 3,
+      "active_publishers_observed": 1,
+      "per_device": {
+        "alpha": {
+          "formed": 119,
+          "pg_window": 119,
+          "build_ns": {
+            "n": 119,
+            "mean": 381451.19327731093,
+            "median": 359183,
+            "stddev": 71342.82574947501,
+            "min": 271526,
+            "max": 596543,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 119,
+            "mean": 416,
+            "median": 416,
+            "stddev": 0.0,
+            "min": 416,
+            "max": 416,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "AES-128-GCM"
+          ],
+          "measured_to_received_seconds": {
+            "n": 119,
+            "mean": 0.004027151260504202,
+            "median": 0.002525,
+            "stddev": 0.010281790187097899,
+            "min": 0.002049,
+            "max": 0.088606,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          }
+        }
+      },
+      "scheduled": 120,
+      "formed": 119,
+      "queued": 119,
+      "puback_joined": 119,
+      "pg_window": 119,
+      "source_joined": 119,
+      "source_unmatched_window": 0,
+      "pg_total_after": 3961,
+      "mongo_total_after": 3961,
+      "backlog_after": {},
+      "rate": 1.9833316310261397,
+      "cpu": {
+        "n": 5,
+        "mean": 22.556,
+        "median": 23.16,
+        "stddev": 13.106583460230969,
+        "min": 8.74,
+        "max": 38.16,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "ram": {
+        "n": 5,
+        "mean": 469.9572,
+        "median": 469.322,
+        "stddev": 2.4990370545472125,
+        "min": 467.785,
+        "max": 473.745,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "delivery_latency": {
+        "n": 119,
+        "mean": 0.26557750661833945,
+        "median": 0.28864097595214844,
+        "stddev": 0.15984964300044482,
+        "min": 0.010663986206054688,
+        "max": 0.5682179927825928,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "nonce_duplicates": 0,
+      "reconnects": 0
+    },
+    {
+      "experiment_id": "static-single-ascon-1hz",
+      "project": "lcm-stage10-performance-base",
+      "duration": 60.000067949295044,
+      "provisioned_devices": 3,
+      "active_publishers_observed": 1,
+      "per_device": {
+        "alpha": {
+          "formed": 59,
+          "pg_window": 59,
+          "build_ns": {
+            "n": 59,
+            "mean": 832386.3220338983,
+            "median": 826210,
+            "stddev": 108621.9772412945,
+            "min": 674221,
+            "max": 1238684,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 59,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 59,
+            "mean": 0.004289847457627119,
+            "median": 0.003576,
+            "stddev": 0.003410344869877832,
+            "min": 0.003175,
+            "max": 0.026679,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          }
+        }
+      },
+      "scheduled": 60,
+      "formed": 59,
+      "queued": 59,
+      "puback_joined": 59,
+      "pg_window": 59,
+      "source_joined": 59,
+      "source_unmatched_window": 0,
+      "pg_total_after": 4030,
+      "mongo_total_after": 4030,
+      "backlog_after": {},
+      "rate": 0.9833322197211479,
+      "cpu": {
+        "n": 5,
+        "mean": 25.524,
+        "median": 22.3,
+        "stddev": 15.522371919265431,
+        "min": 5.54,
+        "max": 44.93,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "ram": {
+        "n": 5,
+        "mean": 478.129,
+        "median": 477.363,
+        "stddev": 2.517405906881112,
+        "min": 475.98,
+        "max": 481.866,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "delivery_latency": {
+        "n": 59,
+        "mean": 0.14305009680279232,
+        "median": 0.10958504676818848,
+        "stddev": 0.08670119820706497,
+        "min": 0.0151519775390625,
+        "max": 0.5099709033966064,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "nonce_duplicates": 0,
+      "reconnects": 0
+    },
+    {
+      "experiment_id": "static-single-ascon-2hz",
+      "project": "lcm-stage10-performance-base",
+      "duration": 60.00006914138794,
+      "provisioned_devices": 3,
+      "active_publishers_observed": 1,
+      "per_device": {
+        "alpha": {
+          "formed": 119,
+          "pg_window": 119,
+          "build_ns": {
+            "n": 119,
+            "mean": 834605.1764705882,
+            "median": 811152,
+            "stddev": 139413.29111562116,
+            "min": 676195,
+            "max": 1302515,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 119,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 119,
+            "mean": 0.0034311176470588236,
+            "median": 0.003418,
+            "stddev": 0.0002895043741501048,
+            "min": 0.002937,
+            "max": 0.004607,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          }
+        }
+      },
+      "scheduled": 120,
+      "formed": 119,
+      "queued": 119,
+      "puback_joined": 119,
+      "pg_window": 119,
+      "source_joined": 119,
+      "source_unmatched_window": 0,
+      "pg_total_after": 3823,
+      "mongo_total_after": 3823,
+      "backlog_after": {},
+      "rate": 1.9833310478289767,
+      "cpu": {
+        "n": 5,
+        "mean": 28.61,
+        "median": 31.389999999999997,
+        "stddev": 16.000198436269468,
+        "min": 9.05,
+        "max": 49.129999999999995,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "ram": {
+        "n": 5,
+        "mean": 453.7326,
+        "median": 461.025,
+        "stddev": 13.298242263547456,
+        "min": 431.91,
+        "max": 463.041,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "delivery_latency": {
+        "n": 119,
+        "mean": 0.263836880691913,
+        "median": 0.2701690196990967,
+        "stddev": 0.12953823808408785,
+        "min": 0.014637947082519531,
+        "max": 0.5112648010253906,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "nonce_duplicates": 0,
+      "reconnects": 0
+    },
+    {
+      "experiment_id": "static-single-ascon-halfhz",
+      "project": "lcm-stage10-performance-base",
+      "duration": 60.00006675720215,
+      "provisioned_devices": 3,
+      "active_publishers_observed": 1,
+      "per_device": {
+        "alpha": {
+          "formed": 29,
+          "pg_window": 29,
+          "build_ns": {
+            "n": 29,
+            "mean": 788932.5172413794,
+            "median": 798988,
+            "stddev": 125676.20762971483,
+            "min": 668911,
+            "max": 1325368,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          },
+          "payload_bytes": {
+            "n": 29,
+            "mean": 426,
+            "median": 426,
+            "stddev": 0.0,
+            "min": 426,
+            "max": 426,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          },
+          "profiles": [
+            "Ascon-AEAD128"
+          ],
+          "measured_to_received_seconds": {
+            "n": 29,
+            "mean": 0.0037594137931034484,
+            "median": 0.003488,
+            "stddev": 0.001727398198721364,
+            "min": 0.003104,
+            "max": 0.012671,
+            "p95": "insufficient_samples",
+            "p99": "insufficient_samples"
+          }
+        }
+      },
+      "scheduled": 30,
+      "formed": 29,
+      "queued": 29,
+      "puback_joined": 29,
+      "pg_window": 29,
+      "source_joined": 29,
+      "source_unmatched_window": 0,
+      "pg_total_after": 4063,
+      "mongo_total_after": 4063,
+      "backlog_after": {},
+      "rate": 0.483332795567581,
+      "cpu": {
+        "n": 5,
+        "mean": 20.064,
+        "median": 17.740000000000002,
+        "stddev": 15.44165405647983,
+        "min": 4.29,
+        "max": 45.51,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "ram": {
+        "n": 5,
+        "mean": 480.9674,
+        "median": 480.487,
+        "stddev": 3.885135107045826,
+        "min": 477.505,
+        "max": 487.353,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "delivery_latency": {
+        "n": 29,
+        "mean": 0.20935151494782547,
+        "median": 0.21114897727966309,
+        "stddev": 0.03936887606088973,
+        "min": 0.14838099479675293,
+        "max": 0.28197813034057617,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "nonce_duplicates": 0,
+      "reconnects": 0
+    }
+  ],
+  "micro_per_run": [
+    {
+      "profile": "ascon-aead128-v1",
+      "size": 64,
+      "independent_runs": 3,
+      "mean_encrypt_ns": {
+        "n": 3,
+        "mean": 271448.74066666665,
+        "median": 271085.498,
+        "stddev": 1073.5154205996728,
+        "min": 270603.972,
+        "max": 272656.752,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "mean_decrypt_ns": {
+        "n": 3,
+        "mean": 271774.08266666665,
+        "median": 271804.368,
+        "stddev": 306.2003538311817,
+        "min": 271453.865,
+        "max": 272064.015,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "confidence_interval": "not_estimated: only three independent runs; no packet pseudo-replication"
+    },
+    {
+      "profile": "ascon-aead128-v1",
+      "size": 83,
+      "independent_runs": 3,
+      "mean_encrypt_ns": {
+        "n": 3,
+        "mean": 287919.814,
+        "median": 288243.331,
+        "stddev": 749.8567548665625,
+        "min": 287062.507,
+        "max": 288453.604,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "mean_decrypt_ns": {
+        "n": 3,
+        "mean": 288148.6936666667,
+        "median": 288173,
+        "stddev": 934.728549875492,
+        "min": 287202.049,
+        "max": 289071.032,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "confidence_interval": "not_estimated: only three independent runs; no packet pseudo-replication"
+    },
+    {
+      "profile": "ascon-aead128-v1",
+      "size": 256,
+      "independent_runs": 3,
+      "mean_encrypt_ns": {
+        "n": 3,
+        "mean": 464251.1483333333,
+        "median": 463636.285,
+        "stddev": 3654.9726567492003,
+        "min": 460942.604,
+        "max": 468174.556,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "mean_decrypt_ns": {
+        "n": 3,
+        "mean": 465030.9213333333,
+        "median": 464498.749,
+        "stddev": 3641.457148275161,
+        "min": 461684.833,
+        "max": 468909.182,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "confidence_interval": "not_estimated: only three independent runs; no packet pseudo-replication"
+    },
+    {
+      "profile": "ascon-aead128-v1",
+      "size": 1024,
+      "independent_runs": 3,
+      "mean_encrypt_ns": {
+        "n": 3,
+        "mean": 1241520.591,
+        "median": 1247052.291,
+        "stddev": 11213.805068564126,
+        "min": 1228615.725,
+        "max": 1248893.757,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "mean_decrypt_ns": {
+        "n": 3,
+        "mean": 1238270.9636666665,
+        "median": 1241573.008,
+        "stddev": 9543.788621543681,
+        "min": 1227514.653,
+        "max": 1245725.23,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "confidence_interval": "not_estimated: only three independent runs; no packet pseudo-replication"
+    },
+    {
+      "profile": "aes-128-gcm-v1",
+      "size": 64,
+      "independent_runs": 3,
+      "mean_encrypt_ns": {
+        "n": 3,
+        "mean": 1095.7846666666667,
+        "median": 1080.102,
+        "stddev": 28.321919679522694,
+        "min": 1078.773,
+        "max": 1128.479,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "mean_decrypt_ns": {
+        "n": 3,
+        "mean": 1111.8343333333332,
+        "median": 1098.156,
+        "stddev": 24.610002322903785,
+        "min": 1097.102,
+        "max": 1140.245,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "confidence_interval": "not_estimated: only three independent runs; no packet pseudo-replication"
+    },
+    {
+      "profile": "aes-128-gcm-v1",
+      "size": 83,
+      "independent_runs": 3,
+      "mean_encrypt_ns": {
+        "n": 3,
+        "mean": 1080.3033333333333,
+        "median": 1077.404,
+        "stddev": 6.596559734690026,
+        "min": 1075.653,
+        "max": 1087.853,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "mean_decrypt_ns": {
+        "n": 3,
+        "mean": 1100.9033333333334,
+        "median": 1100.91,
+        "stddev": 0.0802080627701516,
+        "min": 1100.82,
+        "max": 1100.98,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "confidence_interval": "not_estimated: only three independent runs; no packet pseudo-replication"
+    },
+    {
+      "profile": "aes-128-gcm-v1",
+      "size": 256,
+      "independent_runs": 3,
+      "mean_encrypt_ns": {
+        "n": 3,
+        "mean": 1130.7376666666667,
+        "median": 1083.101,
+        "stddev": 86.70806902090095,
+        "min": 1078.291,
+        "max": 1230.821,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "mean_decrypt_ns": {
+        "n": 3,
+        "mean": 1132.846,
+        "median": 1126.373,
+        "stddev": 24.444947105690357,
+        "min": 1112.289,
+        "max": 1159.876,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "confidence_interval": "not_estimated: only three independent runs; no packet pseudo-replication"
+    },
+    {
+      "profile": "aes-128-gcm-v1",
+      "size": 1024,
+      "independent_runs": 3,
+      "mean_encrypt_ns": {
+        "n": 3,
+        "mean": 1171.4543333333334,
+        "median": 1162.023,
+        "stddev": 22.347128167470103,
+        "min": 1155.369,
+        "max": 1196.971,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "mean_decrypt_ns": {
+        "n": 3,
+        "mean": 1195.5676666666666,
+        "median": 1194.363,
+        "stddev": 2.9983557716410867,
+        "min": 1193.359,
+        "max": 1198.981,
+        "p95": "insufficient_samples",
+        "p99": "insufficient_samples"
+      },
+      "confidence_interval": "not_estimated: only three independent runs; no packet pseudo-replication"
+    }
+  ],
+  "limitations": [
+    "One cohort run per load, no capacity extrapolation",
+    "Window boundary mismatches are not proven losses",
+    "Post-drain Mongo and PG totals, not publish() counts",
+    "Resource samples are correlated; no independent-run confidence interval"
+  ]
+}

@@ -9,6 +9,20 @@ admission/replay/Outbox, MongoDB history, Flask dashboard, durable HMAC control,
 network IDS и автоматического выбора алгоритма по ML. Профили не ранжируются по
 условной «силе»; physical Raspberry Pi/production deployment ещё не проверены.
 
+## Проверка производительности — этап 10
+
+Изолированные software-стенды 3/10/25/50 устройств, реальные MQTT/TLS/PG/Mongo
+измерения и recovery: [результаты](docs/STAGE10_RESULTS.md),
+[запуск и методика](docs/STAGE10_LOAD_TEST_PLAN.md),
+[узкие места](docs/STAGE10_BOTTLENECK_ANALYSIS.md).
+На 50 устройствах проверен telemetry path около 99,38 сообщения/с за 5 минут;
+это не максимальная вместимость: Policy при 25×2 Гц уже отстаёт.
+Итоговая регрессия — 739 passed, 0 skipped; это не доказательство качества IDS.
+
+[Проект интеграции ГОСТ](docs/RUSSIAN_CRYPTO_INTEGRATION_DESIGN.md) и
+[план сравнения реализаций](docs/CRYPTO_PROFILE_COMPARATIVE_EXPERIMENT_PLAN.md)
+подготовлены для этапа 11. Кузнечик/Магма не включены в рабочие профили.
+
 ## Локальная демонстрация
 
 ```bash

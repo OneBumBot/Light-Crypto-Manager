@@ -1,0 +1,25 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_database_failure_during_identity_load_returns_unavailable ________
+tests/test_monitoring.py:141: in test_database_failure_during_identity_load_returns_unavailable
+    assert 'Актуальные права доступа проверить невозможно' in response.get_data(as_text=True)
+E   assert 'Актуальные права доступа проверить невозможно' in '{"error":"\\u0417\\u0430\\u043f\\u0440\\u043e\\u0441 \\u043e\\u0442\\u043a\\u043b\\u043e\\u043d\\u0451\\u043d"}\n'
+E    +  where '{"error":"\\u0417\\u0430\\u043f\\u0440\\u043e\\u0441 \\u043e\\u0442\\u043a\\u043b\\u043e\\u043d\\u0451\\u043d"}\n' = get_data(as_text=True)
+E    +    where get_data = <WrapperTestResponse 98 bytes [503 SERVICE UNAVAILABLE]>.get_data
+------------------------------ Captured log call -------------------------------
+WARNING  src.web.app:app.py:73 Authentication database temporarily unavailable
+=============================== warnings summary ===============================
+../usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:487
+  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:487: PytestCacheWarning: could not create cache path /app/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/app/pytest-cache-files-_by1wz0h'
+    config.cache.set("cache/nodeids", sorted(str(n) for n in self.cached_nodeids))
+
+../usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:439
+  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:439: PytestCacheWarning: could not create cache path /app/.pytest_cache/v/cache/lastfailed: [Errno 13] Permission denied: '/app/pytest-cache-files-dyqe6y7g'
+    config.cache.set("cache/lastfailed", current_lastfailed)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_monitoring.py::test_database_failure_during_identity_load_returns_unavailable
+1 failed, 2 warnings in 0.50s
+ Container lcm-stage10-performance-small-tests-run-b598b9e0908b Creating
+ Container lcm-stage10-performance-small-tests-run-b598b9e0908b Created

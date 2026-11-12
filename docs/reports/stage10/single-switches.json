@@ -1,0 +1,218 @@
+[
+  {
+    "device": "alpha",
+    "target": "aes-128-gcm-v1",
+    "transition_id": "a61511f1-5216-402c-9c63-db6b4863ab13",
+    "request_started_at": "2026-11-12T11:49:51.986924+00:00",
+    "http_202_seconds": 0.011432886123657227,
+    "observed_effective_seconds": 1.0485501289367676,
+    "transition": {
+      "acknowledged_at": "2026-11-12T11:49:52.193689+00:00",
+      "activated_at": "2026-11-12T11:49:52.111662+00:00",
+      "actor": "admin:1",
+      "confirmed_at": "2026-11-12T11:49:52.465126+00:00",
+      "correlation_id": "26de83de-3193-4314-8313-d62e6511f007",
+      "created_at": "2026-11-12T11:49:51.991608+00:00",
+      "deadline": "2026-11-12T11:51:51.991608+00:00",
+      "device_id": "alpha",
+      "error": null,
+      "id": "a61511f1-5216-402c-9c63-db6b4863ab13",
+      "old_profile": "ascon-aead128-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "target_profile": "aes-128-gcm-v1",
+      "telemetry_event": "b26fdd42-2353-4bda-971a-996b648f1cb9"
+    },
+    "audit": [
+      {
+        "action": "EFFECTIVE_CONFIRMED",
+        "at": "2026-11-12T11:49:52.468541+00:00",
+        "device_id": "alpha",
+        "id": "398db30c-7701-4c59-a9fb-19854c7e5add",
+        "transition_id": "a61511f1-5216-402c-9c63-db6b4863ab13"
+      },
+      {
+        "action": "DEVICE_REPORTED_APPLIED",
+        "at": "2026-11-12T11:49:52.196249+00:00",
+        "device_id": "alpha",
+        "id": "4cda3b60-3832-4566-9272-788c258a4b34",
+        "transition_id": "a61511f1-5216-402c-9c63-db6b4863ab13"
+      },
+      {
+        "action": "BROKER_PUBACK",
+        "at": "2026-11-12T11:49:52.152376+00:00",
+        "device_id": "alpha",
+        "id": "a5458f81-590f-47d2-9a5c-d4ccc56a4dd9",
+        "transition_id": "a61511f1-5216-402c-9c63-db6b4863ab13"
+      },
+      {
+        "action": "DEVICE_READY",
+        "at": "2026-11-12T11:49:52.114731+00:00",
+        "device_id": "alpha",
+        "id": "e729a5de-5d14-4347-98cb-4679170f462e",
+        "transition_id": "a61511f1-5216-402c-9c63-db6b4863ab13"
+      },
+      {
+        "action": "BROKER_PUBACK",
+        "at": "2026-11-12T11:49:52.070770+00:00",
+        "device_id": "alpha",
+        "id": "013119cb-2a3e-4d04-9193-6034af196818",
+        "transition_id": "a61511f1-5216-402c-9c63-db6b4863ab13"
+      },
+      {
+        "action": "PREPARED_SERVER",
+        "at": "2026-11-12T11:49:51.995965+00:00",
+        "device_id": "alpha",
+        "id": "cb9bd208-e31f-42fe-aa37-2aa8cafad0d2",
+        "transition_id": "a61511f1-5216-402c-9c63-db6b4863ab13"
+      }
+    ],
+    "commands": [
+      {
+        "attempts": 1,
+        "device_id": "alpha",
+        "expires_at": "2026-11-12T11:51:51.991608+00:00",
+        "id": "fb701bc1-19a3-441f-92ae-1f7f97de8f50",
+        "phase": "ACTIVATE",
+        "sequence": 6,
+        "status": "verified",
+        "transition_id": "a61511f1-5216-402c-9c63-db6b4863ab13"
+      },
+      {
+        "attempts": 1,
+        "device_id": "alpha",
+        "expires_at": "2026-11-12T11:51:51.991608+00:00",
+        "id": "86a6b0d3-1721-4de2-8ee8-3da2da2d5e6c",
+        "phase": "PREPARE",
+        "sequence": 5,
+        "status": "acknowledged",
+        "transition_id": "a61511f1-5216-402c-9c63-db6b4863ab13"
+      }
+    ],
+    "acks": [
+      {
+        "command_id": "fb701bc1-19a3-441f-92ae-1f7f97de8f50",
+        "device_id": "alpha",
+        "id": "ba7f7ebb-455b-4e56-ba2a-4ab3bb1db3e7",
+        "phase": "ACTIVATE",
+        "received_at": "2026-11-12T11:49:52.193689+00:00",
+        "result": "DEVICE_APPLIED"
+      },
+      {
+        "command_id": "86a6b0d3-1721-4de2-8ee8-3da2da2d5e6c",
+        "device_id": "alpha",
+        "id": "5c443928-e8ed-444d-9432-b51e494603f2",
+        "phase": "PREPARE",
+        "received_at": "2026-11-12T11:49:52.111662+00:00",
+        "result": "READY"
+      }
+    ]
+  },
+  {
+    "device": "alpha",
+    "target": "ascon-aead128-v1",
+    "transition_id": "953e85c8-de56-4f75-9e46-da5c1666d37d",
+    "request_started_at": "2026-11-12T11:51:24.446801+00:00",
+    "http_202_seconds": 0.00793910026550293,
+    "observed_effective_seconds": 1.0439305305480957,
+    "transition": {
+      "acknowledged_at": "2026-11-12T11:51:24.670483+00:00",
+      "activated_at": "2026-11-12T11:51:24.586821+00:00",
+      "actor": "admin:1",
+      "confirmed_at": "2026-11-12T11:51:24.940093+00:00",
+      "correlation_id": "11bc6cf4-d698-4dc5-8fd6-ca9fc6fe2112",
+      "created_at": "2026-11-12T11:51:24.450583+00:00",
+      "deadline": "2026-11-12T11:53:24.450583+00:00",
+      "device_id": "alpha",
+      "error": null,
+      "id": "953e85c8-de56-4f75-9e46-da5c1666d37d",
+      "old_profile": "aes-128-gcm-v1",
+      "phase": "EFFECTIVE_CONFIRMED",
+      "target_profile": "ascon-aead128-v1",
+      "telemetry_event": "b7bbc1d0-9da7-4510-a4e3-474a6a215d65"
+    },
+    "audit": [
+      {
+        "action": "EFFECTIVE_CONFIRMED",
+        "at": "2026-11-12T11:51:24.941377+00:00",
+        "device_id": "alpha",
+        "id": "a950c654-9137-4b2b-b7ed-c23ce870d01e",
+        "transition_id": "953e85c8-de56-4f75-9e46-da5c1666d37d"
+      },
+      {
+        "action": "DEVICE_REPORTED_APPLIED",
+        "at": "2026-11-12T11:51:24.671822+00:00",
+        "device_id": "alpha",
+        "id": "9cb6157a-cdc2-4d93-89d7-bd35dc291cd7",
+        "transition_id": "953e85c8-de56-4f75-9e46-da5c1666d37d"
+      },
+      {
+        "action": "BROKER_PUBACK",
+        "at": "2026-11-12T11:51:24.628242+00:00",
+        "device_id": "alpha",
+        "id": "7c2e0f0e-1d58-44fb-b46c-b2f225cd5a02",
+        "transition_id": "953e85c8-de56-4f75-9e46-da5c1666d37d"
+      },
+      {
+        "action": "DEVICE_READY",
+        "at": "2026-11-12T11:51:24.588755+00:00",
+        "device_id": "alpha",
+        "id": "3939cf34-c5d8-4c49-9f15-147e2fbb3626",
+        "transition_id": "953e85c8-de56-4f75-9e46-da5c1666d37d"
+      },
+      {
+        "action": "BROKER_PUBACK",
+        "at": "2026-11-12T11:51:24.545787+00:00",
+        "device_id": "alpha",
+        "id": "5e0a2ebf-7323-4b9e-a9eb-3b6a1288bf0a",
+        "transition_id": "953e85c8-de56-4f75-9e46-da5c1666d37d"
+      },
+      {
+        "action": "PREPARED_SERVER",
+        "at": "2026-11-12T11:51:24.452634+00:00",
+        "device_id": "alpha",
+        "id": "3b3a61c9-c948-4d80-bb83-94d83271d7fe",
+        "transition_id": "953e85c8-de56-4f75-9e46-da5c1666d37d"
+      }
+    ],
+    "commands": [
+      {
+        "attempts": 1,
+        "device_id": "alpha",
+        "expires_at": "2026-11-12T11:53:24.450583+00:00",
+        "id": "93f6dc6b-b333-4d3c-9aac-15c46504b13f",
+        "phase": "ACTIVATE",
+        "sequence": 8,
+        "status": "verified",
+        "transition_id": "953e85c8-de56-4f75-9e46-da5c1666d37d"
+      },
+      {
+        "attempts": 1,
+        "device_id": "alpha",
+        "expires_at": "2026-11-12T11:53:24.450583+00:00",
+        "id": "05bf7b26-1fe3-443c-839e-9a74c29979ec",
+        "phase": "PREPARE",
+        "sequence": 7,
+        "status": "acknowledged",
+        "transition_id": "953e85c8-de56-4f75-9e46-da5c1666d37d"
+      }
+    ],
+    "acks": [
+      {
+        "command_id": "93f6dc6b-b333-4d3c-9aac-15c46504b13f",
+        "device_id": "alpha",
+        "id": "9702dbbb-d8c8-4bf2-9d63-9f679acf6434",
+        "phase": "ACTIVATE",
+        "received_at": "2026-11-12T11:51:24.670483+00:00",
+        "result": "DEVICE_APPLIED"
+      },
+      {
+        "command_id": "05bf7b26-1fe3-443c-839e-9a74c29979ec",
+        "device_id": "alpha",
+        "id": "56d14d30-cd56-40ef-bbae-fa329c84794a",
+        "phase": "PREPARE",
+        "received_at": "2026-11-12T11:51:24.586821+00:00",
+        "result": "READY"
+      }
+    ]
+  }
+]
