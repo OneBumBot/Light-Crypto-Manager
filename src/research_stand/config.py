@@ -11,6 +11,8 @@ VIOLATIONS = [
     "tampered",
     "bounded_rate",
     "pattern_change",
+    "wrong_epoch",
+    "wrong_sequence",
 ]
 
 

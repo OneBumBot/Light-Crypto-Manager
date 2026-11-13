@@ -23,7 +23,7 @@ def main():
  add('preprocessing_fit_on_full_data',ex,'sub=frame.iloc[indices]','sub=frame','test_research75.py::test_schema_nonfinite_types_and_missing_imputed_on_train_only')
  add('holdout_labels_enter_fit',ex,'sub=frame.iloc[indices]','sub=frame.iloc[list(range(len(frame)//2,len(frame)))+list(indices)]','test_research75.py::test_balancing_is_train_only_and_provenance_cannot_be_predictive')
  add('threshold_selected_on_holdout',ex,"validation=frame.iloc[val_idx]","validation=frame.iloc[p['split']['indices'][2]]",'test_stage14.py::test_validation_selection_cannot_read_holdout')
- add('repeat_final_test_allowed',ex,'os.O_WRONLY|os.O_CREAT|os.O_EXCL','os.O_WRONLY|os.O_CREAT','test_research75.py::test_freeze_artifacts_once_only_test_and_offline_inference')
+ add('repeat_final_test_allowed',ex,"fd=os.open(folder/'final-test-started',os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)","fd=os.open(folder/'final-test-started',os.O_WRONLY|os.O_CREAT,0o600)",'test_research75.py::test_freeze_artifacts_once_only_test_and_offline_inference')
  add('oversampling_before_split',ex,'split=source_split(frame,source,config)','frame=frame.loc[frame.index.repeat(2)].reset_index(drop=True);split=source_split(frame,source,config)','test_stage14.py::test_no_oversampling_or_fit_before_group_split')
  cases.append(dict(name='frozen_configuration_integrity_checks_disabled',edits=[(ex,"if canonical_hash(p)!=digest:","if False:"),(ex,"if canonical_hash(p['config'])!=p['config_sha256']:","if False:"),(ex,"if actual!=p['split']:","if False:")],test='test_stage14.py::test_changed_frozen_configuration_cannot_reach_fit'))
  add('unknown_rows_removed_from_audit','src/research_stand/dataset_v2.py','frame = pd.DataFrame(data)','frame = pd.DataFrame(data); frame=frame.loc[frame.ground_truth!="unknown"]','test_ground_truth_hardening.py::test_public_pipeline_positive_mixed_and_unknown')
@@ -35,6 +35,7 @@ def main():
  add('observer_loss_not_quarantined',collect," or not observer.get('completed')",'', 'test_stage14.py::test_source_loss_and_partial_data_cannot_be_complete[observer_lost]')
  add('partial_capture_called_complete',collect," if cap['started_at']>truth['experiment_started_at'] or cap['finished_at']<truth['experiment_finished_at']:raise ValueError('Partial capture does not cover generator lifecycle')",'', 'test_stage14.py::test_source_loss_and_partial_data_cannot_be_complete[partial_capture]')
  add('early_generator_called_complete',collect," if truth['experiment_finished_at']-truth['experiment_started_at']<truth['experiment']['duration']-.05:raise ValueError('Generator stopped before planned duration')",'', 'test_stage14.py::test_source_loss_and_partial_data_cannot_be_complete[early_generator]')
+ add('dataset_holdout_reopened_in_new_directory',ex,"if source.get('dataset_version')=='stage14-lightcrypto-lab-v1':\n        global_fd=os.open","if False:\n        global_fd=os.open",'test_stage14.py::test_stage14_holdout_cannot_be_reopened_via_new_experiment_directory')
  pre=subprocess.run([python,'-m','pytest','-q','--noconftest','tests/test_stage14.py','tests/test_ground_truth_hardening.py','tests/test_research75.py'],capture_output=True,text=True,timeout=90)
  if pre.returncode:raise RuntimeError('Unmutated baseline failed:'+pre.stdout[-1500:]+pre.stderr[-200:])
  results=[]

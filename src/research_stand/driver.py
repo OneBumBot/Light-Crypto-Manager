@@ -226,10 +226,18 @@ def run(config, root):
                     payload, seq = packet, packet_sequence
                 else:
                     payload, seq = make_packet()
-                if actor and config.scenario == "tampered":
-                    raw = bytearray(base64.b64decode(payload["ciphertext"]))
-                    raw[-1] ^= 1
-                    payload["ciphertext"] = base64.b64encode(raw).decode()
+                if actor and config.scenario in {"tampered","wrong_epoch","wrong_sequence"}:
+                    if config.scenario == "tampered":
+                        raw = bytearray(base64.b64decode(payload["ciphertext"]))
+                        raw[-1] ^= 1
+                        payload["ciphertext"] = base64.b64encode(raw).decode()
+                    else:
+                        # Deliberate metadata forgery of one already-formed packet;
+                        # never a second encryption with the same nonce.
+                        ad = json.loads(base64.b64decode(payload["associated_data"]))
+                        field = "key_epoch" if config.scenario == "wrong_epoch" else "sequence_number"
+                        ad[field] += 1
+                        payload["associated_data"] = base64.b64encode(json.dumps(ad,sort_keys=True,separators=(",",":")).encode()).decode()
                     try:
                         decode_packet(
                             payload if isinstance(payload, bytes) else json.dumps(payload).encode(),

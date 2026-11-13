@@ -278,3 +278,24 @@ def test_ablation_never_accepts_identifiers_or_malformed_columns(columns):
  with pytest.raises(ValueError,match='ablation'):FeatureSubset(columns).transform(f)
  config=settings();config['candidates'][0]['features']=columns
  with pytest.raises(ValueError,match='passive features'):config_checked(config)
+
+
+def test_stage14_holdout_cannot_be_reopened_via_new_experiment_directory(tmp_path,monkeypatch):
+ """No real holdout/model: isolate lifecycle guard using an empty synthetic evaluator."""
+ import pandas as pd
+ from src.classifier.research import experiment as ex
+ from src.classifier.research.datasets import canonical_hash
+ data=tmp_path/'dataset.csv';data.write_text('synthetic guard fixture only');manifest=tmp_path/'manifest.json';manifest.write_text('{}');plan=dict(plan_sha256='fixture-plan',config={'seed':75},split={'indices':[[],[],[]]});source=dict(dataset_version='stage14-lightcrypto-lab-v1',schema_version=1,synthetic=True)
+ monkeypatch.setattr(ex,'checked_plan',lambda *args:(pd.DataFrame(),source,plan))
+ for name in ['experiment-one','experiment-two']:
+  folder=tmp_path/name;folder.mkdir();freeze=dict(plan_sha256='fixture-plan',models=[]);freeze['sha256']=canonical_hash(freeze);(folder/'freeze.json').write_text(json.dumps(freeze))
+ ex.final_test(data,manifest,'unused',tmp_path/'no-models',tmp_path/'experiment-one')
+ with pytest.raises(FileExistsError):ex.final_test(data,manifest,'unused',tmp_path/'no-models',tmp_path/'experiment-two')
+
+
+def test_consumed_stage14_holdout_prevents_new_plan_or_train(tmp_path):
+ from src.classifier.research import experiment as ex
+ data=tmp_path/'data.csv';data.write_text('fixture');manifest=tmp_path/'manifest.json';manifest.write_text(json.dumps({'dataset_version':'stage14-lightcrypto-lab-v1'}));(tmp_path/'stage14-holdout-started').write_text('already-used')
+ with pytest.raises(ValueError,match='already consumed'):ex.plan(data,manifest,{},tmp_path/'new-plan')
+ with pytest.raises(ValueError,match='already consumed'):ex.train(data,manifest,'missing-plan',tmp_path/'models',tmp_path/'new-experiment')
+ assert not (tmp_path/'new-plan').exists() and not (tmp_path/'models').exists()
