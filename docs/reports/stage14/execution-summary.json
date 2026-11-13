@@ -1,0 +1,103 @@
+{
+  "initial_branch": "feature/policy-engine-throughput-hardening",
+  "baseline_sha": "21a99bbc6669ca440a1b174e1285a24ac7b323c2",
+  "branch": "feature/rf-if-ground-truth-validation",
+  "method_sha": "20a6babeebf6a9f11494d40b22a9c41e51585075",
+  "hardened_code_sha": "29dba069cef375d9800a4785e4ec966b472e8cea",
+  "commands": [
+    {
+      "stage": "baseline",
+      "command": ".venv/bin/python -m scripts.stage14_lab baseline --directory .local-runtime/stage14/baseline --build --output docs/reports/stage14/baseline-pytest.txt",
+      "exit_code": 0
+    },
+    {
+      "stage": "primary",
+      "command": ".venv/bin/python -m scripts.stage14_primary",
+      "exit_code": 0
+    },
+    {
+      "stage": "gate",
+      "command": ".venv/bin/python -m scripts.stage14_gate",
+      "exit_code": 0
+    },
+    {
+      "stage": "train",
+      "command": "timeout 1200 .venv/bin/python -m scripts.stage14_study train",
+      "exit_code": 0
+    },
+    {
+      "stage": "single_test",
+      "command": "timeout 1200 .venv/bin/python -m scripts.stage14_study test",
+      "exit_code": 0
+    },
+    {
+      "stage": "analysis",
+      "command": ".venv/bin/python -m scripts.stage14_analyze",
+      "exit_code": 0
+    },
+    {
+      "stage": "contrast",
+      "command": ".venv/bin/python -m scripts.stage14_contrast",
+      "exit_code": 0
+    },
+    {
+      "stage": "faults",
+      "command": ".venv/bin/python -m scripts.stage14_faults",
+      "exit_code": 0
+    },
+    {
+      "stage": "mutations",
+      "command": ".venv/bin/python -m scripts.stage14_mutations --output docs/reports/stage14/mutations-verified.json",
+      "exit_code": 0
+    },
+    {
+      "stage": "full_regression",
+      "command": ".venv/bin/python -m scripts.stage14_lab baseline --directory .local-runtime/stage14/regression --build --output docs/reports/stage14/full-regression.txt",
+      "exit_code": 0
+    },
+    {
+      "stage": "preservation",
+      "command": ".venv/bin/python -m scripts.stage14_preservation after --before docs/reports/stage14/preservation-before.json --output docs/reports/stage14/preservation-after.json",
+      "exit_code": 0
+    },
+    {
+      "stage": "security",
+      "command": ".venv/bin/python -m scripts.stage14_security_audit --output docs/reports/stage14/security-release.json",
+      "exit_code": 0
+    }
+  ],
+  "docker_commands": "Exact argv and actual exit codes in per-block acquisition and full-regression.commands.json",
+  "baseline": {
+    "passed": 922,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  "full_regression": {
+    "passed": 967,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  "primary_captures": 60,
+  "pilot_captures_excluded": 9,
+  "matched_blocks": 30,
+  "physical_hosts": 1,
+  "quality_gate": "PASS",
+  "scientific_holdout_evaluations": 1,
+  "models_fit": 23,
+  "post_test_refit": false,
+  "post_test_quantitative_shortcut_audit": true,
+  "post_test_lifecycle_guard_fix": true,
+  "external_domain_validation": "not_performed",
+  "policy_mode": "DRY_RUN",
+  "trusted_detector": false,
+  "automatic_crypto_control": false,
+  "next_stage_started": false,
+  "limitations": [
+    "single-host conditional group independence",
+    "5 positive holdout sessions",
+    "fingerprint purge changes population",
+    "quantitative shortcut audit completed after test, no retuning",
+    "dataset-wide once-only guard added after original test"
+  ],
+  "exit_code": 0
+}

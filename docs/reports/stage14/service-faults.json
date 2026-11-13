@@ -1,0 +1,489 @@
+{
+  "project": "lcm-stage14-ground-truth-pilot",
+  "records": [
+    {
+      "case": "postgres",
+      "status": "quarantined",
+      "diagnostic": "RuntimeError:Compose operation failed: ('exec', '-T', 'postgres'); exit=1; inspect private logs",
+      "started_at": "2026-11-13T11:04:20.121213+00:00",
+      "finished_at": "2026-11-13T11:04:30.040402+00:00",
+      "duration_seconds": 9.91919207572937,
+      "measurements": {},
+      "docker_oom_events": 0,
+      "raw_preserved_files": [
+        "capture.json",
+        "driver.pid",
+        "ground-truth.json",
+        "mqtt-observer.json",
+        "observer.pid",
+        "stop-capture",
+        "stop-observer",
+        "traffic.pcap"
+      ],
+      "outbox_pending_after_restore": 0,
+      "mongo_records_after_restore": 940,
+      "scientific_dataset_member": false
+    },
+    {
+      "case": "mongo",
+      "status": "quarantined",
+      "diagnostic": "RuntimeError:Compose operation failed: ('exec', '-T', 'mongo'); exit=1; inspect private logs",
+      "started_at": "2026-11-13T11:04:30.279378+00:00",
+      "finished_at": "2026-11-13T11:04:42.205358+00:00",
+      "duration_seconds": 11.925983905792236,
+      "measurements": {},
+      "docker_oom_events": 0,
+      "raw_preserved_files": [
+        "capture.json",
+        "driver.pid",
+        "ground-truth.json",
+        "mqtt-observer.json",
+        "observer.pid",
+        "stop-capture",
+        "stop-observer",
+        "traffic.pcap"
+      ],
+      "outbox_pending_after_restore": 0,
+      "mongo_records_after_restore": 960,
+      "scientific_dataset_member": false
+    },
+    {
+      "case": "broker_logging",
+      "status": "quarantined",
+      "diagnostic": "ValueError:Missing broker session evidence",
+      "started_at": "2026-11-13T11:04:47.451528+00:00",
+      "finished_at": "2026-11-13T11:05:04.243441+00:00",
+      "duration_seconds": 16.79191541671753,
+      "measurements": {},
+      "docker_oom_events": 0,
+      "raw_preserved_files": [
+        "capture.json",
+        "driver.pid",
+        "extractor.json",
+        "ground-truth.json",
+        "headers.csv",
+        "mqtt-observer.json",
+        "observer.pid",
+        "stop-capture",
+        "stop-observer",
+        "traffic.pcap",
+        "broker-events.json",
+        "broker-evidence.json",
+        "core.json"
+      ],
+      "outbox_pending_after_restore": 0,
+      "mongo_records_after_restore": 1013,
+      "scientific_dataset_member": false
+    },
+    {
+      "case": "receiver_restart",
+      "status": "complete",
+      "diagnostic": null,
+      "started_at": "2026-11-13T11:05:04.476975+00:00",
+      "finished_at": "2026-11-13T11:05:17.241587+00:00",
+      "duration_seconds": 12.76461386680603,
+      "measurements": {},
+      "docker_oom_events": 0,
+      "raw_preserved_files": [
+        "capture.json",
+        "driver.pid",
+        "extractor.json",
+        "ground-truth.json",
+        "headers.csv",
+        "mqtt-observer.json",
+        "observer.pid",
+        "stop-capture",
+        "stop-observer",
+        "traffic.pcap",
+        "broker-events.json",
+        "broker-evidence.json",
+        "core.json"
+      ],
+      "outbox_pending_after_restore": 0,
+      "mongo_records_after_restore": 1066,
+      "scientific_dataset_member": false
+    },
+    {
+      "case": "tight_disk_watchdog",
+      "status": "quarantined",
+      "diagnostic": "RuntimeError:Compose operation failed: ('exec', '-T', 'lab-devices'); exit=1; inspect private logs",
+      "started_at": "2026-11-13T11:05:17.479086+00:00",
+      "finished_at": "2026-11-13T11:05:21.477397+00:00",
+      "duration_seconds": 3.9983129501342773,
+      "measurements": {
+        "observed_research_bytes": 3035136,
+        "intentionally_tightened_test_limit": 1,
+        "actual_disk_full": false
+      },
+      "docker_oom_events": 0,
+      "raw_preserved_files": [
+        "capture.json",
+        "driver.pid",
+        "mqtt-observer.json",
+        "observer.pid",
+        "stop-capture",
+        "stop-observer",
+        "traffic.pcap"
+      ],
+      "outbox_pending_after_restore": 0,
+      "mongo_records_after_restore": 1074,
+      "scientific_dataset_member": false
+    },
+    {
+      "case": "memory_cap",
+      "status": "quarantined",
+      "diagnostic": "RuntimeError:Compose operation failed: ('exec', '-T', 'traffic-collector'); exit=137; inspect private logs",
+      "started_at": "2026-11-13T11:05:21.725827+00:00",
+      "finished_at": "2026-11-13T11:05:34.001705+00:00",
+      "duration_seconds": 12.27588152885437,
+      "measurements": {},
+      "docker_oom_events": 1,
+      "raw_preserved_files": [
+        "capture.json",
+        "driver.pid",
+        "ground-truth.json",
+        "headers.csv",
+        "mqtt-observer.json",
+        "observer.pid",
+        "stop-capture",
+        "stop-observer",
+        "traffic.pcap"
+      ],
+      "outbox_pending_after_restore": 0,
+      "mongo_records_after_restore": 1170,
+      "scientific_dataset_member": false
+    },
+    {
+      "case": "cpu_watchdog",
+      "status": "quarantined",
+      "diagnostic": "RuntimeError:Collector failed during cleanup",
+      "started_at": "2026-11-13T11:05:34.270775+00:00",
+      "finished_at": "2026-11-13T11:05:49.252179+00:00",
+      "duration_seconds": 14.981406211853027,
+      "measurements": {},
+      "docker_oom_events": 0,
+      "raw_preserved_files": [
+        "mqtt-observer.json",
+        "observer.pid",
+        "stop-capture",
+        "stop-observer"
+      ],
+      "outbox_pending_after_restore": 0,
+      "mongo_records_after_restore": 1170,
+      "scientific_dataset_member": false
+    }
+  ],
+  "all_original_volumes_retained": true,
+  "raw_sources_not_deleted": true,
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "ps",
+        "-q",
+        "traffic-collector"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "stop",
+        "postgres"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "postgres"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "ps",
+        "-q",
+        "traffic-collector"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "stop",
+        "mongo"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "mongo"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "ps",
+        "-q",
+        "traffic-collector"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "up",
+        "-d",
+        "--no-deps",
+        "--force-recreate",
+        "--wait",
+        "broker"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "ps",
+        "-q",
+        "traffic-collector"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "restart",
+        "receiver"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "ps",
+        "-q",
+        "traffic-collector"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "ps",
+        "-q",
+        "traffic-collector"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "up",
+        "-d",
+        "--no-deps",
+        "--force-recreate",
+        "traffic-collector"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "ps",
+        "-q",
+        "traffic-collector"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/pilot/stage14.compose.json",
+        "--profile",
+        "research",
+        "up",
+        "-d",
+        "--no-deps",
+        "--force-recreate",
+        "traffic-collector"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,11 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_stage14.py::test_stage14_holdout_cannot_be_reopened_via_new_experiment_directory"
+  ],
+  "exit_code": 1,
+  "scope": "Synthetic lifecycle fixture; main scientific holdout not accessed"
+}

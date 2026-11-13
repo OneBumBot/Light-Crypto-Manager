@@ -1,0 +1,171 @@
+{
+  "real_pilot_sources": true,
+  "deliberate_private_copies_not_independent_experiments": true,
+  "original_sources_unchanged": true,
+  "cases": [
+    {
+      "case": "normal_to_violation",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: ground_truth"
+    },
+    {
+      "case": "violation_to_normal",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: ground_truth"
+    },
+    {
+      "case": "unknown_to_normal",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: ground_truth"
+    },
+    {
+      "case": "unknown_to_violation",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: ground_truth"
+    },
+    {
+      "case": "session",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: session_id"
+    },
+    {
+      "case": "connection",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: connection_id"
+    },
+    {
+      "case": "time",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Saved timestamp mismatch"
+    },
+    {
+      "case": "reason",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: label_reason"
+    },
+    {
+      "case": "capture",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: capture_id"
+    },
+    {
+      "case": "source_hash",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: source_pcap_sha256"
+    },
+    {
+      "case": "packet_scope",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: label_unit"
+    },
+    {
+      "case": "drop_unknown",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Missing/extra observation"
+    },
+    {
+      "case": "qos1_promoted",
+      "coherent_derived_hashes": true,
+      "rejected": true,
+      "diagnostic": "Logical reconciliation mismatch: ground_truth"
+    },
+    {
+      "case": "missing_pcap",
+      "rejected": true,
+      "diagnostic": "FileNotFoundError:[Errno 2] No such file or directory: '.local-runtime/stage14/negative-copies/missing_pcap/pilot-00/traffic.pcap'"
+    },
+    {
+      "case": "truncated_pcap",
+      "rejected": true,
+      "diagnostic": "ValueError:Unsupported Ethernet frame"
+    },
+    {
+      "case": "pcap_hash",
+      "rejected": true,
+      "diagnostic": "ValueError:Source capture/header hash mismatch"
+    },
+    {
+      "case": "missing_broker",
+      "rejected": true,
+      "diagnostic": "FileNotFoundError:[Errno 2] No such file or directory: '.local-runtime/stage14/negative-copies/missing_broker/pilot-00/broker-evidence.json'"
+    },
+    {
+      "case": "missing_observer",
+      "rejected": true,
+      "diagnostic": "FileNotFoundError:[Errno 2] No such file or directory: '.local-runtime/stage14/negative-copies/missing_observer/pilot-00/mqtt-observer.json'"
+    },
+    {
+      "case": "clock_drift",
+      "rejected": true,
+      "diagnostic": "ValueError:Clock drift exceeds declared boundary guard"
+    },
+    {
+      "case": "nonfinite_clock",
+      "rejected": true,
+      "diagnostic": "ValueError:Nonfinite evidence number"
+    },
+    {
+      "case": "missing_tls_close",
+      "rejected": true,
+      "diagnostic": "ValueError:Incomplete generator"
+    },
+    {
+      "case": "ambiguous_broker_session",
+      "rejected": true,
+      "mechanism": "ambiguous sessions remain unknown"
+    },
+    {
+      "case": "wrong_digest",
+      "rejected": true,
+      "mechanism": "contradictory activity remains unverified/unknown"
+    },
+    {
+      "case": "wrong_epoch",
+      "rejected": true,
+      "mechanism": "contradictory activity remains unverified/unknown"
+    },
+    {
+      "case": "wrong_sequence",
+      "rejected": true,
+      "mechanism": "contradictory activity remains unverified/unknown"
+    },
+    {
+      "case": "missing_prior",
+      "rejected": true,
+      "mechanism": "contradictory activity remains unverified/unknown"
+    },
+    {
+      "case": "late_prior",
+      "rejected": true,
+      "mechanism": "contradictory activity remains unverified/unknown"
+    },
+    {
+      "case": "acl_outside_window",
+      "rejected": true,
+      "mechanism": "contradictory activity remains unverified/unknown"
+    },
+    {
+      "case": "fake_intent",
+      "rejected": true,
+      "mechanism": "contradictory activity remains unverified/unknown"
+    },
+    {
+      "case": "duplicate_physical_pcap_new_id",
+      "rejected": true,
+      "diagnostic": "Duplicate source PCAP cannot create independent captures"
+    }
+  ],
+  "exit_code": 0
+}

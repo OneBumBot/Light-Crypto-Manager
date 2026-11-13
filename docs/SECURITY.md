@@ -1,3 +1,9 @@
+# Stage14 security and data provenance
+
+Research-only offline models, trusted_detector=false, Policy DRY_RUN, MANUAL_AUTHORIZED_CONTROL unchanged. No new live crypto profiles or model registry installation. Stage14 uses fresh private Ascon identities/TLS/volumes; existing Ascon/AES/Kuz/control/Policy machinery unchanged. Unexpected witness disconnect now invalidates capture. Independent source checks require physical PCAP, timed broker/witness/PG proof; absence/ambiguity remains unknown. Dataset-scoped final-test guard refuses repeated evaluation/new train after consumption, with explicit post-evaluation migration record. File guards are not adversarial attestation against storage owner.
+
+Private PCAP/CSV/joblib/credentials excluded from Git; aggregate metrics are publishable. Logs/images/report exact-secret scan and historical hash comparison documented in [Stage14 results](STAGE14_RESULTS.md). No claim of trusted IDS, ГОСТ certification or Kuznyechik production eligibility.
+
 # Уточнения этапа 10
 
 Криптографические протоколы, nonce construction, HMAC, replay/Outbox транзакции,

@@ -1,0 +1,46 @@
+{
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/regression/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/regression/stage14.compose.json",
+        "--profile",
+        "research",
+        "build",
+        "receiver",
+        "tests"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/regression/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/regression/stage14.compose.json",
+        "--profile",
+        "research",
+        "run",
+        "--rm",
+        "-T",
+        "tests"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,222 @@
+{
+  "observations": 35203,
+  "known_rows": 29863,
+  "unknown_rows": 5340,
+  "unknown_fraction": 0.15169161719171662,
+  "class_counts": {
+    "normal": 27969,
+    "unknown": 5340,
+    "controlled_violation": 1894
+  },
+  "per_scenario": {
+    "bad_credentials": {
+      "captures": 6,
+      "observations": 2951,
+      "labels": {
+        "normal": 2521,
+        "unknown": 423,
+        "controlled_violation": 7
+      },
+      "normal_connections": 30,
+      "controlled_violation_connections": 4,
+      "connections_without_known_rows": 2,
+      "partition_class_support": {
+        "train": {
+          "normal": 3,
+          "controlled_violation": 2
+        },
+        "validation": {
+          "normal": 1,
+          "controlled_violation": 0
+        },
+        "test": {
+          "normal": 2,
+          "controlled_violation": 2
+        }
+      }
+    },
+    "bounded_rate": {
+      "captures": 6,
+      "observations": 3921,
+      "labels": {
+        "normal": 2540,
+        "controlled_violation": 891,
+        "unknown": 490
+      },
+      "normal_connections": 30,
+      "controlled_violation_connections": 6,
+      "connections_without_known_rows": 0,
+      "partition_class_support": {
+        "train": {
+          "normal": 4,
+          "controlled_violation": 4
+        },
+        "validation": {
+          "normal": 1,
+          "controlled_violation": 1
+        },
+        "test": {
+          "normal": 1,
+          "controlled_violation": 1
+        }
+      }
+    },
+    "forbidden_acl": {
+      "captures": 6,
+      "observations": 2982,
+      "labels": {
+        "normal": 2519,
+        "unknown": 423,
+        "controlled_violation": 40
+      },
+      "normal_connections": 30,
+      "controlled_violation_connections": 6,
+      "connections_without_known_rows": 0,
+      "partition_class_support": {
+        "train": {
+          "normal": 3,
+          "controlled_violation": 3
+        },
+        "validation": {
+          "normal": 2,
+          "controlled_violation": 2
+        },
+        "test": {
+          "normal": 1,
+          "controlled_violation": 1
+        }
+      }
+    },
+    "jitter": {
+      "captures": 10,
+      "observations": 5685,
+      "labels": {
+        "normal": 4939,
+        "unknown": 746
+      },
+      "normal_connections": 60,
+      "controlled_violation_connections": 0,
+      "connections_without_known_rows": 0,
+      "partition_class_support": {
+        "train": {
+          "normal": 6,
+          "controlled_violation": 0
+        },
+        "validation": {
+          "normal": 2,
+          "controlled_violation": 0
+        },
+        "test": {
+          "normal": 2,
+          "controlled_violation": 0
+        }
+      }
+    },
+    "pattern_change": {
+      "captures": 6,
+      "observations": 3452,
+      "labels": {
+        "normal": 2526,
+        "unknown": 479,
+        "controlled_violation": 447
+      },
+      "normal_connections": 30,
+      "controlled_violation_connections": 6,
+      "connections_without_known_rows": 0,
+      "partition_class_support": {
+        "train": {
+          "normal": 4,
+          "controlled_violation": 4
+        },
+        "validation": {
+          "normal": 1,
+          "controlled_violation": 1
+        },
+        "test": {
+          "normal": 1,
+          "controlled_violation": 1
+        }
+      }
+    },
+    "qos1_retry": {
+      "captures": 10,
+      "observations": 5596,
+      "labels": {
+        "normal": 4046,
+        "unknown": 1550
+      },
+      "normal_connections": 120,
+      "controlled_violation_connections": 0,
+      "connections_without_known_rows": 0,
+      "partition_class_support": {
+        "train": {
+          "normal": 6,
+          "controlled_violation": 0
+        },
+        "validation": {
+          "normal": 3,
+          "controlled_violation": 0
+        },
+        "test": {
+          "normal": 1,
+          "controlled_violation": 0
+        }
+      }
+    },
+    "regular": {
+      "captures": 10,
+      "observations": 7037,
+      "labels": {
+        "normal": 6294,
+        "unknown": 743
+      },
+      "normal_connections": 60,
+      "controlled_violation_connections": 0,
+      "connections_without_known_rows": 0,
+      "partition_class_support": {
+        "train": {
+          "normal": 6,
+          "controlled_violation": 0
+        },
+        "validation": {
+          "normal": 1,
+          "controlled_violation": 0
+        },
+        "test": {
+          "normal": 3,
+          "controlled_violation": 0
+        }
+      }
+    },
+    "replay": {
+      "captures": 6,
+      "observations": 3579,
+      "labels": {
+        "normal": 2584,
+        "controlled_violation": 509,
+        "unknown": 486
+      },
+      "normal_connections": 36,
+      "controlled_violation_connections": 6,
+      "connections_without_known_rows": 0,
+      "partition_class_support": {
+        "train": {
+          "normal": 4,
+          "controlled_violation": 4
+        },
+        "validation": {
+          "normal": 1,
+          "controlled_violation": 1
+        },
+        "test": {
+          "normal": 1,
+          "controlled_violation": 1
+        }
+      }
+    }
+  },
+  "corroborated_connections": 424,
+  "label_unit": "connection_activity/window_behavior, not per-packet attack",
+  "holdout_access": "structural support counts only; no model scoring",
+  "external_domain_validation": "not_performed"
+}

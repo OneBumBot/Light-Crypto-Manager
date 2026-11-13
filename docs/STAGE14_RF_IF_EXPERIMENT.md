@@ -13,3 +13,7 @@ After all fits: freeze.json pins plans/data/preprocessing/artifact hashes, packe
 Packet/session uncertainty resamples acquisition blocks (6 held-out blocks), not packets or matched captures independently. Sparse positive scenarios/zero errors are not high-confidence IDS proof. Confidence intervals conditional on block independence within one host; external_domain_validation=not_performed. Detection time not_measured_offline. Models RESEARCH/trusted_detector=false; Policy DRY_RUN/manual-only crypto control unchanged.
 
 Execution limits: one trainer process, BLAS/OMP threads1, CPU watchdog900s, address-space3GiB, file-size1GiB, overall bounded subprocess. No other capture cohort active during fit/test. Raw captures, CSV, joblib/skops and private model roots remain outside Git. Negative or zero-recall operating points, including RF threshold>1, must be retained unchanged.
+
+## Post-evaluation lifecycle correction
+
+After the single scientific test, a synthetic red test exposed cross-directory reuse. Added dataset-wide once-only marker and refusal of new plan/train after consumption. Existing test marker migrated explicitly (holdout-guard-migration.json). Mathematical methods, preprocessing,23 models, thresholds and original evaluation unchanged. Actual repeat request blocked before predictions; see holdout-repeat-blocked.json. Quantitative train/validation shortcut report was completed after evaluation and did not inform selection; this ordering limitation is explicit.

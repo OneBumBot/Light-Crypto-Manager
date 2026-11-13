@@ -1,3 +1,15 @@
+# Stage14: подтверждённые исследовательские ограничения
+
+- Один host/stack, короткие sessions;30 acquisition blocks не означают30 независимых hardware domains.
+- Known labels connection/window, не packet-specific malicious attribution. Tamper actor остаётся unknown.
+- Лишь5 positive holdout sessions/6 blocks; bad_credentials не имеет positive validation support.
+- Exact-feature cross-partition purge удаляет19872 known rows и меняет оцениваемую популяцию; guard использует holdout feature values до fit, это заранее заданное transductive правило.
+- Полный descriptive shortcut audit выполнен после test, только train/validation; отсутствует завершённый количественный pre-test audit. Ни thresholds, ни модели после test не менялись.
+- Once-only directory bypass исправлен после единственной оценки, старый marker мигрирован явно. Защита файлов не защищает от владельца, согласованно переписывающего всё хранилище.
+- External/domain validation, physical IoT и online IDS не выполнялись. Offline RF/IF не trusted.
+
+[Полный отчёт](STAGE14_RESULTS.md). История ниже сохранена.
+
 # Этап 10: измеренные ограничения
 
 * Проверены software x86 identities, не физические Raspberry Pi. Максимальная

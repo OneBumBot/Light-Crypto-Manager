@@ -1,0 +1,36 @@
+diff --git a/src/classifier/research/experiment.py b/src/classifier/research/experiment.py
+index db16e8b..6b37573 100644
+--- a/src/classifier/research/experiment.py
++++ b/src/classifier/research/experiment.py
+@@ -94,7 +94,13 @@ def source_split(frame,source,config):
+     return prepare_split(frame,config['seed'],config.get('minimum_normal_rows',1000),config.get('minimum_class_captures',5))
+ 
+ 
++def stage14_training_phase(data,source):
++    if source.get('dataset_version')=='stage14-lightcrypto-lab-v1' and (Path(data).parent/'stage14-holdout-started').exists():
++        raise ValueError('Stage14 holdout already consumed; new independent dataset/holdout required')
++
++
+ def plan(data,manifest,config,output):
++    stage14_training_phase(data,json.loads(Path(manifest).read_text()))
+     config_checked(config);frame,source=read_prepared(data,manifest,config.get('max_rows',100000))
+     if source.get('dataset_family')=='lightcrypto-lab-v1' and source.get('label_rules_version') and not source.get('provenance',{}).get('independent_label_verification'):raise ValueError('No independently corroborated laboratory labels; planning blocked')
+     from src.research_stand.stage14 import training_gate
+@@ -123,6 +129,7 @@ def checked_plan(data,manifest,plan_path):
+ 
+ 
+ def train(data,manifest,plan_path,models_dir,experiment_dir):
++    stage14_training_phase(data,json.loads(Path(manifest).read_text()))
+     frame,source,p=checked_plan(data,manifest,plan_path);config=p['config'];trials=config_checked(config)
+     if source.get('dataset_family')=='lightcrypto-lab-v1' and not source.get('label_rules_version'):raise ValueError('Archived laboratory v1 is not approved for training')
+     folder=Path(experiment_dir);folder.mkdir(mode=0o700,parents=True,exist_ok=False)
+@@ -175,6 +182,9 @@ def final_test(data,manifest,plan_path,models_dir,experiment_dir):
+     frozen=json.loads((folder/'freeze.json').read_text());expected=frozen.pop('sha256')
+     if canonical_hash(frozen)!=expected or frozen['plan_sha256']!=p['plan_sha256']:raise ValueError('Experiment freeze mismatch')
+     # Exclusive durable entry records a test attempt before any prediction. Crashes require reviewed new experiment, not retuning.
++    if source.get('dataset_version')=='stage14-lightcrypto-lab-v1':
++        global_fd=os.open(Path(data).parent/'stage14-holdout-started',os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
++        with os.fdopen(global_fd,'w') as stream:stream.write(expected+'\n')
+     fd=os.open(folder/'final-test-started',os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+     with os.fdopen(fd,'w') as stream:stream.write(expected+'\n')
+     test=frame.iloc[p['split']['indices'][2]];reports=[]

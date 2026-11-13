@@ -1,0 +1,27 @@
+...F.................                                                    [100%]
+=================================== FAILURES ===================================
+________ test_linked_split_preserves_shared_groups_and_fixed_assignment ________
+tests/test_stage14.py:46: in test_linked_split_preserves_shared_groups_and_fixed_assignment
+    f,p=split_fixture();r=linked_split(f,p)
+                          ^^^^^^^^^^^^^^^^^
+src/research_stand/stage14.py:37: in linked_split
+    value['sha256']=canonical_hash(value);return value
+                    ^^^^^^^^^^^^^^^^^^^^^
+src/classifier/research/datasets.py:22: in canonical_hash
+    return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/json/encoder.py:200: in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/json/encoder.py:258: in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/json/encoder.py:180: in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+E   TypeError: Object of type int64 is not JSON serializable
+=========================== short test summary info ============================
+FAILED tests/test_stage14.py::test_linked_split_preserves_shared_groups_and_fixed_assignment
+1 failed, 20 passed in 2.74s

@@ -1,0 +1,87 @@
+{
+  "original_capture_hashes_unchanged": true,
+  "schema_version": 1,
+  "project": "lcm-stage14-ground-truth-pilot",
+  "service": {
+    "categories": {
+      "replay": 24,
+      "rejected": 17,
+      "accepted": 883
+    },
+    "outbox_pending": 0,
+    "mongo_records": 883,
+    "policy_mode": "DRY_RUN",
+    "applied": 0
+  },
+  "reconciliation": {
+    "schema_version": 2,
+    "reconciliation": "matched",
+    "physical_packets": 3781,
+    "class_counts": {
+      "unknown": 853,
+      "normal": 2726,
+      "controlled_violation": 202
+    },
+    "corroborated_connections": 59,
+    "independent_algorithm": true,
+    "malicious_packet_accuracy": null,
+    "real_attack_detection_unproven": true,
+    "files_modified": false
+  },
+  "scenarios": {
+    "A_normal_tls": {
+      "status": "passed",
+      "normal": 340,
+      "server_records": 883
+    },
+    "B_controlled": {
+      "status": "passed",
+      "positive_connections": 4,
+      "packet_attack_claim": false
+    },
+    "C_forged_generator_evidence": {
+      "status": "passed",
+      "target_activity": "unknown",
+      "independent_broker_unchanged": true
+    },
+    "D_real_qos1_dup": {
+      "status": "passed",
+      "broker_dup_events": 6,
+      "attack_rows": 0
+    },
+    "E_missing_source": {
+      "status": "passed",
+      "mechanism": "independent journal unavailable on private capture copy; no service outage claimed",
+      "all_unknown": true
+    },
+    "C_independent_digest_conflict": {
+      "status": "passed",
+      "deliberate_replay_unverified": true
+    },
+    "E_live_observer_exit": {
+      "status": "passed",
+      "source_process_terminated": true,
+      "experiment_aborted": true,
+      "mongo_delta": 19,
+      "no_verified_dataset": true
+    },
+    "F_collector_fault": {
+      "status": "passed",
+      "stopped": true,
+      "duration": 2.188814640045166,
+      "mongo_delta": 18,
+      "unfinished_capture_in_dataset": false
+    },
+    "coherent_real_csv_tamper": {
+      "status": "rejected_logically",
+      "hashes_updated": true
+    }
+  },
+  "models_trained_on_lab_data": 0,
+  "final_holdout_evaluated": false,
+  "label_accuracy": null,
+  "exit_code": 0,
+  "raw_failure_evidence_preserved": true,
+  "source_sha": "20a6babeebf6a9f11494d40b22a9c41e51585075",
+  "scope": "Source/fault probe only; its zero fits/final-test flags do not describe the separate completed Stage14 RF/IF study"
+}

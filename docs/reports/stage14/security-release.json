@@ -1,0 +1,30 @@
+{
+  "source_sha": "29dba069cef375d9800a4785e4ec966b472e8cea",
+  "realms": 34,
+  "new_independent_telemetry_keys": 884,
+  "old_key_values_compared": 1318,
+  "key_reuse": false,
+  "private_permission_failures": [],
+  "secret_leaks": [],
+  "files_scanned": 1774,
+  "container_logs_scanned": 425,
+  "log_scope": "Last1000 lines/container, not a claim about every historical log",
+  "application_images_scanned": 3,
+  "crypto_control_policy_files_byte_equal_baseline": [
+    "src/crypto_profiles.py",
+    "src/telemetry.py",
+    "src/ingestion.py",
+    "src/outbox.py",
+    "src/kuz_provider.py",
+    "src/kuz_usage.py",
+    "src/policy/worker.py",
+    "src/policy/state.py",
+    "src/policy/engine.py",
+    "src/device_control/agent.py",
+    "src/device_control/server.py",
+    "src/device_control/state.py"
+  ],
+  "all_stage14_services_stopped": true,
+  "no_host_ports": true,
+  "exit_code": 0
+}

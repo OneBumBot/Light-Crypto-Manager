@@ -1,0 +1,207 @@
+{
+  "project": "lcm-stage14-ground-truth-contrast",
+  "cases": [
+    {
+      "case": "qos1_retry",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 194,
+        "unknown": 101
+      },
+      "actor": {
+        "rows": 0,
+        "labels": {}
+      },
+      "broker_dup_events": 4,
+      "category_deltas": {
+        "accepted": 53,
+        "replay": 4
+      },
+      "outbox_pending_after": 0,
+      "no_model_predictions": true,
+      "not_a_new_training_source": true
+    },
+    {
+      "case": "replay",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 136,
+        "unknown": 61,
+        "controlled_violation": 45
+      },
+      "actor": {
+        "rows": 57,
+        "labels": {
+          "controlled_violation": 45,
+          "unknown": 12
+        }
+      },
+      "broker_dup_events": 0,
+      "category_deltas": {
+        "accepted": 41,
+        "replay": 13
+      },
+      "outbox_pending_after": 0,
+      "no_model_predictions": true,
+      "not_a_new_training_source": true
+    },
+    {
+      "case": "wrong_epoch",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 136,
+        "unknown": 90
+      },
+      "actor": {
+        "rows": 57,
+        "labels": {
+          "unknown": 57
+        }
+      },
+      "broker_dup_events": 0,
+      "category_deltas": {
+        "accepted": 41,
+        "rejected": 13,
+        "replay": 0
+      },
+      "outbox_pending_after": 0,
+      "no_model_predictions": true,
+      "not_a_new_training_source": true
+    },
+    {
+      "case": "wrong_sequence",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 133,
+        "unknown": 91
+      },
+      "actor": {
+        "rows": 53,
+        "labels": {
+          "unknown": 53
+        }
+      },
+      "broker_dup_events": 0,
+      "category_deltas": {
+        "accepted": 39,
+        "rejected": 13,
+        "replay": 0
+      },
+      "outbox_pending_after": 0,
+      "no_model_predictions": true,
+      "not_a_new_training_source": true
+    },
+    {
+      "case": "tampered",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 128,
+        "unknown": 99
+      },
+      "actor": {
+        "rows": 56,
+        "labels": {
+          "unknown": 56
+        }
+      },
+      "broker_dup_events": 0,
+      "category_deltas": {
+        "accepted": 39,
+        "rejected": 14,
+        "replay": 0
+      },
+      "outbox_pending_after": 0,
+      "no_model_predictions": true,
+      "not_a_new_training_source": true
+    },
+    {
+      "case": "broker_reconnect",
+      "status": "quarantined",
+      "diagnostic": "RuntimeError:Independent observer failed",
+      "labels": null,
+      "actor": null,
+      "broker_dup_events": null,
+      "category_deltas": {
+        "accepted": 2,
+        "rejected": 0,
+        "delivery_delay": 2,
+        "replay": 0
+      },
+      "outbox_pending_after": 0,
+      "no_model_predictions": true,
+      "not_a_new_training_source": true
+    },
+    {
+      "case": "receiver_restart",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 178,
+        "unknown": 52
+      },
+      "actor": {
+        "rows": 0,
+        "labels": {}
+      },
+      "broker_dup_events": 0,
+      "category_deltas": {
+        "accepted": 53,
+        "rejected": 0,
+        "delivery_delay": 0,
+        "replay": 0
+      },
+      "outbox_pending_after": 0,
+      "no_model_predictions": true,
+      "not_a_new_training_source": true
+    }
+  ],
+  "inference_performed": false,
+  "scientific_training_dataset_unchanged": true,
+  "interpretation": "Transport duplicates do not prove malicious replay; application evidence is outside X",
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/contrast/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/contrast/stage14.compose.json",
+        "--profile",
+        "research",
+        "restart",
+        "broker"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/contrast/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage14/contrast/stage14.compose.json",
+        "--profile",
+        "research",
+        "restart",
+        "receiver"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,23 @@
+{
+  "historical_archive": {
+    "captures": 59,
+    "observations": 46395,
+    "known_rows": 0,
+    "status": "BLOCKED_BY_LABEL_ORACLE"
+  },
+  "historical_v22_probe": {
+    "captures": 9,
+    "observations": 2269,
+    "positive_connections": 5,
+    "status": "BLOCKED_BY_DATA_QUALITY"
+  },
+  "new_pilot": {
+    "captures": 9,
+    "observations": 3781,
+    "status": "PILOT_EXCLUDED_FROM_TRAINING",
+    "bad_credentials_packet_rows": "unknown_boundary_ambiguity_despite_verified_broker_denial"
+  },
+  "training": "NOT_EXECUTED_DATA_QUALITY_GATE",
+  "external_domain_validation": "not_performed",
+  "exit_code": 2
+}

@@ -1,0 +1,104 @@
+{
+  "acquisition_blocks": 30,
+  "broker_realms": 30,
+  "physical_hosts": 1,
+  "captures": 60,
+  "pcap_digests_unique": 60,
+  "partitions": {
+    "train": 18,
+    "validation": 6,
+    "test": 6
+  },
+  "independence_scope": "Preregistered repeated acquisition blocks within one fixed software domain; no universal IID/hardware proof",
+  "connections": {
+    "normal_connections": 396,
+    "controlled_violation_connections": 28,
+    "connections_without_known_rows": 2,
+    "total_tcp_sessions": 426
+  },
+  "retained_split_summary": {
+    "train": {
+      "rows": 6085,
+      "normal": 5669,
+      "positive": 416,
+      "attack": 416,
+      "class_groups": {
+        "0": 36,
+        "1": 15
+      },
+      "independent_class_groups": {
+        "0": 18,
+        "1": 15
+      },
+      "captures": 36,
+      "sessions": 244,
+      "scenarios": {
+        "regular": 1278,
+        "jitter": 993,
+        "qos1_retry": 809,
+        "replay": 744,
+        "bounded_rate": 729,
+        "pattern_change": 682,
+        "forbidden_acl": 425,
+        "bad_credentials": 425
+      }
+    },
+    "validation": {
+      "rows": 1816,
+      "normal": 1700,
+      "positive": 116,
+      "attack": 116,
+      "class_groups": {
+        "0": 12,
+        "1": 5
+      },
+      "independent_class_groups": {
+        "0": 6,
+        "1": 5
+      },
+      "captures": 12,
+      "sessions": 85,
+      "scenarios": {
+        "qos1_retry": 385,
+        "jitter": 326,
+        "forbidden_acl": 250,
+        "bounded_rate": 241,
+        "regular": 208,
+        "replay": 171,
+        "pattern_change": 127,
+        "bad_credentials": 108
+      }
+    },
+    "test": {
+      "rows": 2090,
+      "normal": 1986,
+      "positive": 104,
+      "attack": 104,
+      "class_groups": {
+        "0": 12,
+        "1": 5
+      },
+      "independent_class_groups": {
+        "0": 6,
+        "1": 5
+      },
+      "captures": 12,
+      "sessions": 78,
+      "scenarios": {
+        "regular": 620,
+        "jitter": 334,
+        "bad_credentials": 312,
+        "pattern_change": 203,
+        "bounded_rate": 184,
+        "forbidden_acl": 174,
+        "qos1_retry": 139,
+        "replay": 124
+      }
+    }
+  },
+  "fingerprint_purged_rows": [
+    11946,
+    3678,
+    4248
+  ]
+}

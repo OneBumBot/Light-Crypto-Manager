@@ -1,0 +1,9 @@
+# Online IDS readiness
+
+Готового доверенного online network IDS нет. Offline classifier inputs:frame.len,tcp.len,tcp.flags,tcp.window_size_value,tcp.time_delta. Flask dashboard/MQTT telemetry receiver не наблюдают оригинальные TCP packets и не могут восстановить эти поля из AEAD sensor data. tcp.time_delta требует предыдущего packet того же bidirectional TCP stream в строго определённой capture point/time domain; first packet0 — определение extractor, не imputation.
+
+Нужен отдельный passive sensor у broker/bridge/IoT gateway с bounded capture/drop counters, packet/5-tuple/stream identity, TCP retransmission semantics, clock monitoring и точной совместимостью feature version. TLS сохраняется: MQTT payload/credentials/topic unavailable passive features и не добавляются в X. Fragmentation/offload/reassembly/IPv6/connection reuse/capture loss требуют нового контракта и проверки, не silent zero-fill.
+
+IP/port не authenticated device identity. Результат должен нести model/version/schema/score semantics/modeRESEARCH/trusted_detector=false и быть unbound без независимого session association. Broker username не доказательство физического hardware origin; authenticated AEAD identity требует отдельного source contract. Existing telemetry ML worker явно запрещает network_ids, Policy schema не принимает автоматически tcp-packet-passive-v1. Нужен reviewed bounded read-only adapter/evidence transport, не прямой RF→Control publish.
+
+До онлайн-исследования нужны независимые host/day/device/domain cohorts, эксплуатационный FPR и задержки/дропы observer, безопасный lifecycle моделей, подпись/права artifacts, нагрузка/recovery/backpressure и device attribution audit. Ни offline accuracy, ни высокий RF score не дают права переключения криптографии. Policy DRY_RUN/manual authorization остаются обязательными. ARM/реальные IoT/production IDS readiness не подтверждены.

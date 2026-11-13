@@ -1,3 +1,7 @@
+# Stage14: offline ground truth and research
+
+Fresh lcm-stage14-ground-truth-* internal networks/volumes/TLS/Ascon keys. Real namespace capture→physical PCAP audit→broker sessions + keyless witness + PG corroboration→independent builder/oracle→linked block split→quality gate→23 offline RF/IF fits→single holdout. Five tcp-packet-passive-v1 predictors only; metadata excluded. No online RF/IF sensor/control channel added. Policy13, replay/nonce/HMAC/Outbox and crypto providers byte-equal baseline. See [Stage14 results](STAGE14_RESULTS.md).
+
 # Текущая архитектура после этапа 10
 
 Рабочий контур этапа 9 сохранён: два AEAD, MQTT/TLS/ACL, PG admission/replay/

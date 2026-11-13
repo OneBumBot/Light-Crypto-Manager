@@ -1,6 +1,6 @@
 # LightCrypto Manager
 
-Дипломная система защищённой IoT telemetry и ручного адаптивного управления двумя
+Дипломная система защищённой IoT telemetry и ручного адаптивного управления базовыми
 AEAD: **Ascon-AEAD128** и **AES-128-GCM**. MQTT/TLS + ACL, PostgreSQL authoritative
 admission/replay/Outbox, MongoDB history, Flask dashboard, durable HMAC control,
 настоящие software Device Agents и подтверждение effective новой AEAD telemetry.
@@ -9,7 +9,13 @@ admission/replay/Outbox, MongoDB history, Flask dashboard, durable HMAC control,
 network IDS и автоматического выбора алгоритма по ML. Профили не ранжируются по
 условной «силе»; physical Raspberry Pi/production deployment ещё не проверены.
 
-## Проверка производительности — этап 10
+## Текущее состояние — этап14
+
+[Полный отчёт Stage14](docs/STAGE14_RESULTS.md):60 новых MQTT/TLS captures,30 matched acquisition blocks, внутренний data gate PASS. Offline RF/IF:23 заранее заданных fit, один holdout. RF packet recall0.490/FPR0.00252; IF0.0769/0.0373. Всего5 positive holdout sessions, один host; качество реального IDS не доказано. Policy DRY_RUN, trusted_detector=false, manual-only control. Регрессия967 passed,0 skipped.
+
+Stage13 исправил прежнее Policy backlog: [результаты](docs/STAGE13_RESULTS.md). Kuznyechik-MGM остаётся software lab-only; Magma не активирована. Сырые captures, dataset и модели Stage14 приватные, старые планы не изменены.
+
+## Исторические измерения — этап 10
 
 Изолированные software-стенды 3/10/25/50 устройств, реальные MQTT/TLS/PG/Mongo
 измерения и recovery: [результаты](docs/STAGE10_RESULTS.md),

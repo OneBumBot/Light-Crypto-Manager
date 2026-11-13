@@ -1,0 +1,116 @@
+{
+  "reconciliation": {
+    "schema_version": 2,
+    "reconciliation": "matched",
+    "physical_packets": 3781,
+    "class_counts": {
+      "unknown": 853,
+      "normal": 2726,
+      "controlled_violation": 202
+    },
+    "corroborated_connections": 59,
+    "independent_algorithm": true,
+    "malicious_packet_accuracy": null,
+    "real_attack_detection_unproven": true,
+    "files_modified": false
+  },
+  "per_scenario": {
+    "bad_credentials": {
+      "rows": 361,
+      "labels": {
+        "normal": 279,
+        "unknown": 82
+      },
+      "normal_connections": 5,
+      "positive_connections": 0,
+      "unknown_connections": 6
+    },
+    "bounded_rate": {
+      "rows": 455,
+      "labels": {
+        "normal": 283,
+        "controlled_violation": 94,
+        "unknown": 78
+      },
+      "normal_connections": 5,
+      "positive_connections": 1,
+      "unknown_connections": 6
+    },
+    "forbidden_acl": {
+      "rows": 366,
+      "labels": {
+        "normal": 281,
+        "unknown": 77,
+        "controlled_violation": 8
+      },
+      "normal_connections": 5,
+      "positive_connections": 1,
+      "unknown_connections": 6
+    },
+    "jitter": {
+      "rows": 415,
+      "labels": {
+        "normal": 340,
+        "unknown": 75
+      },
+      "normal_connections": 6,
+      "positive_connections": 0,
+      "unknown_connections": 6
+    },
+    "pattern_change": {
+      "rows": 415,
+      "labels": {
+        "normal": 284,
+        "unknown": 88,
+        "controlled_violation": 43
+      },
+      "normal_connections": 5,
+      "positive_connections": 1,
+      "unknown_connections": 6
+    },
+    "qos1_retry": {
+      "rows": 524,
+      "labels": {
+        "normal": 356,
+        "unknown": 168
+      },
+      "normal_connections": 12,
+      "positive_connections": 0,
+      "unknown_connections": 12
+    },
+    "regular": {
+      "rows": 411,
+      "labels": {
+        "normal": 340,
+        "unknown": 71
+      },
+      "normal_connections": 6,
+      "positive_connections": 0,
+      "unknown_connections": 6
+    },
+    "replay": {
+      "rows": 424,
+      "labels": {
+        "normal": 287,
+        "unknown": 80,
+        "controlled_violation": 57
+      },
+      "normal_connections": 6,
+      "positive_connections": 1,
+      "unknown_connections": 7
+    },
+    "tampered": {
+      "rows": 410,
+      "labels": {
+        "normal": 276,
+        "unknown": 134
+      },
+      "normal_connections": 5,
+      "positive_connections": 0,
+      "unknown_connections": 6
+    }
+  },
+  "unknown_fraction": 0.2256016926738958,
+  "training": "NOT_EXECUTED_PILOT_EXCLUDED",
+  "exit_code": 0
+}

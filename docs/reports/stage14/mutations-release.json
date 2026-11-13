@@ -1,0 +1,403 @@
+{
+  "source_sha": "20a6babeebf6a9f11494d40b22a9c41e51585075",
+  "baseline_exit_code": 0,
+  "baseline_output": "........................................................................ [ 77%]\n.....................                                                    [100%]\n93 passed in 4.09s\n",
+  "results": [
+    {
+      "defect": "unknown_to_normal",
+      "test": "test_ground_truth_hardening.py::test_no_syn_pipeline_cannot_attribute",
+      "edits": [
+        [
+          "src/research_stand/labels_v2.py",
+          "        label = \"unknown\"",
+          "        label = \"normal\""
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "_json(folder / \"core.json\")\n            core[\"mqtt_witness\"] = (\n                load_json(folder / \"mqtt-observer.json\")\n                if (folder / \"mqtt-observer.json\").exists()\n                else {}\n            )\n            broker = (\n                load_json(folder / \"broker-evidence.json\")\n                if (folder / \"broker-evidence.json\").exists()\n                else {}\n            )\n            raw_by_stream = defaultdict(list)\n            for p in raw:\n                raw_by_stream[p[\"tcp.stream\"]].append(p)\n            saved = by_capture[capture[\"capture_id\"]]\n            if len(saved) != len(raw):\n                raise ValueError(\"Missing/extra observation\")\n            prefix = \"lightcrypto-lab-fixed:\" + folder.name\n            for original, actual in zip(raw, saved):\n                required = expected(\n                    original, raw_by_stream[original[\"tcp.stream\"]], truth, broker, core\n                )\n                required.update(\n                    source_id=\"lightcrypto-lab-fixed\",\n                    capture_id=prefix,\n                    experiment_id=folder.name,\n                    session_id=prefix + \":\" + original[\"tcp.stream\"],\n                    packet_id=prefix + \":\" + original[\"frame.number\"],\n                    feature_version=\"tcp-packet-passive-v1\",\n                    source_pcap_sha256=cap[\"pcap_sha256\"],\n                    scenario_category=truth[\"experiment\"][\"scenario\"],\n                    label_source=\"connection-evidence-v2.2\",\n                )\n                required.update(\n                    label={\"normal\": \"0\", \"controlled_violation\": \"1\", \"unknown\": \"\"}[\n                        required[\"ground_truth\"]\n                    ],\n                    attack_type={\n                        \"normal\": \"Normal\",\n                        \"controlled_violation\": \"ControlledViolation\",\n                        \"unknown\": \"Unknown\",\n                    }[required[\"ground_truth\"]],\n                )\n                for field, value in required.items():\n                    if actual.get(field) != str(value):\n>                       raise ValueError(\"Logical reconciliation mismatch: \" + field)\nE                       ValueError: Logical reconciliation mismatch: ground_truth\n\nsrc/research_stand/label_verification.py:352: ValueError\n=========================== short test summary info ============================\nFAILED tests/test_ground_truth_hardening.py::test_no_syn_pipeline_cannot_attribute\n1 failed in 0.15s\n"
+    },
+    {
+      "defect": "unknown_to_violation",
+      "test": "test_ground_truth_hardening.py::test_no_syn_pipeline_cannot_attribute",
+      "edits": [
+        [
+          "src/research_stand/labels_v2.py",
+          "        label = \"unknown\"",
+          "        label = \"controlled_violation\""
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "_json(folder / \"core.json\")\n            core[\"mqtt_witness\"] = (\n                load_json(folder / \"mqtt-observer.json\")\n                if (folder / \"mqtt-observer.json\").exists()\n                else {}\n            )\n            broker = (\n                load_json(folder / \"broker-evidence.json\")\n                if (folder / \"broker-evidence.json\").exists()\n                else {}\n            )\n            raw_by_stream = defaultdict(list)\n            for p in raw:\n                raw_by_stream[p[\"tcp.stream\"]].append(p)\n            saved = by_capture[capture[\"capture_id\"]]\n            if len(saved) != len(raw):\n                raise ValueError(\"Missing/extra observation\")\n            prefix = \"lightcrypto-lab-fixed:\" + folder.name\n            for original, actual in zip(raw, saved):\n                required = expected(\n                    original, raw_by_stream[original[\"tcp.stream\"]], truth, broker, core\n                )\n                required.update(\n                    source_id=\"lightcrypto-lab-fixed\",\n                    capture_id=prefix,\n                    experiment_id=folder.name,\n                    session_id=prefix + \":\" + original[\"tcp.stream\"],\n                    packet_id=prefix + \":\" + original[\"frame.number\"],\n                    feature_version=\"tcp-packet-passive-v1\",\n                    source_pcap_sha256=cap[\"pcap_sha256\"],\n                    scenario_category=truth[\"experiment\"][\"scenario\"],\n                    label_source=\"connection-evidence-v2.2\",\n                )\n                required.update(\n                    label={\"normal\": \"0\", \"controlled_violation\": \"1\", \"unknown\": \"\"}[\n                        required[\"ground_truth\"]\n                    ],\n                    attack_type={\n                        \"normal\": \"Normal\",\n                        \"controlled_violation\": \"ControlledViolation\",\n                        \"unknown\": \"Unknown\",\n                    }[required[\"ground_truth\"]],\n                )\n                for field, value in required.items():\n                    if actual.get(field) != str(value):\n>                       raise ValueError(\"Logical reconciliation mismatch: \" + field)\nE                       ValueError: Logical reconciliation mismatch: ground_truth\n\nsrc/research_stand/label_verification.py:352: ValueError\n=========================== short test summary info ============================\nFAILED tests/test_ground_truth_hardening.py::test_no_syn_pipeline_cannot_attribute\n1 failed in 0.15s\n"
+    },
+    {
+      "defect": "scenario_replaces_broker_outcome",
+      "test": "test_ground_truth_hardening.py::test_generator_flag_cannot_replace_broker_result",
+      "edits": [
+        [
+          "src/research_stand/labels_v2.py",
+          "s[\"auth_code\"] == 5 and record.get(\"auth_rejected\")",
+          "record.get(\"auth_rejected\")"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "r / \"core.json\")\n            core[\"mqtt_witness\"] = (\n                load_json(folder / \"mqtt-observer.json\")\n                if (folder / \"mqtt-observer.json\").exists()\n                else {}\n            )\n            broker = (\n                load_json(folder / \"broker-evidence.json\")\n                if (folder / \"broker-evidence.json\").exists()\n                else {}\n            )\n            raw_by_stream = defaultdict(list)\n            for p in raw:\n                raw_by_stream[p[\"tcp.stream\"]].append(p)\n            saved = by_capture[capture[\"capture_id\"]]\n            if len(saved) != len(raw):\n                raise ValueError(\"Missing/extra observation\")\n            prefix = \"lightcrypto-lab-fixed:\" + folder.name\n            for original, actual in zip(raw, saved):\n                required = expected(\n                    original, raw_by_stream[original[\"tcp.stream\"]], truth, broker, core\n                )\n                required.update(\n                    source_id=\"lightcrypto-lab-fixed\",\n                    capture_id=prefix,\n                    experiment_id=folder.name,\n                    session_id=prefix + \":\" + original[\"tcp.stream\"],\n                    packet_id=prefix + \":\" + original[\"frame.number\"],\n                    feature_version=\"tcp-packet-passive-v1\",\n                    source_pcap_sha256=cap[\"pcap_sha256\"],\n                    scenario_category=truth[\"experiment\"][\"scenario\"],\n                    label_source=\"connection-evidence-v2.2\",\n                )\n                required.update(\n                    label={\"normal\": \"0\", \"controlled_violation\": \"1\", \"unknown\": \"\"}[\n                        required[\"ground_truth\"]\n                    ],\n                    attack_type={\n                        \"normal\": \"Normal\",\n                        \"controlled_violation\": \"ControlledViolation\",\n                        \"unknown\": \"Unknown\",\n                    }[required[\"ground_truth\"]],\n                )\n                for field, value in required.items():\n                    if actual.get(field) != str(value):\n>                       raise ValueError(\"Logical reconciliation mismatch: \" + field)\nE                       ValueError: Logical reconciliation mismatch: ground_truth\n\nsrc/research_stand/label_verification.py:352: ValueError\n=========================== short test summary info ============================\nFAILED tests/test_ground_truth_hardening.py::test_generator_flag_cannot_replace_broker_result\n1 failed in 0.16s\n"
+    },
+    {
+      "defect": "wrong_tcp_session",
+      "test": "test_ground_truth_hardening.py::test_public_pipeline_positive_mixed_and_unknown",
+      "edits": [
+        [
+          "src/research_stand/labels_v2.py",
+          "assigned[key] = matches[0]",
+          "assigned[key] = truth[\"connections\"][0]"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "r / \"core.json\")\n            core[\"mqtt_witness\"] = (\n                load_json(folder / \"mqtt-observer.json\")\n                if (folder / \"mqtt-observer.json\").exists()\n                else {}\n            )\n            broker = (\n                load_json(folder / \"broker-evidence.json\")\n                if (folder / \"broker-evidence.json\").exists()\n                else {}\n            )\n            raw_by_stream = defaultdict(list)\n            for p in raw:\n                raw_by_stream[p[\"tcp.stream\"]].append(p)\n            saved = by_capture[capture[\"capture_id\"]]\n            if len(saved) != len(raw):\n                raise ValueError(\"Missing/extra observation\")\n            prefix = \"lightcrypto-lab-fixed:\" + folder.name\n            for original, actual in zip(raw, saved):\n                required = expected(\n                    original, raw_by_stream[original[\"tcp.stream\"]], truth, broker, core\n                )\n                required.update(\n                    source_id=\"lightcrypto-lab-fixed\",\n                    capture_id=prefix,\n                    experiment_id=folder.name,\n                    session_id=prefix + \":\" + original[\"tcp.stream\"],\n                    packet_id=prefix + \":\" + original[\"frame.number\"],\n                    feature_version=\"tcp-packet-passive-v1\",\n                    source_pcap_sha256=cap[\"pcap_sha256\"],\n                    scenario_category=truth[\"experiment\"][\"scenario\"],\n                    label_source=\"connection-evidence-v2.2\",\n                )\n                required.update(\n                    label={\"normal\": \"0\", \"controlled_violation\": \"1\", \"unknown\": \"\"}[\n                        required[\"ground_truth\"]\n                    ],\n                    attack_type={\n                        \"normal\": \"Normal\",\n                        \"controlled_violation\": \"ControlledViolation\",\n                        \"unknown\": \"Unknown\",\n                    }[required[\"ground_truth\"]],\n                )\n                for field, value in required.items():\n                    if actual.get(field) != str(value):\n>                       raise ValueError(\"Logical reconciliation mismatch: \" + field)\nE                       ValueError: Logical reconciliation mismatch: connection_id\n\nsrc/research_stand/label_verification.py:352: ValueError\n=========================== short test summary info ============================\nFAILED tests/test_ground_truth_hardening.py::test_public_pipeline_positive_mixed_and_unknown\n1 failed in 0.15s\n"
+    },
+    {
+      "defect": "physical_pcap_digest_ignored",
+      "test": "test_stage14.py::test_coherent_source_metadata_cannot_replace_physical_pcap_digest",
+      "edits": [
+        [
+          "src/research_stand/pcap_audit.py",
+          "digest(folder / \"traffic.pcap\") != cap[\"pcap_sha256\"]",
+          "False"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______ test_coherent_source_metadata_cannot_replace_physical_pcap_digest _______\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-69/test_coherent_source_metadata_0')\n\n    def test_coherent_source_metadata_cannot_replace_physical_pcap_digest(tmp_path):\n     from test_ground_truth_hardening import fixture\n     from src.research_stand.dataset_v2 import build\n     folder=fixture(tmp_path/'raw')\n     for name in ['capture.json','extractor.json']:\n      p=folder/name;r=json.loads(p.read_text());r['pcap_sha256']='0'*64;p.write_text(json.dumps(r))\n>    with pytest.raises(ValueError,match='Source capture/header hash mismatch'):build(folder.parent,tmp_path/'dataset')\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE ValueError\n\ntests/test_stage14.py:238: Failed\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_coherent_source_metadata_cannot_replace_physical_pcap_digest\n1 failed in 0.19s\n"
+    },
+    {
+      "defect": "missing_broker_promoted",
+      "test": "test_ground_truth_hardening.py::test_absent_broker_source_makes_every_connection_unknown",
+      "edits": [
+        [
+          "src/research_stand/labels_v2.py",
+          "return \"unknown\", \"independent_session_evidence_missing\", \"\", lo, hi",
+          "return \"normal\", REASONS[\"normal\"], record[\"logical_device\"], lo, hi"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "e.json\")\n            core[\"mqtt_witness\"] = (\n                load_json(folder / \"mqtt-observer.json\")\n                if (folder / \"mqtt-observer.json\").exists()\n                else {}\n            )\n            broker = (\n                load_json(folder / \"broker-evidence.json\")\n                if (folder / \"broker-evidence.json\").exists()\n                else {}\n            )\n            raw_by_stream = defaultdict(list)\n            for p in raw:\n                raw_by_stream[p[\"tcp.stream\"]].append(p)\n            saved = by_capture[capture[\"capture_id\"]]\n            if len(saved) != len(raw):\n                raise ValueError(\"Missing/extra observation\")\n            prefix = \"lightcrypto-lab-fixed:\" + folder.name\n            for original, actual in zip(raw, saved):\n                required = expected(\n                    original, raw_by_stream[original[\"tcp.stream\"]], truth, broker, core\n                )\n                required.update(\n                    source_id=\"lightcrypto-lab-fixed\",\n                    capture_id=prefix,\n                    experiment_id=folder.name,\n                    session_id=prefix + \":\" + original[\"tcp.stream\"],\n                    packet_id=prefix + \":\" + original[\"frame.number\"],\n                    feature_version=\"tcp-packet-passive-v1\",\n                    source_pcap_sha256=cap[\"pcap_sha256\"],\n                    scenario_category=truth[\"experiment\"][\"scenario\"],\n                    label_source=\"connection-evidence-v2.2\",\n                )\n                required.update(\n                    label={\"normal\": \"0\", \"controlled_violation\": \"1\", \"unknown\": \"\"}[\n                        required[\"ground_truth\"]\n                    ],\n                    attack_type={\n                        \"normal\": \"Normal\",\n                        \"controlled_violation\": \"ControlledViolation\",\n                        \"unknown\": \"Unknown\",\n                    }[required[\"ground_truth\"]],\n                )\n                for field, value in required.items():\n                    if actual.get(field) != str(value):\n>                       raise ValueError(\"Logical reconciliation mismatch: \" + field)\nE                       ValueError: Logical reconciliation mismatch: ground_truth\n\nsrc/research_stand/label_verification.py:352: ValueError\n=========================== short test summary info ============================\nFAILED tests/test_ground_truth_hardening.py::test_absent_broker_source_makes_every_connection_unknown\n1 failed in 0.15s\n"
+    },
+    {
+      "defect": "missing_witness_ignored",
+      "test": "test_stage14.py::test_replay_requires_independent_timed_identity_and_qos1_is_normal[missing_digest]",
+      "edits": [
+        [
+          "src/research_stand/labels_v2.py",
+          "and digest_proof",
+          "and True"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "          core[\"mqtt_witness\"] = (\n                load_json(folder / \"mqtt-observer.json\")\n                if (folder / \"mqtt-observer.json\").exists()\n                else {}\n            )\n            broker = (\n                load_json(folder / \"broker-evidence.json\")\n                if (folder / \"broker-evidence.json\").exists()\n                else {}\n            )\n            raw_by_stream = defaultdict(list)\n            for p in raw:\n                raw_by_stream[p[\"tcp.stream\"]].append(p)\n            saved = by_capture[capture[\"capture_id\"]]\n            if len(saved) != len(raw):\n                raise ValueError(\"Missing/extra observation\")\n            prefix = \"lightcrypto-lab-fixed:\" + folder.name\n            for original, actual in zip(raw, saved):\n                required = expected(\n                    original, raw_by_stream[original[\"tcp.stream\"]], truth, broker, core\n                )\n                required.update(\n                    source_id=\"lightcrypto-lab-fixed\",\n                    capture_id=prefix,\n                    experiment_id=folder.name,\n                    session_id=prefix + \":\" + original[\"tcp.stream\"],\n                    packet_id=prefix + \":\" + original[\"frame.number\"],\n                    feature_version=\"tcp-packet-passive-v1\",\n                    source_pcap_sha256=cap[\"pcap_sha256\"],\n                    scenario_category=truth[\"experiment\"][\"scenario\"],\n                    label_source=\"connection-evidence-v2.2\",\n                )\n                required.update(\n                    label={\"normal\": \"0\", \"controlled_violation\": \"1\", \"unknown\": \"\"}[\n                        required[\"ground_truth\"]\n                    ],\n                    attack_type={\n                        \"normal\": \"Normal\",\n                        \"controlled_violation\": \"ControlledViolation\",\n                        \"unknown\": \"Unknown\",\n                    }[required[\"ground_truth\"]],\n                )\n                for field, value in required.items():\n                    if actual.get(field) != str(value):\n>                       raise ValueError(\"Logical reconciliation mismatch: \" + field)\nE                       ValueError: Logical reconciliation mismatch: ground_truth\n\nsrc/research_stand/label_verification.py:352: ValueError\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_replay_requires_independent_timed_identity_and_qos1_is_normal[missing_digest]\n1 failed in 0.19s\n"
+    },
+    {
+      "defect": "wrong_pg_binding_ignored",
+      "test": "test_stage14.py::test_replay_requires_independent_timed_identity_and_qos1_is_normal[wrong_epoch]",
+      "edits": [
+        [
+          "src/research_stand/labels_v2.py",
+          "bool(prior and repeated and prep and pubs)",
+          "bool(prep and pubs)"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "\n            core[\"mqtt_witness\"] = (\n                load_json(folder / \"mqtt-observer.json\")\n                if (folder / \"mqtt-observer.json\").exists()\n                else {}\n            )\n            broker = (\n                load_json(folder / \"broker-evidence.json\")\n                if (folder / \"broker-evidence.json\").exists()\n                else {}\n            )\n            raw_by_stream = defaultdict(list)\n            for p in raw:\n                raw_by_stream[p[\"tcp.stream\"]].append(p)\n            saved = by_capture[capture[\"capture_id\"]]\n            if len(saved) != len(raw):\n                raise ValueError(\"Missing/extra observation\")\n            prefix = \"lightcrypto-lab-fixed:\" + folder.name\n            for original, actual in zip(raw, saved):\n                required = expected(\n                    original, raw_by_stream[original[\"tcp.stream\"]], truth, broker, core\n                )\n                required.update(\n                    source_id=\"lightcrypto-lab-fixed\",\n                    capture_id=prefix,\n                    experiment_id=folder.name,\n                    session_id=prefix + \":\" + original[\"tcp.stream\"],\n                    packet_id=prefix + \":\" + original[\"frame.number\"],\n                    feature_version=\"tcp-packet-passive-v1\",\n                    source_pcap_sha256=cap[\"pcap_sha256\"],\n                    scenario_category=truth[\"experiment\"][\"scenario\"],\n                    label_source=\"connection-evidence-v2.2\",\n                )\n                required.update(\n                    label={\"normal\": \"0\", \"controlled_violation\": \"1\", \"unknown\": \"\"}[\n                        required[\"ground_truth\"]\n                    ],\n                    attack_type={\n                        \"normal\": \"Normal\",\n                        \"controlled_violation\": \"ControlledViolation\",\n                        \"unknown\": \"Unknown\",\n                    }[required[\"ground_truth\"]],\n                )\n                for field, value in required.items():\n                    if actual.get(field) != str(value):\n>                       raise ValueError(\"Logical reconciliation mismatch: \" + field)\nE                       ValueError: Logical reconciliation mismatch: ground_truth\n\nsrc/research_stand/label_verification.py:352: ValueError\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_replay_requires_independent_timed_identity_and_qos1_is_normal[wrong_epoch]\n1 failed in 0.19s\n"
+    },
+    {
+      "defect": "duplicate_physical_capture_under_new_filename",
+      "test": "test_ground_truth_hardening.py::test_copied_pcap_cannot_inflate_independent_capture_support",
+      "edits": [
+        [
+          "src/research_stand/dataset_v2.py",
+          "if cap[\"pcap_sha256\"] in seen_pcap:",
+          "if False:"
+        ],
+        [
+          "src/research_stand/label_verification.py",
+          "if cap[\"pcap_sha256\"] in seen_pcap:",
+          "if False:"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________ test_copied_pcap_cannot_inflate_independent_capture_support __________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-73/test_copied_pcap_cannot_inflat0')\n\n    def test_copied_pcap_cannot_inflate_independent_capture_support(tmp_path):\n        import shutil\n    \n        raw = tmp_path / \"raw\"\n        source = fixture(raw)\n        clone = raw / \"renamed\"\n        shutil.copytree(source, clone)\n        p = clone / \"ground-truth.json\"\n        t = json.loads(p.read_text())\n        t[\"experiment\"][\"experiment_id\"] = \"renamed\"\n        p.write_text(json.dumps(t))\n>       with pytest.raises(ValueError, match=\"Duplicate source PCAP\"):\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       Failed: DID NOT RAISE ValueError\n\ntests/test_ground_truth_hardening.py:535: Failed\n=========================== short test summary info ============================\nFAILED tests/test_ground_truth_hardening.py::test_copied_pcap_cannot_inflate_independent_capture_support\n1 failed in 0.16s\n"
+    },
+    {
+      "defect": "independence_from_filename_only",
+      "test": "test_stage14.py::test_shared_lineage_cannot_hide_behind_new_capture_name[source_pcap_sha256]",
+      "edits": [
+        [
+          "src/research_stand/stage14.py",
+          "'capture_id','session_id','source_pcap_sha256','independence_group'",
+          "'capture_id','session_id','independence_group'"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_ test_shared_lineage_cannot_hide_behind_new_capture_name[source_pcap_sha256] __\n\nfield = 'source_pcap_sha256'\n\n    @pytest.mark.parametrize('field',['capture_id','session_id','source_pcap_sha256'])\n    def test_shared_lineage_cannot_hide_behind_new_capture_name(field):\n     from src.research_stand.stage14 import linked_split\n     f,p=split_fixture();f.loc[f.independence_group=='g11',field]=f.loc[f.independence_group=='g6',field].iloc[0]\n>    with pytest.raises(ValueError,match='intersection'):linked_split(f,p)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE ValueError\n\ntests/test_stage14.py:56: Failed\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_shared_lineage_cannot_hide_behind_new_capture_name[source_pcap_sha256]\n1 failed in 0.67s\n"
+    },
+    {
+      "defect": "overlap_in_coherently_rehashed_split",
+      "test": "test_stage14.py::test_coherently_modified_partition_still_rejected",
+      "edits": [
+        [
+          "src/classifier/research/experiment.py",
+          "if actual!=p['split']:",
+          "if False:"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________ test_coherently_modified_partition_still_rejected _______________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-74/test_coherently_modified_parti0')\n\n    def test_coherently_modified_partition_still_rejected(tmp_path):\n     from test_research75 import fixture,settings\n     from src.classifier.research.experiment import plan,checked_plan\n     from src.classifier.research.datasets import canonical_hash\n     data,manifest,_=fixture(tmp_path);path=tmp_path/'plan.json';value=plan(data,manifest,settings(),path);value['split']['indices'][0].append(value['split']['indices'][2][0]);value['split'].pop('sha256');value['split']['sha256']=canonical_hash(value['split']);value.pop('plan_sha256');value['plan_sha256']=canonical_hash(value);path.write_text(json.dumps(value))\n>    with pytest.raises(ValueError,match='partition mismatch'):checked_plan(data,manifest,path)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE ValueError\n\ntests/test_stage14.py:210: Failed\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_coherently_modified_partition_still_rejected\n1 failed in 0.94s\n"
+    },
+    {
+      "defect": "preprocessing_fit_on_full_data",
+      "test": "test_research75.py::test_schema_nonfinite_types_and_missing_imputed_on_train_only",
+      "edits": [
+        [
+          "src/classifier/research/experiment.py",
+          "sub=frame.iloc[indices]",
+          "sub=frame"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________ test_schema_nonfinite_types_and_missing_imputed_on_train_only _________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-75/test_schema_nonfinite_types_an0')\n\n    def test_schema_nonfinite_types_and_missing_imputed_on_train_only(tmp_path):\n        data,manifest,_=fixture(tmp_path);f,_=read_prepared(data,manifest)\n        for bad in [float('inf'),-1,True,'invalid']:\n            broken=f.copy();broken['tcp.len']=bad\n            with pytest.raises(ValueError):packet_frame(broken)\n        broken=f.copy();broken['tcp.flags']=1.5\n        with pytest.raises(ValueError):packet_frame(broken)\n        f.loc[0,'tcp.len']=np.nan\n        model,timing=fit_candidate(f,list(range(100)),settings()['candidates'][0],75)\n>       assert model.named_steps['impute'].statistics_[1]==f.iloc[:100]['tcp.len'].median()\nE       assert np.float64(200.0) == np.float64(70.0)\nE        +  where np.float64(70.0) = median()\nE        +    where median = 0       NaN\\n1      21.0\\n2      22.0\\n3      23.0\\n4      24.0\\n      ...  \\n95    115.0\\n96    116.0\\n97    117.0\\n98    118.0\\n99    119.0\\nName: tcp.len, Length: 100, dtype: float64.median\n\ntests/test_research75.py:72: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_research75.py::test_schema_nonfinite_types_and_missing_imputed_on_train_only\n1 failed in 0.63s\n"
+    },
+    {
+      "defect": "holdout_labels_enter_fit",
+      "test": "test_research75.py::test_balancing_is_train_only_and_provenance_cannot_be_predictive",
+      "edits": [
+        [
+          "src/classifier/research/experiment.py",
+          "sub=frame.iloc[indices]",
+          "sub=frame.iloc[list(range(len(frame)//2,len(frame)))+list(indices)]"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______ test_balancing_is_train_only_and_provenance_cannot_be_predictive _______\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-76/test_balancing_is_train_only_a0')\n\n    def test_balancing_is_train_only_and_provenance_cannot_be_predictive(tmp_path):\n        data,manifest,_=fixture(tmp_path);f,_=read_prepared(data,manifest)\n        indices=list(range(100))\n        for weight in [None,'balanced','balanced_subsample']:\n            spec=dict(settings()['candidates'][0],parameters=dict(n_estimators=4,class_weight=weight))\n            model,stats=fit_candidate(f,indices,spec,75)\n>           assert model.named_steps['model'].class_weight==weight and stats['fit_rows']==100\nE           assert (None == None and 280 == 100)\nE            +  where None = RandomForestClassifier(n_estimators=4, n_jobs=1, random_state=75).class_weight\n\ntests/test_research75.py:189: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_research75.py::test_balancing_is_train_only_and_provenance_cannot_be_predictive\n1 failed in 0.61s\n"
+    },
+    {
+      "defect": "threshold_selected_on_holdout",
+      "test": "test_stage14.py::test_validation_selection_cannot_read_holdout",
+      "edits": [
+        [
+          "src/classifier/research/experiment.py",
+          "validation=frame.iloc[val_idx]",
+          "validation=frame.iloc[p['split']['indices'][2]]"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "=fixture(tmp_path);path=tmp_path/'plan.json';p=ex.plan(data,manifest,settings(),path)\n     from src.classifier.research.datasets import read_prepared\n     frame,_=read_prepared(data,manifest);allowed=set(frame.iloc[p['split']['indices'][1]].packet_id);forbidden=set(frame.iloc[p['split']['indices'][2]].packet_id);original=ex.risk;calls=[]\n     def observed(pipeline,x,algorithm):\n      assert set(x.packet_id)<=allowed and not set(x.packet_id)&forbidden,'Threshold selection touched holdout'\n      calls.append(len(x));return original(pipeline,x,algorithm)\n>    monkeypatch.setattr(ex,'risk',observed);ex.train(data,manifest,path,tmp_path/'models',tmp_path/'experiment');assert calls\n                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_stage14.py:191: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/classifier/research/experiment.py:141: in train\n    scores=risk(pipeline,validation,spec['algorithm']);point=operating_point(validation.label,scores,config.get('validation_fpr_target',.05))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\npipeline = Pipeline(steps=[('schema', PacketSchema()),\n                ('features',\n                 FeatureSubset(features=['fra...assifier(class_weight='balanced', n_estimators=4,\n                                        n_jobs=1, random_state=75))])\nx =      frame.len  tcp.len  tcp.flags  ...  epoch_seconds  attack_type label\n84       184.0    104.0        2.0  ...   1....09          DoS     1\n335      435.0    355.0       16.0  ...   1.700000e+09          DoS     1\n\n[72 rows x 12 columns]\nalgorithm = 'rf'\n\n    def observed(pipeline,x,algorithm):\n>    assert set(x.packet_id)<=allowed and not set(x.packet_id)&forbidden,'Threshold selection touched holdout'\nE    AssertionError: Threshold selection touched holdout\nE    assert ({'synthetic:c...cap16:3', ...} <= {'synthetic:c...cap11:3', ...}\nE      \nE      Extra items in the left set:\nE      'synthetic:cap7:4'\nE      'synthetic:cap27:5'\nE      'synthetic:cap9:7'\nE      'synthetic:cap16:12'\nE      'synthetic:cap16:1'...\nE      \nE      ...Full output truncated, use '-vv' to show)\n\ntests/test_stage14.py:189: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_validation_selection_cannot_read_holdout\n1 failed in 0.70s\n"
+    },
+    {
+      "defect": "repeat_final_test_allowed",
+      "test": "test_research75.py::test_freeze_artifacts_once_only_test_and_offline_inference",
+      "edits": [
+        [
+          "src/classifier/research/experiment.py",
+          "os.O_WRONLY|os.O_CREAT|os.O_EXCL",
+          "os.O_WRONLY|os.O_CREAT"
+        ]
+      ],
+      "exit_code": 0,
+      "killed_by_behavior": false,
+      "output_tail": ".                                                                        [100%]\n1 passed in 1.36s\n"
+    },
+    {
+      "defect": "oversampling_before_split",
+      "test": "test_stage14.py::test_no_oversampling_or_fit_before_group_split",
+      "edits": [
+        [
+          "src/classifier/research/experiment.py",
+          "split=source_split(frame,source,config)",
+          "frame=frame.loc[frame.index.repeat(2)].reset_index(drop=True);split=source_split(frame,source,config)"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "  import src.classifier.research.experiment as ex\n     from test_research75 import fixture,settings\n     from src.classifier.research.datasets import read_prepared\n     data,manifest,_=fixture(tmp_path);frame,_=read_prepared(data,manifest);original=ex.prepare_split;observed=[]\n     def split(x,*args,**kwargs):\n      assert list(x.packet_id)==list(frame.packet_id) and not x.packet_id.duplicated().any(),'Source rows duplicated/resampled before split'\n      observed.append(True);return original(x,*args,**kwargs)\n>    monkeypatch.setattr(ex,'prepare_split',split);ex.plan(data,manifest,settings(),tmp_path/'plan.json');assert observed\n                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_stage14.py:202: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/classifier/research/experiment.py:109: in plan\n    frame=frame.loc[frame.index.repeat(2)].reset_index(drop=True);split=source_split(frame,source,config)\n                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nsrc/classifier/research/experiment.py:94: in source_split\n    return prepare_split(frame,config['seed'],config.get('minimum_normal_rows',1000),config.get('minimum_class_captures',5))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nx =      frame.len  tcp.len  tcp.flags  ...  epoch_seconds  attack_type label\n0        100.0     20.0        2.0  ...   1....9          DoS     1\n719      459.0    379.0       16.0  ...   1.700000e+09          DoS     1\n\n[720 rows x 12 columns]\nargs = (75, 3, 1), kwargs = {}\n\n    def split(x,*args,**kwargs):\n>    assert list(x.packet_id)==list(frame.packet_id) and not x.packet_id.duplicated().any(),'Source rows duplicated/resampled before split'\nE    AssertionError: Source rows duplicated/resampled before split\nE    assert (['synthetic:c...:cap0:3', ...] == ['synthetic:c...:cap0:6', ...]\nE      \nE      At index 1 diff: 'synthetic:cap0:1' != 'synthetic:cap0:2'\nE      Left contains 360 more items, first extra item: 'synthetic:cap15:1'\nE      Use -v to get more diff)\n\ntests/test_stage14.py:200: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_no_oversampling_or_fit_before_group_split\n1 failed in 0.68s\n"
+    },
+    {
+      "defect": "frozen_configuration_integrity_checks_disabled",
+      "test": "test_stage14.py::test_changed_frozen_configuration_cannot_reach_fit",
+      "edits": [
+        [
+          "src/classifier/research/experiment.py",
+          "if canonical_hash(p)!=digest:",
+          "if False:"
+        ],
+        [
+          "src/classifier/research/experiment.py",
+          "if canonical_hash(p['config'])!=p['config_sha256']:",
+          "if False:"
+        ],
+        [
+          "src/classifier/research/experiment.py",
+          "if actual!=p['split']:",
+          "if False:"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________ test_changed_frozen_configuration_cannot_reach_fit ______________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-80/test_changed_frozen_configurat0')\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f5a211aeba0>\n\n    def test_changed_frozen_configuration_cannot_reach_fit(tmp_path,monkeypatch):\n     from test_research75 import fixture,settings\n     import src.classifier.research.experiment as ex\n     data,manifest,_=fixture(tmp_path);path=tmp_path/'plan.json';r=ex.plan(data,manifest,settings(),path);r['config']['seed']=1;path.write_text(json.dumps(r));original=ex.fit_candidate;called=[]\n     def observed(*args,**kwargs):called.append(True);return original(*args,**kwargs)\n     monkeypatch.setattr(ex,'fit_candidate',observed)\n     try:ex.train(data,manifest,path,tmp_path/'models',tmp_path/'exp')\n     except ValueError:pass\n>    assert not called,'Modified frozen configuration reached model fitting'\nE    AssertionError: Modified frozen configuration reached model fitting\nE    assert not [True, True, True]\n\ntests/test_stage14.py:255: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_changed_frozen_configuration_cannot_reach_fit\n1 failed in 0.81s\n"
+    },
+    {
+      "defect": "unknown_rows_removed_from_audit",
+      "test": "test_ground_truth_hardening.py::test_public_pipeline_positive_mixed_and_unknown",
+      "edits": [
+        [
+          "src/research_stand/dataset_v2.py",
+          "frame = pd.DataFrame(data)",
+          "frame = pd.DataFrame(data); frame=frame.loc[frame.ground_truth!=\"unknown\"]"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "        raise ValueError(\"Unsubstantiated scientific quality attestation\")\n        obs = table(directory / \"observations.csv\")\n        known = table(directory / \"dataset.csv\")\n        by_capture = defaultdict(list)\n        for row in obs:\n            by_capture[row[\"experiment_id\"]].append(row)\n        if len({r[\"packet_id\"] for r in obs}) != len(obs):\n            raise ValueError(\"Duplicate physical packet identity\")\n        if set(by_capture) != {r[\"capture_id\"] for r in m[\"raw_files\"]}:\n            raise ValueError(\"Capture set mismatch\")\n        seen_pcap = set()\n        counts = Counter()\n        connections = set()\n        verified = set()\n        for capture in m[\"raw_files\"]:\n            folder = captures / capture[\"capture_id\"]\n            if folder.resolve().parent != captures.resolve():\n                raise ValueError(\"Unsafe capture identity\")\n            for name, value in capture[\"input_hashes\"].items():\n                if Path(name).name != name or digest(folder / name) != value:\n                    raise ValueError(\"Source evidence hash mismatch\")\n            raw, cap, _ = headers(folder)\n            if cap[\"pcap_sha256\"] in seen_pcap:\n                raise ValueError(\"Duplicate source capture evidence\")\n            seen_pcap.add(cap[\"pcap_sha256\"])\n            truth = load_json(folder / \"ground-truth.json\")\n            if truth[\"experiment\"][\"experiment_id\"] != folder.name:\n                raise ValueError(\"Source experiment identity mismatch\")\n            core = load_json(folder / \"core.json\")\n            core[\"mqtt_witness\"] = (\n                load_json(folder / \"mqtt-observer.json\")\n                if (folder / \"mqtt-observer.json\").exists()\n                else {}\n            )\n            broker = (\n                load_json(folder / \"broker-evidence.json\")\n                if (folder / \"broker-evidence.json\").exists()\n                else {}\n            )\n            raw_by_stream = defaultdict(list)\n            for p in raw:\n                raw_by_stream[p[\"tcp.stream\"]].append(p)\n            saved = by_capture[capture[\"capture_id\"]]\n            if len(saved) != len(raw):\n>               raise ValueError(\"Missing/extra observation\")\nE               ValueError: Missing/extra observation\n\nsrc/research_stand/label_verification.py:323: ValueError\n=========================== short test summary info ============================\nFAILED tests/test_ground_truth_hardening.py::test_public_pipeline_positive_mixed_and_unknown\n1 failed in 0.15s\n"
+    },
+    {
+      "defect": "qos1_dup_called_attack",
+      "test": "test_stage14.py::test_replay_requires_independent_timed_identity_and_qos1_is_normal[qos1_normal]",
+      "edits": [
+        [
+          "src/research_stand/labels_v2.py",
+          "        retry = any(e.get(\"dup\") == 1 for e in pubs) and any(e[\"category\"] == \"replay\" for e in pg)",
+          "        retry = any(e.get(\"dup\") == 1 for e in pubs) and any(e[\"category\"] == \"replay\" for e in pg)\n        if retry:return \"controlled_violation\", \"DUP_ATTACK\", device_binding, lo, hi"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "\n            core[\"mqtt_witness\"] = (\n                load_json(folder / \"mqtt-observer.json\")\n                if (folder / \"mqtt-observer.json\").exists()\n                else {}\n            )\n            broker = (\n                load_json(folder / \"broker-evidence.json\")\n                if (folder / \"broker-evidence.json\").exists()\n                else {}\n            )\n            raw_by_stream = defaultdict(list)\n            for p in raw:\n                raw_by_stream[p[\"tcp.stream\"]].append(p)\n            saved = by_capture[capture[\"capture_id\"]]\n            if len(saved) != len(raw):\n                raise ValueError(\"Missing/extra observation\")\n            prefix = \"lightcrypto-lab-fixed:\" + folder.name\n            for original, actual in zip(raw, saved):\n                required = expected(\n                    original, raw_by_stream[original[\"tcp.stream\"]], truth, broker, core\n                )\n                required.update(\n                    source_id=\"lightcrypto-lab-fixed\",\n                    capture_id=prefix,\n                    experiment_id=folder.name,\n                    session_id=prefix + \":\" + original[\"tcp.stream\"],\n                    packet_id=prefix + \":\" + original[\"frame.number\"],\n                    feature_version=\"tcp-packet-passive-v1\",\n                    source_pcap_sha256=cap[\"pcap_sha256\"],\n                    scenario_category=truth[\"experiment\"][\"scenario\"],\n                    label_source=\"connection-evidence-v2.2\",\n                )\n                required.update(\n                    label={\"normal\": \"0\", \"controlled_violation\": \"1\", \"unknown\": \"\"}[\n                        required[\"ground_truth\"]\n                    ],\n                    attack_type={\n                        \"normal\": \"Normal\",\n                        \"controlled_violation\": \"ControlledViolation\",\n                        \"unknown\": \"Unknown\",\n                    }[required[\"ground_truth\"]],\n                )\n                for field, value in required.items():\n                    if actual.get(field) != str(value):\n>                       raise ValueError(\"Logical reconciliation mismatch: \" + field)\nE                       ValueError: Logical reconciliation mismatch: ground_truth\n\nsrc/research_stand/label_verification.py:352: ValueError\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_replay_requires_independent_timed_identity_and_qos1_is_normal[qos1_normal]\n1 failed in 0.19s\n"
+    },
+    {
+      "defect": "connection_label_called_packet_specific",
+      "test": "test_ground_truth_hardening.py::test_public_pipeline_positive_mixed_and_unknown",
+      "edits": [
+        [
+          "src/research_stand/labels_v2.py",
+          "label_unit=\"connection_activity\"",
+          "label_unit=\"packet_attack\""
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "lder / \"core.json\")\n            core[\"mqtt_witness\"] = (\n                load_json(folder / \"mqtt-observer.json\")\n                if (folder / \"mqtt-observer.json\").exists()\n                else {}\n            )\n            broker = (\n                load_json(folder / \"broker-evidence.json\")\n                if (folder / \"broker-evidence.json\").exists()\n                else {}\n            )\n            raw_by_stream = defaultdict(list)\n            for p in raw:\n                raw_by_stream[p[\"tcp.stream\"]].append(p)\n            saved = by_capture[capture[\"capture_id\"]]\n            if len(saved) != len(raw):\n                raise ValueError(\"Missing/extra observation\")\n            prefix = \"lightcrypto-lab-fixed:\" + folder.name\n            for original, actual in zip(raw, saved):\n                required = expected(\n                    original, raw_by_stream[original[\"tcp.stream\"]], truth, broker, core\n                )\n                required.update(\n                    source_id=\"lightcrypto-lab-fixed\",\n                    capture_id=prefix,\n                    experiment_id=folder.name,\n                    session_id=prefix + \":\" + original[\"tcp.stream\"],\n                    packet_id=prefix + \":\" + original[\"frame.number\"],\n                    feature_version=\"tcp-packet-passive-v1\",\n                    source_pcap_sha256=cap[\"pcap_sha256\"],\n                    scenario_category=truth[\"experiment\"][\"scenario\"],\n                    label_source=\"connection-evidence-v2.2\",\n                )\n                required.update(\n                    label={\"normal\": \"0\", \"controlled_violation\": \"1\", \"unknown\": \"\"}[\n                        required[\"ground_truth\"]\n                    ],\n                    attack_type={\n                        \"normal\": \"Normal\",\n                        \"controlled_violation\": \"ControlledViolation\",\n                        \"unknown\": \"Unknown\",\n                    }[required[\"ground_truth\"]],\n                )\n                for field, value in required.items():\n                    if actual.get(field) != str(value):\n>                       raise ValueError(\"Logical reconciliation mismatch: \" + field)\nE                       ValueError: Logical reconciliation mismatch: label_unit\n\nsrc/research_stand/label_verification.py:352: ValueError\n=========================== short test summary info ============================\nFAILED tests/test_ground_truth_hardening.py::test_public_pipeline_positive_mixed_and_unknown\n1 failed in 0.15s\n"
+    },
+    {
+      "defect": "empty_positive_class_perfect_recall",
+      "test": "test_research75.py::test_operating_point_empty_class_scores_and_group_uncertainty",
+      "edits": [
+        [
+          "src/classifier/research/metrics.py",
+          "float(r[1]) if positive.any() else None",
+          "float(r[1]) if positive.any() else 1.0"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________ test_operating_point_empty_class_scores_and_group_uncertainty _________\n\n    def test_operating_point_empty_class_scores_and_group_uncertainty():\n        point=operating_point([0,0,1,1],[1,1,.1,.9],.05)\n        assert point['threshold']>1 and point['status']=='no_detection_operating_point'\n        metrics=binary_metrics([0,0],[.1,.2],.5)\n>       assert metrics['recall'] is None and metrics['roc_auc'] is None\nE       assert (1.0 is None)\n\ntests/test_research75.py:94: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_research75.py::test_operating_point_empty_class_scores_and_group_uncertainty\n1 failed in 0.49s\n"
+    },
+    {
+      "defect": "offline_ml_becomes_trusted",
+      "test": "test_stage14.py::test_offline_risk_is_untrusted_unattributed_and_cannot_request_control",
+      "edits": [
+        [
+          "src/classifier/research/inference.py",
+          "trusted_detector=False",
+          "trusted_detector=True"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____ test_offline_risk_is_untrusted_unattributed_and_cannot_request_control ____\n\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fe7a5627b30>\n\n    def test_offline_risk_is_untrusted_unattributed_and_cannot_request_control(monkeypatch):\n     import numpy as np\n     from src.classifier.research.inference import predict\n     from src.classifier.research.schema import PacketSchema,FEATURES,VERSION\n     from src.device_control import server\n     f,_=split_fixture();f['device_id']='UNTRUSTED';calls=[]\n     monkeypatch.setattr(server,'request_switch',lambda *args,**kwargs:calls.append((args,kwargs)))\n     class Model:\n      classes_=[0,1]\n      def predict_proba(self,x):return np.tile([.01,.99],(len(x),1))\n     m=dict(task='network_ids',algorithm='rf_binary',feature_version=VERSION,mode='RESEARCH',trusted_detector=False,model_id='fixture',model_version='14.0.0',threshold=.5)\n     records=predict(m,Model(),f.iloc[:3],VERSION,'packet')\n>    assert records and all(v['trusted_detector'] is False and v['binding']=='unattributed' for v in records)\nE    AssertionError: assert ([{'contract_version': 'offline-network-risk-v1', 'detector': 'network_ids', 'granularity': 'packet', 'predicted_attack...n': 'offline-network-risk-v1', 'detector': 'network_ids', 'granularity': 'packet', 'predicted_attack_type': None, ...}] and False)\nE     +  where False = all(<generator object test_offline_risk_is_untrusted_unattributed_and_cannot_request_control.<locals>.<genexpr> at 0x7fe748908520>)\n\ntests/test_stage14.py:225: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_offline_risk_is_untrusted_unattributed_and_cannot_request_control\n1 failed in 0.60s\n"
+    },
+    {
+      "defect": "offline_rf_requests_crypto_control",
+      "test": "test_stage14.py::test_offline_risk_is_untrusted_unattributed_and_cannot_request_control",
+      "edits": [
+        [
+          "src/classifier/research/inference.py",
+          "    scores=risk(pipeline,frame,algorithm)",
+          "    from src.device_control.server import request_switch\n    request_switch(None,'lab001','aes-128-gcm-v1','RF')\n    scores=risk(pipeline,frame,algorithm)"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____ test_offline_risk_is_untrusted_unattributed_and_cannot_request_control ____\n\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f7200605340>\n\n    def test_offline_risk_is_untrusted_unattributed_and_cannot_request_control(monkeypatch):\n     import numpy as np\n     from src.classifier.research.inference import predict\n     from src.classifier.research.schema import PacketSchema,FEATURES,VERSION\n     from src.device_control import server\n     f,_=split_fixture();f['device_id']='UNTRUSTED';calls=[]\n     monkeypatch.setattr(server,'request_switch',lambda *args,**kwargs:calls.append((args,kwargs)))\n     class Model:\n      classes_=[0,1]\n      def predict_proba(self,x):return np.tile([.01,.99],(len(x),1))\n     m=dict(task='network_ids',algorithm='rf_binary',feature_version=VERSION,mode='RESEARCH',trusted_detector=False,model_id='fixture',model_version='14.0.0',threshold=.5)\n     records=predict(m,Model(),f.iloc[:3],VERSION,'packet')\n     assert records and all(v['trusted_detector'] is False and v['binding']=='unattributed' for v in records)\n>    assert calls==[],'Offline RF inference attempted live control'\nE    AssertionError: Offline RF inference attempted live control\nE    assert [((None, 'lab...', 'RF'), {})] == []\nE      \nE      Left contains one more item: ((None, 'lab001', 'aes-128-gcm-v1', 'RF'), {})\nE      Use -v to get more diff\n\ntests/test_stage14.py:226: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_offline_risk_is_untrusted_unattributed_and_cannot_request_control\n1 failed in 0.61s\n"
+    },
+    {
+      "defect": "observer_loss_not_quarantined",
+      "test": "test_stage14.py::test_source_loss_and_partial_data_cannot_be_complete[observer_lost]",
+      "edits": [
+        [
+          "scripts/stage14_collect.py",
+          " or not observer.get('completed')",
+          ""
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____ test_source_loss_and_partial_data_cannot_be_complete[observer_lost] ______\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-84/test_source_loss_and_partial_d0')\nfault = 'observer_lost'\n\n    @pytest.mark.parametrize('fault',['observer_lost','observer_empty','broker_missing','pg_missing','partial_capture','early_generator','nonfinite_clock','clock_drift'])\n    def test_source_loss_and_partial_data_cannot_be_complete(tmp_path,fault):\n     from scripts.stage14_collect import check_source\n     folder=source_fixture(tmp_path);assert check_source(folder)['packets']>0\n     name='mqtt-observer.json' if fault.startswith('observer') else 'broker-evidence.json' if fault=='broker_missing' else 'core.json' if fault=='pg_missing' else 'capture.json' if fault=='partial_capture' else 'ground-truth.json'\n     p=folder/name;r=json.loads(p.read_text())\n     if fault=='observer_lost':r['completed']=False\n     elif fault=='observer_empty':r['events']=[]\n     elif fault=='broker_missing':r['sessions']=[]\n     elif fault=='pg_missing':r['postgres']='unavailable'\n     elif fault=='partial_capture':r['finished_at']=2\n     elif fault=='early_generator':r['experiment_finished_at']=2\n     elif fault=='clock_drift':r['clock']['wall_monotonic_drift_seconds']=4\n     else:r['clock']['boundary_margin_seconds']=float('nan')\n     p.write_text(json.dumps(r))\n>    with pytest.raises(ValueError):check_source(folder)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE ValueError\n\ntests/test_stage14.py:104: Failed\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_source_loss_and_partial_data_cannot_be_complete[observer_lost]\n1 failed in 0.19s\n"
+    },
+    {
+      "defect": "partial_capture_called_complete",
+      "test": "test_stage14.py::test_source_loss_and_partial_data_cannot_be_complete[partial_capture]",
+      "edits": [
+        [
+          "scripts/stage14_collect.py",
+          " if cap['started_at']>truth['experiment_started_at'] or cap['finished_at']<truth['experiment_finished_at']:raise ValueError('Partial capture does not cover generator lifecycle')",
+          ""
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____ test_source_loss_and_partial_data_cannot_be_complete[partial_capture] _____\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-85/test_source_loss_and_partial_d0')\nfault = 'partial_capture'\n\n    @pytest.mark.parametrize('fault',['observer_lost','observer_empty','broker_missing','pg_missing','partial_capture','early_generator','nonfinite_clock','clock_drift'])\n    def test_source_loss_and_partial_data_cannot_be_complete(tmp_path,fault):\n     from scripts.stage14_collect import check_source\n     folder=source_fixture(tmp_path);assert check_source(folder)['packets']>0\n     name='mqtt-observer.json' if fault.startswith('observer') else 'broker-evidence.json' if fault=='broker_missing' else 'core.json' if fault=='pg_missing' else 'capture.json' if fault=='partial_capture' else 'ground-truth.json'\n     p=folder/name;r=json.loads(p.read_text())\n     if fault=='observer_lost':r['completed']=False\n     elif fault=='observer_empty':r['events']=[]\n     elif fault=='broker_missing':r['sessions']=[]\n     elif fault=='pg_missing':r['postgres']='unavailable'\n     elif fault=='partial_capture':r['finished_at']=2\n     elif fault=='early_generator':r['experiment_finished_at']=2\n     elif fault=='clock_drift':r['clock']['wall_monotonic_drift_seconds']=4\n     else:r['clock']['boundary_margin_seconds']=float('nan')\n     p.write_text(json.dumps(r))\n>    with pytest.raises(ValueError):check_source(folder)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE ValueError\n\ntests/test_stage14.py:104: Failed\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_source_loss_and_partial_data_cannot_be_complete[partial_capture]\n1 failed in 0.18s\n"
+    },
+    {
+      "defect": "early_generator_called_complete",
+      "test": "test_stage14.py::test_source_loss_and_partial_data_cannot_be_complete[early_generator]",
+      "edits": [
+        [
+          "scripts/stage14_collect.py",
+          " if truth['experiment_finished_at']-truth['experiment_started_at']<truth['experiment']['duration']-.05:raise ValueError('Generator stopped before planned duration')",
+          ""
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____ test_source_loss_and_partial_data_cannot_be_complete[early_generator] _____\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-86/test_source_loss_and_partial_d0')\nfault = 'early_generator'\n\n    @pytest.mark.parametrize('fault',['observer_lost','observer_empty','broker_missing','pg_missing','partial_capture','early_generator','nonfinite_clock','clock_drift'])\n    def test_source_loss_and_partial_data_cannot_be_complete(tmp_path,fault):\n     from scripts.stage14_collect import check_source\n     folder=source_fixture(tmp_path);assert check_source(folder)['packets']>0\n     name='mqtt-observer.json' if fault.startswith('observer') else 'broker-evidence.json' if fault=='broker_missing' else 'core.json' if fault=='pg_missing' else 'capture.json' if fault=='partial_capture' else 'ground-truth.json'\n     p=folder/name;r=json.loads(p.read_text())\n     if fault=='observer_lost':r['completed']=False\n     elif fault=='observer_empty':r['events']=[]\n     elif fault=='broker_missing':r['sessions']=[]\n     elif fault=='pg_missing':r['postgres']='unavailable'\n     elif fault=='partial_capture':r['finished_at']=2\n     elif fault=='early_generator':r['experiment_finished_at']=2\n     elif fault=='clock_drift':r['clock']['wall_monotonic_drift_seconds']=4\n     else:r['clock']['boundary_margin_seconds']=float('nan')\n     p.write_text(json.dumps(r))\n>    with pytest.raises(ValueError):check_source(folder)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE ValueError\n\ntests/test_stage14.py:104: Failed\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_source_loss_and_partial_data_cannot_be_complete[early_generator]\n1 failed in 0.19s\n"
+    },
+    {
+      "defect": "dataset_holdout_reopened_in_new_directory",
+      "test": "test_stage14.py::test_stage14_holdout_cannot_be_reopened_via_new_experiment_directory",
+      "edits": [
+        [
+          "src/classifier/research/experiment.py",
+          "if source.get('dataset_version')=='stage14-lightcrypto-lab-v1':\n        global_fd=os.open",
+          "if False:\n        global_fd=os.open"
+        ]
+      ],
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____ test_stage14_holdout_cannot_be_reopened_via_new_experiment_directory _____\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-87/test_stage14_holdout_cannot_be0')\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f627433a4e0>\n\n    def test_stage14_holdout_cannot_be_reopened_via_new_experiment_directory(tmp_path,monkeypatch):\n     \"\"\"No real holdout/model: isolate lifecycle guard using an empty synthetic evaluator.\"\"\"\n     import pandas as pd\n     from src.classifier.research import experiment as ex\n     from src.classifier.research.datasets import canonical_hash\n     data=tmp_path/'dataset.csv';data.write_text('synthetic guard fixture only');manifest=tmp_path/'manifest.json';manifest.write_text('{}');plan=dict(plan_sha256='fixture-plan',config={'seed':75},split={'indices':[[],[],[]]});source=dict(dataset_version='stage14-lightcrypto-lab-v1',schema_version=1,synthetic=True)\n     monkeypatch.setattr(ex,'checked_plan',lambda *args:(pd.DataFrame(),source,plan))\n     for name in ['experiment-one','experiment-two']:\n      folder=tmp_path/name;folder.mkdir();freeze=dict(plan_sha256='fixture-plan',models=[]);freeze['sha256']=canonical_hash(freeze);(folder/'freeze.json').write_text(json.dumps(freeze))\n     ex.final_test(data,manifest,'unused',tmp_path/'no-models',tmp_path/'experiment-one')\n>    with pytest.raises(FileExistsError):ex.final_test(data,manifest,'unused',tmp_path/'no-models',tmp_path/'experiment-two')\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE FileExistsError\n\ntests/test_stage14.py:293: Failed\n=========================== short test summary info ============================\nFAILED tests/test_stage14.py::test_stage14_holdout_cannot_be_reopened_via_new_experiment_directory\n1 failed in 0.53s\n"
+    }
+  ],
+  "all_killed": false,
+  "scope": "Disposable source copies and synthetic program fixtures; no scientific RF/IF fit or real-capture metrics",
+  "exit_code": 1
+}

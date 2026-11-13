@@ -1,3 +1,7 @@
+# Stage14 — завершённое ограниченное offline исследование
+
+60 primary captures/30 matched blocks,35203 observations,15.169%unknown. Internal gate PASS, новый frozen split36/12/12 captures.23 fixed RF/IF candidates, один final test; packet RF recall49.04%,IF7.69%; positive holdout sessions5. Не является доказанным IDS или production promotion. Quantitative shortcut audit выполнен после evaluation только на train/validation; ограничения задокументированы. Dataset-wide once-only bypass найден synthetic test и исправлен после оценки без retuning.967 passed/0 skipped/exit0. [Итоги](STAGE14_RESULTS.md). Ни этап15, ни online ML control не начаты.
+
 # Этап 10 — измерения и подготовка расширения
 
 Ветка `feature/system-performance-validation`, исходный SHA `4ac5081a69199041fb8e34111b976da6c257ac93`.

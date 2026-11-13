@@ -1,0 +1,166 @@
+{
+  "performed_at": "2026-11-13T11:07:16.104496+00:00",
+  "scope": "Descriptive post-evaluation train/validation only; not used to tune frozen models",
+  "holdout_features_or_labels_used_for_this_audit": false,
+  "model_choices_changed": false,
+  "predictors": [
+    "frame.len",
+    "tcp.len",
+    "tcp.flags",
+    "tcp.window_size_value",
+    "tcp.time_delta"
+  ],
+  "excluded_metadata": [
+    "ground_truth",
+    "label_reason",
+    "connection_id",
+    "authenticated_device",
+    "direction",
+    "label_confidence",
+    "label_unit",
+    "label_scope",
+    "connection_activity",
+    "packet_specific_evidence",
+    "label_evidence_level",
+    "source_id",
+    "capture_id",
+    "experiment_id",
+    "session_id",
+    "packet_id",
+    "epoch_seconds",
+    "feature_version",
+    "source_pcap_sha256",
+    "scenario_category",
+    "label_source",
+    "label",
+    "attack_type",
+    "independence_group",
+    "broker_realm",
+    "preregistered_partition"
+  ],
+  "feature_distributions_by_class": {
+    "ControlledViolation": {
+      "frame.len": {
+        "count": 532.0,
+        "mean": 561.7725563909775,
+        "std": 104.34185701291047,
+        "min": 66.0,
+        "25%": 584.0,
+        "50%": 584.0,
+        "75%": 584.0,
+        "max": 588.0
+      },
+      "tcp.len": {
+        "count": 532.0,
+        "mean": 495.77255639097746,
+        "std": 104.34185701291047,
+        "min": 0.0,
+        "25%": 518.0,
+        "50%": 518.0,
+        "75%": 518.0,
+        "max": 522.0
+      },
+      "tcp.flags": {
+        "count": 532.0,
+        "mean": 23.69924812030075,
+        "std": 1.5231297069013605,
+        "min": 16.0,
+        "25%": 24.0,
+        "50%": 24.0,
+        "75%": 24.0,
+        "max": 24.0
+      },
+      "tcp.window_size_value": {
+        "count": 532.0,
+        "mean": 73.90601503759399,
+        "std": 0.9658000712110258,
+        "min": 64.0,
+        "25%": 74.0,
+        "50%": 74.0,
+        "75%": 74.0,
+        "max": 74.0
+      },
+      "tcp.time_delta": {
+        "count": 532.0,
+        "mean": 0.3166404718045113,
+        "std": 0.19278776788585844,
+        "min": 1.4e-05,
+        "25%": 0.19157725,
+        "50%": 0.2733985,
+        "75%": 0.3864595,
+        "max": 0.96289
+      }
+    },
+    "Normal": {
+      "frame.len": {
+        "count": 7369.0,
+        "mean": 545.9469398832949,
+        "std": 133.170367081037,
+        "min": 66.0,
+        "25%": 584.0,
+        "50%": 584.0,
+        "75%": 584.0,
+        "max": 588.0
+      },
+      "tcp.len": {
+        "count": 7369.0,
+        "mean": 479.9469398832949,
+        "std": 133.170367081037,
+        "min": 0.0,
+        "25%": 518.0,
+        "50%": 518.0,
+        "75%": 518.0,
+        "max": 522.0
+      },
+      "tcp.flags": {
+        "count": 7369.0,
+        "mean": 23.507124440222555,
+        "std": 1.923689253220083,
+        "min": 16.0,
+        "25%": 24.0,
+        "50%": 24.0,
+        "75%": 24.0,
+        "max": 24.0
+      },
+      "tcp.window_size_value": {
+        "count": 7369.0,
+        "mean": 73.81842855204233,
+        "std": 1.3279473908582253,
+        "min": 64.0,
+        "25%": 74.0,
+        "50%": 74.0,
+        "75%": 74.0,
+        "max": 74.0
+      },
+      "tcp.time_delta": {
+        "count": 7369.0,
+        "mean": 0.4089235848826163,
+        "std": 0.17329575448517232,
+        "min": 1e-06,
+        "25%": 0.337398,
+        "50%": 0.418975,
+        "75%": 0.530317,
+        "max": 0.693759
+      }
+    }
+  },
+  "feature_value_collisions": {
+    "unique_vectors": 7778,
+    "rows": 7901,
+    "repeated_value_rows": 228,
+    "conflicting_label_vectors": 11,
+    "meaning": "Equal feature values do not prove duplicate physical packets"
+  },
+  "confounders": [
+    "single physical host/OS/stack",
+    "same producer/collector implementation",
+    "six heldout blocks only",
+    "scenario density and TLS connection-duration effects",
+    "paired conditions within blocks",
+    "conservative transductive crossing-fingerprint isolation changes prevalence",
+    "only one declared random seed/model run",
+    "bad_credentials validation positive support absent"
+  ],
+  "external_domain_validation": "not_performed",
+  "shortcut_absence_proven": false
+}

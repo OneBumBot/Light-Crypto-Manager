@@ -1,0 +1,13 @@
+# Независимый oracle и release guards
+
+Builder labels_v2.annotate/verdict и label_verification.expected/reconcile остаются раздельными алгоритмами; oracle не импортирует assignment functions. Общие I/O/PCAP primitives разрешены: физические records проверяются независимо от CSV по tuple/stream/SYN/flags/window/length/time/delta. Hash alone недостаточен: согласованное изменение derived CSV/manifest отвергается логическим пересчётом по source evidence. Source capture IDs/PCAP hashes уникальны, unknown subset не удаляется из audit.
+
+Дополнительный Stage14 source gate проверяет immutable acquisition receipt и preregistered group/project/config, успешные collector/observer/generator, отсутствие overflow/kernel drops, coverage всего generator lifecycle, завершённость source storage corroboration, clock drift<=declared boundary guard и отсутствие synthetic_fixture. Mandatory missing broker/observer не может разрешить scientific dataset. Broker source ambiguity даёт unknown. Wall-clock resolution1ns не является accuracy; shared-host drift check не заменяет внешний синхронизированный источник.
+
+Обнаружено и исправлено: observer мог оставаться процессом при потерянном MQTT connection, игнорируя loop return. Теперь unexpected disconnect/loop failure даёт incomplete, result сохраняется и process fails. Process alive не доказательство наблюдения. Source completion дополнительно отвергает early generator/partial capture и clock-step metadata. Аргумент source stage7b расширен только узким stage14 namespace; credentials/state/protocol unchanged.
+
+30 deliberate real-source private-copy negatives: normal↔violation,unknown→both known classes,session/connection/time/reason/capture/hash/scope,unknown deletion,QoS1 promotion,missing/truncated/rehash PCAP,missing sources,digest/PG epoch/sequence/prior/ACL windows,fake intent,duplicates. Оригиналы не изменены. Отдельные synthetic program tests покрывают malformed inputs и жизненный цикл.26 behavior mutants вtemporary copies убиты; после добавления dataset-scoped once-only guard выполняется расширенный final mutation run. Syntax/import/build ошибки не засчитываются.
+
+В первом mutation run один frozen-hash mutant ловился regex ожидаемого diagnostic, хотя другие integrity guards ещё запрещали fit. Это не принято как достаточное доказательство поведения: final case явно отключает три защиты и проверяет, что изменённая frozen configuration не достигает fit. Старые outputs сохранены.
+
+Oracle доказывает соответствие software evidence contract, не100% истинность и не намерение атакующего. Координированное изменение всех сырых журналов владельцем стенда без внешней подписи не предотвращено. TLS-encrypted packet-specific maliciousness не установлена; labels connection_activity/window_behavior.

@@ -1,0 +1,10 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_stage14_holdout_cannot_be_reopened_via_new_experiment_directory _____
+tests/test_stage14.py:293: in test_stage14_holdout_cannot_be_reopened_via_new_experiment_directory
+    with pytest.raises(FileExistsError):ex.final_test(data,manifest,'unused',tmp_path/'no-models',tmp_path/'experiment-two')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE FileExistsError
+=========================== short test summary info ============================
+FAILED tests/test_stage14.py::test_stage14_holdout_cannot_be_reopened_via_new_experiment_directory
+1 failed in 0.55s
