@@ -1,6 +1,12 @@
+# Stage15 — инженерный Shadow pipeline проверен
+
+Реализованы bounded passive capture, TCP generations, пять features, 975-packet parity, frozen RF/IF без refit, atomic/idempotent journal и read-only UI. 48 коротких runs на 3/10/25/50 software identities, 24 483 PG/Mongo admissions; 1049 passed, 0 skipped, exit 0; 31 поведенческая мутация. Настоящие crash/outage/OOM/browser checks сохранены.
+
+Independent-domain gate: INDEPENDENT_GENERALIZATION_NOT_VERIFIED. На 375 новых corroborated Normal observations IF дал 254 threshold crossings; порог не менялся. Не является доверенным IDS. Policy DRY_RUN, trusted_detector=false, manual-only crypto control, Kuz lab-only. Этап 16 не начинался. [Полный отчёт](STAGE15_RESULTS.md). Следующие разделы — история прежних этапов.
+
 # Stage14 — завершённое ограниченное offline исследование
 
-60 primary captures/30 matched blocks,35203 observations,15.169%unknown. Internal gate PASS, новый frozen split36/12/12 captures.23 fixed RF/IF candidates, один final test; packet RF recall49.04%,IF7.69%; positive holdout sessions5. Не является доказанным IDS или production promotion. Quantitative shortcut audit выполнен после evaluation только на train/validation; ограничения задокументированы. Dataset-wide once-only bypass найден synthetic test и исправлен после оценки без retuning.967 passed/0 skipped/exit0. [Итоги](STAGE14_RESULTS.md). Ни этап15, ни online ML control не начаты.
+60 primary captures/30 matched blocks,35203 observations,15.169%unknown. Internal gate PASS, новый frozen split36/12/12 captures.23 fixed RF/IF candidates, один final test; packet RF recall49.04%,IF7.69%; positive holdout sessions5. Не является доказанным IDS или production promotion. Quantitative shortcut audit выполнен после evaluation только на train/validation; ограничения задокументированы. Dataset-wide once-only bypass найден synthetic test и исправлен после оценки без retuning.967 passed/0 skipped/exit0. [Итоги](STAGE14_RESULTS.md). На момент Stage14 этап15 и online ML control ещё не начинались.
 
 # Этап 10 — измерения и подготовка расширения
 

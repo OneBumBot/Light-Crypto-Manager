@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_tuple_check.py", line 27, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_tuple_check.py", line 15, in main
+    before=state(l);cid=capture(l,name,condition='all',duration=15);wid=start_worker(l,name,['rf_binary','if']);result=l.run('exec','-T','lab-devices','python','/tmp/stage15_tuple_probe.py',timeout=15);probe=json.loads(result.stdout);wait(cid);wait(wid);after=state(l);assert probe['tuple_reuse'] and all(r['mqtt_puback'] for r in probe['connections']);assert after['categories']['accepted']-before['categories']['accepted']==2
+                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_lab.py", line 15, in run
+    f=self.root/'last-failure.txt';f.write_text(r.stdout+r.stderr);f.chmod(0o600);raise RuntimeError('Stage15 operation failed; see private last-failure.txt')
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Stage15 operation failed; see private last-failure.txt

@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "probe": {
+    "connections": [
+      {
+        "local_port": 49243,
+        "remote_port": 8883,
+        "mqtt_puback": true,
+        "sequence_number": 608
+      },
+      {
+        "local_port": 49243,
+        "remote_port": 8883,
+        "mqtt_puback": true,
+        "sequence_number": 609
+      }
+    ],
+    "tuple_reuse": true,
+    "source": "Fresh Stage15 internal broker only",
+    "exit_code": 0
+  },
+  "initial_syns": [
+    {
+      "wire": [
+        "10.215.2.8",
+        "49243",
+        "10.215.2.3",
+        "8883"
+      ],
+      "sequence": 3414388309,
+      "generation": "1",
+      "delta": 0.0
+    },
+    {
+      "wire": [
+        "10.215.2.8",
+        "49243",
+        "10.215.2.3",
+        "8883"
+      ],
+      "sequence": 3418258849,
+      "generation": "2",
+      "delta": 0.0
+    }
+  ],
+  "tshark_mismatches": 0,
+  "legacy_tuple_delta_mismatches": 1,
+  "physical_packets": 34,
+  "old_oracle_unchanged": true,
+  "interpretation": "Generation semantics match tshark; historical tuple-global delta check rejects this valid reuse boundary. No historical data/models rewritten.",
+  "pg_admissions": 2,
+  "mongo_delta": 2,
+  "exit_code": 0
+}

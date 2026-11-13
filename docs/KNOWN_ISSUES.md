@@ -1,3 +1,17 @@
+# Stage15 — текущие ограничения Shadow IDS
+
+- Один физический host; independent generalization не проверена. Нет ARM/physical IoT или production promotion.
+- Capture contract ограничен classic PCAP/Ethernet/IPv4/TCP. Старый offline tuple-global delta имеет одно расхождение на реальном tuple reuse; streaming generation-aware behavior проверено отдельно с tshark.
+- Короткие 15-секундные runs не доказывают максимальную/устойчивую вместимость; 50 × 2 Hz фактически даёт около 70–80 PG admissions/s, а не 100.
+- Capture→prediction имеет soft latency порядка секунды. Drop/context loss и незавершённые TCP sessions остаются explicit unavailable/partial.
+- Новый Normal subset: packet IF FPR 254/375, выбранный session IF 12/12 false activity-window aggregates. RF 0 в маленьком subset не означает нулевой operational FPR. Window labels не являются packet-specific attack attribution.
+- Replay/QoS1 могут быть неразличимы пассивно. Tampered/wrong metadata actors без независимой корреляции unknown. Broker reconnect evidence view quarantined из-за witness loss.
+- Все sessions unbound. Joblib — доверенный local-code boundary; hash не подтверждает происхождение. Session population отличается от Stage14 purged known subset.
+- Контейнерные memory samples не являются точным RSS. Условные повторы одного host не дают внешних confidence intervals.
+- Новый live Stage15 workload — Ascon; AES/Kuz сохранены regression/KAT, новые live переключения в этом этапе не заявлены. Ни Policy activation, ни автоматическое управление не добавлены.
+
+[Доказательства и границы](STAGE15_RESULTS.md). Исторические ограничения ниже относятся к соответствующим этапам.
+
 # Stage14: подтверждённые исследовательские ограничения
 
 - Один host/stack, короткие sessions;30 acquisition blocks не означают30 независимых hardware domains.

@@ -1,0 +1,25 @@
+{"experiment_id": "online-regular", "sent_messages": 36, "connections": 3, "errors": 0}
+regular complete {'normal': 120, 'unknown': 43}
+{"experiment_id": "online-jitter", "sent_messages": 36, "connections": 3, "errors": 0}
+jitter complete {'normal': 124, 'unknown': 38}
+{"experiment_id": "online-qos1-retry", "sent_messages": 36, "connections": 6, "errors": 0}
+qos1_retry complete {'normal': 131, 'unknown': 85}
+{"experiment_id": "online-replay", "sent_messages": 37, "connections": 4, "errors": 0}
+replay complete {'normal': 87, 'unknown': 53, 'controlled_violation': 42}
+{"experiment_id": "online-wrong-epoch", "sent_messages": 36, "connections": 3, "errors": 0}
+wrong_epoch complete {'normal': 84, 'unknown': 78}
+{"experiment_id": "online-wrong-sequence", "sent_messages": 36, "connections": 3, "errors": 0}
+wrong_sequence complete {'normal': 82, 'unknown': 80}
+{"experiment_id": "online-tampered", "sent_messages": 36, "connections": 3, "errors": 0}
+tampered complete {'unknown': 81, 'normal': 81}
+{"experiment_id": "online-forbidden-acl", "sent_messages": 25, "connections": 3, "errors": 0}
+forbidden_acl complete {'normal': 80, 'unknown': 42, 'controlled_violation': 7}
+{"experiment_id": "online-bad-credentials", "sent_messages": 24, "connections": 3, "errors": 0}
+bad_credentials complete {'normal': 82, 'unknown': 38, 'controlled_violation': 1}
+{"experiment_id": "online-bounded-rate", "sent_messages": 47, "connections": 3, "errors": 0}
+bounded_rate complete {'normal': 79, 'controlled_violation': 64, 'unknown': 54}
+{"experiment_id": "online-pattern-change", "sent_messages": 36, "connections": 3, "errors": 0}
+pattern_change complete {'normal': 80, 'unknown': 51, 'controlled_violation': 31}
+broker_reconnect quarantined None
+{"experiment_id": "online-receiver-restart", "sent_messages": 36, "connections": 3, "errors": 0}
+receiver_restart complete {'normal': 124, 'unknown': 38}

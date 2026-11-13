@@ -1,0 +1,34 @@
+{
+  "alembic_head": "0011_policy_throughput",
+  "pg_committed": 32845,
+  "outbox_statuses": {
+    "delivered": 32845
+  },
+  "security_categories": {
+    "delivery_delay": 30,
+    "replay": 15,
+    "rejected": 36,
+    "accepted": 32845
+  },
+  "live_control_commands": 0,
+  "live_control_transitions": 0,
+  "ml_models_registered": 0,
+  "ml_anomaly_events": 0,
+  "policy_signals": 0,
+  "policy_applied_states": 0,
+  "duplicates": 0,
+  "wire_profiles": {
+    "Ascon-AEAD128": 32845
+  },
+  "policy_capacity": {
+    "retained": 32926,
+    "capacity": 100000,
+    "overflow": 0
+  },
+  "mongo_stored": 32845,
+  "trusted_detector": false,
+  "policy_mode": "DRY_RUN",
+  "control_policy": "MANUAL_AUTHORIZED_CONTROL only; no control service/credential in Shadow",
+  "research_stand_telemetry_profile": "Ascon only; AES/Kuz KAT/regression unchanged, no new Stage15 parallel crypto transitions claimed",
+  "exit_code": 0
+}

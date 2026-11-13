@@ -1,0 +1,312 @@
+{
+  "baseline_branch": "feature/rf-if-ground-truth-validation",
+  "baseline_sha": "6903802c7a2267c890c739f2dce7122926950382",
+  "branch": "feature/online-shadow-ids-validation",
+  "final_test_source_sha": "7558f410a78a41535a3f36cd3923244dff311d80",
+  "performance_source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3",
+  "baseline_pytest": {
+    "passed": 967,
+    "skipped": 0,
+    "seconds": 52.99,
+    "exit_code": 0
+  },
+  "final_pytest": {
+    "passed": 1049,
+    "skipped": 0,
+    "seconds": 56.64,
+    "exit_code": 0
+  },
+  "actual_test_commands": [
+    {
+      "report": "baseline-pytest.commands.json",
+      "record": {
+        "commands": [
+          {
+            "command": [
+              "docker",
+              "compose",
+              "--env-file",
+              "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage15/baseline/compose.env",
+              "-f",
+              "compose.yaml",
+              "-f",
+              "compose.research.yaml",
+              "-f",
+              "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage15/baseline/stage15.compose.json",
+              "--profile",
+              "research",
+              "build",
+              "receiver",
+              "tests"
+            ],
+            "exit_code": 0
+          },
+          {
+            "command": [
+              "docker",
+              "compose",
+              "--env-file",
+              "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage15/baseline/compose.env",
+              "-f",
+              "compose.yaml",
+              "-f",
+              "compose.research.yaml",
+              "-f",
+              "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage15/baseline/stage15.compose.json",
+              "--profile",
+              "research",
+              "run",
+              "--rm",
+              "-T",
+              "tests"
+            ],
+            "exit_code": 0
+          }
+        ],
+        "exit_code": 0
+      }
+    },
+    {
+      "report": "final-regression.commands.json",
+      "record": {
+        "commands": [
+          {
+            "command": [
+              "docker",
+              "compose",
+              "--env-file",
+              "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage15/regression/compose.env",
+              "-f",
+              "compose.yaml",
+              "-f",
+              "compose.research.yaml",
+              "-f",
+              "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage15/regression/stage15.compose.json",
+              "--profile",
+              "research",
+              "run",
+              "--rm",
+              "-T",
+              "-v",
+              "/home/onebumbot/Projects/Light_Crypto_Manager/src/shadow_ids:/app/src/shadow_ids:ro",
+              "-v",
+              "/home/onebumbot/Projects/Light_Crypto_Manager/tests/test_shadow_ids.py:/app/tests/test_shadow_ids.py:ro",
+              "-v",
+              "/home/onebumbot/Projects/Light_Crypto_Manager/tests/test_shadow_web.py:/app/tests/test_shadow_web.py:ro",
+              "tests"
+            ],
+            "exit_code": 0
+          }
+        ],
+        "read_only_final_source_overrides": true,
+        "source_sha": "7558f410a78a41535a3f36cd3923244dff311d80",
+        "exit_code": 0
+      }
+    }
+  ],
+  "report_catalog": {
+    "feature-parity-batch.json": "Three actual PCAPs; streaming/offline/tshark",
+    "scoring-formula-parity.json": "512 comparisons on new real packets, not old holdout",
+    "performance-series.json": "48 successful v3 runs; raw reports contain source/config hashes and resource samples; stopped-container argv/exit codes in runtime-command-audit.json",
+    "performance-summary.json": "Derived measured statistics, exit0",
+    "operational-contrast.json": "13 cases, 12 validated views, one quarantined",
+    "operational-rate-audit.json": "Recomputed hourly normalization uses actual wall duration",
+    "recovery.json": "12 actual fault cases",
+    "memory-exhaustion.json": "Additional actual OOM, infrastructure kill expected137",
+    "mutations-final-release.json": "31 mutation behavior failures; harness exit0, individual mutants exit1",
+    "browser.json": "Actual Chromium/private network/no published port",
+    "legacy-dom-xss-current-contract.txt": "Existing assertions plus valid Stage13 diagnostics fixture, exit0",
+    "final-authoritative-state.json": "32845 actual PG/Mongo records, control commands0",
+    "environment.json": "Hardware, packages, actual image IDs, source/compose hashes",
+    "preservation-after.json": "Historical hashes/projects/volumes equal before",
+    "security-release.json": "Exact generated-secret/permission/isolation/original-model checks",
+    "independent-generalization-gate.json": "Scientific BLOCKED gate exit2, distinct from engineering checks",
+    "runtime-command-audit.json": "187 actual keyless Shadow container argv/resources/states from Docker inspect, no secret environment"
+  },
+  "final_models_retrained": 0,
+  "threshold_changes": 0,
+  "stage14_holdout_reused_for_tuning": false,
+  "model_registry_installs": 0,
+  "policy_mode": "DRY_RUN",
+  "mode": "SHADOW_ONLY",
+  "trusted_detector": false,
+  "device_binding": "unbound",
+  "shadow_control_commands": 0,
+  "scientific_gate": {
+    "status": "INDEPENDENT_GENERALIZATION_NOT_VERIFIED",
+    "independent_host_domain": "not_verified",
+    "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+    "new_scientific_final_holdout_declared": false,
+    "new_scientific_final_holdout_opened": false,
+    "stage14_holdout_reused_for_tuning": false,
+    "fit_calls": 0,
+    "threshold_changes": 0,
+    "model_registry_installations": 0,
+    "reason": "One physical host and shared software/network domain; prospective engineering parity and operational same-host contrast do not establish external model generalization",
+    "engineering_gate_separate": true,
+    "exit_code": 2
+  },
+  "scope_notes": [
+    "Main Stage15 network workload uses Ascon; AES/Kuz KAT and prior regression preserved, no new live switching asserted",
+    "Measured code and later final guards explicitly distinguished",
+    "Some runtime source mounted read-only over cached images, exact bindings preserved",
+    "Raw PCAP/model/credentials remain private; none exported with reports",
+    "New lab services stopped, old projects/volumes untouched"
+  ],
+  "exit_code": 0,
+  "command_audit_limits": "Baseline/final pytest exact Docker command arrays retained. Other top-level harness invocations are listed below; not every nested docker exec argv or shell redirection was persisted. Container Config.Cmd and actual exit state independently recorded after stop.",
+  "harness_invocations": [
+    {
+      "stage": "parity",
+      "invocation": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.stage15_runs",
+        "parity",
+        "--prefix",
+        "parity-batch",
+        "--output",
+        "docs/reports/stage15/feature-parity-batch.json"
+      ],
+      "report": "feature-parity-batch.json",
+      "exit_code": 0,
+      "provenance": "Executed harness entrypoint/arguments; shell redirections and default-valued optional flags normalized, not a byte-for-byte shell transcript"
+    },
+    {
+      "stage": "matrix",
+      "invocation": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.stage15_performance",
+        "matrix",
+        "--series",
+        "v3"
+      ],
+      "report": "performance-series.json",
+      "exit_code": 0,
+      "provenance": "Executed harness entrypoint/arguments; shell redirections and default-valued optional flags normalized, not a byte-for-byte shell transcript"
+    },
+    {
+      "stage": "integration",
+      "invocation": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.stage15_performance",
+        "sanity",
+        "--series",
+        "v3"
+      ],
+      "report": "v3-integration-four-models.json",
+      "exit_code": 0,
+      "provenance": "Executed harness entrypoint/arguments; shell redirections and default-valued optional flags normalized, not a byte-for-byte shell transcript"
+    },
+    {
+      "stage": "faults",
+      "invocation": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.stage15_faults"
+      ],
+      "report": "recovery.json",
+      "exit_code": 0,
+      "provenance": "Executed harness entrypoint/arguments; shell redirections and default-valued optional flags normalized, not a byte-for-byte shell transcript"
+    },
+    {
+      "stage": "contrast",
+      "invocation": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.stage15_contrast"
+      ],
+      "report": "operational-contrast.json",
+      "exit_code": 0,
+      "provenance": "Executed harness entrypoint/arguments; shell redirections and default-valued optional flags normalized, not a byte-for-byte shell transcript"
+    },
+    {
+      "stage": "queue",
+      "invocation": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.stage15_backlog"
+      ],
+      "report": "queue-freshness.json",
+      "exit_code": 0,
+      "provenance": "Executed harness entrypoint/arguments; shell redirections and default-valued optional flags normalized, not a byte-for-byte shell transcript"
+    },
+    {
+      "stage": "mutations",
+      "invocation": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.stage15_mutations",
+        "--output",
+        "docs/reports/stage15/mutations-final-release.json"
+      ],
+      "report": "mutations-final-release.json",
+      "exit_code": 0,
+      "provenance": "Executed harness entrypoint/arguments; shell redirections and default-valued optional flags normalized, not a byte-for-byte shell transcript"
+    },
+    {
+      "stage": "browser",
+      "invocation": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.stage15_browser",
+        "--run",
+        "browser-live-v3"
+      ],
+      "report": "browser.json",
+      "exit_code": 0,
+      "provenance": "Executed harness entrypoint/arguments; shell redirections and default-valued optional flags normalized, not a byte-for-byte shell transcript"
+    },
+    {
+      "stage": "preservation",
+      "invocation": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.stage15_preservation",
+        "after",
+        "--before",
+        "docs/reports/stage15/preservation-before.json",
+        "--output",
+        "docs/reports/stage15/preservation-after.json"
+      ],
+      "report": "preservation-after.json",
+      "exit_code": 0,
+      "provenance": "Executed harness entrypoint/arguments; shell redirections and default-valued optional flags normalized, not a byte-for-byte shell transcript"
+    },
+    {
+      "stage": "security",
+      "invocation": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.stage15_security_audit",
+        "--output",
+        "docs/reports/stage15/security-release.json"
+      ],
+      "report": "security-release.json",
+      "exit_code": 0,
+      "provenance": "Executed harness entrypoint/arguments; shell redirections and default-valued optional flags normalized, not a byte-for-byte shell transcript"
+    }
+  ],
+  "analysis_source_hashes": {
+    "scripts/stage15_lab.py": "ce48983b890b6a8b02e38e2da8b474af32be2459c7728ab6977f7d5ceae6491a",
+    "scripts/stage15_preservation.py": "34ecc6d2139bba2f154a7d7b022048503f9aad456de6634edff04e2066cfca9e",
+    "scripts/stage15_workload.py": "d0a72fb091fb3cfc1646c246dfa480d17ce4590f200d4e9b6fe8a241c9e65898",
+    "scripts/stage15_setup.py": "5d3adf57f7139230bfe7542e8c175334fc351d0512c2e009d86e3bfd0a784aea",
+    "scripts/stage15_runs.py": "8ff3988df38abd447bd09a1f791880634b37334172e6b09d9d7d22f7d7e12e2c",
+    "scripts/stage15_model_audit.py": "d890d41fbed1accce5100d6e204f824e543d6c758c532bdadb4f1ac1e2783be3",
+    "scripts/stage15_performance.py": "edc326faa4b44106dd86e1c0f61012d33543ba1d53a352c92c305fb55106db83",
+    "scripts/stage15_mutations.py": "6f34c1268bfffb0e6479438245f9533b6ac9611b86064197b371e7846c4fdde1",
+    "scripts/stage15_contrast.py": "4cb8da91a2d4f053f4b8011a25141e1160caaeb2b1ddadae90d84fb3ee46ec42",
+    "scripts/stage15_tuple_probe.py": "d31dd3287627ba805f8dc2ed9c3aa83adba2ba67917832e475616a5de1c49361",
+    "scripts/stage15_browser.py": "a02c4b9529de9674d20c757aa9256dd7198a9c7d48c14ec77346d1c27fb7f90e",
+    "scripts/stage15_faults.py": "5a66592c943d6f063c33f31c77ebb0bca93cdabc61568f171bd49d5fb515e7e1",
+    "scripts/stage15_analyze.py": "e3a9c3a6263e829ad7fd25badc78b8511ce7629b4c963cd1ff095dbfe31e233b",
+    "scripts/stage15_backlog.py": "eae1f48ad5a85204bdfbd7b01110865d988d966329532a49ef7f8c52725adfe0",
+    "scripts/stage15_tuple_check.py": "19b4e096a422bd931b6b852800f88f87b1361f6bb787aa0abdac79e4115fc169",
+    "scripts/stage15_source_identity.py": "2b965010264e829cef5daee042f0249d408b5438f4025088b039cc44938d6689",
+    "scripts/stage15_security_audit.py": "220b4267f3e610c77ccb1163b26560166a7718c770c7281f75a66a490ed51cbf",
+    "scripts/stage15_environment.py": "a7f864a8893b7cc0797601dbea6bff497800acf8290692c6d3d8053773f7a1ca"
+  }
+}

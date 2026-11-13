@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage15/regression/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.research.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage15/regression/stage15.compose.json",
+        "--profile",
+        "research",
+        "run",
+        "--rm",
+        "-T",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/src/shadow_ids:/app/src/shadow_ids:ro",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/tests/test_shadow_ids.py:/app/tests/test_shadow_ids.py:ro",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/tests/test_shadow_web.py:/app/tests/test_shadow_web.py:ro",
+        "tests"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "read_only_final_source_overrides": true,
+  "source_sha": "7558f410a78a41535a3f36cd3923244dff311d80",
+  "exit_code": 0
+}

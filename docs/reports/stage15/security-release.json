@@ -1,0 +1,6479 @@
+{
+  "source_sha": "7558f410a78a41535a3f36cd3923244dff311d80",
+  "fresh_realms": 3,
+  "independent_telemetry_keys": 130,
+  "old_key_values_compared": 2202,
+  "key_reuse": false,
+  "secret_leaks": [],
+  "permission_failures": [],
+  "files_scanned": 2027,
+  "container_log_tails_scanned": 209,
+  "log_scope": "Last1000lines/container; not every historical log byte",
+  "application_images_scanned": 4,
+  "shadow_isolation": [
+    {
+      "name": "/lcm-stage15-shadow-ids-online-browser-live-v3-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-browser-live-v3-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-browser-live-v2-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-browser-live-v2-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-browser-live-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-browser-live-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-memory-6m-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-memory-6m-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-tuple-reuse-real-v2-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-tuple-reuse-real-v2-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-tuple-reuse-real-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-tuple-reuse-real-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-queue-observation-25-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-queue-observation-25-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-queue-overflow-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-memory-cap-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-memory-cap-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-wrong-feature-version-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/badmodels",
+          "read_only": true
+        },
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-wrong-feature-version-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-wrong-model-hash-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/badmodels",
+          "read_only": true
+        },
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-wrong-model-hash-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-missing-model-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/badmodels",
+          "read_only": true
+        },
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-missing-model-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-mongo-outage-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-mongo-outage-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-postgres-outage-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-postgres-outage-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-broker-outage-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-broker-outage-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-receiver-restart-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-receiver-restart-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-model-sigkill-restarted-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-model-sigkill-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-model-sigkill-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-observer-sigkill-restart-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-observer-sigkill-restart-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-observer-sigkill-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-fault-observer-sigkill-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-receiver-restart-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-receiver-restart-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-broker-reconnect-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-broker-reconnect-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-pattern-change-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-pattern-change-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-bounded-rate-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-bounded-rate-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-bad-credentials-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-bad-credentials-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-forbidden-acl-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-forbidden-acl-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-tampered-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-tampered-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-wrong-sequence-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-wrong-sequence-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-wrong-epoch-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-wrong-epoch-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-replay-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-replay-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-qos1-retry-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-qos1-retry-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-jitter-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-jitter-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-regular-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-online-regular-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r2-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r2-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r2-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r2-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r2-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r1-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r1-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r1-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r1-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r1-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r0-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r0-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r0-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r0-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-extended-r0-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r2-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r2-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r2-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r2-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r2-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r1-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r1-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r1-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r1-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r1-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r0-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r0-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r0-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r0-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-medium-r0-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r2-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r2-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r2-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r2-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r2-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r1-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r1-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r1-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r1-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r1-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r0-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r0-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r0-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r0-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-small-r0-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r2-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r2-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r2-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r2-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r2-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r1-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r1-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r1-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r1-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r1-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r0-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r0-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r0-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r0-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-base-r0-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-integration-four-models-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v3-integration-four-models-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-batch-02-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-batch-01-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-batch-00-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-medium-r0-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-medium-r0-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-medium-r0-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r2-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r2-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r2-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r2-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r2-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r1-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r1-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r1-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r1-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r1-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r0-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r0-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r0-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r0-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-small-r0-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r2-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r2-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r2-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r2-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r2-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r1-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r1-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r1-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r1-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r1-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r0-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r0-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r0-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r0-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-base-r0-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-integration-four-models-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-v2-integration-four-models-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r2-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r2-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r1-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r1-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r1-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r1-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r1-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r0-rfif-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r0-rfif-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r0-rf-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r0-rf-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-base-r0-capture-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-integration-four-models-worker",
+      "service": "shadow-model-worker",
+      "image_id": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "network_mode": "none",
+      "capabilities": [],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "OPENBLAS_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/models",
+          "read_only": true
+        },
+        {
+          "target": "/parity.json",
+          "read_only": true
+        },
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-integration-four-models-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-final-02-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-final-01-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-final-00-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-context-02-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-context-01-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-context-00-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:27297425500a8833d12560d6335a46bb90662f514e0b06655794101f54a7fe55",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        },
+        {
+          "target": "/app/src/shadow_ids",
+          "read_only": true
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-02-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:7076a0b27dba53282db0ddf1e32da2cc0fc6c672ede8479d58c80dc35e0b95f6",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-01-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:7076a0b27dba53282db0ddf1e32da2cc0fc6c672ede8479d58c80dc35e0b95f6",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        }
+      ],
+      "read_only_root": true
+    },
+    {
+      "name": "/lcm-stage15-shadow-ids-online-parity-00-capture",
+      "service": "shadow-network-observer",
+      "image_id": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "network_mode": "container:7076a0b27dba53282db0ddf1e32da2cc0fc6c672ede8479d58c80dc35e0b95f6",
+      "capabilities": [
+        "NET_RAW"
+      ],
+      "private_credentials_mounted": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "DEBIAN_FRONTEND",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/shadow",
+          "read_only": false
+        }
+      ],
+      "read_only_root": true
+    }
+  ],
+  "models": [
+    {
+      "role": "rf_binary",
+      "model_id": "research75-rf_tuned_1-binary",
+      "artifact_sha256": "52e6a5dbf02fd5d6e3a3364eb7077f41e099eebd4b24d64b76826a94da1c0f42",
+      "original_unchanged": true
+    },
+    {
+      "role": "if",
+      "model_id": "research75-if_tuned_0-binary",
+      "artifact_sha256": "3879a7b7c110dadf5822148e3cb19409bf675cf802b1d0e0227109e792f83027",
+      "original_unchanged": true
+    },
+    {
+      "role": "rf_session",
+      "model_id": "research75-rf_subsample-binary",
+      "artifact_sha256": "3216f93551a8d5436f3d717f91319cb6f0b759f831f70865ee0bce30fbbca563",
+      "original_unchanged": true
+    },
+    {
+      "role": "if_session",
+      "model_id": "research75-if_tuned_1-binary",
+      "artifact_sha256": "4b5a7bbb97e30a5b7154e68e87481b9787cd38f39ea82b206b8768c87f51ae21",
+      "original_unchanged": true
+    }
+  ],
+  "old_holdout_and_marker_unchanged": true,
+  "cryptography_control_policy_oracle_byte_equal": [
+    "src/crypto_profiles.py",
+    "src/telemetry.py",
+    "src/ingestion.py",
+    "src/outbox.py",
+    "src/mongo_repository.py",
+    "src/kuz_provider.py",
+    "src/kuz_release.py",
+    "src/kuz_usage.py",
+    "src/device_control/agent.py",
+    "src/device_control/server.py",
+    "src/device_control/state.py",
+    "src/policy/worker.py",
+    "src/policy/state.py",
+    "src/policy/engine.py",
+    "src/ml_storage.py",
+    "src/ml_signals.py",
+    "src/research_stand/pcap_audit.py",
+    "src/research_stand/labels_v2.py",
+    "src/research_stand/label_verification.py"
+  ],
+  "journal_group_read_exception": "Journal-only750directory/640SQLite; role web supplementary group, read-only mount. RawPCAP/model/key files not shared.",
+  "all_stage15_services_stopped": true,
+  "exit_code": 0
+}

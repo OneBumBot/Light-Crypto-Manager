@@ -1,0 +1,1050 @@
+{
+  "experiment_id": "v2-small-r0-rfif",
+  "source_sha": "f3cdc9a43174e33440c3f850a6309afead59f810",
+  "code_hashes": {
+    "src/shadow_ids/__init__.py": "f1d206da9ff7e5dfd221c6360a1e3a3417956be3aea283bdd622a6c28f722d78",
+    "src/shadow_ids/features.py": "7072003114efc02f40b72467af676145831c30dec0bbfe678c288ab3c2d920fe",
+    "src/shadow_ids/pcap.py": "e42fd6098d4693d76272a062485d5e5ce002287a00061244ad17386e9f39abb0",
+    "src/shadow_ids/journal.py": "2fe3ed23a4d8fb9054db5bcfb3792f6474d650355d387c987883b59f0ef97a54",
+    "src/shadow_ids/models.py": "5dea7d7471cfbe0cf9623d319411f9e1ed7ee1fc8b30e57a4f64901091e0b34c",
+    "src/shadow_ids/capture.py": "f5ecc00651943973aaddb12b6bc94708f14331dc9268d3f54b8cb3194e13818e",
+    "src/shadow_ids/worker.py": "96f6b5ac157e163d30fbc961c05432395146fa1b145b3b2a5c3ed793bfc5f7a1",
+    "src/shadow_ids/sessions.py": "dd0d43ac540f0510e8d743161ebb359ebcd8e6ad4f8b1847b2dbd173fc78eb68",
+    "src/shadow_ids/parity.py": "442bb398057f5336e5891f89decda64e303b86a5f6904e9d8896ca72cc71388d",
+    "src/shadow_ids/web.py": "f6e33ed953525d289fd05e3fbb55eaef66fb22d94c1ad4c1f28a2d543a710e56",
+    "src/shadow_ids/isolation.py": "d8b4bb454bdab7fe5667f6c4f7b8f141435148eb07bcff5a8731f25b2329a045"
+  },
+  "condition": "rfif",
+  "device_identities": 10,
+  "target_hz": 1.0,
+  "duration": 15,
+  "started_at": 1794580247.8330173,
+  "finished_at": 1794580273.1290128,
+  "counters": {
+    "formed_aead_packets": 150,
+    "publish_calls": 150,
+    "queued": 150,
+    "puback": 150,
+    "scheduled_publications": "not_measured_event_driven_loop",
+    "device_identities": 10,
+    "units": "AEAD formations/publish invocations/client queues/broker PUBACK; not durable admissions",
+    "actual_duration": 15.829201221466064
+  },
+  "generator_errors": [],
+  "pg_accepted_delta": 150,
+  "pg_category_deltas": {
+    "accepted": 150
+  },
+  "mongo_stored_delta": 150,
+  "outbox_pending_after": 0,
+  "capture": {
+    "status": "FINISHED",
+    "complete": true,
+    "heartbeat": 1794580271.4416807,
+    "capture_id": "v2-small-r0-rfif-99a7504cffe14267a75f586086ea7ccb",
+    "started_at": 1794580248.3559642,
+    "finished_at": 1794580271.441681,
+    "last_packet": 1794580264.980527,
+    "packets": 631,
+    "reader_drops": 0,
+    "queue_overflow": 0,
+    "unsupported": 0,
+    "stats": {
+      "captured": 631,
+      "received_by_filter": 631,
+      "dropped_by_kernel": 0
+    },
+    "reason": "duration",
+    "errors": [],
+    "peak_rss_kib": 24188,
+    "user_cpu": 0.215915,
+    "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+    "interface": "eth0",
+    "linktype": 1,
+    "ip_versions": [
+      "IPv4"
+    ],
+    "namespace": "net:[4026533395]",
+    "snaplen": 262144,
+    "offloads": "not_changed; environment-specific, parity checked on actual frames",
+    "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+    "pcap_sha256": "52f04d97a5e57a46f2bab0cfae6538228e2df156ac73c9468580a3bf4b45f08f"
+  },
+  "shadow": {
+    "events": 631,
+    "results": 1262,
+    "pending": 0,
+    "inference_statuses": {
+      "SCORED": 1262
+    },
+    "supported_packets": 631,
+    "session_count": 10,
+    "unlabelled_alert_rates": {
+      "rf_binary": {
+        "scored": 631,
+        "above_threshold": 140,
+        "alerts_per_1000_scored_packets": 221.87004754358162
+      },
+      "if": {
+        "scored": 631,
+        "above_threshold": 476,
+        "alerts_per_1000_scored_packets": 754.3581616481775
+      }
+    }
+  },
+  "timings_seconds": {
+    "capture_to_feature": {
+      "n": 631,
+      "mean": 0.52061285383161,
+      "median": 0.5340051651000977,
+      "std": 0.27670839462597147,
+      "min": 0.03612351417541504,
+      "max": 0.9998486042022705,
+      "p95": 0.9137585163116455,
+      "p99": null
+    },
+    "capture_to_prediction": {
+      "n": 631,
+      "mean": 0.6074078880285877,
+      "median": 0.6023588180541992,
+      "std": 0.28001865841832,
+      "min": 0.08393406867980957,
+      "max": 1.15061616897583,
+      "p95": 1.0120176076889038,
+      "p99": null
+    },
+    "model_batch_wall": {
+      "n": 631,
+      "mean": 0.018766086566278182,
+      "median": 0.018290281295776367,
+      "std": 0.0020059123744425975,
+      "min": 0.01658344268798828,
+      "max": 0.025297880172729492,
+      "p95": 0.025297880172729492,
+      "p99": null
+    },
+    "capture_to_journal_ack": {
+      "n": 631,
+      "mean": 0.6294171734581658,
+      "median": 0.6139459609985352,
+      "std": 0.2890585781202809,
+      "min": 0.09470081329345703,
+      "max": 1.203336477279663,
+      "p95": 1.1100338697433472,
+      "p99": null
+    }
+  },
+  "resources": [
+    {
+      "at": 1794580249.8841524,
+      "exit_code": 0,
+      "containers": [
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "c096a04e66dc",
+          "ID": "c096a04e66dc",
+          "MemPerc": "3.06%",
+          "MemUsage": "7.828MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-traffic-collector-1",
+          "NetIO": "678kB / 1.28MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 397MB",
+          "CPUPerc": "25.60%",
+          "Container": "27297425500a",
+          "ID": "27297425500a",
+          "MemPerc": "13.12%",
+          "MemUsage": "33.59MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-lab-devices-1",
+          "NetIO": "678kB / 1.28MB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "05b652638249",
+          "ID": "05b652638249",
+          "MemPerc": "6.21%",
+          "MemUsage": "7.949MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-research-observer-1",
+          "NetIO": "28.9kB / 126B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.56%",
+          "Container": "7d394e8e1034",
+          "ID": "7d394e8e1034",
+          "MemPerc": "17.03%",
+          "MemUsage": "43.6MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-receiver-1",
+          "NetIO": "8.17MB / 6.44MB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.27%",
+          "Container": "0d5eaa9be34e",
+          "ID": "0d5eaa9be34e",
+          "MemPerc": "17.96%",
+          "MemUsage": "45.98MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-outbox-relay-1",
+          "NetIO": "10.3MB / 8.04MB",
+          "PIDs": "5"
+        },
+        {
+          "BlockIO": "1.15MB / 0B",
+          "CPUPerc": "2.89%",
+          "Container": "4281270208ae",
+          "ID": "4281270208ae",
+          "MemPerc": "4.22%",
+          "MemUsage": "5.398MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-broker-1",
+          "NetIO": "1.69MB / 1.99MB",
+          "PIDs": "1"
+        },
+        {
+          "BlockIO": "233kB / 188MB",
+          "CPUPerc": "0.33%",
+          "Container": "8d85bfa2b356",
+          "ID": "8d85bfa2b356",
+          "MemPerc": "20.96%",
+          "MemUsage": "160.9MiB / 768MiB",
+          "Name": "lcm-stage15-shadow-ids-online-mongo-1",
+          "NetIO": "1.23MB / 466kB",
+          "PIDs": "46"
+        },
+        {
+          "BlockIO": "0B / 763MB",
+          "CPUPerc": "0.11%",
+          "Container": "aa4f13567b61",
+          "ID": "aa4f13567b61",
+          "MemPerc": "7.76%",
+          "MemUsage": "39.73MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-postgres-1",
+          "NetIO": "13.6MB / 17.6MB",
+          "PIDs": "9"
+        }
+      ]
+    },
+    {
+      "at": 1794580252.94101,
+      "exit_code": 0,
+      "containers": [
+        {
+          "BlockIO": "0B / 21MB",
+          "CPUPerc": "4.35%",
+          "Container": "c2c384a47d32",
+          "ID": "c2c384a47d32",
+          "MemPerc": "24.36%",
+          "MemUsage": "124.7MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-worker",
+          "NetIO": "0B / 0B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 23.8MB",
+          "CPUPerc": "1.01%",
+          "Container": "b57b7b85ea95",
+          "ID": "b57b7b85ea95",
+          "MemPerc": "11.20%",
+          "MemUsage": "14.34MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-capture",
+          "NetIO": "685kB / 1.3MB",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "c096a04e66dc",
+          "ID": "c096a04e66dc",
+          "MemPerc": "3.06%",
+          "MemUsage": "7.828MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-traffic-collector-1",
+          "NetIO": "685kB / 1.3MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 405MB",
+          "CPUPerc": "1.37%",
+          "Container": "27297425500a",
+          "ID": "27297425500a",
+          "MemPerc": "13.64%",
+          "MemUsage": "34.93MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-lab-devices-1",
+          "NetIO": "685kB / 1.3MB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "05b652638249",
+          "ID": "05b652638249",
+          "MemPerc": "6.21%",
+          "MemUsage": "7.949MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-research-observer-1",
+          "NetIO": "29kB / 126B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "3.45%",
+          "Container": "7d394e8e1034",
+          "ID": "7d394e8e1034",
+          "MemPerc": "16.92%",
+          "MemUsage": "43.32MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-receiver-1",
+          "NetIO": "8.3MB / 6.54MB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "8.40%",
+          "Container": "0d5eaa9be34e",
+          "ID": "0d5eaa9be34e",
+          "MemPerc": "18.20%",
+          "MemUsage": "46.58MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-outbox-relay-1",
+          "NetIO": "10.4MB / 8.15MB",
+          "PIDs": "5"
+        },
+        {
+          "BlockIO": "1.15MB / 0B",
+          "CPUPerc": "1.83%",
+          "Container": "4281270208ae",
+          "ID": "4281270208ae",
+          "MemPerc": "4.12%",
+          "MemUsage": "5.277MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-broker-1",
+          "NetIO": "1.71MB / 2.02MB",
+          "PIDs": "1"
+        },
+        {
+          "BlockIO": "233kB / 191MB",
+          "CPUPerc": "0.48%",
+          "Container": "8d85bfa2b356",
+          "ID": "8d85bfa2b356",
+          "MemPerc": "20.99%",
+          "MemUsage": "161.2MiB / 768MiB",
+          "Name": "lcm-stage15-shadow-ids-online-mongo-1",
+          "NetIO": "1.25MB / 470kB",
+          "PIDs": "46"
+        },
+        {
+          "BlockIO": "0B / 771MB",
+          "CPUPerc": "1.89%",
+          "Container": "aa4f13567b61",
+          "ID": "aa4f13567b61",
+          "MemPerc": "8.15%",
+          "MemUsage": "41.71MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-postgres-1",
+          "NetIO": "13.7MB / 17.7MB",
+          "PIDs": "9"
+        }
+      ]
+    },
+    {
+      "at": 1794580255.995544,
+      "exit_code": 0,
+      "containers": [
+        {
+          "BlockIO": "0B / 33.2MB",
+          "CPUPerc": "4.52%",
+          "Container": "c2c384a47d32",
+          "ID": "c2c384a47d32",
+          "MemPerc": "24.61%",
+          "MemUsage": "126MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-worker",
+          "NetIO": "0B / 0B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 38.6MB",
+          "CPUPerc": "1.08%",
+          "Container": "b57b7b85ea95",
+          "ID": "b57b7b85ea95",
+          "MemPerc": "11.20%",
+          "MemUsage": "14.34MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-capture",
+          "NetIO": "688kB / 1.32MB",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "c096a04e66dc",
+          "ID": "c096a04e66dc",
+          "MemPerc": "3.06%",
+          "MemUsage": "7.828MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-traffic-collector-1",
+          "NetIO": "688kB / 1.32MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 412MB",
+          "CPUPerc": "1.21%",
+          "Container": "27297425500a",
+          "ID": "27297425500a",
+          "MemPerc": "13.50%",
+          "MemUsage": "34.55MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-lab-devices-1",
+          "NetIO": "688kB / 1.32MB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "05b652638249",
+          "ID": "05b652638249",
+          "MemPerc": "6.21%",
+          "MemUsage": "7.949MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-research-observer-1",
+          "NetIO": "29.2kB / 126B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "3.42%",
+          "Container": "7d394e8e1034",
+          "ID": "7d394e8e1034",
+          "MemPerc": "17.45%",
+          "MemUsage": "44.66MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-receiver-1",
+          "NetIO": "8.42MB / 6.63MB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.73%",
+          "Container": "0d5eaa9be34e",
+          "ID": "0d5eaa9be34e",
+          "MemPerc": "18.36%",
+          "MemUsage": "46.99MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-outbox-relay-1",
+          "NetIO": "10.6MB / 8.24MB",
+          "PIDs": "5"
+        },
+        {
+          "BlockIO": "1.15MB / 0B",
+          "CPUPerc": "1.90%",
+          "Container": "4281270208ae",
+          "ID": "4281270208ae",
+          "MemPerc": "3.96%",
+          "MemUsage": "5.062MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-broker-1",
+          "NetIO": "1.74MB / 2.04MB",
+          "PIDs": "1"
+        },
+        {
+          "BlockIO": "233kB / 193MB",
+          "CPUPerc": "20.74%",
+          "Container": "8d85bfa2b356",
+          "ID": "8d85bfa2b356",
+          "MemPerc": "21.05%",
+          "MemUsage": "161.7MiB / 768MiB",
+          "Name": "lcm-stage15-shadow-ids-online-mongo-1",
+          "NetIO": "1.26MB / 474kB",
+          "PIDs": "46"
+        },
+        {
+          "BlockIO": "0B / 781MB",
+          "CPUPerc": "3.95%",
+          "Container": "aa4f13567b61",
+          "ID": "aa4f13567b61",
+          "MemPerc": "7.99%",
+          "MemUsage": "40.92MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-postgres-1",
+          "NetIO": "13.9MB / 18MB",
+          "PIDs": "9"
+        }
+      ]
+    },
+    {
+      "at": 1794580259.0562673,
+      "exit_code": 0,
+      "containers": [
+        {
+          "BlockIO": "0B / 46.4MB",
+          "CPUPerc": "4.40%",
+          "Container": "c2c384a47d32",
+          "ID": "c2c384a47d32",
+          "MemPerc": "24.41%",
+          "MemUsage": "125MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-worker",
+          "NetIO": "0B / 0B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 52.4MB",
+          "CPUPerc": "1.00%",
+          "Container": "b57b7b85ea95",
+          "ID": "b57b7b85ea95",
+          "MemPerc": "11.20%",
+          "MemUsage": "14.34MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-capture",
+          "NetIO": "691kB / 1.34MB",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "c096a04e66dc",
+          "ID": "c096a04e66dc",
+          "MemPerc": "3.06%",
+          "MemUsage": "7.828MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-traffic-collector-1",
+          "NetIO": "691kB / 1.34MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 420MB",
+          "CPUPerc": "1.25%",
+          "Container": "27297425500a",
+          "ID": "27297425500a",
+          "MemPerc": "14.17%",
+          "MemUsage": "36.28MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-lab-devices-1",
+          "NetIO": "691kB / 1.34MB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "05b652638249",
+          "ID": "05b652638249",
+          "MemPerc": "6.21%",
+          "MemUsage": "7.949MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-research-observer-1",
+          "NetIO": "29.2kB / 126B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "3.21%",
+          "Container": "7d394e8e1034",
+          "ID": "7d394e8e1034",
+          "MemPerc": "17.22%",
+          "MemUsage": "44.08MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-receiver-1",
+          "NetIO": "8.54MB / 6.73MB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.57%",
+          "Container": "0d5eaa9be34e",
+          "ID": "0d5eaa9be34e",
+          "MemPerc": "18.35%",
+          "MemUsage": "46.97MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-outbox-relay-1",
+          "NetIO": "10.7MB / 8.34MB",
+          "PIDs": "5"
+        },
+        {
+          "BlockIO": "1.15MB / 0B",
+          "CPUPerc": "1.82%",
+          "Container": "4281270208ae",
+          "ID": "4281270208ae",
+          "MemPerc": "4.43%",
+          "MemUsage": "5.676MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-broker-1",
+          "NetIO": "1.76MB / 2.06MB",
+          "PIDs": "1"
+        },
+        {
+          "BlockIO": "233kB / 195MB",
+          "CPUPerc": "0.47%",
+          "Container": "8d85bfa2b356",
+          "ID": "8d85bfa2b356",
+          "MemPerc": "21.08%",
+          "MemUsage": "161.9MiB / 768MiB",
+          "Name": "lcm-stage15-shadow-ids-online-mongo-1",
+          "NetIO": "1.28MB / 478kB",
+          "PIDs": "46"
+        },
+        {
+          "BlockIO": "0B / 792MB",
+          "CPUPerc": "2.13%",
+          "Container": "aa4f13567b61",
+          "ID": "aa4f13567b61",
+          "MemPerc": "8.14%",
+          "MemUsage": "41.65MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-postgres-1",
+          "NetIO": "14.1MB / 18.2MB",
+          "PIDs": "9"
+        }
+      ]
+    },
+    {
+      "at": 1794580262.1124713,
+      "exit_code": 0,
+      "containers": [
+        {
+          "BlockIO": "0B / 59.9MB",
+          "CPUPerc": "4.45%",
+          "Container": "c2c384a47d32",
+          "ID": "c2c384a47d32",
+          "MemPerc": "24.60%",
+          "MemUsage": "126MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-worker",
+          "NetIO": "0B / 0B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 67.4MB",
+          "CPUPerc": "1.00%",
+          "Container": "b57b7b85ea95",
+          "ID": "b57b7b85ea95",
+          "MemPerc": "11.20%",
+          "MemUsage": "14.34MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-capture",
+          "NetIO": "694kB / 1.36MB",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "c096a04e66dc",
+          "ID": "c096a04e66dc",
+          "MemPerc": "3.06%",
+          "MemUsage": "7.828MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-traffic-collector-1",
+          "NetIO": "694kB / 1.36MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 428MB",
+          "CPUPerc": "1.25%",
+          "Container": "27297425500a",
+          "ID": "27297425500a",
+          "MemPerc": "14.45%",
+          "MemUsage": "36.99MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-lab-devices-1",
+          "NetIO": "694kB / 1.36MB",
+          "PIDs": "13"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "05b652638249",
+          "ID": "05b652638249",
+          "MemPerc": "6.21%",
+          "MemUsage": "7.949MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-research-observer-1",
+          "NetIO": "29.2kB / 126B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "3.26%",
+          "Container": "7d394e8e1034",
+          "ID": "7d394e8e1034",
+          "MemPerc": "17.23%",
+          "MemUsage": "44.11MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-receiver-1",
+          "NetIO": "8.66MB / 6.82MB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "2.35%",
+          "Container": "0d5eaa9be34e",
+          "ID": "0d5eaa9be34e",
+          "MemPerc": "18.16%",
+          "MemUsage": "46.5MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-outbox-relay-1",
+          "NetIO": "10.8MB / 8.42MB",
+          "PIDs": "5"
+        },
+        {
+          "BlockIO": "1.15MB / 0B",
+          "CPUPerc": "1.80%",
+          "Container": "4281270208ae",
+          "ID": "4281270208ae",
+          "MemPerc": "4.42%",
+          "MemUsage": "5.656MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-broker-1",
+          "NetIO": "1.78MB / 2.08MB",
+          "PIDs": "1"
+        },
+        {
+          "BlockIO": "233kB / 197MB",
+          "CPUPerc": "0.43%",
+          "Container": "8d85bfa2b356",
+          "ID": "8d85bfa2b356",
+          "MemPerc": "21.00%",
+          "MemUsage": "161.3MiB / 768MiB",
+          "Name": "lcm-stage15-shadow-ids-online-mongo-1",
+          "NetIO": "1.29MB / 481kB",
+          "PIDs": "46"
+        },
+        {
+          "BlockIO": "0B / 802MB",
+          "CPUPerc": "1.49%",
+          "Container": "aa4f13567b61",
+          "ID": "aa4f13567b61",
+          "MemPerc": "8.14%",
+          "MemUsage": "41.7MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-postgres-1",
+          "NetIO": "14.2MB / 18.4MB",
+          "PIDs": "9"
+        }
+      ]
+    },
+    {
+      "at": 1794580265.168494,
+      "exit_code": 0,
+      "containers": [
+        {
+          "BlockIO": "0B / 72.9MB",
+          "CPUPerc": "2.96%",
+          "Container": "c2c384a47d32",
+          "ID": "c2c384a47d32",
+          "MemPerc": "24.56%",
+          "MemUsage": "125.8MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-worker",
+          "NetIO": "0B / 0B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 82.5MB",
+          "CPUPerc": "1.10%",
+          "Container": "b57b7b85ea95",
+          "ID": "b57b7b85ea95",
+          "MemPerc": "11.39%",
+          "MemUsage": "14.58MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-capture",
+          "NetIO": "697kB / 1.38MB",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "c096a04e66dc",
+          "ID": "c096a04e66dc",
+          "MemPerc": "3.06%",
+          "MemUsage": "7.828MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-traffic-collector-1",
+          "NetIO": "697kB / 1.38MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 433MB",
+          "CPUPerc": "2.72%",
+          "Container": "27297425500a",
+          "ID": "27297425500a",
+          "MemPerc": "4.08%",
+          "MemUsage": "10.45MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-lab-devices-1",
+          "NetIO": "697kB / 1.38MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "05b652638249",
+          "ID": "05b652638249",
+          "MemPerc": "6.21%",
+          "MemUsage": "7.949MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-research-observer-1",
+          "NetIO": "29.2kB / 126B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "7d394e8e1034",
+          "ID": "7d394e8e1034",
+          "MemPerc": "16.83%",
+          "MemUsage": "43.08MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-receiver-1",
+          "NetIO": "8.74MB / 6.88MB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "1.03%",
+          "Container": "0d5eaa9be34e",
+          "ID": "0d5eaa9be34e",
+          "MemPerc": "18.12%",
+          "MemUsage": "46.38MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-outbox-relay-1",
+          "NetIO": "10.9MB / 8.5MB",
+          "PIDs": "5"
+        },
+        {
+          "BlockIO": "1.15MB / 0B",
+          "CPUPerc": "1.80%",
+          "Container": "4281270208ae",
+          "ID": "4281270208ae",
+          "MemPerc": "4.04%",
+          "MemUsage": "5.172MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-broker-1",
+          "NetIO": "1.8MB / 2.1MB",
+          "PIDs": "1"
+        },
+        {
+          "BlockIO": "233kB / 199MB",
+          "CPUPerc": "0.30%",
+          "Container": "8d85bfa2b356",
+          "ID": "8d85bfa2b356",
+          "MemPerc": "20.99%",
+          "MemUsage": "161.2MiB / 768MiB",
+          "Name": "lcm-stage15-shadow-ids-online-mongo-1",
+          "NetIO": "1.3MB / 484kB",
+          "PIDs": "46"
+        },
+        {
+          "BlockIO": "0B / 813MB",
+          "CPUPerc": "2.02%",
+          "Container": "aa4f13567b61",
+          "ID": "aa4f13567b61",
+          "MemPerc": "8.16%",
+          "MemUsage": "41.76MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-postgres-1",
+          "NetIO": "14.4MB / 18.6MB",
+          "PIDs": "9"
+        }
+      ]
+    },
+    {
+      "at": 1794580268.2239854,
+      "exit_code": 0,
+      "containers": [
+        {
+          "BlockIO": "0B / 81.7MB",
+          "CPUPerc": "0.39%",
+          "Container": "c2c384a47d32",
+          "ID": "c2c384a47d32",
+          "MemPerc": "24.36%",
+          "MemUsage": "124.7MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-worker",
+          "NetIO": "0B / 0B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 91.5MB",
+          "CPUPerc": "0.43%",
+          "Container": "b57b7b85ea95",
+          "ID": "b57b7b85ea95",
+          "MemPerc": "11.20%",
+          "MemUsage": "14.34MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-capture",
+          "NetIO": "697kB / 1.38MB",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "c096a04e66dc",
+          "ID": "c096a04e66dc",
+          "MemPerc": "3.06%",
+          "MemUsage": "7.828MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-traffic-collector-1",
+          "NetIO": "697kB / 1.38MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 433MB",
+          "CPUPerc": "0.00%",
+          "Container": "27297425500a",
+          "ID": "27297425500a",
+          "MemPerc": "3.72%",
+          "MemUsage": "9.516MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-lab-devices-1",
+          "NetIO": "697kB / 1.38MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "05b652638249",
+          "ID": "05b652638249",
+          "MemPerc": "6.21%",
+          "MemUsage": "7.949MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-research-observer-1",
+          "NetIO": "29.2kB / 126B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.08%",
+          "Container": "7d394e8e1034",
+          "ID": "7d394e8e1034",
+          "MemPerc": "16.93%",
+          "MemUsage": "43.35MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-receiver-1",
+          "NetIO": "8.74MB / 6.88MB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "6.16%",
+          "Container": "0d5eaa9be34e",
+          "ID": "0d5eaa9be34e",
+          "MemPerc": "18.56%",
+          "MemUsage": "47.52MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-outbox-relay-1",
+          "NetIO": "10.9MB / 8.5MB",
+          "PIDs": "5"
+        },
+        {
+          "BlockIO": "1.15MB / 0B",
+          "CPUPerc": "1.77%",
+          "Container": "4281270208ae",
+          "ID": "4281270208ae",
+          "MemPerc": "3.91%",
+          "MemUsage": "5.004MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-broker-1",
+          "NetIO": "1.8MB / 2.1MB",
+          "PIDs": "1"
+        },
+        {
+          "BlockIO": "233kB / 199MB",
+          "CPUPerc": "0.19%",
+          "Container": "8d85bfa2b356",
+          "ID": "8d85bfa2b356",
+          "MemPerc": "21.03%",
+          "MemUsage": "161.5MiB / 768MiB",
+          "Name": "lcm-stage15-shadow-ids-online-mongo-1",
+          "NetIO": "1.3MB / 484kB",
+          "PIDs": "46"
+        },
+        {
+          "BlockIO": "0B / 814MB",
+          "CPUPerc": "0.09%",
+          "Container": "aa4f13567b61",
+          "ID": "aa4f13567b61",
+          "MemPerc": "7.94%",
+          "MemUsage": "40.65MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-postgres-1",
+          "NetIO": "14.4MB / 18.7MB",
+          "PIDs": "9"
+        }
+      ]
+    },
+    {
+      "at": 1794580271.2775626,
+      "exit_code": 0,
+      "containers": [
+        {
+          "BlockIO": "0B / 86.9MB",
+          "CPUPerc": "0.46%",
+          "Container": "c2c384a47d32",
+          "ID": "c2c384a47d32",
+          "MemPerc": "24.36%",
+          "MemUsage": "124.7MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-worker",
+          "NetIO": "0B / 0B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 97.1MB",
+          "CPUPerc": "0.50%",
+          "Container": "b57b7b85ea95",
+          "ID": "b57b7b85ea95",
+          "MemPerc": "11.20%",
+          "MemUsage": "14.34MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-capture",
+          "NetIO": "697kB / 1.38MB",
+          "PIDs": "4"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "c096a04e66dc",
+          "ID": "c096a04e66dc",
+          "MemPerc": "3.06%",
+          "MemUsage": "7.828MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-traffic-collector-1",
+          "NetIO": "697kB / 1.38MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 433MB",
+          "CPUPerc": "0.00%",
+          "Container": "27297425500a",
+          "ID": "27297425500a",
+          "MemPerc": "3.71%",
+          "MemUsage": "9.496MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-lab-devices-1",
+          "NetIO": "697kB / 1.38MB",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "05b652638249",
+          "ID": "05b652638249",
+          "MemPerc": "6.21%",
+          "MemUsage": "7.949MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-research-observer-1",
+          "NetIO": "29.2kB / 126B",
+          "PIDs": "2"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.00%",
+          "Container": "7d394e8e1034",
+          "ID": "7d394e8e1034",
+          "MemPerc": "16.91%",
+          "MemUsage": "43.29MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-receiver-1",
+          "NetIO": "8.75MB / 6.89MB",
+          "PIDs": "3"
+        },
+        {
+          "BlockIO": "0B / 0B",
+          "CPUPerc": "0.26%",
+          "Container": "0d5eaa9be34e",
+          "ID": "0d5eaa9be34e",
+          "MemPerc": "18.15%",
+          "MemUsage": "46.47MiB / 256MiB",
+          "Name": "lcm-stage15-shadow-ids-online-outbox-relay-1",
+          "NetIO": "10.9MB / 8.51MB",
+          "PIDs": "5"
+        },
+        {
+          "BlockIO": "1.15MB / 0B",
+          "CPUPerc": "1.78%",
+          "Container": "4281270208ae",
+          "ID": "4281270208ae",
+          "MemPerc": "4.16%",
+          "MemUsage": "5.328MiB / 128MiB",
+          "Name": "lcm-stage15-shadow-ids-online-broker-1",
+          "NetIO": "1.8MB / 2.1MB",
+          "PIDs": "1"
+        },
+        {
+          "BlockIO": "233kB / 199MB",
+          "CPUPerc": "20.27%",
+          "Container": "8d85bfa2b356",
+          "ID": "8d85bfa2b356",
+          "MemPerc": "21.10%",
+          "MemUsage": "162MiB / 768MiB",
+          "Name": "lcm-stage15-shadow-ids-online-mongo-1",
+          "NetIO": "1.3MB / 484kB",
+          "PIDs": "46"
+        },
+        {
+          "BlockIO": "0B / 814MB",
+          "CPUPerc": "0.11%",
+          "Container": "aa4f13567b61",
+          "ID": "aa4f13567b61",
+          "MemPerc": "8.00%",
+          "MemUsage": "40.95MiB / 512MiB",
+          "Name": "lcm-stage15-shadow-ids-online-postgres-1",
+          "NetIO": "14.4MB / 18.7MB",
+          "PIDs": "9"
+        }
+      ]
+    }
+  ],
+  "FPR": "not_evaluable_unlabelled_operational_series",
+  "independent_host_domain": "not_verified",
+  "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+  "clock_model": "same-host capture CLOCK_REALTIME and Python CLOCK_REALTIME; runtime monotonic watchdog, not cross-host clock proof",
+  "exit_code": 0
+}

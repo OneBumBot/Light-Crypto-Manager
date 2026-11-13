@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_browser.py", line 33, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_browser.py", line 21, in main
+    name='browser-live';cid=capture(l,name,condition='all',duration=35);wid=start_worker(l,name,['rf_binary','if','rf_session','if_session']);thread=threading.Thread(target=lambda:workload(l,name,3,.5,duration=20,seed=15901));thread.start();os.environ['SHADOW_RUN']=name;l.run('up','-d','--no-deps','--wait','web',timeout=90);binding=l.run('port','web','5000').stdout.strip();assert binding.startswith('127.0.0.1:');url='http://'+binding;checks=[];errors=[]
+                                                                                                                                                                                                                                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

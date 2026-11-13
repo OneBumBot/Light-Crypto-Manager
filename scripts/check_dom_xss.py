@@ -60,14 +60,16 @@ with sync_playwright() as playwright:
         policy_page=browser.new_page()
         policy_page.set_content('<form id="policyFilters"><input name="device_id"></form>'+''.join(
             '<pre id="'+name+'"></pre>' for name in ['policyMessage','policyOverview','policyDecisions',
-                'policySignals','policyTransitions','policyIntents']))
+                'policySignals','policyTransitions','policyIntents','policyWorkerStatus','policyEvidenceStatus','policyQueueStatus']))
         policy_page.evaluate("""payload => {
-            window.fetch=async () => ({ok:true,json:async()=>({items:[{reason:payload,requested:payload,applied:null}]})});
+            window.fetch=async () => ({ok:true,json:async()=>({items:[{reason:payload,requested:payload,applied:null}], diagnostics:{queue_pending:0,worker_status:payload,active_version:payload,evidence_status:payload,last_processed_evidence_at:payload,source_lag_seconds:0,backlog_status:payload,overflow:0}})});
         }""",payload)
         policy_page.add_script_tag(content=policy_source)
         policy_page.wait_for_function("document.getElementById('policyIntents').textContent.length>0")
         import json
         assert json.loads(policy_page.locator('#policyOverview').inner_text())['items'][0]['reason']==payload
+        assert payload in policy_page.locator('#policyWorkerStatus').inner_text()
+        assert payload in policy_page.locator('#policyEvidenceStatus').inner_text()
         assert policy_page.locator('img,svg').count()==0
         assert policy_page.evaluate('window.__xss || 0')==0
         policy_page.close()

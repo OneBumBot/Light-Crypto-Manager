@@ -1,0 +1,2053 @@
+{
+  "source_sha": "7558f410a78a41535a3f36cd3923244dff311d80",
+  "system": "Linux-7.2.10-1-cachyos-bore-x86_64-with-glibc2.44",
+  "machine": "x86_64",
+  "cpu": "AMD Ryzen 7 9800X3D 8-Core Processor",
+  "logical_cpus": 16,
+  "memory": "MemTotal:       31904208 kB",
+  "python_packages": {
+    "python": "3.12.16",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "images": [
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-queue-observation-25-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-bounded-rate-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-receiver-restart-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-bad-credentials-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r2-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r2-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:eb90c19c5ea005323fbc1defa025ac895c83665cbc0286bae3061d3d141e8b0d",
+      "ContainerName": "lcm-stage15-shadow-ids-online-traffic-collector-1",
+      "Repository": "lcm-stage15-shadow-ids-online-laboratory",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 534282243,
+      "Created": "2026-11-13T17:07:39.763611571+03:00",
+      "LastTagTime": "2026-11-13T14:07:39.97445246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r1-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r0-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-final-02-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r0-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r2-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-missing-model-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-browser-live-v2-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-tuple-reuse-real-v2-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-integration-four-models-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-broker-reconnect-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r0-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-memory-6m-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-replay-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r2-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:eae1c40e0b56f9d0d56babb8ff1367fb41067d1ffc4a19efd549a1a509716eb5",
+      "ContainerName": "lcm-stage15-shadow-ids-online-outbox-relay-1",
+      "Repository": "lcm-stage15-shadow-ids-online-runtime",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 401592532,
+      "Created": "2026-11-13T17:07:47.927587854+03:00",
+      "LastTagTime": "2026-11-13T14:07:48.321614138Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-receiver-restart-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-qos1-retry-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r2-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r1-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-integration-four-models-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r2-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-observer-sigkill-restart-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r0-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r0-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "ContainerName": "lcm-stage15-shadow-ids-online-mongo-1",
+      "Repository": "mongo",
+      "Tag": "",
+      "Platform": "linux/amd64",
+      "Size": 1234271164,
+      "Created": "2026-01-15T22:33:54.444823339Z",
+      "LastTagTime": "2026-11-09T15:08:17.889109401Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-memory-cap-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-tampered-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-queue-overflow-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-browser-live-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-medium-r0-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r0-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "ContainerName": "lcm-stage15-shadow-ids-online-postgres-1",
+      "Repository": "postgres",
+      "Tag": "",
+      "Platform": "linux/amd64",
+      "Size": 423532113,
+      "Created": "2026-11-05T19:09:47.216787824Z",
+      "LastTagTime": "2026-11-08T10:51:35.261512921Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-bad-credentials-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r2-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r0-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-observer-sigkill-restart-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-wrong-feature-version-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r0-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-context-00-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r2-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-tuple-reuse-real-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r2-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-postgres-outage-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r1-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r1-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-context-02-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r1-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-receiver-restart-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-wrong-epoch-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r0-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-queue-observation-25-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-integration-four-models-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r2-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-pattern-change-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r2-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:eb90c19c5ea005323fbc1defa025ac895c83665cbc0286bae3061d3d141e8b0d",
+      "ContainerName": "lcm-stage15-shadow-ids-online-lab-devices-1",
+      "Repository": "lcm-stage15-shadow-ids-online-laboratory",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 534282243,
+      "Created": "2026-11-13T17:07:39.763611571+03:00",
+      "LastTagTime": "2026-11-13T14:07:39.97445246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r0-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-00-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-model-sigkill-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r2-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-integration-four-models-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r2-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r0-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r1-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r1-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-tampered-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r2-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-qos1-retry-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r2-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r0-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r1-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r1-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-broker-outage-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-forbidden-acl-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r1-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r0-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r1-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-broker-outage-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-postgres-outage-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:eb90c19c5ea005323fbc1defa025ac895c83665cbc0286bae3061d3d141e8b0d",
+      "ContainerName": "lcm-stage15-shadow-ids-online-research-init-1",
+      "Repository": "lcm-stage15-shadow-ids-online-laboratory",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 534282243,
+      "Created": "2026-11-13T17:07:39.763611571+03:00",
+      "LastTagTime": "2026-11-13T14:07:39.97445246Z"
+    },
+    {
+      "ID": "sha256:eae1c40e0b56f9d0d56babb8ff1367fb41067d1ffc4a19efd549a1a509716eb5",
+      "ContainerName": "lcm-stage15-shadow-ids-online-receiver-1",
+      "Repository": "lcm-stage15-shadow-ids-online-runtime",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 401592532,
+      "Created": "2026-11-13T17:07:47.927587854+03:00",
+      "LastTagTime": "2026-11-13T14:07:48.321614138Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r0-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r1-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r2-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-batch-00-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-browser-live-v3-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-batch-02-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-batch-01-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-wrong-model-hash-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-bounded-rate-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r0-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-browser-live-v2-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-pattern-change-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r1-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-01-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:eae1c40e0b56f9d0d56babb8ff1367fb41067d1ffc4a19efd549a1a509716eb5",
+      "ContainerName": "lcm-stage15-shadow-ids-online-web-1",
+      "Repository": "lcm-stage15-shadow-ids-online-runtime",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 401592532,
+      "Created": "2026-11-13T17:07:47.927587854+03:00",
+      "LastTagTime": "2026-11-13T14:07:48.321614138Z"
+    },
+    {
+      "ID": "sha256:eae1c40e0b56f9d0d56babb8ff1367fb41067d1ffc4a19efd549a1a509716eb5",
+      "ContainerName": "lcm-stage15-shadow-ids-online-storage-init-1",
+      "Repository": "lcm-stage15-shadow-ids-online-runtime",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 401592532,
+      "Created": "2026-11-13T17:07:47.927587854+03:00",
+      "LastTagTime": "2026-11-13T14:07:48.321614138Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r2-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-wrong-model-hash-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r0-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r0-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r0-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:eae1c40e0b56f9d0d56babb8ff1367fb41067d1ffc4a19efd549a1a509716eb5",
+      "ContainerName": "lcm-stage15-shadow-ids-online-research-provision-1",
+      "Repository": "lcm-stage15-shadow-ids-online-runtime",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 401592532,
+      "Created": "2026-11-13T17:07:47.927587854+03:00",
+      "LastTagTime": "2026-11-13T14:07:48.321614138Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-memory-6m-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-wrong-feature-version-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-replay-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r1-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-medium-r0-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r1-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-model-sigkill-restarted-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-tuple-reuse-real-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r1-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-receiver-restart-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-final-01-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r1-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r2-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r0-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-missing-model-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+      "ContainerName": "lcm-stage15-shadow-ids-online-broker-1",
+      "Repository": "eclipse-mosquitto",
+      "Tag": "",
+      "Platform": "linux/amd64",
+      "Size": 42534414,
+      "Created": "2026-11-05T21:12:48.772566023Z",
+      "LastTagTime": "2026-11-08T11:36:55.688196432Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r2-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-regular-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r2-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r1-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-browser-live-v3-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-wrong-sequence-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r2-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r0-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r1-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r2-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-integration-four-models-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r1-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-mongo-outage-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r1-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r1-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r0-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-memory-cap-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:eae1c40e0b56f9d0d56babb8ff1367fb41067d1ffc4a19efd549a1a509716eb5",
+      "ContainerName": "lcm-stage15-shadow-ids-online-init-db-1",
+      "Repository": "lcm-stage15-shadow-ids-online-runtime",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 401592532,
+      "Created": "2026-11-13T17:07:47.927587854+03:00",
+      "LastTagTime": "2026-11-13T14:07:48.321614138Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r1-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r1-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-browser-live-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r0-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r1-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r2-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-context-01-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-mongo-outage-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r2-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-wrong-epoch-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-model-sigkill-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r0-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-broker-reconnect-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-jitter-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r0-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-wrong-sequence-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r1-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r0-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-medium-r0-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r2-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r2-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-final-00-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r1-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r1-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r2-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:eb90c19c5ea005323fbc1defa025ac895c83665cbc0286bae3061d3d141e8b0d",
+      "ContainerName": "lcm-stage15-shadow-ids-online-research-observer-1",
+      "Repository": "lcm-stage15-shadow-ids-online-laboratory",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 534282243,
+      "Created": "2026-11-13T17:07:39.763611571+03:00",
+      "LastTagTime": "2026-11-13T14:07:39.97445246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-jitter-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r2-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r0-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-integration-four-models-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r1-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r0-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r1-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r0-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-tuple-reuse-real-v2-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r1-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r0-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-base-r0-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-extended-r0-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-observer-sigkill-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r1-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r0-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r1-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-parity-02-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r2-capture-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-regular-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-fault-observer-sigkill-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-small-r2-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v2-base-r1-rf-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:eae1c40e0b56f9d0d56babb8ff1367fb41067d1ffc4a19efd549a1a509716eb5",
+      "ContainerName": "lcm-stage15-shadow-ids-online-security-init-1",
+      "Repository": "lcm-stage15-shadow-ids-online-runtime",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 401592532,
+      "Created": "2026-11-13T17:07:47.927587854+03:00",
+      "LastTagTime": "2026-11-13T14:07:48.321614138Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r0-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-small-r2-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-v3-medium-r2-rf-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:b1e533cc8b95c71c29be2500227daef108e6f498d864107f4e5bcef6799fd0a0",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r1-rfif-capture",
+      "Repository": "lcm-stage15-shadow-ids-online-shadow-capture",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 188841114,
+      "Created": "2026-11-13T17:07:52.315743057+03:00",
+      "LastTagTime": "2026-11-13T14:07:52.46417246Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-base-r0-rfif-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    },
+    {
+      "ID": "sha256:53a82ff94203be4b75c4a08f6309fe6ab639fedf695f302e474b08aa256c7a41",
+      "ContainerName": "lcm-stage15-shadow-ids-online-online-forbidden-acl-worker",
+      "Repository": "lcm-stage15-shadow-ids-online-ml",
+      "Tag": "latest",
+      "Platform": "linux/amd64",
+      "Size": 774345683,
+      "Created": "2026-11-13T17:08:08.158198509+03:00",
+      "LastTagTime": "2026-11-13T14:08:08.420994877Z"
+    }
+  ],
+  "source_hashes": {
+    "src/shadow_ids/__init__.py": "f1d206da9ff7e5dfd221c6360a1e3a3417956be3aea283bdd622a6c28f722d78",
+    "src/shadow_ids/features.py": "44e1ff4eef22c9deb338798c63c8e44e55b4604cdf74d18520c4db83dcca60ef",
+    "src/shadow_ids/pcap.py": "e42fd6098d4693d76272a062485d5e5ce002287a00061244ad17386e9f39abb0",
+    "src/shadow_ids/journal.py": "79904adc53aea80de948c98ae7d5a0e20360616e1b4bb8447491cfac50c8bda0",
+    "src/shadow_ids/frozen.json": "e58f4ea17eea2386f4333df6ea97cd98afb28696c5326d98b0c4c5456c7956c9",
+    "src/shadow_ids/models.py": "5dea7d7471cfbe0cf9623d319411f9e1ed7ee1fc8b30e57a4f64901091e0b34c",
+    "src/shadow_ids/capture.py": "77e824842b3e748ac0083ad8ead967f2de7c14b1f5c1195051b393d6a1312bb1",
+    "src/shadow_ids/worker.py": "1cba06760bf0df94efe94cd81ee3da0ff2d9efa7b05e592861b9ee6801edae02",
+    "src/shadow_ids/sessions.py": "9f30cda9daa023acd033337bd3ed3146114f115ff8cc24ddbcf77487a2ef0e11",
+    "src/shadow_ids/parity.py": "4821f4202e0671a4adc5d030560c5492c68e2a1c4883279dd1b8d0d880d957ef",
+    "src/shadow_ids/web.py": "f6e33ed953525d289fd05e3fbb55eaef66fb22d94c1ad4c1f28a2d543a710e56",
+    "src/shadow_ids/isolation.py": "b80e4c4159654a2347cdb5838a13843982f44ab4dcbe4ac105d959d2bd42d2d7"
+  },
+  "compose_hashes": {
+    "compose.yaml": "13c60bd9f5dc9472a95fdae54850c7fdf38d363dc48cdb48e4df43e7750a2fd1",
+    "compose.research.yaml": "12d6fcf5e041d7104b9703ff0571d4b711cd3ef2f9ebd0841252c0e14c2858e9",
+    "compose.shadow.yaml": "7bf98090bd1ca3b34106ccd3546379f6944fc2793ed4b06334dffd40e91f2c03"
+  },
+  "independent_host_domain": "not_verified",
+  "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+  "old_holdout_predictions": 0,
+  "fit_calls": 0,
+  "threshold_changes": 0,
+  "exit_code": 0
+}

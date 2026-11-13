@@ -1,0 +1,38 @@
+base-r0-off PG 24 Mongo 24 shadow None
+base-r0-capture PG 24 Mongo 24 shadow 0
+base-r0-rf PG 24 Mongo 24 shadow 126
+base-r0-rfif PG 24 Mongo 24 shadow 252
+base-r1-capture PG 24 Mongo 24 shadow 0
+base-r1-rf PG 24 Mongo 24 shadow 126
+base-r1-rfif PG 24 Mongo 24 shadow 252
+base-r1-off PG 24 Mongo 24 shadow None
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_performance.py", line 70, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_performance.py", line 67, in main
+    r=json.loads(path.read_text()) if path.exists() else run(l,name,n,interval,condition);results.append(r)
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_performance.py", line 38, in run
+    truth=workload(l,name,n,interval,seed=15000+sum(name.encode()))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_runs.py", line 17, in workload
+    l.run('exec','-T','lab-devices','python','-m','scripts.stage15_workload','--config','/research/stage15-config.json',timeout=duration+30)
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_lab.py", line 12, in run
+    r=subprocess.run(self.base+list(args),capture_output=True,text=True,timeout=timeout)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 2115, in _communicate
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

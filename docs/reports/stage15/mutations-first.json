@@ -1,0 +1,409 @@
+{
+  "source_sha": "f3cdc9a43174e33440c3f850a6309afead59f810",
+  "baseline_exit_code": 0,
+  "baseline_output": ".........................................................                [100%]\n57 passed in 1.07s\n",
+  "results": [
+    {
+      "defect": "missing_timestamp_zero",
+      "edits": [
+        [
+          "src/shadow_ids/features.py",
+          " if type(timestamp) not in",
+          " if timestamp is None:timestamp=0\n if type(timestamp) not in"
+        ]
+      ],
+      "test": "test_timestamp_unavailable[None]",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________________ test_timestamp_unavailable[None] _______________________\n\nvalue = None\n\n    @pytest.mark.parametrize('value',[None,float('nan'),float('inf'),True,-1,'1'])\n    def test_timestamp_unavailable(value):\n>    with pytest.raises(Unavailable):p(time=value)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE Unavailable\n\ntests/test_shadow_ids.py:20: Failed\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_timestamp_unavailable[None] - Failed: D...\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "negative_delta_clamped",
+      "edits": [
+        [
+          "src/shadow_ids/features.py",
+          "delta=t-r['last']",
+          "delta=max(0,t-r['last'])"
+        ]
+      ],
+      "test": "test_negative_delta_is_not_clamped",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________________ test_negative_delta_is_not_clamped ______________________\n\n    def test_negative_delta_is_not_clamped():\n>    f=Flows();f.accept(p());r=f.accept(p(time=.5,flags=16));assert r['status']=='FEATURE_UNAVAILABLE';assert r['features']['tcp.time_delta']<0;assert f.accept(p(time=2,flags=16))['status']!='FEATURE_READY'\n                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    AssertionError: assert 'FEATURE_READY' == 'FEATURE_UNAVAILABLE'\nE      \nE      - FEATURE_UNAVAILABLE\nE      + FEATURE_READY\n\ntests/test_shadow_ids.py:22: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_negative_delta_is_not_clamped - Asserti...\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "streams_share_context",
+      "edits": [
+        [
+          "src/shadow_ids/features.py",
+          "key=p['key'];syn=",
+          "key=(('all',0),('all',0));syn="
+        ]
+      ],
+      "test": "test_two_streams_not_shared",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________________________ test_two_streams_not_shared __________________________\n\n    def test_two_streams_not_shared():\n>    f=Flows();f.accept(p());r=f.accept(p(time=2,src=2222));assert r['features']['tcp.time_delta']==0 and r['session']=='2';assert f.accept(p(time=3,flags=16))['features']['tcp.time_delta']==2\n                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    assert (1.0 == 0)\n\ntests/test_shadow_ids.py:24: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_two_streams_not_shared - assert (1.0 == 0)\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "tuple_reuse_not_reset",
+      "edits": [
+        [
+          "src/shadow_ids/features.py",
+          " or (syn and (old['closed'] or old['initial']!=p['sequence']))",
+          ""
+        ]
+      ],
+      "test": "test_reused_tuple_resets_generation",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____________________ test_reused_tuple_resets_generation ______________________\n\n    def test_reused_tuple_resets_generation():\n>    f=Flows();a=f.accept(p());f.accept(p(time=2,flags=4));r=f.accept(p(time=3,sequence=99));assert r['session']!=a['session'] and r['features']['tcp.time_delta']==0\n                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    AssertionError: assert ('1' != '1')\n\ntests/test_shadow_ids.py:26: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_reused_tuple_resets_generation - Assert...\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "missing_syn_complete",
+      "edits": [
+        [
+          "src/shadow_ids/features.py",
+          "complete=syn,diagnostic=",
+          "complete=True,diagnostic="
+        ],
+        [
+          "src/shadow_ids/features.py",
+          "if not p['flags']&2:r['complete']=False",
+          "if False:r['complete']=False"
+        ]
+      ],
+      "test": "test_missing_syn_insufficient[16]",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________________ test_missing_syn_insufficient[16] _______________________\n\nflags = 16\n\n    @pytest.mark.parametrize('flags',[16,18,17,4])\n>   def test_missing_syn_insufficient(flags):assert Flows().accept(p(flags=flags))['status']=='INSUFFICIENT_CONTEXT'\n                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError: assert 'FEATURE_READY' == 'INSUFFICIENT_CONTEXT'\nE     \nE     - INSUFFICIENT_CONTEXT\nE     + FEATURE_READY\n\ntests/test_shadow_ids.py:28: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_missing_syn_insufficient[16] - Assertio...\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "packet_loss_ignored",
+      "edits": [
+        [
+          "src/shadow_ids/features.py",
+          "for r in self.rows.values():r['complete']=False",
+          "for r in self.rows.values():r['complete']=True"
+        ]
+      ],
+      "test": "test_gap_requires_new_generation",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________________ test_gap_requires_new_generation _______________________\n\n    def test_gap_requires_new_generation():\n>    f=Flows();f.accept(p());f.gap();assert f.accept(p(time=2,flags=16))['status']=='INSUFFICIENT_CONTEXT';assert f.accept(p(time=3,sequence=100))['status']=='FEATURE_READY'\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    AssertionError: assert 'FEATURE_READY' == 'INSUFFICIENT_CONTEXT'\nE      \nE      - INSUFFICIENT_CONTEXT\nE      + FEATURE_READY\n\ntests/test_shadow_ids.py:30: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_gap_requires_new_generation - Assertion...\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "truncated_frame_accepted",
+      "edits": [
+        [
+          "src/shadow_ids/features.py",
+          " or len(raw)!=original",
+          ""
+        ],
+        [
+          "src/shadow_ids/features.py",
+          " or n>len(ip)",
+          ""
+        ]
+      ],
+      "test": "test_unsupported_not_scored[truncated]",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____________________ test_unsupported_not_scored[truncated] ____________________\n\nkind = 'truncated'\n\n    @pytest.mark.parametrize('kind',['truncated','ethernet','ipv6','fragment','flags','ip_length','tcp_length'])\n    def test_unsupported_not_scored(kind):\n     raw=bytearray(frame());original=len(raw)\n     if kind=='truncated':raw=bytearray(frame(payload=b'abc'));original=len(raw);raw=raw[:-1]\n     if kind=='ethernet':raw[12:14]=b'\\x00\\x00'\n     if kind=='ipv6':raw[12:14]=b'\\x86\\xdd'\n     if kind=='fragment':raw[20:22]=b'\\x20\\x00'\n     if kind=='flags':raw[46]=0x52\n     if kind=='ip_length':raw[16:18]=b'\\xff\\xff'\n     if kind=='tcp_length':raw[46]=0x10\n>    with pytest.raises(Unavailable):packet(bytes(raw),original,1)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE Unavailable\n\ntests/test_shadow_ids.py:43: Failed\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_unsupported_not_scored[truncated] - Fai...\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "feature_order_ignored",
+      "edits": [
+        [
+          "src/shadow_ids/models.py",
+          " or list(features)!=list(FEATURES)",
+          ""
+        ]
+      ],
+      "test": "test_features_missing_metadata_order_and_version_rejected",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n__________ test_features_missing_metadata_order_and_version_rejected ___________\n\n    def test_features_missing_metadata_order_and_version_rejected():\n     from src.shadow_ids.models import scores\n     good=dict(status='FEATURE_READY',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])))\n     for change in [dict(feature_version='network-core-v1'),dict(features={'device_id':'alpha',**good['features']}),dict(features=dict(reversed(list(good['features'].items())))),dict(features={**good['features'],'tcp.time_delta':None})]:\n>     with pytest.raises(ValueError):scores({},[{**good,**change}])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nE     Failed: DID NOT RAISE ValueError\n\ntests/test_shadow_ids.py:72: Failed\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_features_missing_metadata_order_and_version_rejected\n1 failed in 0.46s\n"
+    },
+    {
+      "defect": "feature_version_ignored",
+      "edits": [
+        [
+          "src/shadow_ids/models.py",
+          "event.get('feature_version')!=VERSION or ",
+          ""
+        ]
+      ],
+      "test": "test_features_missing_metadata_order_and_version_rejected",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n__________ test_features_missing_metadata_order_and_version_rejected ___________\n\n    def test_features_missing_metadata_order_and_version_rejected():\n     from src.shadow_ids.models import scores\n     good=dict(status='FEATURE_READY',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])))\n     for change in [dict(feature_version='network-core-v1'),dict(features={'device_id':'alpha',**good['features']}),dict(features=dict(reversed(list(good['features'].items())))),dict(features={**good['features'],'tcp.time_delta':None})]:\n>     with pytest.raises(ValueError):scores({},[{**good,**change}])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nE     Failed: DID NOT RAISE ValueError\n\ntests/test_shadow_ids.py:72: Failed\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_features_missing_metadata_order_and_version_rejected\n1 failed in 0.47s\n"
+    },
+    {
+      "defect": "unapproved_artifact_deserialized",
+      "edits": [
+        [
+          "src/shadow_ids/models.py",
+          "if hashlib.sha256((path/'manifest.json').read_bytes()).hexdigest()!=pin['manifest_sha256'] or meta['artifact_sha256']!=pin['artifact_sha256'] or meta['threshold']!=pin['threshold'] or meta['feature_version']!=VERSION or meta.get('mode')!='RESEARCH' or meta.get('trusted_detector') is not False or meta.get('preprocessing',{}).get('feature_order')!=list(FEATURES):",
+          "if False:"
+        ]
+      ],
+      "test": "test_frozen_model_hash_version_threshold_before_deserialization",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______ test_frozen_model_hash_version_threshold_before_deserialization ________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-126/test_frozen_model_hash_version0')\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f2b7b6df080>\n\n    def test_frozen_model_hash_version_threshold_before_deserialization(tmp_path,monkeypatch):\n     import hashlib\n     from src.shadow_ids import models\n     from src.classifier.ml import artifacts\n     directory=tmp_path/'model';directory.mkdir();(directory/'manifest.json').write_text('known source manifest')\n     pin=dict(model_id='frozen',model_version='14.0.0',artifact_sha256='original',manifest_sha256=hashlib.sha256((directory/'manifest.json').read_bytes()).hexdigest(),threshold=.9)\n     good=dict(task='network_ids',algorithm='rf_binary',artifact_sha256='original',threshold=.9,feature_version='tcp-packet-passive-v1',mode='RESEARCH',trusted_detector=False,preprocessing={'feature_order':list(FEATURES)})\n     monkeypatch.setattr(models,'frozen',lambda:{'rf_binary':pin});called=[];monkeypatch.setattr(artifacts,'load',lambda *a:(called.append(True) or ({},None)))\n     for change in [dict(artifact_sha256='changed'),dict(feature_version='network-core-v1'),dict(threshold=.8),dict(trusted_detector=True),dict(preprocessing={'feature_order':list(reversed(FEATURES))})]:\n      monkeypatch.setattr(artifacts,'verify',lambda *a,c=change:({**good,**c},directory))\n>     with pytest.raises(ValueError):models.load_models(tmp_path,['rf_binary'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nE     Failed: DID NOT RAISE ValueError\n\ntests/test_shadow_ids.py:116: Failed\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_frozen_model_hash_version_threshold_before_deserialization\n1 failed in 0.17s\n"
+    },
+    {
+      "defect": "threshold_changed_after_freeze",
+      "edits": [
+        [
+          "src/shadow_ids/worker.py",
+          "threshold=pin['threshold'],comparison=",
+          "threshold=pin['threshold']+.1,comparison="
+        ]
+      ],
+      "test": "test_scored_threshold_is_original_and_unbound",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________________ test_scored_threshold_is_original_and_unbound _________________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-127/test_scored_threshold_is_origi0')\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fbbe48cb2c0>\n\n    def test_scored_threshold_is_original_and_unbound(tmp_path,monkeypatch):\n     import src.shadow_ids.worker as worker\n>    db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_READY','device_id':'anonymous-wrong-password','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1','features':dict(zip(FEATURES,[54,0,2,74,0]))};db.append(e);pin={**worker.frozen()['rf_binary'],'threshold':.9};monkeypatch.setattr(worker,'scores',lambda *a:{'rf_binary':[.95]});worker.process(db,{'rf_binary':(pin,None)},db.pending());r=json.loads(db.db.execute('select value from results').fetchone()[0]);assert r['threshold']==.9 and r['comparison'] is True and r['device_binding']=='unbound';db.close()\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    assert (1.0 == 0.9)\n\ntests/test_shadow_ids.py:158: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_scored_threshold_is_original_and_unbound\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "network_metadata_predictor",
+      "edits": [
+        [
+          "src/shadow_ids/models.py",
+          "out={}\n for role",
+          "frame['device_id']='broker';out={}\n for role"
+        ]
+      ],
+      "test": "test_network_metadata_never_enters_predictors",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________________ test_network_metadata_never_enters_predictors _________________\n\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f8485af1850>\n\n    def test_network_metadata_never_enters_predictors(monkeypatch):\n     import src.classifier.research.experiment as ex\n     from src.shadow_ids.models import scores\n     def checked(pipeline,frame,algorithm):\n      assert list(frame.columns)==list(FEATURES) and 'device_id' not in frame\n      return __import__('numpy').array([.5])\n>    monkeypatch.setattr(__import__('src.shadow_ids.models',fromlist=['risk']),'risk',checked);e=dict(status='FEATURE_READY',device_id='broker-ip-is-not-authentication',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])));scores({'rf_binary':({},None)},[e])\n                                                                                                                                                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_shadow_ids.py:155: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/shadow_ids/models.py:36: in scores\n    values=risk(pipeline,frame,'if' if role.startswith('if') else 'rf')\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\npipeline = None\nframe =    frame.len  tcp.len  ...  tcp.time_delta  device_id\n0         54        0  ...               0     broker\n\n[1 rows x 6 columns]\nalgorithm = 'rf'\n\n    def checked(pipeline,frame,algorithm):\n>    assert list(frame.columns)==list(FEATURES) and 'device_id' not in frame\nE    AssertionError: assert (['frame.len',..., 'device_id'] == ['frame.len',...p.time_delta']\nE      \nE      Left contains one more item: 'device_id'\nE      Use -v to get more diff)\n\ntests/test_shadow_ids.py:153: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_network_metadata_never_enters_predictors\n1 failed in 0.52s\n"
+    },
+    {
+      "defect": "invalid_score_becomes_normal",
+      "edits": [
+        [
+          "src/shadow_ids/models.py",
+          "or not np.isfinite(values).all()",
+          ""
+        ],
+        [
+          "src/shadow_ids/models.py",
+          "out[role]=[float(x) for x in values]",
+          "out[role]=[float(np.nan_to_num(x)) for x in values]"
+        ]
+      ],
+      "test": "test_nonfinite_score_is_error_without_plain_normal",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________ test_nonfinite_score_is_error_without_plain_normal ______________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-128/test_nonfinite_score_is_error_0')\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fa035c5af60>\n\n    def test_nonfinite_score_is_error_without_plain_normal(tmp_path,monkeypatch):\n     import src.classifier.research.experiment as ex\n     from src.shadow_ids.models import scores\n     monkeypatch.setattr(__import__('src.shadow_ids.models',fromlist=['risk']),'risk',lambda *a:__import__('numpy').array([float('nan')]))\n     pin=dict();valid=dict(status='FEATURE_READY',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])))\n>    with pytest.raises(ValueError,match='Invalid inference'):scores({'rf_binary':(pin,None)},[valid])\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE ValueError\n\ntests/test_shadow_ids.py:123: Failed\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_nonfinite_score_is_error_without_plain_normal\n1 failed in 0.51s\n"
+    },
+    {
+      "defect": "no_model_score_zero",
+      "edits": [
+        [
+          "src/shadow_ids/worker.py",
+          "status=event['status'];score=None",
+          "status=event['status'];score=0.0"
+        ]
+      ],
+      "test": "test_no_model_is_unavailable_not_normal",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________________ test_no_model_is_unavailable_not_normal ____________________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-129/test_no_model_is_unavailable_n0')\n\n    def test_no_model_is_unavailable_not_normal(tmp_path):\n     from src.shadow_ids.worker import process\n>    db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_READY','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1'};db.append(e);process(db,{},db.pending(),'MissingArtifact');rows=[json.loads(r[0]) for r in db.db.execute('select value from results')];assert rows and all(r['score'] is None and r['comparison'] is None and r['inference_status']=='MODEL_UNAVAILABLE' and r['device_binding']=='unbound' for r in rows);db.close()\n                                                                                                                                                                                                                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    AssertionError: assert ([{'event_id': 'e1', 'capture_id': 'capture', 'packet_identity': {'ordinal': 1, 'sha256': None}, 'session_id': 'capture...e1', 'capture_id': 'capture', 'packet_identity': {'ordinal': 1, 'sha256': None}, 'session_id': 'capture:unknown', ...}] and False)\nE     +  where False = all(<generator object test_no_model_is_unavailable_not_normal.<locals>.<genexpr> at 0x7ff50a6c3ed0>)\n\ntests/test_shadow_ids.py:67: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_no_model_is_unavailable_not_normal - As...\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "broker_identity_authenticated",
+      "edits": [
+        [
+          "src/shadow_ids/worker.py",
+          "device_binding='unbound',mode='SHADOW_ONLY'",
+          "device_binding='broker',mode='SHADOW_ONLY'"
+        ],
+        [
+          "src/shadow_ids/journal.py",
+          " or result.get('device_binding')!='unbound'",
+          ""
+        ]
+      ],
+      "test": "test_scored_threshold_is_original_and_unbound",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________________ test_scored_threshold_is_original_and_unbound _________________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-130/test_scored_threshold_is_origi0')\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ff47c19eea0>\n\n    def test_scored_threshold_is_original_and_unbound(tmp_path,monkeypatch):\n     import src.shadow_ids.worker as worker\n>    db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_READY','device_id':'anonymous-wrong-password','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1','features':dict(zip(FEATURES,[54,0,2,74,0]))};db.append(e);pin={**worker.frozen()['rf_binary'],'threshold':.9};monkeypatch.setattr(worker,'scores',lambda *a:{'rf_binary':[.95]});worker.process(db,{'rf_binary':(pin,None)},db.pending());r=json.loads(db.db.execute('select value from results').fetchone()[0]);assert r['threshold']==.9 and r['comparison'] is True and r['device_binding']=='unbound';db.close()\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    AssertionError: assert (0.9 == 0.9 and True is True and 'broker' == 'unbound'\nE      \nE      - unbound\nE      + broker)\n\ntests/test_shadow_ids.py:158: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_scored_threshold_is_original_and_unbound\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "rejected_connection_device_identity",
+      "edits": [
+        [
+          "src/shadow_ids/worker.py",
+          "device_binding='unbound',mode='SHADOW_ONLY'",
+          "device_binding=event.get('device_id','unbound'),mode='SHADOW_ONLY'"
+        ],
+        [
+          "src/shadow_ids/journal.py",
+          " or result.get('device_binding')!='unbound'",
+          ""
+        ]
+      ],
+      "test": "test_scored_threshold_is_original_and_unbound",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n________________ test_scored_threshold_is_original_and_unbound _________________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-131/test_scored_threshold_is_origi0')\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f3df5037140>\n\n    def test_scored_threshold_is_original_and_unbound(tmp_path,monkeypatch):\n     import src.shadow_ids.worker as worker\n>    db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_READY','device_id':'anonymous-wrong-password','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1','features':dict(zip(FEATURES,[54,0,2,74,0]))};db.append(e);pin={**worker.frozen()['rf_binary'],'threshold':.9};monkeypatch.setattr(worker,'scores',lambda *a:{'rf_binary':[.95]});worker.process(db,{'rf_binary':(pin,None)},db.pending());r=json.loads(db.db.execute('select value from results').fetchone()[0]);assert r['threshold']==.9 and r['comparison'] is True and r['device_binding']=='unbound';db.close()\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    AssertionError: assert (0.9 == 0.9 and True is True and 'anonymous-wrong-password' == 'unbound'\nE      \nE      - unbound\nE      + anonymous-wrong-password)\n\ntests/test_shadow_ids.py:158: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_scored_threshold_is_original_and_unbound\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "duplicate_observation_inserted",
+      "edits": [
+        [
+          "src/shadow_ids/journal.py",
+          "id TEXT PRIMARY KEY,run",
+          "id TEXT,run"
+        ],
+        [
+          "src/shadow_ids/journal.py",
+          ",UNIQUE(run,ordinal)",
+          ""
+        ],
+        [
+          "src/shadow_ids/journal.py",
+          "if self.db.execute('SELECT 1 FROM events WHERE id=?',(event['event_id'],)).fetchone():return False",
+          "if False:return False"
+        ]
+      ],
+      "test": "test_journal_duplicate_and_atomicity",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____________________ test_journal_duplicate_and_atomicity _____________________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-132/test_journal_duplicate_and_ato0')\n\n    def test_journal_duplicate_and_atomicity(tmp_path):\n>    db=Journal(tmp_path/'shadow.db');assert db.append(event());assert not db.append(event());assert db.db.execute('select count(*) from events').fetchone()[0]==1\n                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    AssertionError: assert not True\nE     +  where True = append({'event_id': 'e1', 'ordinal': 1, 'capture_id': 'capture', 'mode': 'SHADOW_ONLY', ...})\nE     +    where append = <src.shadow_ids.journal.Journal object at 0x7f0e10f60ef0>.append\nE     +    and   {'event_id': 'e1', 'ordinal': 1, 'capture_id': 'capture', 'mode': 'SHADOW_ONLY', ...} = event()\n\ntests/test_shadow_ids.py:47: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_journal_duplicate_and_atomicity - Asser...\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "worker_receiver_failure_coupling_allowed",
+      "edits": [
+        [
+          "src/shadow_ids/isolation.py",
+          "if capture.get('network_mode')!='service:lab-devices':",
+          "if False:"
+        ]
+      ],
+      "test": "test_deployment_rejects_receiver_coupling",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n__________________ test_deployment_rejects_receiver_coupling ___________________\n\n    def test_deployment_rejects_receiver_coupling():\n     from src.shadow_ids.isolation import validate\n     c=dict(network_mode='service:receiver',read_only=True,cap_drop=['ALL'],cap_add=['NET_RAW']);w=dict(network_mode='none',read_only=True,cap_drop=['ALL'])\n>    with pytest.raises(ValueError,match='namespace owner'):validate({'shadow-network-observer':c,'shadow-model-worker':w})\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    Failed: DID NOT RAISE ValueError\n\ntests/test_shadow_ids.py:146: Failed\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_deployment_rejects_receiver_coupling - ...\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "shadow_writes_policy",
+      "edits": [
+        [
+          "src/shadow_ids/worker.py",
+          "  pairs.append((row,results))",
+          "  from src.policy.state import process as emit\n  emit(None,None,None,None)\n  pairs.append((row,results))"
+        ]
+      ],
+      "test": "test_no_policy_or_control_side_effects",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____________________ test_no_policy_or_control_side_effects ____________________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-133/test_no_policy_or_control_side0')\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f59a9ba2ea0>\n\n    def test_no_policy_or_control_side_effects(tmp_path,monkeypatch):\n     from src.shadow_ids.worker import process\n     import src.device_control.server as control\n     import src.policy.state as state\n     def forbidden(*args,**kwargs):raise AssertionError('Shadow emitted control or Policy signal')\n     monkeypatch.setattr(control,'request_switch',forbidden)\n     monkeypatch.setattr(state,'process',forbidden)\n     # Offline source error remains a local journal record, never a trusted feed.\n>    db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_UNAVAILABLE','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1'};db.append(e);process(db,{},db.pending(),'Unavailable');assert db.db.execute('select count(*) from results').fetchone()[0]==4;db.close()\n                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_shadow_ids.py:92: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/shadow_ids/worker.py:35: in process\n    emit(None,None,None,None)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nargs = (None, None, None, None), kwargs = {}\n\n>   def forbidden(*args,**kwargs):raise AssertionError('Shadow emitted control or Policy signal')\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError: Shadow emitted control or Policy signal\n\ntests/test_shadow_ids.py:88: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_no_policy_or_control_side_effects - Ass...\n1 failed in 0.11s\n"
+    },
+    {
+      "defect": "shadow_crypto_command",
+      "edits": [
+        [
+          "src/shadow_ids/worker.py",
+          "  pairs.append((row,results))",
+          "  from src.device_control.server import request_switch\n  request_switch(None,'alpha','aes-128-gcm-v1','RF')\n  pairs.append((row,results))"
+        ]
+      ],
+      "test": "test_no_policy_or_control_side_effects",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____________________ test_no_policy_or_control_side_effects ____________________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-134/test_no_policy_or_control_side0')\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f8717b32f00>\n\n    def test_no_policy_or_control_side_effects(tmp_path,monkeypatch):\n     from src.shadow_ids.worker import process\n     import src.device_control.server as control\n     import src.policy.state as state\n     def forbidden(*args,**kwargs):raise AssertionError('Shadow emitted control or Policy signal')\n     monkeypatch.setattr(control,'request_switch',forbidden)\n     monkeypatch.setattr(state,'process',forbidden)\n     # Offline source error remains a local journal record, never a trusted feed.\n>    db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_UNAVAILABLE','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1'};db.append(e);process(db,{},db.pending(),'Unavailable');assert db.db.execute('select count(*) from results').fetchone()[0]==4;db.close()\n                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_shadow_ids.py:92: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/shadow_ids/worker.py:35: in process\n    request_switch(None,'alpha','aes-128-gcm-v1','RF')\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nargs = (None, 'alpha', 'aes-128-gcm-v1', 'RF'), kwargs = {}\n\n>   def forbidden(*args,**kwargs):raise AssertionError('Shadow emitted control or Policy signal')\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError: Shadow emitted control or Policy signal\n\ntests/test_shadow_ids.py:88: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_no_policy_or_control_side_effects - Ass...\n1 failed in 0.12s\n"
+    },
+    {
+      "defect": "broken_capture_healthy",
+      "edits": [
+        [
+          "src/shadow_ids/journal.py",
+          "  if capture.get('status')=='CAPTURE_INCOMPLETE':current=False",
+          ""
+        ]
+      ],
+      "test": "test_broken_capture_not_healthy_and_stale_evidence_not_fresh",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________ test_broken_capture_not_healthy_and_stale_evidence_not_fresh _________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-135/test_broken_capture_not_health0')\n\n    def test_broken_capture_not_healthy_and_stale_evidence_not_fresh(tmp_path):\n>    db=Journal(tmp_path/'shadow.db');db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURE_INCOMPLETE'));db.status('worker',dict(heartbeat=100,last_inference=100,status='READY'));assert not db.snapshot(now=100)['available'];db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURING'));db.status('worker',dict(heartbeat=100,last_inference=1,status='READY'));assert not db.snapshot(now=100)['available'];db.close()\n                                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    assert not True\n\ntests/test_shadow_ids.py:148: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_broken_capture_not_healthy_and_stale_evidence_not_fresh\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "overflow_hidden",
+      "edits": [
+        [
+          "src/shadow_ids/journal.py",
+          "  last_packet=capture.get('last_packet');",
+          "  capture.pop('queue_overflow',None)\n  last_packet=capture.get('last_packet');"
+        ]
+      ],
+      "test": "test_stale_clears_predictions_and_overflow_visible",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________ test_stale_clears_predictions_and_overflow_visible ______________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-136/test_stale_clears_predictions_0')\n\n    def test_stale_clears_predictions_and_overflow_visible(tmp_path):\n>    db=Journal(tmp_path/'shadow.db');db.append(event());db.complete({'id':'e1'},[dict(model_id='x',mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound')]);db.status('capture',dict(heartbeat=1,queue_overflow=3));db.status('worker',dict(heartbeat=1));s=db.snapshot(now=100);assert not s['available'] and not s['results'];assert s['capture']['queue_overflow']==3;db.close()\n                                                                                                                                                                                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    KeyError: 'queue_overflow'\n\ntests/test_shadow_ids.py:56: KeyError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_stale_clears_predictions_and_overflow_visible\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "stale_inference_fresh",
+      "edits": [
+        [
+          "src/shadow_ids/journal.py",
+          " and worker['evidence_fresh']",
+          ""
+        ]
+      ],
+      "test": "test_broken_capture_not_healthy_and_stale_evidence_not_fresh",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_________ test_broken_capture_not_healthy_and_stale_evidence_not_fresh _________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-137/test_broken_capture_not_health0')\n\n    def test_broken_capture_not_healthy_and_stale_evidence_not_fresh(tmp_path):\n>    db=Journal(tmp_path/'shadow.db');db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURE_INCOMPLETE'));db.status('worker',dict(heartbeat=100,last_inference=100,status='READY'));assert not db.snapshot(now=100)['available'];db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURING'));db.status('worker',dict(heartbeat=100,last_inference=1,status='READY'));assert not db.snapshot(now=100)['available'];db.close()\n                                                                                                                                                                                                                                                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    assert not True\n\ntests/test_shadow_ids.py:148: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_broken_capture_not_healthy_and_stale_evidence_not_fresh\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "old_holdout_reused",
+      "edits": [
+        [
+          "src/shadow_ids/models.py",
+          " frame=pd.DataFrame(",
+          " from src.classifier.research.experiment import final_test\n final_test(None,None,None,None,None)\n frame=pd.DataFrame("
+        ]
+      ],
+      "test": "test_no_fit_or_old_holdout_during_shadow_model_scoring",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____________ test_no_fit_or_old_holdout_during_shadow_model_scoring ____________\n\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f99176bbf80>\n\n    def test_no_fit_or_old_holdout_during_shadow_model_scoring(monkeypatch):\n     from src.shadow_ids.models import scores\n     import src.classifier.research.experiment as ex\n     def forbidden(*a,**k):raise AssertionError('Old holdout/fit was opened')\n     monkeypatch.setattr(ex,'train',forbidden);monkeypatch.setattr(ex,'final_test',forbidden);monkeypatch.setattr(ex,'plan',forbidden)\n     monkeypatch.setattr(__import__('src.shadow_ids.models',fromlist=['risk']),'risk',lambda *a:__import__('numpy').array([.5]))\n>    e=dict(status='FEATURE_READY',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])));assert scores({'rf_binary':({},None)},[e])['rf_binary']==[.5]\n                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_shadow_ids.py:130: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsrc/shadow_ids/models.py:34: in scores\n    final_test(None,None,None,None,None)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\na = (None, None, None, None, None), k = {}\n\n>   def forbidden(*a,**k):raise AssertionError('Old holdout/fit was opened')\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError: Old holdout/fit was opened\n\ntests/test_shadow_ids.py:127: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_no_fit_or_old_holdout_during_shadow_model_scoring\n1 failed in 0.51s\n"
+    },
+    {
+      "defect": "full_session_backdated",
+      "edits": [
+        [
+          "src/shadow_ids/sessions.py",
+          "evaluated_at=time.time(),final=final",
+          "evaluated_at=v['first_timestamp'],final=final"
+        ]
+      ],
+      "test": "test_session_scores_are_causal_prefixes",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________________ test_session_scores_are_causal_prefixes ____________________\n\ntmp_path = PosixPath('/tmp/pytest-of-onebumbot/pytest-138/test_session_scores_are_causal0')\n\n    def test_session_scores_are_causal_prefixes(tmp_path):\n     from src.shadow_ids.sessions import aggregate\n     db=Journal(tmp_path/'shadow.db')\n     for n,score in [(1,.1),(2,.9)]:\n      db.append(event(n));result=dict(event_id='e'+str(n),model_id='research75-rf_subsample-binary',model_role='rf_session',session_id='c:1',score=score,comparison=score>=.9,capture_timestamp=n,inference_finish=n+.1,mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound');db.complete({'id':'e'+str(n)},[result])\n      values=db.session_values();assert values[0]['score']==pytest.approx(.1 if n==1 else .5);assert values[0]['through_timestamp']==n and not values[0]['final']\n>    values=aggregate(db,True);assert values[0]['final'] and values[0]['through_timestamp']==2 and values[0]['evaluated_at']>=values[0]['through_timestamp'];db.close()\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    assert (True and 2 == 2 and 1 >= 2)\n\ntests/test_shadow_ids.py:83: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_session_scores_are_causal_prefixes - as...\n1 failed in 0.03s\n"
+    },
+    {
+      "defect": "sequence_gap_ignored",
+      "edits": [
+        [
+          "src/shadow_ids/features.py",
+          "if 0<distance<2**31:r['complete']=False;r['diagnostic']='tcp_sequence_gap'",
+          "if False:r['complete']=False"
+        ]
+      ],
+      "test": "test_transport_sequence_gap_invalidates_context",
+      "exit_code": 1,
+      "killed_by_behavior": true,
+      "output_tail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______________ test_transport_sequence_gap_invalidates_context ________________\n\n    def test_transport_sequence_gap_invalidates_context():\n>    f=Flows();f.accept(p(sequence=100));f.accept(p(time=2,sequence=101,flags=16,payload=b'abc'));v=f.accept(p(time=3,sequence=110,flags=16,payload=b'x'));assert v['status']=='INSUFFICIENT_CONTEXT' and v['diagnostic']=='tcp_sequence_gap';assert f.accept(p(time=4,sequence=111,flags=16))['status']=='INSUFFICIENT_CONTEXT'\n                                                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE    AssertionError: assert ('FEATURE_READY' == 'INSUFFICIENT_CONTEXT'\nE      \nE      - INSUFFICIENT_CONTEXT\nE      + FEATURE_READY)\n\ntests/test_shadow_ids.py:100: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_shadow_ids.py::test_transport_sequence_gap_invalidates_context\n1 failed in 0.03s\n"
+    }
+  ],
+  "all_killed": true,
+  "scope": "Synthetic program fixtures in disposable copies; not IDS quality evidence",
+  "exit_code": 0
+}

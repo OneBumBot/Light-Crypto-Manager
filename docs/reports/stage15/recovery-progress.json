@@ -1,0 +1,802 @@
+{
+  "records": [
+    {
+      "case": "observer_sigkill",
+      "started_at": 1794583161.491641,
+      "finished_at": 1794583195.7927473,
+      "duration_seconds": 34.301106214523315,
+      "capture": {
+        "status": "CAPTURING",
+        "heartbeat": 1794583165.9696198,
+        "capture_id": "fault-observer-sigkill-747722b1650e436195dc123b9cb09e23",
+        "started_at": 1794583162.285213,
+        "last_packet": 1794583165.138077,
+        "reader_drops": 0,
+        "queue_overflow": 0,
+        "unsupported": 0,
+        "fresh": false,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "status": "READY",
+        "heartbeat": 1794583193.8704228,
+        "processed": 78,
+        "storage_retries": 0,
+        "storage_commits": 589,
+        "last_inference": 1794583165.3736813,
+        "model_roles": [
+          "rf_binary",
+          "if",
+          "rf_session",
+          "if_session"
+        ],
+        "model_error": null,
+        "user_cpu": 0.997516,
+        "peak_rss_kib": 193356,
+        "fresh": true,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 78,
+        "results": 312,
+        "pending": 0
+      },
+      "inference_statuses": {
+        "SCORED": 312
+      },
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 89,
+      "telemetry_mongo_delta": 89,
+      "outbox_pending_after": 0,
+      "generator_errors": [],
+      "raw_retained": true,
+      "observer_after_kill": {
+        "exit_code": 137,
+        "running": false,
+        "oom_killed": false
+      },
+      "restart_root": "fault-observer-sigkill-restart",
+      "restart_statuses": {
+        "INSUFFICIENT_CONTEXT": 852
+      },
+      "restart_capture_uuid": "fault-observer-sigkill-restart-292cc5018b77417b8e9d31a0aa03ef39"
+    },
+    {
+      "case": "model_sigkill",
+      "started_at": 1794583197.512759,
+      "finished_at": 1794583222.3007429,
+      "duration_seconds": 24.787984132766724,
+      "capture": {
+        "status": "FINISHED",
+        "complete": true,
+        "heartbeat": 1794583220.4272249,
+        "capture_id": "fault-model-sigkill-52da746fe35b452e8a42d3d1f4368190",
+        "started_at": 1794583198.3347564,
+        "finished_at": 1794583220.427225,
+        "last_packet": 1794583214.6446,
+        "packets": 324,
+        "reader_drops": 0,
+        "queue_overflow": 0,
+        "unsupported": 0,
+        "stats": {
+          "captured": 324,
+          "received_by_filter": 324,
+          "dropped_by_kernel": 0
+        },
+        "reason": "duration",
+        "errors": [],
+        "peak_rss_kib": 23976,
+        "user_cpu": 0.19848,
+        "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+        "interface": "eth0",
+        "linktype": 1,
+        "ip_versions": [
+          "IPv4"
+        ],
+        "namespace": "net:[4026533395]",
+        "snaplen": 262144,
+        "offloads": "not_changed; environment-specific, parity checked on actual frames",
+        "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+        "pcap_sha256": "600da2478c01374ac9d0e544f1ff324832daae31d918dface6b1ff2b3675b537",
+        "fresh": true,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "status": "READY",
+        "heartbeat": 1794583220.4749656,
+        "processed": 246,
+        "storage_retries": 0,
+        "storage_commits": 346,
+        "last_inference": 1794583215.4564776,
+        "model_roles": [
+          "rf_binary",
+          "if",
+          "rf_session",
+          "if_session"
+        ],
+        "model_error": null,
+        "user_cpu": 1.575153,
+        "peak_rss_kib": 192936,
+        "fresh": true,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 324,
+        "results": 1296,
+        "pending": 0
+      },
+      "inference_statuses": {
+        "SCORED": 1296
+      },
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 90,
+      "telemetry_mongo_delta": 90,
+      "outbox_pending_after": 0,
+      "generator_errors": [],
+      "raw_retained": true,
+      "worker_after_kill": {
+        "exit_code": 137,
+        "running": false,
+        "oom_killed": false
+      }
+    },
+    {
+      "case": "receiver_restart",
+      "started_at": 1794583224.0043871,
+      "finished_at": 1794583248.7731073,
+      "duration_seconds": 24.768720388412476,
+      "capture": {
+        "status": "FINISHED",
+        "complete": true,
+        "heartbeat": 1794583246.941185,
+        "capture_id": "fault-receiver-restart-46c5aeea4b674a8c98a2c4fcdf675531",
+        "started_at": 1794583224.8477836,
+        "finished_at": 1794583246.9411852,
+        "last_packet": 1794583241.253993,
+        "packets": 321,
+        "reader_drops": 0,
+        "queue_overflow": 0,
+        "unsupported": 0,
+        "stats": {
+          "captured": 321,
+          "received_by_filter": 321,
+          "dropped_by_kernel": 0
+        },
+        "reason": "duration",
+        "errors": [],
+        "peak_rss_kib": 24460,
+        "user_cpu": 0.189336,
+        "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+        "interface": "eth0",
+        "linktype": 1,
+        "ip_versions": [
+          "IPv4"
+        ],
+        "namespace": "net:[4026533395]",
+        "snaplen": 262144,
+        "offloads": "not_changed; environment-specific, parity checked on actual frames",
+        "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+        "pcap_sha256": "95e603d60c2d5b286be93c209c64fa09925370c5031251ed91f93e0763f6589d",
+        "fresh": true,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "status": "READY",
+        "heartbeat": 1794583246.9444053,
+        "processed": 321,
+        "storage_retries": 0,
+        "storage_commits": 432,
+        "last_inference": 1794583241.9200547,
+        "model_roles": [
+          "rf_binary",
+          "if",
+          "rf_session",
+          "if_session"
+        ],
+        "model_error": null,
+        "user_cpu": 1.664777,
+        "peak_rss_kib": 193344,
+        "fresh": true,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 321,
+        "results": 1284,
+        "pending": 0
+      },
+      "inference_statuses": {
+        "FEATURE_UNAVAILABLE": 4,
+        "INSUFFICIENT_CONTEXT": 4,
+        "SCORED": 1276
+      },
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 89,
+      "telemetry_mongo_delta": 89,
+      "outbox_pending_after": 0,
+      "generator_errors": [],
+      "raw_retained": true
+    },
+    {
+      "case": "broker_outage",
+      "started_at": 1794583250.477593,
+      "finished_at": 1794583275.238168,
+      "duration_seconds": 24.76057505607605,
+      "capture": {
+        "status": "FINISHED",
+        "complete": true,
+        "heartbeat": 1794583273.3574247,
+        "capture_id": "fault-broker-outage-3355893c7bff435684f0f24542fc2ebe",
+        "started_at": 1794583251.2924197,
+        "finished_at": 1794583273.3574252,
+        "last_packet": 1794583261.56298,
+        "packets": 130,
+        "reader_drops": 0,
+        "queue_overflow": 0,
+        "unsupported": 0,
+        "stats": {
+          "captured": 130,
+          "received_by_filter": 130,
+          "dropped_by_kernel": 0
+        },
+        "reason": "duration",
+        "errors": [],
+        "peak_rss_kib": 24156,
+        "user_cpu": 0.16341899999999998,
+        "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+        "interface": "eth0",
+        "linktype": 1,
+        "ip_versions": [
+          "IPv4"
+        ],
+        "namespace": "net:[4026533395]",
+        "snaplen": 262144,
+        "offloads": "not_changed; environment-specific, parity checked on actual frames",
+        "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+        "pcap_sha256": "90aa0346a452c155ab0afd7bddc8c0435162af1ccee5e64e28039a72b346f084",
+        "fresh": true,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "status": "READY",
+        "heartbeat": 1794583273.4050288,
+        "processed": 130,
+        "storage_retries": 0,
+        "storage_commits": 415,
+        "last_inference": 1794583262.343342,
+        "model_roles": [
+          "rf_binary",
+          "if",
+          "rf_session",
+          "if_session"
+        ],
+        "model_error": null,
+        "user_cpu": 1.20339,
+        "peak_rss_kib": 193320,
+        "fresh": true,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 130,
+        "results": 520,
+        "pending": 0
+      },
+      "inference_statuses": {
+        "SCORED": 520
+      },
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 17,
+      "telemetry_mongo_delta": 17,
+      "outbox_pending_after": 0,
+      "generator_errors": [
+        "RuntimeError"
+      ],
+      "raw_retained": true
+    },
+    {
+      "case": "postgres_outage",
+      "started_at": 1794583277.035262,
+      "finished_at": 1794583313.9086428,
+      "duration_seconds": 36.87338066101074,
+      "capture": {
+        "status": "FINISHED",
+        "complete": true,
+        "heartbeat": 1794583299.8758094,
+        "capture_id": "fault-postgres-outage-1513313749024058ae7029a431e8d3da",
+        "started_at": 1794583277.7813294,
+        "finished_at": 1794583299.8758101,
+        "last_packet": 1794583294.186649,
+        "packets": 324,
+        "reader_drops": 0,
+        "queue_overflow": 0,
+        "unsupported": 0,
+        "stats": {
+          "captured": 324,
+          "received_by_filter": 324,
+          "dropped_by_kernel": 0
+        },
+        "reason": "duration",
+        "errors": [],
+        "peak_rss_kib": 24380,
+        "user_cpu": 0.186724,
+        "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+        "interface": "eth0",
+        "linktype": 1,
+        "ip_versions": [
+          "IPv4"
+        ],
+        "namespace": "net:[4026533395]",
+        "snaplen": 262144,
+        "offloads": "not_changed; environment-specific, parity checked on actual frames",
+        "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+        "pcap_sha256": "36314bb5fb0de4e0b7911fe54cbde4e9994b23d79eb813719363a6098eb0208a",
+        "fresh": false,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "status": "READY",
+        "heartbeat": 1794583299.8813477,
+        "processed": 324,
+        "storage_retries": 0,
+        "storage_commits": 431,
+        "last_inference": 1794583294.8662097,
+        "model_roles": [
+          "rf_binary",
+          "if",
+          "rf_session",
+          "if_session"
+        ],
+        "model_error": null,
+        "user_cpu": 1.6497899999999999,
+        "peak_rss_kib": 192596,
+        "fresh": false,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 324,
+        "results": 1296,
+        "pending": 0
+      },
+      "inference_statuses": {
+        "SCORED": 1296
+      },
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 90,
+      "telemetry_mongo_delta": 90,
+      "outbox_pending_after": 0,
+      "generator_errors": [],
+      "raw_retained": true
+    },
+    {
+      "case": "mongo_outage",
+      "started_at": 1794583315.629591,
+      "finished_at": 1794583340.376816,
+      "duration_seconds": 24.747225284576416,
+      "capture": {
+        "status": "FINISHED",
+        "complete": true,
+        "heartbeat": 1794583338.5165873,
+        "capture_id": "fault-mongo-outage-f1d5a1dbe3f14c9ebe85365b04e5d02f",
+        "started_at": 1794583316.426823,
+        "finished_at": 1794583338.5165875,
+        "last_packet": 1794583332.945774,
+        "packets": 329,
+        "reader_drops": 0,
+        "queue_overflow": 0,
+        "unsupported": 0,
+        "stats": {
+          "captured": 329,
+          "received_by_filter": 329,
+          "dropped_by_kernel": 0
+        },
+        "reason": "duration",
+        "errors": [],
+        "peak_rss_kib": 23948,
+        "user_cpu": 0.19644499999999998,
+        "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+        "interface": "eth0",
+        "linktype": 1,
+        "ip_versions": [
+          "IPv4"
+        ],
+        "namespace": "net:[4026533395]",
+        "snaplen": 262144,
+        "offloads": "not_changed; environment-specific, parity checked on actual frames",
+        "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+        "pcap_sha256": "83a88849a07c6513444f05da65e0b1649eeb67d028304b6b4b0580709bcd954a",
+        "fresh": true,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "status": "READY",
+        "heartbeat": 1794583338.5290904,
+        "processed": 329,
+        "storage_retries": 0,
+        "storage_commits": 431,
+        "last_inference": 1794583333.5025513,
+        "model_roles": [
+          "rf_binary",
+          "if",
+          "rf_session",
+          "if_session"
+        ],
+        "model_error": null,
+        "user_cpu": 1.6875149999999999,
+        "peak_rss_kib": 193080,
+        "fresh": true,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 329,
+        "results": 1316,
+        "pending": 0
+      },
+      "inference_statuses": {
+        "SCORED": 1316
+      },
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 91,
+      "telemetry_mongo_delta": 91,
+      "outbox_pending_after": 0,
+      "generator_errors": [],
+      "raw_retained": true
+    },
+    {
+      "case": "missing_model",
+      "started_at": 1794583342.0938535,
+      "finished_at": 1794583366.8685696,
+      "duration_seconds": 24.77471613883972,
+      "capture": {
+        "status": "FINISHED",
+        "complete": true,
+        "heartbeat": 1794583365.0226743,
+        "capture_id": "fault-missing-model-f8c7bedb2693470490d7a6fafe09c5e9",
+        "started_at": 1794583342.9307125,
+        "finished_at": 1794583365.0226748,
+        "last_packet": 1794583359.313183,
+        "packets": 321,
+        "reader_drops": 0,
+        "queue_overflow": 0,
+        "unsupported": 0,
+        "stats": {
+          "captured": 321,
+          "received_by_filter": 321,
+          "dropped_by_kernel": 0
+        },
+        "reason": "duration",
+        "errors": [],
+        "peak_rss_kib": 24380,
+        "user_cpu": 0.188555,
+        "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+        "interface": "eth0",
+        "linktype": 1,
+        "ip_versions": [
+          "IPv4"
+        ],
+        "namespace": "net:[4026533395]",
+        "snaplen": 262144,
+        "offloads": "not_changed; environment-specific, parity checked on actual frames",
+        "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+        "pcap_sha256": "3a87aa04d55e96541c5f08dd936aebd27b8a69fe260da431546a1955c6704b74",
+        "fresh": true,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "status": "MODEL_UNAVAILABLE",
+        "heartbeat": 1794583365.050977,
+        "processed": 321,
+        "storage_retries": 0,
+        "storage_commits": 464,
+        "last_inference": 1794583359.981891,
+        "model_roles": [
+          "rf_binary",
+          "if",
+          "rf_session",
+          "if_session"
+        ],
+        "model_error": "FileNotFoundError",
+        "user_cpu": 0.45234399999999997,
+        "peak_rss_kib": 78540,
+        "fresh": true,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 321,
+        "results": 1284,
+        "pending": 0
+      },
+      "inference_statuses": {
+        "MODEL_UNAVAILABLE": 1284
+      },
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 89,
+      "telemetry_mongo_delta": 89,
+      "outbox_pending_after": 0,
+      "generator_errors": [],
+      "raw_retained": true
+    },
+    {
+      "case": "wrong_model_hash",
+      "started_at": 1794583368.5783217,
+      "finished_at": 1794583393.3614967,
+      "duration_seconds": 24.783174991607666,
+      "capture": {
+        "status": "FINISHED",
+        "complete": true,
+        "heartbeat": 1794583391.4897535,
+        "capture_id": "fault-wrong-model-hash-f62873ef5335452b8ed598e04fbbf8cf",
+        "started_at": 1794583369.3930233,
+        "finished_at": 1794583391.4897542,
+        "last_packet": 1794583385.935993,
+        "packets": 324,
+        "reader_drops": 0,
+        "queue_overflow": 0,
+        "unsupported": 0,
+        "stats": {
+          "captured": 324,
+          "received_by_filter": 324,
+          "dropped_by_kernel": 0
+        },
+        "reason": "duration",
+        "errors": [],
+        "peak_rss_kib": 24436,
+        "user_cpu": 0.194684,
+        "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+        "interface": "eth0",
+        "linktype": 1,
+        "ip_versions": [
+          "IPv4"
+        ],
+        "namespace": "net:[4026533395]",
+        "snaplen": 262144,
+        "offloads": "not_changed; environment-specific, parity checked on actual frames",
+        "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+        "pcap_sha256": "8c14de1730dff37de966c073eaced47bc843dc5d7a32e86db7e02151ae5e2963",
+        "fresh": true,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "status": "MODEL_UNAVAILABLE",
+        "heartbeat": 1794583391.5409951,
+        "processed": 324,
+        "storage_retries": 0,
+        "storage_commits": 457,
+        "last_inference": 1794583386.4216812,
+        "model_roles": [
+          "rf_binary",
+          "if",
+          "rf_session",
+          "if_session"
+        ],
+        "model_error": "ValueError",
+        "user_cpu": 0.452961,
+        "peak_rss_kib": 88936,
+        "fresh": true,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 324,
+        "results": 1296,
+        "pending": 0
+      },
+      "inference_statuses": {
+        "MODEL_UNAVAILABLE": 1296
+      },
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 90,
+      "telemetry_mongo_delta": 90,
+      "outbox_pending_after": 0,
+      "generator_errors": [],
+      "raw_retained": true
+    },
+    {
+      "case": "wrong_feature_version",
+      "started_at": 1794583395.108348,
+      "finished_at": 1794583419.8889976,
+      "duration_seconds": 24.7806499004364,
+      "capture": {
+        "status": "FINISHED",
+        "complete": true,
+        "heartbeat": 1794583418.03789,
+        "capture_id": "fault-wrong-feature-version-b5847554a52542e9879f6af8bbda3431",
+        "started_at": 1794583395.9559078,
+        "finished_at": 1794583418.0378902,
+        "last_packet": 1794583412.328087,
+        "packets": 321,
+        "reader_drops": 0,
+        "queue_overflow": 0,
+        "unsupported": 0,
+        "stats": {
+          "captured": 321,
+          "received_by_filter": 321,
+          "dropped_by_kernel": 0
+        },
+        "reason": "duration",
+        "errors": [],
+        "peak_rss_kib": 24420,
+        "user_cpu": 0.182082,
+        "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+        "interface": "eth0",
+        "linktype": 1,
+        "ip_versions": [
+          "IPv4"
+        ],
+        "namespace": "net:[4026533395]",
+        "snaplen": 262144,
+        "offloads": "not_changed; environment-specific, parity checked on actual frames",
+        "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+        "pcap_sha256": "a78b35acfb608a807779971bb427d5152187f12f4167770ef67ca30f4d261fab",
+        "fresh": true,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "status": "MODEL_UNAVAILABLE",
+        "heartbeat": 1794583418.0532932,
+        "processed": 321,
+        "storage_retries": 0,
+        "storage_commits": 461,
+        "last_inference": 1794583412.987411,
+        "model_roles": [
+          "rf_binary",
+          "if",
+          "rf_session",
+          "if_session"
+        ],
+        "model_error": "ValueError",
+        "user_cpu": 0.458086,
+        "peak_rss_kib": 89152,
+        "fresh": true,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 321,
+        "results": 1284,
+        "pending": 0
+      },
+      "inference_statuses": {
+        "MODEL_UNAVAILABLE": 1284
+      },
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 89,
+      "telemetry_mongo_delta": 89,
+      "outbox_pending_after": 0,
+      "generator_errors": [],
+      "raw_retained": true
+    },
+    {
+      "case": "memory_cap",
+      "started_at": 1794583421.6296709,
+      "finished_at": 1794583446.4582796,
+      "duration_seconds": 24.828608751296997,
+      "capture": {
+        "status": "FINISHED",
+        "complete": true,
+        "heartbeat": 1794583444.5821517,
+        "capture_id": "fault-memory-cap-1eb5a7da16b042f9880888a9f8cfbe65",
+        "started_at": 1794583422.3960893,
+        "finished_at": 1794583444.582152,
+        "last_packet": 1794583438.873331,
+        "packets": 324,
+        "reader_drops": 0,
+        "queue_overflow": 0,
+        "unsupported": 0,
+        "stats": {
+          "captured": 324,
+          "received_by_filter": 324,
+          "dropped_by_kernel": 0
+        },
+        "reason": "duration",
+        "errors": [],
+        "peak_rss_kib": 24180,
+        "user_cpu": 0.183446,
+        "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+        "interface": "eth0",
+        "linktype": 1,
+        "ip_versions": [
+          "IPv4"
+        ],
+        "namespace": "net:[4026533395]",
+        "snaplen": 262144,
+        "offloads": "not_changed; environment-specific, parity checked on actual frames",
+        "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+        "pcap_sha256": "e30dc3f22725880a58ce5bfea83fe93e4821d90e0be2bcddb627ff50fe83d97c",
+        "fresh": true,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "status": "READY",
+        "heartbeat": 1794583444.5828552,
+        "processed": 324,
+        "storage_retries": 0,
+        "storage_commits": 435,
+        "last_inference": 1794583439.5599935,
+        "model_roles": [
+          "rf_binary",
+          "if",
+          "rf_session",
+          "if_session"
+        ],
+        "model_error": null,
+        "user_cpu": 1.791914,
+        "peak_rss_kib": 192796,
+        "fresh": true,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 324,
+        "results": 1296,
+        "pending": 0
+      },
+      "inference_statuses": {
+        "SCORED": 1296
+      },
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 90,
+      "telemetry_mongo_delta": 90,
+      "outbox_pending_after": 0,
+      "generator_errors": [],
+      "raw_retained": true,
+      "capture_after_memory_limit": {
+        "exit_code": 0,
+        "running": false,
+        "oom_killed": false
+      }
+    },
+    {
+      "case": "queue_overflow",
+      "started_at": 1794583448.2199645,
+      "finished_at": 1794583472.9024498,
+      "duration_seconds": 24.682485342025757,
+      "capture": {
+        "status": "CAPTURE_INCOMPLETE",
+        "complete": false,
+        "heartbeat": 1794583471.1343403,
+        "capture_id": "fault-queue-overflow-7689543dddaf4baab4a4cf7094a51501",
+        "started_at": 1794583449.064457,
+        "finished_at": 1794583471.1343405,
+        "last_packet": 1794583465.211344,
+        "packets": 45,
+        "reader_drops": 279,
+        "queue_overflow": 44,
+        "unsupported": 0,
+        "stats": {
+          "captured": 324,
+          "received_by_filter": 324,
+          "dropped_by_kernel": 0
+        },
+        "reason": "duration",
+        "errors": [],
+        "peak_rss_kib": 24332,
+        "user_cpu": 0.153609,
+        "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+        "interface": "eth0",
+        "linktype": 1,
+        "ip_versions": [
+          "IPv4"
+        ],
+        "namespace": "net:[4026533395]",
+        "snaplen": 262144,
+        "offloads": "not_changed; environment-specific, parity checked on actual frames",
+        "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+        "pcap_sha256": "82a92e7676cc96cd79a46efe48b1596888d1ad5fbad603d1020fd002104296cd",
+        "fresh": true,
+        "traffic_state": "NO_RECENT_TRAFFIC"
+      },
+      "worker": {
+        "fresh": false,
+        "evidence_fresh": false
+      },
+      "counts": {
+        "events": 1,
+        "results": 0,
+        "pending": 1
+      },
+      "inference_statuses": {},
+      "duplicate_results": 0,
+      "telemetry_pg_delta": 90,
+      "telemetry_mongo_delta": 90,
+      "outbox_pending_after": 0,
+      "generator_errors": [],
+      "raw_retained": true
+    }
+  ]
+}

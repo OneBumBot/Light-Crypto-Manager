@@ -1,3 +1,11 @@
+# Stage15 — Shadow trust boundary
+
+Shadow Observer видит только transport headers и opaque TLS bytes. Нет key registry, HMAC/MQTT credentials, Control/Policy authority, Docker socket или privileged container. Capture имеет только NET_RAW в новом lab namespace; model worker network=none/cap_drop=ALL. Отдельный bounded SQLite journal, не существующий telemetry ML feed. Все records SHADOW_ONLY/trusted_detector=false/device_binding=unbound; score не является probability/security verdict.
+
+Модели загружаются только из approved private Stage14 copies с provenance, frozen SHA/metadata/threshold/package pins и private permissions. Нет upload/URL loader, fit, old-holdout tuning или model registry installation. Incomplete capture/model/source errors дают explicit status/null, не Normal. Web read-only/RBAC/same-origin/no-store, current snapshot очищается при PG/source unavailable. Журнал — исключение 0750/0640 для read-only web group; raw PCAP/models/keys не разделяются.
+
+Policy DRY_RUN, MANUAL_AUTHORIZED_CONTROL, crypto protocol, nonce/replay/HMAC/Outbox и Kuz lab-only сохранены. Реальные outage/crash/OOM и 31 mutation check не означают сертификацию/формальное доказательство безопасности. Exact-secret audit ограничен public files, /app используемых application images и последними 1000 log lines/container. [Аудит](reports/stage15/security-release.json), [сохранность](reports/stage15/preservation-after.json). Ниже сохранена история.
+
 # Stage14 security and data provenance
 
 Research-only offline models, trusted_detector=false, Policy DRY_RUN, MANUAL_AUTHORIZED_CONTROL unchanged. No new live crypto profiles or model registry installation. Stage14 uses fresh private Ascon identities/TLS/volumes; existing Ascon/AES/Kuz/control/Policy machinery unchanged. Unexpected witness disconnect now invalidates capture. Independent source checks require physical PCAP, timed broker/witness/PG proof; absence/ambiguity remains unknown. Dataset-scoped final-test guard refuses repeated evaluation/new train after consumption, with explicit post-evaluation migration record. File guards are not adversarial attestation against storage owner.

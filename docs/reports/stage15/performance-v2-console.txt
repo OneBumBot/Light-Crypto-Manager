@@ -1,0 +1,42 @@
+v2-base-r0-off PG 24 Mongo 24 shadow None
+v2-base-r0-capture PG 24 Mongo 24 shadow 0
+v2-base-r0-rf PG 24 Mongo 24 shadow 126
+v2-base-r0-rfif PG 24 Mongo 24 shadow 252
+v2-base-r1-capture PG 24 Mongo 24 shadow 0
+v2-base-r1-rf PG 24 Mongo 24 shadow 126
+v2-base-r1-rfif PG 24 Mongo 24 shadow 252
+v2-base-r1-off PG 24 Mongo 24 shadow None
+v2-base-r2-rf PG 24 Mongo 24 shadow 126
+v2-base-r2-rfif PG 24 Mongo 24 shadow 252
+v2-base-r2-off PG 24 Mongo 24 shadow None
+v2-base-r2-capture PG 24 Mongo 24 shadow 0
+v2-small-r0-off PG 151 Mongo 151 shadow None
+v2-small-r0-capture PG 149 Mongo 149 shadow 0
+v2-small-r0-rf PG 149 Mongo 149 shadow 629
+v2-small-r0-rfif PG 150 Mongo 150 shadow 1262
+v2-small-r1-capture PG 150 Mongo 150 shadow 0
+v2-small-r1-rf PG 149 Mongo 149 shadow 627
+v2-small-r1-rfif PG 150 Mongo 150 shadow 1260
+v2-small-r1-off PG 149 Mongo 149 shadow None
+v2-small-r2-rf PG 149 Mongo 149 shadow 627
+v2-small-r2-rfif PG 150 Mongo 150 shadow 1268
+v2-small-r2-off PG 151 Mongo 151 shadow None
+v2-small-r2-capture PG 150 Mongo 150 shadow 0
+v2-medium-r0-off PG 695 Mongo 695 shadow None
+v2-medium-r0-capture PG 692 Mongo 692 shadow 0
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_performance.py", line 73, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_performance.py", line 70, in main
+    r=json.loads(path.read_text()) if path.exists() else run(l,name,n,interval,condition);results.append(r)
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_performance.py", line 40, in run
+    if wid:wait(wid)
+           ^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_runs.py", line 36, in wait
+    if r.returncode or r.stdout.strip()!='0':raise RuntimeError('Stage15 capture/worker exit not0')
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Stage15 capture/worker exit not0

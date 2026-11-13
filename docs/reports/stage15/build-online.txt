@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/stage15_lab.py", line 15, in run
+    f=self.root/'last-failure.txt';f.write_text(r.stdout+r.stderr);f.chmod(0o600);raise RuntimeError('Stage15 operation failed; see private last-failure.txt')
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Stage15 operation failed; see private last-failure.txt

@@ -1,0 +1,44 @@
+{
+  "results": {
+    "parity-batch-00": {
+      "physical_records": 327,
+      "exact_frame_digest_matches": 327,
+      "pcap_sha256": "cfd1434008fa6af8306e853b4973dcc67c85c6f61a3403aac9ef09bf5f239f40"
+    },
+    "parity-batch-01": {
+      "physical_records": 324,
+      "exact_frame_digest_matches": 324,
+      "pcap_sha256": "3e8ee8e10eb7ff113efdb40a5ea3edf9478f22cb86eb76b3997c184db9c09322"
+    },
+    "parity-batch-02": {
+      "physical_records": 324,
+      "exact_frame_digest_matches": 324,
+      "pcap_sha256": "574e4533b8b4b9a9aad58715d916dae84fd2badcc56d9bf4c721e45f0b130409"
+    }
+  },
+  "negatives": [
+    {
+      "case": "missing_pcap",
+      "rejected": true,
+      "source": "Corrupted copy of actual new PCAP/journal, never an independent capture"
+    },
+    {
+      "case": "truncated_pcap",
+      "rejected": true,
+      "source": "Corrupted copy of actual new PCAP/journal, never an independent capture"
+    },
+    {
+      "case": "wrong_digest",
+      "rejected": true,
+      "source": "Corrupted copy of actual new PCAP/journal, never an independent capture"
+    },
+    {
+      "case": "coherent_pcap_metadata_rehash",
+      "rejected": true,
+      "source": "Corrupted copy of actual new PCAP/journal, never an independent capture"
+    }
+  ],
+  "source_original_unchanged": true,
+  "negative_copies_count_as_new_physical_captures": 0,
+  "exit_code": 0
+}

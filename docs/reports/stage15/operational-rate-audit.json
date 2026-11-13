@@ -1,0 +1,117 @@
+{
+  "source_sha": "7558f410a78a41535a3f36cd3923244dff311d80",
+  "analysis_script_sha256": "4cb8da91a2d4f053f4b8011a25141e1160caaeb2b1ddadae90d84fb3ee46ec42",
+  "rows": [
+    {
+      "case": "regular",
+      "model_role": "rf_binary",
+      "actual_run_seconds": 6.286949634552002,
+      "ground_truth_sha256": "a6042d3246bcbca4481897d465757fb8d251c95d2b473103fae2aa9f54b604e8",
+      "threshold_crossings": 0,
+      "rate_per_hour": 0.0,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "regular",
+      "model_role": "if",
+      "actual_run_seconds": 6.286949634552002,
+      "ground_truth_sha256": "a6042d3246bcbca4481897d465757fb8d251c95d2b473103fae2aa9f54b604e8",
+      "threshold_crossings": 81,
+      "rate_per_hour": 46381.79354856227,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "regular",
+      "model_role": "rf_session",
+      "actual_run_seconds": 6.286949634552002,
+      "ground_truth_sha256": "a6042d3246bcbca4481897d465757fb8d251c95d2b473103fae2aa9f54b604e8",
+      "threshold_crossings": 0,
+      "rate_per_hour": 0.0,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "regular",
+      "model_role": "if_session",
+      "actual_run_seconds": 6.286949634552002,
+      "ground_truth_sha256": "a6042d3246bcbca4481897d465757fb8d251c95d2b473103fae2aa9f54b604e8",
+      "threshold_crossings": 78,
+      "rate_per_hour": 44663.94934305997,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "jitter",
+      "model_role": "rf_binary",
+      "actual_run_seconds": 6.265866041183472,
+      "ground_truth_sha256": "53872aa49b57a03515d27714805966c3bfd2c0634d23b382bf4e9f079d70b060",
+      "threshold_crossings": 0,
+      "rate_per_hour": 0.0,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "jitter",
+      "model_role": "if",
+      "actual_run_seconds": 6.265866041183472,
+      "ground_truth_sha256": "53872aa49b57a03515d27714805966c3bfd2c0634d23b382bf4e9f079d70b060",
+      "threshold_crossings": 82,
+      "rate_per_hour": 47112.40203026169,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "jitter",
+      "model_role": "rf_session",
+      "actual_run_seconds": 6.265866041183472,
+      "ground_truth_sha256": "53872aa49b57a03515d27714805966c3bfd2c0634d23b382bf4e9f079d70b060",
+      "threshold_crossings": 1,
+      "rate_per_hour": 574.5414881739231,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "jitter",
+      "model_role": "if_session",
+      "actual_run_seconds": 6.265866041183472,
+      "ground_truth_sha256": "53872aa49b57a03515d27714805966c3bfd2c0634d23b382bf4e9f079d70b060",
+      "threshold_crossings": 82,
+      "rate_per_hour": 47112.40203026169,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "qos1_retry",
+      "model_role": "rf_binary",
+      "actual_run_seconds": 6.31777811050415,
+      "ground_truth_sha256": "b1a2811710cbd8e6070244b6ea7de6fa7cb18b9764d4cc5a9bd360c38d4b77ec",
+      "threshold_crossings": 0,
+      "rate_per_hour": 0.0,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "qos1_retry",
+      "model_role": "if",
+      "actual_run_seconds": 6.31777811050415,
+      "ground_truth_sha256": "b1a2811710cbd8e6070244b6ea7de6fa7cb18b9764d4cc5a9bd360c38d4b77ec",
+      "threshold_crossings": 91,
+      "rate_per_hour": 51853.672963810044,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "qos1_retry",
+      "model_role": "rf_session",
+      "actual_run_seconds": 6.31777811050415,
+      "ground_truth_sha256": "b1a2811710cbd8e6070244b6ea7de6fa7cb18b9764d4cc5a9bd360c38d4b77ec",
+      "threshold_crossings": 0,
+      "rate_per_hour": 0.0,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    },
+    {
+      "case": "qos1_retry",
+      "model_role": "if_session",
+      "actual_run_seconds": 6.31777811050415,
+      "ground_truth_sha256": "b1a2811710cbd8e6070244b6ea7de6fa7cb18b9764d4cc5a9bd360c38d4b77ec",
+      "threshold_crossings": 87,
+      "rate_per_hour": 49574.39063573049,
+      "unit": "Repeated packet threshold crossings scaled by actual short run wall duration, not latched incidents or observed hour"
+    }
+  ],
+  "unchanged_predictions": true,
+  "unchanged_thresholds": true,
+  "exit_code": 0
+}

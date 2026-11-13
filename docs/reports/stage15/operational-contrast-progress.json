@@ -1,0 +1,976 @@
+{
+  "records": [
+    {
+      "case": "regular",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 120,
+        "unknown": 43
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 120,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 43,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 0.0,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 120,
+          "false_positive_observations": 81,
+          "packet_fpr": 0.675,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 0.6666666666666666,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 43,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 46381.79354856227,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 120,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 43,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 0.0,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 120,
+          "false_positive_observations": 78,
+          "packet_fpr": 0.65,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 3,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 43,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 44663.94934305997,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 163,
+        "received_by_filter": 163,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "jitter",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 124,
+        "unknown": 38
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 124,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 0.0,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 124,
+          "false_positive_observations": 82,
+          "packet_fpr": 0.6612903225806451,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 0.6666666666666666,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 47112.40203026169,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 124,
+          "false_positive_observations": 1,
+          "packet_fpr": 0.008064516129032258,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 574.5414881739231,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 124,
+          "false_positive_observations": 82,
+          "packet_fpr": 0.6612903225806451,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 3,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 47112.40203026169,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 162,
+        "received_by_filter": 162,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "qos1_retry",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 131,
+        "unknown": 85
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 131,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 6,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 85,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 0.0,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 131,
+          "false_positive_observations": 91,
+          "packet_fpr": 0.6946564885496184,
+          "known_normal_activity_sessions": 6,
+          "normal_activity_session_false_alarms": 3,
+          "false_alarms_per_known_normal_activity_session": 0.5,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 85,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 51853.672963810044,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 131,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 6,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 85,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 0.0,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 131,
+          "false_positive_observations": 87,
+          "packet_fpr": 0.6641221374045801,
+          "known_normal_activity_sessions": 6,
+          "normal_activity_session_false_alarms": 6,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 85,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": 49574.39063573049,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 216,
+        "received_by_filter": 216,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "replay",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 87,
+        "unknown": 53,
+        "controlled_violation": 42
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 87,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 42,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 53,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 87,
+          "false_positive_observations": 59,
+          "packet_fpr": 0.6781609195402298,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 0.6666666666666666,
+          "cv_scored_observations": 42,
+          "cv_threshold_crossings": 29,
+          "unknown_scored_observations": 53,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 87,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 42,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 53,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 87,
+          "false_positive_observations": 57,
+          "packet_fpr": 0.6551724137931034,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 3,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 42,
+          "cv_threshold_crossings": 29,
+          "unknown_scored_observations": 53,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 182,
+        "received_by_filter": 182,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "wrong_epoch",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 84,
+        "unknown": 78
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 84,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 78,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 84,
+          "false_positive_observations": 59,
+          "packet_fpr": 0.7023809523809523,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 78,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 84,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 78,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 84,
+          "false_positive_observations": 56,
+          "packet_fpr": 0.6666666666666666,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 78,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 162,
+        "received_by_filter": 162,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "wrong_sequence",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 82,
+        "unknown": 80
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 82,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 80,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 82,
+          "false_positive_observations": 57,
+          "packet_fpr": 0.6951219512195121,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 1,
+          "false_alarms_per_known_normal_activity_session": 0.5,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 80,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 82,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 80,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 82,
+          "false_positive_observations": 54,
+          "packet_fpr": 0.6585365853658537,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 80,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 162,
+        "received_by_filter": 162,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "tampered",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "unknown": 81,
+        "normal": 81
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 81,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 81,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 81,
+          "false_positive_observations": 55,
+          "packet_fpr": 0.6790123456790124,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 1,
+          "false_alarms_per_known_normal_activity_session": 0.5,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 81,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 81,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 81,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 81,
+          "false_positive_observations": 54,
+          "packet_fpr": 0.6666666666666666,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 81,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 162,
+        "received_by_filter": 162,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "forbidden_acl",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 80,
+        "unknown": 42,
+        "controlled_violation": 7
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 80,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 7,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 42,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 80,
+          "false_positive_observations": 54,
+          "packet_fpr": 0.675,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 1,
+          "false_alarms_per_known_normal_activity_session": 0.5,
+          "cv_scored_observations": 7,
+          "cv_threshold_crossings": 4,
+          "unknown_scored_observations": 42,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 80,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 7,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 42,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 80,
+          "false_positive_observations": 53,
+          "packet_fpr": 0.6625,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 7,
+          "cv_threshold_crossings": 4,
+          "unknown_scored_observations": 42,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 129,
+        "received_by_filter": 129,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "bad_credentials",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 82,
+        "unknown": 38,
+        "controlled_violation": 1
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 82,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 1,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 82,
+          "false_positive_observations": 56,
+          "packet_fpr": 0.6829268292682927,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 1,
+          "false_alarms_per_known_normal_activity_session": 0.5,
+          "cv_scored_observations": 1,
+          "cv_threshold_crossings": 1,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 82,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 1,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 82,
+          "false_positive_observations": 54,
+          "packet_fpr": 0.6585365853658537,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 1,
+          "cv_threshold_crossings": 1,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 121,
+        "received_by_filter": 121,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "bounded_rate",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 79,
+        "controlled_violation": 64,
+        "unknown": 54
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 79,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 64,
+          "cv_threshold_crossings": 16,
+          "unknown_scored_observations": 54,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 79,
+          "false_positive_observations": 53,
+          "packet_fpr": 0.6708860759493671,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 64,
+          "cv_threshold_crossings": 42,
+          "unknown_scored_observations": 54,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 79,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 64,
+          "cv_threshold_crossings": 9,
+          "unknown_scored_observations": 54,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 79,
+          "false_positive_observations": 51,
+          "packet_fpr": 0.6455696202531646,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 64,
+          "cv_threshold_crossings": 42,
+          "unknown_scored_observations": 54,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 197,
+        "received_by_filter": 197,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "pattern_change",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 80,
+        "unknown": 51,
+        "controlled_violation": 31
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 80,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 31,
+          "cv_threshold_crossings": 8,
+          "unknown_scored_observations": 51,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 80,
+          "false_positive_observations": 53,
+          "packet_fpr": 0.6625,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 1,
+          "false_alarms_per_known_normal_activity_session": 0.5,
+          "cv_scored_observations": 31,
+          "cv_threshold_crossings": 21,
+          "unknown_scored_observations": 51,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 80,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 31,
+          "cv_threshold_crossings": 7,
+          "unknown_scored_observations": 51,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 80,
+          "false_positive_observations": 52,
+          "packet_fpr": 0.65,
+          "known_normal_activity_sessions": 2,
+          "normal_activity_session_false_alarms": 2,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 31,
+          "cv_threshold_crossings": 20,
+          "unknown_scored_observations": 51,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 162,
+        "received_by_filter": 162,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "broker_reconnect",
+      "status": "quarantined",
+      "diagnostic": "RuntimeError",
+      "labels": null,
+      "metrics": {},
+      "label_failure": "Independent source or Shadow context incomplete; FPR not_evaluable",
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 23,
+        "received_by_filter": 23,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    },
+    {
+      "case": "receiver_restart",
+      "status": "complete",
+      "diagnostic": null,
+      "labels": {
+        "normal": 124,
+        "unknown": 38
+      },
+      "metrics": {
+        "rf_binary": {
+          "normal_scored_observations": 124,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if": {
+          "normal_scored_observations": 124,
+          "false_positive_observations": 84,
+          "packet_fpr": 0.6774193548387096,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 1,
+          "false_alarms_per_known_normal_activity_session": 0.3333333333333333,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "rf_session": {
+          "normal_scored_observations": 124,
+          "false_positive_observations": 0,
+          "packet_fpr": 0.0,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 0,
+          "false_alarms_per_known_normal_activity_session": 0.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        },
+        "if_session": {
+          "normal_scored_observations": 124,
+          "false_positive_observations": 82,
+          "packet_fpr": 0.6612903225806451,
+          "known_normal_activity_sessions": 3,
+          "normal_activity_session_false_alarms": 3,
+          "false_alarms_per_known_normal_activity_session": 1.0,
+          "cv_scored_observations": 0,
+          "cv_threshold_crossings": 0,
+          "unknown_scored_observations": 38,
+          "scope": "Oracle-confirmed activity windows only; session aggregation here over known-normal subset, separate from full causal online session prefix",
+          "false_alarm_events_per_nominal_run_hour": null,
+          "rate_unit": "Repeated packet threshold events per actual lab-run wall duration scaled to hour, not latched incident alerts/hour"
+        }
+      },
+      "label_failure": null,
+      "capture_complete": true,
+      "capture_drops": {
+        "captured": 162,
+        "received_by_filter": 162,
+        "dropped_by_kernel": 0
+      },
+      "independent_host_domain": "not_verified",
+      "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+      "device_binding": "unbound",
+      "fit_or_threshold_changes": 0,
+      "source_sha": "dd3d15a7b141918188214a25af74f6d3ba97cff3"
+    }
+  ]
+}

@@ -1,3 +1,9 @@
+# Stage15 — пассивный Shadow IDS
+
+Новый opt-in `src/shadow_ids/`: keyless tcpdump в namespace software producer → независимый streaming Ethernet/IPv4/TCP extractor → отдельная bounded SQLite WAL очередь → frozen RF/IF в network-none worker → Shadow journal → read-only Flask `/research/shadow-ids`. Ни MQTT publish, ни TLS decryption, ни telemetry/command keys компоненту не доступны. NET_RAW получает только capture; inference — cap_drop=ALL. Web видит только журнал, не PCAP/модели.
+
+Схема `tcp-packet-passive-v1`, verified parity на 975 реальных packets. Все network sessions unbound, SHADOW_ONLY/trusted_detector=false. Session prefix causal; capture end не заменяет TCP close. Freshness учитывает обработанный source timestamp. SQLite отделён от ML telemetry feed/Policy; Alembic остаётся 0011_policy_throughput. Crypto/nonce/HMAC/Policy/Outbox не менялись. [Результаты](STAGE15_RESULTS.md). Ниже сохранена история архитектуры.
+
 # Stage14: offline ground truth and research
 
 Fresh lcm-stage14-ground-truth-* internal networks/volumes/TLS/Ascon keys. Real namespace capture→physical PCAP audit→broker sessions + keyless witness + PG corroboration→independent builder/oracle→linked block split→quality gate→23 offline RF/IF fits→single holdout. Five tcp-packet-passive-v1 predictors only; metadata excluded. No online RF/IF sensor/control channel added. Policy13, replay/nonce/HMAC/Outbox and crypto providers byte-equal baseline. See [Stage14 results](STAGE14_RESULTS.md).

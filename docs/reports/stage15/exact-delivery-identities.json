@@ -1,0 +1,534 @@
+{
+  "runs": {
+    "v3-base-r0-off": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.153923,
+        "median": 0.18019200000000002,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r0-capture": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.3098134166666667,
+        "median": 0.326793,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r0-rf": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.33419804166666667,
+        "median": 0.3522155,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r0-rfif": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.18388233333333334,
+        "median": 0.16600199999999998,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r1-capture": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.339538125,
+        "median": 0.36777899999999997,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r1-rf": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.292461,
+        "median": 0.35347850000000003,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r1-rfif": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.23256679166666666,
+        "median": 0.2380895,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r1-off": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.21380845833333334,
+        "median": 0.1910585,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r2-rf": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.34299691666666665,
+        "median": 0.402262,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r2-rfif": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.171013125,
+        "median": 0.1398555,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r2-off": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.25849079166666666,
+        "median": 0.29685649999999997,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-base-r2-capture": {
+      "known_published_identities": 24,
+      "pg_committed": 24,
+      "mongo_stored": 24,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.12912129166666667,
+        "median": 0.1292375,
+        "p95": null,
+        "p99": null
+      }
+    },
+    "v3-small-r0-off": {
+      "known_published_identities": 149,
+      "pg_committed": 149,
+      "mongo_stored": 149,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2635177919463087,
+        "median": 0.253297,
+        "p95": 0.4965676,
+        "p99": null
+      }
+    },
+    "v3-small-r0-capture": {
+      "known_published_identities": 150,
+      "pg_committed": 150,
+      "mongo_stored": 150,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.27875760666666666,
+        "median": 0.3065185,
+        "p95": 0.49001209999999995,
+        "p99": null
+      }
+    },
+    "v3-small-r0-rf": {
+      "known_published_identities": 149,
+      "pg_committed": 149,
+      "mongo_stored": 149,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.26147987248322146,
+        "median": 0.275503,
+        "p95": 0.4779112,
+        "p99": null
+      }
+    },
+    "v3-small-r0-rfif": {
+      "known_published_identities": 150,
+      "pg_committed": 150,
+      "mongo_stored": 150,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.26024942666666667,
+        "median": 0.263708,
+        "p95": 0.4754704499999999,
+        "p99": null
+      }
+    },
+    "v3-small-r1-capture": {
+      "known_published_identities": 150,
+      "pg_committed": 150,
+      "mongo_stored": 150,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2689223666666667,
+        "median": 0.28573000000000004,
+        "p95": 0.4795892499999999,
+        "p99": null
+      }
+    },
+    "v3-small-r1-rf": {
+      "known_published_identities": 149,
+      "pg_committed": 149,
+      "mongo_stored": 149,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.26665687248322145,
+        "median": 0.268949,
+        "p95": 0.4888782,
+        "p99": null
+      }
+    },
+    "v3-small-r1-rfif": {
+      "known_published_identities": 150,
+      "pg_committed": 150,
+      "mongo_stored": 150,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2700829533333333,
+        "median": 0.2792665,
+        "p95": 0.49126804999999996,
+        "p99": null
+      }
+    },
+    "v3-small-r1-off": {
+      "known_published_identities": 151,
+      "pg_committed": 151,
+      "mongo_stored": 151,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.26772701986754965,
+        "median": 0.265028,
+        "p95": 0.4971425,
+        "p99": null
+      }
+    },
+    "v3-small-r2-rf": {
+      "known_published_identities": 150,
+      "pg_committed": 150,
+      "mongo_stored": 150,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2617817533333333,
+        "median": 0.25908549999999997,
+        "p95": 0.49616964999999996,
+        "p99": null
+      }
+    },
+    "v3-small-r2-rfif": {
+      "known_published_identities": 149,
+      "pg_committed": 149,
+      "mongo_stored": 149,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.26139459060402687,
+        "median": 0.264022,
+        "p95": 0.4827856,
+        "p99": null
+      }
+    },
+    "v3-small-r2-off": {
+      "known_published_identities": 150,
+      "pg_committed": 150,
+      "mongo_stored": 150,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2736360133333333,
+        "median": 0.2872925,
+        "p95": 0.492065,
+        "p99": null
+      }
+    },
+    "v3-small-r2-capture": {
+      "known_published_identities": 150,
+      "pg_committed": 150,
+      "mongo_stored": 150,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2721494133333333,
+        "median": 0.28254049999999997,
+        "p95": 0.4824288499999999,
+        "p99": null
+      }
+    },
+    "v3-medium-r0-off": {
+      "known_published_identities": 696,
+      "pg_committed": 696,
+      "mongo_stored": 696,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.25712499137931033,
+        "median": 0.251884,
+        "p95": 0.49058799999999997,
+        "p99": null
+      }
+    },
+    "v3-medium-r0-capture": {
+      "known_published_identities": 689,
+      "pg_committed": 689,
+      "mongo_stored": 689,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.26038491436865024,
+        "median": 0.264397,
+        "p95": 0.48904939999999997,
+        "p99": null
+      }
+    },
+    "v3-medium-r0-rf": {
+      "known_published_identities": 694,
+      "pg_committed": 694,
+      "mongo_stored": 694,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.25957161383285304,
+        "median": 0.2563435,
+        "p95": 0.49233165,
+        "p99": null
+      }
+    },
+    "v3-medium-r0-rfif": {
+      "known_published_identities": 696,
+      "pg_committed": 696,
+      "mongo_stored": 696,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.25877675574712644,
+        "median": 0.2588585,
+        "p95": 0.48857175,
+        "p99": null
+      }
+    },
+    "v3-medium-r1-capture": {
+      "known_published_identities": 690,
+      "pg_committed": 690,
+      "mongo_stored": 690,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2655352275362319,
+        "median": 0.2722405,
+        "p95": 0.4909724,
+        "p99": null
+      }
+    },
+    "v3-medium-r1-rf": {
+      "known_published_identities": 694,
+      "pg_committed": 694,
+      "mongo_stored": 694,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.25875112680115275,
+        "median": 0.26024749999999996,
+        "p95": 0.47570999999999997,
+        "p99": null
+      }
+    },
+    "v3-medium-r1-rfif": {
+      "known_published_identities": 682,
+      "pg_committed": 682,
+      "mongo_stored": 682,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.26435322434017594,
+        "median": 0.2670525,
+        "p95": 0.4920412,
+        "p99": null
+      }
+    },
+    "v3-medium-r1-off": {
+      "known_published_identities": 697,
+      "pg_committed": 697,
+      "mongo_stored": 697,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2614352094691535,
+        "median": 0.264406,
+        "p95": 0.4881967999999999,
+        "p99": null
+      }
+    },
+    "v3-medium-r2-rf": {
+      "known_published_identities": 695,
+      "pg_committed": 695,
+      "mongo_stored": 695,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.25534149208633095,
+        "median": 0.251394,
+        "p95": 0.4807331,
+        "p99": null
+      }
+    },
+    "v3-medium-r2-rfif": {
+      "known_published_identities": 693,
+      "pg_committed": 693,
+      "mongo_stored": 693,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2687784761904762,
+        "median": 0.27344,
+        "p95": 0.4857048,
+        "p99": null
+      }
+    },
+    "v3-medium-r2-off": {
+      "known_published_identities": 690,
+      "pg_committed": 690,
+      "mongo_stored": 690,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.26334560869565216,
+        "median": 0.266933,
+        "p95": 0.48662249999999996,
+        "p99": null
+      }
+    },
+    "v3-medium-r2-capture": {
+      "known_published_identities": 694,
+      "pg_committed": 694,
+      "mongo_stored": 694,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.26277381412103745,
+        "median": 0.267548,
+        "p95": 0.4878215000000001,
+        "p99": null
+      }
+    },
+    "v3-extended-r0-off": {
+      "known_published_identities": 1253,
+      "pg_committed": 1253,
+      "mongo_stored": 1253,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.26143922905027933,
+        "median": 0.260101,
+        "p95": 0.4871747999999999,
+        "p99": 0.50487788
+      }
+    },
+    "v3-extended-r0-capture": {
+      "known_published_identities": 1090,
+      "pg_committed": 1090,
+      "mongo_stored": 1090,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2875548394495413,
+        "median": 0.301473,
+        "p95": 0.5376873499999999,
+        "p99": 0.5641209999999995
+      }
+    },
+    "v3-extended-r0-rf": {
+      "known_published_identities": 1164,
+      "pg_committed": 1164,
+      "mongo_stored": 1164,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.29237311082474227,
+        "median": 0.27857,
+        "p95": 0.5238044499999999,
+        "p99": 0.5736811299999999
+      }
+    },
+    "v3-extended-r0-rfif": {
+      "known_published_identities": 1188,
+      "pg_committed": 1188,
+      "mongo_stored": 1188,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.28862179713804714,
+        "median": 0.2817415,
+        "p95": 0.5504718999999999,
+        "p99": 0.57888662
+      }
+    },
+    "v3-extended-r1-capture": {
+      "known_published_identities": 1100,
+      "pg_committed": 1100,
+      "mongo_stored": 1100,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2826797545454545,
+        "median": 0.28018699999999996,
+        "p95": 0.5302481,
+        "p99": 0.5585616200000001
+      }
+    },
+    "v3-extended-r1-rf": {
+      "known_published_identities": 1171,
+      "pg_committed": 1171,
+      "mongo_stored": 1171,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.27899813834329634,
+        "median": 0.26793,
+        "p95": 0.537803,
+        "p99": 0.5652543
+      }
+    },
+    "v3-extended-r1-rfif": {
+      "known_published_identities": 1184,
+      "pg_committed": 1184,
+      "mongo_stored": 1184,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2813428775337838,
+        "median": 0.24936950000000002,
+        "p95": 0.54649995,
+        "p99": 0.57360906
+      }
+    },
+    "v3-extended-r1-off": {
+      "known_published_identities": 1254,
+      "pg_committed": 1254,
+      "mongo_stored": 1254,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2665167591706539,
+        "median": 0.260583,
+        "p95": 0.48401894999999995,
+        "p99": 0.50685065
+      }
+    },
+    "v3-extended-r2-rf": {
+      "known_published_identities": 1167,
+      "pg_committed": 1167,
+      "mongo_stored": 1167,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.30047658697514995,
+        "median": 0.300958,
+        "p95": 0.5759117,
+        "p99": 0.61102998
+      }
+    },
+    "v3-extended-r2-rfif": {
+      "known_published_identities": 1172,
+      "pg_committed": 1172,
+      "mongo_stored": 1172,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.2952518139931741,
+        "median": 0.2845335,
+        "p95": 0.5502465000000001,
+        "p99": 0.56926078
+      }
+    },
+    "v3-extended-r2-off": {
+      "known_published_identities": 1247,
+      "pg_committed": 1247,
+      "mongo_stored": 1247,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.25272596872493985,
+        "median": 0.25291,
+        "p95": 0.4898312,
+        "p99": 0.50771796
+      }
+    },
+    "v3-extended-r2-capture": {
+      "known_published_identities": 1098,
+      "pg_committed": 1098,
+      "mongo_stored": 1098,
+      "outbox_creation_to_delivered_marker_seconds": {
+        "mean": 0.3296344207650273,
+        "median": 0.330019,
+        "p95": 0.5632035499999999,
+        "p99": 0.60390541
+      }
+    }
+  },
+  "scope": "Authoritative diagnostics by exact device/epoch/sequence identities, not passive device attribution or predictor input",
+  "exit_code": 0
+}
