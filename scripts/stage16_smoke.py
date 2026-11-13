@@ -1,5 +1,6 @@
 """stage16_final_demo_smoke: real HTTP→HMAC/TLS agents→AEAD→PG→Mongo."""
 import json
+import hashlib
 import re
 import time
 import requests
@@ -90,5 +91,12 @@ def stage16_final_demo_smoke(d):
             assert {f"{r['device_id']}:{r['key_epoch']}:{r['sequence_number']}" for r in quiescent['identities']}=={r['_id'] for r in quiescent['mongo_identities']}
             checks+=['outbox_quiescent_drain','exact_pg_mongo_identity_set','nonce_ranges_disjoint','no_duplicate_admissions']
         finally:d.run('up','-d','--no-deps','--wait',*AGENTS)
-        return dict(test='stage16_final_demo_smoke',source_sha=docker_git_sha(),project=d.project,before=before,after=after,quiescent=quiescent,transitions=transitions,checks=checks,commands=d.commands,shadow='OPTIONAL_RESEARCH_DEMO_UNAVAILABLE',trusted_detector=False,exit_code=0)
+        def public(value):
+            result={k:v for k,v in value.items() if k not in ['identities','mongo_identities']}
+            for key in ['identities','mongo_identities']:
+                result[key+'_count']=len(value[key])
+                result[key+'_sha256']=hashlib.sha256(json.dumps(value[key],sort_keys=True).encode()).hexdigest()
+                result[key+'_sample']=value[key][:3]+value[key][-3:]
+            return result
+        return dict(test='stage16_final_demo_smoke',source_sha=docker_git_sha(),project=d.project,before=public(before),after=public(after),quiescent=public(quiescent),transitions=transitions,checks=checks,commands=d.commands,shadow='OPTIONAL_RESEARCH_DEMO_UNAVAILABLE',trusted_detector=False,exit_code=0)
     finally:admin.close()
