@@ -1,0 +1,40 @@
+{
+  "source_sha": "b2317f94b9198b6300d49d9e5effd11a7efee298",
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/baseline/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/baseline/network.json",
+        "run",
+        "--rm",
+        "-T",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 61.62001919746399
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/baseline/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/baseline/network.json",
+        "stop"
+      ],
+      "exit_code": 0,
+      "seconds": 0.44298434257507324
+    }
+  ],
+  "reason": "Explicit disjoint subnet; automatic Docker pool exhausted, old networks preserved",
+  "exit_code": 0
+}

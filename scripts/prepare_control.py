@@ -15,7 +15,7 @@ def main():
 
 def prepare(directory, project):
     import re
-    if not re.fullmatch(r'lcm-(?:stage8-|stage9-demo-)[a-z0-9-]{1,24}', project):
+    if not re.fullmatch(r'lcm-(?:stage8-|stage9-demo-|stage16-final-demo-)[a-z0-9-]{1,24}', project):
         raise ValueError('Isolated control project required')
     os.umask(0o077);root=Path(directory).resolve();root.mkdir(parents=True,mode=0o700,exist_ok=False)
     subprocess.run(['python3','scripts/prepare_compose.py','--env-file',str(root/'compose.env'),'--project',project,'--mqtt-port','0','--web-port','0'],check=True)

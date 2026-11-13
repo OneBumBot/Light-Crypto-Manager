@@ -1,0 +1,89 @@
+{
+  "source_sha": "b2317f94b9198b6300d49d9e5effd11a7efee298",
+  "commands": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.prepare_compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/baseline/compose.env",
+        "--project",
+        "lcm-stage16-final-demo-baseline",
+        "--mqtt-port",
+        "0",
+        "--web-port",
+        "0"
+      ],
+      "exit_code": 0,
+      "seconds": 0.019150257110595703
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.prepare_security",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/baseline/mqtt"
+      ],
+      "exit_code": 0,
+      "seconds": 3.6897199153900146
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.prepare_storage",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/baseline/mongo"
+      ],
+      "exit_code": 0,
+      "seconds": 0.014504194259643555
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/baseline/compose.env",
+        "-f",
+        "compose.yaml",
+        "build",
+        "receiver",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 41.28953766822815
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/baseline/compose.env",
+        "-f",
+        "compose.yaml",
+        "run",
+        "--rm",
+        "-T",
+        "tests"
+      ],
+      "exit_code": 1,
+      "seconds": 0.07836771011352539
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/baseline/compose.env",
+        "-f",
+        "compose.yaml",
+        "stop"
+      ],
+      "exit_code": 0,
+      "seconds": 0.04252505302429199
+    }
+  ],
+  "exit_code": 1
+}

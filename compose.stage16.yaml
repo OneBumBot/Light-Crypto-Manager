@@ -1,0 +1,9 @@
+# Final demo reuses Stage9/control. No crypto release gate or key changes.
+services:
+  web:
+    environment:
+      ML_MONITOR_MODE: DISABLED
+      WEB_MQTT_ENABLED: '0'
+  policy-worker:
+    environment:
+      POLICY_MODE: DRY_RUN
