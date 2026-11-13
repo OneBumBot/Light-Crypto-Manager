@@ -78,7 +78,7 @@ def test_session_scores_are_causal_prefixes(tmp_path):
  from src.shadow_ids.sessions import aggregate
  db=Journal(tmp_path/'shadow.db')
  for n,score in [(1,.1),(2,.9)]:
-  db.append(event(n));result=dict(event_id='e'+str(n),model_id='research75-rf_subsample-binary',model_role='rf_session',session_id='c:1',score=score,comparison=score>=.9,capture_timestamp=n,inference_finish=n+.1,mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound');db.complete({'id':'e'+str(n)},[result])
+  db.append({**event(n),'status':'FEATURE_READY','features':{'tcp.flags':2 if n==1 else 4},'direction':0,'feature_ready_at':n+.05});result=dict(event_id='e'+str(n),model_id='research75-rf_subsample-binary',model_role='rf_session',session_id='capture:1',score=score,comparison=score>=.9,capture_timestamp=n,inference_finish=n+.1,mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound');db.complete({'id':'e'+str(n)},[result])
   values=db.session_values();assert values[0]['score']==pytest.approx(.1 if n==1 else .5);assert values[0]['through_timestamp']==n and not values[0]['final']
  values=aggregate(db,True);assert values[0]['final'] and values[0]['through_timestamp']==2 and values[0]['evaluated_at']>=values[0]['through_timestamp'];db.close()
 def test_no_policy_or_control_side_effects(tmp_path,monkeypatch):
@@ -199,3 +199,6 @@ def test_recent_computation_does_not_make_old_source_current(tmp_path):
  db=Journal(tmp_path/'shadow.db');db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURING'));db.status('worker',dict(heartbeat=100,last_inference=100,processed_source_timestamp=1,status='READY'));s=db.snapshot(now=100);assert not s['available'] and s['worker']['processing_fresh'] and not s['worker']['evidence_fresh'] and s['worker']['source_lag_seconds']==99;db.close()
 def test_old_computation_not_current_even_if_input_timestamp_recent(tmp_path):
  db=Journal(tmp_path/'shadow.db');db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURING'));db.status('worker',dict(heartbeat=100,last_inference=1,processed_source_timestamp=100,status='READY'));assert not db.snapshot(now=100)['available'];db.close()
+def test_capture_end_is_not_complete_session_without_close(tmp_path):
+ from src.shadow_ids.sessions import aggregate
+ db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_READY','features':{'tcp.flags':2},'direction':0,'feature_ready_at':1};db.append(e);r=dict(model_id='rf',model_role='rf_session',session_id='capture:1',score=.1,comparison=False,capture_timestamp=1,inference_finish=2,mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound');db.complete({'id':'e1'},[r]);v=aggregate(db,True)[0];assert v['capture_view_final'] and not v['final'] and v['finalization_reason']=='capture_boundary_partial_session';db.close()

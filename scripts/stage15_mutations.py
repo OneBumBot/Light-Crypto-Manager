@@ -33,7 +33,7 @@ def main():
  add('overflow_hidden',[(j,"  last_packet=capture.get('last_packet');", "  capture.pop('queue_overflow',None)\n  last_packet=capture.get('last_packet');")],'test_stale_clears_predictions_and_overflow_visible')
  add('stale_inference_fresh',[(j," and worker['evidence_fresh']",'')],'test_broken_capture_not_healthy_and_stale_evidence_not_fresh')
  add('old_holdout_reused',[(m,' frame=pd.DataFrame('," from src.classifier.research.experiment import final_test\n final_test(None,None,None,None,None)\n frame=pd.DataFrame(")],'test_no_fit_or_old_holdout_during_shadow_model_scoring')
- add('full_session_backdated',[('src/shadow_ids/sessions.py',"evaluated_at=time.time(),final=final","evaluated_at=v['first_timestamp'],final=final")],'test_session_scores_are_causal_prefixes')
+ add('full_session_backdated',[('src/shadow_ids/sessions.py',"evaluated_at=time.time(),final=closed","evaluated_at=v['first_timestamp'],final=closed")],'test_session_scores_are_causal_prefixes')
  add('sequence_gap_ignored',[(f,"if 0<distance<2**31:r['complete']=False;r['diagnostic']='tcp_sequence_gap'","if False:r['complete']=False")],'test_transport_sequence_gap_invalidates_context')
  add('batch_state_marker_partial_commit',[(j,"  with self.write():\n   for row,results in pairs:self.complete(row,results)","  for row,results in pairs:self.complete(row,results)")],'test_batch_rollback_preserves_pending_and_no_partial_results')
  add('sqlite_busy_retry_disabled',[(j,'if attempt==5:raise','if attempt==0:raise')],'test_bounded_busy_retry_not_lost_processing')

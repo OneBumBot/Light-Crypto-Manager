@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "genuine-live-journal-model-scores-visible",
+    "viewer-no-control-post",
+    "controlled-dom-xss-no-execution",
+    "controlled-source-failure-clears-old-scores",
+    "actual-pg-outage-no-current-score",
+    "actual-finished-source-stale-clears-scores"
+  ],
+  "real_api_packet_count": 111,
+  "real_api_results": 25,
+  "browser_errors": [],
+  "dom_fixtures_explicit": true,
+  "network_scope": "Host direct private Docker IP, no published ports",
+  "no_host_ports": true,
+  "source_sha": "118d0ef05c13c330cf2ff0c7cc27ac2fd402b474",
+  "exit_code": 0
+}
