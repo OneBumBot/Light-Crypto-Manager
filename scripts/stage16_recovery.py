@@ -40,7 +40,7 @@ def main():
                     if service in ['mongo','device-alpha','policy-worker']:assert during['counters'].get('accepted',0)>before['counters'].get('accepted',0)
                     if service=='mongo':assert sum(v for k,v in during['outbox'].items() if k!='delivered')>0
                     if service=='policy-worker':
-                        diagnostic=s.get(url+'/api/policy/metrics',timeout=10).json();assert diagnostic['worker_status']!='ready';during['diagnostics']=diagnostic
+                        diagnostic=s.get(url+'/api/policy/metrics',timeout=10).json();assert diagnostic['diagnostics']['worker_status']!='ready';during['diagnostics']=diagnostic
                     assert during['completed']==before['completed']
             finally:d.run('up','-d','--no-deps','--wait','--wait-timeout','90',service,timeout=150)
             restored=datetime.now(timezone.utc).isoformat();recover=time.monotonic()

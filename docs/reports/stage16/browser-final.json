@@ -1,0 +1,257 @@
+{
+  "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+  "project": "lcm-stage16-final-demo-main",
+  "browser": "Actual Playwright Chromium, desktop1440x1000/mobile390x844",
+  "screenshots": [
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/login.png",
+      "url_path": "/login",
+      "at": "2026-11-13T21:12:13.197515+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Empty real login form; no password/token displayed",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/monitoring.png",
+      "url_path": "/",
+      "at": "2026-11-13T21:12:14.152134+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Three actual software Device Agents, current PG/Mongo/Policy status",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/device-alpha.png",
+      "url_path": "/devices/alpha",
+      "at": "2026-11-13T21:12:14.411331+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Live Ascon telemetry, Mongo history, security/Policy/control evidence",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/manual-control.png",
+      "url_path": "/control?device_id=alpha",
+      "at": "2026-11-13T21:12:14.636355+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Admin-only real control UI, before new request",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/confirmed-aes.png",
+      "url_path": "/control?device_id=alpha",
+      "at": "2026-11-13T21:12:19.787674+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "New real admin browser request, authenticated ACK and telemetry-confirmed AES",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/confirmed-ascon.png",
+      "url_path": "/control?device_id=alpha",
+      "at": "2026-11-13T21:12:22.923040+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "New real browser reverse transition, verified Ascon telemetry",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/history.png",
+      "url_path": "/telemetry",
+      "at": "2026-11-13T21:12:23.100040+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Actual Mongo history, filtered to alpha",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/policy.png",
+      "url_path": "/policy",
+      "at": "2026-11-13T21:12:23.185059+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Actual DRY_RUN version/backlog/processed-evidence freshness; no automatic apply",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/security-events.png",
+      "url_path": "/devices/alpha",
+      "at": "2026-11-13T21:12:23.459919+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Existing authenticated security journal on device card",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/shadow-unavailable.png",
+      "url_path": "/research/shadow-ids",
+      "at": "2026-11-13T21:12:23.515128+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "OPTIONAL_RESEARCH_DEMO_UNAVAILABLE; no model/observer provisioned, no fake score",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/monitoring-mobile.png",
+      "url_path": "/",
+      "at": "2026-11-13T21:12:24.007197+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Actual mobile layout; internal horizontal table scroll allowed, document fits viewport",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/device-mobile.png",
+      "url_path": "/devices/alpha",
+      "at": "2026-11-13T21:12:24.565141+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Actual mobile layout; internal horizontal table scroll allowed, document fits viewport",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/history-mobile.png",
+      "url_path": "/telemetry",
+      "at": "2026-11-13T21:12:25.055758+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Actual mobile layout; internal horizontal table scroll allowed, document fits viewport",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/policy-mobile.png",
+      "url_path": "/policy",
+      "at": "2026-11-13T21:12:25.523586+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Actual mobile layout; internal horizontal table scroll allowed, document fits viewport",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "no_secrets_visible": true
+    },
+    {
+      "path": "docs/reports/stage16/browser-final-screenshots/control-mobile.png",
+      "url_path": "/control?device_id=alpha",
+      "at": "2026-11-13T21:12:26.102230+00:00",
+      "source_sha": "f70eba2c3add2b031c42669edf7a9b67e59d9af0",
+      "context": "Actual mobile layout; internal horizontal table scroll allowed, document fits viewport",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "no_secrets_visible": true
+    }
+  ],
+  "dimensions": [
+    {
+      "path": "/",
+      "viewport_width": 390,
+      "document_width": 390
+    },
+    {
+      "path": "/devices/alpha",
+      "viewport_width": 390,
+      "document_width": 390
+    },
+    {
+      "path": "/telemetry",
+      "viewport_width": 390,
+      "document_width": 390
+    },
+    {
+      "path": "/policy",
+      "viewport_width": 390,
+      "document_width": 390
+    },
+    {
+      "path": "/control?device_id=alpha",
+      "viewport_width": 390,
+      "document_width": 390
+    }
+  ],
+  "page_errors": [],
+  "checks": [
+    "viewer_readonly_card",
+    "operator_readonly_card",
+    "real_browser_two_confirmed_switches",
+    "authenticated_ack_and_effective_distinct",
+    "actual_mongo_history",
+    "policy_dry_run",
+    "optional_shadow_unavailable_honest",
+    "external_cdn_not_required_for_core_behavior",
+    "mobile_five_pages_no_document_overflow"
+  ],
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "exit_code": 0
+}
