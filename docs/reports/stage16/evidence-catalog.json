@@ -1,0 +1,209 @@
+{
+  "rows": [
+    {
+      "id": "kuz-crosscheck",
+      "stage": 11,
+      "metric": "independent implementation comparison",
+      "value": 54,
+      "unit": "matched cases",
+      "sample_size": "54 input cases",
+      "conditions": "Software Kuznyechik-MGM provider, published vectors plus independent comparison",
+      "source": "docs/reports/stage11/independent-comparison.json",
+      "limitations": "Not certification or constant-time proof"
+    },
+    {
+      "id": "magma-verdict",
+      "stage": 12,
+      "metric": "continuous telemetry suitability",
+      "value": "NOT_SUITABLE_FOR_CONTINUOUS_TELEMETRY",
+      "unit": "analytical release verdict",
+      "sample_size": "Analytical security budget; no live Magma trial",
+      "conditions": "64-bit block/MGM limits, existing lease/key lifecycle",
+      "source": "docs/MAGMA_MGM_SECURITY_BUDGET.md",
+      "limitations": "Not a universal ban on Magma in every possible protocol"
+    },
+    {
+      "id": "policy-live-source",
+      "stage": 13,
+      "metric": "reported live source rate",
+      "value": 99.9,
+      "unit": "observations/s",
+      "sample_size": "50 software devices at2Hz; run details in source",
+      "conditions": "Original isolated Stage13 optimized Policy experiment",
+      "source": "docs/STAGE13_PERFORMANCE_RESULTS.md",
+      "limitations": "Do not equate synthetic433events/s with MQTT capacity or apply to Stage16 resources"
+    },
+    {
+      "id": "rf-holdout-recall",
+      "stage": 14,
+      "metric": "selected packet RF recall",
+      "value": 0.490385,
+      "unit": "ratio",
+      "sample_size": "104 positive retained packet rows; only5positive sessions",
+      "conditions": "Once-only holdout, one host, fixed threshold",
+      "source": "docs/reports/stage14/rf-if-results.json",
+      "limitations": "Connection/window labels; dependent packet rows; no external generalization"
+    },
+    {
+      "id": "if-holdout-recall",
+      "stage": 14,
+      "metric": "selected packet IF recall",
+      "value": 0.076923,
+      "unit": "ratio",
+      "sample_size": "104 positive retained packet rows; only5positive sessions",
+      "conditions": "Same frozen holdout, IF fit on Normal train only",
+      "source": "docs/reports/stage14/rf-if-results.json",
+      "limitations": "No retuning or new prediction in Stage16"
+    },
+    {
+      "id": "rf-holdout-confusion",
+      "stage": 14,
+      "metric": "packet RF TN/FP/FN/TP",
+      "value": "1981/5/53/51",
+      "unit": "packet observations",
+      "sample_size": "2090 retained rows,1986Normal/104CV",
+      "conditions": "Frozen winner rf_tuned_1",
+      "source": "docs/STAGE14_RF_IF_RESULTS.md",
+      "limitations": "Not packet-specific malicious attribution; no universal accuracy claim"
+    },
+    {
+      "id": "if-holdout-confusion",
+      "stage": 14,
+      "metric": "packet IF TN/FP/FN/TP",
+      "value": "1912/74/96/8",
+      "unit": "packet observations",
+      "sample_size": "2090 retained rows,1986Normal/104CV",
+      "conditions": "Frozen winner if_tuned_0",
+      "source": "docs/STAGE14_RF_IF_RESULTS.md",
+      "limitations": "Weak IF recall remains a negative scientific result"
+    },
+    {
+      "id": "parity",
+      "stage": 15,
+      "metric": "supported real packets with feature parity",
+      "value": 975,
+      "unit": "packets",
+      "sample_size": "3 real parity captures",
+      "conditions": "Ethernet/IPv4/TCP,4integers exact,delta tolerance1.1us",
+      "source": "docs/reports/stage15/feature-parity-batch.json",
+      "limitations": "Restricted capture contract; tuple-reuse legacy delta discrepancy documented separately"
+    },
+    {
+      "id": "if-operational-fp",
+      "stage": 15,
+      "metric": "packet IF false threshold crossings",
+      "value": 254,
+      "unit": "crossings",
+      "sample_size": "375 corroborated Normal rows/12activity sessions",
+      "conditions": "New same-host operational controls, fixed threshold",
+      "source": "docs/reports/stage15/operational-contrast.json",
+      "limitations": "FPR254/375; dependent rows; not latched incidents/hour; no independent host"
+    },
+    {
+      "id": "shadow-volume",
+      "stage": 15,
+      "metric": "successful series TCP capture",
+      "value": 68751,
+      "unit": "TCP packets",
+      "sample_size": "48runs;36capture conditions",
+      "conditions": "3/10/25/50identities,short15sworkloads,3conditional repeats",
+      "source": "docs/reports/stage15/performance-summary.json",
+      "limitations": "Different unit from24483AEAD admissions and69492model results; no system capacity claim"
+    },
+    {
+      "id": "stage16-main",
+      "stage": 16,
+      "metric": "quiescent committed admissions",
+      "value": 5838,
+      "unit": "PG/Mongo records",
+      "sample_size": "3 real software Device Agents",
+      "conditions": "Final primary realm after TLS/control/recovery and auxiliary-state rechecks",
+      "source": "docs/reports/stage16/release-evidence-summary.json",
+      "limitations": "Not a formed/published/PUBACK count or performance capacity measurement"
+    },
+    {
+      "id": "stage16-control",
+      "stage": 16,
+      "metric": "telemetry-confirmed transitions",
+      "value": 14,
+      "unit": "transitions",
+      "sample_size": "28 signed ACK records",
+      "conditions": "Primary realm, explicit admin HTTP/browser requests",
+      "source": "docs/reports/stage16/release-evidence-summary.json",
+      "limitations": "Includes actual transitions from earlier harness attempts, not independent statistical repeats"
+    },
+    {
+      "id": "stage16-clean",
+      "stage": 16,
+      "metric": "quiescent final clean-checkout records",
+      "value": 141,
+      "unit": "PG/Mongo records",
+      "sample_size": "3 fresh software agents",
+      "conditions": "Final clean checkout/source, new keys/volumes, stop/resume",
+      "source": "docs/reports/stage16/release-evidence-summary.json",
+      "limitations": "Separate realm; active snapshot can contain in-flight PG/Mongo difference, not loss"
+    },
+    {
+      "id": "stage16-regression",
+      "stage": 16,
+      "metric": "final pytest passed",
+      "value": 1057,
+      "unit": "test cases",
+      "sample_size": "1057passed/0skipped",
+      "conditions": "Real isolated PG/Mongo,8new guard cases",
+      "source": "docs/reports/stage16/regression-aux-final-pytest.txt",
+      "limitations": "Test count does not prove IDS quality or formal cryptographic security"
+    }
+  ],
+  "references": [
+    {
+      "topic": "Ascon/AES/Kuz vectors and crypto implementation comparisons",
+      "sources": [
+        "docs/STAGE11_PROVIDER_SELECTION.md",
+        "docs/KUZNYECHIK_MGM_TEST_VECTORS.md",
+        "docs/STAGE12_CRYPTO_COMPARISON.md",
+        "docs/STAGE12_SIDE_CHANNEL_REVIEW.md",
+        "docs/reports/stage12/figures"
+      ],
+      "note": "Reuse original datasets/units/run counts/backend distinctions; no new benchmark or language-neutral cryptographic speed ranking"
+    },
+    {
+      "topic": "MQTT/TLS/Outbox/Mongo/replay/recovery",
+      "sources": [
+        "docs/STAGE10_RESULTS.md",
+        "docs/STAGE11_INTEGRATION_TESTS.md",
+        "docs/STAGE16_SECURITY_AND_RECOVERY.md"
+      ],
+      "note": "Different stages/hosts/configurations remain separate"
+    },
+    {
+      "topic": "Policy before/after",
+      "sources": [
+        "docs/STAGE13_PERFORMANCE_RESULTS.md",
+        "docs/STAGE13_FSM_EQUIVALENCE_TESTS.md",
+        "docs/STAGE13_SQL_OPTIMIZATION.md"
+      ],
+      "note": "Retain original run boundaries and correctness traces"
+    },
+    {
+      "topic": "RF/IF full precision/recall/F1/per-scenario",
+      "sources": [
+        "docs/STAGE14_RF_IF_RESULTS.md",
+        "docs/reports/stage14/model-comparison.csv"
+      ],
+      "note": "Published metrics only; original holdout not reopened for tuning"
+    },
+    {
+      "topic": "Shadow CPU/RAM/latency/limitations",
+      "sources": [
+        "docs/STAGE15_PERFORMANCE_RESULTS.md",
+        "docs/STAGE15_OPERATIONAL_FALSE_POSITIVES.md",
+        "docs/reports/stage15/figures"
+      ],
+      "note": "Same-host short-run implementation measurements; not external IDS validation"
+    }
+  ],
+  "no_new_scientific_experiments": true,
+  "missing_values_never_imputed_zero": true,
+  "exit_code": 0
+}

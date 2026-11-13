@@ -1,0 +1,57 @@
+{
+  "source_sha": "0bb46b7afb822941557d000f82566653b1a0918d",
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/regression/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/regression/network.json",
+        "build",
+        "receiver",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 3.2293405532836914
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/regression/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/regression/network.json",
+        "run",
+        "--rm",
+        "-T",
+        "tests"
+      ],
+      "exit_code": 0,
+      "seconds": 64.57193946838379
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/regression/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/regression/network.json",
+        "stop"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5664606094360352
+    }
+  ],
+  "isolated_real_pg_mongo": true,
+  "exit_code": 0
+}

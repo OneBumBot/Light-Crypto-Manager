@@ -1,0 +1,8 @@
+flowchart LR
+  S[(Committed security/ML observations)] --> Q[(Durable indexed Policy queue)]
+  Q --> F[Version-bound deterministic FSM]
+  F --> R[Risk / guard / cooldown / recovery]
+  R --> P[(Signals, decisions, DRY_RUN proposals)]
+  P --> U[Read-only Policy UI: readiness and freshness]
+  C[Separate MANUAL_AUTHORIZED_CONTROL API] --> A[Admin-authorized control path]
+  P -. no automatic apply channel .-> X[No ACTIVATE authority]

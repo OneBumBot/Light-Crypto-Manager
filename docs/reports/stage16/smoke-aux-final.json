@@ -1,0 +1,3653 @@
+{
+  "test": "stage16_final_demo_smoke",
+  "source_sha": "0bb46b7afb822941557d000f82566653b1a0918d",
+  "project": "lcm-stage16-final-demo-main",
+  "before": {
+    "devices": [
+      {
+        "device_id": "alpha",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "9c9ef2fc-6b76-48d1-95a9-c37dbdd06392",
+        "sequence_reserved": 60000,
+        "command_sequence": 24
+      },
+      {
+        "device_id": "gamma",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "d343b8f5-2bf8-496f-b427-fb5d54abc24e",
+        "sequence_reserved": 50000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "beta",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "2c1a1098-219b-4154-b017-eafbfa6aae6e",
+        "sequence_reserved": 50000,
+        "command_sequence": 0
+      }
+    ],
+    "outbox": {
+      "delivered": 5723
+    },
+    "telemetry": {
+      "alpha": {
+        "accepted": 1901,
+        "max_sequence": 50011
+      },
+      "beta": {
+        "accepted": 1911,
+        "max_sequence": 40011
+      },
+      "gamma": {
+        "accepted": 1911,
+        "max_sequence": 40011
+      }
+    },
+    "transitions": 12,
+    "completed": 12,
+    "unknown": 0,
+    "authenticated_ack": 24,
+    "effective_receipts": 15,
+    "policy_modes": [
+      "DRY_RUN"
+    ],
+    "policy_applied": 0,
+    "counters": {
+      "incoming": 5725,
+      "delivery_error": 2,
+      "delivery_retry": 2,
+      "replay": 1,
+      "rejected": 1,
+      "delivered": 5723,
+      "accepted": 5723
+    },
+    "migration": "0011_policy_throughput",
+    "trusted_detector": false,
+    "active_publishers": "not_measured",
+    "mongo_managed": 5723,
+    "duplicate_identities": 0,
+    "replay_state": [
+      {
+        "consumer": "receiver",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "last_sequence": 50012
+      },
+      {
+        "consumer": "receiver",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "last_sequence": 40012
+      },
+      {
+        "consumer": "receiver",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "last_sequence": 40012
+      }
+    ],
+    "transition_evidence": [
+      {
+        "id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "a1a498e4-aeed-4049-a5a4-b6054e39774a",
+        "activated_at": "2026-11-13T21:02:33.600630+00:00",
+        "confirmed_at": "2026-11-13T21:02:34.104474+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "a1a498e4-aeed-4049-a5a4-b6054e39774a",
+          "key_epoch": 1,
+          "sequence_number": 46,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:02:34.104474+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "09f02950-149b-46a0-a4c9-2b7c3643e1d3",
+        "activated_at": "2026-11-13T21:05:25.393226+00:00",
+        "confirmed_at": "2026-11-13T21:05:25.743567+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "09f02950-149b-46a0-a4c9-2b7c3643e1d3",
+          "key_epoch": 1,
+          "sequence_number": 386,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:05:25.743567+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "14e86be7-b200-41fa-9cb5-cc364b9e148d",
+        "activated_at": "2026-11-13T21:05:30.884639+00:00",
+        "confirmed_at": "2026-11-13T21:05:31.286759+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "14e86be7-b200-41fa-9cb5-cc364b9e148d",
+          "key_epoch": 1,
+          "sequence_number": 397,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:05:31.286759+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "31c720bf-9e72-4f52-87a7-9f91ddca58ef",
+        "activated_at": "2026-11-13T21:05:32.970544+00:00",
+        "confirmed_at": "2026-11-13T21:05:33.372055+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "31c720bf-9e72-4f52-87a7-9f91ddca58ef",
+          "key_epoch": 1,
+          "sequence_number": 401,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:05:33.372055+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "a70132fc-7d2a-49cb-a1ee-0a3e07b09359",
+        "activated_at": "2026-11-13T21:11:15.020683+00:00",
+        "confirmed_at": "2026-11-13T21:11:15.321496+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "a70132fc-7d2a-49cb-a1ee-0a3e07b09359",
+          "key_epoch": 1,
+          "sequence_number": 10666,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:11:15.321496+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "95e309d5-df2e-47a3-b09d-738599951266",
+        "activated_at": "2026-11-13T21:12:10.839611+00:00",
+        "confirmed_at": "2026-11-13T21:12:11.242519+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "95e309d5-df2e-47a3-b09d-738599951266",
+          "key_epoch": 1,
+          "sequence_number": 10777,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:12:11.242519+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "76810fe0-67b9-4dff-a5de-67e01e2cc52b",
+        "activated_at": "2026-11-13T21:12:14.826198+00:00",
+        "confirmed_at": "2026-11-13T21:12:15.294798+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "76810fe0-67b9-4dff-a5de-67e01e2cc52b",
+          "key_epoch": 1,
+          "sequence_number": 10785,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:12:15.294798+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "9040349c-114f-4ca1-b2cf-caa1289ef494",
+        "activated_at": "2026-11-13T21:12:19.959634+00:00",
+        "confirmed_at": "2026-11-13T21:12:20.363122+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "9040349c-114f-4ca1-b2cf-caa1289ef494",
+          "key_epoch": 1,
+          "sequence_number": 10795,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:12:20.363122+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "fa7d72b5-ba24-457a-85e1-b12526f9ef8f",
+        "activated_at": "2026-11-13T21:14:35.933047+00:00",
+        "confirmed_at": "2026-11-13T21:14:36.136379+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "fa7d72b5-ba24-457a-85e1-b12526f9ef8f",
+          "key_epoch": 1,
+          "sequence_number": 20110,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:14:36.136379+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "09b34462-0e49-4156-acb5-479b8ffc10ac",
+        "activated_at": "2026-11-13T21:14:39.984828+00:00",
+        "confirmed_at": "2026-11-13T21:14:40.185833+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "09b34462-0e49-4156-acb5-479b8ffc10ac",
+          "key_epoch": 1,
+          "sequence_number": 20118,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:14:40.185833+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "b49a567e-1a63-449a-a9fc-335330639bd2",
+        "activated_at": "2026-11-13T21:18:20.131635+00:00",
+        "confirmed_at": "2026-11-13T21:18:20.655035+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "b49a567e-1a63-449a-a9fc-335330639bd2",
+          "key_epoch": 1,
+          "sequence_number": 30379,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:18:20.655035+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "9c9ef2fc-6b76-48d1-95a9-c37dbdd06392",
+        "activated_at": "2026-11-13T21:18:23.019759+00:00",
+        "confirmed_at": "2026-11-13T21:18:23.221474+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "9c9ef2fc-6b76-48d1-95a9-c37dbdd06392",
+          "key_epoch": 1,
+          "sequence_number": 30384,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:18:23.221474+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      }
+    ],
+    "verified_acks": [
+      {
+        "id": "a25ea989-c251-4cca-874b-d63c64391ddf",
+        "command_id": "1ce56bd4-46d7-4880-935d-7dde5313a02b",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "080b6ab2-e579-43c9-aadd-ec40e4b2f38b",
+        "command_id": "c7032481-ba5d-4883-8694-bc65c8e95d0f",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "28ea4812-29ac-4320-b11e-cb81b29874f7",
+        "command_id": "953a0370-5e9b-4e06-9492-66f1814f416c",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "1bb31627-bff8-4dc0-b79e-f67b59daba43",
+        "command_id": "1ac439ae-7b0b-4207-91c5-4548f26b6ba5",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "5b3c4755-f0f3-4a00-be3a-0fa34f0323bc",
+        "command_id": "4f6b86f2-3488-4c21-9385-ff6a8abb4298",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "97f7d043-4355-4b64-b8de-4573716d86c2",
+        "command_id": "869e2430-035d-42b7-9382-8440689a84dd",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "83598907-c7f5-4104-8642-74bc4f0c3b07",
+        "command_id": "9f437bbf-65b8-41f4-a049-1f508652e854",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "9ba5ec0b-57eb-4b6a-996a-704f565d12b9",
+        "command_id": "c66128cb-2598-4c65-9023-4fe7aa70222b",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "b33c8378-bc96-4d5d-8fab-e2b5b3c738db",
+        "command_id": "4bebfc8c-9d09-4d60-ac79-5532d99eedd3",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "459853fa-4978-4dd4-909e-b47f82350b9b",
+        "command_id": "e933da7e-9535-49c4-8322-3f7da24a50f7",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "df0aace5-15ff-4c5b-8823-fd26324dbcae",
+        "command_id": "145bbc09-12a3-4ea1-97ad-b31787f1095e",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "5b71c105-71fe-452d-8824-b02e7c3aafb3",
+        "command_id": "06cb07ee-a8b0-436a-8179-d4646cab0b83",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "ccc989d4-6abf-4654-a4ac-e84052cbdc9c",
+        "command_id": "989751ce-392b-459f-8817-e812659d1eb9",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "73e52b80-c355-46a8-ac07-8c4255e467f7",
+        "command_id": "ca911a67-7b32-41f1-8eec-48f0b203a133",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "8da77cad-8a3e-425f-a976-713d78128cbb",
+        "command_id": "e6336085-6b30-46c8-997b-1b8cbf753ec6",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "58e3b098-2b17-4570-b37e-a8343703776e",
+        "command_id": "0a3a970b-f677-478e-9dd1-4c73b10ae620",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "cebedc2b-6058-48f8-8f31-2c769fea9d10",
+        "command_id": "9ac24e76-78ee-4b90-b081-f7240869c767",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "e954e567-6419-4a4a-8f7d-b4f9d4758fa3",
+        "command_id": "fa813b78-ba72-4547-83ea-1a77384a6428",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "f4ca452f-4b63-4b50-bac6-072e63480c52",
+        "command_id": "4293abad-e12f-4d43-a5ca-661c384645b4",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "9e37feff-53be-4f0e-b6d8-bdd5796111b5",
+        "command_id": "32eaecf6-a1d7-4ec6-892a-acb64350b5b8",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "b8ac95d4-17eb-4b4a-aedc-f39b3401eda5",
+        "command_id": "3ff69c6c-4fce-4a21-b44d-53a3da89dfb3",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "a8db5be3-d315-4aea-9dac-7d870484d9c5",
+        "command_id": "29c48480-93a4-49d4-bf8b-455b8d639d68",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "dd6bf1a7-034a-4f75-94c2-43aa2a24f02a",
+        "command_id": "48c882d0-89c7-4363-b2fa-a4010b94b307",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "48bee377-6291-409e-92e9-e8c762a3dc11",
+        "command_id": "3b2d819f-ec7a-41c6-aa8e-ddaf6e0b9a75",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      }
+    ],
+    "command_phases": [
+      {
+        "id": "1ce56bd4-46d7-4880-935d-7dde5313a02b",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "9ac24e76-78ee-4b90-b081-f7240869c767",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "953a0370-5e9b-4e06-9492-66f1814f416c",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "c7032481-ba5d-4883-8694-bc65c8e95d0f",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "1ac439ae-7b0b-4207-91c5-4548f26b6ba5",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "9f437bbf-65b8-41f4-a049-1f508652e854",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "4f6b86f2-3488-4c21-9385-ff6a8abb4298",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "869e2430-035d-42b7-9382-8440689a84dd",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "48c882d0-89c7-4363-b2fa-a4010b94b307",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "fa813b78-ba72-4547-83ea-1a77384a6428",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "c66128cb-2598-4c65-9023-4fe7aa70222b",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "4bebfc8c-9d09-4d60-ac79-5532d99eedd3",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "e6336085-6b30-46c8-997b-1b8cbf753ec6",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "e933da7e-9535-49c4-8322-3f7da24a50f7",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "4293abad-e12f-4d43-a5ca-661c384645b4",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "145bbc09-12a3-4ea1-97ad-b31787f1095e",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "32eaecf6-a1d7-4ec6-892a-acb64350b5b8",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "06cb07ee-a8b0-436a-8179-d4646cab0b83",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "29c48480-93a4-49d4-bf8b-455b8d639d68",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "989751ce-392b-459f-8817-e812659d1eb9",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "ca911a67-7b32-41f1-8eec-48f0b203a133",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "3ff69c6c-4fce-4a21-b44d-53a3da89dfb3",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "0a3a970b-f677-478e-9dd1-4c73b10ae620",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "3b2d819f-ec7a-41c6-aa8e-ddaf6e0b9a75",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      }
+    ],
+    "nonce_ranges": [
+      {
+        "device_id": "gamma",
+        "boot_id": "4a9ae7bb-8b67-4153-ab8f-e74411a8bde9",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "5fa1ee7d-1dd3-4368-a76f-a1d9f5073665",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "2544e860-93b7-4570-999b-01e8176b4efa",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "faf86e1d-e572-4cdd-b947-a91b2acb7b32",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "22b48070-f8d1-4c9e-8cd0-7dcdbba91ee2",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "30ab15a3-6a91-48d0-ba5c-7b568e51e240",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "34e522e9-a829-49e0-98e9-9534702c75ce",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "d3dbef3d-7442-444b-b622-821c02668a14",
+        "first": 30001,
+        "last": 40000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "2e688b6f-0fbe-4b2d-a355-f577ae7b52a1",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "5b0e2fa6-9673-4f17-abb0-c96739040a73",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "62379ed6-c004-45a2-8c3a-4095253d5073",
+        "first": 30001,
+        "last": 40000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "ec25c794-a4b5-4108-9e0e-8fc0fb2e4c76",
+        "first": 40001,
+        "last": 50000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "aa56d22a-81bb-4537-a9fb-207ea5a76935",
+        "first": 30001,
+        "last": 40000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "74f5aaa6-5b6b-47e3-9ca0-e6628c52c2e8",
+        "first": 50001,
+        "last": 60000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "e56c34c6-1215-4242-912e-a7079f308a97",
+        "first": 40001,
+        "last": 50000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "7fcfbaf3-73d8-4b49-ad53-40ebabdf6966",
+        "first": 40001,
+        "last": 50000
+      }
+    ],
+    "policy": {
+      "pending": 3,
+      "signals": 5786,
+      "decisions": 2676,
+      "active_versions": [
+        "default-v1"
+      ],
+      "workers": [
+        {
+          "worker_id": "97ee2288ed8c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-13T21:43:21.651890+00:00"
+        },
+        {
+          "worker_id": "1eddc80a7369",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-13T21:13:46.668627+00:00"
+        }
+      ]
+    },
+    "pg_identities_missing_in_mongo": [],
+    "mode": "MANUAL_AUTHORIZED_CONTROL",
+    "shadow": "OPTIONAL_RESEARCH_DEMO_UNAVAILABLE",
+    "exit_code": 0,
+    "identities_count": 5723,
+    "identities_sha256": "fbd6db1d0ee98009c48ac8791112a8892e2286fff9f843b6c570dd0e0b17a07d",
+    "identities_sample": [
+      {
+        "event_id": "cdb71fc2-6296-452e-8e5d-04b99241dbeb",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c7892c22-8a00-4f0b-a286-d9ced878b828",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 2,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "d90a66f6-4ce6-411e-a565-6eb47c1f972d",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 3,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "aff05dee-0828-4472-8488-a54fb1c96e6c",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 40009,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "3e6040c0-17b1-47c0-b6fc-5d6b6c121f52",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 40010,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "8d0e74f0-3bb4-41cd-b841-3b17fe0c682e",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 40011,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      }
+    ],
+    "mongo_identities_count": 5723,
+    "mongo_identities_sha256": "58e1309c327f6265e17637a7e0867d0f5c18c4751104f5ac9e10ce91d0a834a2",
+    "mongo_identities_sample": [
+      {
+        "_id": "alpha:1:1",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 1
+      },
+      {
+        "_id": "alpha:1:2",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 2
+      },
+      {
+        "_id": "alpha:1:3",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 3
+      },
+      {
+        "_id": "gamma:1:40009",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 40009
+      },
+      {
+        "_id": "gamma:1:40010",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 40010
+      },
+      {
+        "_id": "gamma:1:40011",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 40011
+      }
+    ]
+  },
+  "after": {
+    "devices": [
+      {
+        "device_id": "alpha",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "4a57e83b-58a4-47b5-b057-a709ce00dbb1",
+        "sequence_reserved": 60000,
+        "command_sequence": 28
+      },
+      {
+        "device_id": "gamma",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "d343b8f5-2bf8-496f-b427-fb5d54abc24e",
+        "sequence_reserved": 50000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "beta",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "2c1a1098-219b-4154-b017-eafbfa6aae6e",
+        "sequence_reserved": 50000,
+        "command_sequence": 0
+      }
+    ],
+    "outbox": {
+      "delivered": 5780
+    },
+    "telemetry": {
+      "alpha": {
+        "accepted": 1920,
+        "max_sequence": 50030
+      },
+      "beta": {
+        "accepted": 1930,
+        "max_sequence": 40030
+      },
+      "gamma": {
+        "accepted": 1930,
+        "max_sequence": 40030
+      }
+    },
+    "transitions": 14,
+    "completed": 14,
+    "unknown": 0,
+    "authenticated_ack": 28,
+    "effective_receipts": 17,
+    "policy_modes": [
+      "DRY_RUN"
+    ],
+    "policy_applied": 0,
+    "counters": {
+      "incoming": 5783,
+      "delivery_error": 2,
+      "delivery_retry": 2,
+      "replay": 1,
+      "rejected": 1,
+      "delivered": 5780,
+      "accepted": 5780
+    },
+    "migration": "0011_policy_throughput",
+    "trusted_detector": false,
+    "active_publishers": "not_measured",
+    "mongo_managed": 5780,
+    "duplicate_identities": 0,
+    "replay_state": [
+      {
+        "consumer": "receiver",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "last_sequence": 50030
+      },
+      {
+        "consumer": "receiver",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "last_sequence": 40031
+      },
+      {
+        "consumer": "receiver",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "last_sequence": 40031
+      }
+    ],
+    "transition_evidence": [
+      {
+        "id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "a1a498e4-aeed-4049-a5a4-b6054e39774a",
+        "activated_at": "2026-11-13T21:02:33.600630+00:00",
+        "confirmed_at": "2026-11-13T21:02:34.104474+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "a1a498e4-aeed-4049-a5a4-b6054e39774a",
+          "key_epoch": 1,
+          "sequence_number": 46,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:02:34.104474+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "09f02950-149b-46a0-a4c9-2b7c3643e1d3",
+        "activated_at": "2026-11-13T21:05:25.393226+00:00",
+        "confirmed_at": "2026-11-13T21:05:25.743567+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "09f02950-149b-46a0-a4c9-2b7c3643e1d3",
+          "key_epoch": 1,
+          "sequence_number": 386,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:05:25.743567+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "14e86be7-b200-41fa-9cb5-cc364b9e148d",
+        "activated_at": "2026-11-13T21:05:30.884639+00:00",
+        "confirmed_at": "2026-11-13T21:05:31.286759+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "14e86be7-b200-41fa-9cb5-cc364b9e148d",
+          "key_epoch": 1,
+          "sequence_number": 397,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:05:31.286759+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "31c720bf-9e72-4f52-87a7-9f91ddca58ef",
+        "activated_at": "2026-11-13T21:05:32.970544+00:00",
+        "confirmed_at": "2026-11-13T21:05:33.372055+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "31c720bf-9e72-4f52-87a7-9f91ddca58ef",
+          "key_epoch": 1,
+          "sequence_number": 401,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:05:33.372055+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "a70132fc-7d2a-49cb-a1ee-0a3e07b09359",
+        "activated_at": "2026-11-13T21:11:15.020683+00:00",
+        "confirmed_at": "2026-11-13T21:11:15.321496+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "a70132fc-7d2a-49cb-a1ee-0a3e07b09359",
+          "key_epoch": 1,
+          "sequence_number": 10666,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:11:15.321496+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "95e309d5-df2e-47a3-b09d-738599951266",
+        "activated_at": "2026-11-13T21:12:10.839611+00:00",
+        "confirmed_at": "2026-11-13T21:12:11.242519+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "95e309d5-df2e-47a3-b09d-738599951266",
+          "key_epoch": 1,
+          "sequence_number": 10777,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:12:11.242519+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "76810fe0-67b9-4dff-a5de-67e01e2cc52b",
+        "activated_at": "2026-11-13T21:12:14.826198+00:00",
+        "confirmed_at": "2026-11-13T21:12:15.294798+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "76810fe0-67b9-4dff-a5de-67e01e2cc52b",
+          "key_epoch": 1,
+          "sequence_number": 10785,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:12:15.294798+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "9040349c-114f-4ca1-b2cf-caa1289ef494",
+        "activated_at": "2026-11-13T21:12:19.959634+00:00",
+        "confirmed_at": "2026-11-13T21:12:20.363122+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "9040349c-114f-4ca1-b2cf-caa1289ef494",
+          "key_epoch": 1,
+          "sequence_number": 10795,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:12:20.363122+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "fa7d72b5-ba24-457a-85e1-b12526f9ef8f",
+        "activated_at": "2026-11-13T21:14:35.933047+00:00",
+        "confirmed_at": "2026-11-13T21:14:36.136379+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "fa7d72b5-ba24-457a-85e1-b12526f9ef8f",
+          "key_epoch": 1,
+          "sequence_number": 20110,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:14:36.136379+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "09b34462-0e49-4156-acb5-479b8ffc10ac",
+        "activated_at": "2026-11-13T21:14:39.984828+00:00",
+        "confirmed_at": "2026-11-13T21:14:40.185833+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "09b34462-0e49-4156-acb5-479b8ffc10ac",
+          "key_epoch": 1,
+          "sequence_number": 20118,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:14:40.185833+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "b49a567e-1a63-449a-a9fc-335330639bd2",
+        "activated_at": "2026-11-13T21:18:20.131635+00:00",
+        "confirmed_at": "2026-11-13T21:18:20.655035+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "b49a567e-1a63-449a-a9fc-335330639bd2",
+          "key_epoch": 1,
+          "sequence_number": 30379,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:18:20.655035+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "9c9ef2fc-6b76-48d1-95a9-c37dbdd06392",
+        "activated_at": "2026-11-13T21:18:23.019759+00:00",
+        "confirmed_at": "2026-11-13T21:18:23.221474+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "9c9ef2fc-6b76-48d1-95a9-c37dbdd06392",
+          "key_epoch": 1,
+          "sequence_number": 30384,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:18:23.221474+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "8f1adab7-a615-4542-8bac-cbcf8dd735e4",
+        "activated_at": "2026-11-13T21:43:25.824612+00:00",
+        "confirmed_at": "2026-11-13T21:43:26.076767+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "8f1adab7-a615-4542-8bac-cbcf8dd735e4",
+          "key_epoch": 1,
+          "sequence_number": 50020,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:43:26.076767+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "4a57e83b-58a4-47b5-b057-a709ce00dbb1",
+        "activated_at": "2026-11-13T21:43:28.537675+00:00",
+        "confirmed_at": "2026-11-13T21:43:28.627056+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "4a57e83b-58a4-47b5-b057-a709ce00dbb1",
+          "key_epoch": 1,
+          "sequence_number": 50025,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:43:28.627056+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      }
+    ],
+    "verified_acks": [
+      {
+        "id": "a25ea989-c251-4cca-874b-d63c64391ddf",
+        "command_id": "1ce56bd4-46d7-4880-935d-7dde5313a02b",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "080b6ab2-e579-43c9-aadd-ec40e4b2f38b",
+        "command_id": "c7032481-ba5d-4883-8694-bc65c8e95d0f",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "28ea4812-29ac-4320-b11e-cb81b29874f7",
+        "command_id": "953a0370-5e9b-4e06-9492-66f1814f416c",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "1bb31627-bff8-4dc0-b79e-f67b59daba43",
+        "command_id": "1ac439ae-7b0b-4207-91c5-4548f26b6ba5",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "5b3c4755-f0f3-4a00-be3a-0fa34f0323bc",
+        "command_id": "4f6b86f2-3488-4c21-9385-ff6a8abb4298",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "97f7d043-4355-4b64-b8de-4573716d86c2",
+        "command_id": "869e2430-035d-42b7-9382-8440689a84dd",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "83598907-c7f5-4104-8642-74bc4f0c3b07",
+        "command_id": "9f437bbf-65b8-41f4-a049-1f508652e854",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "9ba5ec0b-57eb-4b6a-996a-704f565d12b9",
+        "command_id": "c66128cb-2598-4c65-9023-4fe7aa70222b",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "b33c8378-bc96-4d5d-8fab-e2b5b3c738db",
+        "command_id": "4bebfc8c-9d09-4d60-ac79-5532d99eedd3",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "459853fa-4978-4dd4-909e-b47f82350b9b",
+        "command_id": "e933da7e-9535-49c4-8322-3f7da24a50f7",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "df0aace5-15ff-4c5b-8823-fd26324dbcae",
+        "command_id": "145bbc09-12a3-4ea1-97ad-b31787f1095e",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "5b71c105-71fe-452d-8824-b02e7c3aafb3",
+        "command_id": "06cb07ee-a8b0-436a-8179-d4646cab0b83",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "ccc989d4-6abf-4654-a4ac-e84052cbdc9c",
+        "command_id": "989751ce-392b-459f-8817-e812659d1eb9",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "73e52b80-c355-46a8-ac07-8c4255e467f7",
+        "command_id": "ca911a67-7b32-41f1-8eec-48f0b203a133",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "8da77cad-8a3e-425f-a976-713d78128cbb",
+        "command_id": "e6336085-6b30-46c8-997b-1b8cbf753ec6",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "58e3b098-2b17-4570-b37e-a8343703776e",
+        "command_id": "0a3a970b-f677-478e-9dd1-4c73b10ae620",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "cebedc2b-6058-48f8-8f31-2c769fea9d10",
+        "command_id": "9ac24e76-78ee-4b90-b081-f7240869c767",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "e954e567-6419-4a4a-8f7d-b4f9d4758fa3",
+        "command_id": "fa813b78-ba72-4547-83ea-1a77384a6428",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "f4ca452f-4b63-4b50-bac6-072e63480c52",
+        "command_id": "4293abad-e12f-4d43-a5ca-661c384645b4",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "9e37feff-53be-4f0e-b6d8-bdd5796111b5",
+        "command_id": "32eaecf6-a1d7-4ec6-892a-acb64350b5b8",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "b8ac95d4-17eb-4b4a-aedc-f39b3401eda5",
+        "command_id": "3ff69c6c-4fce-4a21-b44d-53a3da89dfb3",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "a8db5be3-d315-4aea-9dac-7d870484d9c5",
+        "command_id": "29c48480-93a4-49d4-bf8b-455b8d639d68",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "dd6bf1a7-034a-4f75-94c2-43aa2a24f02a",
+        "command_id": "48c882d0-89c7-4363-b2fa-a4010b94b307",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "48bee377-6291-409e-92e9-e8c762a3dc11",
+        "command_id": "3b2d819f-ec7a-41c6-aa8e-ddaf6e0b9a75",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "1e657cfc-f2fd-4e89-9a9a-b38dcdf59a23",
+        "command_id": "037a9be6-5985-494a-9a88-d7bfdf5bd90f",
+        "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "02912927-96c4-479c-be04-b07a003c09db",
+        "command_id": "997e2d62-f57e-41f9-8e39-3cdb5b8dad37",
+        "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "ff85efde-4b93-40cc-b297-3a75bd063979",
+        "command_id": "ac353bdb-7b4f-4ce8-9e92-9a596dd3b10a",
+        "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "5f198c1e-e24e-44ac-b95f-82d7a38e5ba0",
+        "command_id": "317cfe61-3ef2-45b0-8652-61fd9e004f43",
+        "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      }
+    ],
+    "command_phases": [
+      {
+        "id": "1ce56bd4-46d7-4880-935d-7dde5313a02b",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "9ac24e76-78ee-4b90-b081-f7240869c767",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "953a0370-5e9b-4e06-9492-66f1814f416c",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "c7032481-ba5d-4883-8694-bc65c8e95d0f",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "1ac439ae-7b0b-4207-91c5-4548f26b6ba5",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "9f437bbf-65b8-41f4-a049-1f508652e854",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "4f6b86f2-3488-4c21-9385-ff6a8abb4298",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "869e2430-035d-42b7-9382-8440689a84dd",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "48c882d0-89c7-4363-b2fa-a4010b94b307",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "fa813b78-ba72-4547-83ea-1a77384a6428",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "c66128cb-2598-4c65-9023-4fe7aa70222b",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "4bebfc8c-9d09-4d60-ac79-5532d99eedd3",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "e6336085-6b30-46c8-997b-1b8cbf753ec6",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "e933da7e-9535-49c4-8322-3f7da24a50f7",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "4293abad-e12f-4d43-a5ca-661c384645b4",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "145bbc09-12a3-4ea1-97ad-b31787f1095e",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "32eaecf6-a1d7-4ec6-892a-acb64350b5b8",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "06cb07ee-a8b0-436a-8179-d4646cab0b83",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "29c48480-93a4-49d4-bf8b-455b8d639d68",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "989751ce-392b-459f-8817-e812659d1eb9",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "ca911a67-7b32-41f1-8eec-48f0b203a133",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "3ff69c6c-4fce-4a21-b44d-53a3da89dfb3",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "0a3a970b-f677-478e-9dd1-4c73b10ae620",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "3b2d819f-ec7a-41c6-aa8e-ddaf6e0b9a75",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "037a9be6-5985-494a-9a88-d7bfdf5bd90f",
+        "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "997e2d62-f57e-41f9-8e39-3cdb5b8dad37",
+        "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "ac353bdb-7b4f-4ce8-9e92-9a596dd3b10a",
+        "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "317cfe61-3ef2-45b0-8652-61fd9e004f43",
+        "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      }
+    ],
+    "nonce_ranges": [
+      {
+        "device_id": "gamma",
+        "boot_id": "4a9ae7bb-8b67-4153-ab8f-e74411a8bde9",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "5fa1ee7d-1dd3-4368-a76f-a1d9f5073665",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "2544e860-93b7-4570-999b-01e8176b4efa",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "faf86e1d-e572-4cdd-b947-a91b2acb7b32",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "22b48070-f8d1-4c9e-8cd0-7dcdbba91ee2",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "30ab15a3-6a91-48d0-ba5c-7b568e51e240",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "34e522e9-a829-49e0-98e9-9534702c75ce",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "d3dbef3d-7442-444b-b622-821c02668a14",
+        "first": 30001,
+        "last": 40000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "2e688b6f-0fbe-4b2d-a355-f577ae7b52a1",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "5b0e2fa6-9673-4f17-abb0-c96739040a73",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "62379ed6-c004-45a2-8c3a-4095253d5073",
+        "first": 30001,
+        "last": 40000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "ec25c794-a4b5-4108-9e0e-8fc0fb2e4c76",
+        "first": 40001,
+        "last": 50000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "aa56d22a-81bb-4537-a9fb-207ea5a76935",
+        "first": 30001,
+        "last": 40000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "74f5aaa6-5b6b-47e3-9ca0-e6628c52c2e8",
+        "first": 50001,
+        "last": 60000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "e56c34c6-1215-4242-912e-a7079f308a97",
+        "first": 40001,
+        "last": 50000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "7fcfbaf3-73d8-4b49-ad53-40ebabdf6966",
+        "first": 40001,
+        "last": 50000
+      }
+    ],
+    "policy": {
+      "pending": 5,
+      "signals": 5840,
+      "decisions": 2703,
+      "active_versions": [
+        "default-v1"
+      ],
+      "workers": [
+        {
+          "worker_id": "97ee2288ed8c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-13T21:43:30.933016+00:00"
+        },
+        {
+          "worker_id": "1eddc80a7369",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-13T21:13:46.668627+00:00"
+        }
+      ]
+    },
+    "pg_identities_missing_in_mongo": [
+      "beta:1:40031"
+    ],
+    "mode": "MANUAL_AUTHORIZED_CONTROL",
+    "shadow": "OPTIONAL_RESEARCH_DEMO_UNAVAILABLE",
+    "exit_code": 0,
+    "identities_count": 5781,
+    "identities_sha256": "dc6de92d5b7cc2f33f18ab06e4ab3b0b31c2d8970d3e337fa819f0e1f0f24b24",
+    "identities_sample": [
+      {
+        "event_id": "cdb71fc2-6296-452e-8e5d-04b99241dbeb",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c7892c22-8a00-4f0b-a286-d9ced878b828",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 2,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "d90a66f6-4ce6-411e-a565-6eb47c1f972d",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 3,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "1a3fd95f-f60e-4bc6-b171-eea880d46833",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 40028,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "5c99505b-1bb8-4dd2-8c57-1d8f3961a6de",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 40029,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "85c50b54-e2c7-4083-bca5-584f8a071bbc",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 40030,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      }
+    ],
+    "mongo_identities_count": 5780,
+    "mongo_identities_sha256": "065ccb99ee065e3da53120832c45455f58758ce5a88c510c9375e292a0ceba68",
+    "mongo_identities_sample": [
+      {
+        "_id": "alpha:1:1",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 1
+      },
+      {
+        "_id": "alpha:1:2",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 2
+      },
+      {
+        "_id": "alpha:1:3",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 3
+      },
+      {
+        "_id": "gamma:1:40028",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 40028
+      },
+      {
+        "_id": "gamma:1:40029",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 40029
+      },
+      {
+        "_id": "gamma:1:40030",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 40030
+      }
+    ]
+  },
+  "quiescent": {
+    "devices": [
+      {
+        "device_id": "alpha",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "4a57e83b-58a4-47b5-b057-a709ce00dbb1",
+        "sequence_reserved": 60000,
+        "command_sequence": 28
+      },
+      {
+        "device_id": "gamma",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "d343b8f5-2bf8-496f-b427-fb5d54abc24e",
+        "sequence_reserved": 50000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "beta",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "2c1a1098-219b-4154-b017-eafbfa6aae6e",
+        "sequence_reserved": 50000,
+        "command_sequence": 0
+      }
+    ],
+    "outbox": {
+      "delivered": 5789
+    },
+    "telemetry": {
+      "alpha": {
+        "accepted": 1923,
+        "max_sequence": 50033
+      },
+      "beta": {
+        "accepted": 1933,
+        "max_sequence": 40033
+      },
+      "gamma": {
+        "accepted": 1933,
+        "max_sequence": 40033
+      }
+    },
+    "transitions": 14,
+    "completed": 14,
+    "unknown": 0,
+    "authenticated_ack": 28,
+    "effective_receipts": 17,
+    "policy_modes": [
+      "DRY_RUN"
+    ],
+    "policy_applied": 0,
+    "counters": {
+      "incoming": 5791,
+      "delivery_error": 2,
+      "delivery_retry": 2,
+      "replay": 1,
+      "rejected": 1,
+      "delivered": 5789,
+      "accepted": 5789
+    },
+    "migration": "0011_policy_throughput",
+    "trusted_detector": false,
+    "active_publishers": "not_measured",
+    "mongo_managed": 5789,
+    "duplicate_identities": 0,
+    "replay_state": [
+      {
+        "consumer": "receiver",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "last_sequence": 40033
+      },
+      {
+        "consumer": "receiver",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "last_sequence": 40033
+      },
+      {
+        "consumer": "receiver",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "last_sequence": 50033
+      }
+    ],
+    "transition_evidence": [
+      {
+        "id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "a1a498e4-aeed-4049-a5a4-b6054e39774a",
+        "activated_at": "2026-11-13T21:02:33.600630+00:00",
+        "confirmed_at": "2026-11-13T21:02:34.104474+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "a1a498e4-aeed-4049-a5a4-b6054e39774a",
+          "key_epoch": 1,
+          "sequence_number": 46,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:02:34.104474+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "09f02950-149b-46a0-a4c9-2b7c3643e1d3",
+        "activated_at": "2026-11-13T21:05:25.393226+00:00",
+        "confirmed_at": "2026-11-13T21:05:25.743567+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "09f02950-149b-46a0-a4c9-2b7c3643e1d3",
+          "key_epoch": 1,
+          "sequence_number": 386,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:05:25.743567+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "14e86be7-b200-41fa-9cb5-cc364b9e148d",
+        "activated_at": "2026-11-13T21:05:30.884639+00:00",
+        "confirmed_at": "2026-11-13T21:05:31.286759+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "14e86be7-b200-41fa-9cb5-cc364b9e148d",
+          "key_epoch": 1,
+          "sequence_number": 397,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:05:31.286759+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "31c720bf-9e72-4f52-87a7-9f91ddca58ef",
+        "activated_at": "2026-11-13T21:05:32.970544+00:00",
+        "confirmed_at": "2026-11-13T21:05:33.372055+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "31c720bf-9e72-4f52-87a7-9f91ddca58ef",
+          "key_epoch": 1,
+          "sequence_number": 401,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:05:33.372055+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "a70132fc-7d2a-49cb-a1ee-0a3e07b09359",
+        "activated_at": "2026-11-13T21:11:15.020683+00:00",
+        "confirmed_at": "2026-11-13T21:11:15.321496+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "a70132fc-7d2a-49cb-a1ee-0a3e07b09359",
+          "key_epoch": 1,
+          "sequence_number": 10666,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:11:15.321496+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "95e309d5-df2e-47a3-b09d-738599951266",
+        "activated_at": "2026-11-13T21:12:10.839611+00:00",
+        "confirmed_at": "2026-11-13T21:12:11.242519+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "95e309d5-df2e-47a3-b09d-738599951266",
+          "key_epoch": 1,
+          "sequence_number": 10777,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:12:11.242519+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "76810fe0-67b9-4dff-a5de-67e01e2cc52b",
+        "activated_at": "2026-11-13T21:12:14.826198+00:00",
+        "confirmed_at": "2026-11-13T21:12:15.294798+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "76810fe0-67b9-4dff-a5de-67e01e2cc52b",
+          "key_epoch": 1,
+          "sequence_number": 10785,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:12:15.294798+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "9040349c-114f-4ca1-b2cf-caa1289ef494",
+        "activated_at": "2026-11-13T21:12:19.959634+00:00",
+        "confirmed_at": "2026-11-13T21:12:20.363122+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "9040349c-114f-4ca1-b2cf-caa1289ef494",
+          "key_epoch": 1,
+          "sequence_number": 10795,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:12:20.363122+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "fa7d72b5-ba24-457a-85e1-b12526f9ef8f",
+        "activated_at": "2026-11-13T21:14:35.933047+00:00",
+        "confirmed_at": "2026-11-13T21:14:36.136379+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "fa7d72b5-ba24-457a-85e1-b12526f9ef8f",
+          "key_epoch": 1,
+          "sequence_number": 20110,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:14:36.136379+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "09b34462-0e49-4156-acb5-479b8ffc10ac",
+        "activated_at": "2026-11-13T21:14:39.984828+00:00",
+        "confirmed_at": "2026-11-13T21:14:40.185833+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "09b34462-0e49-4156-acb5-479b8ffc10ac",
+          "key_epoch": 1,
+          "sequence_number": 20118,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:14:40.185833+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "b49a567e-1a63-449a-a9fc-335330639bd2",
+        "activated_at": "2026-11-13T21:18:20.131635+00:00",
+        "confirmed_at": "2026-11-13T21:18:20.655035+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "b49a567e-1a63-449a-a9fc-335330639bd2",
+          "key_epoch": 1,
+          "sequence_number": 30379,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:18:20.655035+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "9c9ef2fc-6b76-48d1-95a9-c37dbdd06392",
+        "activated_at": "2026-11-13T21:18:23.019759+00:00",
+        "confirmed_at": "2026-11-13T21:18:23.221474+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "9c9ef2fc-6b76-48d1-95a9-c37dbdd06392",
+          "key_epoch": 1,
+          "sequence_number": 30384,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:18:23.221474+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      {
+        "id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "8f1adab7-a615-4542-8bac-cbcf8dd735e4",
+        "activated_at": "2026-11-13T21:43:25.824612+00:00",
+        "confirmed_at": "2026-11-13T21:43:26.076767+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "8f1adab7-a615-4542-8bac-cbcf8dd735e4",
+          "key_epoch": 1,
+          "sequence_number": 50020,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:43:26.076767+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "4a57e83b-58a4-47b5-b057-a709ce00dbb1",
+        "activated_at": "2026-11-13T21:43:28.537675+00:00",
+        "confirmed_at": "2026-11-13T21:43:28.627056+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "4a57e83b-58a4-47b5-b057-a709ce00dbb1",
+          "key_epoch": 1,
+          "sequence_number": 50025,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:43:28.627056+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      }
+    ],
+    "verified_acks": [
+      {
+        "id": "a25ea989-c251-4cca-874b-d63c64391ddf",
+        "command_id": "1ce56bd4-46d7-4880-935d-7dde5313a02b",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "080b6ab2-e579-43c9-aadd-ec40e4b2f38b",
+        "command_id": "c7032481-ba5d-4883-8694-bc65c8e95d0f",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "28ea4812-29ac-4320-b11e-cb81b29874f7",
+        "command_id": "953a0370-5e9b-4e06-9492-66f1814f416c",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "1bb31627-bff8-4dc0-b79e-f67b59daba43",
+        "command_id": "1ac439ae-7b0b-4207-91c5-4548f26b6ba5",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "5b3c4755-f0f3-4a00-be3a-0fa34f0323bc",
+        "command_id": "4f6b86f2-3488-4c21-9385-ff6a8abb4298",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "97f7d043-4355-4b64-b8de-4573716d86c2",
+        "command_id": "869e2430-035d-42b7-9382-8440689a84dd",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "83598907-c7f5-4104-8642-74bc4f0c3b07",
+        "command_id": "9f437bbf-65b8-41f4-a049-1f508652e854",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "9ba5ec0b-57eb-4b6a-996a-704f565d12b9",
+        "command_id": "c66128cb-2598-4c65-9023-4fe7aa70222b",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "b33c8378-bc96-4d5d-8fab-e2b5b3c738db",
+        "command_id": "4bebfc8c-9d09-4d60-ac79-5532d99eedd3",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "459853fa-4978-4dd4-909e-b47f82350b9b",
+        "command_id": "e933da7e-9535-49c4-8322-3f7da24a50f7",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "df0aace5-15ff-4c5b-8823-fd26324dbcae",
+        "command_id": "145bbc09-12a3-4ea1-97ad-b31787f1095e",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "5b71c105-71fe-452d-8824-b02e7c3aafb3",
+        "command_id": "06cb07ee-a8b0-436a-8179-d4646cab0b83",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "ccc989d4-6abf-4654-a4ac-e84052cbdc9c",
+        "command_id": "989751ce-392b-459f-8817-e812659d1eb9",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "73e52b80-c355-46a8-ac07-8c4255e467f7",
+        "command_id": "ca911a67-7b32-41f1-8eec-48f0b203a133",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "8da77cad-8a3e-425f-a976-713d78128cbb",
+        "command_id": "e6336085-6b30-46c8-997b-1b8cbf753ec6",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "58e3b098-2b17-4570-b37e-a8343703776e",
+        "command_id": "0a3a970b-f677-478e-9dd1-4c73b10ae620",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "cebedc2b-6058-48f8-8f31-2c769fea9d10",
+        "command_id": "9ac24e76-78ee-4b90-b081-f7240869c767",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "e954e567-6419-4a4a-8f7d-b4f9d4758fa3",
+        "command_id": "fa813b78-ba72-4547-83ea-1a77384a6428",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "f4ca452f-4b63-4b50-bac6-072e63480c52",
+        "command_id": "4293abad-e12f-4d43-a5ca-661c384645b4",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "9e37feff-53be-4f0e-b6d8-bdd5796111b5",
+        "command_id": "32eaecf6-a1d7-4ec6-892a-acb64350b5b8",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "b8ac95d4-17eb-4b4a-aedc-f39b3401eda5",
+        "command_id": "3ff69c6c-4fce-4a21-b44d-53a3da89dfb3",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "a8db5be3-d315-4aea-9dac-7d870484d9c5",
+        "command_id": "29c48480-93a4-49d4-bf8b-455b8d639d68",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "dd6bf1a7-034a-4f75-94c2-43aa2a24f02a",
+        "command_id": "48c882d0-89c7-4363-b2fa-a4010b94b307",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "48bee377-6291-409e-92e9-e8c762a3dc11",
+        "command_id": "3b2d819f-ec7a-41c6-aa8e-ddaf6e0b9a75",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "1e657cfc-f2fd-4e89-9a9a-b38dcdf59a23",
+        "command_id": "037a9be6-5985-494a-9a88-d7bfdf5bd90f",
+        "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "02912927-96c4-479c-be04-b07a003c09db",
+        "command_id": "997e2d62-f57e-41f9-8e39-3cdb5b8dad37",
+        "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "ff85efde-4b93-40cc-b297-3a75bd063979",
+        "command_id": "ac353bdb-7b4f-4ce8-9e92-9a596dd3b10a",
+        "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "5f198c1e-e24e-44ac-b95f-82d7a38e5ba0",
+        "command_id": "317cfe61-3ef2-45b0-8652-61fd9e004f43",
+        "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      }
+    ],
+    "command_phases": [
+      {
+        "id": "1ce56bd4-46d7-4880-935d-7dde5313a02b",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "9ac24e76-78ee-4b90-b081-f7240869c767",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "953a0370-5e9b-4e06-9492-66f1814f416c",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "c7032481-ba5d-4883-8694-bc65c8e95d0f",
+        "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "1ac439ae-7b0b-4207-91c5-4548f26b6ba5",
+        "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "9f437bbf-65b8-41f4-a049-1f508652e854",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "4f6b86f2-3488-4c21-9385-ff6a8abb4298",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "869e2430-035d-42b7-9382-8440689a84dd",
+        "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "48c882d0-89c7-4363-b2fa-a4010b94b307",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "fa813b78-ba72-4547-83ea-1a77384a6428",
+        "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "c66128cb-2598-4c65-9023-4fe7aa70222b",
+        "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "4bebfc8c-9d09-4d60-ac79-5532d99eedd3",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "e6336085-6b30-46c8-997b-1b8cbf753ec6",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "e933da7e-9535-49c4-8322-3f7da24a50f7",
+        "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "4293abad-e12f-4d43-a5ca-661c384645b4",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "145bbc09-12a3-4ea1-97ad-b31787f1095e",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "32eaecf6-a1d7-4ec6-892a-acb64350b5b8",
+        "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "06cb07ee-a8b0-436a-8179-d4646cab0b83",
+        "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "29c48480-93a4-49d4-bf8b-455b8d639d68",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "989751ce-392b-459f-8817-e812659d1eb9",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "ca911a67-7b32-41f1-8eec-48f0b203a133",
+        "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "3ff69c6c-4fce-4a21-b44d-53a3da89dfb3",
+        "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "0a3a970b-f677-478e-9dd1-4c73b10ae620",
+        "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "3b2d819f-ec7a-41c6-aa8e-ddaf6e0b9a75",
+        "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "037a9be6-5985-494a-9a88-d7bfdf5bd90f",
+        "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "997e2d62-f57e-41f9-8e39-3cdb5b8dad37",
+        "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "ac353bdb-7b4f-4ce8-9e92-9a596dd3b10a",
+        "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "317cfe61-3ef2-45b0-8652-61fd9e004f43",
+        "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      }
+    ],
+    "nonce_ranges": [
+      {
+        "device_id": "gamma",
+        "boot_id": "4a9ae7bb-8b67-4153-ab8f-e74411a8bde9",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "5fa1ee7d-1dd3-4368-a76f-a1d9f5073665",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "2544e860-93b7-4570-999b-01e8176b4efa",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "faf86e1d-e572-4cdd-b947-a91b2acb7b32",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "22b48070-f8d1-4c9e-8cd0-7dcdbba91ee2",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "30ab15a3-6a91-48d0-ba5c-7b568e51e240",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "34e522e9-a829-49e0-98e9-9534702c75ce",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "d3dbef3d-7442-444b-b622-821c02668a14",
+        "first": 30001,
+        "last": 40000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "2e688b6f-0fbe-4b2d-a355-f577ae7b52a1",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "5b0e2fa6-9673-4f17-abb0-c96739040a73",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "62379ed6-c004-45a2-8c3a-4095253d5073",
+        "first": 30001,
+        "last": 40000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "ec25c794-a4b5-4108-9e0e-8fc0fb2e4c76",
+        "first": 40001,
+        "last": 50000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "aa56d22a-81bb-4537-a9fb-207ea5a76935",
+        "first": 30001,
+        "last": 40000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "74f5aaa6-5b6b-47e3-9ca0-e6628c52c2e8",
+        "first": 50001,
+        "last": 60000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "e56c34c6-1215-4242-912e-a7079f308a97",
+        "first": 40001,
+        "last": 50000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "7fcfbaf3-73d8-4b49-ad53-40ebabdf6966",
+        "first": 40001,
+        "last": 50000
+      }
+    ],
+    "policy": {
+      "pending": 0,
+      "signals": 5852,
+      "decisions": 2709,
+      "active_versions": [
+        "default-v1"
+      ],
+      "workers": [
+        {
+          "worker_id": "97ee2288ed8c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-13T21:43:32.995219+00:00"
+        },
+        {
+          "worker_id": "1eddc80a7369",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-13T21:13:46.668627+00:00"
+        }
+      ]
+    },
+    "pg_identities_missing_in_mongo": [],
+    "mode": "MANUAL_AUTHORIZED_CONTROL",
+    "shadow": "OPTIONAL_RESEARCH_DEMO_UNAVAILABLE",
+    "exit_code": 0,
+    "identities_count": 5789,
+    "identities_sha256": "1784c8cfd6a55abb0a181f1e6f637b59808033b446e6f7b7dd037d5ef3430063",
+    "identities_sample": [
+      {
+        "event_id": "cdb71fc2-6296-452e-8e5d-04b99241dbeb",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c7892c22-8a00-4f0b-a286-d9ced878b828",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 2,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "d90a66f6-4ce6-411e-a565-6eb47c1f972d",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 3,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c87f4931-b9ee-41d9-8652-ba6752ab86bf",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 40031,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "ea1f5443-cbcf-4bc6-b71b-22c2d2afed41",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 40032,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "e0509255-60aa-4588-af9e-62d9501ca80a",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 40033,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      }
+    ],
+    "mongo_identities_count": 5789,
+    "mongo_identities_sha256": "f576e54e259dc51a8fded4d86ffbc52f6f42d20cc83f3b43e4ce683db449b3d0",
+    "mongo_identities_sample": [
+      {
+        "_id": "alpha:1:1",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 1
+      },
+      {
+        "_id": "alpha:1:2",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 2
+      },
+      {
+        "_id": "alpha:1:3",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 3
+      },
+      {
+        "_id": "gamma:1:40031",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 40031
+      },
+      {
+        "_id": "gamma:1:40032",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 40032
+      },
+      {
+        "_id": "gamma:1:40033",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 40033
+      }
+    ]
+  },
+  "transitions": [
+    {
+      "transition": {
+        "id": "3d22076a-c109-4444-8ad8-24611db68d56",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "8f1adab7-a615-4542-8bac-cbcf8dd735e4",
+        "activated_at": "2026-11-13T21:43:25.824612+00:00",
+        "confirmed_at": "2026-11-13T21:43:26.076767+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "8f1adab7-a615-4542-8bac-cbcf8dd735e4",
+          "key_epoch": 1,
+          "sequence_number": 50020,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:43:26.076767+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      "authenticated_acks": [
+        {
+          "id": "1e657cfc-f2fd-4e89-9a9a-b38dcdf59a23",
+          "command_id": "037a9be6-5985-494a-9a88-d7bfdf5bd90f",
+          "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "result": "READY",
+          "hmac_digest_matches": true,
+          "command_digest_matches": true,
+          "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+        },
+        {
+          "id": "02912927-96c4-479c-be04-b07a003c09db",
+          "command_id": "997e2d62-f57e-41f9-8e39-3cdb5b8dad37",
+          "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "result": "DEVICE_APPLIED",
+          "hmac_digest_matches": true,
+          "command_digest_matches": true,
+          "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+        }
+      ],
+      "http_to_effective_seconds": 2.662833734000742
+    },
+    {
+      "transition": {
+        "id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "4a57e83b-58a4-47b5-b057-a709ce00dbb1",
+        "activated_at": "2026-11-13T21:43:28.537675+00:00",
+        "confirmed_at": "2026-11-13T21:43:28.627056+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "4a57e83b-58a4-47b5-b057-a709ce00dbb1",
+          "key_epoch": 1,
+          "sequence_number": 50025,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:43:28.627056+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      },
+      "authenticated_acks": [
+        {
+          "id": "ff85efde-4b93-40cc-b297-3a75bd063979",
+          "command_id": "ac353bdb-7b4f-4ce8-9e92-9a596dd3b10a",
+          "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "result": "READY",
+          "hmac_digest_matches": true,
+          "command_digest_matches": true,
+          "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+        },
+        {
+          "id": "5f198c1e-e24e-44ac-b95f-82d7a38e5ba0",
+          "command_id": "317cfe61-3ef2-45b0-8652-61fd9e004f43",
+          "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "result": "DEVICE_APPLIED",
+          "hmac_digest_matches": true,
+          "command_digest_matches": true,
+          "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+        }
+      ],
+      "http_to_effective_seconds": 2.381437509000534
+    }
+  ],
+  "checks": [
+    "viewer_operator_denied",
+    "csrf_required",
+    "gamma_unsupported_rejected",
+    "real_fresh_three_agent_tls_aead_telemetry",
+    "mongo_history",
+    "policy_dry_run_ml_disabled",
+    "ascon_aes_ascon_http_hmac_switch",
+    "ready_activate_ack_independent_verification",
+    "effective_matches_new_pg_aead_receipt",
+    "beta_gamma_unchanged",
+    "no_extra_policy_shadow_command",
+    "outbox_quiescent_drain",
+    "exact_pg_mongo_identity_set",
+    "nonce_ranges_disjoint",
+    "no_duplicate_admissions"
+  ],
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage16_probe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage16_probe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage16_probe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage16_probe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage16_probe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "device-alpha",
+        "device-beta",
+        "device-gamma"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage16_probe"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "up",
+        "-d",
+        "--no-deps",
+        "--wait",
+        "device-alpha",
+        "device-beta",
+        "device-gamma"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "shadow": "OPTIONAL_RESEARCH_DEMO_UNAVAILABLE",
+  "trusted_detector": false,
+  "exit_code": 0
+}

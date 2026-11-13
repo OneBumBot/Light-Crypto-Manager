@@ -1,3 +1,7 @@
+# Stage16 — финальная интеграция
+
+Основной demo: scripts.stage16_demo → существующие Stage9/control services, три настоящих software Device Agents, Ascon/AES, MQTT/TLS, PG admission/replay/Outbox, Mongo, Flask, HMAC manual control и Policy DRY_RUN. Explicit subnet и used-volume/material/SQLite guards, включая image-declared auxiliary config/log volumes. Старые authority/алгоритмы/FSM не переписаны. Shadow — OPTIONAL_RESEARCH_DEMO_UNAVAILABLE в основном demo, отдельный Stage15 research contour. Kuz остаётся в прежних разрешённых labs, Magma not live. [Архитектура и7 схем](STAGE16_FINAL_ARCHITECTURE.md), [runbook](STAGE16_DEMO_RUNBOOK.md). Ниже история.
+
 # Stage15 — пассивный Shadow IDS
 
 Новый opt-in `src/shadow_ids/`: keyless tcpdump в namespace software producer → независимый streaming Ethernet/IPv4/TCP extractor → отдельная bounded SQLite WAL очередь → frozen RF/IF в network-none worker → Shadow journal → read-only Flask `/research/shadow-ids`. Ни MQTT publish, ни TLS decryption, ни telemetry/command keys компоненту не доступны. NET_RAW получает только capture; inference — cap_drop=ALL. Web видит только журнал, не PCAP/модели.

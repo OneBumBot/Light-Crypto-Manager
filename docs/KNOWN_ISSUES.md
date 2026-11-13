@@ -1,3 +1,7 @@
+# Stage16 — актуальные ограничения
+
+[Полный список A/B/C](STAGE16_KNOWN_LIMITATIONS.md). Основной demo не является production/ARM/HA продуктом. Kuz только в разрешённых software labs, Magma не live. Shadow требует отдельного research contour; main demo от него не зависит. Evidence tool bound10 000 rows, лабораторные TLS certificates30дней, pending сохраняется durable. Core UI проверен без внешнего CDN; legacy Bootstrap-dependent flows не объявлены полностью offline certified. Volume metadata checks не являются побайтовым SQL-volume audit. Слабые RF/IF результаты и отсутствие independent-domain validation сохранены без retuning. Ниже история.
+
 # Stage15 — текущие ограничения Shadow IDS
 
 - Один физический host; independent generalization не проверена. Нет ARM/physical IoT или production promotion.

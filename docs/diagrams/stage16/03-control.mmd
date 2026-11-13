@@ -1,0 +1,23 @@
+sequenceDiagram
+  participant U as Admin + CSRF
+  participant W as Flask API
+  participant P as PostgreSQL
+  participant C as Control Worker
+  participant B as MQTT/TLS Broker
+  participant D as Device Agent + SQLite
+  U->>W: Authorized target profile request
+  W->>P: Durable transition + PREPARE command
+  W-->>U: HTTP 202 (request saved)
+  C->>P: Claim command
+  C->>B: HMAC PREPARE
+  B->>D: PREPARE
+  D->>D: Validate + durable command ledger
+  D->>B: HMAC READY
+  B->>C: READY
+  C->>P: Authenticated READY + ACTIVATE command
+  C->>B: HMAC ACTIVATE
+  B->>D: ACTIVATE
+  D->>D: Atomically persist profile + ACK ledger
+  D->>B: HMAC DEVICE_APPLIED ACK
+  B->>C: ACK
+  C->>P: Store authenticated report; effective waits for AEAD evidence

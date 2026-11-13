@@ -1,0 +1,30 @@
+{
+  "transport": {
+    "real_tls": true,
+    "profile": "Ascon-AEAD128",
+    "captured_device": "alpha",
+    "captured_epoch": 1,
+    "captured_sequence": 40008,
+    "unique_identity_count": 1,
+    "checks": [
+      "actual_packet_replay_no_duplicate_admission_or_effective",
+      "device_cannot_publish_neighbor",
+      "web_cannot_publish_telemetry",
+      "incorrect_password_denied",
+      "untrusted_ca_denied"
+    ],
+    "exit_code": 0
+  },
+  "tag_failure": {
+    "captured_packet_sha256": "f2aff4f653ce708e20c2d25b813f901105ec91b1a7b345f98ad87c4302494adb",
+    "device_id": "alpha",
+    "key_epoch": 1,
+    "sequence_number": 40011,
+    "profile": "Ascon-AEAD128",
+    "rejected_increment": 1,
+    "identity_admissions": 1,
+    "new_encryption_invocations": 0
+  },
+  "scope": "Actual Stage16 localhost/internal lab only; captured ciphertext bit flip, no fabricated accepted record",
+  "exit_code": 0
+}

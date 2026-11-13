@@ -1,0 +1,148 @@
+{
+  "source_sha": "dbbd61cc2fe9617c1cdba23bac7c9e5bf995f118",
+  "independent_worktree": true,
+  "new_virtualenv": true,
+  "private_models_copied": false,
+  "private_old_state_copied": false,
+  "commands": [
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "preflight",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/checkout-runtime",
+        "--project",
+        "lcm-stage16-final-demo-checkout",
+        "--subnet",
+        "10.216.17.0/24",
+        "--web-port",
+        "0",
+        "--mqtt-port",
+        "0"
+      ],
+      "cwd": "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout",
+      "exit_code": 0,
+      "seconds": 0.18799734115600586
+    },
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "prepare",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/checkout-runtime",
+        "--project",
+        "lcm-stage16-final-demo-checkout",
+        "--subnet",
+        "10.216.17.0/24",
+        "--web-port",
+        "0",
+        "--mqtt-port",
+        "0"
+      ],
+      "cwd": "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout",
+      "exit_code": 0,
+      "seconds": 3.2379305362701416
+    },
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "start",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/checkout-runtime",
+        "--build"
+      ],
+      "cwd": "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout",
+      "exit_code": 0,
+      "seconds": 65.56107783317566
+    },
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "status",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/checkout-runtime"
+      ],
+      "cwd": "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout",
+      "exit_code": 0,
+      "seconds": 1.4625322818756104
+    },
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "smoke",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/checkout-runtime",
+        "--output",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/docs/reports/stage16/clean-smoke.json"
+      ],
+      "cwd": "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout",
+      "exit_code": 0,
+      "seconds": 14.711999654769897
+    },
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "stop",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/checkout-runtime"
+      ],
+      "cwd": "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout",
+      "exit_code": 0,
+      "seconds": 3.474102258682251
+    },
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "resume",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/checkout-runtime"
+      ],
+      "cwd": "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout",
+      "exit_code": 0,
+      "seconds": 25.515450477600098
+    },
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "evidence",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/checkout-runtime",
+        "--output",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/docs/reports/stage16/clean-evidence.json"
+      ],
+      "cwd": "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout",
+      "exit_code": 0,
+      "seconds": 1.4709632396697998
+    },
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "stop",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/checkout-runtime"
+      ],
+      "cwd": "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout",
+      "exit_code": 0,
+      "seconds": 3.309190034866333
+    }
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,9 @@
+flowchart TD
+  A[Authenticated ACTIVATE ACK] --> B[Reported/device-applied evidence only]
+  C[New ciphertext using target profile] --> D[Receiver verifies AEAD + AAD + identity]
+  D --> E[PostgreSQL transaction: replay admission + Outbox]
+  E --> F[Matching epoch/profile/key reference + transition window]
+  F --> G[Immutable telemetry receipt + EFFECTIVE_CONFIRMED]
+  G --> H[Commit succeeds]
+  H --> I[Dashboard shows verified effective]
+  B --> J[ACK alone cannot produce confirmed effective]

@@ -1,0 +1,13 @@
+flowchart TD
+  K[Private provisioning: independent keys and accounts] --> V[Role-scoped persistent volumes]
+  V --> P[(PG replay, lease/command authority, Outbox, receipts)]
+  V --> S[(Device SQLite profile, command ledger, nonce reserved high)]
+  P --> M[(Mongo materialized history)]
+  P --> C[Quiescent stop checkpoint]
+  S --> C
+  C --> R[Resume: same material and original volumes]
+  R --> A[Read-only SQLite integrity + rollback checks]
+  A --> B[PG history/counter checks, no repeat setup]
+  B --> L[New authenticated nonce lease]
+  L --> T[Require NEW PG and Mongo telemetry before ready]
+  R --> F[Missing/replaced state: refuse; reviewed recovery/rekey]

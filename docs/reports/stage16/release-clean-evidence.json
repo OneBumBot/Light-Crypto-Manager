@@ -1,0 +1,2345 @@
+{
+  "project": "lcm-stage16-final-demo-release",
+  "source_sha": "0bb46b7afb822941557d000f82566653b1a0918d",
+  "status": {
+    "devices": [
+      {
+        "device_id": "gamma",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "fdee04e7-ede1-40ba-95d5-9ba5a954ec98",
+        "sequence_reserved": 30000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "beta",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "aafa466e-0f78-4b83-bf5f-19cd30465f59",
+        "sequence_reserved": 30000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "alpha",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "37682692-98da-423f-a5b2-425901b9990b",
+        "sequence_reserved": 30000,
+        "command_sequence": 4
+      }
+    ],
+    "outbox": {
+      "delivered": 135
+    },
+    "telemetry": {
+      "beta": {
+        "accepted": 45,
+        "max_sequence": 20010
+      },
+      "alpha": {
+        "accepted": 45,
+        "max_sequence": 20010
+      },
+      "gamma": {
+        "accepted": 45,
+        "max_sequence": 20010
+      }
+    },
+    "transitions": 2,
+    "completed": 2,
+    "unknown": 0,
+    "authenticated_ack": 4,
+    "effective_receipts": 5,
+    "policy_modes": [
+      "DRY_RUN"
+    ],
+    "policy_applied": 0,
+    "counters": {
+      "incoming": 135,
+      "delivered": 135,
+      "accepted": 135
+    },
+    "migration": "0011_policy_throughput",
+    "trusted_detector": false,
+    "active_publishers": "not_measured",
+    "mongo_managed": 135,
+    "identities": [
+      {
+        "event_id": "4c4c8e15-80e5-45b2-ae23-3e0e5219975e",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "b3e65960-c232-491c-a319-98988d6fce40",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 2,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "2c4bdd55-8891-41c0-a87f-1c37a1cd22be",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 3,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "9de07a22-b9b4-49c3-ab1a-93ecd0b5f61c",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 4,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "254f81d7-69cf-468c-bf0a-e138622fdbad",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 5,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "924f34b2-21ea-435e-aebe-ca132cdfa6bc",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 6,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "f09ec63e-f31d-4753-b8e6-244376bbe906",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 7,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "9024ee75-2b75-4d34-af66-37ada8207cca",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 8,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "19486544-fd65-4cd6-beb3-a5a02690c14a",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 9,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c4ff7eec-d8bd-4751-82cf-984bd8b5a92a",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 10,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "9c6c5c54-03e4-4053-8e0b-5dfbba5819ab",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 11,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "7fd44451-ebd6-48f5-beb4-8277e3989f4b",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 12,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "892c8236-5746-4c73-a9e9-8e57309539f2",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 13,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "f25ba588-4117-4a9a-95c7-99cc7e8aea60",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 14,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "3906d8ef-14ac-4900-b931-91a09bb1234b",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 15,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "5e53838b-3758-40f4-aa88-318ac5a79944",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 16,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "a9ecc942-5c18-44b8-9978-1049325353e9",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 17,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "b13378d6-0193-4f64-ae62-7a0bf7f38279",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 18,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "e2eb366e-99ae-4924-9a03-15fb1c5cffb8",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 19,
+        "crypto_profile": "AES-128-GCM",
+        "status": "delivered"
+      },
+      {
+        "event_id": "ab17e0e4-4660-4a82-ae55-98ed111b35ce",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20,
+        "crypto_profile": "AES-128-GCM",
+        "status": "delivered"
+      },
+      {
+        "event_id": "79144bcf-a073-472b-bc81-dbc9e620b181",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 21,
+        "crypto_profile": "AES-128-GCM",
+        "status": "delivered"
+      },
+      {
+        "event_id": "6bab63fc-3a84-4d05-83e4-3f9171af8867",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 22,
+        "crypto_profile": "AES-128-GCM",
+        "status": "delivered"
+      },
+      {
+        "event_id": "37682692-98da-423f-a5b2-425901b9990b",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 23,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "4c295e2f-b6d3-4ed8-8335-1a7487fe48fc",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 24,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "cc93e790-e067-4a9b-915e-c675ed586eef",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 25,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "8c7f6dc6-741f-4a76-aaa3-e0b0fc8c1f53",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 26,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "4be1ed3e-bc42-4759-bfc3-1f7b1d995eae",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 27,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "4db86382-3c45-487e-aca6-a207ed552aec",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 28,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c6e15edd-7923-4573-a51a-7fffedbb622e",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 29,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "a53bc0cb-71f2-4d3f-bf05-37603c317630",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 10001,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "b13f3d76-41ac-47e1-a17f-89e3d080f8b9",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 10002,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "cf239123-a5ec-48de-8bb1-53e707161501",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 10003,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "9585e2dc-3180-4dfb-8e4c-5dc8d7d75381",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 10004,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "6c3367ff-d4c3-42f7-990e-81f72553ad5b",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 10005,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "fc58b370-6c32-4eab-902c-36f8ca2cc72f",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 10006,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "2ed1d4fa-742a-417a-9d34-549e174d6527",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20001,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "8135ac52-3fec-4362-bab2-1b088ea84cd6",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20002,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "7c3d4311-34e8-4769-97ba-6bc30938bcd6",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20003,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "8b6aee8a-2600-4f46-b1b7-ebc9c3290bd6",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20004,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "1913b909-367f-48e6-a965-d422eb692d97",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20005,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "7c8de548-1041-409d-a6b4-57e8184b5d11",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20006,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "583df71f-2588-4f23-9701-e6ca899e4529",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20007,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "bd87a307-ddc7-406b-9f60-2598fef0bdf9",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20008,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "ecd9587f-5dd8-4249-94c5-1a1dde313573",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20009,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "05b436fd-033e-4cd5-b3e5-4f7f19c13320",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "sequence_number": 20010,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "aafa466e-0f78-4b83-bf5f-19cd30465f59",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "d7cf6aa1-e9f9-4fdf-ae99-a410191cdc50",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 2,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "d1b2567a-d180-45fd-b369-de94205c1d16",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 3,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "23d3cb5d-e7c9-4871-8f44-19d1b86ba2d1",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 4,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "4eb4c397-0a59-401e-9b3e-e9e01dbaee3b",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 5,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "da27bb32-4479-4186-8ff1-b314129f3e31",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 6,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "404f3b38-dcfa-4b86-b5f3-09cd77b2a32b",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 7,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "bab5296f-74dd-4f98-9bbd-dbae7a4898bb",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 8,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "a2cbacbb-e944-4472-b22b-2649b6b20835",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 9,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "daea7fba-2abe-42ff-8078-eee9d8476cf1",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 10,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "f412a011-c657-497d-b9c9-7f53925ea4ea",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 11,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "d0c95e28-9343-4205-b58b-9cfa185731be",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 12,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "adfabda3-68f6-4a9e-a1ce-24fedba7ac35",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 13,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c3d6bb5c-c78a-430a-927a-3d34604dd005",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 14,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "75712ad5-dca6-43a9-8842-04db0e259d0d",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 15,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "f0ab79a1-d1de-4ee6-9643-7f10b27ff1ae",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 16,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "3c2ac235-e5dd-4c86-b945-ded0e9248a27",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 17,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "db57628d-7cf1-4390-99b0-71c2a0253ceb",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 18,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "7ca09e73-17b2-493c-879f-1d0e33259fd6",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 19,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "e2d4ba63-0e08-4a5e-8fed-2a8226ce4d5a",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "41941f09-4a0c-441d-9523-38e7d28dc426",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 21,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "bc83a274-e489-4f7b-b895-4f1afc566874",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 22,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "f467bbfd-7f4a-49b1-a39e-0144e3b30642",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 23,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "4d1022c6-0057-4875-a217-6e8646659e12",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 24,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "3fef29c8-a6b6-437c-afbe-8d0d6af9b8ee",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 25,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "98624dac-5f90-4908-9d79-bacc42fdd1f9",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 26,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "a4582a54-ac63-4f56-bbc3-1f0a32d6fc5b",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 27,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "fcc7906c-211b-4bae-88bd-7a1fb05681e9",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 28,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "6d536a8f-6752-469a-b5c7-19e3013f2706",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 29,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "df1f5918-77a1-4f5f-93ab-7574a7341e63",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 10001,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "42562391-8c7f-4140-8c84-12953f1562b6",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 10002,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "d0fddf08-d25d-4032-9c8c-857660ed0a09",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 10003,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "680efa74-417a-46a0-b13a-fbcafa9cfe17",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 10004,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "828442b8-7f23-4cd9-9235-ddc024f2c073",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 10005,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "64b90c78-b528-4607-bdd8-ccec58f41e59",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 10006,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "98d6a972-baa6-4f32-92e0-d1d0b5c162b7",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20001,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "80482da7-107d-4b48-9ab8-682a227a6836",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20002,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "1eb470f8-935a-4924-8cf0-29f58b66399b",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20003,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "685b1dfe-ffae-4d27-9701-f73ce917c7d5",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20004,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "82f457d7-969c-454f-b513-c06c758a8854",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20005,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "1f9c729f-6731-4383-9568-a4b38a492c65",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20006,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "96fec1e4-e07c-4e9f-a73b-d5688344bf51",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20007,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "404abc3a-e1da-4025-99cd-4550ac1d79e3",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20008,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "58b75ccf-0f4d-46b8-8196-c656dc0614af",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20009,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "e2019ec9-f141-4466-890c-a86ab5fe7a26",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "sequence_number": 20010,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "fdee04e7-ede1-40ba-95d5-9ba5a954ec98",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c794bc1a-4b2e-47f5-b77c-f21e36716abf",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 2,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "8930230e-2a52-4d16-b888-e339bfbbba03",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 3,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "2612d241-71bd-4e09-b03a-f6baf42273d1",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 4,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "d5c0f15f-df71-4a98-9817-4ce4c38b4774",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 5,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c7f47566-2537-4daf-9767-1d1a2046e1bc",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 6,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c72db49a-2ace-4497-aea3-0ac87485ae4c",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 7,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "0a3fdf62-e946-4a18-a306-4ca0e4be119f",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 8,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "24b58a20-743f-45e8-a036-73ed686f06ec",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 9,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "a8449073-4962-4fd3-997a-42b9100c2c26",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 10,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "1b7f358b-9519-4da1-994b-2f6742a273a0",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 11,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "079d0fc4-97ef-4cce-a437-ce559c343b36",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 12,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "62d3a4e0-a0b7-4715-af78-b913bae8e08d",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 13,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "ed576b56-485c-4c4c-bbcf-66d9f37193b9",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 14,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "3d6152bf-237b-4cca-aa81-7205d664ab3a",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 15,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "424254c6-de89-4829-bca7-42a77d704ab5",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 16,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "0d92db17-8018-444b-8415-11a65b758382",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 17,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "1c236654-da10-4c4b-9acc-08417f9ff4fb",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 18,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "d2d9150b-6b0f-4ac0-a3db-9938b0bedd93",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 19,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "1ee8f31f-13ae-4add-87f6-ae6ebc0d100c",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "f29a9792-b26f-42ab-9336-528d739f2a73",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 21,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "3be1add9-c536-4f7f-ad05-d7a28d8fd1e6",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 22,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "15f30a0c-6a28-48fd-8035-8602c96bdafd",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 23,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "603a9de6-88d6-4d1d-a2b8-2a5deecce350",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 24,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "3913b5ab-be54-424e-b645-f9b1370485d0",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 25,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "cf2874c3-5d9d-484d-bc02-bc3f612ffeb2",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 26,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "c04ae4d2-c61c-458c-a299-2d59d0405dd6",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 27,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "2ae923e1-3df6-473c-b9b8-fd58639185d6",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 28,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "9d54332b-1fc2-418a-992f-cec9f71e4552",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 29,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "d3055f5e-4ba6-437c-b9ac-8d845f2bbe9d",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 10001,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "fcebf29b-d006-46fb-b991-d4835ca19c23",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 10002,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "0094f837-4d6e-45a9-b2a9-03074412b9f0",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 10003,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "4b973002-f59f-4b7a-95c7-8acaff961f88",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 10004,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "85605f3b-f12a-4834-b66b-7dd6686195c5",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 10005,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "1a168123-72d8-4a4a-bb1d-9aaec0af102f",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 10006,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "50e352a7-e149-4b95-ab99-3a874ab43846",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20001,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "593ba7b3-8104-45c5-89b1-89b522bf99c7",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20002,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "81cad2a8-cdaa-43f2-a0fe-8abb4647810a",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20003,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "abc30f04-4a6c-4dbd-a01e-9dc53588e60b",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20004,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "3d8e3f63-f4ff-46dc-b0c1-a100b6513943",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20005,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "2e74689d-c29d-4182-90bd-c0a48173d7aa",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20006,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "58045214-8161-4f30-ab8c-9b8991bafa46",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20007,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "b612025a-2eee-42b0-99ed-d93f37cbcaa3",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20008,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "0de23e36-d07d-441c-af24-d385939385de",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20009,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      },
+      {
+        "event_id": "47a041fc-2671-414c-abe7-b5ade9a9fbdc",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "sequence_number": 20010,
+        "crypto_profile": "Ascon-AEAD128",
+        "status": "delivered"
+      }
+    ],
+    "duplicate_identities": 0,
+    "replay_state": [
+      {
+        "consumer": "receiver",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "last_sequence": 20010
+      },
+      {
+        "consumer": "receiver",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "last_sequence": 20010
+      },
+      {
+        "consumer": "receiver",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "last_sequence": 20010
+      }
+    ],
+    "transition_evidence": [
+      {
+        "id": "3c2746d8-0c78-4411-9f6d-3fee6d3df895",
+        "device_id": "alpha",
+        "old_profile": "ascon-aead128-v1",
+        "target_profile": "aes-128-gcm-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "e2eb366e-99ae-4924-9a03-15fb1c5cffb8",
+        "activated_at": "2026-11-13T21:46:44.543609+00:00",
+        "confirmed_at": "2026-11-13T21:46:44.745477+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "e2eb366e-99ae-4924-9a03-15fb1c5cffb8",
+          "key_epoch": 1,
+          "sequence_number": 19,
+          "profile": "aes-128-gcm-v1",
+          "accepted_at": "2026-11-13T21:46:44.745477+00:00",
+          "key_reference": "aes-128-gcm-v1:1"
+        }
+      },
+      {
+        "id": "133b84bd-b2e8-4a57-b265-19f275ed4438",
+        "device_id": "alpha",
+        "old_profile": "aes-128-gcm-v1",
+        "target_profile": "ascon-aead128-v1",
+        "phase": "EFFECTIVE_CONFIRMED",
+        "actor": "admin:1",
+        "telemetry_event": "37682692-98da-423f-a5b2-425901b9990b",
+        "activated_at": "2026-11-13T21:46:46.640750+00:00",
+        "confirmed_at": "2026-11-13T21:46:46.791341+00:00",
+        "receipt_matches_committed_admission": true,
+        "receipt": {
+          "event_id": "37682692-98da-423f-a5b2-425901b9990b",
+          "key_epoch": 1,
+          "sequence_number": 23,
+          "profile": "ascon-aead128-v1",
+          "accepted_at": "2026-11-13T21:46:46.791341+00:00",
+          "key_reference": "ascon-aead128-v1:1"
+        }
+      }
+    ],
+    "verified_acks": [
+      {
+        "id": "fb8fabf8-cde1-47f4-9d31-60c49fc73a4b",
+        "command_id": "0baf9232-7269-4270-81d1-45213e14349e",
+        "transition_id": "3c2746d8-0c78-4411-9f6d-3fee6d3df895",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "ebb5ce09-5714-4296-a855-a5c4ce7c3210",
+        "command_id": "824ca146-ff38-4484-80f2-557f2b859350",
+        "transition_id": "3c2746d8-0c78-4411-9f6d-3fee6d3df895",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "d41b42e2-dd9b-4d73-9d48-42e8e6e9af1b",
+        "command_id": "22e8b5c6-64c0-46c8-bfa6-c2ac490e3db9",
+        "transition_id": "133b84bd-b2e8-4a57-b265-19f275ed4438",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "result": "READY",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      },
+      {
+        "id": "359d192d-aabb-4286-a096-9e4f2a3d8123",
+        "command_id": "79bbb5ba-716d-4734-ab0e-b35d6acb6c94",
+        "transition_id": "133b84bd-b2e8-4a57-b265-19f275ed4438",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "result": "DEVICE_APPLIED",
+        "hmac_digest_matches": true,
+        "command_digest_matches": true,
+        "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+      }
+    ],
+    "command_phases": [
+      {
+        "id": "0baf9232-7269-4270-81d1-45213e14349e",
+        "transition_id": "3c2746d8-0c78-4411-9f6d-3fee6d3df895",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "22e8b5c6-64c0-46c8-bfa6-c2ac490e3db9",
+        "transition_id": "133b84bd-b2e8-4a57-b265-19f275ed4438",
+        "device_id": "alpha",
+        "phase": "PREPARE",
+        "status": "acknowledged"
+      },
+      {
+        "id": "824ca146-ff38-4484-80f2-557f2b859350",
+        "transition_id": "3c2746d8-0c78-4411-9f6d-3fee6d3df895",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      },
+      {
+        "id": "79bbb5ba-716d-4734-ab0e-b35d6acb6c94",
+        "transition_id": "133b84bd-b2e8-4a57-b265-19f275ed4438",
+        "device_id": "alpha",
+        "phase": "ACTIVATE",
+        "status": "verified"
+      }
+    ],
+    "nonce_ranges": [
+      {
+        "device_id": "beta",
+        "boot_id": "7fb52f43-66eb-4ab9-bc11-2fafc16c8916",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "a02604e3-e713-4266-80e8-6c6959295391",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "b3836541-e240-4541-8e50-c14a8e51e1b9",
+        "first": 1,
+        "last": 10000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "318d4c59-bc92-4f46-adc5-fd90fff439d5",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "1119f6dc-fef9-4aa1-a180-30ae0e4af1db",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "87f09c20-ece0-451e-9d30-d137f8f75a9b",
+        "first": 10001,
+        "last": 20000
+      },
+      {
+        "device_id": "gamma",
+        "boot_id": "27ab4be2-3429-4df3-a6ba-924afe85fc55",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "beta",
+        "boot_id": "f0165c00-e22f-4904-aec1-a6a7848553c9",
+        "first": 20001,
+        "last": 30000
+      },
+      {
+        "device_id": "alpha",
+        "boot_id": "97a6282e-4491-420c-8cfd-e7916887fe45",
+        "first": 20001,
+        "last": 30000
+      }
+    ],
+    "policy": {
+      "pending": 3,
+      "signals": 132,
+      "decisions": 69,
+      "active_versions": [
+        "default-v1"
+      ],
+      "workers": [
+        {
+          "worker_id": "1dc61f11503b",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-13T21:47:25.425286+00:00"
+        }
+      ]
+    },
+    "mongo_identities": [
+      {
+        "_id": "alpha:1:1",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 1
+      },
+      {
+        "_id": "alpha:1:2",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 2
+      },
+      {
+        "_id": "alpha:1:3",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 3
+      },
+      {
+        "_id": "alpha:1:4",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 4
+      },
+      {
+        "_id": "alpha:1:5",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 5
+      },
+      {
+        "_id": "alpha:1:6",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 6
+      },
+      {
+        "_id": "alpha:1:7",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 7
+      },
+      {
+        "_id": "alpha:1:8",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 8
+      },
+      {
+        "_id": "alpha:1:9",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 9
+      },
+      {
+        "_id": "alpha:1:10",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10
+      },
+      {
+        "_id": "alpha:1:11",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 11
+      },
+      {
+        "_id": "alpha:1:12",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 12
+      },
+      {
+        "_id": "alpha:1:13",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 13
+      },
+      {
+        "_id": "alpha:1:14",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 14
+      },
+      {
+        "_id": "alpha:1:15",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 15
+      },
+      {
+        "_id": "alpha:1:16",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 16
+      },
+      {
+        "_id": "alpha:1:17",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 17
+      },
+      {
+        "_id": "alpha:1:18",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 18
+      },
+      {
+        "_id": "alpha:1:19",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "AES-128-GCM",
+        "sequence_number": 19
+      },
+      {
+        "_id": "alpha:1:20",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "AES-128-GCM",
+        "sequence_number": 20
+      },
+      {
+        "_id": "alpha:1:21",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "AES-128-GCM",
+        "sequence_number": 21
+      },
+      {
+        "_id": "alpha:1:22",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "AES-128-GCM",
+        "sequence_number": 22
+      },
+      {
+        "_id": "alpha:1:23",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 23
+      },
+      {
+        "_id": "alpha:1:24",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 24
+      },
+      {
+        "_id": "alpha:1:25",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 25
+      },
+      {
+        "_id": "alpha:1:26",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 26
+      },
+      {
+        "_id": "alpha:1:27",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 27
+      },
+      {
+        "_id": "alpha:1:28",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 28
+      },
+      {
+        "_id": "alpha:1:29",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 29
+      },
+      {
+        "_id": "alpha:1:10001",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10001
+      },
+      {
+        "_id": "alpha:1:10002",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10002
+      },
+      {
+        "_id": "alpha:1:10003",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10003
+      },
+      {
+        "_id": "alpha:1:10004",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10004
+      },
+      {
+        "_id": "alpha:1:10005",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10005
+      },
+      {
+        "_id": "alpha:1:10006",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10006
+      },
+      {
+        "_id": "alpha:1:20001",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20001
+      },
+      {
+        "_id": "alpha:1:20002",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20002
+      },
+      {
+        "_id": "alpha:1:20003",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20003
+      },
+      {
+        "_id": "alpha:1:20004",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20004
+      },
+      {
+        "_id": "alpha:1:20005",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20005
+      },
+      {
+        "_id": "alpha:1:20006",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20006
+      },
+      {
+        "_id": "alpha:1:20007",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20007
+      },
+      {
+        "_id": "alpha:1:20008",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20008
+      },
+      {
+        "_id": "alpha:1:20009",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20009
+      },
+      {
+        "_id": "alpha:1:20010",
+        "device_id": "alpha",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20010
+      },
+      {
+        "_id": "beta:1:1",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 1
+      },
+      {
+        "_id": "beta:1:2",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 2
+      },
+      {
+        "_id": "beta:1:3",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 3
+      },
+      {
+        "_id": "beta:1:4",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 4
+      },
+      {
+        "_id": "beta:1:5",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 5
+      },
+      {
+        "_id": "beta:1:6",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 6
+      },
+      {
+        "_id": "beta:1:7",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 7
+      },
+      {
+        "_id": "beta:1:8",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 8
+      },
+      {
+        "_id": "beta:1:9",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 9
+      },
+      {
+        "_id": "beta:1:10",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10
+      },
+      {
+        "_id": "beta:1:11",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 11
+      },
+      {
+        "_id": "beta:1:12",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 12
+      },
+      {
+        "_id": "beta:1:13",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 13
+      },
+      {
+        "_id": "beta:1:14",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 14
+      },
+      {
+        "_id": "beta:1:15",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 15
+      },
+      {
+        "_id": "beta:1:16",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 16
+      },
+      {
+        "_id": "beta:1:17",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 17
+      },
+      {
+        "_id": "beta:1:18",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 18
+      },
+      {
+        "_id": "beta:1:19",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 19
+      },
+      {
+        "_id": "beta:1:20",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20
+      },
+      {
+        "_id": "beta:1:21",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 21
+      },
+      {
+        "_id": "beta:1:22",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 22
+      },
+      {
+        "_id": "beta:1:23",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 23
+      },
+      {
+        "_id": "beta:1:24",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 24
+      },
+      {
+        "_id": "beta:1:25",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 25
+      },
+      {
+        "_id": "beta:1:26",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 26
+      },
+      {
+        "_id": "beta:1:27",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 27
+      },
+      {
+        "_id": "beta:1:28",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 28
+      },
+      {
+        "_id": "beta:1:29",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 29
+      },
+      {
+        "_id": "beta:1:10001",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10001
+      },
+      {
+        "_id": "beta:1:10002",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10002
+      },
+      {
+        "_id": "beta:1:10003",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10003
+      },
+      {
+        "_id": "beta:1:10004",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10004
+      },
+      {
+        "_id": "beta:1:10005",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10005
+      },
+      {
+        "_id": "beta:1:10006",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10006
+      },
+      {
+        "_id": "beta:1:20001",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20001
+      },
+      {
+        "_id": "beta:1:20002",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20002
+      },
+      {
+        "_id": "beta:1:20003",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20003
+      },
+      {
+        "_id": "beta:1:20004",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20004
+      },
+      {
+        "_id": "beta:1:20005",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20005
+      },
+      {
+        "_id": "beta:1:20006",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20006
+      },
+      {
+        "_id": "beta:1:20007",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20007
+      },
+      {
+        "_id": "beta:1:20008",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20008
+      },
+      {
+        "_id": "beta:1:20009",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20009
+      },
+      {
+        "_id": "beta:1:20010",
+        "device_id": "beta",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20010
+      },
+      {
+        "_id": "gamma:1:1",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 1
+      },
+      {
+        "_id": "gamma:1:2",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 2
+      },
+      {
+        "_id": "gamma:1:3",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 3
+      },
+      {
+        "_id": "gamma:1:4",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 4
+      },
+      {
+        "_id": "gamma:1:5",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 5
+      },
+      {
+        "_id": "gamma:1:6",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 6
+      },
+      {
+        "_id": "gamma:1:7",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 7
+      },
+      {
+        "_id": "gamma:1:8",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 8
+      },
+      {
+        "_id": "gamma:1:9",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 9
+      },
+      {
+        "_id": "gamma:1:10",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10
+      },
+      {
+        "_id": "gamma:1:11",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 11
+      },
+      {
+        "_id": "gamma:1:12",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 12
+      },
+      {
+        "_id": "gamma:1:13",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 13
+      },
+      {
+        "_id": "gamma:1:14",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 14
+      },
+      {
+        "_id": "gamma:1:15",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 15
+      },
+      {
+        "_id": "gamma:1:16",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 16
+      },
+      {
+        "_id": "gamma:1:17",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 17
+      },
+      {
+        "_id": "gamma:1:18",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 18
+      },
+      {
+        "_id": "gamma:1:19",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 19
+      },
+      {
+        "_id": "gamma:1:20",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20
+      },
+      {
+        "_id": "gamma:1:21",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 21
+      },
+      {
+        "_id": "gamma:1:22",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 22
+      },
+      {
+        "_id": "gamma:1:23",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 23
+      },
+      {
+        "_id": "gamma:1:24",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 24
+      },
+      {
+        "_id": "gamma:1:25",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 25
+      },
+      {
+        "_id": "gamma:1:26",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 26
+      },
+      {
+        "_id": "gamma:1:27",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 27
+      },
+      {
+        "_id": "gamma:1:28",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 28
+      },
+      {
+        "_id": "gamma:1:29",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 29
+      },
+      {
+        "_id": "gamma:1:10001",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10001
+      },
+      {
+        "_id": "gamma:1:10002",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10002
+      },
+      {
+        "_id": "gamma:1:10003",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10003
+      },
+      {
+        "_id": "gamma:1:10004",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10004
+      },
+      {
+        "_id": "gamma:1:10005",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10005
+      },
+      {
+        "_id": "gamma:1:10006",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 10006
+      },
+      {
+        "_id": "gamma:1:20001",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20001
+      },
+      {
+        "_id": "gamma:1:20002",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20002
+      },
+      {
+        "_id": "gamma:1:20003",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20003
+      },
+      {
+        "_id": "gamma:1:20004",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20004
+      },
+      {
+        "_id": "gamma:1:20005",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20005
+      },
+      {
+        "_id": "gamma:1:20006",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20006
+      },
+      {
+        "_id": "gamma:1:20007",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20007
+      },
+      {
+        "_id": "gamma:1:20008",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20008
+      },
+      {
+        "_id": "gamma:1:20009",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20009
+      },
+      {
+        "_id": "gamma:1:20010",
+        "device_id": "gamma",
+        "key_epoch": 1,
+        "crypto_profile": "Ascon-AEAD128",
+        "sequence_number": 20010
+      }
+    ],
+    "pg_identities_missing_in_mongo": [],
+    "mode": "MANUAL_AUTHORIZED_CONTROL",
+    "shadow": "OPTIONAL_RESEARCH_DEMO_UNAVAILABLE",
+    "exit_code": 0
+  },
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "compose.stage9.yaml",
+        "-f",
+        "compose.stage16.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime/network.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.stage16_probe"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "exit_code": 0
+}

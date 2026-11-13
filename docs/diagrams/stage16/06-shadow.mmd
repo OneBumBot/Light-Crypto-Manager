@@ -1,0 +1,9 @@
+flowchart LR
+  T[Opaque MQTT/TLS transport] --> O[Optional keyless passive observer: NET_RAW only]
+  O --> V[Five TCP features + generation/context checks]
+  V --> G[Current-source feature parity gate]
+  G --> I[Frozen RF/IF, network none, no credentials]
+  I --> J[(Bounded separate Shadow journal)]
+  J --> U[Read-only RESEARCH UI]
+  I --> X[SHADOW_ONLY / trusted_detector=false / device unbound]
+  U --> N[No Policy trusted feed or crypto control]

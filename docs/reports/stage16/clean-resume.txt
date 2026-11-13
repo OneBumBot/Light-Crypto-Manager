@@ -1,0 +1,31 @@
+{
+  "url": "http://127.0.0.1:32785",
+  "devices": [
+    {
+      "device_id": "beta",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "21df7d73-ece9-4231-a92e-93d9a011d1cd",
+      "sequence_reserved": 30000,
+      "command_sequence": 0
+    },
+    {
+      "device_id": "alpha",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "473e5903-680b-45a2-95cd-3a2d7dae1ad7",
+      "sequence_reserved": 30000,
+      "command_sequence": 4
+    },
+    {
+      "device_id": "gamma",
+      "effective_profile": "ascon-aead128-v1",
+      "effective_event": "13b55053-bb2e-49d6-bdf0-1cb88f05056e",
+      "sequence_reserved": 30000,
+      "command_sequence": 0
+    }
+  ],
+  "policy": "DRY_RUN",
+  "trusted_detector": false,
+  "control": "MANUAL_AUTHORIZED_CONTROL",
+  "shadow": "OPTIONAL_RESEARCH_DEMO_UNAVAILABLE",
+  "secrets_printed": false
+}

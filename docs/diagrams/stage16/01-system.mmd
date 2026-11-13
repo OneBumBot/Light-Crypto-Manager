@@ -1,0 +1,16 @@
+flowchart LR
+  A[Software Device Agents Alpha/Beta/Gamma] -->|AEAD telemetry over MQTT/TLS| B[Broker TLS + ACL]
+  B --> R[Receiver: AEAD + AAD validation]
+  R --> P[(PostgreSQL: replay + admission + Outbox)]
+  P --> O[Outbox Relay]
+  O --> M[(MongoDB history)]
+  P --> W[Flask Dashboard RBAC/CSRF]
+  M --> W
+  W -->|Explicit admin request only| C[Manual Control Worker]
+  C -->|HMAC commands over MQTT/TLS| B
+  B -->|PREPARE/ACTIVATE| A
+  P --> E[Policy FSM DRY_RUN]
+  E -->|Read-only recommendations| W
+  B -. opaque transport, optional separate lab .-> S[Shadow Observer / RF/IF SHADOW_ONLY]
+  S --> J[(Separate research journal)]
+  J --> W

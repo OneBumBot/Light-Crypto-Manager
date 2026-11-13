@@ -1,3 +1,9 @@
+# Stage16 — финальный исследовательский прототип
+
+Единый runner preflight/prepare/start/status/smoke/stop/resume/evidence, настоящий трёхагентный TLS/AEAD/manual-control demo, проверка clean checkout и безопасного resume. Последняя регрессия1057 passed/0 skipped/exit0, восемь новых guard tests. Desktop/mobile screenshots и bounded fault evidence сохранены. Критические demo fixes ограничены explicit subnet, mobile history overflow и учётом auxiliary volumes; алгоритмы/Policy/ML не расширялись.
+
+Окончательный verdict и source SHA — [Stage16 results](STAGE16_RESULTS.md). Policy DRY_RUN, trusted_detector=false, manual-only control, Kuz lab-only. Shadow optional unavailable в основном demo; никаких fake scores. Этап17 не начинался. Ниже сохранена история прежних этапов.
+
 # Stage15 — инженерный Shadow pipeline проверен
 
 Реализованы bounded passive capture, TCP generations, пять features, 975-packet parity, frozen RF/IF без refit, atomic/idempotent journal и read-only UI. 48 коротких runs на 3/10/25/50 software identities, 24 483 PG/Mongo admissions; 1049 passed, 0 skipped, exit 0; 31 поведенческая мутация. Настоящие crash/outage/OOM/browser checks сохранены.

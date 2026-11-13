@@ -1,0 +1,20 @@
+sequenceDiagram
+  participant D as Device Agent
+  participant B as Broker TLS/ACL
+  participant R as AEAD Receiver
+  participant P as PostgreSQL
+  participant O as Outbox Relay
+  participant M as MongoDB
+  participant W as Dashboard
+  D->>B: Encrypted telemetry v2 + authenticated AAD
+  B->>R: MQTT QoS1 ciphertext
+  R->>R: Verify profile/key/nonce/tag/AAD
+  R->>P: Transaction: replay admission + security observation + Outbox + eligible receipt
+  P-->>R: Commit
+  R-->>B: Application delivery acknowledgement
+  O->>P: Claim committed Outbox event
+  O->>M: Idempotent insert by device:epoch:sequence
+  M-->>O: Durable write acknowledgement
+  O->>P: Mark delivered
+  W->>P: Read committed identity/status
+  W->>M: Read history

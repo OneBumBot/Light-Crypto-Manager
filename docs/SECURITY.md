@@ -1,3 +1,9 @@
+# Stage16 — финальные подтверждения
+
+Crypto/telemetry/nonce/replay/HMAC/Policy core byte-equal Stage15 baseline; no Magma activation или Kuz gate bypass. Только Admin+CSRF инициирует control; effective требует committed target AEAD telemetry. Original signed ACK independently verified from read-only Device SQLite, PG stores canonical BODY digest. Runtime/image/credential scopes сохраняются; no automatic ML/Shadow/Policy control.
+
+Новый final demo использует fresh per-device/per-algorithm keys, isolated PG/Mongo/SQLite, private0700/0600 sources. Resume проверяет original named authority volumes, actual image-declared auxiliary log/config bindings и SQLite/counter checkpoints, не выполняет repeat provisioning. Потеря authority — fail closed. Все historical state оставлено нетронутым; old volume metadata не выдаётся за byte audit. [Security/recovery](STAGE16_SECURITY_AND_RECOVERY.md), [ограничения](STAGE16_KNOWN_LIMITATIONS.md). Ниже сохранена история.
+
 # Stage15 — Shadow trust boundary
 
 Shadow Observer видит только transport headers и opaque TLS bytes. Нет key registry, HMAC/MQTT credentials, Control/Policy authority, Docker socket или privileged container. Capture имеет только NET_RAW в новом lab namespace; model worker network=none/cap_drop=ALL. Отдельный bounded SQLite journal, не существующий telemetry ML feed. Все records SHADOW_ONLY/trusted_detector=false/device_binding=unbound; score не является probability/security verdict.

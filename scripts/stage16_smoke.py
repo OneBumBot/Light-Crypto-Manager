@@ -27,6 +27,8 @@ def wait(call,seconds=45):
 
 
 def switch(d, session, url, headers, target):
+    # Honour the existing 2s administrative limit; do not rely on probe startup being slow.
+    time.sleep(2.05)
     started=time.monotonic()
     response=session.post(url+'/api/control/alpha/switch',json=dict(profile=target,ttl=120),headers=headers,timeout=8)
     assert response.status_code==202,response.status_code
