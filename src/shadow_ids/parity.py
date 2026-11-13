@@ -1,5 +1,5 @@
 """Compare live journal to independent historical PCAP parser, no model inference."""
-import csv,json
+import csv,json,hashlib
 from pathlib import Path
 from src.research_stand.pcap_audit import packets
 from .journal import Journal
@@ -25,4 +25,4 @@ def compare(root):
     tshark_mismatches+=int(abs(f-v)>(TOLERANCE if key=='tcp.time_delta' else 0))
  else:raise ValueError('Independent tshark source required')
  state=json.loads((root/'capture-status.json').read_text());db.close()
- return dict(status='PASS' if matched>=100 and not integers and not deltas and not tshark_mismatches and state['complete'] else 'BLOCKED',feature_version=VERSION,supported_packets=matched,physical_packets=len(reference),unavailable_packets=unavailable,integral_mismatches=integers,delta_mismatches=deltas,tshark_mismatches=tshark_mismatches,tolerance_seconds=TOLERANCE,pcap_sha256=state['pcap_sha256'],capture_complete=state['complete'],reference='Unchanged Stage14 pcap_audit.packets; bidirectional tuple delta; fresh generation scope',scope='Engineering feature parity, not model quality')
+ return dict(status='PASS' if matched>=100 and not integers and not deltas and not tshark_mismatches and state['complete'] else 'BLOCKED',feature_version=VERSION,parser_sha256=hashlib.sha256(Path(__file__).with_name('features.py').read_bytes()).hexdigest(),supported_packets=matched,physical_packets=len(reference),unavailable_packets=unavailable,integral_mismatches=integers,delta_mismatches=deltas,tshark_mismatches=tshark_mismatches,tolerance_seconds=TOLERANCE,pcap_sha256=state['pcap_sha256'],capture_complete=state['complete'],reference='Unchanged Stage14 pcap_audit.packets; bidirectional tuple delta; fresh generation scope',scope='Engineering feature parity, not model quality')

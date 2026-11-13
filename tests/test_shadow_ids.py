@@ -87,6 +87,7 @@ def test_no_policy_or_control_side_effects(tmp_path,monkeypatch):
  import src.policy.state as state
  def forbidden(*args,**kwargs):raise AssertionError('Shadow emitted control or Policy signal')
  monkeypatch.setattr(control,'request_switch',forbidden)
+ monkeypatch.setattr(state,'process',forbidden)
  # Offline source error remains a local journal record, never a trusted feed.
  db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_UNAVAILABLE','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1'};db.append(e);process(db,{},db.pending(),'Unavailable');assert db.db.execute('select count(*) from results').fetchone()[0]==4;db.close()
 def test_worker_cannot_start_before_parity(tmp_path):
@@ -95,3 +96,41 @@ def test_worker_cannot_start_before_parity(tmp_path):
  with pytest.raises(ValueError,match='parity gate'):run(tmp_path,tmp_path,['rf_binary'],3,p)
 def test_complete_retry_does_not_duplicate_results_or_session(tmp_path):
  db=Journal(tmp_path/'shadow.db');db.append(event());r=dict(model_id='rf',model_role='rf_session',session_id='s',score=.1,comparison=False,capture_timestamp=1,inference_finish=2,mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound');db.complete({'id':'e1'},[r]);db.complete({'id':'e1'},[r]);assert db.db.execute('select count(*) from results').fetchone()[0]==1;assert db.session_values()[0]['score']==.1;db.close()
+def test_transport_sequence_gap_invalidates_context():
+ f=Flows();f.accept(p(sequence=100));f.accept(p(time=2,sequence=101,flags=16,payload=b'abc'));v=f.accept(p(time=3,sequence=110,flags=16,payload=b'x'));assert v['status']=='INSUFFICIENT_CONTEXT' and v['diagnostic']=='tcp_sequence_gap';assert f.accept(p(time=4,sequence=111,flags=16))['status']=='INSUFFICIENT_CONTEXT'
+def test_transport_retransmission_not_a_gap():
+ f=Flows();f.accept(p(sequence=100));f.accept(p(time=2,sequence=101,flags=16,payload=b'abc'));v=f.accept(p(time=3,sequence=101,flags=16,payload=b'abc'));assert v['status']=='FEATURE_READY'
+def test_sequence_wrap_supported_without_gap():
+ f=Flows();f.accept(p(sequence=0xfffffffe));f.accept(p(time=2,sequence=0xffffffff,flags=16,payload=b'xx'));assert f.accept(p(time=3,sequence=1,flags=16))['status']=='FEATURE_READY'
+
+def test_frozen_model_hash_version_threshold_before_deserialization(tmp_path,monkeypatch):
+ import hashlib
+ from src.shadow_ids import models
+ from src.classifier.ml import artifacts
+ directory=tmp_path/'model';directory.mkdir();(directory/'manifest.json').write_text('known source manifest')
+ pin=dict(model_id='frozen',model_version='14.0.0',artifact_sha256='original',manifest_sha256=hashlib.sha256((directory/'manifest.json').read_bytes()).hexdigest(),threshold=.9)
+ good=dict(task='network_ids',algorithm='rf_binary',artifact_sha256='original',threshold=.9,feature_version='tcp-packet-passive-v1',mode='RESEARCH',trusted_detector=False,preprocessing={'feature_order':list(FEATURES)})
+ monkeypatch.setattr(models,'frozen',lambda:{'rf_binary':pin});called=[];monkeypatch.setattr(artifacts,'load',lambda *a:(called.append(True) or ({},None)))
+ for change in [dict(artifact_sha256='changed'),dict(feature_version='network-core-v1'),dict(threshold=.8),dict(trusted_detector=True),dict(preprocessing={'feature_order':list(reversed(FEATURES))})]:
+  monkeypatch.setattr(artifacts,'verify',lambda *a,c=change:({**good,**c},directory))
+  with pytest.raises(ValueError):models.load_models(tmp_path,['rf_binary'])
+ assert not called,'Unauthorized artifact reached pickle loader'
+def test_nonfinite_score_is_error_without_plain_normal(tmp_path,monkeypatch):
+ import src.classifier.research.experiment as ex
+ from src.shadow_ids.models import scores
+ monkeypatch.setattr(ex,'risk',lambda *a:__import__('numpy').array([float('nan')]))
+ pin=dict();valid=dict(status='FEATURE_READY',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])))
+ with pytest.raises(ValueError,match='Invalid inference'):scores({'rf_binary':(pin,None)},[valid])
+def test_no_fit_or_old_holdout_during_shadow_model_scoring(monkeypatch):
+ from src.shadow_ids.models import scores
+ import src.classifier.research.experiment as ex
+ def forbidden(*a,**k):raise AssertionError('Old holdout/fit was opened')
+ monkeypatch.setattr(ex,'train',forbidden);monkeypatch.setattr(ex,'final_test',forbidden);monkeypatch.setattr(ex,'plan',forbidden)
+ monkeypatch.setattr(ex,'risk',lambda *a:__import__('numpy').array([.5]))
+ e=dict(status='FEATURE_READY',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])));assert scores({'rf_binary':({},None)},[e])['rf_binary']==[.5]
+def test_malformed_queued_event_is_diagnostic_not_poison_queue(tmp_path):
+ from src.shadow_ids.worker import process
+ db=Journal(tmp_path/'shadow.db');db.append(event());db.db.execute("UPDATE events SET packet='[]'");db.db.commit();process(db,{},db.pending());assert not db.pending();rows=[json.loads(r[0]) for r in db.db.execute('select value from results')];assert rows and all(r['score'] is None and r['inference_status']=='MALFORMED_EVENT' for r in rows);db.close()
+def test_capture_loss_invalidates_already_queued_context(tmp_path):
+ from src.shadow_ids.worker import process
+ db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_READY','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1','features':dict(zip(FEATURES,[54,0,2,74,0]))};db.append(e);db.status('capture',dict(status='CAPTURE_INCOMPLETE',queue_overflow=1));process(db,{},db.pending());rows=[json.loads(r[0]) for r in db.db.execute('select value from results')];assert all(r['inference_status']=='CAPTURE_DROPPED' and r['score'] is None for r in rows);db.close()

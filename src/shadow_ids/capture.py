@@ -22,7 +22,9 @@ def run(root,duration,broker,capacity=512,max_packets=20000,extract_only=False):
     try:incoming.put_nowait((raw,original,t))
     except queue.Full:reader_loss[0]+=1
   except Exception as exc:errors.append(type(exc).__name__)
- def shutdown(*_):stop.set()
+ def shutdown(*_):
+  nonlocal reason
+  reason='signal_stop';stop.set()
  for sig in [signal.SIGTERM,signal.SIGINT]:signal.signal(sig,shutdown)
  thread=threading.Thread(target=reader,daemon=True);thread.start();deadline=time.monotonic()+duration;last_loss=0;sent_signal=False
  try:
@@ -56,6 +58,7 @@ def run(root,duration,broker,capacity=512,max_packets=20000,extract_only=False):
  output=process.stderr.read().decode(errors='replace')
  for label,key in [('packets captured','captured'),('packets received by filter','received_by_filter'),('packets dropped by kernel','dropped_by_kernel')]:
   found=re.search(r'(\d+) '+label,output);stats[key]=int(found.group(1)) if found else None
+ if ordinal>=max_packets:reason='packet_limit'
  complete=process.returncode==0 and reason=='duration' and not errors and not reader_loss[0] and not overflows and stats['dropped_by_kernel']==0
  state=dict(status='FINISHED' if complete else 'CAPTURE_INCOMPLETE',complete=complete,heartbeat=time.time(),capture_id=run_id,started_at=started,finished_at=time.time(),last_packet=last_packet,packets=ordinal,reader_drops=reader_loss[0],queue_overflow=overflows,unsupported=unsupported,stats=stats,reason=reason,errors=errors,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,user_cpu=resource.getrusage(resource.RUSAGE_SELF).ru_utime,capture_point='lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque',interface='eth0',linktype=1,ip_versions=['IPv4'],namespace=os.readlink('/proc/self/ns/net'),snaplen=262144,offloads='not_changed; environment-specific, parity checked on actual frames',timestamp_source='kernel libpcap CLOCK_REALTIME shared-host',pcap_sha256=hashlib.sha256((root/'traffic.pcap').read_bytes()).hexdigest())
  db.status('capture',state);(root/'capture-status.json').write_text(json.dumps(state,indent=2));db.close();return state

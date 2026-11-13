@@ -26,13 +26,22 @@ class Flows:
   t=p['time'];key=p['key'];syn=bool(p['flags']&2 and not p['flags']&16);old=self.rows.get(key)
   new=old is None or t-old['last']>self.expiry or (syn and (old['closed'] or old['initial']!=p['sequence']))
   if new:
-   self.generation+=1;r=dict(last=t,initial=p['sequence'] if syn else None,complete=syn,closed=False,generation=self.generation);self.rows[key]=r;delta=0.0
+   self.generation+=1;r=dict(last=t,initial=p['sequence'] if syn else None,complete=syn,diagnostic=None if syn else 'missing_syn',closed=False,generation=self.generation,expected={});self.rows[key]=r;delta=0.0
    if len(self.rows)>self.limit:self.rows.popitem(last=False)
   else:
    r=old;delta=t-r['last']
-   if delta<0:r['complete']=False
+   if delta<0:r['complete']=False;r['diagnostic']='timestamp_regression'
    r['last']=t;self.rows.move_to_end(key)
+  sender=p['wire'][0];expected=r['expected'].get(sender);consumed=p['payload_length']+int(bool(p['flags']&2))+int(bool(p['flags']&1));end=(p['sequence']+consumed)&0xffffffff
+  if expected is None:
+   if not p['flags']&2:r['complete']=False
+   r['expected'][sender]=end
+  else:
+   distance=(p['sequence']-expected)&0xffffffff
+   if 0<distance<2**31:r['complete']=False;r['diagnostic']='tcp_sequence_gap'
+   if distance<2**31:r['expected'][sender]=end
+   elif (end-expected)&0xffffffff<2**31:r['expected'][sender]=end
   if p['flags']&5:r['closed']=True
   status='FEATURE_READY' if r['complete'] else 'INSUFFICIENT_CONTEXT'
   if delta<0 or delta>86400:status='FEATURE_UNAVAILABLE'
-  return dict(status=status,session=str(r['generation']),direction=0 if p['wire'][0]==key[0] else 1,closed=r['closed'],features=dict(zip(FEATURES,(p['length'],p['payload_length'],p['flags'],p['window'],delta))))
+  return dict(status=status,diagnostic=r['diagnostic'],session=str(r['generation']),direction=0 if p['wire'][0]==key[0] else 1,closed=r['closed'],features=dict(zip(FEATURES,(p['length'],p['payload_length'],p['flags'],p['window'],delta))))

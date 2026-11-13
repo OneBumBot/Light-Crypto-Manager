@@ -1,0 +1,73 @@
+{
+  "source_sha": "6c634805195aa235f1041498ed8c06d679c9510a",
+  "models": [
+    {
+      "role": "rf_binary",
+      "model_id": "research75-rf_tuned_1-binary",
+      "model_version": "14.0.0",
+      "artifact_sha256": "52e6a5dbf02fd5d6e3a3364eb7077f41e099eebd4b24d64b76826a94da1c0f42",
+      "manifest_sha256": "bbd0ec7166e17dc070a1751d64d4f13b47f298fe1199f209e426571d1c46bcfb",
+      "threshold": 0.9335469686522243,
+      "feature_version": "tcp-packet-passive-v1",
+      "session_method": "mean",
+      "session_threshold": 0.24018363741290058,
+      "permissions_private": true,
+      "original_copy_identical": true
+    },
+    {
+      "role": "if",
+      "model_id": "research75-if_tuned_0-binary",
+      "model_version": "14.0.0",
+      "artifact_sha256": "3879a7b7c110dadf5822148e3cb19409bf675cf802b1d0e0227109e792f83027",
+      "manifest_sha256": "82b39fa15dbc0982b9134ddff019e7a829981f2fc3d050eecae2fa64b4feba96",
+      "threshold": 0.5971711560322518,
+      "feature_version": "tcp-packet-passive-v1",
+      "session_method": "mean",
+      "session_threshold": 0.6134362036202531,
+      "permissions_private": true,
+      "original_copy_identical": true
+    },
+    {
+      "role": "rf_session",
+      "model_id": "research75-rf_subsample-binary",
+      "model_version": "14.0.0",
+      "artifact_sha256": "3216f93551a8d5436f3d717f91319cb6f0b759f831f70865ee0bce30fbbca563",
+      "manifest_sha256": "da320ff80554802397efc754051116e80f3298113330d115785362adf9bd1533",
+      "threshold": 0.9,
+      "feature_version": "tcp-packet-passive-v1",
+      "session_method": "mean",
+      "session_threshold": 0.19333333333333336,
+      "permissions_private": true,
+      "original_copy_identical": true
+    },
+    {
+      "role": "if_session",
+      "model_id": "research75-if_tuned_1-binary",
+      "model_version": "14.0.0",
+      "artifact_sha256": "4b5a7bbb97e30a5b7154e68e87481b9787cd38f39ea82b206b8768c87f51ae21",
+      "manifest_sha256": "994bcc98cd8a6dab81cf291b5c9a59c222eedf88f7f71751e508633a9e56c8a8",
+      "threshold": 0.652579820387762,
+      "feature_version": "tcp-packet-passive-v1",
+      "session_method": "fraction",
+      "session_threshold": 0.10344827586206896,
+      "permissions_private": true,
+      "original_copy_identical": true
+    }
+  ],
+  "versions": {
+    "python": "3.12.16",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "original_holdout_marker_sha256": "4c3b89f1ce8d1dc8698300ddc5fef3dee10697d04d716d7f4efe483b7c0af24f",
+  "original_test_sha256": "f5c3ecd09eba203e835698c0aeb44e8a8f42c0f55776cffeb1f851e55d0d1738",
+  "old_holdout_predictions_performed": 0,
+  "fit_calls": 0,
+  "threshold_changes": 0,
+  "trusted_detector": false,
+  "mode": "SHADOW_ONLY",
+  "exit_code": 0
+}
