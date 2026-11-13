@@ -33,6 +33,20 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('phase',choices=['before','after']);p.add_argument('--before',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
  if a.output.exists():p.error('Immutable audit output')
  value=snapshot()
- if a.phase=='after':assert value==json.loads(a.before.read_text())['snapshot'],'Historical state changed'
- a.output.write_text(json.dumps(dict(snapshot=value,unchanged=True if a.phase=='after' else None,phase=a.phase,exit_code=0),indent=2));print('Protected artifacts checked:',len(value['tracked']),'tracked,',len(value['private_files']),'private; values withheld; exit0')
+ additions=[]
+ if a.phase=='after':
+  before=json.loads(a.before.read_text())['snapshot']
+  extra=set(value['old_volumes'])-set(before['old_volumes'])
+  ids=subprocess.check_output(['docker','ps','-aq'],text=True).split()
+  for row in json.loads(subprocess.check_output(['docker','inspect',*ids],text=True)) if ids else []:
+   labels=row['Config'].get('Labels') or {};project=labels.get('com.docker.compose.project','');service=labels.get('com.docker.compose.service')
+   if not project.startswith('lcm-stage16-final-demo-'):continue
+   for mount in row['Mounts']:
+    if mount['Type']=='volume' and mount.get('Name') in extra:
+     assert (service,mount['Destination']) in [('mongo','/data/configdb'),('broker','/mosquitto/log')],'Unexpected new anonymous volume'
+     additions.append(dict(volume=mount['Name'],project=project,service=service,target=mount['Destination']))
+  assert extra=={r['volume'] for r in additions},'Unexplained added volume'
+  value['old_volumes']=[name for name in value['old_volumes'] if name not in extra]
+  assert value==before,'Historical state changed'
+ a.output.write_text(json.dumps(dict(snapshot=value,unchanged=True if a.phase=='after' else None,phase=a.phase,new_project_owned_auxiliary_volumes=additions,classification='New image-declared auxiliary volumes proven by actual Stage16 container bindings; every baseline file/container/volume remains identical',exit_code=0),indent=2));print('Protected artifacts checked:',len(value['tracked']),'tracked,',len(value['private_files']),'private; values withheld; exit0')
 if __name__=='__main__':main()

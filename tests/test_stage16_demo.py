@@ -46,3 +46,16 @@ def test_modified_private_material_refused(saved,monkeypatch):
 def test_stage16_manifest_does_not_authorize_other_project(saved):
     demo.write(saved.root/'stage16.json',{'project':'main'})
     with pytest.raises(ValueError,match='Dedicated demo project'):LegacyDemo(saved.root)
+
+
+def test_auxiliary_volume_is_checked_by_actual_service_binding(saved,monkeypatch):
+    identity='a'*64
+    demo.write(saved.root/'used-volumes.json',{identity:{'created_at':'original','auxiliary':True,'service':'mongo','target':'/data/configdb'}})
+    monkeypatch.setattr(saved,'auxiliary_bindings',lambda:{})
+    with pytest.raises(ValueError,match='binding lost'):saved.check_volumes()
+
+
+def test_crypto_state_cannot_be_disguised_as_auxiliary(saved):
+    identity='a'*64
+    demo.write(saved.root/'used-volumes.json',{identity:{'created_at':'original','auxiliary':True,'service':'device-alpha','target':'/device'}})
+    with pytest.raises(ValueError,match='Invalid auxiliary'):saved.check_volumes()

@@ -19,6 +19,7 @@ from scripts.stage9_common import Demo as Stage9Demo
 PROJECT = r'lcm-stage16-final-demo-[a-z0-9-]{1,18}'
 SERVICES = ['postgres', 'mongo', 'broker', 'receiver', 'outbox-relay', 'web', 'policy-worker']
 AGENTS = ['device-alpha', 'device-beta', 'device-gamma']
+AUXILIARY = {('mongo', '/data/configdb'), ('broker', '/mosquitto/log')}
 
 
 def write(path, value):
@@ -144,16 +145,50 @@ class Demo(Stage9Demo):
         marker = self.root/'used-volumes.json'
         if marker.exists():
             for name, expected in json.loads(marker.read_text()).items():
-                if not name.startswith(self.project+'_'):
+                auxiliary = expected.get('auxiliary', False)
+                if auxiliary:
+                    if (expected.get('service'), expected.get('target')) not in AUXILIARY or not re.fullmatch('[0-9a-f]{64}', name):
+                        raise ValueError('Invalid auxiliary volume identity')
+                    if self.auxiliary_bindings().get(name) != (expected['service'], expected['target']):
+                        raise ValueError('Auxiliary volume binding lost/replaced')
+                elif not name.startswith(self.project+'_'):
                     raise ValueError('Volume identity mismatch')
                 try:
                     actual = json.loads(docker('volume', 'inspect', name))[0]
                 except subprocess.CalledProcessError as exc:
                     raise ValueError('Used volume missing; refusing new state under old keys') from exc
-                if actual.get('CreatedAt') != expected['created_at'] or (actual.get('Labels') or {}).get('com.docker.compose.project') != self.project:
+                if actual.get('CreatedAt') != expected['created_at'] or (not auxiliary and (actual.get('Labels') or {}).get('com.docker.compose.project') != self.project):
                     raise ValueError('Used volume replaced/misbound; reviewed recovery/rekey required')
         elif (self.root/'agents-start-intent.json').exists():
             raise ValueError('Used volume marker missing; reviewed recovery required')
+
+    def auxiliary_bindings(self):
+        ids = docker('ps', '-aq', '--filter', 'label=com.docker.compose.project='+self.project).split()
+        result = {}
+        for row in json.loads(docker('inspect', *ids)) if ids else []:
+            service = row['Config']['Labels'].get('com.docker.compose.service')
+            for mount in row['Mounts']:
+                if mount['Type'] == 'volume' and (service, mount['Destination']) in AUXILIARY:
+                    result[mount['Name']] = (service, mount['Destination'])
+        return result
+
+    def record_auxiliary(self):
+        # Existing image-declared volumes are adopted by verified container binding,
+        # never recreated/copied/reset. Only non-authoritative config/log paths.
+        marker = self.root/'used-volumes.json'
+        records = json.loads(marker.read_text())
+        changed = False
+        for name, (service, target) in self.auxiliary_bindings().items():
+            if name in records:
+                continue
+            if not re.fullmatch('[0-9a-f]{64}', name):
+                raise ValueError('Unexpected auxiliary volume name')
+            row = json.loads(docker('volume', 'inspect', name))[0]
+            records[name] = dict(created_at=row.get('CreatedAt'), auxiliary=True, service=service, target=target)
+            changed = True
+        if changed:
+            write(marker, records)
+        self.check_volumes()
 
     def initialize_volumes(self):
         self.check_volumes()
@@ -207,6 +242,8 @@ assert not s['authority_failures'];print(json.dumps(s));c.close()"""
         if resume and not (self.root/'used-volumes.json').exists():
             raise ValueError('Resume requires used state; run start once for a new project')
         self.check_volumes()
+        if (self.root/'used-volumes.json').exists():
+            self.record_auxiliary()
         if (self.root/'agents-start-intent.json').exists():
             sql = self.sqlite_snapshot()
             checkpoint = self.root/'stop-checkpoint.json'
@@ -218,6 +255,7 @@ assert not s['authority_failures'];print(json.dumps(s));c.close()"""
             self.run('build', 'receiver', 'tests', timeout=1200)
         self.initialize_volumes()
         self.run('up', '-d', '--wait', '--wait-timeout', '120', *SERVICES, timeout=300)
+        self.record_auxiliary()
         self.run('run', '--rm', '--no-deps', 'control-init')
         if not (self.root/'setup-committed.json').exists():
             self.probe('setup')
