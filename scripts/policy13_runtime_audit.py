@@ -9,16 +9,17 @@ def command(argv,**kw):return subprocess.run(argv,capture_output=True,check=True
 def main():
  p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args()
  if a.output.exists():p.error('Immutable report')
- ids=command(['docker','ps','-a','-q']).decode().split();containers=json.loads(command(['docker','inspect',*ids]));rows=[];images=set();values=set()
+ ids=command(['docker','ps','-a','-q']).decode().split();containers=json.loads(command(['docker','inspect',*ids]));rows=[];images=set();values=set();service_values=set();service_environment=[]
  for root in Path('.local-runtime/stage13').glob('*'):
   if not (root/'control.json').exists():continue
   for d in json.loads((root/'control.json').read_text()).values():values.update([d['registry']['key_hex'],*d['registry'].get('telemetry_keys',{}).values(),d['command_key'],d['status_key']])
   for line in (root/'compose.env').read_text().splitlines():
-   if '=' in line and any(v in line.split('=',1)[0] for v in ['PASSWORD','SECRET_KEY']):values.add(line.split('=',1)[1])
+   if '=' in line and any(v in line.split('=',1)[0] for v in ['PASSWORD','SECRET_KEY']):
+    value=line.split('=',1)[1];values.add(value);service_values.add(value)
   for f in root.rglob('*'):
    if f.is_file() and f.suffix in ['.password','.key']:
     value=f.read_text().strip();values.add(value);values.update(v for v in value.splitlines() if len(v)>48 and not v.startswith('-'))
- needles=[v.encode() for v in values if len(v)>=16]
+ needles=[v.encode() for v in values if len(v)>=16];protected_needles=[v.encode() for v in values-service_values if len(v)>=16]
  image_inputs=json.dumps(list(values)).encode()
  for row in containers:
   project=row.get('Config',{}).get('Labels',{}).get('com.docker.compose.project','')
@@ -43,7 +44,11 @@ def main():
   for bindings in ports.values():
    for binding in bindings or []:assert binding['HostIp']=='127.0.0.1','External service port'
   for k in ['Env','Cmd','Entrypoint']:
-   blob=json.dumps(row['Config'].get(k)).encode();assert not any(v in blob for v in needles),'Secret in process config'
+   for value in row['Config'].get(k) or []:
+    blob=value.encode();assert not any(v in blob for v in protected_needles),'Crypto/MQTT/account secret in process config'
+    if any(v in blob for v in needles):
+     field=value.split('=',1)[0];assert k=='Env' and field in ['DATABASE_URL','POSTGRES_PASSWORD','FLASK_SECRET_KEY'],'Unexpected service secret in config'
+     service_environment.append(dict(container=row['Name'],field=field,scope='Existing Compose DB/Flask environment; value withheld'))
   rows.append(dict(name=row['Name'],project=project,service=service,image=row['Image'],stopped=True,memory=h['Memory'],nano_cpus=h['NanoCpus'],logs_bounded=bool(h['LogConfig']['Config'].get('max-size')),logs_scanned_bytes=len(data)))
  image_results=[]
  code="""import sys,json,pathlib
@@ -60,5 +65,5 @@ print(json.dumps({'files_scanned':n,'private_material_found':False}))
   if config['Config'].get('WorkingDir')=='/app':
    result=json.loads(command(['docker','run','--rm','-i','--network','none','--read-only','--cpus','.5','--memory','256m','--entrypoint','python',identity,'-c',code],input=image_inputs));image_results.append(dict(image=identity,**result))
   else:image_results.append(dict(image=identity,scope='official service image; history/config/log checks, no application source scan'))
- a.output.write_text(json.dumps(dict(containers=rows,images=image_results,private_values_not_emitted=True,all_stage13_stopped=True,old_projects_not_modified=True,exit_code=0),indent=2));print('Stage13 isolation/quotas/logs/image audit: exit0')
+ a.output.write_text(json.dumps(dict(containers=rows,images=image_results,private_values_not_emitted=True,existing_service_environment=service_environment,all_stage13_stopped=True,old_projects_not_modified=True,exit_code=0),indent=2));print('Stage13 isolation/quotas/logs/image audit: exit0')
 if __name__=='__main__':main()

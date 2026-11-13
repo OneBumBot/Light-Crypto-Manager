@@ -2,6 +2,7 @@
 import argparse,json,subprocess,hashlib,gzip
 from pathlib import Path
 from datetime import datetime,timezone
+from scripts.policy13_secret_match import SecretMatcher
 
 
 def digest(path):
@@ -54,11 +55,12 @@ def scan():
     for value in values[:]:values.extend(line for line in value.splitlines() if len(line)>=48 and not line.startswith('-'))
     needles=[v.encode() for v in set(values) if len(v)>=16];needles.extend(bytes.fromhex(k) for k in keys)
     names=set(subprocess.check_output(['git','ls-files'],text=True).splitlines());names.update(str(f) for f in Path('docs/reports/stage13').rglob('*') if f.is_file());leaks=[]
-    for name in names:
-        f=Path(name)
-        if not f.is_file():continue
-        data=gzip.decompress(f.read_bytes()) if f.suffix=='.gz' else f.read_bytes()
-        if any(n in data for n in needles):leaks.append(name)
+    with SecretMatcher(needles) as matcher:
+        for name in names:
+            f=Path(name)
+            if not f.is_file():continue
+            data=gzip.decompress(f.read_bytes()) if f.suffix=='.gz' else f.read_bytes()
+            if matcher.contains(data):leaks.append(name)
     assert not bad and not leaks,'Private permission/report secret check failed'
     return dict(new_independent_keys=len(keys),historical_key_values_compared=len(oldkeys),key_reuse=False,private_permission_failures=[],secret_leaks=[],scanned_files=len(names))
 
