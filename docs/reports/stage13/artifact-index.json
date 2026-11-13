@@ -1,0 +1,2141 @@
+{
+  "baseline_sha": "649a80ff7f7d66f72f5f483b384754ae594f221e",
+  "index_source_sha": "7b1d12ef3b34e05ed028fb5e0bdd50ef821bce8a",
+  "created_at": "2026-11-13T08:44:50.033782+00:00",
+  "source_hashes": {
+    "src/policy/__init__.py": "3d80b74cb5e295f700892244d30a83b4ebfb9373807f27911b316e58578e1116",
+    "src/policy/signals.py": "9594b430bf5264122428b2a3f5d602fd0570ac0ef5a2d868bcaf29742f7d977e",
+    "src/policy/rules.py": "5af6a6bb04db8bb2489c4f307fd2789a8c302f2caf8c3318dd8383f696453b5e",
+    "src/policy/profiles.py": "32ec11a14ee9a9f83b935aecea988747e403b17f89ecae2867bea71e2c2a7ccc",
+    "src/policy/engine.py": "86310ec8fb3cf92fd42b4063a6dfa92a8d5744a142a8ff01a9d626d955348297",
+    "src/policy/control_contract.py": "2e607023489460527727529ab755b55090b8849fc4163d3850fbd98efd5ffb5f",
+    "src/policy/models.py": "92381f75d76e5686aba315288eec7e1daffe095b33a12886eb074f027961cf8f",
+    "src/policy/state.py": "6bec47315bbcff42811ba7c02557a8dc4c2beeda47264bd494ae530df413e21d",
+    "src/policy/worker.py": "8b31f3ec480a90c36eca6dbc1fb8d28bff7077d1a97917c6e6310b6cda61533b",
+    "src/policy/simulation.py": "b1b0d263e22f57a29634b93071fb6b528c00f95415467ed39ea39f041fd15128",
+    "src/policy/web.py": "4fa272f140d32276f7810425527fcca6e6b482bc4bf045baf70f5fd716901bf4",
+    "src/policy/work_queue.py": "540c81540912d35694ca3bdd058e78e07917829b020fe22f0b9c05873da62d28",
+    "src/policy/diagnostics.py": "612e1d4ff187dc4e44ea6ae162a369f9cb6f4d17ff347a2717cf8cd4ef9e9c39",
+    "scripts/policy13_worker_profile.py": "e2ce50c05e22465c710df25a03cfaa60abeafab6f92c33c9b2fbe38316d701a5",
+    "scripts/policy13_probe.py": "5bf58ff3f81dcb5ab745b1d7c4c6bf8fede2cfb22d36bf72ac0b23386737fbbc",
+    "scripts/policy13_run.py": "638b6d39a9b15e5fba479aa2dd124576b14530d992caf2adf15bc35ddc553c5b",
+    "scripts/policy13_plans.py": "220f4305d7eeca1463a8789e3a9e4a88abc28a030e107f4ac7b94d40efd5369d",
+    "scripts/policy13_crypto_lab.py": "fb57982c4aaf6b682cf863b90c8c83208c12002707e8e7656531e5eb6c2a696e",
+    "scripts/install_policy13_crypto.py": "2c432e87cd4eb8c927b3c2fd40e799c63536ffcbfe9caac8c96ed49f0c4414c7",
+    "scripts/policy13_mutations.py": "aff3ce2e1a17f2219327fa2537f6a3c37cf8e3d4f062f3b95317638c7e4d3eb9",
+    "scripts/policy13_ablation.py": "660ea4d664640aff032692ef28f44d7f9e8110ddc76a24108cb1bc6b5d8532d7",
+    "scripts/run_policy13_experiment.py": "8cd8a4b7a32f7d36addb4720f96f6fb51d70dea3190921c5462831b24a74c0d0",
+    "scripts/policy13_reliability.py": "29f0a15b7edc30ad0fa042a30d1d76c4f8056d205123f1da01ed98f8856bb311",
+    "scripts/policy13_ledger_probe.py": "1abe7cb05b5949515a6a0696884bfe1d16b214bb2ecef157ea894ee63a7d9e56",
+    "scripts/policy13_collect_runs.py": "de0d00025b6f41f40d31ee6a2948cedac4af70c5c5bf7f3a76edc42492ea7de8",
+    "scripts/policy13_preservation.py": "2496bdd3a9d7eedcd8c3c05f322d1a8dcd9587bb8a64195d55efe10f61eff2db",
+    "scripts/policy13_receiver_profile.py": "9092fadf0426cda1b54c21b435b80a3ac1fe9e3e50d18bc1857f97e53f8491f3",
+    "scripts/policy13_analyze.py": "a267b994fd01ba16568495cc748b33097f2f38c8c2e84486f44a4839cd513d32",
+    "scripts/plot_policy13.py": "8f1a55179534f1893b732eb2c13c758d74b80b2112e2f0ae6e3fed7452a8f905",
+    "scripts/policy13_crypto_checks.py": "5ac4c708b367991a5b4c251920d7378250a6e8c0020dd1007687014c2c08aa43",
+    "scripts/build_policy13_baseline.py": "6bce55e871d15a33c6623528c658da28f5c65a18963c0d4c053a929f7685cca3",
+    "scripts/policy13_runtime_audit.py": "fa0365a4b316c92a1daef83714a3fc7b4602b2beeb4e9299fb8d86243808b0d7",
+    "scripts/policy13_artifacts.py": "a338373085a870f0af43997f1734be23044c3db1277902e66f3fc0a874ab1e75",
+    "scripts/policy13_report_index.py": "ee8b0c5b0c9831186a43c0760e617483b82ac587f8cf5dd958408bd947b361fd",
+    "scripts/policy13_secret_match.py": "e2dd4667da0f95b8d3209a8a3aa16495605fa1916dd29008f1187501dae2c227"
+  },
+  "changed_tracked_files": [
+    ".gitignore",
+    "Dockerfile",
+    "README.md",
+    "docs/CURRENT_ARCHITECTURE.md",
+    "docs/DEVELOPMENT_STATUS.md",
+    "docs/KNOWN_ISSUES.md",
+    "docs/SECURITY.md",
+    "docs/STAGE13_BASELINE_AUDIT.md",
+    "docs/STAGE13_E2E_TEST_MATRIX.md",
+    "docs/STAGE13_EVENT_ORDERING_CONTRACT.md",
+    "docs/STAGE13_FSM_EQUIVALENCE_TESTS.md",
+    "docs/STAGE13_PERFORMANCE_RESULTS.md",
+    "docs/STAGE13_POLICY_THROUGHPUT_DESIGN.md",
+    "docs/STAGE13_RELIABILITY_RESULTS.md",
+    "docs/STAGE13_RESULTS.md",
+    "docs/STAGE13_SQL_OPTIMIZATION.md",
+    "docs/STAGE13_VERSION_ACTIVATION_SEMANTICS.md",
+    "docs/reports/stage13/COMMANDS.md",
+    "docs/reports/stage13/ablation-cache-control.json",
+    "docs/reports/stage13/ablation-cache-control.txt",
+    "docs/reports/stage13/ablation.json",
+    "docs/reports/stage13/ablation.txt",
+    "docs/reports/stage13/admission-baseline25r1/actual-policy-plan.json",
+    "docs/reports/stage13/admission-baseline25r1/admission-timings.jsonl",
+    "docs/reports/stage13/admission-baseline25r1/agents.json.gz",
+    "docs/reports/stage13/admission-baseline25r1/census-commands.json",
+    "docs/reports/stage13/admission-baseline25r1/drain.json",
+    "docs/reports/stage13/admission-baseline25r1/environment.json",
+    "docs/reports/stage13/admission-baseline25r1/ledger-final.json.gz",
+    "docs/reports/stage13/admission-baseline25r1/result.json",
+    "docs/reports/stage13/admission-baseline25r1/samples.json.gz",
+    "docs/reports/stage13/admission-baseline25r1/schema.json",
+    "docs/reports/stage13/admission-baseline25r1/sources.json.gz",
+    "docs/reports/stage13/admission-baseline25r1/worker-cost-final.json",
+    "docs/reports/stage13/admission-baseline25r2/actual-policy-plan.json",
+    "docs/reports/stage13/admission-baseline25r2/admission-timings.jsonl",
+    "docs/reports/stage13/admission-baseline25r2/agents.json.gz",
+    "docs/reports/stage13/admission-baseline25r2/census-commands.json",
+    "docs/reports/stage13/admission-baseline25r2/drain.json",
+    "docs/reports/stage13/admission-baseline25r2/environment.json",
+    "docs/reports/stage13/admission-baseline25r2/ledger-final.json.gz",
+    "docs/reports/stage13/admission-baseline25r2/result.json",
+    "docs/reports/stage13/admission-baseline25r2/samples.json.gz",
+    "docs/reports/stage13/admission-baseline25r2/schema.json",
+    "docs/reports/stage13/admission-baseline25r2/sources.json.gz",
+    "docs/reports/stage13/admission-baseline25r2/worker-cost-final.json",
+    "docs/reports/stage13/admission-baseline25r3-final/drain.json",
+    "docs/reports/stage13/admission-baseline25r3-final/excluded.json",
+    "docs/reports/stage13/admission-baseline25r3-final/samples.json.gz",
+    "docs/reports/stage13/admission-baseline25r3-final/schema.json",
+    "docs/reports/stage13/admission-baseline25r3-resumed/actual-policy-plan.json",
+    "docs/reports/stage13/admission-baseline25r3-resumed/admission-timings.jsonl",
+    "docs/reports/stage13/admission-baseline25r3-resumed/agents.json.gz",
+    "docs/reports/stage13/admission-baseline25r3-resumed/census-commands.json",
+    "docs/reports/stage13/admission-baseline25r3-resumed/drain.json",
+    "docs/reports/stage13/admission-baseline25r3-resumed/environment.json",
+    "docs/reports/stage13/admission-baseline25r3-resumed/excluded.json",
+    "docs/reports/stage13/admission-baseline25r3-resumed/ledger-final.json.gz",
+    "docs/reports/stage13/admission-baseline25r3-resumed/result.json",
+    "docs/reports/stage13/admission-baseline25r3-resumed/samples.json.gz",
+    "docs/reports/stage13/admission-baseline25r3-resumed/schema.json",
+    "docs/reports/stage13/admission-baseline25r3-resumed/sources.json.gz",
+    "docs/reports/stage13/admission-baseline25r3-resumed/worker-cost-final.json",
+    "docs/reports/stage13/admission-baseline25r3/interrupted.json",
+    "docs/reports/stage13/admission-baseline25r3/samples.json.gz",
+    "docs/reports/stage13/admission-baseline25r3/schema.json",
+    "docs/reports/stage13/admission-optimized25r1/actual-policy-plan.json",
+    "docs/reports/stage13/admission-optimized25r1/admission-timings.jsonl",
+    "docs/reports/stage13/admission-optimized25r1/agents.json.gz",
+    "docs/reports/stage13/admission-optimized25r1/census-commands.json",
+    "docs/reports/stage13/admission-optimized25r1/drain.json",
+    "docs/reports/stage13/admission-optimized25r1/environment.json",
+    "docs/reports/stage13/admission-optimized25r1/ledger-final.json.gz",
+    "docs/reports/stage13/admission-optimized25r1/result.json",
+    "docs/reports/stage13/admission-optimized25r1/samples.json.gz",
+    "docs/reports/stage13/admission-optimized25r1/schema.json",
+    "docs/reports/stage13/admission-optimized25r1/sources.json.gz",
+    "docs/reports/stage13/admission-optimized25r1/worker-cost-final.json",
+    "docs/reports/stage13/admission-optimized25r2/actual-policy-plan.json",
+    "docs/reports/stage13/admission-optimized25r2/admission-timings.jsonl",
+    "docs/reports/stage13/admission-optimized25r2/agents.json.gz",
+    "docs/reports/stage13/admission-optimized25r2/census-commands.json",
+    "docs/reports/stage13/admission-optimized25r2/drain.json",
+    "docs/reports/stage13/admission-optimized25r2/environment.json",
+    "docs/reports/stage13/admission-optimized25r2/ledger-final.json.gz",
+    "docs/reports/stage13/admission-optimized25r2/result.json",
+    "docs/reports/stage13/admission-optimized25r2/samples.json.gz",
+    "docs/reports/stage13/admission-optimized25r2/schema.json",
+    "docs/reports/stage13/admission-optimized25r2/sources.json.gz",
+    "docs/reports/stage13/admission-optimized25r2/worker-cost-final.json",
+    "docs/reports/stage13/admission-optimized25r3-resumed/actual-policy-plan.json",
+    "docs/reports/stage13/admission-optimized25r3-resumed/admission-timings.jsonl",
+    "docs/reports/stage13/admission-optimized25r3-resumed/agents.json.gz",
+    "docs/reports/stage13/admission-optimized25r3-resumed/census-commands.json",
+    "docs/reports/stage13/admission-optimized25r3-resumed/drain.json",
+    "docs/reports/stage13/admission-optimized25r3-resumed/environment.json",
+    "docs/reports/stage13/admission-optimized25r3-resumed/excluded.json",
+    "docs/reports/stage13/admission-optimized25r3-resumed/ledger-final.json.gz",
+    "docs/reports/stage13/admission-optimized25r3-resumed/result.json",
+    "docs/reports/stage13/admission-optimized25r3-resumed/samples.json.gz",
+    "docs/reports/stage13/admission-optimized25r3-resumed/schema.json",
+    "docs/reports/stage13/admission-optimized25r3-resumed/sources.json.gz",
+    "docs/reports/stage13/admission-optimized25r3-resumed/worker-cost-final.json",
+    "docs/reports/stage13/after-performance.txt",
+    "docs/reports/stage13/analysis-after-archive.txt",
+    "docs/reports/stage13/archival.txt",
+    "docs/reports/stage13/baseline-matrix.txt",
+    "docs/reports/stage13/baseline-regression.txt",
+    "docs/reports/stage13/baseline10r1/actual-policy-plan.json",
+    "docs/reports/stage13/baseline10r1/agents.json.gz",
+    "docs/reports/stage13/baseline10r1/census-commands.json",
+    "docs/reports/stage13/baseline10r1/drain.json",
+    "docs/reports/stage13/baseline10r1/environment.json",
+    "docs/reports/stage13/baseline10r1/ledger-final.json.gz",
+    "docs/reports/stage13/baseline10r1/result.json",
+    "docs/reports/stage13/baseline10r1/samples.json.gz",
+    "docs/reports/stage13/baseline10r1/schema.json",
+    "docs/reports/stage13/baseline10r1/sources.json.gz",
+    "docs/reports/stage13/baseline10r1/worker-cost-final.json",
+    "docs/reports/stage13/baseline25r1/actual-policy-plan.json",
+    "docs/reports/stage13/baseline25r1/agents.json.gz",
+    "docs/reports/stage13/baseline25r1/census-commands.json",
+    "docs/reports/stage13/baseline25r1/drain.json",
+    "docs/reports/stage13/baseline25r1/environment.json",
+    "docs/reports/stage13/baseline25r1/ledger-final.json.gz",
+    "docs/reports/stage13/baseline25r1/result.json",
+    "docs/reports/stage13/baseline25r1/samples.json.gz",
+    "docs/reports/stage13/baseline25r1/schema.json",
+    "docs/reports/stage13/baseline25r1/sources.json.gz",
+    "docs/reports/stage13/baseline25r1/worker-cost-final.json",
+    "docs/reports/stage13/baseline25r2/actual-policy-plan.json",
+    "docs/reports/stage13/baseline25r2/agents.json.gz",
+    "docs/reports/stage13/baseline25r2/census-commands.json",
+    "docs/reports/stage13/baseline25r2/drain.json",
+    "docs/reports/stage13/baseline25r2/environment.json",
+    "docs/reports/stage13/baseline25r2/ledger-final.json.gz",
+    "docs/reports/stage13/baseline25r2/result.json",
+    "docs/reports/stage13/baseline25r2/samples.json.gz",
+    "docs/reports/stage13/baseline25r2/schema.json",
+    "docs/reports/stage13/baseline25r2/sources.json.gz",
+    "docs/reports/stage13/baseline25r2/worker-cost-final.json",
+    "docs/reports/stage13/baseline25r3/actual-policy-plan.json",
+    "docs/reports/stage13/baseline25r3/agents.json.gz",
+    "docs/reports/stage13/baseline25r3/census-commands.json",
+    "docs/reports/stage13/baseline25r3/drain.json",
+    "docs/reports/stage13/baseline25r3/environment.json",
+    "docs/reports/stage13/baseline25r3/ledger-final.json.gz",
+    "docs/reports/stage13/baseline25r3/result.json",
+    "docs/reports/stage13/baseline25r3/samples.json.gz",
+    "docs/reports/stage13/baseline25r3/schema.json",
+    "docs/reports/stage13/baseline25r3/sources.json.gz",
+    "docs/reports/stage13/baseline25r3/worker-cost-final.json",
+    "docs/reports/stage13/baseline3r1/actual-policy-plan.json",
+    "docs/reports/stage13/baseline3r1/agents.json.gz",
+    "docs/reports/stage13/baseline3r1/census-commands.json",
+    "docs/reports/stage13/baseline3r1/drain.json",
+    "docs/reports/stage13/baseline3r1/environment.json",
+    "docs/reports/stage13/baseline3r1/ledger-final.json.gz",
+    "docs/reports/stage13/baseline3r1/result.json",
+    "docs/reports/stage13/baseline3r1/samples.json.gz",
+    "docs/reports/stage13/baseline3r1/schema.json",
+    "docs/reports/stage13/baseline3r1/sources.json.gz",
+    "docs/reports/stage13/baseline3r1/worker-cost-final.json",
+    "docs/reports/stage13/baseline50r1/actual-policy-plan.json",
+    "docs/reports/stage13/baseline50r1/agents.json.gz",
+    "docs/reports/stage13/baseline50r1/census-commands.json",
+    "docs/reports/stage13/baseline50r1/drain.json",
+    "docs/reports/stage13/baseline50r1/environment.json",
+    "docs/reports/stage13/baseline50r1/ledger-final.json.gz",
+    "docs/reports/stage13/baseline50r1/result.json",
+    "docs/reports/stage13/baseline50r1/samples.json.gz",
+    "docs/reports/stage13/baseline50r1/schema.json",
+    "docs/reports/stage13/baseline50r1/sources.json.gz",
+    "docs/reports/stage13/baseline50r1/worker-cost-final.json",
+    "docs/reports/stage13/browser-dependency-install.txt",
+    "docs/reports/stage13/control-browser.json",
+    "docs/reports/stage13/control-browser.txt",
+    "docs/reports/stage13/control-negatives.txt",
+    "docs/reports/stage13/crypto-browser.desktop.png",
+    "docs/reports/stage13/crypto-browser.json",
+    "docs/reports/stage13/crypto-browser.mobile.png",
+    "docs/reports/stage13/crypto-browser.txt",
+    "docs/reports/stage13/crypto-checks-console.txt",
+    "docs/reports/stage13/crypto-final.json",
+    "docs/reports/stage13/crypto-followup.txt",
+    "docs/reports/stage13/crypto-service-recovery.json",
+    "docs/reports/stage13/crypto-service-recovery.progress.json",
+    "docs/reports/stage13/crypto-service-recovery.txt",
+    "docs/reports/stage13/figures/admission_transaction_wall.png",
+    "docs/reports/stage13/figures/admission_transaction_wall.svg",
+    "docs/reports/stage13/figures/backlog.png",
+    "docs/reports/stage13/figures/backlog.svg",
+    "docs/reports/stage13/figures/cpu_throughput.png",
+    "docs/reports/stage13/figures/cpu_throughput.svg",
+    "docs/reports/stage13/figures/decision_correctness.png",
+    "docs/reports/stage13/figures/decision_correctness.svg",
+    "docs/reports/stage13/figures/drain_recovery.png",
+    "docs/reports/stage13/figures/drain_recovery.svg",
+    "docs/reports/stage13/figures/freshness_heartbeat.png",
+    "docs/reports/stage13/figures/freshness_heartbeat.svg",
+    "docs/reports/stage13/figures/incoming_processed.png",
+    "docs/reports/stage13/figures/incoming_processed.svg",
+    "docs/reports/stage13/figures/ml_security_distribution.png",
+    "docs/reports/stage13/figures/ml_security_distribution.svg",
+    "docs/reports/stage13/figures/oldest_pending_age.png",
+    "docs/reports/stage13/figures/oldest_pending_age.svg",
+    "docs/reports/stage13/figures/source_lag_quantiles.png",
+    "docs/reports/stage13/figures/source_lag_quantiles.svg",
+    "docs/reports/stage13/figures/sql_time.png",
+    "docs/reports/stage13/figures/sql_time.svg",
+    "docs/reports/stage13/figures/throughput_devices.png",
+    "docs/reports/stage13/figures/throughput_devices.svg",
+    "docs/reports/stage13/figures/transactions_event.png",
+    "docs/reports/stage13/figures/transactions_event.svg",
+    "docs/reports/stage13/final-targeted-build.txt",
+    "docs/reports/stage13/full-regression-final.txt",
+    "docs/reports/stage13/full-regression-first.txt",
+    "docs/reports/stage13/golden-release.json",
+    "docs/reports/stage13/golden-traces.json",
+    "docs/reports/stage13/launch-after-performance.py",
+    "docs/reports/stage13/launch-baseline-matrix.py",
+    "docs/reports/stage13/launch-crypto-followup.py",
+    "docs/reports/stage13/launch-optimized-matrix.py",
+    "docs/reports/stage13/lost-ack.json",
+    "docs/reports/stage13/lost-ack.txt",
+    "docs/reports/stage13/ml-fsm-failure-before.txt",
+    "docs/reports/stage13/mutations-final.json",
+    "docs/reports/stage13/mutations-final.txt",
+    "docs/reports/stage13/mutations-first.txt",
+    "docs/reports/stage13/mutations-second.json",
+    "docs/reports/stage13/mutations-second.txt",
+    "docs/reports/stage13/optimized-matrix.txt",
+    "docs/reports/stage13/optimized10r1/actual-policy-plan.json",
+    "docs/reports/stage13/optimized10r1/agents.json.gz",
+    "docs/reports/stage13/optimized10r1/census-commands.json",
+    "docs/reports/stage13/optimized10r1/drain.json",
+    "docs/reports/stage13/optimized10r1/environment.json",
+    "docs/reports/stage13/optimized10r1/ledger-final.json.gz",
+    "docs/reports/stage13/optimized10r1/result.json",
+    "docs/reports/stage13/optimized10r1/samples.json.gz",
+    "docs/reports/stage13/optimized10r1/schema.json",
+    "docs/reports/stage13/optimized10r1/sources.json.gz",
+    "docs/reports/stage13/optimized10r1/worker-cost-final.json",
+    "docs/reports/stage13/optimized25r1/actual-policy-plan.json",
+    "docs/reports/stage13/optimized25r1/agents.json.gz",
+    "docs/reports/stage13/optimized25r1/census-commands.json",
+    "docs/reports/stage13/optimized25r1/drain.json",
+    "docs/reports/stage13/optimized25r1/environment.json",
+    "docs/reports/stage13/optimized25r1/ledger-final.json.gz",
+    "docs/reports/stage13/optimized25r1/result.json",
+    "docs/reports/stage13/optimized25r1/samples.json.gz",
+    "docs/reports/stage13/optimized25r1/schema.json",
+    "docs/reports/stage13/optimized25r1/sources.json.gz",
+    "docs/reports/stage13/optimized25r1/worker-cost-final.json",
+    "docs/reports/stage13/optimized25r2/actual-policy-plan.json",
+    "docs/reports/stage13/optimized25r2/agents.json.gz",
+    "docs/reports/stage13/optimized25r2/census-commands.json",
+    "docs/reports/stage13/optimized25r2/drain.json",
+    "docs/reports/stage13/optimized25r2/environment.json",
+    "docs/reports/stage13/optimized25r2/ledger-final.json.gz",
+    "docs/reports/stage13/optimized25r2/result.json",
+    "docs/reports/stage13/optimized25r2/samples.json.gz",
+    "docs/reports/stage13/optimized25r2/schema.json",
+    "docs/reports/stage13/optimized25r2/sources.json.gz",
+    "docs/reports/stage13/optimized25r2/worker-cost-final.json",
+    "docs/reports/stage13/optimized25r3/actual-policy-plan.json",
+    "docs/reports/stage13/optimized25r3/agents.json.gz",
+    "docs/reports/stage13/optimized25r3/census-commands.json",
+    "docs/reports/stage13/optimized25r3/drain.json",
+    "docs/reports/stage13/optimized25r3/environment.json",
+    "docs/reports/stage13/optimized25r3/ledger-final.json.gz",
+    "docs/reports/stage13/optimized25r3/result.json",
+    "docs/reports/stage13/optimized25r3/samples.json.gz",
+    "docs/reports/stage13/optimized25r3/schema.json",
+    "docs/reports/stage13/optimized25r3/sources.json.gz",
+    "docs/reports/stage13/optimized25r3/worker-cost-final.json",
+    "docs/reports/stage13/optimized25r4/actual-policy-plan.json",
+    "docs/reports/stage13/optimized25r4/agents.json.gz",
+    "docs/reports/stage13/optimized25r4/census-commands.json",
+    "docs/reports/stage13/optimized25r4/drain.json",
+    "docs/reports/stage13/optimized25r4/environment.json",
+    "docs/reports/stage13/optimized25r4/ledger-final.json.gz",
+    "docs/reports/stage13/optimized25r4/result.json",
+    "docs/reports/stage13/optimized25r4/samples.json.gz",
+    "docs/reports/stage13/optimized25r4/schema.json",
+    "docs/reports/stage13/optimized25r4/sources.json.gz",
+    "docs/reports/stage13/optimized25r4/worker-cost-final.json",
+    "docs/reports/stage13/optimized3r1/actual-policy-plan.json",
+    "docs/reports/stage13/optimized3r1/agents.json.gz",
+    "docs/reports/stage13/optimized3r1/census-commands.json",
+    "docs/reports/stage13/optimized3r1/drain.json",
+    "docs/reports/stage13/optimized3r1/environment.json",
+    "docs/reports/stage13/optimized3r1/ledger-final.json.gz",
+    "docs/reports/stage13/optimized3r1/result.json",
+    "docs/reports/stage13/optimized3r1/samples.json.gz",
+    "docs/reports/stage13/optimized3r1/schema.json",
+    "docs/reports/stage13/optimized3r1/sources.json.gz",
+    "docs/reports/stage13/optimized3r1/worker-cost-final.json",
+    "docs/reports/stage13/optimized50r1/actual-policy-plan.json",
+    "docs/reports/stage13/optimized50r1/agents.json.gz",
+    "docs/reports/stage13/optimized50r1/census-commands.json",
+    "docs/reports/stage13/optimized50r1/drain.json",
+    "docs/reports/stage13/optimized50r1/environment.json",
+    "docs/reports/stage13/optimized50r1/ledger-final.json.gz",
+    "docs/reports/stage13/optimized50r1/result.json",
+    "docs/reports/stage13/optimized50r1/samples.json.gz",
+    "docs/reports/stage13/optimized50r1/schema.json",
+    "docs/reports/stage13/optimized50r1/sources.json.gz",
+    "docs/reports/stage13/optimized50r1/worker-cost-final.json",
+    "docs/reports/stage13/performance-summary.json",
+    "docs/reports/stage13/plans-before.txt",
+    "docs/reports/stage13/plots.txt",
+    "docs/reports/stage13/poison.json",
+    "docs/reports/stage13/poison.logs.txt",
+    "docs/reports/stage13/poison.restart.logs.txt",
+    "docs/reports/stage13/poison.txt",
+    "docs/reports/stage13/policy-reliability-console.txt",
+    "docs/reports/stage13/policy-reliability.json",
+    "docs/reports/stage13/policy-reliability.png",
+    "docs/reports/stage13/policy-targeted-first-failures.txt",
+    "docs/reports/stage13/policy-targeted-first.txt",
+    "docs/reports/stage13/policy-targeted-second.txt",
+    "docs/reports/stage13/prepare-baseline3.txt",
+    "docs/reports/stage13/prepare-crypto.txt",
+    "docs/reports/stage13/prepare-qa.txt",
+    "docs/reports/stage13/preservation-after-final.txt",
+    "docs/reports/stage13/preservation-after.json",
+    "docs/reports/stage13/preservation-after.txt",
+    "docs/reports/stage13/preservation-before.json",
+    "docs/reports/stage13/private-projects-before.json",
+    "docs/reports/stage13/qa-build-fifth.txt",
+    "docs/reports/stage13/qa-build-fourth.txt",
+    "docs/reports/stage13/qa-build-third.txt",
+    "docs/reports/stage13/query-plans-before.json",
+    "docs/reports/stage13/raw-archive.json",
+    "docs/reports/stage13/release-build-and-regression.txt",
+    "docs/reports/stage13/resume-after-interruption.py",
+    "docs/reports/stage13/resume-console-second.txt",
+    "docs/reports/stage13/resume-console-third.txt",
+    "docs/reports/stage13/resume-console.txt",
+    "docs/reports/stage13/resume-detached.txt",
+    "docs/reports/stage13/resume-process.json",
+    "docs/reports/stage13/run-summary.csv",
+    "docs/reports/stage13/runtime-audit-complete.txt",
+    "docs/reports/stage13/runtime-audit-final.txt",
+    "docs/reports/stage13/runtime-audit.json",
+    "docs/reports/stage13/runtime-audit.txt",
+    "docs/reports/stage13/secret-matcher-check.txt",
+    "docs/reports/stage13/secret-scan-final.json",
+    "docs/reports/stage13/secret-scan-final.txt",
+    "docs/reports/stage13/start-baseline3-retry.txt",
+    "docs/reports/stage13/start-baseline3.txt",
+    "docs/reports/stage13/start-qa-second.txt",
+    "docs/reports/stage13/start-qa.txt",
+    "docs/reports/stage13/validation-summary.json",
+    "migrations/versions/0011_policy_throughput.py",
+    "scripts/build_policy13_baseline.py",
+    "scripts/check_malformed_mqtt_recovery.py",
+    "scripts/install_policy13_crypto.py",
+    "scripts/install_stage13.py",
+    "scripts/plot_policy13.py",
+    "scripts/policy13_ablation.py",
+    "scripts/policy13_analyze.py",
+    "scripts/policy13_artifacts.py",
+    "scripts/policy13_collect_runs.py",
+    "scripts/policy13_crypto_checks.py",
+    "scripts/policy13_crypto_lab.py",
+    "scripts/policy13_ledger_probe.py",
+    "scripts/policy13_mutations.py",
+    "scripts/policy13_plans.py",
+    "scripts/policy13_preservation.py",
+    "scripts/policy13_probe.py",
+    "scripts/policy13_receiver_profile.py",
+    "scripts/policy13_reliability.py",
+    "scripts/policy13_report_index.py",
+    "scripts/policy13_run.py",
+    "scripts/policy13_runtime_audit.py",
+    "scripts/policy13_secret_match.py",
+    "scripts/policy13_worker_profile.py",
+    "scripts/policy_lab.py",
+    "scripts/run_policy13_experiment.py",
+    "src/kuz_release.py",
+    "src/policy/diagnostics.py",
+    "src/policy/models.py",
+    "src/policy/state.py",
+    "src/policy/web.py",
+    "src/policy/work_queue.py",
+    "src/policy/worker.py",
+    "src/web/monitoring.py",
+    "src/web/static/js/policy.js",
+    "src/web/templates/policy.html",
+    "tests/policy13_engine_reference.py",
+    "tests/policy13_reference.py",
+    "tests/policy13_vectors.py",
+    "tests/policy13_worker_reference.py",
+    "tests/test_policy_storage.py",
+    "tests/test_policy_throughput.py",
+    "tests/test_postgres.py"
+  ],
+  "files": [
+    {
+      "path": "CHANGED_FILES.txt",
+      "bytes": 19597,
+      "sha256": "0360071c57b2b7aa250fe0120152194674878d4558bfba7183f9a42005adc40d"
+    },
+    {
+      "path": "COMMANDS.md",
+      "bytes": 5312,
+      "sha256": "7feed53ad1642e4e00b6fb1b19cb745e5fc3f5b257a3bde8ca37b1819aaff239"
+    },
+    {
+      "path": "ablation-cache-control.json",
+      "bytes": 11084,
+      "sha256": "8184d09176851ab87d80b55a1189a721af43a741c823e8662eead6cd8eedb4d7"
+    },
+    {
+      "path": "ablation-cache-control.txt",
+      "bytes": 132,
+      "sha256": "6230db51e0d25848d40866ed7d3bdf499323edd32d779e246c9d41a2f0fff9e3"
+    },
+    {
+      "path": "ablation.json",
+      "bytes": 305096,
+      "sha256": "bc93f16da3098958c1fa01756af56b1570a44341271d39f539f203a4131c2df5"
+    },
+    {
+      "path": "ablation.txt",
+      "bytes": 132,
+      "sha256": "20f367478e4381928463508ed8831a3fd42b8e4a39ffe10885ef0181e2ed267f"
+    },
+    {
+      "path": "admission-baseline25r1/actual-policy-plan.json",
+      "bytes": 4936,
+      "sha256": "71e1c5427a172e1192e744a97fa99522e9032289d544c23af24cdfe9db0e28ec"
+    },
+    {
+      "path": "admission-baseline25r1/admission-timings.jsonl",
+      "bytes": 368653,
+      "sha256": "5a0f5a5282957354e98fefa68f7d11676577c489734fa1ab9e8d34d1612eff8c"
+    },
+    {
+      "path": "admission-baseline25r1/agents.json.gz",
+      "bytes": 261072,
+      "sha256": "4fbb67f3a7efe9a9f18a157c2cb782a6f21e483d1e6165ff13f54e096cb5b9af"
+    },
+    {
+      "path": "admission-baseline25r1/census-commands.json",
+      "bytes": 4927,
+      "sha256": "dc35dab35e85205021b2d7d7f981678f9b73d58be03bb628bf229c7cc4df9a58"
+    },
+    {
+      "path": "admission-baseline25r1/drain.json",
+      "bytes": 20077,
+      "sha256": "034ba590304651d628e3c96d1896252829d14d8a7e5847636445aa221f31f29a"
+    },
+    {
+      "path": "admission-baseline25r1/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "admission-baseline25r1/ledger-final.json.gz",
+      "bytes": 240487,
+      "sha256": "0ae48e8fdd2053268830117d509185871298c9199ed120490b0104e2cfc47a8e"
+    },
+    {
+      "path": "admission-baseline25r1/result.json",
+      "bytes": 85013,
+      "sha256": "d9b7f27078db20610352f1133e64075befd2f39a30090d03b258ab557d043110"
+    },
+    {
+      "path": "admission-baseline25r1/samples.json.gz",
+      "bytes": 81824,
+      "sha256": "2ecfd69bdaa81d6200991c55054c904f51c83de40563c8dd90a5006320d170bb"
+    },
+    {
+      "path": "admission-baseline25r1/schema.json",
+      "bytes": 60030,
+      "sha256": "bf4c8a21ea99c6d92c4db8d96082b05f7ee55012239fefdb243b49804c520077"
+    },
+    {
+      "path": "admission-baseline25r1/sources.json.gz",
+      "bytes": 98797,
+      "sha256": "e0ff631ba21ae6ed057f60cdf1e6781334061003319272241aebc8819080ac8a"
+    },
+    {
+      "path": "admission-baseline25r1/worker-cost-final.json",
+      "bytes": 68682,
+      "sha256": "b00adc4bec888e2eaa354694d89eab5967abd9058a7e13a63b6942a7d4677be5"
+    },
+    {
+      "path": "admission-baseline25r2/actual-policy-plan.json",
+      "bytes": 4937,
+      "sha256": "d58b2241a526659827e67da505b2493d4384eea938033d9d00fc10593fd74dbf"
+    },
+    {
+      "path": "admission-baseline25r2/admission-timings.jsonl",
+      "bytes": 365780,
+      "sha256": "f8165b4a4298f56b5cb2a2eb32105225835215fa1493a18a47bdeb79265c1967"
+    },
+    {
+      "path": "admission-baseline25r2/agents.json.gz",
+      "bytes": 259001,
+      "sha256": "24e5782e4902b77e0b06e6db28b1379d360249b79f08385797ce07189eb460a5"
+    },
+    {
+      "path": "admission-baseline25r2/census-commands.json",
+      "bytes": 4927,
+      "sha256": "b898e8980cf8aa0e44b5ad26eb25f96e5d8c7e28bc8863e93e33fea9db909884"
+    },
+    {
+      "path": "admission-baseline25r2/drain.json",
+      "bytes": 19801,
+      "sha256": "067cd43f78c2cd410f8aedf1729d52fc8c1ab611fba10e1d54b358efefe6b6a5"
+    },
+    {
+      "path": "admission-baseline25r2/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "admission-baseline25r2/ledger-final.json.gz",
+      "bytes": 239134,
+      "sha256": "1c767329c8bf85e220b07b98f65e49f7f93cae8670ca8cc39add684a8aea9aab"
+    },
+    {
+      "path": "admission-baseline25r2/result.json",
+      "bytes": 84928,
+      "sha256": "fb0c64907f88395d1da0ea98c19bf45c51b0a52adf6788f709b3c0d45870872c"
+    },
+    {
+      "path": "admission-baseline25r2/samples.json.gz",
+      "bytes": 81675,
+      "sha256": "a1555c76b549cc602161c3a84531a0d4d8d33dbea74fcd065f35d3736126aab5"
+    },
+    {
+      "path": "admission-baseline25r2/schema.json",
+      "bytes": 60030,
+      "sha256": "bf4c8a21ea99c6d92c4db8d96082b05f7ee55012239fefdb243b49804c520077"
+    },
+    {
+      "path": "admission-baseline25r2/sources.json.gz",
+      "bytes": 98136,
+      "sha256": "8505948e325665838ab33d4b33ec783b2c32117244573250985dcf9ed2aaece2"
+    },
+    {
+      "path": "admission-baseline25r2/worker-cost-final.json",
+      "bytes": 68676,
+      "sha256": "a3e1c86b68cf58112e11fb932a94498c9c618bc2eb9fb22d24c83143b12bd9a0"
+    },
+    {
+      "path": "admission-baseline25r3/interrupted.json",
+      "bytes": 122,
+      "sha256": "0dd5b22efc66adc79cbd66bdc0c9b79a8f924a80bc4fba9252f03531ee03778b"
+    },
+    {
+      "path": "admission-baseline25r3/samples.json.gz",
+      "bytes": 52214,
+      "sha256": "d6a5a710a9fcd819256f16da92e6a9441d18dcf8d27dc41bcebd7ba34948bf13"
+    },
+    {
+      "path": "admission-baseline25r3/schema.json",
+      "bytes": 60030,
+      "sha256": "bf4c8a21ea99c6d92c4db8d96082b05f7ee55012239fefdb243b49804c520077"
+    },
+    {
+      "path": "admission-baseline25r3-final/drain.json",
+      "bytes": 8256,
+      "sha256": "803c52fd1c83c5f6e6c503155164ae6c5e708ba708c2d3937e545293a527d8af"
+    },
+    {
+      "path": "admission-baseline25r3-final/excluded.json",
+      "bytes": 151,
+      "sha256": "7cddca7cf807994b214514d7bbd8d150d2db041b932684270e9e9c4880f90081"
+    },
+    {
+      "path": "admission-baseline25r3-final/samples.json.gz",
+      "bytes": 76336,
+      "sha256": "71d1c83c9e4ff4f9f3132569b1ce7752e47097b6999bf9b24b9ee80a1f630ebc"
+    },
+    {
+      "path": "admission-baseline25r3-final/schema.json",
+      "bytes": 60030,
+      "sha256": "bf4c8a21ea99c6d92c4db8d96082b05f7ee55012239fefdb243b49804c520077"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/actual-policy-plan.json",
+      "bytes": 4936,
+      "sha256": "2411bea5fc0c5bf132f4489c3cb86d49ba7308ba39612e2699d3950ca9fb7a77"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/admission-timings.jsonl",
+      "bytes": 366914,
+      "sha256": "1f676386cc7eea19a257564831e9730ab32626d3283e4c9c51fe2edcf838b1a8"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/agents.json.gz",
+      "bytes": 261341,
+      "sha256": "ce7a4155ce01a3ff95d0262de9501f8aa799260b2bd283a6b5d390cfd72c5e92"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/census-commands.json",
+      "bytes": 5023,
+      "sha256": "3b2b629eefb57178f9d4e09da2fe897323b3d383d14a7b383deedf1d094d0090"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/drain.json",
+      "bytes": 20074,
+      "sha256": "c30860009e6017aa94ca8bdeaa6e166b307572aef53394f803d581cf4b47dce1"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/excluded.json",
+      "bytes": 151,
+      "sha256": "7cddca7cf807994b214514d7bbd8d150d2db041b932684270e9e9c4880f90081"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/ledger-final.json.gz",
+      "bytes": 240063,
+      "sha256": "eb1a820b45f9b1187c47bb9e3ea16e837e0920e1863cff206c790f418b5a69a1"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/result.json",
+      "bytes": 86845,
+      "sha256": "203f7c1c26c2bfa123fb3001cd8dadee16fed9a375270f725b940ead5ef31d32"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/samples.json.gz",
+      "bytes": 76334,
+      "sha256": "388f346eb442767b14ab6f2e2409a79cb3ea02da7ecda18b7b86b110d26f05c7"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/schema.json",
+      "bytes": 60030,
+      "sha256": "bf4c8a21ea99c6d92c4db8d96082b05f7ee55012239fefdb243b49804c520077"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/sources.json.gz",
+      "bytes": 98759,
+      "sha256": "85935f6e5acdec6bf540241c3b3553e0446f29fd40f6f1c5bf4addcd6a144f3d"
+    },
+    {
+      "path": "admission-baseline25r3-resumed/worker-cost-final.json",
+      "bytes": 68633,
+      "sha256": "e99d22bb4be00898f35f27e7c873aac776129e4abb41b5ccfa59221b2f288487"
+    },
+    {
+      "path": "admission-optimized25r1/actual-policy-plan.json",
+      "bytes": 4947,
+      "sha256": "4dcfef4a89623df7db348e503f2947faccbb5fcd82d68158de64e5d62643ccde"
+    },
+    {
+      "path": "admission-optimized25r1/admission-timings.jsonl",
+      "bytes": 365929,
+      "sha256": "90a71c1027cd60c6e833f3c8756a934a6996ea4eea5c6fd7b62d069535269519"
+    },
+    {
+      "path": "admission-optimized25r1/agents.json.gz",
+      "bytes": 259329,
+      "sha256": "71e2f68159c0cc39da059aeb56311d2d16c221532777464c205aac723f94fe9c"
+    },
+    {
+      "path": "admission-optimized25r1/census-commands.json",
+      "bytes": 4939,
+      "sha256": "a1f201572bbcdc86467f1c83e458a9b2f1d6f86d0129f27538209d583dbd0970"
+    },
+    {
+      "path": "admission-optimized25r1/drain.json",
+      "bytes": 2384,
+      "sha256": "7a17c65d3d1b14aba1b078a968261852f2aeddc102070481a3533818035b5e71"
+    },
+    {
+      "path": "admission-optimized25r1/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "admission-optimized25r1/ledger-final.json.gz",
+      "bytes": 239190,
+      "sha256": "0a08c584ca92050f688daca0894d514b14b319d7c53531bbad00d9e40d283f41"
+    },
+    {
+      "path": "admission-optimized25r1/result.json",
+      "bytes": 74609,
+      "sha256": "699d67b2f25af7eec0cddbae27b184528cf4c908d22da7097ca3115630958bc6"
+    },
+    {
+      "path": "admission-optimized25r1/samples.json.gz",
+      "bytes": 58064,
+      "sha256": "1359e6adc5cdf3a458da52670cb6a5fc7e8e75a6c84f34e68169606009c74d5a"
+    },
+    {
+      "path": "admission-optimized25r1/schema.json",
+      "bytes": 62024,
+      "sha256": "8bd62b585a195bd1e8c894b79dd9c059077571324ccae577c480b69da37c6730"
+    },
+    {
+      "path": "admission-optimized25r1/sources.json.gz",
+      "bytes": 97962,
+      "sha256": "be100dab638ab2fe54ea811994aa46b9b91c18690480234db9e113337e4ebfb8"
+    },
+    {
+      "path": "admission-optimized25r1/worker-cost-final.json",
+      "bytes": 37231,
+      "sha256": "d7aef1e5e44329f0b8240c6e364d0d7aab995ec689e76b249cf808677f3280b8"
+    },
+    {
+      "path": "admission-optimized25r2/actual-policy-plan.json",
+      "bytes": 4943,
+      "sha256": "34ef2b7b4329e0762073a6b3a620b971658b829bbe3b40c363d6264c4b6d2083"
+    },
+    {
+      "path": "admission-optimized25r2/admission-timings.jsonl",
+      "bytes": 367287,
+      "sha256": "e7d4ed9eaf1f62d0d53e38ccb5a89735900da7f3579ccbfd28657c722ab999a0"
+    },
+    {
+      "path": "admission-optimized25r2/agents.json.gz",
+      "bytes": 259607,
+      "sha256": "e722738b453a9cb6bef48d8addbab7ca4e6efa8736d9783527fcd1b9bdbea84f"
+    },
+    {
+      "path": "admission-optimized25r2/census-commands.json",
+      "bytes": 4939,
+      "sha256": "f45ed4763d1b6b06254a136c517dbeb0dd724f76a9fd6e75023118a429cd1c41"
+    },
+    {
+      "path": "admission-optimized25r2/drain.json",
+      "bytes": 2384,
+      "sha256": "38cd5ca850cd6d5fb2d22edd12e10aa2a5810773d83e6c4304b66a3ea4e4d0f1"
+    },
+    {
+      "path": "admission-optimized25r2/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "admission-optimized25r2/ledger-final.json.gz",
+      "bytes": 239301,
+      "sha256": "cdc4d3c2de574a9b71bc87bafe8500cd138a211aa6213db8d6802a3a97a6a57a"
+    },
+    {
+      "path": "admission-optimized25r2/result.json",
+      "bytes": 74565,
+      "sha256": "c03cb28d57d4d1a89266fab7618409e13e2eb3547fe1e6151239fc2341b13ac0"
+    },
+    {
+      "path": "admission-optimized25r2/samples.json.gz",
+      "bytes": 56972,
+      "sha256": "32508a17d6a60ea503f00eb170a10cc7333b36c1b57b9db7a2a8d6dbef4ae7a2"
+    },
+    {
+      "path": "admission-optimized25r2/schema.json",
+      "bytes": 62024,
+      "sha256": "8bd62b585a195bd1e8c894b79dd9c059077571324ccae577c480b69da37c6730"
+    },
+    {
+      "path": "admission-optimized25r2/sources.json.gz",
+      "bytes": 98098,
+      "sha256": "af605b3e72f8949a6b41dc1b55cb87eb9559d8571246da49f4156211137c426f"
+    },
+    {
+      "path": "admission-optimized25r2/worker-cost-final.json",
+      "bytes": 35894,
+      "sha256": "ab785147510e1ef29495c8742aa5a7575d1028d1c1496bf8bee0b76081030d97"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/actual-policy-plan.json",
+      "bytes": 4947,
+      "sha256": "08a7ea05ad5a50e7f02d3efd513c4176652463fafc8701cff525ccb03932262d"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/admission-timings.jsonl",
+      "bytes": 369225,
+      "sha256": "4b6656d8fe6c4fd18a514e6f7c3eb2556019a6a27cf97270a606048da8c1c5d5"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/agents.json.gz",
+      "bytes": 261129,
+      "sha256": "ebf03cf7e3a996fc5b9cf5739c630386a7b716cb42bc56bf465daf8d5f161f07"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/census-commands.json",
+      "bytes": 5035,
+      "sha256": "5a4355dab04b560024080bcdf0ed79ce6e0fb1204b4f2c93bc49bc174614b0bf"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/drain.json",
+      "bytes": 2360,
+      "sha256": "efd3c24517cc396c01ada573b7ddba5a6d1caa6a16d0ad6d12b1e5fc3caf682f"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/excluded.json",
+      "bytes": 151,
+      "sha256": "7cddca7cf807994b214514d7bbd8d150d2db041b932684270e9e9c4880f90081"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/ledger-final.json.gz",
+      "bytes": 240396,
+      "sha256": "b05751f48c26933625907f8dde4e5d5956e85db2ecb29af9d834b94fa51e3fe9"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/result.json",
+      "bytes": 76111,
+      "sha256": "7ba370155ab8eede6c209b7bd03cbcf4d46f94cdeda3ecceaa7946d3c27a74c6"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/samples.json.gz",
+      "bytes": 53952,
+      "sha256": "3530f75f70ea7f04d7dc47aef022f2bed1fea1671da8a0bcd88cd584bfbb0d6d"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/schema.json",
+      "bytes": 62024,
+      "sha256": "8bd62b585a195bd1e8c894b79dd9c059077571324ccae577c480b69da37c6730"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/sources.json.gz",
+      "bytes": 98518,
+      "sha256": "41c2ff0ef8fb2516a2425ce94ff366e8e42ef99ad2e39e29829b50c0aadcef33"
+    },
+    {
+      "path": "admission-optimized25r3-resumed/worker-cost-final.json",
+      "bytes": 35475,
+      "sha256": "85a5fe056d87c3b4e1e310d1a680044f13d1963d14baeecc19aa85dfa19885b3"
+    },
+    {
+      "path": "after-performance.txt",
+      "bytes": 1540,
+      "sha256": "d6b3d38d2355235b92a88dd4eeec4a0e88feb82f018d394981209befa0fdc3d5"
+    },
+    {
+      "path": "analysis-after-archive.txt",
+      "bytes": 82,
+      "sha256": "83c64393ba86180ad4971d57dbc94f8de8d5495eaf81620fc0c3fbb68a8992b3"
+    },
+    {
+      "path": "archival.txt",
+      "bytes": 94,
+      "sha256": "c1a7dec80efabf764c7f3479eed651d6538bb2d8e0154b2a23e69370818354f3"
+    },
+    {
+      "path": "baseline-matrix.txt",
+      "bytes": 2877,
+      "sha256": "39a4934890d0ac0c417c3af94c77cc2ea8a12e5dd99cff218577c9a4b63a8b24"
+    },
+    {
+      "path": "baseline-regression.txt",
+      "bytes": 1200,
+      "sha256": "d1dd958a49264222137c4c1b3b50bf9eafa24fcdd82552c7f91469b23b1f9b60"
+    },
+    {
+      "path": "baseline10r1/actual-policy-plan.json",
+      "bytes": 4946,
+      "sha256": "76877e2e28bde2cc70b1153f3cd0439df07a20f45c6593549720d99f9e12b7bc"
+    },
+    {
+      "path": "baseline10r1/agents.json.gz",
+      "bytes": 636216,
+      "sha256": "7f758fea7bcfbb3a8ec539d8ad6e976ae82925d2a90a445c85b442d48abf65bf"
+    },
+    {
+      "path": "baseline10r1/census-commands.json",
+      "bytes": 4807,
+      "sha256": "3f19884693889d2816ec8772ed747a5d2e66b7c41f3042671a7db2ae8050c940"
+    },
+    {
+      "path": "baseline10r1/drain.json",
+      "bytes": 1626,
+      "sha256": "ecb1925df3ce9b71555763d872099d81cb08d2da57c783511ed8d41dd76a09c9"
+    },
+    {
+      "path": "baseline10r1/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "baseline10r1/ledger-final.json.gz",
+      "bytes": 583045,
+      "sha256": "1c730bcceab00da35a74383b593c546c7b40017cd52ac725c46b5750e9ca7340"
+    },
+    {
+      "path": "baseline10r1/result.json",
+      "bytes": 141215,
+      "sha256": "1127abb8230f58b7fc90f28442587ee91b44dff1097d7eb8375b39c1152e2a25"
+    },
+    {
+      "path": "baseline10r1/samples.json.gz",
+      "bytes": 1059716,
+      "sha256": "ddca86ed095fbef548f0595d6bc68f4b1f9e79936d4d8eedca38981f6da0f4b1"
+    },
+    {
+      "path": "baseline10r1/schema.json",
+      "bytes": 59853,
+      "sha256": "7dd508a178f0c7fa3f6c5448911b15509f3024746dc071e3f00eccc207441edb"
+    },
+    {
+      "path": "baseline10r1/sources.json.gz",
+      "bytes": 228745,
+      "sha256": "8ca189f80c25d59f9daec868c58bcb07a144c4b41037cb998bf493f7cefc451e"
+    },
+    {
+      "path": "baseline10r1/worker-cost-final.json",
+      "bytes": 68174,
+      "sha256": "f903ead746ad17d68798bc9bbb5b59e0bf11f63d1a499162f433c8cfd8af6c83"
+    },
+    {
+      "path": "baseline25r1/actual-policy-plan.json",
+      "bytes": 4965,
+      "sha256": "839c444a9b0d56a1f71cf9dd9a4c586956aaff9876bd7b34c6ee67cea05d67ad"
+    },
+    {
+      "path": "baseline25r1/agents.json.gz",
+      "bytes": 1594635,
+      "sha256": "f51d2972c3123b2cd75678d7c72f206faa9aa67a9d07bd145c2ba3872158dd9c"
+    },
+    {
+      "path": "baseline25r1/census-commands.json",
+      "bytes": 4807,
+      "sha256": "d5001682f42d1cab72c1fd3cb57b710ad646aca8d8d020aa9773a11a27e0c7bf"
+    },
+    {
+      "path": "baseline25r1/drain.json",
+      "bytes": 126546,
+      "sha256": "0944db43e3efd43a8b2894ff6813155e62ea5aa31aa8bc8990a6bf3eb6f442fe"
+    },
+    {
+      "path": "baseline25r1/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "baseline25r1/ledger-final.json.gz",
+      "bytes": 1453209,
+      "sha256": "8aac0a042d65dee823ec33785d76d8fcabe1f2389317c3b2fdeb9a56685e1571"
+    },
+    {
+      "path": "baseline25r1/result.json",
+      "bytes": 246061,
+      "sha256": "4497468b8f3b77fc78b5048adf6139b3da421f36698c04fac596ce6f1e8ea290"
+    },
+    {
+      "path": "baseline25r1/samples.json.gz",
+      "bytes": 1118726,
+      "sha256": "e351fa38715c8711db7ffd9c0cbdc8ac34010cc84e850eaa37373a7ff30208cd"
+    },
+    {
+      "path": "baseline25r1/schema.json",
+      "bytes": 59853,
+      "sha256": "7dd508a178f0c7fa3f6c5448911b15509f3024746dc071e3f00eccc207441edb"
+    },
+    {
+      "path": "baseline25r1/sources.json.gz",
+      "bytes": 569702,
+      "sha256": "75cd4f153fa2a186266831a667d3bba7b3e27fd59b88d670a646a0c672144f0d"
+    },
+    {
+      "path": "baseline25r1/worker-cost-final.json",
+      "bytes": 67743,
+      "sha256": "178dee27650d40d484b0903dc4dfe4be07e6acfa03f0acfa6cc1b182d40aeb3e"
+    },
+    {
+      "path": "baseline25r2/actual-policy-plan.json",
+      "bytes": 4964,
+      "sha256": "f76114fdeae164ec245128a30ad9ed16a04dbff824d97a1475e50a7262f3a296"
+    },
+    {
+      "path": "baseline25r2/agents.json.gz",
+      "bytes": 1594502,
+      "sha256": "b4343992660425403fec7a9777a278d4b19b68d7f680d0550fcb297aad789174"
+    },
+    {
+      "path": "baseline25r2/census-commands.json",
+      "bytes": 4807,
+      "sha256": "471d88d8b7e01121e42a5334406be29686bed7c6d16fdf6335428035b955a60c"
+    },
+    {
+      "path": "baseline25r2/drain.json",
+      "bytes": 128202,
+      "sha256": "730689829b32f2ef127ad46be89a6bd08abfb37333ed4ca7b14754dee638f7fc"
+    },
+    {
+      "path": "baseline25r2/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "baseline25r2/ledger-final.json.gz",
+      "bytes": 1454513,
+      "sha256": "1c01481845de0c9db1b5cafc7b924b174b6b0890aee4032f58502902d4da2faf"
+    },
+    {
+      "path": "baseline25r2/result.json",
+      "bytes": 247157,
+      "sha256": "77209be7e60eb863a9e5c4469479c37b3bcf3be28a4c05657391c7737c8c8145"
+    },
+    {
+      "path": "baseline25r2/samples.json.gz",
+      "bytes": 1121355,
+      "sha256": "037d3251e9fa19c00cca4f52aa8ec04cb3ce286bf7c4a9e6079eea046e86bbba"
+    },
+    {
+      "path": "baseline25r2/schema.json",
+      "bytes": 59853,
+      "sha256": "7dd508a178f0c7fa3f6c5448911b15509f3024746dc071e3f00eccc207441edb"
+    },
+    {
+      "path": "baseline25r2/sources.json.gz",
+      "bytes": 569932,
+      "sha256": "b3ec655850ec03f9440348dd95a5322a7e4cca3e70bcbcbb0668aa817b0e0bd8"
+    },
+    {
+      "path": "baseline25r2/worker-cost-final.json",
+      "bytes": 67719,
+      "sha256": "53624d70fdf77dc390a382dde7afbb080d07a6f35d80ed480a66a45694c51274"
+    },
+    {
+      "path": "baseline25r3/actual-policy-plan.json",
+      "bytes": 4966,
+      "sha256": "ae743c533f09040d630ba377c2c321e40247a8103abac8bc24aa11087b8333bb"
+    },
+    {
+      "path": "baseline25r3/agents.json.gz",
+      "bytes": 1595776,
+      "sha256": "d75bf716b524d25d858b75e947164a38b83c705a3e68a9fce5e4c7687265fd3e"
+    },
+    {
+      "path": "baseline25r3/census-commands.json",
+      "bytes": 4807,
+      "sha256": "a392ff0faafce7536e1dce355e0cd24f146380154fc6c4193d14353534eb0de3"
+    },
+    {
+      "path": "baseline25r3/drain.json",
+      "bytes": 128200,
+      "sha256": "62864161fd4519d268b9c236c9b7b2483cadf1e9109fa28c9d46d30d2f4ef239"
+    },
+    {
+      "path": "baseline25r3/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "baseline25r3/ledger-final.json.gz",
+      "bytes": 1454707,
+      "sha256": "7bf027bc408ac30e7f70c8e65892ff94487fee8be807aa481f23215e3690367a"
+    },
+    {
+      "path": "baseline25r3/result.json",
+      "bytes": 247158,
+      "sha256": "486b4546b3b61ef2bc1dbb86a59b67def91a3955bb0681f3cf79edbb7d8871e7"
+    },
+    {
+      "path": "baseline25r3/samples.json.gz",
+      "bytes": 1121299,
+      "sha256": "e7bab361f79f0c10c5b1c30d0eba3a559087e509c971411cae5fb4e74895275d"
+    },
+    {
+      "path": "baseline25r3/schema.json",
+      "bytes": 59853,
+      "sha256": "7dd508a178f0c7fa3f6c5448911b15509f3024746dc071e3f00eccc207441edb"
+    },
+    {
+      "path": "baseline25r3/sources.json.gz",
+      "bytes": 594714,
+      "sha256": "7718425f14ccba48483688ae03b6e9f78bf1517e0e4521fb4ff72bb52dc36566"
+    },
+    {
+      "path": "baseline25r3/worker-cost-final.json",
+      "bytes": 67638,
+      "sha256": "aa5f4edd2d0e6a10001a5fd3307521738ae75477f7c3a8a615b6457062b6e5ff"
+    },
+    {
+      "path": "baseline3r1/actual-policy-plan.json",
+      "bytes": 4948,
+      "sha256": "41a61e21356a6cd7876308ce11371d515cd7af96ab8dbabb50f6475046f43873"
+    },
+    {
+      "path": "baseline3r1/agents.json.gz",
+      "bytes": 250156,
+      "sha256": "9f1cad18433c248fe455e4c3a1e364411c4dc36d17995ad1238736807724e4c6"
+    },
+    {
+      "path": "baseline3r1/census-commands.json",
+      "bytes": 4771,
+      "sha256": "6d02f6d3ab9e2db804edf182a5a80424d72c7e9d0f5d3f2c21f66b4718d9bd27"
+    },
+    {
+      "path": "baseline3r1/drain.json",
+      "bytes": 1835,
+      "sha256": "4822a222ed6b4d4102656e22dddf0505cdc36adb31b2698ec04f1a60d1b47179"
+    },
+    {
+      "path": "baseline3r1/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "baseline3r1/ledger-final.json.gz",
+      "bytes": 235158,
+      "sha256": "9962ead25258af0c110b6d00bf17c2f2a054c225977ec3b4e3576912b316d337"
+    },
+    {
+      "path": "baseline3r1/result.json",
+      "bytes": 133664,
+      "sha256": "1ed1de53949fdc37d87a0736d5c35a3808a139ac64a3bd2c039db6575a09a8a1"
+    },
+    {
+      "path": "baseline3r1/samples.json.gz",
+      "bytes": 887811,
+      "sha256": "de84e72cc05606f0ab05a455abec75e8175ed8b62573f686461d88ca4a5ae0d5"
+    },
+    {
+      "path": "baseline3r1/schema.json",
+      "bytes": 59853,
+      "sha256": "7dd508a178f0c7fa3f6c5448911b15509f3024746dc071e3f00eccc207441edb"
+    },
+    {
+      "path": "baseline3r1/sources.json.gz",
+      "bytes": 90265,
+      "sha256": "dfad8fd08920993ae6bd703ccd7c69b755c40b8a8302a43a2ba8ad7d3be8a218"
+    },
+    {
+      "path": "baseline3r1/worker-cost-final.json",
+      "bytes": 68730,
+      "sha256": "910fce87ecf3cdc3ef48262b1e03c2f26184fc3100a430fe362463e204c2c195"
+    },
+    {
+      "path": "baseline50r1/actual-policy-plan.json",
+      "bytes": 4966,
+      "sha256": "835ce4dde119a7d306dd5184a3b035fcf964cf015c4f87aa7422e4b9b5b0c27a"
+    },
+    {
+      "path": "baseline50r1/agents.json.gz",
+      "bytes": 3236670,
+      "sha256": "ee2dc8ce3839f399192119d568cdd5e7cc89a40f0ded21a7135137758ddd05d7"
+    },
+    {
+      "path": "baseline50r1/census-commands.json",
+      "bytes": 4807,
+      "sha256": "98b39b5e972ead302aa0832fd6bf3920f0aeeb9ddfee06780c6dd04b5dd72040"
+    },
+    {
+      "path": "baseline50r1/drain.json",
+      "bytes": 123166,
+      "sha256": "9b642741d8201a12b7e88da667674349b39644f98fa0022cde72f863d60e1eb6"
+    },
+    {
+      "path": "baseline50r1/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "baseline50r1/ledger-final.json.gz",
+      "bytes": 2905047,
+      "sha256": "9fba8f8556af633b1ebe5f52461bc2dc4bb863e2b9a69169d03b643ac9702ffe"
+    },
+    {
+      "path": "baseline50r1/result.json",
+      "bytes": 276056,
+      "sha256": "5bd59dbc2eab5841295f28cda2cf8890945f932f99accaa4dbe828d4bd07c5d2"
+    },
+    {
+      "path": "baseline50r1/samples.json.gz",
+      "bytes": 1162161,
+      "sha256": "406482496aa29e220dc7cb0c13836675c66d04d870696e48b3e274aac3883872"
+    },
+    {
+      "path": "baseline50r1/schema.json",
+      "bytes": 60030,
+      "sha256": "bf4c8a21ea99c6d92c4db8d96082b05f7ee55012239fefdb243b49804c520077"
+    },
+    {
+      "path": "baseline50r1/sources.json.gz",
+      "bytes": 1151012,
+      "sha256": "7906dc642e6031f4a76152de9ddba4a956a78429ce98d1960faabeb0f3567340"
+    },
+    {
+      "path": "baseline50r1/worker-cost-final.json",
+      "bytes": 67759,
+      "sha256": "917f8d5b77a0d8b221f7f0d849829a4b11ca430e8d865e076a2125a4c45c9d43"
+    },
+    {
+      "path": "browser-dependency-install.txt",
+      "bytes": 7370,
+      "sha256": "b143f495f0f00da13e734be845d242807ad11b4ef7cb540ac08fbd5a3cd00137"
+    },
+    {
+      "path": "control-browser.json",
+      "bytes": 1241,
+      "sha256": "e7a6a931d4b1a267c5bfa74f9e18b00d9fbc380365b0a24993029f66d009e610"
+    },
+    {
+      "path": "control-browser.txt",
+      "bytes": 42,
+      "sha256": "257edf950588268413e91bdbb31e590b828a99e0de3a8f32b9b1d1c57f633b38"
+    },
+    {
+      "path": "control-negatives.txt",
+      "bytes": 1263,
+      "sha256": "4d9f10a574ad904ffe6158596e88ba825b01e00c93a09798bb675a2ddd191b31"
+    },
+    {
+      "path": "crypto-browser.desktop.png",
+      "bytes": 663854,
+      "sha256": "144c04f19e0c85b9b0b59cc859108351920f49f0f012693be2b2c6308be5c832"
+    },
+    {
+      "path": "crypto-browser.json",
+      "bytes": 11163,
+      "sha256": "4b713c40e4d16dcaa6c17e1bec8c808f5f8171b17d1e5d10771eac7c5e38f5c0"
+    },
+    {
+      "path": "crypto-browser.mobile.png",
+      "bytes": 303543,
+      "sha256": "51cff5bacd01b18630c7341f943be239a5f73ead095b5fa8ab72ae5caf0f6289"
+    },
+    {
+      "path": "crypto-browser.txt",
+      "bytes": 954,
+      "sha256": "00bfa45f23a923f83f895449f1433c24eb2431b462172f1785e67475a791dcd8"
+    },
+    {
+      "path": "crypto-checks-console.txt",
+      "bytes": 90,
+      "sha256": "6786eb6fcd4d36272b6314d921ad5a9a6f758bc9dff20b7f1e59f50515a9e87a"
+    },
+    {
+      "path": "crypto-final.json",
+      "bytes": 10210,
+      "sha256": "6781f6ef483d019484dcdef471dce857a20dad346fcc822375c4830a5bc283e6"
+    },
+    {
+      "path": "crypto-followup.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "crypto-service-recovery.json",
+      "bytes": 88419,
+      "sha256": "90096eb27d949b41ec56bc691e3cfd7c4796ea352cb1d79dfba7423720bb3209"
+    },
+    {
+      "path": "crypto-service-recovery.progress.json",
+      "bytes": 38717,
+      "sha256": "a092fc87fe264457a6001eb70d5909368e567a1c23945156664e6b29294765fa"
+    },
+    {
+      "path": "crypto-service-recovery.txt",
+      "bytes": 143,
+      "sha256": "633d1caf8c18e22c78ce8ed503853853e3c6fcb24ff8d452343f755277907e10"
+    },
+    {
+      "path": "figures/admission_transaction_wall.png",
+      "bytes": 46120,
+      "sha256": "b51072f8bdf4b770ccf1f8163f681ba4a9e203f277ebe5e5af05e363b1cc7eca"
+    },
+    {
+      "path": "figures/admission_transaction_wall.svg",
+      "bytes": 36559,
+      "sha256": "7f3c37380a8aeef3825bb89a8682d40129b40823e5da3cc0bc467f908ec0f423"
+    },
+    {
+      "path": "figures/backlog.png",
+      "bytes": 225068,
+      "sha256": "f7599619997b2359a8ef1f39ac64cfd8c6cb41e05398f29040ffdc258571868e"
+    },
+    {
+      "path": "figures/backlog.svg",
+      "bytes": 119797,
+      "sha256": "574d0e12b6ad237d89b17da556642301781758a044b6271626ad7d3840e904b4"
+    },
+    {
+      "path": "figures/cpu_throughput.png",
+      "bytes": 74743,
+      "sha256": "dbe00be109a2699517edb3705d81aa2fdb0ab5e91b67e63e978c7d1f610ab042"
+    },
+    {
+      "path": "figures/cpu_throughput.svg",
+      "bytes": 52757,
+      "sha256": "75cfdc3fb42a3e9e5766288410cdecdd051cedc2f9b32a25f2de5cfc842dfcdc"
+    },
+    {
+      "path": "figures/decision_correctness.png",
+      "bytes": 81766,
+      "sha256": "a2a4d6cada6dce321b87d039785e502fc858dcf4746ae756ddda8ea07945ae82"
+    },
+    {
+      "path": "figures/decision_correctness.svg",
+      "bytes": 52873,
+      "sha256": "4ab3b71a6cf7617480fb79599f47cf51c3981c47b08718d88f3c992ee8826bb3"
+    },
+    {
+      "path": "figures/drain_recovery.png",
+      "bytes": 58719,
+      "sha256": "4da955ad7e3ce219e0cfd343de041347e4b70d600eb87f640558fc5546771023"
+    },
+    {
+      "path": "figures/drain_recovery.svg",
+      "bytes": 43464,
+      "sha256": "b5a8959d566ec622ae731d2a689c814aed50257e9aef647b81cb0e716a2f8878"
+    },
+    {
+      "path": "figures/freshness_heartbeat.png",
+      "bytes": 89267,
+      "sha256": "a96938bff98e21e3c2bf8080842ab19feab4ddddcea7e48bdc8d7c8a9f3a0c2d"
+    },
+    {
+      "path": "figures/freshness_heartbeat.svg",
+      "bytes": 73506,
+      "sha256": "ce8c1fe745b813285e9c426b64902364bdca2d02e547799e05cbde466ed79290"
+    },
+    {
+      "path": "figures/incoming_processed.png",
+      "bytes": 131699,
+      "sha256": "dc0d0afd68ed90f93d921a2349af63d17126e7991ebbdf61ae282be982bc5b64"
+    },
+    {
+      "path": "figures/incoming_processed.svg",
+      "bytes": 67732,
+      "sha256": "afd7ef949cf6c2f0dc5bddc6769ec86b5b0d93966ec0dae84278180fd92444fc"
+    },
+    {
+      "path": "figures/ml_security_distribution.png",
+      "bytes": 49063,
+      "sha256": "a36fbf9a043ae3a85dad48e28fdc52d576a8bb2fae479d2b1448d11f2ff703de"
+    },
+    {
+      "path": "figures/ml_security_distribution.svg",
+      "bytes": 42782,
+      "sha256": "960b8a90f73a2d007f9d7b486e92104777c921851de1ac032af35e32f6bb7450"
+    },
+    {
+      "path": "figures/oldest_pending_age.png",
+      "bytes": 210539,
+      "sha256": "6d712fce5eaef68eddaacd141998509c1f3ed497acb55212843c1ee0d033fa7f"
+    },
+    {
+      "path": "figures/oldest_pending_age.svg",
+      "bytes": 117469,
+      "sha256": "2b1f8ed1a897caa91200a021932acb8c5b38f9158de447713d36bb94b4f155ec"
+    },
+    {
+      "path": "figures/source_lag_quantiles.png",
+      "bytes": 75709,
+      "sha256": "3d698d4d64b0caa02a14ba25ff8054cbe555835b622d81b905da4cbbc75b4cda"
+    },
+    {
+      "path": "figures/source_lag_quantiles.svg",
+      "bytes": 50119,
+      "sha256": "22a12e77cc90f449bdf6c7b114d5ca11e0e8ac41541b0fd0a351d5d3fd281a56"
+    },
+    {
+      "path": "figures/sql_time.png",
+      "bytes": 72418,
+      "sha256": "ed59090ad3ff3dacbe22c83fa2d28bce2ecdcc9cdfb000a545bdc39384b3da08"
+    },
+    {
+      "path": "figures/sql_time.svg",
+      "bytes": 50973,
+      "sha256": "b1d3057ba0e0eeb66359c090ba54a25ee06305aae0dd23a22951435fc242af94"
+    },
+    {
+      "path": "figures/throughput_devices.png",
+      "bytes": 44977,
+      "sha256": "c5ecb7693f275607076aa45d8899a0cb3dadf0836faea72275f981cc42d316ec"
+    },
+    {
+      "path": "figures/throughput_devices.svg",
+      "bytes": 32957,
+      "sha256": "aec9e25950006307021467cb688ae9be9a77bf6e9756b9f654440d0337f2b5dc"
+    },
+    {
+      "path": "figures/transactions_event.png",
+      "bytes": 57903,
+      "sha256": "531b830c2636560be62ad7406c945aa25c4e007f43f17c946a5b97ab56a32d34"
+    },
+    {
+      "path": "figures/transactions_event.svg",
+      "bytes": 36348,
+      "sha256": "75dc862ab33d72f80ef2020cf00482079aa2f5257a45c2d038998f8a36cd796b"
+    },
+    {
+      "path": "final-targeted-build.txt",
+      "bytes": 20384,
+      "sha256": "2ea01057ea2cb5e39efda459f6f7a021229e6102d474c004053f40fdeaf5c5a4"
+    },
+    {
+      "path": "full-regression-final.txt",
+      "bytes": 11952,
+      "sha256": "358bd50d4eebfacc3d4dbf54a68eedf6d6fd9fc4b743486a88b08f1ecff2bc2f"
+    },
+    {
+      "path": "full-regression-first.txt",
+      "bytes": 4361,
+      "sha256": "0558dc4bba32e7da11d4cb8c0fd650d4163ef14fcea62dd6199a375dee7ae168"
+    },
+    {
+      "path": "golden-release.json",
+      "bytes": 623693,
+      "sha256": "1639ca3ce3dcca649c2ae502b7443112b0f22acfd560b1a122f9fdfe19541762"
+    },
+    {
+      "path": "golden-traces.json",
+      "bytes": 343263,
+      "sha256": "e26609d3f7e08aa5ec54ea85c4ab7d2d6cd950f6f64a033b8122fdec0ad8e228"
+    },
+    {
+      "path": "launch-after-performance.py",
+      "bytes": 1931,
+      "sha256": "5563f24bf4c71d2130defe9f9858dacb4208acaa23262a3f66bb9ae45f77df31"
+    },
+    {
+      "path": "launch-baseline-matrix.py",
+      "bytes": 968,
+      "sha256": "7eb0b3a07ed9800a3c113335f7d2cd38e72fd4375b52045d71e6e02fec2398cc"
+    },
+    {
+      "path": "launch-crypto-followup.py",
+      "bytes": 443,
+      "sha256": "3d554e0983855b8cc0036b73e5083781b0c2eda4dfb5468236d0a11cc6056fd1"
+    },
+    {
+      "path": "launch-optimized-matrix.py",
+      "bytes": 1143,
+      "sha256": "a3d3be0804ae5f34f701203b39189e10cf2f6bde9107e13fba70d30c4147adaa"
+    },
+    {
+      "path": "lost-ack.json",
+      "bytes": 6872,
+      "sha256": "c20dff5be22f6f5916f5d56d64fe4bae503947f39cb3bedc7fba52472adba3d2"
+    },
+    {
+      "path": "lost-ack.txt",
+      "bytes": 43,
+      "sha256": "50a05341eb6e164fee0a5d43acd019099b7bbe3991cc271927cce09698b0e4ab"
+    },
+    {
+      "path": "ml-fsm-failure-before.txt",
+      "bytes": 813,
+      "sha256": "3f22923f50ba9cbcdfc1da55fa5065d50eb982c310e845e1b93f994afa5da510"
+    },
+    {
+      "path": "mutations-final.json",
+      "bytes": 54818,
+      "sha256": "fe8e8083ea5e981aa38f20888d409bf9acb54c3647a82c860df29f3a25ea9054"
+    },
+    {
+      "path": "mutations-final.txt",
+      "bytes": 176,
+      "sha256": "eb39591b094c92fcdc75e58800995067233b33b073bbada10e96c1cdf6aa9320"
+    },
+    {
+      "path": "mutations-first.txt",
+      "bytes": 1469,
+      "sha256": "e37456646207ba04b8d5306cdde5d72ae4b91cd6d9ff713610b23939f35c7d81"
+    },
+    {
+      "path": "mutations-second.json",
+      "bytes": 49975,
+      "sha256": "bec68d082037c11a8c08a585a311ab4326d23907346e124112da0d4853d3126a"
+    },
+    {
+      "path": "mutations-second.txt",
+      "bytes": 177,
+      "sha256": "23a61cfc3accbad2ec8922fc34fd164a0a33d55a67430d30b0d5b4a1e8ef236f"
+    },
+    {
+      "path": "optimized-matrix.txt",
+      "bytes": 3813,
+      "sha256": "8db22d7c84c8797d7a29e64257b9be02a62bcfb30193db968ede7a2b94862b98"
+    },
+    {
+      "path": "optimized10r1/actual-policy-plan.json",
+      "bytes": 4947,
+      "sha256": "2126f66813c4f96a06d083d0419259eb9679ca75764df830628598c0ca3abbb2"
+    },
+    {
+      "path": "optimized10r1/agents.json.gz",
+      "bytes": 639324,
+      "sha256": "44d695aadce83b428edb4521879c35c5f81091a2edde9ca2060eed81b453f6bf"
+    },
+    {
+      "path": "optimized10r1/census-commands.json",
+      "bytes": 4819,
+      "sha256": "012a83f09df62a6c9d58011100d018e840747c5e5891ae469ce9ffc082ef610b"
+    },
+    {
+      "path": "optimized10r1/drain.json",
+      "bytes": 2339,
+      "sha256": "17db06601a79a13bcb8dfb3b091bfeeda5fe97e4bebe78d43e14296144b5d014"
+    },
+    {
+      "path": "optimized10r1/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "optimized10r1/ledger-final.json.gz",
+      "bytes": 582114,
+      "sha256": "b029982621a5b60b78f2a0b2c7f23e77c09f2459f7fb574475c14299fc60641d"
+    },
+    {
+      "path": "optimized10r1/result.json",
+      "bytes": 146506,
+      "sha256": "0692882631a8af91161668ca121081ee54c1958ce73b39ca3c96a78d70f99c2e"
+    },
+    {
+      "path": "optimized10r1/samples.json.gz",
+      "bytes": 847908,
+      "sha256": "bdfd84f43da7280aa6ed2f2617804fddbe4ab5b45666f003472d7303e8d3f2ad"
+    },
+    {
+      "path": "optimized10r1/schema.json",
+      "bytes": 62024,
+      "sha256": "8bd62b585a195bd1e8c894b79dd9c059077571324ccae577c480b69da37c6730"
+    },
+    {
+      "path": "optimized10r1/sources.json.gz",
+      "bytes": 237829,
+      "sha256": "95a2633b69127c13fcc5c10d3a20fe0015ffc8a47408117e214b142e259d17e3"
+    },
+    {
+      "path": "optimized10r1/worker-cost-final.json",
+      "bytes": 65836,
+      "sha256": "2c1b77fa1191682928319f5ca797b8fa72439a2bb4d5c1304f20bee81105bb00"
+    },
+    {
+      "path": "optimized25r1/actual-policy-plan.json",
+      "bytes": 4961,
+      "sha256": "de0cf0e49427a777eb311e268e779a503e7f0ce598fa3a145b3e633ef0527e6d"
+    },
+    {
+      "path": "optimized25r1/agents.json.gz",
+      "bytes": 1595044,
+      "sha256": "eaa07b79b129ad02aa3a3e259eeded8c0f47abdf11fade48f374ac291d1dd68d"
+    },
+    {
+      "path": "optimized25r1/census-commands.json",
+      "bytes": 4819,
+      "sha256": "ad37406cef6c2061c0864a80f828007fc5de74da632d6c6f1ff0f88ef9670a65"
+    },
+    {
+      "path": "optimized25r1/drain.json",
+      "bytes": 2350,
+      "sha256": "418cbb8654f0da82a8993efd0c189b7b1cabe159cbb864780afd1bed2d5e3e09"
+    },
+    {
+      "path": "optimized25r1/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "optimized25r1/ledger-final.json.gz",
+      "bytes": 1454616,
+      "sha256": "f020bc6568fc408b633447cbcc18ca57f798a4386a54fbf183a6f4cf84b45e88"
+    },
+    {
+      "path": "optimized25r1/result.json",
+      "bytes": 164764,
+      "sha256": "18dd2d9861336a610c17364f94b6fce5c6532a0e1b2288c7caaab22849b0c385"
+    },
+    {
+      "path": "optimized25r1/samples.json.gz",
+      "bytes": 1016338,
+      "sha256": "1ac03577f827e98fd252edbd742f68a99b345b344322d938b84ff053657c50b2"
+    },
+    {
+      "path": "optimized25r1/schema.json",
+      "bytes": 62024,
+      "sha256": "8bd62b585a195bd1e8c894b79dd9c059077571324ccae577c480b69da37c6730"
+    },
+    {
+      "path": "optimized25r1/sources.json.gz",
+      "bytes": 599010,
+      "sha256": "a4d5351abb7dd1c536bfe18b0f088c9b2a4ed0ed09f6870909f8b856d409a11e"
+    },
+    {
+      "path": "optimized25r1/worker-cost-final.json",
+      "bytes": 68912,
+      "sha256": "871fd0bc0d528806d79b89465a5ea8590dd74280325f658374ea2b7109e6fb7e"
+    },
+    {
+      "path": "optimized25r2/actual-policy-plan.json",
+      "bytes": 4962,
+      "sha256": "312395d6639b0ffe43a51335b19eb8121ce192dfb4d243644ec9fdd5c1b6225f"
+    },
+    {
+      "path": "optimized25r2/agents.json.gz",
+      "bytes": 1626654,
+      "sha256": "410074724eacb6e0c6fbb458701034f991ddefd90b43de10cfbf660de2024146"
+    },
+    {
+      "path": "optimized25r2/census-commands.json",
+      "bytes": 4819,
+      "sha256": "9b10b64a8694c93c00f9240d267e1d5e64201aa449e4f5c3b36cb2864f80e704"
+    },
+    {
+      "path": "optimized25r2/drain.json",
+      "bytes": 2348,
+      "sha256": "2914e10cf5d567ee01ad61af4064299afcc360eeb93ee09ca55779444fedc03a"
+    },
+    {
+      "path": "optimized25r2/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "optimized25r2/ledger-final.json.gz",
+      "bytes": 1482927,
+      "sha256": "fa29d83598e6629c838d5dda564853ce3fd058f071f582b1c9f64c43767cc138"
+    },
+    {
+      "path": "optimized25r2/result.json",
+      "bytes": 164762,
+      "sha256": "449560eb34e1d27330b0eb247f8d7534a494f1833f5f6efcf1f579a2b94119c9"
+    },
+    {
+      "path": "optimized25r2/samples.json.gz",
+      "bytes": 1024665,
+      "sha256": "e27e0374688a43f742751626e12e6e884715ec319f9db22ee858dd7bfb66c975"
+    },
+    {
+      "path": "optimized25r2/schema.json",
+      "bytes": 62024,
+      "sha256": "8bd62b585a195bd1e8c894b79dd9c059077571324ccae577c480b69da37c6730"
+    },
+    {
+      "path": "optimized25r2/sources.json.gz",
+      "bytes": 610945,
+      "sha256": "871aa3879c4c39f0a869600a3a5235f3af7cb36ad45473a5b012b7878c445c97"
+    },
+    {
+      "path": "optimized25r2/worker-cost-final.json",
+      "bytes": 68855,
+      "sha256": "dc7232f9878186f3abe885ed9ad9672c8a007626bec08ae833df85fc1f393d8a"
+    },
+    {
+      "path": "optimized25r3/actual-policy-plan.json",
+      "bytes": 4961,
+      "sha256": "06288d5278735ed92fdf31f3ef017c2f508393e4760afd78c74a41430095a737"
+    },
+    {
+      "path": "optimized25r3/agents.json.gz",
+      "bytes": 1608621,
+      "sha256": "74c822c77e7ea12398df346c6ad8ec087ea3d085d7abdadb81189c180e5616f4"
+    },
+    {
+      "path": "optimized25r3/census-commands.json",
+      "bytes": 4819,
+      "sha256": "2a4b03ba9bd79bcc239b70b28776c7f04461cafc2adf84ab8a2a30bc3a93f779"
+    },
+    {
+      "path": "optimized25r3/drain.json",
+      "bytes": 2349,
+      "sha256": "f7dce3c761562d7b451619886e62777663a1a5a34c030ef89e505673d5d0e26e"
+    },
+    {
+      "path": "optimized25r3/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "optimized25r3/ledger-final.json.gz",
+      "bytes": 1467103,
+      "sha256": "78ee9b6dd8e7699801fddc46a300fc4def288b57cde8b7580b304f318b4d7ad6"
+    },
+    {
+      "path": "optimized25r3/result.json",
+      "bytes": 153402,
+      "sha256": "39129f8e40d64feb92c61bed35a4473b26e31e8a7fed1e5a53f41bdacd48d861"
+    },
+    {
+      "path": "optimized25r3/samples.json.gz",
+      "bytes": 906638,
+      "sha256": "cc35cc19b023aef706b9da9cd6901c0a7874b2ca5a2c5a268e49556e3cb16f30"
+    },
+    {
+      "path": "optimized25r3/schema.json",
+      "bytes": 62024,
+      "sha256": "8bd62b585a195bd1e8c894b79dd9c059077571324ccae577c480b69da37c6730"
+    },
+    {
+      "path": "optimized25r3/sources.json.gz",
+      "bytes": 604193,
+      "sha256": "2f1f52e214477a2a3db3d207e2d3c6a72dc9ebf93c2c18620881c34347ef002c"
+    },
+    {
+      "path": "optimized25r3/worker-cost-final.json",
+      "bytes": 68850,
+      "sha256": "a4febaac6c5a806395a038febd73815d1a8ad14fefe7f16b003079da26464a9f"
+    },
+    {
+      "path": "optimized25r4/actual-policy-plan.json",
+      "bytes": 4969,
+      "sha256": "67d2f57796f79c9f5d3e6b281f3e7a41a96df8a52c63b01b6259e7a5ef0cb720"
+    },
+    {
+      "path": "optimized25r4/agents.json.gz",
+      "bytes": 4608095,
+      "sha256": "531076037f7795c90afcdf392ab9e877a629e2fe2809988794056fea8925f341"
+    },
+    {
+      "path": "optimized25r4/census-commands.json",
+      "bytes": 4819,
+      "sha256": "6890cea3f48a13c705f4e1e0560abc5b638665ad489da7d11858aa152f91c578"
+    },
+    {
+      "path": "optimized25r4/drain.json",
+      "bytes": 2354,
+      "sha256": "8bbf32aea3335807c553ec433bcf0a9809fc7eca9e3a8e46dd13827dd536cdab"
+    },
+    {
+      "path": "optimized25r4/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "optimized25r4/ledger-final.json.gz",
+      "bytes": 4209652,
+      "sha256": "0ab24962759412844b1ae2e8a672d8b7327b9d30e554b3ccb59d0b3e4cb7a796"
+    },
+    {
+      "path": "optimized25r4/result.json",
+      "bytes": 360729,
+      "sha256": "735a33d84e480514e58c3e24ace9ceb9494a32720168e786d664cc778d7014cf"
+    },
+    {
+      "path": "optimized25r4/samples.json.gz",
+      "bytes": 3252780,
+      "sha256": "a28b689d10ffae0c710db04b88cbda80e7102e34a71bb05c90b25458f0da5598"
+    },
+    {
+      "path": "optimized25r4/schema.json",
+      "bytes": 62024,
+      "sha256": "8bd62b585a195bd1e8c894b79dd9c059077571324ccae577c480b69da37c6730"
+    },
+    {
+      "path": "optimized25r4/sources.json.gz",
+      "bytes": 1737031,
+      "sha256": "4e8b63ac71376d80ee0f6c335ca0bd3c2606cd1b6d263f5061d7f263eeeff0a3"
+    },
+    {
+      "path": "optimized25r4/worker-cost-final.json",
+      "bytes": 68823,
+      "sha256": "e540818ef14a3545e7ac84c7303ee1c09c22ec91e71b35ede83e8f4ff091758d"
+    },
+    {
+      "path": "optimized3r1/actual-policy-plan.json",
+      "bytes": 4943,
+      "sha256": "9bb4ec80286fdd685fdfc2edbad4846683b024b79a6b3e35b2eaed5adb4e1bdf"
+    },
+    {
+      "path": "optimized3r1/agents.json.gz",
+      "bytes": 191318,
+      "sha256": "4ecd07a6df4d6bfe784b8f79c833d9f1445ce6fc729af3138f12e9e492b8cfcd"
+    },
+    {
+      "path": "optimized3r1/census-commands.json",
+      "bytes": 4807,
+      "sha256": "1a70d6eec988a18544db62f101739af7972731f1c6a814ff30293092da9533a6"
+    },
+    {
+      "path": "optimized3r1/drain.json",
+      "bytes": 2334,
+      "sha256": "adb766cd85aa5d6bee78d7dc23479fd3240779ed82d7b58abe72ecb0025fa32c"
+    },
+    {
+      "path": "optimized3r1/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "optimized3r1/ledger-final.json.gz",
+      "bytes": 180361,
+      "sha256": "7d09709d1f530ba9bae1f8c0a082b6e8cce5310e588870b30f10cd357ed64846"
+    },
+    {
+      "path": "optimized3r1/result.json",
+      "bytes": 136208,
+      "sha256": "d53de458094b3530866102fcc8d985c8d10034dfe9b919f1121b6e214b2e5a34"
+    },
+    {
+      "path": "optimized3r1/samples.json.gz",
+      "bytes": 648609,
+      "sha256": "c2c533d6e471b33f2c2a3cdca122341c5cc761970a2065a9bd8779773a3cfb95"
+    },
+    {
+      "path": "optimized3r1/schema.json",
+      "bytes": 62024,
+      "sha256": "8bd62b585a195bd1e8c894b79dd9c059077571324ccae577c480b69da37c6730"
+    },
+    {
+      "path": "optimized3r1/sources.json.gz",
+      "bytes": 72065,
+      "sha256": "b99e85bfb36f3fc443b937544dce77091d43623d4ce6cffe1fefcd59a4feb25f"
+    },
+    {
+      "path": "optimized3r1/worker-cost-final.json",
+      "bytes": 60916,
+      "sha256": "0edb326d5cdd79ef2ffb74eb20970c808f133b009e1fba634e113c34bdec728a"
+    },
+    {
+      "path": "optimized50r1/actual-policy-plan.json",
+      "bytes": 4966,
+      "sha256": "282e2c5bec1261e5791ff74b695ca77c32c5798458c46471b2b5598494ed8f18"
+    },
+    {
+      "path": "optimized50r1/agents.json.gz",
+      "bytes": 3396424,
+      "sha256": "16fd5f69a96d516ad9aa1bdfcbd6a05a0ea73a5460989a4d4feddb7e274e6006"
+    },
+    {
+      "path": "optimized50r1/census-commands.json",
+      "bytes": 4819,
+      "sha256": "05b4d679897ebf3907cf4103ffab366e1f7bad6eac48bbb9563880582686f49c"
+    },
+    {
+      "path": "optimized50r1/drain.json",
+      "bytes": 2376,
+      "sha256": "a4c584650ce1d531f02d126d86242a99cf55fc7c97965d3cbf6280da2f5358bc"
+    },
+    {
+      "path": "optimized50r1/environment.json",
+      "bytes": 570,
+      "sha256": "f8ccd6555d1857ac0c7d3719f9ef6b4e5c2228c0d6e0ebccd1a90baaf1f9cf8b"
+    },
+    {
+      "path": "optimized50r1/ledger-final.json.gz",
+      "bytes": 3121311,
+      "sha256": "9c7397db7cc5ca30166dd2b1badf0def8c6ba57eca735dc2b2b497916aa7b48b"
+    },
+    {
+      "path": "optimized50r1/result.json",
+      "bytes": 197129,
+      "sha256": "bf51ac61dab6b0506ef9489534f78837bc75c17fd54494b1d0f02bdc3de01382"
+    },
+    {
+      "path": "optimized50r1/samples.json.gz",
+      "bytes": 1188386,
+      "sha256": "bb65e70a68ad1180ff61334f5c08e0d7e602809c5e2fd2c3d70af3c93510e75c"
+    },
+    {
+      "path": "optimized50r1/schema.json",
+      "bytes": 62024,
+      "sha256": "8bd62b585a195bd1e8c894b79dd9c059077571324ccae577c480b69da37c6730"
+    },
+    {
+      "path": "optimized50r1/sources.json.gz",
+      "bytes": 1290001,
+      "sha256": "a61a847e5f2b047358aa6b566cae7336da7d312c220dc30a94d06c868e399a37"
+    },
+    {
+      "path": "optimized50r1/worker-cost-final.json",
+      "bytes": 68816,
+      "sha256": "ec58f2deca72ce6254ddfd84401e9df260292bad8f520153678780a31d09dec8"
+    },
+    {
+      "path": "performance-summary.json",
+      "bytes": 440656,
+      "sha256": "a29b709c274a5a3e10ea7ef560d1101c3c8f9c983a79a6e6b19577736fcd6d27"
+    },
+    {
+      "path": "plans-before.txt",
+      "bytes": 1121,
+      "sha256": "46a46cf7aee33d5edd6f5d1233abb2340a46e5b6022e0c05957143a6c4b3806e"
+    },
+    {
+      "path": "plots.txt",
+      "bytes": 84,
+      "sha256": "6dadea83a11047cf5e5ca0900d833d17ac4c56d99790c213b6c6e96749ff6a87"
+    },
+    {
+      "path": "poison.json",
+      "bytes": 1659,
+      "sha256": "f6d89ba68a1b1b4154ce625ad173a27b5a7ba2185db993114ca90b1eb532e7b4"
+    },
+    {
+      "path": "poison.logs.txt",
+      "bytes": 3998,
+      "sha256": "3f856c818530e8b48468f9b59bd48c67e5a6aa1104181919cbb51b12db4f5640"
+    },
+    {
+      "path": "poison.restart.logs.txt",
+      "bytes": 59,
+      "sha256": "413b03ee6d280efdcd511184a071aaed5c412e64d42799fcebbcd52c019b0363"
+    },
+    {
+      "path": "poison.txt",
+      "bytes": 1659,
+      "sha256": "f6d89ba68a1b1b4154ce625ad173a27b5a7ba2185db993114ca90b1eb532e7b4"
+    },
+    {
+      "path": "policy-reliability-console.txt",
+      "bytes": 73,
+      "sha256": "edc105677787057600c192a30dc3d4417fcdee8f4a4885ddd5d28f428729aeb3"
+    },
+    {
+      "path": "policy-reliability.json",
+      "bytes": 99469,
+      "sha256": "642590fed8a711c2bd00c2f126ccb6593cbe93bc5656ceea8c11a881c90b6000"
+    },
+    {
+      "path": "policy-reliability.png",
+      "bytes": 197913,
+      "sha256": "bbbab2b8dc3780dae1ff618e77f7ca4e18a56fb887706ad321a6cb9b202ddd15"
+    },
+    {
+      "path": "policy-targeted-first-failures.txt",
+      "bytes": 1497,
+      "sha256": "4288c29e18f14d94f00463ce937b908de970398929dc1914b1a7ca688bc18886"
+    },
+    {
+      "path": "policy-targeted-first.txt",
+      "bytes": 466,
+      "sha256": "b2fcd395903f03d56bbe34168643c1afddb6a7142e492d1918add25325580bbd"
+    },
+    {
+      "path": "policy-targeted-second.txt",
+      "bytes": 232,
+      "sha256": "67a75c0e848460cb49e2559c8f2738348507c310ef27506a1187dcacced04438"
+    },
+    {
+      "path": "prepare-baseline3.txt",
+      "bytes": 220,
+      "sha256": "6274f2565521d2371657c6112ff7b3b0d96b805e4ee95bb43b20fbb458d71c25"
+    },
+    {
+      "path": "prepare-crypto.txt",
+      "bytes": 217,
+      "sha256": "8a28246da4fc4223153d96b1682d4d100bf1fb1a36f52184e3b5203cac5b482c"
+    },
+    {
+      "path": "prepare-qa.txt",
+      "bytes": 217,
+      "sha256": "2202cd6e435c1a4215665dc5115b98247b41ab64dc29ec90ff5fa3779169a646"
+    },
+    {
+      "path": "preservation-after-final.txt",
+      "bytes": 74,
+      "sha256": "eef29ba712b446326e8266fa51b05c3e73cb77d0c8e0c38ef2eb46ae68943dc1"
+    },
+    {
+      "path": "preservation-after.json",
+      "bytes": 184851,
+      "sha256": "8c634290556e57dc447647ab0a424c544413cc563a7c93920924332e98beeaca"
+    },
+    {
+      "path": "preservation-after.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "preservation-before.json",
+      "bytes": 100986,
+      "sha256": "b1bfb790aeecf9ad61b029b5e702daf2f77c8b2c3296ca978610ba177b37749a"
+    },
+    {
+      "path": "private-projects-before.json",
+      "bytes": 184799,
+      "sha256": "9c9fd9915b87ea50554e96add0db2af14d302565202b94711bed05bb9723c7a1"
+    },
+    {
+      "path": "qa-build-fifth.txt",
+      "bytes": 20896,
+      "sha256": "fb0246d7113f3104fef1162a41fd0315c3823ee3e2cf4c3cce4e2b304933e3b8"
+    },
+    {
+      "path": "qa-build-fourth.txt",
+      "bytes": 20465,
+      "sha256": "c0fe7ddf4ca23200e9ae6ed1a80b7a51403b6b9e272a949d11a23e72fed898cd"
+    },
+    {
+      "path": "qa-build-third.txt",
+      "bytes": 20212,
+      "sha256": "7055d9839d55e5fcd0779f050e139976734e69dc3bdd713bf5cf2024a1b3427a"
+    },
+    {
+      "path": "query-plans-before.json",
+      "bytes": 158519,
+      "sha256": "127cc0a6c95e01552f543a9a9b3319bff2f8eb86076084e3d4684b731b66b146"
+    },
+    {
+      "path": "raw-archive.json",
+      "bytes": 23534,
+      "sha256": "83833434d78a739fe571b3279e53a921208a66d9c4e8a48180604473ae20cc4a"
+    },
+    {
+      "path": "release-build-and-regression.txt",
+      "bytes": 21346,
+      "sha256": "ee97825db0ce411fc537128011847b45341c8a36077efbc7a62fd8d63fe07605"
+    },
+    {
+      "path": "resume-after-interruption.py",
+      "bytes": 2565,
+      "sha256": "45db52f29d23ea04e01b01eb27ebfaffdde629cfbb1aa2bbc1d23e6f3611f1f1"
+    },
+    {
+      "path": "resume-console-second.txt",
+      "bytes": 1846,
+      "sha256": "4b2f15ed5535fa8ac1bbcf600aa29ed62ce67ac5951d49ee5193b6a1161dc7b1"
+    },
+    {
+      "path": "resume-console-third.txt",
+      "bytes": 3004,
+      "sha256": "844341ed92788d8b0828820958b9621c5b1c860fa5c9b3152dddd78d2b58fc4d"
+    },
+    {
+      "path": "resume-console.txt",
+      "bytes": 255,
+      "sha256": "fcdd02b5ec6cb00696fe7077ddc8b0eaf4e1df666cbfc08136edc0dcf9cf911b"
+    },
+    {
+      "path": "resume-detached.txt",
+      "bytes": 417,
+      "sha256": "5655948a0bfbb55271a563eb8d7898de899a7cc5d0286187636cd948d33478f7"
+    },
+    {
+      "path": "resume-process.json",
+      "bytes": 90,
+      "sha256": "5ff3ebcb616fc143a69809cd5e3f28c54557adeb5f674101f0f7ded10197395f"
+    },
+    {
+      "path": "run-summary.csv",
+      "bytes": 2721,
+      "sha256": "44ca6b30dd6927a122670431f150a056544f820cb79e2e857ef26256cb439872"
+    },
+    {
+      "path": "runtime-audit-complete.txt",
+      "bytes": 49,
+      "sha256": "2c3475fe4e8b352334ecf83b558bdb0489b1b7028676b541101095ff0fd5a2b1"
+    },
+    {
+      "path": "runtime-audit-final.txt",
+      "bytes": 2067,
+      "sha256": "dd2cf45d76e3c0bb7ff2acd3ae50115b31dc3fea0ec52a04e110c364c5b47fad"
+    },
+    {
+      "path": "runtime-audit.json",
+      "bytes": 329253,
+      "sha256": "5e353fcf633f8d12ab13ce70893b6f1a9acfbb9d5bd58670222c9bb5ad826859"
+    },
+    {
+      "path": "runtime-audit.txt",
+      "bytes": 684,
+      "sha256": "2d10b2939e8576f8a1a68c2b9575681e939f86b07ed957ed86e5f7518d6ad324"
+    },
+    {
+      "path": "secret-matcher-check.txt",
+      "bytes": 155,
+      "sha256": "a9d481c31f41c94ebdb76eea2fb444c5d4db82512b32c15165cbfd182573f3f8"
+    },
+    {
+      "path": "secret-scan-final.json",
+      "bytes": 365,
+      "sha256": "8bdddf54e4697e54ce4ea49be2cf3c4eab24c9f464ba629c52ca497b21773b1a"
+    },
+    {
+      "path": "secret-scan-final.txt",
+      "bytes": 54,
+      "sha256": "500939feadc9debf46c563ef424228c566c7cb146b0f292b5d7b85a2ff3e6942"
+    },
+    {
+      "path": "start-baseline3-retry.txt",
+      "bytes": 183,
+      "sha256": "22891da23c6e29ffd052ca6f55890f057bb90d8b6f4695e14e3a90c32b06bfdc"
+    },
+    {
+      "path": "start-baseline3.txt",
+      "bytes": 852,
+      "sha256": "9df3f98e1152219e2999b7a9a43f9f60515e7533b283ba79a2e7da7c97a26cae"
+    },
+    {
+      "path": "start-qa-second.txt",
+      "bytes": 180,
+      "sha256": "db64539fcebdcfe5b17ced6a8984a725a6ef947f1b56acb5807ff0d12337eeed"
+    },
+    {
+      "path": "start-qa.txt",
+      "bytes": 180,
+      "sha256": "09fff88d25e34f6ecb8141f07d5180f56c9ccda4dde7208904cc31403f52995e"
+    },
+    {
+      "path": "validation-summary.json",
+      "bytes": 2550,
+      "sha256": "cf570cd69f3198fab2609385f8012ebfbf96b11a1ab5ec050644152034efbced"
+    }
+  ],
+  "provenance_limit": "Raw measured image/code hashes take precedence over later index HEAD; historical logs retained with failures and excluded repeats. Index excludes itself and its diagnostic stdout index-build.txt.",
+  "exit_code": 0
+}
