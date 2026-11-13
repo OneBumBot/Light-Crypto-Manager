@@ -1,7 +1,7 @@
 """Separate unprivileged model process; SQLite only, no MQTT/Policy/Control credentials."""
 import argparse,hashlib,json,os,resource,time
 from pathlib import Path
-from .journal import Journal
+from .journal import Journal,path_for
 from .models import frozen,load_models,scores
 
 def process(db,loaded,rows,model_error=None):
@@ -21,6 +21,7 @@ def process(db,loaded,rows,model_error=None):
  try:values=scores(loaded,valid) if loaded and not model_error else {};error=model_error
  except Exception as exc:values={};error=type(exc).__name__
  ended=time.time();indices={e['event_id']:i for i,e in enumerate(valid)}
+ pairs=[]
  for row,event in zip(rows,events):
   results=[]
   for role,(pin,_) in loaded.items() if loaded else [(r,(p,None)) for r,p in pins.items()]:
@@ -30,7 +31,9 @@ def process(db,loaded,rows,model_error=None):
    elif event['event_id'] in indices and role in values:status='SCORED';score=values[role][indices[event['event_id']]]
    result=dict(event_id=event['event_id'],capture_id=event['capture_id'],packet_identity=dict(ordinal=event['ordinal'],sha256=event.get('packet_sha256')),session_id=event['capture_id']+':'+event.get('session','unknown'),observer_id=event['observer_id'],feature_version=event['feature_version'],model_id=pin['model_id'],model_role=role,model_version=pin['model_version'],artifact_sha256=pin['artifact_sha256'],capture_timestamp=event['capture_timestamp'],feature_ready_at=event['feature_ready_at'],inference_start=start,inference_finish=ended,journal_ready_at=time.time(),score=score,threshold=pin['threshold'],comparison=(score>=pin['threshold']) if score is not None else None,inference_status=status,diagnostic=error or event.get('diagnostic'),source_availability='observed_packet',capture_validity='provisional_until_final_capture_stats',context_dropped=event.get('context_dropped',False),device_binding='unbound',mode='SHADOW_ONLY',trusted_detector=False)
    results.append(result)
-  db.complete(row,results)
+  pairs.append((row,results))
+ if pairs:db.complete_batch(pairs)
+ for row,event in zip(rows,events):
   # This timestamp is taken only after SQLite commit returns; missing audit after
   # a crash is not replaced with a fabricated zero latency.
   with (db.path.parent/'commit-timings.jsonl').open('a') as stream:
@@ -42,14 +45,14 @@ def run(root,models,roles,duration,parity):
  # Live inference cannot start from a user assertion of parity.
  report=json.loads(Path(parity).read_text())
  if report.get('parser_sha256')!=hashlib.sha256(Path(__file__).with_name('features.py').read_bytes()).hexdigest() or report.get('status')!='PASS' or report.get('feature_version')!='tcp-packet-passive-v1' or report.get('integral_mismatches')!=0 or report.get('delta_mismatches')!=0 or report.get('supported_packets',0)<100:raise ValueError('Feature parity gate blocked')
- db=Journal(Path(root)/'shadow.db');db.status('parity',report);loaded={};error=None
+ db=Journal(path_for(root));db.status('parity',report);loaded={};error=None
  try:loaded=load_models(models,roles)
  except Exception as exc:error=type(exc).__name__;loaded={r:(frozen()[r],None) for r in roles}
  deadline=time.monotonic()+duration;processed=0;last_inference=None
  while time.monotonic()<deadline:
   rows=db.pending();processed+=process(db,loaded,rows,error) if rows else 0
   if rows:last_inference=time.time()
-  db.status('worker',dict(status='MODEL_UNAVAILABLE' if error else 'READY',heartbeat=time.time(),processed=processed,last_inference=last_inference,model_roles=roles,model_error=error,user_cpu=resource.getrusage(resource.RUSAGE_SELF).ru_utime,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
+  db.status('worker',dict(status='MODEL_UNAVAILABLE' if error else 'READY',heartbeat=time.time(),processed=processed,storage_retries=db.retries,storage_commits=db.commits,last_inference=last_inference,model_roles=roles,model_error=error,user_cpu=resource.getrusage(resource.RUSAGE_SELF).ru_utime,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
   if (Path(root)/'capture-status.json').exists() and not db.pending():break
   if not rows:time.sleep(.05)
  from .sessions import aggregate

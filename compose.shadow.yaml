@@ -39,5 +39,6 @@ services:
     command: [python, -m, src.shadow_ids.worker, --root, '/shadow/${SHADOW_RUN:-run}', --models, /models, --parity, /parity.json, --duration, '60']
     logging: {options: {max-size: 2m, max-file: '2'}}
   web:
-    environment: {SHADOW_JOURNAL: '/shadow/${SHADOW_RUN:-run}/shadow.db'}
-    volumes: ["${SHADOW_ROOT:?}:/shadow:ro"]
+    environment: {SHADOW_JOURNAL: '/shadow-journal/shadow.db'}
+    group_add: ["${SHADOW_GID:?}"]
+    volumes: ["${SHADOW_ROOT:?}/${SHADOW_RUN:-run}/journal:/shadow-journal:ro"]

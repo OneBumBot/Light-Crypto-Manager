@@ -10,7 +10,8 @@ def run(root,duration,broker,capacity=512,max_packets=20000,extract_only=False):
  os.umask(0o077);root=Path(root);root.mkdir(mode=0o700,parents=True,exist_ok=True)
  if (root/'traffic.pcap').exists():raise ValueError('Existing capture preserved')
  if shutil.disk_usage(root).free<1024**3:raise ValueError('Disk floor')
- run_id=root.name+'-'+uuid.uuid4().hex;db=Journal(root/'shadow.db');flows=Flows();stop=threading.Event();incoming=queue.Queue(maxsize=capacity);reader_loss=[0];errors=[];ready=threading.Event();stats={'captured':0,'received_by_filter':None,'dropped_by_kernel':None};started=time.time();ordinal=0;overflows=0;unsupported=0;last_packet=None;reason='duration';cap=Path(root/'traffic.pcap').open('xb')
+ run_id=root.name+'-'+uuid.uuid4().hex;db=Journal(root/'journal/shadow.db');db.status('source',dict(capture_point='lab-devices eth0, Ethernet/IPv4/TCP',interface='eth0',namespace=os.readlink('/proc/self/ns/net')))
+ flows=Flows();stop=threading.Event();incoming=queue.Queue(maxsize=capacity);reader_loss=[0];errors=[];ready=threading.Event();stats={'captured':0,'received_by_filter':None,'dropped_by_kernel':None};started=time.time();ordinal=0;overflows=0;unsupported=0;last_packet=None;reason='duration';cap=Path(root/'traffic.pcap').open('xb')
  command=['tcpdump','-p','-i','eth0','-U','-s','0','-B','4096','-c',str(max_packets),'-w','-','tcp and host '+broker+' and port 8883'];process=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
  def reader():
   try:

@@ -1,0 +1,9 @@
+# Prospective leakage/shortcut boundary
+
+No new scientific final holdout is declared or opened. Frozen Stage14 models/thresholds only. Engineering parity and same-host operational alert measurement are separated from an independent generalization verdict. Independent host unavailable: generalization_evaluation=BLOCKED_INDEPENDENT_DATA. No claim that a new timestamp/container PID creates an external domain.
+
+Before operational corroborated contrast, development-shortcut-audit.json records new parity-development distributions and known confounders. No labels or final domain data used for selection; no model/preprocess/threshold/aggregation changed. Existing Stage14 transductive fingerprint-purged known-labelled population differs from full online transport observation (handshakes/ACK/lifecycle/boundaries). Fixed sensor payload,packet sizes,veth framing,timing,start staggering,OS TCPwindow,broker build and producer seed regime remain possible shortcuts. Exact online extractor parity does not remove this domain/population shift.
+
+No addresses/ports/device/session/capture IDs,broker outcomes,scenario,labels enter five-field model X. These are provenance only. Actual known Normal/CV windows,when available, are produced by separate unchanged broker+witness+PG oracle, never Shadow prediction. Unknown remains excluded from FPR denominators and counted separately. Whole causal session prefixes and retrospectively known-normal activity-subset aggregates are explicitly different units; neither is a physical device safety verdict.
+
+A future independent-host model evaluation must preregister source grouping and software versions, finish quantitative development analyses before its own final test, use existing frozen models or separately authorized new calibration, and report session/capture uncertainty. Old Stage14 once-only test cannot be reopened for tuning. Stage15 performs zero fit/refit/threshold changes.

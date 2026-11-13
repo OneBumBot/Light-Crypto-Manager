@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 from scripts.stage15_setup import lab
 from scripts.stage15_runs import capture,workload,wait
-from src.shadow_ids.journal import Journal
+from src.shadow_ids.journal import Journal,path_for
 
 def state(l):
  r=l.run('run','--rm','-T','--no-deps','-e','RESEARCH_SINCE='+str(time.time()-60),'tests','python','-m','scripts.stand_state',timeout=60);return json.loads(r.stdout[r.stdout.index('{'):])
@@ -43,10 +43,10 @@ def run(l,name,n,interval,condition):
  while after['outbox_pending'] and time.monotonic()<deadline:time.sleep(.25);after=state(l)
  counters=json.loads(l.run('exec','-T','lab-devices','cat','/research/'+name+'/stage15-counters.json').stdout);root=l.root/'shadow'/name;counts={};timings={};capture_status=None
  if cid:
-  capture_status=json.loads((root/'capture-status.json').read_text());db=Journal(root/'shadow.db',readonly=True);counts=dict(events=db.db.execute('select count(*) from events').fetchone()[0],results=db.db.execute('select count(*) from results').fetchone()[0],pending=len(db.pending(limit=50000)),inference_statuses=dict(db.db.execute("select json_extract(value,'$.inference_status'),count(*) from results group by 1").fetchall()),supported_packets=db.db.execute("select count(*) from events where json_extract(packet,'$.status')='FEATURE_READY'").fetchone()[0],session_count=db.db.execute("select count(distinct json_extract(packet,'$.session')) from events").fetchone()[0]);db.close()
-  if (root/'commit-timings.jsonl').exists():
-   raw=[json.loads(s) for s in (root/'commit-timings.jsonl').read_text().splitlines()];timings={key:distribution([r[end]-r[begin] for r in raw]) for key,begin,end in [('capture_to_feature','capture_timestamp','feature_ready_at'),('capture_to_prediction','capture_timestamp','inference_finish'),('model_batch_wall','inference_start','inference_finish'),('capture_to_journal_ack','capture_timestamp','journal_commit_ack_at')]}
-  db=Journal(root/'shadow.db',readonly=True);alerts={}
+  capture_status=json.loads((root/'capture-status.json').read_text());db=Journal(path_for(root),readonly=True);counts=dict(events=db.db.execute('select count(*) from events').fetchone()[0],results=db.db.execute('select count(*) from results').fetchone()[0],pending=len(db.pending(limit=50000)),inference_statuses=dict(db.db.execute("select json_extract(value,'$.inference_status'),count(*) from results group by 1").fetchall()),supported_packets=db.db.execute("select count(*) from events where json_extract(packet,'$.status')='FEATURE_READY'").fetchone()[0],session_count=db.db.execute("select count(distinct json_extract(packet,'$.session')) from events").fetchone()[0]);db.close()
+  if (path_for(root).parent/'commit-timings.jsonl').exists():
+   raw=[json.loads(s) for s in (path_for(root).parent/'commit-timings.jsonl').read_text().splitlines()];timings={key:distribution([r[end]-r[begin] for r in raw]) for key,begin,end in [('capture_to_feature','capture_timestamp','feature_ready_at'),('capture_to_prediction','capture_timestamp','inference_finish'),('model_batch_wall','inference_start','inference_finish'),('capture_to_journal_ack','capture_timestamp','journal_commit_ack_at')]}
+  db=Journal(path_for(root),readonly=True);alerts={}
   for r in db.db.execute('select value from results'):
    x=json.loads(r[0]);v=alerts.setdefault(x['model_role'],dict(scored=0,above_threshold=0));v['scored']+=int(x['inference_status']=='SCORED');v['above_threshold']+=int(x['comparison'] is True)
   db.close()

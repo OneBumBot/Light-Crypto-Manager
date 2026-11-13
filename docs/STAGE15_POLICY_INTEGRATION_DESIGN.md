@@ -1,0 +1,5 @@
+# Future read-only Policy integration design — no live connection implemented
+
+Current Shadow storage is separate private SQLite with network packet/session units. Existing ML feed binds Mongo-confirmed telemetry(device_id,key_epoch,sequence_number) and different feature versions. No fabricated IDs, no writes to policy_signals/ml_storage, no conversion to telemetry-causal-v1/network-core-v1, no HMAC command/ACTIVATE/effective update.
+
+Future reviewed adapter would require versioned source provenance, explicit unbound sessions, sensor availability/freshness/drop/context diagnostics and a separate untrusted research observation contract. Corroborated software binding remains distinct from physical IoT identity. RiskFSM/hysteresis/guard/recovery cannot be bypassed. Policy remains DRY_RUN, trusted_detector=false, manual-only crypto control. Any automatic control needs a separately authorized stage, threat model and independent validation; no rule Critical→Kuz or score→cipher is added here.

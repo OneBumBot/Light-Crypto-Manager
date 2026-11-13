@@ -168,3 +168,19 @@ def test_scoring_does_not_import_offline_training_or_oracle(monkeypatch):
   classes_=[0,1]
   def predict_proba(self,frame):return np.array([[.3,.7]])
  e=dict(status='FEATURE_READY',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])));assert scores({'rf_binary':({},RF())},[e])['rf_binary']==[.7]
+def test_batch_rollback_preserves_pending_and_no_partial_results(tmp_path):
+ db=Journal(tmp_path/'shadow.db');db.append(event());db.append(event(2));good=dict(model_id='x',mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound');bad={**good,'trusted_detector':True}
+ with pytest.raises(ValueError):db.complete_batch([({'id':'e1'},[good]),({'id':'e2'},[bad])])
+ assert len(db.pending())==2 and db.db.execute('select count(*) from results').fetchone()[0]==0;db.close()
+def test_bounded_busy_retry_not_lost_processing(tmp_path):
+ import sqlite3,threading,time
+ db=Journal(tmp_path/'shadow.db');db.append(event());other=sqlite3.connect(tmp_path/'shadow.db',check_same_thread=False);other.execute('BEGIN IMMEDIATE');timer=threading.Timer(.45,other.commit);timer.start();start=time.monotonic();db.complete({'id':'e1'},[]);timer.join();assert db.retries>=1 and not db.pending() and time.monotonic()-start<2;other.close();db.close()
+def test_one_commit_per_result_batch(tmp_path):
+ db=Journal(tmp_path/'shadow.db')
+ for n in range(1,10):db.append(event(n))
+ before=db.commits;db.complete_batch([(r,[]) for r in db.pending()]);assert db.commits-before==1 and not db.pending();db.close()
+def test_reordered_syn_not_a_fresh_complete_generation():
+ f=Flows();first=f.accept(p(time=10,sequence=100));r=f.accept(p(time=9,sequence=200));assert r['status']=='FEATURE_UNAVAILABLE' and r['session']==first['session']
+def test_old_stage15_journal_is_not_silently_reinitialized(tmp_path):
+ from src.shadow_ids.journal import path_for
+ old=Journal(tmp_path/'shadow.db');old.append(event());old.close();assert path_for(tmp_path)==tmp_path/'shadow.db';db=Journal(path_for(tmp_path));assert len(db.pending())==1;db.close()

@@ -24,7 +24,8 @@ class Flows:
   for r in self.rows.values():r['complete']=False
  def accept(self,p):
   t=p['time'];key=p['key'];syn=bool(p['flags']&2 and not p['flags']&16);old=self.rows.get(key)
-  new=old is None or t-old['last']>self.expiry or (syn and (old['closed'] or old['initial']!=p['sequence']))
+  regressed=old is not None and t<old['last']
+  new=not regressed and (old is None or t-old['last']>self.expiry or (syn and (old['closed'] or old['initial']!=p['sequence'])))
   if new:
    self.generation+=1;r=dict(last=t,initial=p['sequence'] if syn else None,complete=syn,diagnostic=None if syn else 'missing_syn',closed=False,generation=self.generation,expected={});self.rows[key]=r;delta=0.0
    if len(self.rows)>self.limit:self.rows.popitem(last=False)

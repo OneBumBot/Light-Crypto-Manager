@@ -17,6 +17,9 @@ def configure(root):
  return root
 
 def lab(root):
- l=Lab(root);where=l.base.index('--profile');l.base[where:where]=['-f','compose.shadow.yaml'];return l
+ l=Lab(root);where=l.base.index('--profile');l.base[where:where]=['-f','compose.shadow.yaml']
+ from src.shadow_ids.isolation import validate
+ validate(json.loads(l.run('--profile','*','config','--format','json').stdout)['services'])
+ return l
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--directory',type=Path,required=True);p.add_argument('--project',required=True);p.add_argument('--subnet',required=True);a=p.parse_args();prepare(a.directory,a.project,a.subnet);configure(a.directory);print('Four pinned Stage14 models copied read-only for Stage15, original models unchanged')

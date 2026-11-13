@@ -1,0 +1,64 @@
+{
+  "first_defect": {
+    "kind": "offline scoring module absent from model image",
+    "actual_statuses": {
+      "INFERENCE_ERROR": 1296
+    },
+    "no_normal_fallback": true,
+    "original_report_retained": true
+  },
+  "second_defect": {
+    "experiment_id": "v2-medium-r0-rf",
+    "worker_exit": 1,
+    "diagnostic": "sqlite3.OperationalError: database is locked",
+    "capture": {
+      "status": "CAPTURE_INCOMPLETE",
+      "complete": false,
+      "heartbeat": 1794580547.2584713,
+      "capture_id": "v2-medium-r0-rf-385f0faecd3e48c3bf04214a9dc498ec",
+      "started_at": 1794580524.202934,
+      "finished_at": 1794580547.2584717,
+      "last_packet": 1794580540.548692,
+      "packets": 2544,
+      "reader_drops": 0,
+      "queue_overflow": 1767,
+      "unsupported": 0,
+      "stats": {
+        "captured": 2544,
+        "received_by_filter": 2544,
+        "dropped_by_kernel": 0
+      },
+      "reason": "duration",
+      "errors": [],
+      "peak_rss_kib": 24492,
+      "user_cpu": 0.314641,
+      "capture_point": "lab-devices eth0, Ethernet/IPv4/TCP; TLS opaque",
+      "interface": "eth0",
+      "linktype": 1,
+      "ip_versions": [
+        "IPv4"
+      ],
+      "namespace": "net:[4026533395]",
+      "snaplen": 262144,
+      "offloads": "not_changed; environment-specific, parity checked on actual frames",
+      "timestamp_source": "kernel libpcap CLOCK_REALTIME shared-host",
+      "pcap_sha256": "269075eddcc6bf206ed9401f76b319cf69504ac0142970c4e94b9c25d512e529"
+    },
+    "journal": {
+      "events": 777,
+      "pending": 512,
+      "results": 265
+    },
+    "authoritative_telemetry": {
+      "known_published_identities": 697,
+      "pg_committed": 697,
+      "mongo_stored": 697,
+      "live_control_commands": 0
+    },
+    "not_a_successful_inference_run": true
+  },
+  "failed_series_not_pooled_with_final_series": true,
+  "raw_sources_preserved": true,
+  "fix": "Bounded atomic64-event result batches, BEGIN IMMEDIATE, bounded busy retry; max limits/security unchanged",
+  "exit_code": 0
+}

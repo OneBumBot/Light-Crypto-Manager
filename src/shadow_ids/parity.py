@@ -2,12 +2,12 @@
 import csv,json,hashlib
 from pathlib import Path
 from src.research_stand.pcap_audit import packets
-from .journal import Journal
+from .journal import Journal,path_for
 from .features import VERSION
 TOLERANCE=1.1e-6
 
 def compare(root):
- root=Path(root);db=Journal(root/'shadow.db',readonly=True);rows=[json.loads(r[0]) for r in db.db.execute('SELECT packet FROM events ORDER BY ordinal')];reference=list(packets(root/'traffic.pcap'));last={};integers=0;deltas=0;matched=0;unavailable=0
+ root=Path(root);db=Journal(path_for(root),readonly=True);rows=[json.loads(r[0]) for r in db.db.execute('SELECT packet FROM events ORDER BY ordinal')];reference=list(packets(root/'traffic.pcap'));last={};integers=0;deltas=0;matched=0;unavailable=0
  if len(rows)!=len(reference):raise ValueError('Physical packet/journal count mismatch')
  for event,ref in zip(rows,reference):
   key=tuple(sorted((ref['wire'][:2],ref['wire'][2:])));delta=ref['time']-last.get(key,ref['time']);last[key]=ref['time']
