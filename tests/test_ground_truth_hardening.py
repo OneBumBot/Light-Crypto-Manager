@@ -265,6 +265,11 @@ def test_public_pipeline_positive_mixed_and_unknown(tmp_path):
         "normal_to_violation",
         "violation_to_normal",
         "unknown_to_normal",
+        "unknown_to_violation",
+        "session",
+        "pcap_hash",
+        "scope",
+        "packet_specific",
         "drop",
         "extra",
         "packet_identity",
@@ -277,19 +282,23 @@ def test_public_pipeline_positive_mixed_and_unknown(tmp_path):
 def test_coherent_hash_tampering_is_rejected(tmp_path, mutation):
     raw, out = derived(tmp_path)
     a = pd.read_csv(out / "observations.csv", keep_default_na=False)
-    if mutation in ["normal_to_violation", "violation_to_normal", "unknown_to_normal"]:
+    if mutation in ["normal_to_violation", "violation_to_normal", "unknown_to_normal", "unknown_to_violation"]:
         old = {
             "normal_to_violation": "normal",
             "violation_to_normal": "controlled_violation",
             "unknown_to_normal": "unknown",
+            "unknown_to_violation": "unknown",
         }[mutation]
-        new = "controlled_violation" if mutation == "normal_to_violation" else "normal"
+        new = "controlled_violation" if mutation in ["normal_to_violation","unknown_to_violation"] else "normal"
         i = a.index[a.ground_truth == old][0]
         a.loc[i, ["ground_truth", "attack_type", "label"]] = [
             new,
             "Normal" if new == "normal" else "ControlledViolation",
             "0" if new == "normal" else "1",
         ]
+    elif mutation in ["session","pcap_hash","scope","packet_specific"]:
+        field={"session":"session_id","pcap_hash":"source_pcap_sha256","scope":"label_unit","packet_specific":"packet_specific_evidence"}[mutation]
+        a.loc[1,field]="forged-packet-attribution"
     elif mutation == "drop":
         a = a.iloc[1:]
     elif mutation == "extra":
@@ -313,6 +322,11 @@ def test_coherent_hash_tampering_is_rejected(tmp_path, mutation):
         "normal_to_violation": "ground_truth",
         "violation_to_normal": "ground_truth",
         "unknown_to_normal": "ground_truth",
+        "unknown_to_violation": "ground_truth",
+        "session":"session_id",
+        "pcap_hash":"source_pcap_sha256",
+        "scope":"label_unit",
+        "packet_specific":"packet_specific_evidence",
         "drop": "Missing/extra observation",
         "extra": "Missing/extra observation",
         "packet_identity": "packet_id",

@@ -1,5 +1,5 @@
 """Execute a frozen bounded Stage14 acquisition plan. Never trains or opens models."""
-import argparse,hashlib,json,os,platform,subprocess,time
+import argparse,hashlib,json,math,platform,subprocess
 from pathlib import Path
 from datetime import datetime,timezone
 from scripts.stage14_lab import Lab as Infrastructure
@@ -10,6 +10,11 @@ from src.research_stand.pcap_audit import headers,digest,load_json
 
 def check_source(folder):
  rows,cap,ext=headers(folder);truth=load_json(folder/'ground-truth.json');observer=load_json(folder/'mqtt-observer.json');broker=load_json(folder/'broker-evidence.json');core=load_json(folder/'core.json')
+ if Path(folder).is_symlink() or any(p.is_symlink() for p in Path(folder).rglob('*')):raise ValueError('Source symlink alias')
+ if cap['started_at']>truth['experiment_started_at'] or cap['finished_at']<truth['experiment_finished_at']:raise ValueError('Partial capture does not cover generator lifecycle')
+ if truth['experiment_finished_at']-truth['experiment_started_at']<truth['experiment']['duration']-.05:raise ValueError('Generator stopped before planned duration')
+ clock=truth['clock'];drift=clock['wall_monotonic_drift_seconds'];margin=clock['boundary_margin_seconds']
+ if type(drift) not in (int,float) or type(margin) not in (int,float) or not math.isfinite(drift) or not math.isfinite(margin) or margin<=0 or abs(drift)>margin:raise ValueError('Clock drift exceeds declared boundary guard')
  if truth['errors'] or not truth['all_clients_stopped'] or any(not r.get('closed_at') for r in truth['connections']):raise ValueError('Incomplete generator')
  if not observer.get('events') or not observer.get('completed') or not observer.get('ready_observed') or observer.get('overflow') or observer.get('disconnected_unexpectedly'):raise ValueError('Incomplete independent observer')
  if broker.get('source')!='docker_mosquitto_log' or not broker.get('sessions'):raise ValueError('Missing broker session evidence')
@@ -26,7 +31,7 @@ def collect(lab_root,output,items,plan_sha,group,partition):
   start=datetime.now(timezone.utc).isoformat();status='complete';detail=None;proof={}
   try:
    lab.experiment(cfg);proof=check_source(folder)
-  except (ValueError,RuntimeError,subprocess.SubprocessError) as e:
+  except (ValueError,RuntimeError,subprocess.SubprocessError,KeyError,TypeError,OSError) as e:
    status='quarantined';detail=type(e).__name__+':'+str(e)[:200]
    if not folder.exists():
     subprocess.run(['docker','cp',lab.collector+':/research/'+cfg.experiment_id,str(folder)],capture_output=True,timeout=15)

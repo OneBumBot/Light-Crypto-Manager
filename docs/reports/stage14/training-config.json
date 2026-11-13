@@ -1,0 +1,441 @@
+{
+  "schema_version": 1,
+  "seed": 75,
+  "minimum_normal_rows": 1000,
+  "minimum_class_captures": 5,
+  "max_rows": 100000,
+  "validation_fpr_target": 0.05,
+  "model_version": "14.0.0",
+  "candidates": [
+    {
+      "candidate_id": "rf_baseline",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": false
+    },
+    {
+      "candidate_id": "rf_balanced",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": "balanced"
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": false
+    },
+    {
+      "candidate_id": "rf_subsample",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": "balanced_subsample"
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": false
+    },
+    {
+      "candidate_id": "rf_tuned_0",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": 16,
+        "min_samples_leaf": 2,
+        "min_samples_split": 4,
+        "max_features": "sqrt",
+        "class_weight": "balanced"
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": false
+    },
+    {
+      "candidate_id": "rf_tuned_1",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 200,
+        "max_depth": 32,
+        "min_samples_leaf": 4,
+        "min_samples_split": 8,
+        "max_features": 0.8,
+        "class_weight": "balanced_subsample"
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": false
+    },
+    {
+      "candidate_id": "if_baseline",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": false
+    },
+    {
+      "candidate_id": "if_standard",
+      "algorithm": "if",
+      "scaling": "standard",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": false
+    },
+    {
+      "candidate_id": "if_tuned_0",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 200,
+        "max_samples": 1024,
+        "max_features": 0.75
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": false
+    },
+    {
+      "candidate_id": "if_tuned_1",
+      "algorithm": "if",
+      "scaling": "robust",
+      "parameters": {
+        "n_estimators": 200,
+        "max_samples": 256,
+        "max_features": 0.5
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": false
+    },
+    {
+      "candidate_id": "rf_ablation_all5",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "rf_ablation_without_frame_len",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      },
+      "features": [
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "rf_ablation_without_delta",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "rf_ablation_without_window",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.time_delta"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "rf_ablation_without_flags",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "rf_ablation_timing_only",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      },
+      "features": [
+        "tcp.time_delta"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "rf_ablation_size_only",
+      "algorithm": "rf",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": "sqrt",
+        "class_weight": null
+      },
+      "features": [
+        "frame.len",
+        "tcp.len"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "if_ablation_all5",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "if_ablation_without_frame_len",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "features": [
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "if_ablation_without_delta",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.window_size_value"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "if_ablation_without_window",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.flags",
+        "tcp.time_delta"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "if_ablation_without_flags",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "features": [
+        "frame.len",
+        "tcp.len",
+        "tcp.window_size_value",
+        "tcp.time_delta"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "if_ablation_timing_only",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "features": [
+        "tcp.time_delta"
+      ],
+      "ablation": true
+    },
+    {
+      "candidate_id": "if_ablation_size_only",
+      "algorithm": "if",
+      "scaling": "none",
+      "parameters": {
+        "n_estimators": 100,
+        "max_samples": 256,
+        "max_features": 1.0
+      },
+      "features": [
+        "frame.len",
+        "tcp.len"
+      ],
+      "ablation": true
+    }
+  ],
+  "study_contract": "stage14-offline-v1",
+  "include_multiclass": false
+}

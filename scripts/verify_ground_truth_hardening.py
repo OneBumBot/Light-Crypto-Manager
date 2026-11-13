@@ -93,7 +93,7 @@ def checks(env, captures, output):
     )
     # Independent source remains fixed; misleading generator scenario cannot grant trust.
     copyroot = output / "changed-generator"
-    original = next(p for p in captures.iterdir() if p.name.endswith("regular"))
+    original = next(p for p in captures.iterdir() if json.loads((p/"ground-truth.json").read_text())["experiment"]["scenario"]=="regular")
     shutil.copytree(original, copyroot / original.name)
     p = copyroot / original.name / "ground-truth.json"
     t = json.loads(p.read_text())
@@ -144,7 +144,7 @@ def checks(env, captures, output):
         all_unknown=True,
     )
     # Stronger replay negative: independent ciphertext witness no longer matches generator.
-    replay = next(p for p in captures.iterdir() if p.name.endswith("replay"))
+    replay = next(p for p in captures.iterdir() if json.loads((p/"ground-truth.json").read_text())["experiment"]["scenario"]=="replay")
     copyroot2 = output / "bad-digest"
     shutil.copytree(replay, copyroot2 / replay.name)
     p = copyroot2 / replay.name / "mqtt-observer.json"

@@ -40,6 +40,7 @@ def linked_split(frame,partitions,min_normal_rows=1000,min_class_groups=5):
 def verify_source_receipt(folder,plan):
  from scripts.stage14_collect import check_source
  receipt=load_json(Path(folder)/'acquisition.json')
+ if load_json(Path(folder)/'ground-truth.json').get('synthetic_unit_fixture'):raise ValueError('Synthetic fixture cannot authorize scientific dataset')
  expected={r['config']['experiment_id']:r for r in plan['primary']}
  eid=Path(folder).name
  if eid not in expected or receipt['experiment_id']!=eid or receipt['status']!='complete':raise ValueError('Failed/unplanned acquisition source')
@@ -57,4 +58,17 @@ def training_gate(data,manifest):
  if source.get('dataset_version')!='stage14-lightcrypto-lab-v1':return
  gate=load_json(Path(data).parent/'data-quality-gate.json')
  if gate.get('status')!='PASS' or gate.get('dataset_sha256')!=digest(data) or gate.get('manifest_sha256')!=digest(manifest):raise ValueError('Stage14 training forbidden: data quality gate not PASS or frozen source changed')
+ required=['raw_sources','label_oracle','source_novelty','independence','feature_schema','strict_split','frozen_holdout','no_resource_truncation']
+ if any(gate.get('checks',{}).get(k) is not True for k in required):raise ValueError('Stage14 gate dimensions incomplete')
  if gate.get('training_permission')!='OFFLINE_RESEARCH_ONLY' or gate.get('trusted_detector') is not False:raise ValueError('Stage14 trust contract')
+
+    # Recheck independent evidence, not merely coherently updated CSV hashes.
+ from .label_verification import reconcile
+ plan=checked_collection_plan(gate['collection_plan'])
+ if plan['sha256']!=gate['collection_plan_sha256']:raise ValueError('Frozen collection plan changed')
+ captures=Path(gate['raw_capture_root'])
+ if {r['capture_id'] for r in source['raw_files']}!={r['config']['experiment_id'] for r in plan['primary']}:raise ValueError('Missing planned source capture')
+ for row in source['raw_files']:verify_source_receipt(captures/row['capture_id'],plan)
+ reconcile(Path(data).parent,captures)
+ frame=pd.read_csv(data)
+ if linked_split(frame,source['stage14_group_partitions'])['sha256']!=gate['split_sha256']:raise ValueError('Frozen linked split changed')

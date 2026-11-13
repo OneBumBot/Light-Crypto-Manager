@@ -33,3 +33,13 @@ class PacketSchema(BaseEstimator,TransformerMixin):
     def __init__(self,version=VERSION):self.version=version
     def fit(self,X,y=None):packet_frame(X,self.version);return self
     def transform(self,X):return packet_frame(X,self.version)
+
+
+class FeatureSubset(BaseEstimator,TransformerMixin):
+    """Predeclared ablation only; the input contract still requires all five fields."""
+    def __init__(self,features=None):self.features=features
+    def fit(self,X,y=None):self.transform(X);return self
+    def transform(self,X):
+        columns=self.features if self.features is not None else FEATURES
+        if not isinstance(columns,(list,tuple)) or not columns or not all(type(v) is str for v in columns) or len(columns)!=len(set(columns)) or not set(columns)<=set(FEATURES):raise ValueError('Invalid passive feature ablation')
+        return packet_frame(X)[list(columns)]

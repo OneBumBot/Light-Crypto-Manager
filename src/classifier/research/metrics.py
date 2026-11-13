@@ -38,6 +38,7 @@ def binary_metrics(truth,scores,threshold,attack_types=None,train_types=()):
         balanced_accuracy=float((r[0]+r[1])/2) if normal.any() and positive.any() else None,
         fpr=float(pred[normal].mean()) if normal.any() else None,pr_auc=None,roc_auc=None,
         score_semantics='RF 1-P(normal) or IF -score_samples; not a calibrated attack probability',per_attack_recall={})
+    result.update(accuracy=float((pred==y).mean()),specificity=float((pred[normal]==0).mean()) if normal.any() else None,fnr=float((pred[positive]==0).mean()) if positive.any() else None)
     if normal.any() and positive.any():
         precision,recall,_=precision_recall_curve(y,score)
         result.update(pr_auc=float(auc(recall,precision)),average_precision=float(average_precision_score(y,score)),roc_auc=float(roc_auc_score(y,score)))
