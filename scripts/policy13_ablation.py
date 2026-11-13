@@ -9,6 +9,8 @@ from src.migrate import upgrade
 from src.policy import models as m
 from src.policy.rules import Rules
 from src.policy.worker import poll_batch
+from src.policy import worker as runtime_worker
+from src.policy.state import process as runtime_process
 from src.policy.state import install
 from src.security_events import journal,queue
 sys.path.insert(0,'tests')
@@ -38,6 +40,8 @@ def run(admin,case):
         def rollback(c):stats['rollbacks']+=1
         listeners=[('before_cursor_execute',before),('after_cursor_execute',after),('begin',begin),('commit',commit),('rollback',rollback)]
         for name,callback in listeners:event.listen(e,name,callback)
+        if case=='queue_batch_uncached':
+            runtime_worker.process=lambda *args,**kw:runtime_process(*args,**{k:v for k,v in kw.items() if k!='batch_rules'})
         start=time.perf_counter();cpu=time.process_time();n=0
         while n<count:
             if case in ['legacy_sleep','legacy_no_sleep']:
@@ -46,7 +50,7 @@ def run(admin,case):
                 if case=='legacy_sleep' and n<count:time.sleep(1)
             else:
                 n+=poll_batch(e,limit=1 if case=='queue_single' else 32,at=T+timedelta(seconds=100),maintenance=False)
-                if n<count:time.sleep(1 if case=='queue_batch_sleep' else .01 if case=='queue_batch_adaptive' else 0)
+                if n<count:time.sleep(1 if case=='queue_batch_sleep' else .01 if case in ['queue_batch_adaptive','queue_batch_uncached'] else 0)
             if time.perf_counter()-start>180:raise TimeoutError('Bounded ablation run')
         seconds=time.perf_counter()-start;cpu_seconds=time.process_time()-cpu
         for name,callback in listeners:event.remove(e,name,callback)
@@ -56,12 +60,13 @@ def run(admin,case):
             fsm_hash=hashlib.sha256(json.dumps(state,default=lambda v:v.isoformat(),sort_keys=True).encode()).hexdigest()
         return dict(case=case,input=1000,initial_consumed_history=1000,seconds=seconds,events_per_second=count/seconds,cpu_seconds=cpu_seconds,stats=stats,final_fsm_sha256=fsm_hash,per_event_clock=(T+timedelta(seconds=100)).isoformat(),evaluation_clock_injected=True)
     finally:
+        runtime_worker.process=runtime_process
         e.dispose()
         with admin.begin() as c:c.execute(text('DROP SCHEMA '+schema+' CASCADE'))
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--output',default='-');a=p.parse_args();admin=create_engine(database_url());runs=[];names=['legacy_sleep','legacy_no_sleep','queue_single','queue_batch_sleep','queue_batch_adaptive']
+    p=argparse.ArgumentParser();p.add_argument('--output',default='-');p.add_argument('--cache-control',action='store_true');a=p.parse_args();admin=create_engine(database_url());runs=[];names=['queue_batch_adaptive','queue_batch_uncached'] if a.cache_control else ['legacy_sleep','legacy_no_sleep','queue_single','queue_batch_sleep','queue_batch_adaptive']
     for repeat in range(3):
         for case in names[repeat:]+names[:repeat]:runs.append(dict(repeat=repeat,**run(admin,case)))
     assert len({v['final_fsm_sha256'] for v in runs})==1

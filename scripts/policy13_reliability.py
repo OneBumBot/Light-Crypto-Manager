@@ -44,7 +44,7 @@ def main():
     override.write_text(json.dumps({'services':{'policy-worker':{'command':['python','-m','scripts.policy13_worker_profile'],'environment':{'POLICY_BATCH_SIZE':'1','POLICY13_TEST_DELAY_MS':'500'},'volumes':[str(profile)+':/app/scripts/policy13_worker_profile.py:ro']}}}));override.chmod(0o600)
     lab.base=base+['-f',str(override)];lab.run('up','-d','--no-deps','--wait','policy-worker')
     with sync_playwright() as pw:
-        browser=pw.chromium.launch(headless=True);ctx=browser.new_context();page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
+        browser=pw.chromium.launch(headless=True);ctx=browser.new_context();page=ctx.new_page();page.route('https://cdn.**/*',lambda route:route.abort());errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
         page.goto(url+'/login');page.locator('[name=username]').fill('demo-viewer');page.locator('[name=password]').fill((lab.root/'accounts/viewer.password').read_text().strip());page.locator('form input[type=submit],form button[type=submit]').first.click();page.wait_for_url(url+'/');page.goto(url+'/policy')
         expect(page.locator('#policyWorkerStatus')).to_contain_text('ready',timeout=15000)
         expect(page.locator('#policyEvidenceStatus')).to_contain_text('stale',timeout=15000)
@@ -64,10 +64,22 @@ def main():
         wait(lambda:probe(lab)['security']['pending']==0)
         page.reload();expect(page.locator('#policyEvidenceStatus')).to_contain_text('fresh',timeout=15000)
         assert s.get(url+'/api/policy',timeout=8).json()['live_control_enabled'] is False
+        import re
+        pattern=re.compile(r'.*/api/policy(?:\?.*)?$')
+        real=s.get(url+'/api/policy',timeout=8).json();payload=json.loads(json.dumps(real));attack='<img id="policy13-xss" src=x onerror="window.policy13Injected=1">'
+        payload['diagnostics']['active_version']=attack;payload['diagnostics']['worker_status']=attack
+        page.route(pattern,lambda route:route.fulfill(status=200,content_type='application/json',body=json.dumps(payload)))
+        page.reload();expect(page.locator('#policyWorkerStatus')).to_contain_text(attack,timeout=15000)
+        assert page.locator('#policy13-xss').count()==0 and page.evaluate('window.policy13Injected || 0')==0
+        page.unroute(pattern);page.route(pattern,lambda route:route.fulfill(status=200,content_type='application/json',body='{}'))
+        expect(page.locator('#policyWorkerStatus')).to_contain_text('unknown',timeout=15000)
+        expect(page.locator('#policyOverview')).to_have_text('')
+        page.unroute(pattern);page.reload();expect(page.locator('#policyEvidenceStatus')).to_contain_text('fresh',timeout=15000)
+        records.append(dict(phase='policy_dom_fixtures_separate_from_real_data',html_attribute_injection_no_execution=True,malformed_response_clears_previous_snapshot=True))
         browser.close();assert not errors
     # Actual SIGKILL with DB transaction open, once after claim and once after writes.
     for phase in ['after_claim','before_commit']:
-        lab.run('stop','policy-worker');time.sleep(5);before_rows=durable(lab)
+        lab.run('stop','policy-worker');time.sleep(5);before_rows=durable(lab);fault_started=time.monotonic();fault_at=datetime.now(timezone.utc).isoformat()
         ids=sql(lab,"print(json.dumps(list(c.scalars(text('SELECT event_id FROM policy_pending ORDER BY kind,sort_at,event_id LIMIT 32')))))")
         assert ids
         name=lab.project+'-policy-fault';flag='/tmp/policy13-fault.json'
@@ -82,10 +94,21 @@ def main():
             wait(lambda:sql(lab,"print(json.dumps({'released':c.scalar(text('SELECT pg_try_advisory_xact_lock(734819207)'))}))")['released'],20)
             wait(lambda:durable(lab)==before_rows,20)
             remaining=sql(lab,"print(json.dumps(list(c.scalars(text('SELECT event_id FROM policy_pending')))))");assert set(ids)<=set(remaining)
-            records.append(dict(phase='sigkill_'+phase,transaction_observed=observed,authoritative_rows_unchanged=True,pending_ids_preserved=len(ids)))
+            records.append(dict(phase='sigkill_'+phase,started_at=fault_at,transaction_observed=observed,authoritative_rows_unchanged=True,pending_ids_preserved=len(ids),fault_seconds=time.monotonic()-fault_started))
         finally:
             subprocess.run(['docker','rm','-f',name],capture_output=True,timeout=10)
-        lab.run('up','-d','--no-deps','--wait','policy-worker');wait(lambda:probe(lab)['security']['pending']==0)
+        restored=time.monotonic();lab.run('up','-d','--no-deps','--wait','policy-worker');wait(lambda:probe(lab)['security']['pending']==0)
+        records[-1]['recovery_seconds']=time.monotonic()-restored
+    # Real PG outage: browser clears current state; same volume resumes durable admission.
+    with sync_playwright() as pw:
+        browser=pw.chromium.launch(headless=True);page=browser.new_page();page.route('https://cdn.**/*',lambda route:route.abort());page.goto(url+'/login');page.locator('[name=username]').fill('demo-viewer');page.locator('[name=password]').fill((lab.root/'accounts/viewer.password').read_text().strip());page.locator('form input[type=submit],form button[type=submit]').first.click();page.wait_for_url(url+'/');page.goto(url+'/policy')
+        expect(page.locator('#policyWorkerStatus')).to_contain_text('ready',timeout=15000)
+        prior=probe(lab);outage_at=datetime.now(timezone.utc).isoformat();lab.run('stop','postgres')
+        expect(page.locator('#policyWorkerStatus')).to_contain_text('unknown',timeout=25000);expect(page.locator('#policyOverview')).to_have_text('')
+        restore=time.monotonic();lab.run('up','-d','--no-deps','--wait','postgres');wait(lambda:probe(lab)['security']['total']>prior['security']['total'] and probe(lab)['security']['pending']==0,90)
+        page.reload();expect(page.locator('#policyWorkerStatus')).to_contain_text('ready',timeout=15000)
+        records.append(dict(phase='postgres_outage_and_ui_unavailable',started_at=outage_at,recovery_seconds=time.monotonic()-restore,same_volume=True,stale_snapshot_cleared=True))
+        browser.close()
     final=probe(lab);assert final['capacity']['overflow']==0
     assert sql(lab,"print(json.dumps({'commands':c.scalar(text('SELECT count(*) FROM live_control_commands')),'duplicate_signals':c.scalar(text('SELECT count(*) FROM(SELECT event_id,version FROM policy_signals GROUP BY event_id,version HAVING count(*)>1)t')),'duplicate_decisions':c.scalar(text('SELECT count(*) FROM(SELECT event_id,version FROM policy_decisions GROUP BY event_id,version HAVING count(*)>1)t'))}))")==dict(commands=0,duplicate_signals=0,duplicate_decisions=0)
     report=dict(project=lab.project,source_sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),before=before,after=final,events=records,browser_errors=[],policy='DRY_RUN',trusted_detector=False,commands=lab.commands,exit_code=0)

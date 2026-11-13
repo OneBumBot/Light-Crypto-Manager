@@ -12,12 +12,16 @@ def probe(lab,action='snapshot'):
     return json.loads(r.stdout)
 
 
-def observe(lab,seconds,output,variant):
+def observe(lab,seconds,output,variant,receiver_profile=False):
     if output.exists():raise ValueError('New report directory required')
     output.mkdir(parents=True)
     profile=Path('scripts/policy13_worker_profile.py').resolve()
     override=lab.root/'profile.compose.json';override.write_text(json.dumps({'services':{'policy-worker':{'command':['python','-m','scripts.policy13_worker_profile'],'volumes':[str(profile)+':/app/scripts/policy13_worker_profile.py:ro']}}}));override.chmod(0o600)
-    lab.base+=['-f',str(override)];lab.run('up','-d','--no-deps','--wait','policy-worker')
+    if receiver_profile:
+        config=json.loads(override.read_text());receiver=Path('scripts/policy13_receiver_profile.py').resolve();config['services']['receiver']={'command':['python','-m','scripts.policy13_receiver_profile'],'volumes':[str(receiver)+':/app/scripts/policy13_receiver_profile.py:ro']};override.write_text(json.dumps(config))
+    lab.base+=['-f',str(override)]
+    if receiver_profile:lab.run('up','-d','--no-deps','--wait','receiver')
+    lab.run('up','-d','--no-deps','--wait','policy-worker')
     start=time.monotonic();samples=[];reason='duration_complete'
     source=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
     images=json.loads(lab.run('images','--format','json').stdout)
@@ -42,6 +46,8 @@ def observe(lab,seconds,output,variant):
             if not snap['security']['pending'] and not sum(v for k,v in snap['outbox'].items() if k!='delivered'):break
             time.sleep(3)
         after=probe(lab)
+        if receiver_profile:
+            r=lab.run('exec','-T','receiver','cat','/tmp/policy13-admission.jsonl');(output/'admission-timings.jsonl').write_text(r.stdout)
         cost=lab.run('exec','-T','policy-worker','cat','/tmp/policy-cost.json',check=False)
         (output/'worker-cost-final.json').write_text(cost.stdout if cost.returncode==0 else '{}')
         sources=probe(lab,'export');(output/'sources.json').write_text(json.dumps(sources,indent=2))
@@ -55,10 +61,10 @@ def observe(lab,seconds,output,variant):
         assert len(identities)==len(set(identities)) and len(nonces)==len(set(nonces))
         lab.run('stop')
     source_hashes=json.loads(lab.run('run','--rm','-T','--no-deps','--entrypoint','python','tests','-c',"import hashlib,json;from pathlib import Path;print(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in ['src/policy/worker.py','src/policy/state.py','src/policy/engine.py']}))").stdout)
-    result=dict(experiment_id=lab.project,source_sha=source,source_hashes=source_hashes,variant=variant,project=lab.project,images=images,devices=len(lab.devices),target_hz=2,worker_count=1,requested_seconds=seconds,start_wall=start_wall,end_wall=end_wall,actual_seconds=actual_seconds,stop_reason=reason,before=before,inflight=inflight,after=after,drain_seconds=drain[-1]['elapsed'],drained=after['security']['pending']==0,source_formed=len(formed),nonce_duplicates=0,policy_mode='DRY_RUN',trusted_detector=False,commands=lab.commands,environment=dict(platform=platform.platform(),python=platform.python_version(),cpu=next(v.split(':',1)[1].strip() for v in Path('/proc/cpuinfo').read_text().splitlines() if v.startswith('model name')),memtotal=next(v for v in Path('/proc/meminfo').read_text().splitlines() if v.startswith('MemTotal:'))),exit_code=0)
+    result=dict(experiment_id=lab.project,source_sha=source,source_hashes=source_hashes,variant=variant,experiment_kind='admission_profile' if receiver_profile else 'policy_throughput',project=lab.project,images=images,devices=len(lab.devices),target_hz=2,worker_count=1,requested_seconds=seconds,start_wall=start_wall,end_wall=end_wall,actual_seconds=actual_seconds,stop_reason=reason,before=before,inflight=inflight,after=after,drain_seconds=drain[-1]['elapsed'],drained=after['security']['pending']==0,source_formed=len(formed),nonce_duplicates=0,policy_mode='DRY_RUN',trusted_detector=False,commands=lab.commands,environment=dict(platform=platform.platform(),python=platform.python_version(),cpu=next(v.split(':',1)[1].strip() for v in Path('/proc/cpuinfo').read_text().splitlines() if v.startswith('model name')),memtotal=next(v for v in Path('/proc/meminfo').read_text().splitlines() if v.startswith('MemTotal:'))),exit_code=0)
     (output/'result.json').write_text(json.dumps(result,indent=2));print(json.dumps(dict(project=lab.project,variant=variant,inflight_pending=inflight['security']['pending'],drained=result['drained'],stop_reason=reason)))
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--directory',required=True);p.add_argument('--seconds',type=int,choices=[30,300,900],required=True);p.add_argument('--variant',choices=['baseline','optimized'],required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();observe(Lab(a.directory),a.seconds,a.output,a.variant)
+    p=argparse.ArgumentParser();p.add_argument('--directory',required=True);p.add_argument('--seconds',type=int,choices=[30,300,900],required=True);p.add_argument('--variant',choices=['baseline','optimized'],required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--receiver-profile',action='store_true');a=p.parse_args();observe(Lab(a.directory),a.seconds,a.output,a.variant,a.receiver_profile)
 if __name__=='__main__':main()
