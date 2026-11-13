@@ -38,6 +38,8 @@ def main():
  add('batch_state_marker_partial_commit',[(j,"  with self.write():\n   for row,results in pairs:self.complete(row,results)","  for row,results in pairs:self.complete(row,results)")],'test_batch_rollback_preserves_pending_and_no_partial_results')
  add('sqlite_busy_retry_disabled',[(j,'if attempt==5:raise','if attempt==0:raise')],'test_bounded_busy_retry_not_lost_processing')
  add('reordered_syn_falsely_complete',[(f,'new=not regressed and (','new=(')],'test_reordered_syn_not_a_fresh_complete_generation')
+ add('unhashable_external_json_types_unguarded',[(w,"if type(event[key]) is not str or not 1<=len(event[key])<=256:","if False:"),(w,"if event['event_id']!=row['id'] or event['capture_id']!=row['run'] or type(event['ordinal']) is not int or event['ordinal']!=row['ordinal']:","if False:")],'test_malformed_external_json_types_are_diagnostic')
+ add('heartbeat_computation_replaces_source_freshness',[(j,"evidence=worker.get('processed_source_timestamp')","evidence=worker.get('last_inference')")],'test_recent_computation_does_not_make_old_source_current')
  pre=subprocess.run([python,'-m','pytest','-q','--noconftest','tests/test_shadow_ids.py'],capture_output=True,text=True,timeout=90)
  if pre.returncode:raise RuntimeError('Unmutated tests failed:'+pre.stdout[-1500:])
  results=[]

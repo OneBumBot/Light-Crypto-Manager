@@ -68,11 +68,15 @@ class Journal:
   states={r['name']:json.loads(r['value']) for r in self.db.execute('SELECT * FROM status')};capture=states.get('capture',{});worker=states.get('worker',{})
   for value in [capture,worker]:value['fresh']=isinstance(value.get('heartbeat'),(int,float)) and 0<=now-value['heartbeat']<=5
   last_packet=capture.get('last_packet');source_fresh=type(last_packet) in (int,float) and 0<=now-last_packet<=5
-  worker['evidence_fresh']=type(worker.get('last_inference')) in (int,float) and 0<=now-worker['last_inference']<=5
+  worker['processing_fresh']=type(worker.get('last_inference')) in (int,float) and 0<=now-worker['last_inference']<=5
+  evidence=worker.get('processed_source_timestamp');worker['source_lag_seconds']=now-evidence if type(evidence) in (int,float) else None
+  worker['evidence_fresh']=type(evidence) in (int,float) and 0<=now-evidence<=5
   capture['traffic_state']='RECENT' if source_fresh else 'NO_RECENT_TRAFFIC'
-  current=capture.get('fresh') and worker.get('fresh') and source_fresh and worker['evidence_fresh'] and worker.get('status')=='READY'
+  current=capture.get('fresh') and worker.get('fresh') and source_fresh and worker['evidence_fresh'] and worker['processing_fresh'] and worker.get('status')=='READY'
   if capture.get('status')=='CAPTURE_INCOMPLETE':current=False
   rows=[json.loads(r[0]) for r in self.db.execute('SELECT value FROM results ORDER BY rowid DESC LIMIT ? OFFSET ?',(limit,offset))] if current else []
+  for row in rows:
+   timestamp=row.get('capture_timestamp');row['fresh']=type(timestamp) in (int,float) and 0<=now-timestamp<=5;row['display_status']='STALE' if row.get('inference_status')=='SCORED' and not row['fresh'] else row.get('inference_status')
   return dict(mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound',capture=capture,worker=worker,available=bool(current),results=rows,packets=self.db.execute('SELECT COUNT(*) FROM events').fetchone()[0],inferences=self.db.execute('SELECT COUNT(*) FROM results').fetchone()[0],pending=self.db.execute('SELECT COUNT(*) FROM events WHERE processed=0').fetchone()[0],source=states.get('source',{}),feature_parity=states.get('parity',{'status':'NOT_VERIFIED'}),sessions=self.db.execute("SELECT COUNT(DISTINCT json_extract(packet,'$.session')) FROM events").fetchone()[0],unknown=self.db.execute("SELECT COUNT(*) FROM events WHERE coalesce(json_extract(packet,'$.status'),'MALFORMED')!='FEATURE_READY'").fetchone()[0],session_aggregates=self.session_values(limit,offset) if current else [])
  def session_values(self,limit=25,offset=0):
   from .models import frozen

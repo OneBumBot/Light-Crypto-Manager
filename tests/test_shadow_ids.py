@@ -10,7 +10,7 @@ def frame(sequence=1,flags=2,window=74,src=1111,dst=8883,payload=b''):
 
 def p(time=1,**kwargs):
  raw=frame(**kwargs);return packet(raw,len(raw),time)
-def event(n=1):return dict(event_id='e'+str(n),ordinal=n,capture_id='capture',mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound')
+def event(n=1):return dict(event_id='e'+str(n),ordinal=n,capture_id='capture',session='1',mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound')
 
 def test_first_and_bidirectional_delta_and_raw_window():
  f=Flows();a=f.accept(p());assert list(a['features'])==list(FEATURES);assert a['features']['tcp.time_delta']==0 and a['features']['tcp.window_size_value']==74
@@ -145,7 +145,7 @@ def test_deployment_rejects_receiver_coupling():
  c=dict(network_mode='service:receiver',read_only=True,cap_drop=['ALL'],cap_add=['NET_RAW']);w=dict(network_mode='none',read_only=True,cap_drop=['ALL'])
  with pytest.raises(ValueError,match='namespace owner'):validate({'shadow-network-observer':c,'shadow-model-worker':w})
 def test_broken_capture_not_healthy_and_stale_evidence_not_fresh(tmp_path):
- db=Journal(tmp_path/'shadow.db');db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURE_INCOMPLETE'));db.status('worker',dict(heartbeat=100,last_inference=100,status='READY'));assert not db.snapshot(now=100)['available'];db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURING'));db.status('worker',dict(heartbeat=100,last_inference=1,status='READY'));assert not db.snapshot(now=100)['available'];db.close()
+ db=Journal(tmp_path/'shadow.db');db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURE_INCOMPLETE'));db.status('worker',dict(heartbeat=100,last_inference=100,processed_source_timestamp=100,status='READY'));assert not db.snapshot(now=100)['available'];db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURING'));db.status('worker',dict(heartbeat=100,last_inference=100,processed_source_timestamp=1,status='READY'));assert not db.snapshot(now=100)['available'];db.close()
 def test_network_metadata_never_enters_predictors(monkeypatch):
  import src.classifier.research.experiment as ex
  from src.shadow_ids.models import scores
@@ -184,3 +184,18 @@ def test_reordered_syn_not_a_fresh_complete_generation():
 def test_old_stage15_journal_is_not_silently_reinitialized(tmp_path):
  from src.shadow_ids.journal import path_for
  old=Journal(tmp_path/'shadow.db');old.append(event());old.close();assert path_for(tmp_path)==tmp_path/'shadow.db';db=Journal(path_for(tmp_path));assert len(db.pending())==1;db.close()
+def test_missing_used_volume_requires_recovery_not_reset():
+ from src.shadow_ids.isolation import check_used_volumes
+ with pytest.raises(ValueError,match='recovery/rekey'):check_used_volumes(['lcm-stage15-test_research-state'],'lcm-stage15-test',lambda name:False)
+ assert check_used_volumes(['lcm-stage15-test_research-state'],'lcm-stage15-test',lambda name:True)
+@pytest.mark.parametrize('field,value',[('event_id',[]),('capture_id',{}),('ordinal',True),('observer_id',[]),('feature_version',{}),('status',[]),('capture_timestamp',None),('capture_timestamp',float('nan')),('session',{})])
+def test_malformed_external_json_types_are_diagnostic(tmp_path,field,value):
+ from src.shadow_ids.worker import process
+ db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_READY','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1','features':dict(zip(FEATURES,[54,0,2,74,0]))};db.append(e);e[field]=value;db.db.execute('UPDATE events SET packet=?',(json.dumps(e),));db.db.commit();process(db,{},db.pending());assert not db.pending();rows=[json.loads(r[0]) for r in db.db.execute('select value from results')];assert rows and all(r['inference_status']=='MALFORMED_EVENT' and r['score'] is None for r in rows);db.close()
+def test_unavailable_context_processing_is_not_fresh_prediction(tmp_path):
+ from src.shadow_ids.worker import process
+ db=Journal(tmp_path/'shadow.db');e={**event(),'status':'INSUFFICIENT_CONTEXT','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1'};db.append(e);process(db,{},db.pending());assert getattr(db,'last_successful_inference',None) is None;db.close()
+def test_recent_computation_does_not_make_old_source_current(tmp_path):
+ db=Journal(tmp_path/'shadow.db');db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURING'));db.status('worker',dict(heartbeat=100,last_inference=100,processed_source_timestamp=1,status='READY'));s=db.snapshot(now=100);assert not s['available'] and s['worker']['processing_fresh'] and not s['worker']['evidence_fresh'] and s['worker']['source_lag_seconds']==99;db.close()
+def test_old_computation_not_current_even_if_input_timestamp_recent(tmp_path):
+ db=Journal(tmp_path/'shadow.db');db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURING'));db.status('worker',dict(heartbeat=100,last_inference=1,processed_source_timestamp=100,status='READY'));assert not db.snapshot(now=100)['available'];db.close()

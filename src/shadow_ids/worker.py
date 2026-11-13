@@ -1,5 +1,5 @@
 """Separate unprivileged model process; SQLite only, no MQTT/Policy/Control credentials."""
-import argparse,hashlib,json,os,resource,time
+import argparse,hashlib,json,math,os,resource,time
 from pathlib import Path
 from .journal import Journal,path_for
 from .models import frozen,load_models,scores
@@ -10,6 +10,15 @@ def process(db,loaded,rows,model_error=None):
   try:
    event=json.loads(row['packet'])
    if not isinstance(event,dict) or event.get('mode')!='SHADOW_ONLY' or event.get('trusted_detector') is not False or event.get('device_binding')!='unbound' or not all(k in event for k in ['event_id','ordinal','capture_id','capture_timestamp','feature_ready_at','observer_id','feature_version','status']):raise ValueError('Malformed shadow event')
+   for key in ['event_id','capture_id','observer_id','feature_version','status']:
+    if type(event[key]) is not str or not 1<=len(event[key])<=256:raise ValueError('Malformed string identity')
+   if event['event_id']!=row['id'] or event['capture_id']!=row['run'] or type(event['ordinal']) is not int or event['ordinal']!=row['ordinal']:raise ValueError('Journal identity mismatch')
+   for key in ['capture_timestamp','feature_ready_at']:
+    if type(event[key]) not in (int,float) or not math.isfinite(event[key]) or event[key]<0:raise ValueError('Malformed timestamp')
+   if 'session' in event and (type(event['session']) is not str or not event['session'].isdigit()):raise ValueError('Malformed generation')
+   if event['status']=='FEATURE_READY':
+    if 'session' not in event:raise ValueError('Missing generation')
+    if type(event.get('features')) is not dict:raise ValueError('Malformed feature object')
   except (ValueError,TypeError):event=dict(event_id=row['id'],ordinal=row.get('ordinal',0),capture_id=row.get('run','unknown'),capture_timestamp=None,feature_ready_at=None,observer_id='unknown',feature_version='unknown',status='MALFORMED_EVENT',diagnostic='MalformedShadowEvent')
   source=db.db.execute("SELECT value FROM status WHERE name='capture'").fetchone()
   if source:
@@ -20,6 +29,7 @@ def process(db,loaded,rows,model_error=None):
   if e['status']=='FEATURE_READY' and not e.get('context_dropped'):valid.append(e)
  try:values=scores(loaded,valid) if loaded and not model_error else {};error=model_error
  except Exception as exc:values={};error=type(exc).__name__
+ db.last_batch_error=error
  ended=time.time();indices={e['event_id']:i for i,e in enumerate(valid)}
  pairs=[]
  for row,event in zip(rows,events):
@@ -33,6 +43,8 @@ def process(db,loaded,rows,model_error=None):
    results.append(result)
   pairs.append((row,results))
  if pairs:db.complete_batch(pairs)
+ if any(r['inference_status']=='SCORED' for _,values in pairs for r in values):
+  db.last_successful_inference=ended;db.last_processed_capture_timestamp=max(r['capture_timestamp'] for _,values in pairs for r in values if r['inference_status']=='SCORED')
  for row,event in zip(rows,events):
   # This timestamp is taken only after SQLite commit returns; missing audit after
   # a crash is not replaced with a fabricated zero latency.
@@ -51,8 +63,8 @@ def run(root,models,roles,duration,parity):
  deadline=time.monotonic()+duration;processed=0;last_inference=None
  while time.monotonic()<deadline:
   rows=db.pending();processed+=process(db,loaded,rows,error) if rows else 0
-  if rows:last_inference=time.time()
-  db.status('worker',dict(status='MODEL_UNAVAILABLE' if error else 'READY',heartbeat=time.time(),processed=processed,storage_retries=db.retries,storage_commits=db.commits,last_inference=last_inference,model_roles=roles,model_error=error,user_cpu=resource.getrusage(resource.RUSAGE_SELF).ru_utime,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
+  if rows:last_inference=getattr(db,'last_successful_inference',last_inference)
+  db.status('worker',dict(status='MODEL_UNAVAILABLE' if error else 'INFERENCE_ERROR' if getattr(db,'last_batch_error',None) else 'READY',heartbeat=time.time(),processed=processed,processed_source_timestamp=getattr(db,'last_processed_capture_timestamp',None),inference_error=getattr(db,'last_batch_error',None),storage_retries=db.retries,storage_commits=db.commits,last_inference=last_inference,model_roles=roles,model_error=error,user_cpu=resource.getrusage(resource.RUSAGE_SELF).ru_utime,peak_rss_kib=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
   if (Path(root)/'capture-status.json').exists() and not db.pending():break
   if not rows:time.sleep(.05)
  from .sessions import aggregate

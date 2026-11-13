@@ -9,7 +9,7 @@ def shadow_web(postgres_db,tmp_path,monkeypatch):
  web=postgres_db
  for role in ['admin','operator','viewer']:
   u=User(username='shadow-'+role,email=role+'-shadow@test.local',role=role);u.set_password('public-test-password');web.db.session.add(u)
- web.db.session.commit();path=tmp_path/'shadow.db';journal=Journal(path);now=time.time();journal.status('capture',dict(heartbeat=now,last_packet=now,status='CAPTURING',queue_overflow=2));journal.status('worker',dict(heartbeat=now,last_inference=now,status='READY'));journal.close();monkeypatch.setenv('SHADOW_JOURNAL',str(path));return web,path
+ web.db.session.commit();path=tmp_path/'shadow.db';journal=Journal(path);now=time.time();journal.status('capture',dict(heartbeat=now,last_packet=now,status='CAPTURING',queue_overflow=2));journal.status('worker',dict(heartbeat=now,last_inference=now,processed_source_timestamp=now,status='READY'));journal.close();monkeypatch.setenv('SHADOW_JOURNAL',str(path));return web,path
 @pytest.mark.parametrize('role',['admin','operator','viewer'])
 def test_shadow_read_only_authorized_roles(shadow_web,role):
  web,path=shadow_web

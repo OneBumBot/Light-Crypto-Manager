@@ -11,3 +11,9 @@ def validate(services):
    if any(x in value for x in ['docker.sock','registry.json','control.json','receiver-security','control-security','mqtt/']):raise ValueError('Sensitive mount forbidden')
  if capture.get('cap_add')!=['NET_RAW'] or worker.get('cap_add'):raise ValueError('Capability scope')
  return True
+
+def check_used_volumes(names,project,exists):
+ if not isinstance(names,list) or not names:raise ValueError('Missing used-state manifest')
+ for name in names:
+  if type(name) is not str or not name.startswith(project+'_') or not exists(name):raise ValueError('Previously used volume unavailable; reviewed recovery/rekey required')
+ return True
