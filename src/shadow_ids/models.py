@@ -14,9 +14,16 @@ def load_models(root,roles):
   _,pipeline=load(root,pin['model_id'],pin['model_version']);out[role]=(pin,pipeline)
  return out
 
+def risk(pipeline,frame,algorithm):
+ # Exact frozen Stage14 scoring formula, without importing train/plan/oracle.
+ from src.classifier.research.metrics import scores_checked
+ if algorithm=='if':return scores_checked(-pipeline.score_samples(frame))
+ classes=list(pipeline.classes_);normal='Normal' if 'Normal' in classes else 0
+ if normal not in classes:raise ValueError('Fitted normal class missing')
+ return scores_checked(1-pipeline.predict_proba(frame)[:,classes.index(normal)])
+
 def scores(loaded,events):
  import numpy as np,pandas as pd
- from src.classifier.research.experiment import risk
  from src.classifier.research.schema import packet_frame
  if not events:return {}
  for event in events:

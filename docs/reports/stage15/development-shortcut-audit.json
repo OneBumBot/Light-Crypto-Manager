@@ -1,0 +1,69 @@
+{
+  "scope": "New parity development captures, no new scientific final holdout",
+  "feature_distributions": {
+    "frame.len": {
+      "count": 128.0,
+      "mean": 288.6875,
+      "std": 472.4466682396106,
+      "min": 66.0,
+      "25%": 66.0,
+      "50%": 92.0,
+      "75%": 583.25,
+      "max": 2984.0
+    },
+    "tcp.len": {
+      "count": 128.0,
+      "mean": 222.3125,
+      "std": 472.6214337977483,
+      "min": 0.0,
+      "25%": 0.0,
+      "50%": 26.0,
+      "75%": 517.25,
+      "max": 2918.0
+    },
+    "tcp.flags": {
+      "count": 128.0,
+      "mean": 20.65625,
+      "std": 4.762778088270567,
+      "min": 2.0,
+      "25%": 16.0,
+      "50%": 24.0,
+      "75%": 24.0,
+      "max": 24.0
+    },
+    "tcp.window_size_value": {
+      "count": 128.0,
+      "mean": 3099.109375,
+      "std": 13715.049910050893,
+      "min": 63.0,
+      "25%": 64.0,
+      "50%": 74.0,
+      "75%": 74.0,
+      "max": 65160.0
+    },
+    "tcp.time_delta": {
+      "count": 128.0,
+      "mean": 0.10463814809918404,
+      "std": 0.20367241869775007,
+      "min": 0.0,
+      "25%": 4.0531158447265625e-06,
+      "50%": 7.092952728271484e-05,
+      "75%": 0.013323009014129639,
+      "max": 0.5469839572906494
+    }
+  },
+  "physical_hosts": 1,
+  "known_shortcuts": [
+    "same Ethernet/veth/IPv4 capture point",
+    "same OS/stack",
+    "shared publisher scheduler",
+    "fixed sensor payload regime",
+    "TLS lifecycle and connection length",
+    "startup staggering .09sec",
+    "single broker build"
+  ],
+  "changes_to_model_threshold_or_preprocessing": false,
+  "independent_host_domain": "not_verified",
+  "generalization_evaluation": "BLOCKED_INDEPENDENT_DATA",
+  "exit_code": 0
+}

@@ -53,17 +53,20 @@ def run(l,name,n,interval,condition):
   for v in alerts.values():v['alerts_per_1000_scored_packets']=1000*v['above_threshold']/v['scored'] if v['scored'] else None
   counts['unlabelled_alert_rates']=alerts
  report_value=dict(experiment_id=name,source_sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),code_hashes={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in Path('src/shadow_ids').glob('*.py')},condition=condition,device_identities=n,target_hz=1/interval,duration=15,started_at=started,finished_at=time.time(),counters=counters,generator_errors=truth['errors'],pg_accepted_delta=after['categories'].get('accepted',0)-before['categories'].get('accepted',0),pg_category_deltas={k:v-before['categories'].get(k,0) for k,v in after['categories'].items()},mongo_stored_delta=after['mongo_records']-before['mongo_records'],outbox_pending_after=after['outbox_pending'],capture=capture_status,shadow=counts,timings_seconds=timings,resources=monitor.rows,FPR='not_evaluable_unlabelled_operational_series',independent_host_domain='not_verified',generalization_evaluation='BLOCKED_INDEPENDENT_DATA',clock_model='same-host capture CLOCK_REALTIME and Python CLOCK_REALTIME; runtime monotonic watchdog, not cross-host clock proof',exit_code=0)
- report.write_text(json.dumps(report_value,indent=2));print(name,'PG',report_value['pg_accepted_delta'],'Mongo',report_value['mongo_stored_delta'],'shadow',counts.get('results'),flush=True);return report_value
+ if condition in ['rf','rfif','all'] and (counts.get('inference_statuses',{}).get('INFERENCE_ERROR') or counts.get('inference_statuses',{}).get('MODEL_UNAVAILABLE') or not counts.get('inference_statuses',{}).get('SCORED')):report_value['exit_code']=2
+ report.write_text(json.dumps(report_value,indent=2))
+ if report_value['exit_code']:raise RuntimeError('Online inference unavailable/error; failed measurements retained, stop expansion')
+ print(name,'PG',report_value['pg_accepted_delta'],'Mongo',report_value['mongo_stored_delta'],'shadow',counts.get('results'),flush=True);return report_value
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('action',choices=['sanity','matrix']);p.add_argument('--directory',type=Path,default=Path('.local-runtime/stage15/online'));a=p.parse_args();l=lab(a.directory)
- if a.action=='sanity':run(l,'integration-four-models',3,.5,'all');return
+ p=argparse.ArgumentParser();p.add_argument('action',choices=['sanity','matrix']);p.add_argument('--directory',type=Path,default=Path('.local-runtime/stage15/online'));p.add_argument('--series',default='v2');a=p.parse_args();l=lab(a.directory)
+ if a.action=='sanity':run(l,a.series+'-integration-four-models',3,.5,'all');return
  results=[]
  for cohort,n,interval in [('base',3,2),('small',10,1),('medium',25,.5),('extended',50,.5)]:
   for repeat in range(3):
    order=['off','capture','rf','rfif'];order=order[repeat:]+order[:repeat]
    for condition in order:
-    name=f'{cohort}-r{repeat}-{condition}';path=Path('docs/reports/stage15')/(name+'.json')
+    name=f'{a.series}-{cohort}-r{repeat}-{condition}';path=Path('docs/reports/stage15')/(name+'.json')
     r=json.loads(path.read_text()) if path.exists() else run(l,name,n,interval,condition);results.append(r)
     if r['generator_errors'] or (r['capture'] and not r['capture']['complete']):raise RuntimeError('Stop expansion on actual source/resource failure; measurements retained')
  Path('docs/reports/stage15/performance-series.json').write_text(json.dumps(dict(runs=[r['experiment_id'] for r in results],independent_repeats=3,interpretation='same-host short operational repeated runs, not causal or generalization proof',exit_code=0),indent=2))

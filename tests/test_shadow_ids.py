@@ -33,7 +33,7 @@ def test_syn_retransmission_not_new_generation():
 @pytest.mark.parametrize('kind',['truncated','ethernet','ipv6','fragment','flags','ip_length','tcp_length'])
 def test_unsupported_not_scored(kind):
  raw=bytearray(frame());original=len(raw)
- if kind=='truncated':raw=raw[:-1]
+ if kind=='truncated':raw=bytearray(frame(payload=b'abc'));original=len(raw);raw=raw[:-1]
  if kind=='ethernet':raw[12:14]=b'\x00\x00'
  if kind=='ipv6':raw[12:14]=b'\x86\xdd'
  if kind=='fragment':raw[20:22]=b'\x20\x00'
@@ -80,7 +80,7 @@ def test_session_scores_are_causal_prefixes(tmp_path):
  for n,score in [(1,.1),(2,.9)]:
   db.append(event(n));result=dict(event_id='e'+str(n),model_id='research75-rf_subsample-binary',model_role='rf_session',session_id='c:1',score=score,comparison=score>=.9,capture_timestamp=n,inference_finish=n+.1,mode='SHADOW_ONLY',trusted_detector=False,device_binding='unbound');db.complete({'id':'e'+str(n)},[result])
   values=db.session_values();assert values[0]['score']==pytest.approx(.1 if n==1 else .5);assert values[0]['through_timestamp']==n and not values[0]['final']
- values=aggregate(db,True);assert values[0]['final'] and values[0]['through_timestamp']==2;db.close()
+ values=aggregate(db,True);assert values[0]['final'] and values[0]['through_timestamp']==2 and values[0]['evaluated_at']>=values[0]['through_timestamp'];db.close()
 def test_no_policy_or_control_side_effects(tmp_path,monkeypatch):
  from src.shadow_ids.worker import process
  import src.device_control.server as control
@@ -118,7 +118,7 @@ def test_frozen_model_hash_version_threshold_before_deserialization(tmp_path,mon
 def test_nonfinite_score_is_error_without_plain_normal(tmp_path,monkeypatch):
  import src.classifier.research.experiment as ex
  from src.shadow_ids.models import scores
- monkeypatch.setattr(ex,'risk',lambda *a:__import__('numpy').array([float('nan')]))
+ monkeypatch.setattr(__import__('src.shadow_ids.models',fromlist=['risk']),'risk',lambda *a:__import__('numpy').array([float('nan')]))
  pin=dict();valid=dict(status='FEATURE_READY',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])))
  with pytest.raises(ValueError,match='Invalid inference'):scores({'rf_binary':(pin,None)},[valid])
 def test_no_fit_or_old_holdout_during_shadow_model_scoring(monkeypatch):
@@ -126,7 +126,7 @@ def test_no_fit_or_old_holdout_during_shadow_model_scoring(monkeypatch):
  import src.classifier.research.experiment as ex
  def forbidden(*a,**k):raise AssertionError('Old holdout/fit was opened')
  monkeypatch.setattr(ex,'train',forbidden);monkeypatch.setattr(ex,'final_test',forbidden);monkeypatch.setattr(ex,'plan',forbidden)
- monkeypatch.setattr(ex,'risk',lambda *a:__import__('numpy').array([.5]))
+ monkeypatch.setattr(__import__('src.shadow_ids.models',fromlist=['risk']),'risk',lambda *a:__import__('numpy').array([.5]))
  e=dict(status='FEATURE_READY',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])));assert scores({'rf_binary':({},None)},[e])['rf_binary']==[.5]
 def test_malformed_queued_event_is_diagnostic_not_poison_queue(tmp_path):
  from src.shadow_ids.worker import process
@@ -134,3 +134,37 @@ def test_malformed_queued_event_is_diagnostic_not_poison_queue(tmp_path):
 def test_capture_loss_invalidates_already_queued_context(tmp_path):
  from src.shadow_ids.worker import process
  db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_READY','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1','features':dict(zip(FEATURES,[54,0,2,74,0]))};db.append(e);db.status('capture',dict(status='CAPTURE_INCOMPLETE',queue_overflow=1));process(db,{},db.pending());rows=[json.loads(r[0]) for r in db.db.execute('select value from results')];assert all(r['inference_status']=='CAPTURE_DROPPED' and r['score'] is None for r in rows);db.close()
+def test_shadow_error_remains_local_and_journal_progresses(tmp_path,monkeypatch):
+ from src.shadow_ids.worker import process
+ import src.shadow_ids.worker as worker
+ db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_READY','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1','features':dict(zip(FEATURES,[54,0,2,74,0]))};db.append(e)
+ def failed(*a):raise RuntimeError('Model process failure')
+ monkeypatch.setattr(worker,'scores',failed);pin=worker.frozen()['rf_binary'];process(db,{'rf_binary':(pin,None)},db.pending());assert not db.pending();r=json.loads(db.db.execute('select value from results').fetchone()[0]);assert r['inference_status']=='INFERENCE_ERROR' and r['score'] is None;db.close()
+def test_deployment_rejects_receiver_coupling():
+ from src.shadow_ids.isolation import validate
+ c=dict(network_mode='service:receiver',read_only=True,cap_drop=['ALL'],cap_add=['NET_RAW']);w=dict(network_mode='none',read_only=True,cap_drop=['ALL'])
+ with pytest.raises(ValueError,match='namespace owner'):validate({'shadow-network-observer':c,'shadow-model-worker':w})
+def test_broken_capture_not_healthy_and_stale_evidence_not_fresh(tmp_path):
+ db=Journal(tmp_path/'shadow.db');db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURE_INCOMPLETE'));db.status('worker',dict(heartbeat=100,last_inference=100,status='READY'));assert not db.snapshot(now=100)['available'];db.status('capture',dict(heartbeat=100,last_packet=100,status='CAPTURING'));db.status('worker',dict(heartbeat=100,last_inference=1,status='READY'));assert not db.snapshot(now=100)['available'];db.close()
+def test_network_metadata_never_enters_predictors(monkeypatch):
+ import src.classifier.research.experiment as ex
+ from src.shadow_ids.models import scores
+ def checked(pipeline,frame,algorithm):
+  assert list(frame.columns)==list(FEATURES) and 'device_id' not in frame
+  return __import__('numpy').array([.5])
+ monkeypatch.setattr(__import__('src.shadow_ids.models',fromlist=['risk']),'risk',checked);e=dict(status='FEATURE_READY',device_id='broker-ip-is-not-authentication',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])));scores({'rf_binary':({},None)},[e])
+def test_scored_threshold_is_original_and_unbound(tmp_path,monkeypatch):
+ import src.shadow_ids.worker as worker
+ db=Journal(tmp_path/'shadow.db');e={**event(),'status':'FEATURE_READY','device_id':'anonymous-wrong-password','capture_timestamp':1,'feature_ready_at':2,'observer_id':'x','feature_version':'tcp-packet-passive-v1','features':dict(zip(FEATURES,[54,0,2,74,0]))};db.append(e);pin={**worker.frozen()['rf_binary'],'threshold':.9};monkeypatch.setattr(worker,'scores',lambda *a:{'rf_binary':[.95]});worker.process(db,{'rf_binary':(pin,None)},db.pending());r=json.loads(db.db.execute('select value from results').fetchone()[0]);assert r['threshold']==.9 and r['comparison'] is True and r['device_binding']=='unbound';db.close()
+def test_scoring_does_not_import_offline_training_or_oracle(monkeypatch):
+ import builtins,numpy as np
+ from src.shadow_ids.models import scores
+ old=builtins.__import__
+ def restricted(name,*a,**k):
+  if name in ['src.classifier.research.experiment','src.research_stand.quality']:raise AssertionError('Online score imported training/oracle')
+  return old(name,*a,**k)
+ monkeypatch.setattr(builtins,'__import__',restricted)
+ class RF:
+  classes_=[0,1]
+  def predict_proba(self,frame):return np.array([[.3,.7]])
+ e=dict(status='FEATURE_READY',feature_version='tcp-packet-passive-v1',features=dict(zip(FEATURES,[54,0,2,74,0])));assert scores({'rf_binary':({},RF())},[e])['rf_binary']==[.7]
