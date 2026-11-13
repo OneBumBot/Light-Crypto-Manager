@@ -1,6 +1,7 @@
 """Read actual PG/Mongo identities and HMAC receipts. No generated telemetry/ACK."""
 import hashlib
 import json
+import sqlite3
 from sqlalchemy import create_engine, select, func
 from scripts.stage9_probe import status
 from src.runtime import database_url
@@ -8,7 +9,7 @@ from src.outbox import outbox
 from src.replay import replay_state
 from src.device_control import models as m
 from src.device_control.config import load
-from src.device_control.protocol import seal, utc
+from src.device_control.protocol import open_message, topic, utc
 from src.telemetry import canonical
 from src.policy import models as policy
 from src.mongo_repository import MongoRepository
@@ -32,11 +33,17 @@ def snapshot(engine):
         acks = []
         for row in c.execute(select(m.acks)).mappings():
             body = row['body'];cmd = commands[row['command_id']]
-            wire = seal(body, bytes.fromhex(config[row['device_id']]['status_key']), 'device', now=utc(body['created_at']))
-            verified = hashlib.sha256(wire).hexdigest() == row['sha256']
+            ledger=sqlite3.connect('file:/run/device-'+row['device_id']+'/device.db?mode=ro',uri=True)
+            try:
+                source=ledger.execute('SELECT ack FROM commands WHERE command_id=?',(row['command_id'],)).fetchone()
+            finally:
+                ledger.close()
+            assert source is not None, 'Authenticated ACK absent from durable device ledger'
+            opened=open_message(bytes(source[0]),bytes.fromhex(config[row['device_id']]['status_key']),'device',row['device_id'],topic(row['device_id'],'device'),now=utc(body['created_at']))
+            verified = opened == body and hashlib.sha256(canonical(body)).hexdigest() == row['sha256']
             binding = body['data']['command_sha256'] == hashlib.sha256(canonical(cmd['body'])).hexdigest()
             assert verified and binding
-            acks.append(dict(id=row['id'],command_id=row['command_id'],transition_id=cmd['transition_id'],device_id=row['device_id'],phase=cmd['phase'],result=body['data']['result'],hmac_digest_matches=verified,command_digest_matches=binding))
+            acks.append(dict(id=row['id'],command_id=row['command_id'],transition_id=cmd['transition_id'],device_id=row['device_id'],phase=cmd['phase'],result=body['data']['result'],hmac_digest_matches=verified,command_digest_matches=binding,verification_scope='Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest'))
         by_id = {r['id']:r for r in rows}
         verified_transitions=[]
         for row in transitions:

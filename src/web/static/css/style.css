@@ -24,3 +24,9 @@ body {
 
 .chart-container { height: 400px !important; }
 
+
+/* Stage16: keep the real history table scroll inside the mobile viewport. */
+.history-table-scroll { max-width: 100%; overflow-x: auto; }
+#historyFilters { display: flex; flex-wrap: wrap; gap: .75rem; align-items: end; }
+#historyFilters label { display: flex; flex-direction: column; max-width: 100%; }
+#historyFilters input { max-width: 100%; box-sizing: border-box; }

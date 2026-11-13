@@ -9,7 +9,7 @@
   <button type="submit">Показать</button>
 </form>
 <p id="historyStatus" role="status"></p>
-<table class="table"><thead><tr><th>Устройство</th><th>Время UTC</th><th>Температура</th><th>Влажность</th><th>Эпоха / счётчик</th></tr></thead><tbody id="historyRows"></tbody></table>
+<div class="history-table-scroll" role="region" aria-label="История телеметрии" tabindex="0"><table class="table"><thead><tr><th>Устройство</th><th>Время UTC</th><th>Температура</th><th>Влажность</th><th>Эпоха / счётчик</th></tr></thead><tbody id="historyRows"></tbody></table></div>
 <button id="historyPrev" type="button">Назад</button>
 <button id="historyNext" type="button">Далее</button>
 <script src="{{ url_for('static', filename='js/telemetry_history.js') }}" defer></script>

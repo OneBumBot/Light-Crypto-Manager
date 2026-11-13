@@ -1,0 +1,13 @@
+Stage16 blocked: Demo command failed: run (1); File "<frozen runpy>", line 88, in _run_code
+  File "/app/scripts/stage16_probe.py", line 80, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/app/scripts/stage16_probe.py", line 77, in main
+    try:print(json.dumps(snapshot(engine),indent=2,default=lambda v:v.isoformat()))
+                         ^^^^^^^^^^^^^^^^
+  File "/app/scripts/stage16_probe.py", line 38, in snapshot
+    assert verified and binding
+           ^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+

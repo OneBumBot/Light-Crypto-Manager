@@ -7,3 +7,8 @@ services:
   policy-worker:
     environment:
       POLICY_MODE: DRY_RUN
+  tests:
+    volumes:
+      - alpha-control:/run/device-alpha:ro
+      - beta-control:/run/device-beta:ro
+      - gamma-control:/run/device-gamma:ro

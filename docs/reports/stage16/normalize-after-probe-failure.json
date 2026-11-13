@@ -1,0 +1,47 @@
+{
+  "transition": {
+    "id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+    "device_id": "alpha",
+    "old_profile": "aes-128-gcm-v1",
+    "target_profile": "ascon-aead128-v1",
+    "phase": "EFFECTIVE_CONFIRMED",
+    "actor": "admin:1",
+    "telemetry_event": "09f02950-149b-46a0-a4c9-2b7c3643e1d3",
+    "activated_at": "2026-11-13T21:05:25.393226+00:00",
+    "confirmed_at": "2026-11-13T21:05:25.743567+00:00",
+    "receipt_matches_committed_admission": true,
+    "receipt": {
+      "event_id": "09f02950-149b-46a0-a4c9-2b7c3643e1d3",
+      "key_epoch": 1,
+      "sequence_number": 386,
+      "profile": "ascon-aead128-v1",
+      "accepted_at": "2026-11-13T21:05:25.743567+00:00",
+      "key_reference": "ascon-aead128-v1:1"
+    }
+  },
+  "authenticated_acks": [
+    {
+      "id": "28ea4812-29ac-4320-b11e-cb81b29874f7",
+      "command_id": "953a0370-5e9b-4e06-9492-66f1814f416c",
+      "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+      "device_id": "alpha",
+      "phase": "PREPARE",
+      "result": "READY",
+      "hmac_digest_matches": true,
+      "command_digest_matches": true,
+      "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+    },
+    {
+      "id": "1bb31627-bff8-4dc0-b79e-f67b59daba43",
+      "command_id": "1ac439ae-7b0b-4207-91c5-4548f26b6ba5",
+      "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+      "device_id": "alpha",
+      "phase": "ACTIVATE",
+      "result": "DEVICE_APPLIED",
+      "hmac_digest_matches": true,
+      "command_digest_matches": true,
+      "verification_scope": "Original signed SQLite ACK, HMAC checked at historical message creation time; PG stores canonical BODY digest, not wire digest"
+    }
+  ],
+  "http_to_effective_seconds": 2.0845020310007385
+}
