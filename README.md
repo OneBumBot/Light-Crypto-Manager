@@ -71,3 +71,7 @@ Stop/resume сохраняют nonce/command authority и keys. Не удаля�
 Magma-MGM исследована по RFC и публичным векторам, но **не допускается к continuous telemetry/live control**: короткий budget 64-битного блока несовместим с текущим lease и отсутствующим rekey lifecycle. В UI остаются три прежних профиля. Kuznyechik сохраняет lab-only; side-channel зависимость MGM не объявлена устранённой. Policy DRY_RUN, ML untrusted.
 
 [Результаты, ограничения и графики](docs/STAGE12_RESULTS.md) · [Запуск/stop/resume](docs/STAGE12_SYSTEM_INTEGRATION.md) · [Команды и отчёты](docs/reports/stage12/COMMANDS.md) · [Magma budget](docs/MAGMA_MGM_SECURITY_BUDGET.md). Все Stage12 контейнеры после экспериментов остановлены, ключи и volumes сохранены.
+
+## Этап13: Policy throughput и порядок событий
+
+Indexed durable pending queue и bounded atomic batches сохраняют FSM, late events, version isolation, идемпотентность и DRY_RUN. Readiness worker теперь отделена от свежести evidence/очереди. На software-стенде проверены3/10/25/50 устройств, три независимых25-device repeats и15-минутная стабильность; подробные ограничения и фактические числа: [STAGE13_RESULTS](docs/STAGE13_RESULTS.md). [Воспроизведение/stop/resume](docs/STAGE13_POLICY_THROUGHPUT_DESIGN.md), [ordering](docs/STAGE13_EVENT_ORDERING_CONTRACT.md), [SQL](docs/STAGE13_SQL_OPTIMIZATION.md). ML остаётся untrusted, управление криптографией manual-only; новых алгоритмов нет.

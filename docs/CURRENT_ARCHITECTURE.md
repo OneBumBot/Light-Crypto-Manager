@@ -130,3 +130,7 @@ Crypto dispatch содержит три явных provider без else-fallback
 Single `kuznyechik-mgm-v1` profile now has exact one-shot/persistent dispatch. Default remains one-shot. Opt-in bounded Go worker uses private framed pipes, request identity, serialization, time/frame/request/lifetime limits and no key cache. It owns no nonce, command or PG usage state. Failure is ProviderUnavailable, not invalid telemetry or automatic fallback. Crypto arithmetic, telemetry/control v2,0010 migration, Outbox and receipt authority remain unchanged.
 
 Registry separates algorithm/implementation/lab/production eligibility. The web implementation note describes the web process configuration, not authenticated sender backend. No Python or Magma research provider is live registered. [Design and real network evidence](STAGE12_SYSTEM_INTEGRATION.md), [results](STAGE12_RESULTS.md).
+
+## Stage13 Policy processing
+
+Atomic source triggers→indexed `policy_pending` snapshots→bounded serialized batch→existing versioned signal/FSM/decision/DRY_RUN proposal transaction. Late inserts remain discoverable independently of timestamp; active-version replay is seeded at installation. Rules/engine semantics unchanged. Persistent fair scheduling between security and research ML; synthetic stale is per-device pending aware. Heartbeat readiness, queue lag and authenticated evidence freshness are separate read-model fields. [Ordering](STAGE13_EVENT_ORDERING_CONTRACT.md), [design](STAGE13_POLICY_THROUGHPUT_DESIGN.md), [version contract](STAGE13_VERSION_ACTIVATION_SEMANTICS.md).

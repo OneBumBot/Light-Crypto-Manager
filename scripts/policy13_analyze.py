@@ -3,13 +3,14 @@ import argparse,json,statistics,csv,hashlib
 from pathlib import Path
 from datetime import datetime
 from scripts.performance_run import describe
+from scripts.policy13_artifacts import read_json
 
 
 def dt(value):return datetime.fromisoformat(value)
 
 
 def one(folder):
-    r=json.loads((folder/'result.json').read_text());samples=json.loads((folder/'samples.json').read_text());ledger=json.loads((folder/'ledger-final.json').read_text());agents=json.loads((folder/'agents.json').read_text())
+    r=json.loads((folder/'result.json').read_text());samples=json.loads((folder/'samples.json').read_text());ledger=read_json(folder/'ledger-final.json');agents=read_json(folder/'agents.json')
     start,end=dt(r['start_wall']),dt(r['end_wall']);s0,s1=r['before'],r['inflight'];interval=(dt(s1['at'])-dt(s0['at'])).total_seconds()
     source_in=s1['security']['total']-s0['security']['total'];processed=s1['security']['consumed']-s0['security']['consumed']
     assert s1['security']['pending']==s0['security']['pending']+source_in-processed
@@ -58,7 +59,7 @@ def one(folder):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,default=Path('docs/reports/stage13'));a=p.parse_args();runs=[one(f.parent) for f in sorted(a.reports.glob('*r*/result.json'))]
+    p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,default=Path('docs/reports/stage13'));a=p.parse_args();runs=[one(f.parent) for f in sorted(a.reports.glob('*r*/result.json')) if not (f.parent/'excluded.json').exists()]
     summary=dict(runs=runs,scope='independent projects/runs; packet percentiles descriptive and censored counts explicit; no CI from correlated packets',policy='DRY_RUN',trusted_detector=False,exit_code=0)
     (a.reports/'performance-summary.json').write_text(json.dumps(summary,indent=2))
     keys=['project','variant','kind','devices','requested_seconds','incoming_per_second','processed_per_second','initial_pending','inflight_pending','final_pending','drain_seconds','pg_committed','mongo_stored','overflow','formed','formed_unconfirmed_pg','formed_unconfirmed_mongo']

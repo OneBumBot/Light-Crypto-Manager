@@ -9,7 +9,7 @@ def main():
     folders={json.loads(f.read_text())['project']:f.parent for f in a.root.glob('*/stage13.json')}
     for f in sorted(a.reports.glob('*r*/result.json')):
         result=json.loads(f.read_text());out=f.parent/'ledger-final.json'
-        if out.exists():continue
+        if out.exists() or out.with_suffix('.json.gz').exists():continue
         lab=Lab(folders[result['project']]);running=lab.run('ps','-q').stdout.split()
         if running:raise ValueError('Stop every cohort before census')
         try:

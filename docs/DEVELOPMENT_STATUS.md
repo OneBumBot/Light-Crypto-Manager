@@ -318,3 +318,7 @@ real anomaly labels и независимая device/session оценка ост
 Завершены аудит provider/Python кандидатов, bounded worker, KAT/negative/concurrency/crash/recovery/mutation проверки, независимые benchmark repeats и реальные Stage12 MQTT/HTTP/Chromium сценарии. Baseline868 → итог882 passed/0 skipped;25 поведенческих мутаций обнаружены. Новый изолированный cohort3:27/27 telemetry-confirmed transitions, PG/Mongo7689/7689 после drain. Не является новым capacity/IDS/constant-time доказательством.
 
 Magma исследована, live gate отрицательный; непрерывная активация запрещена, rekey не реализован. Три прежних AEAD сохранены, Kuznyechik lab-only, Policy DRY_RUN, trusted_detector=false. Стенд остановлен с сохранением volumes/keys. Подробные числа, команды, SHA и ограничения: [STAGE12_RESULTS](STAGE12_RESULTS.md). Этап13 не начат.
+
+## Stage13 — Policy throughput hardening
+
+Реализованы atomic pending discovery, bounded serialized batches, activation replay, durable source fairness и диагностика freshness отдельно от heartbeat. Baseline882→922 passed/0 skipped,13 golden comparisons,24 behavioral mutations. Реальные3/10/25/50-device серии показывают устранение непрерывного накопления очереди25×2Hz в измеренной среде;50×2Hz проверяется как исследовательский предел, без универсальной capacity гарантии. Полные фактические результаты/recovery/ограничения: [STAGE13_RESULTS](STAGE13_RESULTS.md). Policy DRY_RUN, ML trusted_detector=false, manual-only control и Kuz lab-only сохранены. RF/IF retraining/7.5c/следующий этап не запускались.

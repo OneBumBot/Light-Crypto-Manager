@@ -17,3 +17,27 @@ Provider/Kuz release change is only explicit Stage13 test-lab namespace authoriz
 Read-model additions never promote a stale recommendation: the policy overview annotates authenticated telemetry age separately from recent ML/state writes, filters only the active version and labels stale/unavailable recommendations. Source processing lag, oldest pending age, evidence age and technical heartbeat are distinct. On API error the browser clears prior JSON/status and uses bounded no-store/same-origin requests. No new crypto apply UI or framework.
 
 A lab-only receiver timing facade delegates to the real engine.begin() and preserves/rethrows all original results/exceptions. Its short matched25-device series measures actual monotonic checkout/SQL/commit exit, separately from the much longer main throughput runs. It does not replace decryption, admission, replay, source capture or manual ACK. These measurements are not inferred from the pre-transaction created_at field.
+
+## Воспроизведение и безопасная остановка
+
+Нужны Docker/Compose, Python project venv и зависимости проекта. Собирать original controller можно `python -m scripts.build_policy13_baseline --image-prefix lcm-stage13-policy-baseline-reference`; инструмент экспортирует Git baseline во временный каталог и добавляет только изолированный installer, не переключая checkout. Этот отдельный convenience builder добавлен после основных измерений; точные фактически использованные build/log/image IDs сохранены в raw reports.
+
+Для нового оптимизированного run сначала собрать текущие runtime/tests с отдельными тегами:
+
+```bash
+docker build --target runtime -t lcm-stage13-policy-current-runtime .
+docker build --target tests -t lcm-stage13-policy-current-tests .
+.venv/bin/python -m scripts.run_policy13_experiment \
+  --variant optimized --devices 25 --seconds 300 \
+  --runtime-image lcm-stage13-policy-current-runtime \
+  --tests-image lcm-stage13-policy-current-tests \
+  --directory .local-runtime/stage13/new25 \
+  --output docs/reports/stage13/new25r1 \
+  --project lcm-stage13-policy-new25
+```
+
+Для baseline указать original runtime/tests; не подставлять текущий код под baseline label. Одновременно не запускать другие cohorts. Инструмент требует новые directory/project, проверяет активный Stage13 alpha, сохраняет IDs и останавливает сервисы после bounded observation/drain. При исключении проверить собственный project и выполнить `.venv/bin/python -m scripts.policy_lab stop --directory .local-runtime/stage13/new25`. Никогда не удалять volumes/keys, не копировать старые SQLite в новый cohort. `start` существующего стенда продолжает durable state и проверяет used volumes; это не новый независимый experimental run.
+
+Снимки/сверка: `python -m scripts.policy13_collect_runs`, затем `python -m scripts.policy13_analyze`, `MPLCONFIGDIR=/tmp/lcm-policy13-mpl python -m scripts.plot_policy13`. Collector работает только с остановленными свежими Stage13 performance projects, временно запускает их PG/Mongo для read-only census и снова останавливает. Хранилища прежних этапов не используются. После archival больших JSON скрипты анализа читают `.json.gz` без изменения байтов исходных записей.
+
+Если Docker address pools исчерпаны, не применять prune: выбрать проверенную непересекающуюся подсеть, задать `networks.default.ipam.config[].subnet` только в новом приватном Compose override и сохранить её в config provenance. В фактическом продолжении применены10.213.1–5.0/24; это не обещание, что они свободны на другом хосте. Пароли находятся в приватных `accounts/*.password`, не в отчёте; web доступен только через loopback dynamic port.

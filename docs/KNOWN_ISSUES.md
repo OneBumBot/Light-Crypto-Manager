@@ -521,3 +521,12 @@ research volume — граница доверия, не tamper-proof recorder. O
 - Early raw outputs do not all embed top-level source SHA/argv; original files retained, hash/source-context inventory and recorded nested argv supplied. No retroactive invented provenance.
 
 Fixed adapter availability bugs: stale executable-path cache and stderr-EOF/complete-stdout race, both covered by behavioral regressions. [Details and actual evidence](STAGE12_RESULTS.md).
+
+## Stage13 Policy limits
+
+- New workers serialize batch transactions globally; no claim of horizontal throughput. Mixed old/new worker binaries are unsupported during rollout.
+- Journal capacity includes consumed retained history. Throughput improvement does not remove retention/capacity limits; overflow remains visible and disqualifies a lossless run.
+- Version activation replays retained sources missing the selected-version marker; seeding cost scales with retained history. It does not reuse old rules cache or erase guard/history.
+- Synthetic stale scheduling is intentionally per-device pending aware. Distinct committed ML status snapshots are retained even if the mutable source later changes; this is documented discovery hardening.
+- SQL hooks exclude driver/server-internal statements. Real runs have nonidentical startup histories and correlated packet timings; only three independent25-device repeats. ARM/HA/production/IDS effectiveness not measured.
+- Docker default address pools were exhausted by preserved lab networks. New resumed labs use explicit unused /24 subnets; do not prune historical volumes/networks to rerun measurements.

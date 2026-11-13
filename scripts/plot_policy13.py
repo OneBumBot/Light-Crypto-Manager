@@ -77,6 +77,6 @@ def main():
     admission=[r for r in allruns if r['admission']];fig,ax=plt.subplots(figsize=(10,4))
     for i,variant in enumerate(colors):
         vals=[r['admission']['transaction_wall_seconds']['median']*1000 for r in admission if r['variant']==variant];ax.scatter([i]*len(vals),vals,color=colors[variant])
-    ax.set_xticks([0,1],list(colors));ax.set(ylabel='Successful receiver transaction wall median, ms',title='Three independent short matched25-device runs; checkout/SQL/commit included');save(fig,'admission_transaction_wall')
+    ax.set_xticks([0,1],list(colors));ax.set(ylabel='Successful receiver transaction wall median, ms',title='Two independent short matched25-device runs; interrupted repeats excluded; checkout/SQL/commit included');save(fig,'admission_transaction_wall')
     print('13 actual-data figure families exported; no confidence intervals or missing-as-zero')
 if __name__=='__main__':main()
