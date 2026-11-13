@@ -85,10 +85,19 @@ def fit_candidate(frame,indices,spec,seed,multiclass=False):
         peak_rss_kib_cumulative_process=int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
 
 
+def source_split(frame,source,config):
+    if source.get('dataset_version')=='stage14-lightcrypto-lab-v1':
+        from src.research_stand.stage14 import linked_split
+        return linked_split(frame,source['stage14_group_partitions'],config.get('minimum_normal_rows',1000),config.get('minimum_class_captures',5))
+    return prepare_split(frame,config['seed'],config.get('minimum_normal_rows',1000),config.get('minimum_class_captures',5))
+
+
 def plan(data,manifest,config,output):
     config_checked(config);frame,source=read_prepared(data,manifest,config.get('max_rows',100000))
     if source.get('dataset_family')=='lightcrypto-lab-v1' and source.get('label_rules_version') and not source.get('provenance',{}).get('independent_label_verification'):raise ValueError('No independently corroborated laboratory labels; planning blocked')
-    split=prepare_split(frame,config['seed'],config.get('minimum_normal_rows',1000),config.get('minimum_class_captures',5))
+    from src.research_stand.stage14 import training_gate
+    training_gate(data,manifest)
+    split=source_split(frame,source,config)
     value=dict(schema_version=1,dataset_sha256=source['sha256'],manifest_sha256=file_hash(Path(manifest)),
         config=config,config_sha256=canonical_hash(config),split=split,versions=versions())
     value['plan_sha256']=canonical_hash(value)
@@ -101,9 +110,11 @@ def checked_plan(data,manifest,plan_path):
     if canonical_hash(p)!=digest:raise ValueError('Frozen plan modified')
     p['plan_sha256']=digest
     frame,source=read_prepared(data,manifest,p['config'].get('max_rows',100000))
+    from src.research_stand.stage14 import training_gate
+    training_gate(data,manifest)
     if p['dataset_sha256']!=source['sha256'] or p['manifest_sha256']!=file_hash(Path(manifest)) or p['versions']!=versions():raise ValueError('Plan provenance/version mismatch')
     if canonical_hash(p['config'])!=p['config_sha256']:raise ValueError('Configuration changed')
-    actual=prepare_split(frame,p['config']['seed'],p['config'].get('minimum_normal_rows',1000),p['config'].get('minimum_class_captures',5))
+    actual=source_split(frame,source,p['config'])
     if actual!=p['split']:raise ValueError('Frozen partition mismatch')
     return frame,source,p
 
