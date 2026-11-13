@@ -1,0 +1,46 @@
+{
+  "source_sha": "d1dfbf4f8a143e585aacfbe2ca83ec57ccaf6635",
+  "commands": [
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "resume",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime"
+      ],
+      "exit_code": 0,
+      "seconds": 26.794179439544678
+    },
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "smoke",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime",
+        "--output",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/docs/reports/stage16/release-cooldown-smoke.json"
+      ],
+      "exit_code": 0,
+      "seconds": 21.237205266952515
+    },
+    {
+      "command": [
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/clean-checkout/.venv/bin/python",
+        "-m",
+        "scripts.stage16_demo",
+        "stop",
+        "--directory",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime"
+      ],
+      "exit_code": 0,
+      "seconds": 3.4767086505889893
+    }
+  ],
+  "cold_source_sha": "0bb46b7",
+  "scope": "Latest helper cooldown check in same clean checkout; prepare/start/product code unchanged from cold run",
+  "exit_code": 0
+}

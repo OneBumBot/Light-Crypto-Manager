@@ -1,0 +1,220 @@
+{
+  "records": [
+    {
+      "project": "lcm-stage16-final-demo-main",
+      "values": {
+        "ml_models": 0,
+        "ml_events": 0,
+        "live_commands": 28,
+        "transition_actors": [
+          "admin:1"
+        ],
+        "non_admin_transitions": 0,
+        "policy_applied": 0,
+        "pg_admissions": 5838
+      },
+      "commands": [
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "-f",
+            "compose.stage16.yaml",
+            "-f",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "up",
+            "-d",
+            "--no-deps",
+            "--wait",
+            "postgres"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "-f",
+            "compose.stage16.yaml",
+            "-f",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "run",
+            "--rm",
+            "-T",
+            "--no-deps",
+            "--entrypoint",
+            "python",
+            "tests",
+            "-c",
+            "import json;from sqlalchemy import create_engine,select,func;from src.runtime import database_url;from src.ml_storage import models,events;from src.device_control import models as control;from src.policy import models as policy;from src.outbox import outbox\ne=create_engine(database_url())\nwith e.connect() as c:\n print(json.dumps(dict(ml_models=c.scalar(select(func.count()).select_from(models)),ml_events=c.scalar(select(func.count()).select_from(events)),live_commands=c.scalar(select(func.count()).select_from(control.commands)),transition_actors=list(c.scalars(select(control.transitions.c.actor).distinct())),non_admin_transitions=c.scalar(select(func.count()).select_from(control.transitions).where(~control.transitions.c.actor.like('admin:%'))),policy_applied=c.scalar(select(func.count()).select_from(policy.states).where(policy.states.c.applied.is_not(None))),pg_admissions=c.scalar(select(func.count()).select_from(outbox)))))\ne.dispose()"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "-f",
+            "compose.stage16.yaml",
+            "-f",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/demo/network.json",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "stop",
+            "postgres"
+          ],
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "project": "lcm-stage16-final-demo-release",
+      "values": {
+        "ml_models": 0,
+        "ml_events": 0,
+        "live_commands": 8,
+        "transition_actors": [
+          "admin:1"
+        ],
+        "non_admin_transitions": 0,
+        "policy_applied": 0,
+        "pg_admissions": 278
+      },
+      "commands": [
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "-f",
+            "compose.stage16.yaml",
+            "-f",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime/network.json",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "up",
+            "-d",
+            "--no-deps",
+            "--wait",
+            "postgres"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "-f",
+            "compose.stage16.yaml",
+            "-f",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime/network.json",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "run",
+            "--rm",
+            "-T",
+            "--no-deps",
+            "--entrypoint",
+            "python",
+            "tests",
+            "-c",
+            "import json;from sqlalchemy import create_engine,select,func;from src.runtime import database_url;from src.ml_storage import models,events;from src.device_control import models as control;from src.policy import models as policy;from src.outbox import outbox\ne=create_engine(database_url())\nwith e.connect() as c:\n print(json.dumps(dict(ml_models=c.scalar(select(func.count()).select_from(models)),ml_events=c.scalar(select(func.count()).select_from(events)),live_commands=c.scalar(select(func.count()).select_from(control.commands)),transition_actors=list(c.scalars(select(control.transitions.c.actor).distinct())),non_admin_transitions=c.scalar(select(func.count()).select_from(control.transitions).where(~control.transitions.c.actor.like('admin:%'))),policy_applied=c.scalar(select(func.count()).select_from(policy.states).where(policy.states.c.applied.is_not(None))),pg_admissions=c.scalar(select(func.count()).select_from(outbox)))))\ne.dispose()"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "docker",
+            "compose",
+            "--env-file",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime/compose.env",
+            "-f",
+            "compose.yaml",
+            "-f",
+            "compose.control.yaml",
+            "-f",
+            "compose.stage9.yaml",
+            "-f",
+            "compose.stage16.yaml",
+            "-f",
+            "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage16/release-checkout-runtime/network.json",
+            "--profile",
+            "control",
+            "--profile",
+            "web",
+            "--profile",
+            "policy",
+            "stop",
+            "postgres"
+          ],
+          "exit_code": 0
+        }
+      ]
+    }
+  ],
+  "scope": "Post-stop read-only PG queries only, all publishers stopped",
+  "exit_code": 0
+}

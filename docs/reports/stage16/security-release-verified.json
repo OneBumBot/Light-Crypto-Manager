@@ -1,0 +1,2418 @@
+{
+  "source_sha": "d1dfbf4f8a143e585aacfbe2ca83ec57ccaf6635",
+  "fresh_realms": [
+    "baseline",
+    "demo",
+    "regression",
+    "checkout-runtime",
+    "release-checkout-runtime"
+  ],
+  "independent_telemetry_keys": 22,
+  "independent_hmac_keys": 18,
+  "historical_key_values_compared": 3552,
+  "reuse": false,
+  "secret_matches": [],
+  "files_scanned": 2182,
+  "new_container_log_tails_scanned": 53,
+  "log_scope": "Last1000lines per retained new container, not every historical log byte",
+  "application_images": [
+    {
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "generated_secret_matches": false,
+      "private_pcap_model_key_database_files": false,
+      "scope": "/app archive only"
+    },
+    {
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "generated_secret_matches": false,
+      "private_pcap_model_key_database_files": false,
+      "scope": "/app archive only"
+    }
+  ],
+  "infrastructure": [
+    {
+      "name": "/lcm-stage16-final-demo-release-device-alpha-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "device-alpha",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 250000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "PUBLISH_INTERVAL",
+        "MQTT_PORT",
+        "MQTT_USERNAME",
+        "DEVICE_STATE_FILE",
+        "MQTT_HOST",
+        "MQTT_CA_FILE",
+        "MQTT_PASSWORD_FILE",
+        "CONTROL_KEYS_FILE",
+        "DEVICE_ID",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/device",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-device-gamma-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "device-gamma",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 250000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_PORT",
+        "PUBLISH_INTERVAL",
+        "CONTROL_KEYS_FILE",
+        "MQTT_HOST",
+        "MQTT_CA_FILE",
+        "DEVICE_ID",
+        "MQTT_PASSWORD_FILE",
+        "MQTT_USERNAME",
+        "DEVICE_STATE_FILE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/device",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-device-beta-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "device-beta",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 250000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_USERNAME",
+        "MQTT_PORT",
+        "PUBLISH_INTERVAL",
+        "DEVICE_STATE_FILE",
+        "CONTROL_KEYS_FILE",
+        "MQTT_CA_FILE",
+        "MQTT_PASSWORD_FILE",
+        "DEVICE_ID",
+        "MQTT_HOST",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/device",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-control-worker-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "control-worker",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_CA_FILE",
+        "CONTROL_KEYS_FILE",
+        "CONTROL_MODE",
+        "DATABASE_URL",
+        "MQTT_HOST",
+        "MQTT_PORT",
+        "MQTT_USERNAME",
+        "MQTT_PASSWORD_FILE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/control",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-control-init-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "control-init",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/alpha",
+          "read_only": false
+        },
+        {
+          "target": "/out/beta",
+          "read_only": false
+        },
+        {
+          "target": "/out/controller",
+          "read_only": false
+        },
+        {
+          "target": "/out/gamma",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-web-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "web",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_CA_FILE",
+        "WEB_HOST",
+        "ML_MONITOR_MODE",
+        "MONGO_PASSWORD_FILE",
+        "MQTT_USERNAME",
+        "DEVICE_REGISTRY_FILE",
+        "FLASK_SECRET_KEY",
+        "MQTT_PORT",
+        "MQTT_PASSWORD_FILE",
+        "MQTT_HOST",
+        "DATABASE_URL",
+        "WEB_MQTT_ENABLED",
+        "CONTROL_MODE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/lcm",
+          "read_only": true
+        },
+        {
+          "target": "/run/storage",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-receiver-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "receiver",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_HOST",
+        "MQTT_PASSWORD_FILE",
+        "MAX_OUTBOX_PENDING",
+        "DATABASE_URL",
+        "DEVICE_REGISTRY_FILE",
+        "MQTT_CLIENT_ID",
+        "MQTT_READY_FILE",
+        "MQTT_USERNAME",
+        "MQTT_CA_FILE",
+        "MQTT_PORT",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/lcm",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-policy-worker-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "policy-worker",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 1000000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "POLICY_BATCH_SIZE",
+        "POLICY_MODE",
+        "DATABASE_URL",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": []
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-outbox-relay-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "outbox-relay",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MONGO_PASSWORD_FILE",
+        "OUTBOX_RETENTION_DAYS",
+        "OUTBOX_MAX_ATTEMPTS",
+        "DATABASE_URL",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/storage",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-broker-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "broker",
+      "image_id": "sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "VERSION",
+        "DOWNLOAD_SHA256",
+        "GPG_KEYS"
+      ],
+      "mount_targets": [
+        {
+          "target": "/mosquitto/data",
+          "read_only": false
+        },
+        {
+          "target": "/mosquitto/log",
+          "read_only": false
+        },
+        {
+          "target": "/mosquitto/security",
+          "read_only": true
+        },
+        {
+          "target": "/mosquitto/config/mosquitto.conf",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-mongo-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "mongo",
+      "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 1000000000,
+      "memory_bytes": 805306368,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MONGO_INITDB_ROOT_PASSWORD_FILE",
+        "MONGO_INITDB_ROOT_USERNAME",
+        "PATH",
+        "GOSU_VERSION",
+        "JSYAML_VERSION",
+        "JSYAML_CHECKSUM",
+        "MONGO_PACKAGE",
+        "MONGO_REPO",
+        "MONGO_MAJOR",
+        "MONGO_VERSION",
+        "HOME",
+        "GLIBC_TUNABLES"
+      ],
+      "mount_targets": [
+        {
+          "target": "/health.js",
+          "read_only": true
+        },
+        {
+          "target": "/retention.js",
+          "read_only": true
+        },
+        {
+          "target": "/upgrade_profiles.js",
+          "read_only": true
+        },
+        {
+          "target": "/data/configdb",
+          "read_only": false
+        },
+        {
+          "target": "/data/db",
+          "read_only": false
+        },
+        {
+          "target": "/docker-entrypoint-initdb.d/init.js",
+          "read_only": true
+        },
+        {
+          "target": "/run/mongo",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-init-db-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "init-db",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "DATABASE_URL",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": []
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-postgres-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "postgres",
+      "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 1000000000,
+      "memory_bytes": 805306368,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "POSTGRES_DB",
+        "POSTGRES_USER",
+        "POSTGRES_PASSWORD",
+        "PATH",
+        "GOSU_VERSION",
+        "LANG",
+        "PG_MAJOR",
+        "PG_VERSION",
+        "PG_SHA256",
+        "DOCKER_PG_LLVM_DEPS",
+        "PGDATA"
+      ],
+      "mount_targets": [
+        {
+          "target": "/var/lib/postgresql/data",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-security-init-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "security-init",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/broker",
+          "read_only": false
+        },
+        {
+          "target": "/out/publisher",
+          "read_only": false
+        },
+        {
+          "target": "/out/publisher-state",
+          "read_only": false
+        },
+        {
+          "target": "/out/receiver",
+          "read_only": false
+        },
+        {
+          "target": "/out/smoke",
+          "read_only": false
+        },
+        {
+          "target": "/out/smoke-state",
+          "read_only": false
+        },
+        {
+          "target": "/out/tests",
+          "read_only": false
+        },
+        {
+          "target": "/out/web",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-release-storage-init-1",
+      "project": "lcm-stage16-final-demo-release",
+      "service": "storage-init",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/mongo",
+          "read_only": false
+        },
+        {
+          "target": "/out/relay",
+          "read_only": false
+        },
+        {
+          "target": "/out/tests",
+          "read_only": false
+        },
+        {
+          "target": "/out/web",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-device-gamma-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "device-gamma",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 250000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_PASSWORD_FILE",
+        "MQTT_PORT",
+        "CONTROL_KEYS_FILE",
+        "DEVICE_STATE_FILE",
+        "PUBLISH_INTERVAL",
+        "MQTT_CA_FILE",
+        "MQTT_HOST",
+        "MQTT_USERNAME",
+        "DEVICE_ID",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/device",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-device-beta-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "device-beta",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 250000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "CONTROL_KEYS_FILE",
+        "MQTT_HOST",
+        "PUBLISH_INTERVAL",
+        "DEVICE_STATE_FILE",
+        "MQTT_CA_FILE",
+        "MQTT_USERNAME",
+        "MQTT_PASSWORD_FILE",
+        "DEVICE_ID",
+        "MQTT_PORT",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/device",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-device-alpha-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "device-alpha",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 250000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_USERNAME",
+        "MQTT_PASSWORD_FILE",
+        "MQTT_CA_FILE",
+        "DEVICE_ID",
+        "DEVICE_STATE_FILE",
+        "PUBLISH_INTERVAL",
+        "MQTT_PORT",
+        "CONTROL_KEYS_FILE",
+        "MQTT_HOST",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/device",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-control-worker-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "control-worker",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_PORT",
+        "MQTT_USERNAME",
+        "MQTT_PASSWORD_FILE",
+        "MQTT_CA_FILE",
+        "CONTROL_KEYS_FILE",
+        "CONTROL_MODE",
+        "DATABASE_URL",
+        "MQTT_HOST",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/control",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-control-init-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "control-init",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/alpha",
+          "read_only": false
+        },
+        {
+          "target": "/out/beta",
+          "read_only": false
+        },
+        {
+          "target": "/out/controller",
+          "read_only": false
+        },
+        {
+          "target": "/out/gamma",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-receiver-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "receiver",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "DEVICE_REGISTRY_FILE",
+        "MQTT_PASSWORD_FILE",
+        "MQTT_READY_FILE",
+        "MQTT_CLIENT_ID",
+        "DATABASE_URL",
+        "MQTT_CA_FILE",
+        "MQTT_USERNAME",
+        "MQTT_HOST",
+        "MQTT_PORT",
+        "MAX_OUTBOX_PENDING",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/lcm",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-web-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "web",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_USERNAME",
+        "FLASK_SECRET_KEY",
+        "ML_MONITOR_MODE",
+        "MQTT_PORT",
+        "MQTT_PASSWORD_FILE",
+        "MQTT_CA_FILE",
+        "DEVICE_REGISTRY_FILE",
+        "WEB_HOST",
+        "CONTROL_MODE",
+        "WEB_MQTT_ENABLED",
+        "MQTT_HOST",
+        "MONGO_PASSWORD_FILE",
+        "DATABASE_URL",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/lcm",
+          "read_only": true
+        },
+        {
+          "target": "/run/storage",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-policy-worker-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "policy-worker",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 1000000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "DATABASE_URL",
+        "POLICY_BATCH_SIZE",
+        "POLICY_MODE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": []
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-outbox-relay-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "outbox-relay",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "DATABASE_URL",
+        "MONGO_PASSWORD_FILE",
+        "OUTBOX_RETENTION_DAYS",
+        "OUTBOX_MAX_ATTEMPTS",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/storage",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-broker-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "broker",
+      "image_id": "sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "VERSION",
+        "DOWNLOAD_SHA256",
+        "GPG_KEYS"
+      ],
+      "mount_targets": [
+        {
+          "target": "/mosquitto/data",
+          "read_only": false
+        },
+        {
+          "target": "/mosquitto/log",
+          "read_only": false
+        },
+        {
+          "target": "/mosquitto/security",
+          "read_only": true
+        },
+        {
+          "target": "/mosquitto/config/mosquitto.conf",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-mongo-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "mongo",
+      "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 1000000000,
+      "memory_bytes": 805306368,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MONGO_INITDB_ROOT_USERNAME",
+        "MONGO_INITDB_ROOT_PASSWORD_FILE",
+        "PATH",
+        "GOSU_VERSION",
+        "JSYAML_VERSION",
+        "JSYAML_CHECKSUM",
+        "MONGO_PACKAGE",
+        "MONGO_REPO",
+        "MONGO_MAJOR",
+        "MONGO_VERSION",
+        "HOME",
+        "GLIBC_TUNABLES"
+      ],
+      "mount_targets": [
+        {
+          "target": "/health.js",
+          "read_only": true
+        },
+        {
+          "target": "/retention.js",
+          "read_only": true
+        },
+        {
+          "target": "/upgrade_profiles.js",
+          "read_only": true
+        },
+        {
+          "target": "/data/configdb",
+          "read_only": false
+        },
+        {
+          "target": "/data/db",
+          "read_only": false
+        },
+        {
+          "target": "/docker-entrypoint-initdb.d/init.js",
+          "read_only": true
+        },
+        {
+          "target": "/run/mongo",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-init-db-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "init-db",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "DATABASE_URL",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": []
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-postgres-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "postgres",
+      "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 1000000000,
+      "memory_bytes": 805306368,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "POSTGRES_USER",
+        "POSTGRES_PASSWORD",
+        "POSTGRES_DB",
+        "PATH",
+        "GOSU_VERSION",
+        "LANG",
+        "PG_MAJOR",
+        "PG_VERSION",
+        "PG_SHA256",
+        "DOCKER_PG_LLVM_DEPS",
+        "PGDATA"
+      ],
+      "mount_targets": [
+        {
+          "target": "/var/lib/postgresql/data",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-security-init-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "security-init",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/broker",
+          "read_only": false
+        },
+        {
+          "target": "/out/publisher",
+          "read_only": false
+        },
+        {
+          "target": "/out/publisher-state",
+          "read_only": false
+        },
+        {
+          "target": "/out/receiver",
+          "read_only": false
+        },
+        {
+          "target": "/out/smoke",
+          "read_only": false
+        },
+        {
+          "target": "/out/smoke-state",
+          "read_only": false
+        },
+        {
+          "target": "/out/tests",
+          "read_only": false
+        },
+        {
+          "target": "/out/web",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-checkout-storage-init-1",
+      "project": "lcm-stage16-final-demo-checkout",
+      "service": "storage-init",
+      "image_id": "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/mongo",
+          "read_only": false
+        },
+        {
+          "target": "/out/relay",
+          "read_only": false
+        },
+        {
+          "target": "/out/tests",
+          "read_only": false
+        },
+        {
+          "target": "/out/web",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-regression-mongo-1",
+      "project": "lcm-stage16-final-demo-regression",
+      "service": "mongo",
+      "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "MONGO_INITDB_ROOT_PASSWORD_FILE",
+        "MONGO_INITDB_ROOT_USERNAME",
+        "PATH",
+        "GOSU_VERSION",
+        "JSYAML_VERSION",
+        "JSYAML_CHECKSUM",
+        "MONGO_PACKAGE",
+        "MONGO_REPO",
+        "MONGO_MAJOR",
+        "MONGO_VERSION",
+        "HOME",
+        "GLIBC_TUNABLES"
+      ],
+      "mount_targets": [
+        {
+          "target": "/health.js",
+          "read_only": true
+        },
+        {
+          "target": "/retention.js",
+          "read_only": true
+        },
+        {
+          "target": "/upgrade_profiles.js",
+          "read_only": true
+        },
+        {
+          "target": "/data/configdb",
+          "read_only": false
+        },
+        {
+          "target": "/data/db",
+          "read_only": false
+        },
+        {
+          "target": "/docker-entrypoint-initdb.d/init.js",
+          "read_only": true
+        },
+        {
+          "target": "/run/mongo",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-regression-security-init-1",
+      "project": "lcm-stage16-final-demo-regression",
+      "service": "security-init",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/broker",
+          "read_only": false
+        },
+        {
+          "target": "/out/publisher",
+          "read_only": false
+        },
+        {
+          "target": "/out/publisher-state",
+          "read_only": false
+        },
+        {
+          "target": "/out/receiver",
+          "read_only": false
+        },
+        {
+          "target": "/out/smoke",
+          "read_only": false
+        },
+        {
+          "target": "/out/smoke-state",
+          "read_only": false
+        },
+        {
+          "target": "/out/tests",
+          "read_only": false
+        },
+        {
+          "target": "/out/web",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-regression-postgres-1",
+      "project": "lcm-stage16-final-demo-regression",
+      "service": "postgres",
+      "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "POSTGRES_DB",
+        "POSTGRES_USER",
+        "POSTGRES_PASSWORD",
+        "PATH",
+        "GOSU_VERSION",
+        "LANG",
+        "PG_MAJOR",
+        "PG_VERSION",
+        "PG_SHA256",
+        "DOCKER_PG_LLVM_DEPS",
+        "PGDATA"
+      ],
+      "mount_targets": [
+        {
+          "target": "/var/lib/postgresql/data",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-regression-storage-init-1",
+      "project": "lcm-stage16-final-demo-regression",
+      "service": "storage-init",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/mongo",
+          "read_only": false
+        },
+        {
+          "target": "/out/relay",
+          "read_only": false
+        },
+        {
+          "target": "/out/tests",
+          "read_only": false
+        },
+        {
+          "target": "/out/web",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-device-gamma-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "device-gamma",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 250000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "PUBLISH_INTERVAL",
+        "CONTROL_KEYS_FILE",
+        "MQTT_USERNAME",
+        "MQTT_PORT",
+        "MQTT_PASSWORD_FILE",
+        "DEVICE_ID",
+        "DEVICE_STATE_FILE",
+        "MQTT_HOST",
+        "MQTT_CA_FILE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/device",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-device-beta-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "device-beta",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 250000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_CA_FILE",
+        "DEVICE_ID",
+        "DEVICE_STATE_FILE",
+        "MQTT_HOST",
+        "MQTT_PORT",
+        "MQTT_USERNAME",
+        "MQTT_PASSWORD_FILE",
+        "PUBLISH_INTERVAL",
+        "CONTROL_KEYS_FILE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/device",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-control-init-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "control-init",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/alpha",
+          "read_only": false
+        },
+        {
+          "target": "/out/beta",
+          "read_only": false
+        },
+        {
+          "target": "/out/controller",
+          "read_only": false
+        },
+        {
+          "target": "/out/gamma",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-outbox-relay-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "outbox-relay",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "OUTBOX_RETENTION_DAYS",
+        "OUTBOX_MAX_ATTEMPTS",
+        "DATABASE_URL",
+        "MONGO_PASSWORD_FILE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/storage",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-security-init-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "security-init",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/broker",
+          "read_only": false
+        },
+        {
+          "target": "/out/publisher",
+          "read_only": false
+        },
+        {
+          "target": "/out/publisher-state",
+          "read_only": false
+        },
+        {
+          "target": "/out/receiver",
+          "read_only": false
+        },
+        {
+          "target": "/out/smoke",
+          "read_only": false
+        },
+        {
+          "target": "/out/smoke-state",
+          "read_only": false
+        },
+        {
+          "target": "/out/tests",
+          "read_only": false
+        },
+        {
+          "target": "/out/web",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-storage-init-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "storage-init",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/mongo",
+          "read_only": false
+        },
+        {
+          "target": "/out/relay",
+          "read_only": false
+        },
+        {
+          "target": "/out/tests",
+          "read_only": false
+        },
+        {
+          "target": "/out/web",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-init-db-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "init-db",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "DATABASE_URL",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": []
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-control-worker-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "control-worker",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "DATABASE_URL",
+        "MQTT_HOST",
+        "MQTT_PORT",
+        "MQTT_USERNAME",
+        "MQTT_PASSWORD_FILE",
+        "MQTT_CA_FILE",
+        "CONTROL_KEYS_FILE",
+        "CONTROL_MODE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/control",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-policy-worker-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "policy-worker",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 1000000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "POLICY_MODE",
+        "DATABASE_URL",
+        "POLICY_BATCH_SIZE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": []
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-device-alpha-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "device-alpha",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 250000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_PASSWORD_FILE",
+        "MQTT_USERNAME",
+        "CONTROL_KEYS_FILE",
+        "MQTT_PORT",
+        "PUBLISH_INTERVAL",
+        "MQTT_HOST",
+        "MQTT_CA_FILE",
+        "DEVICE_STATE_FILE",
+        "DEVICE_ID",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/device",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-receiver-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "receiver",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_HOST",
+        "MQTT_USERNAME",
+        "MQTT_READY_FILE",
+        "DATABASE_URL",
+        "DEVICE_REGISTRY_FILE",
+        "MQTT_PORT",
+        "MQTT_CLIENT_ID",
+        "MAX_OUTBOX_PENDING",
+        "MQTT_CA_FILE",
+        "MQTT_PASSWORD_FILE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/lcm",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-web-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "web",
+      "image_id": "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 268435456,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MQTT_PASSWORD_FILE",
+        "MQTT_PORT",
+        "MQTT_HOST",
+        "MONGO_PASSWORD_FILE",
+        "FLASK_SECRET_KEY",
+        "DATABASE_URL",
+        "CONTROL_MODE",
+        "WEB_MQTT_ENABLED",
+        "WEB_HOST",
+        "MQTT_CA_FILE",
+        "ML_MONITOR_MODE",
+        "MQTT_USERNAME",
+        "DEVICE_REGISTRY_FILE",
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/run/lcm",
+          "read_only": true
+        },
+        {
+          "target": "/run/storage",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-broker-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "broker",
+      "image_id": "sha256:75d6662dee52c947dc9dd9c29f1d8d7ffef78ddaf38001caa09755681e8bbc98",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 500000000,
+      "memory_bytes": 134217728,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "VERSION",
+        "DOWNLOAD_SHA256",
+        "GPG_KEYS"
+      ],
+      "mount_targets": [
+        {
+          "target": "/mosquitto/data",
+          "read_only": false
+        },
+        {
+          "target": "/mosquitto/log",
+          "read_only": false
+        },
+        {
+          "target": "/mosquitto/security",
+          "read_only": true
+        },
+        {
+          "target": "/mosquitto/config/mosquitto.conf",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-mongo-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "mongo",
+      "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 1000000000,
+      "memory_bytes": 805306368,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "MONGO_INITDB_ROOT_USERNAME",
+        "MONGO_INITDB_ROOT_PASSWORD_FILE",
+        "PATH",
+        "GOSU_VERSION",
+        "JSYAML_VERSION",
+        "JSYAML_CHECKSUM",
+        "MONGO_PACKAGE",
+        "MONGO_REPO",
+        "MONGO_MAJOR",
+        "MONGO_VERSION",
+        "HOME",
+        "GLIBC_TUNABLES"
+      ],
+      "mount_targets": [
+        {
+          "target": "/health.js",
+          "read_only": true
+        },
+        {
+          "target": "/retention.js",
+          "read_only": true
+        },
+        {
+          "target": "/upgrade_profiles.js",
+          "read_only": true
+        },
+        {
+          "target": "/data/configdb",
+          "read_only": false
+        },
+        {
+          "target": "/data/db",
+          "read_only": false
+        },
+        {
+          "target": "/docker-entrypoint-initdb.d/init.js",
+          "read_only": true
+        },
+        {
+          "target": "/run/mongo",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-main-postgres-1",
+      "project": "lcm-stage16-final-demo-main",
+      "service": "postgres",
+      "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 1000000000,
+      "memory_bytes": 805306368,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {
+          "max-file": "2",
+          "max-size": "5m"
+        }
+      },
+      "privileged": false,
+      "environment_names": [
+        "POSTGRES_USER",
+        "POSTGRES_PASSWORD",
+        "POSTGRES_DB",
+        "PATH",
+        "GOSU_VERSION",
+        "LANG",
+        "PG_MAJOR",
+        "PG_VERSION",
+        "PG_SHA256",
+        "DOCKER_PG_LLVM_DEPS",
+        "PGDATA"
+      ],
+      "mount_targets": [
+        {
+          "target": "/var/lib/postgresql/data",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-baseline-mongo-1",
+      "project": "lcm-stage16-final-demo-baseline",
+      "service": "mongo",
+      "image_id": "sha256:9814652e33f0cf8b9fddea8b46dfc9d8e19b130dcfdd7b510ca58bb0d40c8b71",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "MONGO_INITDB_ROOT_USERNAME",
+        "MONGO_INITDB_ROOT_PASSWORD_FILE",
+        "PATH",
+        "GOSU_VERSION",
+        "JSYAML_VERSION",
+        "JSYAML_CHECKSUM",
+        "MONGO_PACKAGE",
+        "MONGO_REPO",
+        "MONGO_MAJOR",
+        "MONGO_VERSION",
+        "HOME",
+        "GLIBC_TUNABLES"
+      ],
+      "mount_targets": [
+        {
+          "target": "/health.js",
+          "read_only": true
+        },
+        {
+          "target": "/retention.js",
+          "read_only": true
+        },
+        {
+          "target": "/upgrade_profiles.js",
+          "read_only": true
+        },
+        {
+          "target": "/data/configdb",
+          "read_only": false
+        },
+        {
+          "target": "/data/db",
+          "read_only": false
+        },
+        {
+          "target": "/docker-entrypoint-initdb.d/init.js",
+          "read_only": true
+        },
+        {
+          "target": "/run/mongo",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-baseline-postgres-1",
+      "project": "lcm-stage16-final-demo-baseline",
+      "service": "postgres",
+      "image_id": "sha256:3540c0362c809df084ffac0ae69fe794515f9de92692f02178bcdce0ef0302ac",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "POSTGRES_PASSWORD",
+        "POSTGRES_DB",
+        "POSTGRES_USER",
+        "PATH",
+        "GOSU_VERSION",
+        "LANG",
+        "PG_MAJOR",
+        "PG_VERSION",
+        "PG_SHA256",
+        "DOCKER_PG_LLVM_DEPS",
+        "PGDATA"
+      ],
+      "mount_targets": [
+        {
+          "target": "/var/lib/postgresql/data",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-baseline-storage-init-1",
+      "project": "lcm-stage16-final-demo-baseline",
+      "service": "storage-init",
+      "image_id": "sha256:b54060662419b4c174cd122acf90ccbbeaac9f87986bc68b24d794f0b69501db",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/mongo",
+          "read_only": false
+        },
+        {
+          "target": "/out/relay",
+          "read_only": false
+        },
+        {
+          "target": "/out/tests",
+          "read_only": false
+        },
+        {
+          "target": "/out/web",
+          "read_only": false
+        }
+      ]
+    },
+    {
+      "name": "/lcm-stage16-final-demo-baseline-security-init-1",
+      "project": "lcm-stage16-final-demo-baseline",
+      "service": "security-init",
+      "image_id": "sha256:b54060662419b4c174cd122acf90ccbbeaac9f87986bc68b24d794f0b69501db",
+      "exit_code": 0,
+      "running": false,
+      "cpu_nanos": 0,
+      "memory_bytes": 0,
+      "log_config": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "privileged": false,
+      "environment_names": [
+        "PATH",
+        "LANG",
+        "GPG_KEY",
+        "PYTHON_VERSION",
+        "PYTHON_SHA256",
+        "PYTHONDONTWRITEBYTECODE",
+        "PYTHONUNBUFFERED"
+      ],
+      "mount_targets": [
+        {
+          "target": "/input",
+          "read_only": true
+        },
+        {
+          "target": "/out/broker",
+          "read_only": false
+        },
+        {
+          "target": "/out/publisher",
+          "read_only": false
+        },
+        {
+          "target": "/out/publisher-state",
+          "read_only": false
+        },
+        {
+          "target": "/out/receiver",
+          "read_only": false
+        },
+        {
+          "target": "/out/smoke",
+          "read_only": false
+        },
+        {
+          "target": "/out/smoke-state",
+          "read_only": false
+        },
+        {
+          "target": "/out/tests",
+          "read_only": false
+        },
+        {
+          "target": "/out/web",
+          "read_only": false
+        }
+      ]
+    }
+  ],
+  "old_stage14_models": [
+    {
+      "role": "rf_binary",
+      "model_id": "research75-rf_tuned_1-binary",
+      "artifact_sha256": "52e6a5dbf02fd5d6e3a3364eb7077f41e099eebd4b24d64b76826a94da1c0f42",
+      "unchanged": true
+    },
+    {
+      "role": "if",
+      "model_id": "research75-if_tuned_0-binary",
+      "artifact_sha256": "3879a7b7c110dadf5822148e3cb19409bf675cf802b1d0e0227109e792f83027",
+      "unchanged": true
+    },
+    {
+      "role": "rf_session",
+      "model_id": "research75-rf_subsample-binary",
+      "artifact_sha256": "3216f93551a8d5436f3d717f91319cb6f0b759f831f70865ee0bce30fbbca563",
+      "unchanged": true
+    },
+    {
+      "role": "if_session",
+      "model_id": "research75-if_tuned_1-binary",
+      "artifact_sha256": "4b5a7bbb97e30a5b7154e68e87481b9787cd38f39ea82b206b8768c87f51ae21",
+      "unchanged": true
+    }
+  ],
+  "old_holdout_and_marker_unchanged": true,
+  "critical_crypto_policy_source_and_migrations_unchanged": true,
+  "kuz_stage16_activation_refused": true,
+  "unknown_backend_no_fallback": true,
+  "magma_not_live": true,
+  "optional_shadow_unavailable_honest": true,
+  "all_new_services_stopped": true,
+  "fit_or_threshold_changes": 0,
+  "exit_code": 0
+}

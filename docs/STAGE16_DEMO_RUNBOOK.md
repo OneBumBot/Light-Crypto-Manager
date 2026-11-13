@@ -35,7 +35,7 @@ Start применяет существующие migrations, выполняет
 .venv/bin/python -m scripts.stage16_demo stop
 ```
 
-Resume не создаёт новые ключи/начальный SQLite и не повторяет setup. Проверяются исходные private material hashes, volume identity/creation metadata, used SQLite integrity/counters и stop checkpoint. При отсутствии/замене used state — отказ до device startup. Не исправлять это пустой БД или reset epoch; требуется reviewed recovery/rekey. Marker не является защитой от владельца, согласованно подменяющего всё хранилище.
+Resume не создаёт новые ключи/начальный SQLite и не повторяет setup. Проверяются исходные private material hashes, volume identity/creation metadata, used SQLite integrity/counters и stop checkpoint. Image-declared Mongo configdb/Mosquitto log volumes записываются по фактическим container bindings и сохраняются; при resume проверяются и они. Это non-authoritative auxiliary paths, не PG data или Device SQLite. При отсутствии/замене used state — отказ до device startup. Не исправлять это пустой БД или reset epoch; требуется reviewed recovery/rekey. Marker не является защитой от владельца, согласованно подменяющего всё хранилище.
 
 Stop останавливает только этот project, сначала agents, сохраняет логический checkpoint PG/SQLite и затем останавливает services. Volumes, keys, commands, replay state и receipts не удаляются. Smoke отдельно проверяет Outbox drain после остановки publishers; остаточный pending при нештатной остановке остаётся durable и может быть доставлен после resume. На измеренных штатных stop checkpoints pending=0. Status/evidence требуют доступных PG/Mongo; offline status не выдаёт старый snapshot за текущий.
 

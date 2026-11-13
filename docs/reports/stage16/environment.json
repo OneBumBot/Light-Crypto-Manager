@@ -1,0 +1,45 @@
+{
+  "source_sha": "d1dfbf4f8a143e585aacfbe2ca83ec57ccaf6635",
+  "timestamp_utc": "2026-11-13T22:10:30.757255+00:00",
+  "os": "Linux-7.2.10-1-cachyos-bore-x86_64-with-glibc2.44",
+  "machine": "x86_64",
+  "cpu": "AMD Ryzen 7 9800X3D 8-Core Processor",
+  "memory_total_kib": 31904208,
+  "python": "3.12.16",
+  "host_packages": {
+    "requests": "2.34.2",
+    "SQLAlchemy": "2.0.57",
+    "cryptography": "50.0.2",
+    "Flask": "3.1.3",
+    "psycopg": "3.3.8",
+    "pymongo": "4.19.0",
+    "playwright": "1.56.0"
+  },
+  "compose_version": "5.6.1",
+  "application_image_ids": [
+    "sha256:ae6f488de4e53f28c2a55480d9f2b650af2d9da0b98a970ee3e884042a476521",
+    "sha256:dffd3fd7adc4ddb05eaabc86eaeedb4b281a1cca44578fead10e4709bd3746d2"
+  ],
+  "image_scope": "Actual IDs inspected in security-release-verified.json; configured pinned upstream image references in compose.yaml/Dockerfile",
+  "code_hashes": {
+    "Dockerfile": "de5e24f63ed09df3b6a6c916ba866a84cfd39d823ef9f0d2aa469138ba354af3",
+    "compose.yaml": "13c60bd9f5dc9472a95fdae54850c7fdf38d363dc48cdb48e4df43e7750a2fd1",
+    "compose.control.yaml": "f49ce3803af153721cec6f6be689f832c6cd6c60463d486fa9e0df49c5a9b9f0",
+    "compose.stage9.yaml": "e184091b2a2cf15556e7446dc9c38538bbef00008195f04db9250cdb10dfb45c",
+    "compose.stage16.yaml": "79aac6499b6eb0ebaf85092c65f6330c5d50e6451207d336a548dba5c711c1e9",
+    "scripts/stage16_preservation.py": "636ac0a8f27dc95c2946ca7211e9889be86db59b8de8fcdd55d9bd995dcb2b8b",
+    "scripts/stage16_demo.py": "7dabecacaedbed9b77f738732f865b982bfabba679b7405a295e0a17347fcef9",
+    "scripts/stage16_probe.py": "2d6b0e3e44d1bdb7a1e77a320ad594eb00d5aaed013e964e284fee93b28f6c4f",
+    "scripts/stage16_smoke.py": "6f1ee4027f826483739a0b4daa2e59727e319a0d3937e90f6e07f574821f956e",
+    "scripts/stage16_recovery.py": "3ae8d9f532f78a0fe6634bd422ac4e218fc4ddd6db70d50dd9ba6565866d7474",
+    "scripts/stage16_browser.py": "0f721a3fe4924b4f90eab5cee2ae00f8d524319f5a407431f06741e73643f0a6",
+    "scripts/stage16_security.py": "e100b2e18d5d771bee2c1cbb628bed51bd2cc086f8632994719d434584066db9",
+    "scripts/stage16_release_audit.py": "0d4b0bcee99f6d9760a06d281c6aa788b5c0c9ff09f1657baba0bdac66f36271",
+    "scripts/stage9_common.py": "7e0c97de3066858227a97727879804a2b2d0a889fa2f89a8eac5a07058076b32",
+    "scripts/prepare_control.py": "7a96408e4561ccda6f9cd909217495d8dcfe67a47be869685de49cf5be01c3c6",
+    "tests/test_stage16_demo.py": "b5d06e58ff1426f9936eeb2f3b22aa87f9d7a02e312c489eb1fa060ff49bbb41"
+  },
+  "independent_host_domain": false,
+  "models_trained": 0,
+  "exit_code": 0
+}

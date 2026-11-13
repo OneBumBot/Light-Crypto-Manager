@@ -51,11 +51,11 @@ Dashboard: **http://127.0.0.1:15016** по умолчанию; runner печат
 
 - [Демонстрация на5–10минут](docs/STAGE16_DEMO_SCRIPT.md), после подготовки images.
 - [Архитектура и7 исходных схем](docs/STAGE16_FINAL_ARCHITECTURE.md).
-- [Реальная E2E matrix](docs/STAGE16_E2E_TEST_MATRIX.md), [каталог доказательств](docs/reports/stage16/evidence-catalog.json).
+- [Реальная E2E matrix](docs/STAGE16_E2E_TEST_MATRIX.md), [каталог доказательств](docs/reports/stage16/evidence-catalog-final.json).
 - [Безопасность и восстановление](docs/STAGE16_SECURITY_AND_RECOVERY.md), [ограничения A/B/C](docs/STAGE16_KNOWN_LIMITATIONS.md).
 - [Итоговые результаты](docs/STAGE16_RESULTS.md), [реальные screenshots](docs/reports/stage16/browser-final.json).
 
-Последняя полная регрессия: **1057 passed, 0 skipped, exit0** на изолированных настоящих PG/Mongo. Main/push/merge не изменялись в ходе Stage16. Сырые PCAP, модели, ключи и state остаются приватными.
+Последняя полная регрессия: **1057 passed, 0 skipped, exit0** на изолированных настоящих PG/Mongo. main не изменён; push/merge/rebase не выполнялись в ходе Stage16. Сырые PCAP, модели, ключи и state остаются приватными.
 
 Нет production-ready IDS, ARM/Raspberry Pi проверки, HA или криптографической сертификации. Stage14 RF recall≈49%, IF≈7.7%, всего5 positive holdout sessions; Stage15 IF дал254/375 false threshold crossings на corroborated Normal subset. Нет independent-host generalization, scores не probabilities атаки. Пороги/модели/старый holdout не менялись. [Подробные научные границы](docs/STAGE16_POLICY_AND_ML_LIMITATIONS.md).
 

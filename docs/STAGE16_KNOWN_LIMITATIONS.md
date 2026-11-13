@@ -4,10 +4,11 @@
 
 Открытых подтверждённых блокеров основного demo после проверок не осталось. Readiness, три агента, Ascon/AES manual switching, receipt evidence, RBAC/CSRF, Mongo delivery, stop/resume и clean-checkout запуск проверены реально. Окончательный verdict зависит также от regression/security/preservation checks, перечисленных в STAGE16_RESULTS; этот документ не заменяет их.
 
-Устранённые реальные demo blockers: исчерпанный auto subnet pool (explicit disjoint subnet, старые сети сохранены) и mobile overflow History (570→390px document). Ошибки ACK digest и русской UI status assertion принадлежали новым проверочным harness, исправлены без изменения протокола. Failed attempts сохранены.
+Устранённые реальные demo blockers: исчерпанный auto subnet pool (explicit disjoint subnet, старые сети сохранены) mobile overflow History (570→390px document) и неполный учёт image-declared auxiliary volumes (теперь подтверждённые bindings/CreatedAt проверяются без переноса данных). Ошибки ACK digest и русской UI status assertion принадлежали новым проверочным harness, исправлены без изменения протокола. Failed attempts сохранены.
 
 ## B. Некритические инженерные
 
+- Ascon сохраняет legacy CSPRNG128-bit nonce; durable sequence leases не являются его детерминированным IV. Полная nonce trace Stage16 не собиралась; exhaustive collision absence не заявляется. AES/MGM используют существующие deterministic mappings.
 - Research prototype, один host, три software agents, не ARM/Raspberry Pi, нет HA/production deployment.
 - Kuz только в существующих разрешённых Stage11/12/13 labs. Stage16 не выдаёт новые capabilities и не получает MGM authority.
 - Shadow в основном demo OPTIONAL_RESEARCH_DEMO_UNAVAILABLE: отдельные capture/model/parity scopes не provisioned. Его failure isolation подтверждал Stage15, не притворно повторено в неактивном Stage16.

@@ -4,11 +4,11 @@ Telemetry v2 и authenticated AAD связывают device/topic/epoch/sequence
 
 | Профиль | Key | Nonce / ICN | Tag | Статус |
 |---|---:|---|---:|---|
-| Ascon-AEAD128 | 128 bit | Существующая durable construction | 128 bit | Основной demo |
-| AES-128-GCM | 128 bit | Существующая durable construction | 128 bit | Основной demo |
+| Ascon-AEAD128 | 128 bit | 128-bit CSPRNG, `os.urandom(16)` | 128 bit | Основной demo |
+| AES-128-GCM | 128 bit | epoch32 big-endian ∥ sequence64 big-endian | 128 bit | Основной demo |
 | Kuznyechik-MGM | 256 bit | 127 значащих bit, existing per-key budget | 128 bit | Только разрешённые software labs |
 
-PG резервирует nonce ranges до передачи; Device SQLite хранит durable nonce high и command ledger. Restart не переиспользует диапазон. Replay admission, security observation, Outbox и matching effective evidence фиксируются одной транзакцией. MQTT QoS1 redelivery не является новой encryption invocation.
+PG резервирует диапазоны authenticated sequence до передачи; Device SQLite хранит durable reservation high и command ledger. Restart не переиспользует диапазон sequence. AES nonce определяется этой парой epoch/sequence; MGM ICN = epoch31 в4-byte big-endian представлении с MSB=0 ∥ sequence в8-byte big-endian ∥ domain bytes `4c434d01` (`LCM\x01`). Ascon сохраняет прежний случайный16-byte nonce; sequence lease обеспечивает replay identity, но не является детерминированным Ascon nonce. Его uniqueness имеет вероятностный CSPRNG характер. Полная трасса Ascon IV в Stage16 не собиралась, поэтому отсутствие всех IV collisions не объявляется измеренным фактом. Конструкция не менялась. Replay admission, security observation, Outbox и matching effective evidence фиксируются одной транзакцией. MQTT QoS1 redelivery не является новой encryption invocation.
 
 HMAC-SHA256 control v2 использует раздельные command/status keys. PREPARE не меняет local effective profile. ACTIVATE требует matching PREPARE. ACK означает authenticated device report, не самостоятельное подтверждение effective.
 

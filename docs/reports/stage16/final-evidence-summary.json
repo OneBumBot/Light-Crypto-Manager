@@ -1,0 +1,1002 @@
+{
+  "baseline_sha": "b2317f94b9198b6300d49d9e5effd11a7efee298",
+  "verified_code_sha": "d1dfbf4f8a143e585aacfbe2ca83ec57ccaf6635",
+  "alembic_head": "0011_policy_throughput",
+  "fit_calls": 0,
+  "threshold_changes": 0,
+  "trusted_detector": false,
+  "policy_mode": "DRY_RUN",
+  "control_mode": "MANUAL_AUTHORIZED_CONTROL",
+  "optional_shadow": "OPTIONAL_RESEARCH_DEMO_UNAVAILABLE",
+  "realms": [
+    {
+      "project": "lcm-stage16-final-demo-main",
+      "role": "primary final demo",
+      "devices": 3,
+      "pg_admissions": 5838,
+      "mongo_records": 5838,
+      "outbox": {
+        "delivered": 5838
+      },
+      "confirmed_transitions": 14,
+      "authenticated_acks": 28,
+      "effective_receipts": 17,
+      "duplicate_identities": 0,
+      "replay": [
+        {
+          "consumer": "receiver",
+          "device_id": "beta",
+          "key_epoch": 1,
+          "last_sequence": 60010
+        },
+        {
+          "consumer": "receiver",
+          "device_id": "gamma",
+          "key_epoch": 1,
+          "last_sequence": 60010
+        },
+        {
+          "consumer": "receiver",
+          "device_id": "alpha",
+          "key_epoch": 1,
+          "last_sequence": 70011
+        }
+      ],
+      "policy": {
+        "pending": 0,
+        "signals": 5901,
+        "decisions": 2733,
+        "active_versions": [
+          "default-v1"
+        ],
+        "workers": [
+          {
+            "worker_id": "97ee2288ed8c",
+            "status": "ready",
+            "mode": "DRY_RUN",
+            "heartbeat_at": "2026-11-13T21:44:12.059455+00:00"
+          },
+          {
+            "worker_id": "1eddc80a7369",
+            "status": "ready",
+            "mode": "DRY_RUN",
+            "heartbeat_at": "2026-11-13T21:13:46.668627+00:00"
+          }
+        ]
+      },
+      "commands": [
+        {
+          "id": "1ce56bd4-46d7-4880-935d-7dde5313a02b",
+          "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "9ac24e76-78ee-4b90-b081-f7240869c767",
+          "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "953a0370-5e9b-4e06-9492-66f1814f416c",
+          "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "c7032481-ba5d-4883-8694-bc65c8e95d0f",
+          "transition_id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "1ac439ae-7b0b-4207-91c5-4548f26b6ba5",
+          "transition_id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "9f437bbf-65b8-41f4-a049-1f508652e854",
+          "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "4f6b86f2-3488-4c21-9385-ff6a8abb4298",
+          "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "869e2430-035d-42b7-9382-8440689a84dd",
+          "transition_id": "df017e60-1ea0-4758-b64f-996983148017",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "48c882d0-89c7-4363-b2fa-a4010b94b307",
+          "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "fa813b78-ba72-4547-83ea-1a77384a6428",
+          "transition_id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "c66128cb-2598-4c65-9023-4fe7aa70222b",
+          "transition_id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "4bebfc8c-9d09-4d60-ac79-5532d99eedd3",
+          "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "e6336085-6b30-46c8-997b-1b8cbf753ec6",
+          "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "e933da7e-9535-49c4-8322-3f7da24a50f7",
+          "transition_id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "4293abad-e12f-4d43-a5ca-661c384645b4",
+          "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "145bbc09-12a3-4ea1-97ad-b31787f1095e",
+          "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "32eaecf6-a1d7-4ec6-892a-acb64350b5b8",
+          "transition_id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "06cb07ee-a8b0-436a-8179-d4646cab0b83",
+          "transition_id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "29c48480-93a4-49d4-bf8b-455b8d639d68",
+          "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "989751ce-392b-459f-8817-e812659d1eb9",
+          "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "ca911a67-7b32-41f1-8eec-48f0b203a133",
+          "transition_id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "3ff69c6c-4fce-4a21-b44d-53a3da89dfb3",
+          "transition_id": "14dfa889-b692-44c8-a724-34a22861c761",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "0a3a970b-f677-478e-9dd1-4c73b10ae620",
+          "transition_id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "3b2d819f-ec7a-41c6-aa8e-ddaf6e0b9a75",
+          "transition_id": "af97b649-eb30-439c-9a8f-b7b107463900",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "037a9be6-5985-494a-9a88-d7bfdf5bd90f",
+          "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "997e2d62-f57e-41f9-8e39-3cdb5b8dad37",
+          "transition_id": "3d22076a-c109-4444-8ad8-24611db68d56",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "ac353bdb-7b4f-4ce8-9e92-9a596dd3b10a",
+          "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "317cfe61-3ef2-45b0-8652-61fd9e004f43",
+          "transition_id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        }
+      ],
+      "transition_evidence": [
+        {
+          "id": "39debd3d-8aad-4e99-81d2-bda6888b9804",
+          "device_id": "alpha",
+          "old_profile": "ascon-aead128-v1",
+          "target_profile": "aes-128-gcm-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "a1a498e4-aeed-4049-a5a4-b6054e39774a",
+          "activated_at": "2026-11-13T21:02:33.600630+00:00",
+          "confirmed_at": "2026-11-13T21:02:34.104474+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "a1a498e4-aeed-4049-a5a4-b6054e39774a",
+            "key_epoch": 1,
+            "sequence_number": 46,
+            "profile": "aes-128-gcm-v1",
+            "accepted_at": "2026-11-13T21:02:34.104474+00:00",
+            "key_reference": "aes-128-gcm-v1:1"
+          }
+        },
+        {
+          "id": "48b6e39c-62f2-453f-8400-f36b8477a1e2",
+          "device_id": "alpha",
+          "old_profile": "aes-128-gcm-v1",
+          "target_profile": "ascon-aead128-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "09f02950-149b-46a0-a4c9-2b7c3643e1d3",
+          "activated_at": "2026-11-13T21:05:25.393226+00:00",
+          "confirmed_at": "2026-11-13T21:05:25.743567+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "09f02950-149b-46a0-a4c9-2b7c3643e1d3",
+            "key_epoch": 1,
+            "sequence_number": 386,
+            "profile": "ascon-aead128-v1",
+            "accepted_at": "2026-11-13T21:05:25.743567+00:00",
+            "key_reference": "ascon-aead128-v1:1"
+          }
+        },
+        {
+          "id": "df017e60-1ea0-4758-b64f-996983148017",
+          "device_id": "alpha",
+          "old_profile": "ascon-aead128-v1",
+          "target_profile": "aes-128-gcm-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "14e86be7-b200-41fa-9cb5-cc364b9e148d",
+          "activated_at": "2026-11-13T21:05:30.884639+00:00",
+          "confirmed_at": "2026-11-13T21:05:31.286759+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "14e86be7-b200-41fa-9cb5-cc364b9e148d",
+            "key_epoch": 1,
+            "sequence_number": 397,
+            "profile": "aes-128-gcm-v1",
+            "accepted_at": "2026-11-13T21:05:31.286759+00:00",
+            "key_reference": "aes-128-gcm-v1:1"
+          }
+        },
+        {
+          "id": "9a06b216-3d85-4a37-9949-3bdb3dbacf32",
+          "device_id": "alpha",
+          "old_profile": "aes-128-gcm-v1",
+          "target_profile": "ascon-aead128-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "31c720bf-9e72-4f52-87a7-9f91ddca58ef",
+          "activated_at": "2026-11-13T21:05:32.970544+00:00",
+          "confirmed_at": "2026-11-13T21:05:33.372055+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "31c720bf-9e72-4f52-87a7-9f91ddca58ef",
+            "key_epoch": 1,
+            "sequence_number": 401,
+            "profile": "ascon-aead128-v1",
+            "accepted_at": "2026-11-13T21:05:33.372055+00:00",
+            "key_reference": "ascon-aead128-v1:1"
+          }
+        },
+        {
+          "id": "28e1d78d-37e2-4bc3-b4fa-9cb4fcb9de86",
+          "device_id": "alpha",
+          "old_profile": "ascon-aead128-v1",
+          "target_profile": "aes-128-gcm-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "a70132fc-7d2a-49cb-a1ee-0a3e07b09359",
+          "activated_at": "2026-11-13T21:11:15.020683+00:00",
+          "confirmed_at": "2026-11-13T21:11:15.321496+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "a70132fc-7d2a-49cb-a1ee-0a3e07b09359",
+            "key_epoch": 1,
+            "sequence_number": 10666,
+            "profile": "aes-128-gcm-v1",
+            "accepted_at": "2026-11-13T21:11:15.321496+00:00",
+            "key_reference": "aes-128-gcm-v1:1"
+          }
+        },
+        {
+          "id": "e9b95394-8f09-48c8-bf37-e0acb4a4980c",
+          "device_id": "alpha",
+          "old_profile": "aes-128-gcm-v1",
+          "target_profile": "ascon-aead128-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "95e309d5-df2e-47a3-b09d-738599951266",
+          "activated_at": "2026-11-13T21:12:10.839611+00:00",
+          "confirmed_at": "2026-11-13T21:12:11.242519+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "95e309d5-df2e-47a3-b09d-738599951266",
+            "key_epoch": 1,
+            "sequence_number": 10777,
+            "profile": "ascon-aead128-v1",
+            "accepted_at": "2026-11-13T21:12:11.242519+00:00",
+            "key_reference": "ascon-aead128-v1:1"
+          }
+        },
+        {
+          "id": "186582bf-9954-4a9c-8eb1-8f83665cc102",
+          "device_id": "alpha",
+          "old_profile": "ascon-aead128-v1",
+          "target_profile": "aes-128-gcm-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "76810fe0-67b9-4dff-a5de-67e01e2cc52b",
+          "activated_at": "2026-11-13T21:12:14.826198+00:00",
+          "confirmed_at": "2026-11-13T21:12:15.294798+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "76810fe0-67b9-4dff-a5de-67e01e2cc52b",
+            "key_epoch": 1,
+            "sequence_number": 10785,
+            "profile": "aes-128-gcm-v1",
+            "accepted_at": "2026-11-13T21:12:15.294798+00:00",
+            "key_reference": "aes-128-gcm-v1:1"
+          }
+        },
+        {
+          "id": "90dbc290-5fef-421b-87fe-cc1b43754847",
+          "device_id": "alpha",
+          "old_profile": "aes-128-gcm-v1",
+          "target_profile": "ascon-aead128-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "9040349c-114f-4ca1-b2cf-caa1289ef494",
+          "activated_at": "2026-11-13T21:12:19.959634+00:00",
+          "confirmed_at": "2026-11-13T21:12:20.363122+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "9040349c-114f-4ca1-b2cf-caa1289ef494",
+            "key_epoch": 1,
+            "sequence_number": 10795,
+            "profile": "ascon-aead128-v1",
+            "accepted_at": "2026-11-13T21:12:20.363122+00:00",
+            "key_reference": "ascon-aead128-v1:1"
+          }
+        },
+        {
+          "id": "da4ee312-54c3-4256-9bf2-d8b559706e93",
+          "device_id": "alpha",
+          "old_profile": "ascon-aead128-v1",
+          "target_profile": "aes-128-gcm-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "fa7d72b5-ba24-457a-85e1-b12526f9ef8f",
+          "activated_at": "2026-11-13T21:14:35.933047+00:00",
+          "confirmed_at": "2026-11-13T21:14:36.136379+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "fa7d72b5-ba24-457a-85e1-b12526f9ef8f",
+            "key_epoch": 1,
+            "sequence_number": 20110,
+            "profile": "aes-128-gcm-v1",
+            "accepted_at": "2026-11-13T21:14:36.136379+00:00",
+            "key_reference": "aes-128-gcm-v1:1"
+          }
+        },
+        {
+          "id": "c03948ad-9b80-4d7e-bf9f-66a0891f94b1",
+          "device_id": "alpha",
+          "old_profile": "aes-128-gcm-v1",
+          "target_profile": "ascon-aead128-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "09b34462-0e49-4156-acb5-479b8ffc10ac",
+          "activated_at": "2026-11-13T21:14:39.984828+00:00",
+          "confirmed_at": "2026-11-13T21:14:40.185833+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "09b34462-0e49-4156-acb5-479b8ffc10ac",
+            "key_epoch": 1,
+            "sequence_number": 20118,
+            "profile": "ascon-aead128-v1",
+            "accepted_at": "2026-11-13T21:14:40.185833+00:00",
+            "key_reference": "ascon-aead128-v1:1"
+          }
+        },
+        {
+          "id": "14dfa889-b692-44c8-a724-34a22861c761",
+          "device_id": "alpha",
+          "old_profile": "ascon-aead128-v1",
+          "target_profile": "aes-128-gcm-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "b49a567e-1a63-449a-a9fc-335330639bd2",
+          "activated_at": "2026-11-13T21:18:20.131635+00:00",
+          "confirmed_at": "2026-11-13T21:18:20.655035+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "b49a567e-1a63-449a-a9fc-335330639bd2",
+            "key_epoch": 1,
+            "sequence_number": 30379,
+            "profile": "aes-128-gcm-v1",
+            "accepted_at": "2026-11-13T21:18:20.655035+00:00",
+            "key_reference": "aes-128-gcm-v1:1"
+          }
+        },
+        {
+          "id": "af97b649-eb30-439c-9a8f-b7b107463900",
+          "device_id": "alpha",
+          "old_profile": "aes-128-gcm-v1",
+          "target_profile": "ascon-aead128-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "9c9ef2fc-6b76-48d1-95a9-c37dbdd06392",
+          "activated_at": "2026-11-13T21:18:23.019759+00:00",
+          "confirmed_at": "2026-11-13T21:18:23.221474+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "9c9ef2fc-6b76-48d1-95a9-c37dbdd06392",
+            "key_epoch": 1,
+            "sequence_number": 30384,
+            "profile": "ascon-aead128-v1",
+            "accepted_at": "2026-11-13T21:18:23.221474+00:00",
+            "key_reference": "ascon-aead128-v1:1"
+          }
+        },
+        {
+          "id": "3d22076a-c109-4444-8ad8-24611db68d56",
+          "device_id": "alpha",
+          "old_profile": "ascon-aead128-v1",
+          "target_profile": "aes-128-gcm-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "8f1adab7-a615-4542-8bac-cbcf8dd735e4",
+          "activated_at": "2026-11-13T21:43:25.824612+00:00",
+          "confirmed_at": "2026-11-13T21:43:26.076767+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "8f1adab7-a615-4542-8bac-cbcf8dd735e4",
+            "key_epoch": 1,
+            "sequence_number": 50020,
+            "profile": "aes-128-gcm-v1",
+            "accepted_at": "2026-11-13T21:43:26.076767+00:00",
+            "key_reference": "aes-128-gcm-v1:1"
+          }
+        },
+        {
+          "id": "f6f1a412-adf0-44cb-bdab-a65ab4b16cc4",
+          "device_id": "alpha",
+          "old_profile": "aes-128-gcm-v1",
+          "target_profile": "ascon-aead128-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "4a57e83b-58a4-47b5-b057-a709ce00dbb1",
+          "activated_at": "2026-11-13T21:43:28.537675+00:00",
+          "confirmed_at": "2026-11-13T21:43:28.627056+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "4a57e83b-58a4-47b5-b057-a709ce00dbb1",
+            "key_epoch": 1,
+            "sequence_number": 50025,
+            "profile": "ascon-aead128-v1",
+            "accepted_at": "2026-11-13T21:43:28.627056+00:00",
+            "key_reference": "ascon-aead128-v1:1"
+          }
+        }
+      ],
+      "sqlite": {
+        "alpha": {
+          "id": 1,
+          "device": "alpha",
+          "epoch": 1,
+          "profile": "ascon-aead128-v1",
+          "seq": 28,
+          "nonce_reserved_high": 80000,
+          "ledger_count": 28,
+          "authority_failures": 0
+        },
+        "beta": {
+          "id": 1,
+          "device": "beta",
+          "epoch": 1,
+          "profile": "ascon-aead128-v1",
+          "seq": 0,
+          "nonce_reserved_high": 70000,
+          "ledger_count": 0,
+          "authority_failures": 0
+        },
+        "gamma": {
+          "id": 1,
+          "device": "gamma",
+          "epoch": 1,
+          "profile": "ascon-aead128-v1",
+          "seq": 0,
+          "nonce_reserved_high": 70000,
+          "ledger_count": 0,
+          "authority_failures": 0
+        }
+      },
+      "private_checkpoint_sha256": "8cb21b1f503aea79d01095101e07a42e2487de1f7f0d28982652b004fe9958fd",
+      "identity_set_sha256": "2051210402c6372f5ec66d9a2dfbba71b392c50604ef76a6ce4e3f4f6d4cafdd",
+      "material_manifest_sha256": "87a05b1b3426708341add8fb7da9053eeef7aca804e6890717aadc7347b69dd7",
+      "auxiliary_volumes": [
+        {
+          "name": "1014644df77205679131f66e02f3637bd33cd00e36859c2ba1e55323b425f764",
+          "created_at": "2026-11-14T00:01:51+03:00",
+          "auxiliary": true,
+          "service": "broker",
+          "target": "/mosquitto/log"
+        },
+        {
+          "name": "1bd36847b2724bde6ed601d6718357de3ccf1e4d3262d168ce2c3083eeb5ca6d",
+          "created_at": "2026-11-14T00:01:51+03:00",
+          "auxiliary": true,
+          "service": "mongo",
+          "target": "/data/configdb"
+        }
+      ],
+      "scope": "Quiescent stopped checkpoint; manifest/identity hashes are NOT a Docker volume byte audit"
+    },
+    {
+      "project": "lcm-stage16-final-demo-checkout",
+      "role": "earlier clean-checkout validation",
+      "devices": 3,
+      "pg_admissions": 143,
+      "mongo_records": 143,
+      "outbox": {
+        "delivered": 143
+      },
+      "confirmed_transitions": 2,
+      "authenticated_acks": 4,
+      "effective_receipts": 5,
+      "duplicate_identities": 0,
+      "replay": [
+        {
+          "consumer": "receiver",
+          "device_id": "beta",
+          "key_epoch": 1,
+          "last_sequence": 20012
+        },
+        {
+          "consumer": "receiver",
+          "device_id": "alpha",
+          "key_epoch": 1,
+          "last_sequence": 20012
+        },
+        {
+          "consumer": "receiver",
+          "device_id": "gamma",
+          "key_epoch": 1,
+          "last_sequence": 20012
+        }
+      ],
+      "policy": {
+        "pending": 2,
+        "signals": 141,
+        "decisions": 73,
+        "active_versions": [
+          "default-v1"
+        ],
+        "workers": [
+          {
+            "worker_id": "648fa569afa3",
+            "status": "ready",
+            "mode": "DRY_RUN",
+            "heartbeat_at": "2026-11-13T21:22:39.554127+00:00"
+          }
+        ]
+      },
+      "commands": [
+        {
+          "id": "24bc9707-c502-4ae2-81e6-6b4d681d45a2",
+          "transition_id": "3dd1595f-4aa0-457e-a989-c7ac07af3fc7",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "5740eaec-68c8-4550-929e-6f45ab3a8c67",
+          "transition_id": "4624ebd4-9a2a-4fe4-b295-c351f1d123ec",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "501d0de6-fce0-4aea-a282-3c4b269d6212",
+          "transition_id": "3dd1595f-4aa0-457e-a989-c7ac07af3fc7",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "11239323-af6c-4113-be4a-67d4e1777865",
+          "transition_id": "4624ebd4-9a2a-4fe4-b295-c351f1d123ec",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        }
+      ],
+      "transition_evidence": [
+        {
+          "id": "3dd1595f-4aa0-457e-a989-c7ac07af3fc7",
+          "device_id": "alpha",
+          "old_profile": "ascon-aead128-v1",
+          "target_profile": "aes-128-gcm-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "abd02af0-df43-47a6-9d66-c669035a5090",
+          "activated_at": "2026-11-13T21:21:57.936588+00:00",
+          "confirmed_at": "2026-11-13T21:21:58.393248+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "abd02af0-df43-47a6-9d66-c669035a5090",
+            "key_epoch": 1,
+            "sequence_number": 20,
+            "profile": "aes-128-gcm-v1",
+            "accepted_at": "2026-11-13T21:21:58.393248+00:00",
+            "key_reference": "aes-128-gcm-v1:1"
+          }
+        },
+        {
+          "id": "4624ebd4-9a2a-4fe4-b295-c351f1d123ec",
+          "device_id": "alpha",
+          "old_profile": "aes-128-gcm-v1",
+          "target_profile": "ascon-aead128-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "473e5903-680b-45a2-95cd-3a2d7dae1ad7",
+          "activated_at": "2026-11-13T21:21:59.922592+00:00",
+          "confirmed_at": "2026-11-13T21:22:00.442918+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "473e5903-680b-45a2-95cd-3a2d7dae1ad7",
+            "key_epoch": 1,
+            "sequence_number": 24,
+            "profile": "ascon-aead128-v1",
+            "accepted_at": "2026-11-13T21:22:00.442918+00:00",
+            "key_reference": "ascon-aead128-v1:1"
+          }
+        }
+      ],
+      "sqlite": {
+        "alpha": {
+          "id": 1,
+          "device": "alpha",
+          "epoch": 1,
+          "profile": "ascon-aead128-v1",
+          "seq": 4,
+          "nonce_reserved_high": 30000,
+          "ledger_count": 4,
+          "authority_failures": 0
+        },
+        "beta": {
+          "id": 1,
+          "device": "beta",
+          "epoch": 1,
+          "profile": "ascon-aead128-v1",
+          "seq": 0,
+          "nonce_reserved_high": 30000,
+          "ledger_count": 0,
+          "authority_failures": 0
+        },
+        "gamma": {
+          "id": 1,
+          "device": "gamma",
+          "epoch": 1,
+          "profile": "ascon-aead128-v1",
+          "seq": 0,
+          "nonce_reserved_high": 30000,
+          "ledger_count": 0,
+          "authority_failures": 0
+        }
+      },
+      "private_checkpoint_sha256": "95a242ed7ffac11589a8c42e70fe61b8e749d6c706b8d2d3bdfae2a77170c176",
+      "identity_set_sha256": "8ee40690ef069c01a0f99d4cd98cb988990ba2ef9911ee468bb6485f3f9eaa7b",
+      "material_manifest_sha256": "54c7ce7183dde1d3b624fab09eee1a743644ea64a618e58a824c1890914462fd",
+      "auxiliary_volumes": [],
+      "scope": "Quiescent stopped checkpoint; manifest/identity hashes are NOT a Docker volume byte audit"
+    },
+    {
+      "project": "lcm-stage16-final-demo-release",
+      "role": "final clean-checkout validation",
+      "devices": 3,
+      "pg_admissions": 278,
+      "mongo_records": 278,
+      "outbox": {
+        "delivered": 278
+      },
+      "confirmed_transitions": 4,
+      "authenticated_acks": 8,
+      "effective_receipts": 7,
+      "duplicate_identities": 0,
+      "replay": [
+        {
+          "consumer": "receiver",
+          "device_id": "gamma",
+          "key_epoch": 1,
+          "last_sequence": 40006
+        },
+        {
+          "consumer": "receiver",
+          "device_id": "alpha",
+          "key_epoch": 1,
+          "last_sequence": 40006
+        },
+        {
+          "consumer": "receiver",
+          "device_id": "beta",
+          "key_epoch": 1,
+          "last_sequence": 40006
+        }
+      ],
+      "policy": {
+        "pending": 0,
+        "signals": 278,
+        "decisions": 143,
+        "active_versions": [
+          "default-v1"
+        ],
+        "workers": [
+          {
+            "worker_id": "1dc61f11503b",
+            "status": "ready",
+            "mode": "DRY_RUN",
+            "heartbeat_at": "2026-11-13T21:55:07.226652+00:00"
+          }
+        ]
+      },
+      "commands": [
+        {
+          "id": "0baf9232-7269-4270-81d1-45213e14349e",
+          "transition_id": "3c2746d8-0c78-4411-9f6d-3fee6d3df895",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "22e8b5c6-64c0-46c8-bfa6-c2ac490e3db9",
+          "transition_id": "133b84bd-b2e8-4a57-b265-19f275ed4438",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "824ca146-ff38-4484-80f2-557f2b859350",
+          "transition_id": "3c2746d8-0c78-4411-9f6d-3fee6d3df895",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "79bbb5ba-716d-4734-ab0e-b35d6acb6c94",
+          "transition_id": "133b84bd-b2e8-4a57-b265-19f275ed4438",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "359ccfa4-c9aa-47c8-9a95-f3dcf8181aa7",
+          "transition_id": "b66f3f85-220f-4cd3-83fb-49536d38bd6e",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "8412cc68-ded9-424f-86ec-52e45d52bc47",
+          "transition_id": "b66f3f85-220f-4cd3-83fb-49536d38bd6e",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        },
+        {
+          "id": "c2fb6d7e-694e-4ebc-a921-26a37994acf3",
+          "transition_id": "2fdfcc50-828e-4031-a546-d5e32ff3b29f",
+          "device_id": "alpha",
+          "phase": "PREPARE",
+          "status": "acknowledged"
+        },
+        {
+          "id": "02c57425-891d-4e44-9f50-1a669273eab8",
+          "transition_id": "2fdfcc50-828e-4031-a546-d5e32ff3b29f",
+          "device_id": "alpha",
+          "phase": "ACTIVATE",
+          "status": "verified"
+        }
+      ],
+      "transition_evidence": [
+        {
+          "id": "3c2746d8-0c78-4411-9f6d-3fee6d3df895",
+          "device_id": "alpha",
+          "old_profile": "ascon-aead128-v1",
+          "target_profile": "aes-128-gcm-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "e2eb366e-99ae-4924-9a03-15fb1c5cffb8",
+          "activated_at": "2026-11-13T21:46:44.543609+00:00",
+          "confirmed_at": "2026-11-13T21:46:44.745477+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "e2eb366e-99ae-4924-9a03-15fb1c5cffb8",
+            "key_epoch": 1,
+            "sequence_number": 19,
+            "profile": "aes-128-gcm-v1",
+            "accepted_at": "2026-11-13T21:46:44.745477+00:00",
+            "key_reference": "aes-128-gcm-v1:1"
+          }
+        },
+        {
+          "id": "133b84bd-b2e8-4a57-b265-19f275ed4438",
+          "device_id": "alpha",
+          "old_profile": "aes-128-gcm-v1",
+          "target_profile": "ascon-aead128-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "37682692-98da-423f-a5b2-425901b9990b",
+          "activated_at": "2026-11-13T21:46:46.640750+00:00",
+          "confirmed_at": "2026-11-13T21:46:46.791341+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "37682692-98da-423f-a5b2-425901b9990b",
+            "key_epoch": 1,
+            "sequence_number": 23,
+            "profile": "ascon-aead128-v1",
+            "accepted_at": "2026-11-13T21:46:46.791341+00:00",
+            "key_reference": "ascon-aead128-v1:1"
+          }
+        },
+        {
+          "id": "b66f3f85-220f-4cd3-83fb-49536d38bd6e",
+          "device_id": "alpha",
+          "old_profile": "ascon-aead128-v1",
+          "target_profile": "aes-128-gcm-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "fd9c5cda-94be-4e3a-86d9-16832a6b6a08",
+          "activated_at": "2026-11-13T21:54:51.045831+00:00",
+          "confirmed_at": "2026-11-13T21:54:51.136565+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "fd9c5cda-94be-4e3a-86d9-16832a6b6a08",
+            "key_epoch": 1,
+            "sequence_number": 30020,
+            "profile": "aes-128-gcm-v1",
+            "accepted_at": "2026-11-13T21:54:51.136565+00:00",
+            "key_reference": "aes-128-gcm-v1:1"
+          }
+        },
+        {
+          "id": "2fdfcc50-828e-4031-a546-d5e32ff3b29f",
+          "device_id": "alpha",
+          "old_profile": "aes-128-gcm-v1",
+          "target_profile": "ascon-aead128-v1",
+          "phase": "EFFECTIVE_CONFIRMED",
+          "actor": "admin:1",
+          "telemetry_event": "51b1adb0-eb56-41ca-8488-87d4e62eb24f",
+          "activated_at": "2026-11-13T21:54:54.838683+00:00",
+          "confirmed_at": "2026-11-13T21:54:55.192843+00:00",
+          "receipt_matches_committed_admission": true,
+          "receipt": {
+            "event_id": "51b1adb0-eb56-41ca-8488-87d4e62eb24f",
+            "key_epoch": 1,
+            "sequence_number": 30028,
+            "profile": "ascon-aead128-v1",
+            "accepted_at": "2026-11-13T21:54:55.192843+00:00",
+            "key_reference": "ascon-aead128-v1:1"
+          }
+        }
+      ],
+      "sqlite": {
+        "alpha": {
+          "id": 1,
+          "device": "alpha",
+          "epoch": 1,
+          "profile": "ascon-aead128-v1",
+          "seq": 8,
+          "nonce_reserved_high": 50000,
+          "ledger_count": 8,
+          "authority_failures": 0
+        },
+        "beta": {
+          "id": 1,
+          "device": "beta",
+          "epoch": 1,
+          "profile": "ascon-aead128-v1",
+          "seq": 0,
+          "nonce_reserved_high": 50000,
+          "ledger_count": 0,
+          "authority_failures": 0
+        },
+        "gamma": {
+          "id": 1,
+          "device": "gamma",
+          "epoch": 1,
+          "profile": "ascon-aead128-v1",
+          "seq": 0,
+          "nonce_reserved_high": 50000,
+          "ledger_count": 0,
+          "authority_failures": 0
+        }
+      },
+      "private_checkpoint_sha256": "3aa37e8037207f757a81108b8ec87763f7893e24546fb3d4c1ceaca47de1f72d",
+      "identity_set_sha256": "52f035d600b7cabac1b3572d23752d9ede50fc27bc27a35287bedb13976de2b9",
+      "material_manifest_sha256": "038c6627e89972a718ed4d6484b86015e8448d23b86c74f8ecef531432b666c6",
+      "auxiliary_volumes": [
+        {
+          "name": "2ddca92227e9e008cc7384d47d1bd56c4c343c86fef4dabcb582ea5eab75c287",
+          "created_at": "2026-11-14T00:46:15+03:00",
+          "auxiliary": true,
+          "service": "broker",
+          "target": "/mosquitto/log"
+        },
+        {
+          "name": "eeaa4682290a3c5c2b7eaea4985c0b6be7924878740121a4557d69768715771f",
+          "created_at": "2026-11-14T00:46:15+03:00",
+          "auxiliary": true,
+          "service": "mongo",
+          "target": "/data/configdb"
+        }
+      ],
+      "scope": "Quiescent stopped checkpoint; manifest/identity hashes are NOT a Docker volume byte audit"
+    }
+  ]
+}

@@ -3,16 +3,16 @@
 | Проверка | Реальный результат | Источник |
 |---|---|---|
 | Fresh baseline PG/Mongo | 1049 passed, 0 skipped, exit0 | baseline-retry-pytest.txt / commands |
-| Final PG/Mongo regression | 1057 passed, 0 skipped, exit0; 8 новых guard tests | regression-aux-final-pytest.txt / commands |
+| Final PG/Mongo regression | 1057 passed, 0 skipped, exit0; 8 новых guard tests | regression-release-pytest.txt / commands |
 | Main start + 3 Device Agents | Новые authenticated PG/Mongo identities перед ready | start-first.txt, aux-resume-first/second.txt |
-| Admin Ascon↔AES | PREPARE/READY/ACTIVATE/ACK и новая committed AEAD receipt | smoke-aux-final.json, release-evidence-summary.json |
+| Admin Ascon↔AES | PREPARE/READY/ACTIVATE/ACK и новая committed AEAD receipt | smoke-aux-final.json, final-evidence-summary.json |
 | Independent Beta/Gamma | Profiles/command sequence соседей не меняются | smoke-aux-final.json |
 | Unsupported Gamma / roles / CSRF | 409 / viewer+operator403 / missing-CSRF400 | smoke-aux-final.json |
 | PG→Outbox→Mongo | Exact identity set сравнен при quiescence, pending0 | smoke-aux-final.json / stopped checkpoint summary |
-| Nonce/replay | Непересекающиеся boot ranges, replay не создаёт duplicate | stage16_security.json / release-evidence-summary.json |
+| Nonce/replay | Непересекающиеся boot ranges, replay не создаёт duplicate | stage16_security.json / final-evidence-summary.json |
 | Wrong AEAD tag | rejected+1, identity remains single | stage16_security.json |
 | Real HMAC/ACL negatives | Forged/malformed/expired control/ACK не меняет effective | control_security_probe.json |
-| Policy DRY_RUN/no ML control | DB actors admin-only, applied0/models0/events0 | no-auto-control.json |
+| Policy DRY_RUN/no ML control | DB actors admin-only, applied0/models0/events0 | no-auto-control-final.json |
 | Stop/resume | History/receipts/ledger/keys сохраняются; ranges новые | recovery.json / aux-resume-first/second.txt |
 | Used-state refusal | Missing/replaced volumes, markers; auxiliary cannot disguise crypto state | recovery.json + 8 guard unit tests |
 | Limited faults | Receiver/Mongo/PG/Device/Policy/control interruption | recovery.json |
