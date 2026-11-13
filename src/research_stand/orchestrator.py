@@ -7,7 +7,7 @@ from .config import Experiment, NORMAL, VIOLATIONS
 
 
 class Lab:
-    def __init__(self, env, output):
+    def __init__(self, env, output, *, compose_overrides=()):
         self.output = Path(output).resolve()
         self.output.mkdir(parents=True, exist_ok=True, mode=0o700)
         self.cmd = [
@@ -22,14 +22,16 @@ class Lab:
             "--profile",
             "research",
         ]
+        if compose_overrides:
+            self.cmd = self.cmd[:-2] + sum([['-f', str(Path(f).resolve())] for f in compose_overrides], []) + self.cmd[-2:]
         cfg = json.loads(
             subprocess.check_output(
                 self.cmd + ["--profile", "*", "config", "--format", "json"], text=True
             )
         )
         self.project = cfg["name"]
-        if not self.project.startswith("lcm-stage7b-"):
-            raise ValueError("Dedicated lcm-stage7b-* project required")
+        if not (self.project.startswith("lcm-stage7b-") or re.fullmatch(r"lcm-stage14-ground-truth-[a-z0-9-]{1,18}", self.project)):
+            raise ValueError("Dedicated research project required")
         if cfg["networks"]["default"].get("internal") is not True:
             raise ValueError("Internal network mandatory")
         for name in ["broker", "web", "mongo", "postgres"]:

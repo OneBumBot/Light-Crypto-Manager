@@ -22,6 +22,8 @@ def run(directory, duration):
     events = []
     ready = False
     overflow = False
+    disconnected = False
+    shutting_down = False
     for sig in [signal.SIGINT, signal.SIGTERM]:
         signal.signal(sig, lambda *_: stop.set())
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id="evidence-" + uuid.uuid4().hex)
@@ -66,6 +68,13 @@ def run(directory, duration):
             item["invalid_envelope"] = True
         events.append(item)
 
+    def connection_lost(c, u, flags, reason, properties):
+        nonlocal disconnected
+        if not shutting_down:
+            disconnected = True
+            stop.set()
+
+    client.on_disconnect = connection_lost
     client.on_connect = connected
     client.on_subscribe = subscribed
     client.on_message = message
@@ -77,8 +86,11 @@ def run(directory, duration):
             and not stop.is_set()
             and not (directory / "stop-observer").exists()
         ):
-            client.loop(timeout=0.02)
+            if client.loop(timeout=0.02) != mqtt.MQTT_ERR_SUCCESS:
+                disconnected = True
+                break
     finally:
+        shutting_down = True
         client.disconnect()
         client.loop_write()
         (directory / "observer-ready").unlink(missing_ok=True)
@@ -88,10 +100,14 @@ def run(directory, duration):
         ready_observed=ready,
         overflow=overflow,
         events=events,
+        disconnected_unexpectedly=disconnected,
+        completed=ready and not overflow and not disconnected,
         payload_persisted=False,
         ascon_keys_available=False,
     )
     (directory / "mqtt-observer.json").write_text(json.dumps(result, indent=2) + "\n")
+    if disconnected or not ready or overflow:
+        raise RuntimeError("Independent observer incomplete; quarantine capture")
 
 
 if __name__ == "__main__":

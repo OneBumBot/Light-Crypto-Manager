@@ -1,0 +1,1077 @@
+{
+  "schema_version": 1,
+  "baseline_sha": "21a99bbc6669ca440a1b174e1285a24ac7b323c2",
+  "plan_document_sha256": "7f9d455d5bde89eeb64491585fb152a8f334a022eabc57f020f8037ef247e7b0",
+  "pilot": [
+    {
+      "experiment_id": "pilot-00",
+      "scenario": "regular",
+      "clients": 6,
+      "duration": 8,
+      "interval": 0.45,
+      "jitter": 0.08,
+      "seed": 140000,
+      "violation": false,
+      "schema_version": 1
+    },
+    {
+      "experiment_id": "pilot-01",
+      "scenario": "jitter",
+      "clients": 6,
+      "duration": 8,
+      "interval": 0.45,
+      "jitter": 0.08,
+      "seed": 140001,
+      "violation": false,
+      "schema_version": 1
+    },
+    {
+      "experiment_id": "pilot-02",
+      "scenario": "qos1_retry",
+      "clients": 6,
+      "duration": 8,
+      "interval": 0.45,
+      "jitter": 0.08,
+      "seed": 140002,
+      "violation": false,
+      "schema_version": 1
+    },
+    {
+      "experiment_id": "pilot-03",
+      "scenario": "bad_credentials",
+      "clients": 6,
+      "duration": 8,
+      "interval": 0.45,
+      "jitter": 0.08,
+      "seed": 140003,
+      "violation": true,
+      "schema_version": 1
+    },
+    {
+      "experiment_id": "pilot-04",
+      "scenario": "forbidden_acl",
+      "clients": 6,
+      "duration": 8,
+      "interval": 0.45,
+      "jitter": 0.08,
+      "seed": 140004,
+      "violation": true,
+      "schema_version": 1
+    },
+    {
+      "experiment_id": "pilot-05",
+      "scenario": "replay",
+      "clients": 6,
+      "duration": 8,
+      "interval": 0.45,
+      "jitter": 0.08,
+      "seed": 140005,
+      "violation": true,
+      "schema_version": 1
+    },
+    {
+      "experiment_id": "pilot-06",
+      "scenario": "tampered",
+      "clients": 6,
+      "duration": 8,
+      "interval": 0.45,
+      "jitter": 0.08,
+      "seed": 140006,
+      "violation": true,
+      "schema_version": 1
+    },
+    {
+      "experiment_id": "pilot-07",
+      "scenario": "bounded_rate",
+      "clients": 6,
+      "duration": 8,
+      "interval": 0.45,
+      "jitter": 0.08,
+      "seed": 140007,
+      "violation": true,
+      "schema_version": 1
+    },
+    {
+      "experiment_id": "pilot-08",
+      "scenario": "pattern_change",
+      "clients": 6,
+      "duration": 8,
+      "interval": 0.45,
+      "jitter": 0.08,
+      "seed": 140008,
+      "violation": true,
+      "schema_version": 1
+    }
+  ],
+  "primary": [
+    {
+      "config": {
+        "experiment_id": "block-00-n",
+        "scenario": "regular",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140100,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-00",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-00"
+    },
+    {
+      "config": {
+        "experiment_id": "block-00-v",
+        "scenario": "bad_credentials",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140101,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-00",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-00"
+    },
+    {
+      "config": {
+        "experiment_id": "block-01-v",
+        "scenario": "forbidden_acl",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140103,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-01",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-01"
+    },
+    {
+      "config": {
+        "experiment_id": "block-01-n",
+        "scenario": "jitter",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140102,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-01",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-01"
+    },
+    {
+      "config": {
+        "experiment_id": "block-02-n",
+        "scenario": "qos1_retry",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140104,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-02",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-02"
+    },
+    {
+      "config": {
+        "experiment_id": "block-02-v",
+        "scenario": "replay",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140105,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-02",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-02"
+    },
+    {
+      "config": {
+        "experiment_id": "block-03-v",
+        "scenario": "bounded_rate",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140107,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-03",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-03"
+    },
+    {
+      "config": {
+        "experiment_id": "block-03-n",
+        "scenario": "regular",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140106,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-03",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-03"
+    },
+    {
+      "config": {
+        "experiment_id": "block-04-n",
+        "scenario": "jitter",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140108,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-04",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-04"
+    },
+    {
+      "config": {
+        "experiment_id": "block-04-v",
+        "scenario": "pattern_change",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140109,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-04",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-04"
+    },
+    {
+      "config": {
+        "experiment_id": "block-05-v",
+        "scenario": "bad_credentials",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140111,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-05",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-05"
+    },
+    {
+      "config": {
+        "experiment_id": "block-05-n",
+        "scenario": "qos1_retry",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140110,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-05",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-05"
+    },
+    {
+      "config": {
+        "experiment_id": "block-06-n",
+        "scenario": "regular",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140112,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-06",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-06"
+    },
+    {
+      "config": {
+        "experiment_id": "block-06-v",
+        "scenario": "forbidden_acl",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140113,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-06",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-06"
+    },
+    {
+      "config": {
+        "experiment_id": "block-07-v",
+        "scenario": "replay",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140115,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-07",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-07"
+    },
+    {
+      "config": {
+        "experiment_id": "block-07-n",
+        "scenario": "jitter",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140114,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-07",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-07"
+    },
+    {
+      "config": {
+        "experiment_id": "block-08-n",
+        "scenario": "qos1_retry",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140116,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-08",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-08"
+    },
+    {
+      "config": {
+        "experiment_id": "block-08-v",
+        "scenario": "bounded_rate",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140117,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-08",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-08"
+    },
+    {
+      "config": {
+        "experiment_id": "block-09-v",
+        "scenario": "pattern_change",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140119,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-09",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-09"
+    },
+    {
+      "config": {
+        "experiment_id": "block-09-n",
+        "scenario": "regular",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140118,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-09",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-09"
+    },
+    {
+      "config": {
+        "experiment_id": "block-10-n",
+        "scenario": "jitter",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140120,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-10",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-10"
+    },
+    {
+      "config": {
+        "experiment_id": "block-10-v",
+        "scenario": "bad_credentials",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140121,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-10",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-10"
+    },
+    {
+      "config": {
+        "experiment_id": "block-11-v",
+        "scenario": "forbidden_acl",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140123,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-11",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-11"
+    },
+    {
+      "config": {
+        "experiment_id": "block-11-n",
+        "scenario": "qos1_retry",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140122,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-11",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-11"
+    },
+    {
+      "config": {
+        "experiment_id": "block-12-n",
+        "scenario": "regular",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140124,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-12",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-12"
+    },
+    {
+      "config": {
+        "experiment_id": "block-12-v",
+        "scenario": "replay",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140125,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-12",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-12"
+    },
+    {
+      "config": {
+        "experiment_id": "block-13-v",
+        "scenario": "bounded_rate",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140127,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-13",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-13"
+    },
+    {
+      "config": {
+        "experiment_id": "block-13-n",
+        "scenario": "jitter",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140126,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-13",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-13"
+    },
+    {
+      "config": {
+        "experiment_id": "block-14-n",
+        "scenario": "qos1_retry",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140128,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-14",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-14"
+    },
+    {
+      "config": {
+        "experiment_id": "block-14-v",
+        "scenario": "pattern_change",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140129,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-14",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-14"
+    },
+    {
+      "config": {
+        "experiment_id": "block-15-v",
+        "scenario": "bad_credentials",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140131,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-15",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-15"
+    },
+    {
+      "config": {
+        "experiment_id": "block-15-n",
+        "scenario": "regular",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140130,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-15",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-15"
+    },
+    {
+      "config": {
+        "experiment_id": "block-16-n",
+        "scenario": "jitter",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140132,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-16",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-16"
+    },
+    {
+      "config": {
+        "experiment_id": "block-16-v",
+        "scenario": "forbidden_acl",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140133,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-16",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-16"
+    },
+    {
+      "config": {
+        "experiment_id": "block-17-v",
+        "scenario": "replay",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140135,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-17",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-17"
+    },
+    {
+      "config": {
+        "experiment_id": "block-17-n",
+        "scenario": "qos1_retry",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140134,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-17",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-17"
+    },
+    {
+      "config": {
+        "experiment_id": "block-18-n",
+        "scenario": "regular",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140136,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-18",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-18"
+    },
+    {
+      "config": {
+        "experiment_id": "block-18-v",
+        "scenario": "bounded_rate",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140137,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-18",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-18"
+    },
+    {
+      "config": {
+        "experiment_id": "block-19-v",
+        "scenario": "pattern_change",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140139,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-19",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-19"
+    },
+    {
+      "config": {
+        "experiment_id": "block-19-n",
+        "scenario": "jitter",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140138,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-19",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-19"
+    },
+    {
+      "config": {
+        "experiment_id": "block-20-n",
+        "scenario": "qos1_retry",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140140,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-20",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-20"
+    },
+    {
+      "config": {
+        "experiment_id": "block-20-v",
+        "scenario": "bad_credentials",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140141,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-20",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-20"
+    },
+    {
+      "config": {
+        "experiment_id": "block-21-v",
+        "scenario": "forbidden_acl",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140143,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-21",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-21"
+    },
+    {
+      "config": {
+        "experiment_id": "block-21-n",
+        "scenario": "regular",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140142,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-21",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-21"
+    },
+    {
+      "config": {
+        "experiment_id": "block-22-n",
+        "scenario": "jitter",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140144,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-22",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-22"
+    },
+    {
+      "config": {
+        "experiment_id": "block-22-v",
+        "scenario": "replay",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140145,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-22",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-22"
+    },
+    {
+      "config": {
+        "experiment_id": "block-23-v",
+        "scenario": "bounded_rate",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140147,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-23",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-23"
+    },
+    {
+      "config": {
+        "experiment_id": "block-23-n",
+        "scenario": "qos1_retry",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140146,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-23",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-23"
+    },
+    {
+      "config": {
+        "experiment_id": "block-24-n",
+        "scenario": "regular",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140148,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-24",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-24"
+    },
+    {
+      "config": {
+        "experiment_id": "block-24-v",
+        "scenario": "pattern_change",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140149,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-24",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-24"
+    },
+    {
+      "config": {
+        "experiment_id": "block-25-v",
+        "scenario": "bad_credentials",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140151,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-25",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-25"
+    },
+    {
+      "config": {
+        "experiment_id": "block-25-n",
+        "scenario": "jitter",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140150,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-25",
+      "partition": "test",
+      "project": "lcm-stage14-ground-truth-block-25"
+    },
+    {
+      "config": {
+        "experiment_id": "block-26-n",
+        "scenario": "qos1_retry",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140152,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-26",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-26"
+    },
+    {
+      "config": {
+        "experiment_id": "block-26-v",
+        "scenario": "forbidden_acl",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140153,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-26",
+      "partition": "validation",
+      "project": "lcm-stage14-ground-truth-block-26"
+    },
+    {
+      "config": {
+        "experiment_id": "block-27-v",
+        "scenario": "replay",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140155,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-27",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-27"
+    },
+    {
+      "config": {
+        "experiment_id": "block-27-n",
+        "scenario": "regular",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.35,
+        "jitter": 0.08,
+        "seed": 140154,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-27",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-27"
+    },
+    {
+      "config": {
+        "experiment_id": "block-28-n",
+        "scenario": "jitter",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140156,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-28",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-28"
+    },
+    {
+      "config": {
+        "experiment_id": "block-28-v",
+        "scenario": "bounded_rate",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.45,
+        "jitter": 0.08,
+        "seed": 140157,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-28",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-28"
+    },
+    {
+      "config": {
+        "experiment_id": "block-29-v",
+        "scenario": "pattern_change",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140159,
+        "violation": true,
+        "schema_version": 1
+      },
+      "group": "block-29",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-29"
+    },
+    {
+      "config": {
+        "experiment_id": "block-29-n",
+        "scenario": "qos1_retry",
+        "clients": 6,
+        "duration": 12,
+        "interval": 0.6,
+        "jitter": 0.08,
+        "seed": 140158,
+        "violation": false,
+        "schema_version": 1
+      },
+      "group": "block-29",
+      "partition": "train",
+      "project": "lcm-stage14-ground-truth-block-29"
+    }
+  ],
+  "maximum_captures": 100,
+  "maximum_rows": 100000,
+  "min_normal_rows": 1000,
+  "min_class_groups": 5,
+  "fpr_target": 0.05,
+  "seed": 75,
+  "training_gate": "NOT_EXECUTED_UNTIL_PASS",
+  "host_limit": "single_host_no_external_validation",
+  "sha256": "c936b1f7f140a3274ab50c222364e1e3f941c951675e56974fc836a26b9f66c9"
+}
