@@ -1,0 +1,442 @@
+{
+  "freeze_sha256": "c8dccff4bbd36c8346269c60045af04f02d3d70974f5754b7732fd172332fc40",
+  "evaluation_source_sha": "20a6babeebf6a9f11494d40b22a9c41e51585075",
+  "models": {
+    "rf_binary": {
+      "model_id": "research75-rf_tuned_1-binary",
+      "model_version": "14.0.0",
+      "artifact_sha256": "52e6a5dbf02fd5d6e3a3364eb7077f41e099eebd4b24d64b76826a94da1c0f42",
+      "manifest_sha256": "bbd0ec7166e17dc070a1751d64d4f13b47f298fe1199f209e426571d1c46bcfb",
+      "threshold": 0.9335469686522243,
+      "session": {
+        "method": "mean",
+        "point": {
+          "threshold": 0.24018363741290058,
+          "method": "validation-only attack F1 under empirical normal FPR constraint; no test tuning",
+          "empirical_fpr_target": 0.05,
+          "validation_normal": 80,
+          "validation_attack": 5,
+          "status": "selected",
+          "validation_attack_f1": 0.6
+        },
+        "validation": {
+          "objects": 85,
+          "confusion_matrix": [
+            [
+              78,
+              2
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ],
+          "precision": 0.6,
+          "recall": 0.6,
+          "f1": 0.6,
+          "macro_f1": 0.7875,
+          "balanced_accuracy": 0.7875,
+          "fpr": 0.025,
+          "pr_auc": 0.5368393113377703,
+          "roc_auc": 0.6975,
+          "score_semantics": "RF 1-P(normal) or IF -score_samples; not a calibrated attack probability",
+          "per_attack_recall": {},
+          "accuracy": 0.9529411764705882,
+          "specificity": 0.975,
+          "fnr": 0.4,
+          "average_precision": 0.5500865800865801
+        },
+        "score_distribution": {
+          "n": 85,
+          "min": 0.0043126303874054805,
+          "max": 0.9737698831576796,
+          "mean": 0.12103717778593309,
+          "quantiles": [
+            0.0043126303874054805,
+            0.055166993820578,
+            0.09480079119315302,
+            0.13728567529080946,
+            0.9737698831576796
+          ],
+          "histogram_counts": [
+            19,
+            27,
+            20,
+            9,
+            6,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "histogram_edges": [
+            0.0,
+            0.05,
+            0.1,
+            0.15000000000000002,
+            0.2,
+            0.25,
+            0.30000000000000004,
+            0.35000000000000003,
+            0.4,
+            0.45,
+            0.5,
+            0.55,
+            0.6000000000000001,
+            0.65,
+            0.7000000000000001,
+            0.75,
+            0.8,
+            0.8500000000000001,
+            0.9,
+            0.9500000000000001,
+            1.0
+          ]
+        }
+      },
+      "feature_version": "tcp-packet-passive-v1"
+    },
+    "if": {
+      "model_id": "research75-if_tuned_0-binary",
+      "model_version": "14.0.0",
+      "artifact_sha256": "3879a7b7c110dadf5822148e3cb19409bf675cf802b1d0e0227109e792f83027",
+      "manifest_sha256": "82b39fa15dbc0982b9134ddff019e7a829981f2fc3d050eecae2fa64b4feba96",
+      "threshold": 0.5971711560322518,
+      "session": {
+        "method": "mean",
+        "point": {
+          "threshold": 0.6134362036202531,
+          "method": "validation-only attack F1 under empirical normal FPR constraint; no test tuning",
+          "empirical_fpr_target": 0.05,
+          "validation_normal": 80,
+          "validation_attack": 5,
+          "status": "selected",
+          "validation_attack_f1": 0.4
+        },
+        "validation": {
+          "objects": 85,
+          "confusion_matrix": [
+            [
+              77,
+              3
+            ],
+            [
+              3,
+              2
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ],
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1": 0.4,
+          "macro_f1": 0.68125,
+          "balanced_accuracy": 0.68125,
+          "fpr": 0.0375,
+          "pr_auc": 0.23790075679394562,
+          "roc_auc": 0.8899999999999999,
+          "score_semantics": "RF 1-P(normal) or IF -score_samples; not a calibrated attack probability",
+          "per_attack_recall": {},
+          "accuracy": 0.9294117647058824,
+          "specificity": 0.9625,
+          "fnr": 0.6,
+          "average_precision": 0.3171904024767802
+        },
+        "score_distribution": {
+          "n": 85,
+          "min": 0.42455274012997923,
+          "max": 0.6790766856579646,
+          "mean": 0.49034406694274085,
+          "quantiles": [
+            0.42455274012997923,
+            0.448339006142298,
+            0.4702429784563966,
+            0.4913776256672055,
+            0.6790766856579646
+          ],
+          "histogram_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            23,
+            43,
+            2,
+            7,
+            9,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "histogram_edges": [
+            0.0,
+            0.05,
+            0.1,
+            0.15000000000000002,
+            0.2,
+            0.25,
+            0.30000000000000004,
+            0.35000000000000003,
+            0.4,
+            0.45,
+            0.5,
+            0.55,
+            0.6000000000000001,
+            0.65,
+            0.7000000000000001,
+            0.75,
+            0.8,
+            0.8500000000000001,
+            0.9,
+            0.9500000000000001,
+            1.0
+          ]
+        }
+      },
+      "feature_version": "tcp-packet-passive-v1"
+    },
+    "rf_session": {
+      "model_id": "research75-rf_subsample-binary",
+      "model_version": "14.0.0",
+      "artifact_sha256": "3216f93551a8d5436f3d717f91319cb6f0b759f831f70865ee0bce30fbbca563",
+      "manifest_sha256": "da320ff80554802397efc754051116e80f3298113330d115785362adf9bd1533",
+      "threshold": 0.9,
+      "session": {
+        "method": "mean",
+        "point": {
+          "threshold": 0.19333333333333336,
+          "method": "validation-only attack F1 under empirical normal FPR constraint; no test tuning",
+          "empirical_fpr_target": 0.05,
+          "validation_normal": 80,
+          "validation_attack": 5,
+          "status": "selected",
+          "validation_attack_f1": 0.75
+        },
+        "validation": {
+          "objects": 85,
+          "confusion_matrix": [
+            [
+              80,
+              0
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ],
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.75,
+          "macro_f1": 0.8688271604938271,
+          "balanced_accuracy": 0.8,
+          "fpr": 0.0,
+          "pr_auc": 0.6437552908141144,
+          "roc_auc": 0.7675000000000001,
+          "score_semantics": "RF 1-P(normal) or IF -score_samples; not a calibrated attack probability",
+          "per_attack_recall": {},
+          "accuracy": 0.9764705882352941,
+          "specificity": 1.0,
+          "fnr": 0.4,
+          "average_precision": 0.6481283422459894
+        },
+        "score_distribution": {
+          "n": 85,
+          "min": 0.0,
+          "max": 0.9255335346644649,
+          "mean": 0.050791123219075036,
+          "quantiles": [
+            0.0,
+            0.006562499999999999,
+            0.030000000000000027,
+            0.04862068965517242,
+            0.9255335346644649
+          ],
+          "histogram_counts": [
+            65,
+            15,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          "histogram_edges": [
+            0.0,
+            0.05,
+            0.1,
+            0.15000000000000002,
+            0.2,
+            0.25,
+            0.30000000000000004,
+            0.35000000000000003,
+            0.4,
+            0.45,
+            0.5,
+            0.55,
+            0.6000000000000001,
+            0.65,
+            0.7000000000000001,
+            0.75,
+            0.8,
+            0.8500000000000001,
+            0.9,
+            0.9500000000000001,
+            1.0
+          ]
+        }
+      },
+      "feature_version": "tcp-packet-passive-v1"
+    },
+    "if_session": {
+      "model_id": "research75-if_tuned_1-binary",
+      "model_version": "14.0.0",
+      "artifact_sha256": "4b5a7bbb97e30a5b7154e68e87481b9787cd38f39ea82b206b8768c87f51ae21",
+      "manifest_sha256": "994bcc98cd8a6dab81cf291b5c9a59c222eedf88f7f71751e508633a9e56c8a8",
+      "threshold": 0.652579820387762,
+      "session": {
+        "method": "fraction",
+        "point": {
+          "threshold": 0.10344827586206896,
+          "method": "validation-only attack F1 under empirical normal FPR constraint; no test tuning",
+          "empirical_fpr_target": 0.05,
+          "validation_normal": 80,
+          "validation_attack": 5,
+          "status": "selected",
+          "validation_attack_f1": 0.4
+        },
+        "validation": {
+          "objects": 85,
+          "confusion_matrix": [
+            [
+              77,
+              3
+            ],
+            [
+              3,
+              2
+            ]
+          ],
+          "labels": [
+            0,
+            1
+          ],
+          "precision": 0.4,
+          "recall": 0.4,
+          "f1": 0.4,
+          "macro_f1": 0.68125,
+          "balanced_accuracy": 0.68125,
+          "fpr": 0.0375,
+          "pr_auc": 0.16462702472293267,
+          "roc_auc": 0.6837500000000001,
+          "score_semantics": "RF 1-P(normal) or IF -score_samples; not a calibrated attack probability",
+          "per_attack_recall": {},
+          "accuracy": 0.9294117647058824,
+          "specificity": 0.9625,
+          "fnr": 0.6,
+          "average_precision": 0.19519607843137254
+        },
+        "score_distribution": {
+          "n": 85,
+          "min": 0.0,
+          "max": 1.0,
+          "mean": 0.0373866107979624,
+          "quantiles": [
+            0.0,
+            0.0,
+            0.0,
+            0.037037037037037035,
+            1.0
+          ],
+          "histogram_counts": [
+            71,
+            8,
+            3,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "histogram_edges": [
+            0.0,
+            0.05,
+            0.1,
+            0.15000000000000002,
+            0.2,
+            0.25,
+            0.30000000000000004,
+            0.35000000000000003,
+            0.4,
+            0.45,
+            0.5,
+            0.55,
+            0.6000000000000001,
+            0.65,
+            0.7000000000000001,
+            0.75,
+            0.8,
+            0.8500000000000001,
+            0.9,
+            0.9500000000000001,
+            1.0
+          ]
+        }
+      },
+      "feature_version": "tcp-packet-passive-v1"
+    }
+  }
+}

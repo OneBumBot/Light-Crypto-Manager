@@ -10,5 +10,6 @@ RUN pip install --no-cache-dir -r /tmp/publisher.txt
 COPY src/*.py /app/src/
 COPY src/web/ascon/*.py src/web/ascon/LICENSE /app/src/web/ascon/
 COPY src/research_stand /app/src/research_stand
+COPY scripts/stage15_workload.py scripts/install_stage15_research.py /app/scripts/
 USER 10001:10001
 CMD ["python", "-m", "src.research_stand.service"]

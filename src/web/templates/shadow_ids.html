@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Shadow IDS — RESEARCH / SHADOW_ONLY</h1>
+<p>trusted_detector=false. Сетевые сессии не привязаны к устройствам. Score — исследовательская оценка, не вероятность атаки. Управление криптографией отсутствует.</p>
+<p id="shadow-status" role="status">Источник не проверен</p>
+<dl id="shadow-summary"></dl>
+<table><thead><tr><th>Session</th><th>Модель</th><th>Score</th><th>Threshold</th><th>Статус</th><th>Binding</th></tr></thead><tbody id="shadow-rows"></tbody></table>
+<button id="shadow-prev" type="button">Назад</button><button id="shadow-next" type="button">Далее</button>
+<script src="{{ url_for('static',filename='js/shadow_ids.js') }}" defer></script>
+{% endblock %}

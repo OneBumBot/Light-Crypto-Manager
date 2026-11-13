@@ -1,0 +1,9 @@
+# Keyless Shadow IDS architecture
+
+Capture process: tcpdump stdout classic PCAP → independent streaming parser → bounded bidirectional generation state → five numeric headers → separate durable SQLite work queue. Inference process: no network namespace connectivity/capabilities, four pinned trusted model copies read-only → bounded64packet batch → atomic result+processed marker+causal session counters. No MQTT publish, TLS decryption, telemetry/HMAC keys, Docker socket or Policy/Control clients. NET_RAW only capture container; no privileged service. Source files contain no key loader.
+
+Only capture side can see opaque encrypted TCP payload bytes in private bounded PCAP. Journal contains header features/physical packet digest/timestamp and unbound session identity, no payload. No assertion that CAP_NET_RAW technically prevents malicious raw transmission; minimal audited capture code and isolation are required. Network observation is not authenticated device attribution.
+
+SQLite WAL/FULL synchronous, unique event_id and(run,ordinal), unique(event_id,model_id), atomic completion/session state.512pending/50000total/1024flows/60s capture/120s worker, hard CPU/RAM/pids/log/disk bounds. Queue gap invalidates context, new run/generation required; unsupported/lost context not normal/score0. Crashed claim is not persisted as done; processed transaction rollback recovers. Models loaded once/process, no fits or artifact mutation. Capture and model SIGKILL do not kill broker namespace owner.
+
+Current processing and source freshness separate from heartbeat; read-only Flask API verifies current PG authorization and reads SQLite mode=ro. No new Alembic tables or existing ML feed writes. Same-origin/role/table checks, no-store, textContent/Jinja escaping, bounded pagination. Unavailable source clears current scores.

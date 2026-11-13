@@ -705,6 +705,8 @@ from src.device_control.web import blueprint as control_blueprint
 app.register_blueprint(control_blueprint)
 from src.web.monitoring import blueprint as monitoring_blueprint
 app.register_blueprint(monitoring_blueprint)
+from src.shadow_ids.web import blueprint as shadow_blueprint
+app.register_blueprint(shadow_blueprint)
 
 
 def main():

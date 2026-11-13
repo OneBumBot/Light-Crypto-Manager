@@ -109,3 +109,13 @@ src/research_stand/**
 **/.git/**
 **/__pycache__/**
 **/*.pyc
+
+# Stage15 keyless observer code and public frozen metadata; no models/captures.
+!src/shadow_ids/
+src/shadow_ids/**
+!src/shadow_ids/*.py
+!src/shadow_ids/frozen.json
+!deploy/research/shadow.Dockerfile
+**/__pycache__/**
+**/*.pyc
+**/.local-runtime/**

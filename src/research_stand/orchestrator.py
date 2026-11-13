@@ -30,7 +30,7 @@ class Lab:
             )
         )
         self.project = cfg["name"]
-        if not (self.project.startswith("lcm-stage7b-") or re.fullmatch(r"lcm-stage14-ground-truth-[a-z0-9-]{1,18}", self.project)):
+        if not (self.project.startswith("lcm-stage7b-") or re.fullmatch(r"lcm-stage(?:14-ground-truth|15-shadow-ids)-[a-z0-9-]{1,18}", self.project)):
             raise ValueError("Dedicated research project required")
         if cfg["networks"]["default"].get("internal") is not True:
             raise ValueError("Internal network mandatory")

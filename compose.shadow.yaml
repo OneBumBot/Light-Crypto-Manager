@@ -1,0 +1,43 @@
+# Stage15-only opt-in, no ports, no Docker socket, no key/control registry mounts.
+services:
+  research-init:
+    command: [python, -m, scripts.install_stage15_research]
+  shadow-network-observer:
+    image: ${COMPOSE_PROJECT_NAME}-shadow-capture
+    build: {context: ., dockerfile: deploy/research/shadow.Dockerfile, target: capture}
+    profiles: [shadow]
+    init: true
+    user: "${SHADOW_UID:?}:${SHADOW_GID:?}"
+    network_mode: service:lab-devices
+    cap_drop: [ALL]
+    cap_add: [NET_RAW]
+    cpus: '0.5'
+    mem_limit: 128m
+    pids_limit: 32
+    read_only: true
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    volumes: ["${SHADOW_ROOT:?}:/shadow"]
+    command: [python, -m, src.shadow_ids.capture, --root, '/shadow/${SHADOW_RUN:-run}', --duration, '${SHADOW_DURATION:-25}']
+    depends_on: {lab-devices: {condition: service_started}}
+    logging: {options: {max-size: 2m, max-file: '2'}}
+  shadow-model-worker:
+    image: ${COMPOSE_PROJECT_NAME}-ml
+    build: {context: ., target: ml}
+    profiles: [shadow]
+    init: true
+    user: "${SHADOW_UID:?}:${SHADOW_GID:?}"
+    network_mode: none
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    cpus: '1.0'
+    mem_limit: 512m
+    pids_limit: 32
+    read_only: true
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    environment: {OMP_NUM_THREADS: '1', OPENBLAS_NUM_THREADS: '1', MKL_NUM_THREADS: '1'}
+    volumes: ["${SHADOW_ROOT:?}:/shadow", "${SHADOW_MODELS:?}:/models:ro", "${SHADOW_PARITY:?}:/parity.json:ro"]
+    command: [python, -m, src.shadow_ids.worker, --root, '/shadow/${SHADOW_RUN:-run}', --models, /models, --parity, /parity.json, --duration, '60']
+    logging: {options: {max-size: 2m, max-file: '2'}}
+  web:
+    environment: {SHADOW_JOURNAL: '/shadow/${SHADOW_RUN:-run}/shadow.db'}
+    volumes: ["${SHADOW_ROOT:?}:/shadow:ro"]

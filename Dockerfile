@@ -18,6 +18,7 @@ COPY --from=kuz-builder /usr/local/go/LICENSE /usr/share/licenses/lcm-kuz-mgm/GO
 COPY third_party/go-gostcrypto/LICENSE third_party/go-gostcrypto/PROVENANCE.json /usr/share/licenses/lcm-kuz-mgm/
 COPY src/device_control /app/src/device_control
 COPY src/policy /app/src/policy
+COPY src/shadow_ids /app/src/shadow_ids
 COPY src/*.py /app/src/
 COPY src/publisher/*.py /app/src/publisher/
 COPY src/brocker/*.py /app/src/brocker/
@@ -38,6 +39,7 @@ USER root
 COPY requirements/ml-runtime.txt /app/requirements/ml-runtime.txt
 RUN pip install --no-cache-dir -r requirements/ml-runtime.txt
 COPY src/classifier/ml /app/src/classifier/ml
+COPY src/classifier/research /app/src/classifier/research
 COPY scripts/install_ml_model.py scripts/export_ml_telemetry.py /app/scripts/
 USER 10001:10001
 CMD ["python", "-m", "src.classifier.ml.worker"]
