@@ -1,0 +1,90 @@
+{
+  "rows": [
+    {
+      "devices": 25,
+      "condition": "off",
+      "receiver_cpu_mean": 13.464,
+      "shadow-model_cpu_mean": null,
+      "shadow-model_sampled_memory_peak_bytes": null,
+      "shadow-capture_cpu_mean": null,
+      "capture_to_prediction_p95": null,
+      "capture_to_prediction_p99": null
+    },
+    {
+      "devices": 25,
+      "condition": "capture",
+      "receiver_cpu_mean": 14.303333333333335,
+      "shadow-model_cpu_mean": null,
+      "shadow-model_sampled_memory_peak_bytes": null,
+      "shadow-capture_cpu_mean": 5.673333333333334,
+      "capture_to_prediction_p95": null,
+      "capture_to_prediction_p99": null
+    },
+    {
+      "devices": 25,
+      "condition": "rf",
+      "receiver_cpu_mean": 15.090666666666666,
+      "shadow-model_cpu_mean": 5.6883333333333335,
+      "shadow-model_sampled_memory_peak_bytes": 128695227.73333333,
+      "shadow-capture_cpu_mean": 3.65,
+      "capture_to_prediction_p95": 1.0843308369318643,
+      "capture_to_prediction_p99": 1.2009535702069611
+    },
+    {
+      "devices": 25,
+      "condition": "rfif",
+      "receiver_cpu_mean": 11.661999999999999,
+      "shadow-model_cpu_mean": 9.926833333333333,
+      "shadow-model_sampled_memory_peak_bytes": 131910860.8,
+      "shadow-capture_cpu_mean": 3.7428333333333335,
+      "capture_to_prediction_p95": 1.149268054962158,
+      "capture_to_prediction_p99": 1.3072125196456907
+    },
+    {
+      "devices": 50,
+      "condition": "off",
+      "receiver_cpu_mean": 23.242666666666665,
+      "shadow-model_cpu_mean": null,
+      "shadow-model_sampled_memory_peak_bytes": null,
+      "shadow-capture_cpu_mean": null,
+      "capture_to_prediction_p95": null,
+      "capture_to_prediction_p99": null
+    },
+    {
+      "devices": 50,
+      "condition": "capture",
+      "receiver_cpu_mean": 25.740666666666666,
+      "shadow-model_cpu_mean": null,
+      "shadow-model_sampled_memory_peak_bytes": null,
+      "shadow-capture_cpu_mean": 9.325833333333334,
+      "capture_to_prediction_p95": null,
+      "capture_to_prediction_p99": null
+    },
+    {
+      "devices": 50,
+      "condition": "rf",
+      "receiver_cpu_mean": 20.78188888888889,
+      "shadow-model_cpu_mean": 7.543333333333334,
+      "shadow-model_sampled_memory_peak_bytes": 129254468.26666667,
+      "shadow-capture_cpu_mean": 6.6735,
+      "capture_to_prediction_p95": 1.3173913995424906,
+      "capture_to_prediction_p99": 1.4488948051134745
+    },
+    {
+      "devices": 50,
+      "condition": "rfif",
+      "receiver_cpu_mean": 21.72733333333333,
+      "shadow-model_cpu_mean": 13.944166666666668,
+      "shadow-model_sampled_memory_peak_bytes": 131736098.13333334,
+      "shadow-capture_cpu_mean": 6.861666666666666,
+      "capture_to_prediction_p95": 1.3422898252805073,
+      "capture_to_prediction_p99": 1.4924534988403326
+    }
+  ],
+  "source": "performance-summary.json, three conditional repeats",
+  "cpu_unit": "Docker CPU percent, 100%=one logical CPU; not host-normalized percent",
+  "memory_unit": "Mean of run-wise sampled container-memory peaks, not exact RSS",
+  "latency_unit": "Mean of run-wise p95/p99 capture-to-prediction seconds; not pooled quantile",
+  "causal_effect_not_established": true,
+  "exit_code": 0
+}

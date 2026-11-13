@@ -36,3 +36,14 @@ Capture→features/prediction/journal-commit-ack измеряются отдел
 При50идентичностях наблюдается снижение фактического incoming throughput относительно off; данные не скрыты.3повтора одногоhost/realm не дают строгого причинного эффекта или внешней переносимости. Short15s runs не доказывают30min stability/maximum capacity. Графики:data in figures/,CSV run-summary.csv/repeat-summary.csv,exact delivery proof in exact-delivery-identities.json.
 
 Дополнительный25-device20s diagnostic:queue-freshness.json, sampled max pending188приcapacity512,physical captured3283,kernel drops0,capture complete. Sampling0.5s, истинный peakмеждуsamples=not_measured; не подменёнfinal pending0. Этот diagnostic не добавляется как четвёртый независимый повтор comparative matrix.
+
+## Ресурсы и хвосты latency
+
+Ниже среднее run-wise статистик трёх условных повторов; p95/p99 не являются pooled quantile, memory — среднее sampled container-memory peak, не точный RSS. Docker CPU 100% соответствует одному logical CPU.
+
+| Identities / RF+IF | Model CPU | Capture CPU | Model memory | Capture→prediction p95 / p99 |
+|---|---:|---:|---:|---:|
+| 25 | 9.93% | 3.74% | 125.8 MiB | 1.149 / 1.307 s |
+| 50 | 13.94% | 6.86% | 125.6 MiB | 1.342 / 1.492 s |
+
+Receiver CPU: для 25 identities off 13.46%, RF+IF 11.66%; для 50 off 23.24%, RF+IF 21.73%. Меньшие отдельные значения не доказывают ускорение receiver: фактический поток, scheduling и короткое sampling window различаются. Полный набор условий — [resource comparison](reports/stage15/resource-comparison.json).
