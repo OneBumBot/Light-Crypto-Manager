@@ -1,0 +1,86 @@
+[
+  {
+    "elapsed": 0.9510024490009528,
+    "snapshot": {
+      "at": "2026-11-12T23:06:10.547464+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 45562,
+        "consumed": 45562,
+        "pending": 0,
+        "oldest_pending_age": null
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 18984,
+        "rate_limited": 26578
+      },
+      "sources": {
+        "protocol": 45562
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:06:08.858194+00:00",
+        "evidence_at": "2026-11-12T23:06:08.824247+00:00"
+      },
+      "decisions": 18984,
+      "transitions": 0,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 45562,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 422571,
+        "xact_rollback": 231,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 45562.0,
+        "delivered": 45562.0,
+        "accepted": 45562.0
+      },
+      "outbox": {
+        "delivered": 45562
+      },
+      "worker": [
+        {
+          "worker_id": "003d9f8031df",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:06:09.885338+00:00",
+          "diagnostic": null,
+          "metrics": {
+            "polls_total": 4349,
+            "retries_total": 0,
+            "processed_total": 45220,
+            "last_batch_count": 0,
+            "last_batch_seconds": 0.0024535530028515495,
+            "last_successful_processing_at": "2026-11-12T23:06:08.862413+00:00",
+            "transaction_max_source_events": 32
+          }
+        },
+        {
+          "worker_id": "7002335f2595",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T22:50:59.044735+00:00",
+          "diagnostic": null,
+          "metrics": {
+            "polls_total": 43,
+            "retries_total": 0,
+            "processed_total": 342,
+            "last_batch_count": 0,
+            "last_batch_seconds": 0.010243005999654997,
+            "last_successful_processing_at": "2026-11-12T22:50:59.022434+00:00",
+            "transaction_max_source_events": 32
+          }
+        }
+      ]
+    }
+  }
+]

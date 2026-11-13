@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy13_runtime_audit.py", line 64, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy13_runtime_audit.py", line 46, in main
+    blob=json.dumps(row['Config'].get(k)).encode();assert not any(v in blob for v in needles),'Secret in process config'
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Secret in process config

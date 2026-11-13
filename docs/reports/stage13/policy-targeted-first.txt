@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy_lab.py", line 26, in run
+    if check:raise RuntimeError('Lab command '+args[0]+' failed ('+str(r.returncode)+'); private last-failure.txt')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Lab command run failed (1); private last-failure.txt

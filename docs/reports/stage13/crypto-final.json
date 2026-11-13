@@ -1,0 +1,390 @@
+{
+  "project": "lcm-stage13-policy-crypto",
+  "source_sha": "63d7476f67a820c5def7ae83f05e6e10d2ac24f6",
+  "cryptographic": {
+    "checked_at": "2026-11-13T08:33:33.836664+00:00",
+    "devices": [
+      {
+        "device_id": "beta",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "a5f067cc-8d8a-460b-b1a3-80cf826ed8eb",
+        "sequence_reserved": 30000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "gamma",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "51295d7c-1a5c-4b86-a206-6836a89f73d5",
+        "sequence_reserved": 20000,
+        "command_sequence": 0
+      },
+      {
+        "device_id": "alpha",
+        "effective_profile": "ascon-aead128-v1",
+        "effective_event": "ee04b040-9de1-4171-bc05-873769545a43",
+        "sequence_reserved": 90000,
+        "command_sequence": 32
+      }
+    ],
+    "per_device": {
+      "beta": {
+        "count": 620,
+        "last_sequence": 20015
+      },
+      "alpha": {
+        "count": 576,
+        "last_sequence": 80014
+      },
+      "gamma": {
+        "count": 618,
+        "last_sequence": 10014
+      }
+    },
+    "outbox": {
+      "delivered": 1814
+    },
+    "counters": {
+      "incoming": 1834,
+      "delivery_error": 5,
+      "delivery_retry": 5,
+      "replay": 1,
+      "rejected": 19,
+      "delivered": 1814,
+      "accepted": 1814
+    },
+    "transitions": 16,
+    "completed": 16,
+    "unknown": 0,
+    "authenticated_ack": 30,
+    "receipts": 19,
+    "policy_modes": [
+      "DRY_RUN"
+    ],
+    "policy_applied": 0,
+    "pg_connections": 10,
+    "database_bytes": 21558963,
+    "pg_stats": {
+      "xact_commit": 47123,
+      "xact_rollback": 870,
+      "deadlocks": 0
+    },
+    "migration": "0011_policy_throughput",
+    "ml_trusted": false,
+    "mongo_managed": 1814
+  },
+  "policy": {
+    "at": "2026-11-13T08:33:35.174575+00:00",
+    "version": "stage13-recovery-v2",
+    "sha256": "9acdd590e54b29f81283298726e4502cfab6ac0938003640149a157417cde5af",
+    "security": {
+      "total": 1909,
+      "consumed": 1909,
+      "pending": 0,
+      "oldest_pending_age": null
+    },
+    "ml_pending": 0,
+    "signals": {
+      "late": 1,
+      "unattributed": 19,
+      "stale": 5,
+      "accepted": 930,
+      "rate_limited": 954
+    },
+    "sources": {
+      "rule": 75,
+      "protocol": 1834
+    },
+    "last_processed": {
+      "at": "2026-11-13T08:33:33.177557+00:00",
+      "evidence_at": "2026-11-13T08:33:32.963576+00:00"
+    },
+    "decisions": 936,
+    "transitions": 3,
+    "intents": {},
+    "capacity": {
+      "id": 1,
+      "capacity": 100000,
+      "retained": 1909,
+      "overflow": 0
+    },
+    "db": {
+      "numbackends": 10,
+      "xact_commit": 47191,
+      "xact_rollback": 872,
+      "deadlocks": 0
+    },
+    "lock_waits": 0,
+    "admission": {
+      "incoming": 1834.0,
+      "delivery_error": 5.0,
+      "delivery_retry": 5.0,
+      "replay": 1.0,
+      "rejected": 19.0,
+      "delivered": 1814.0,
+      "accepted": 1814.0
+    },
+    "outbox": {
+      "delivered": 1814
+    },
+    "worker": [
+      {
+        "worker_id": "5c1b6ef44813",
+        "status": "ready",
+        "mode": "DRY_RUN",
+        "heartbeat_at": "2026-11-13T08:33:34.200170+00:00",
+        "diagnostic": null,
+        "metrics": {
+          "polls_total": 171,
+          "retries_total": 6,
+          "processed_total": 386,
+          "last_batch_count": 0,
+          "last_batch_seconds": 0.002182992000143713,
+          "last_successful_processing_at": "2026-11-13T08:33:33.181419+00:00",
+          "transaction_max_source_events": 32
+        }
+      },
+      {
+        "worker_id": "5b31b00bda91",
+        "status": "ready",
+        "mode": "DRY_RUN",
+        "heartbeat_at": "2026-11-13T08:25:25.929453+00:00",
+        "diagnostic": null,
+        "metrics": {
+          "polls_total": 13,
+          "retries_total": 0,
+          "processed_total": 13,
+          "last_batch_count": 1,
+          "last_batch_seconds": 0.5051808999999139,
+          "last_successful_processing_at": "2026-11-13T08:25:25.929302+00:00",
+          "transaction_max_source_events": 32
+        }
+      },
+      {
+        "worker_id": "255606da9b21",
+        "status": "ready",
+        "mode": "DRY_RUN",
+        "heartbeat_at": "2026-11-13T08:23:44.825038+00:00",
+        "diagnostic": null,
+        "metrics": {
+          "polls_total": 166,
+          "retries_total": 0,
+          "processed_total": 228,
+          "last_batch_count": 0,
+          "last_batch_seconds": 0.0038933230000566255,
+          "last_successful_processing_at": "2026-11-13T08:23:44.807403+00:00",
+          "transaction_max_source_events": 32
+        }
+      }
+    ]
+  },
+  "harnesses": [
+    {
+      "module": "check_stage9_browser",
+      "exit_code": 0,
+      "seconds": 131.12503516899983
+    },
+    {
+      "module": "check_kuz_control_browser",
+      "exit_code": 0,
+      "seconds": 20.04984583700002
+    },
+    {
+      "module": "check_kuz_lostack",
+      "exit_code": 0,
+      "seconds": 55.319921467000086
+    },
+    {
+      "module": "check_kuz_reliability",
+      "exit_code": 0,
+      "seconds": 150.94152519699992
+    },
+    {
+      "module": "check_malformed_mqtt_recovery",
+      "exit_code": 0
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-13T08:32:50.542655+00:00",
+      "finished_at": "2026-11-13T08:32:50.575830+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "port",
+        "web",
+        "5000"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-13T08:33:23.537607+00:00",
+      "finished_at": "2026-11-13T08:33:23.569178+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.control_security_probe"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-13T08:33:26.707822+00:00",
+      "finished_at": "2026-11-13T08:33:32.803606+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "stop",
+        "device-alpha",
+        "device-beta",
+        "device-gamma"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-13T08:33:32.803763+00:00",
+      "finished_at": "2026-11-13T08:33:33.122054+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/performance_probe.py:/app/scripts/performance_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.performance_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-13T08:33:33.122153+00:00",
+      "finished_at": "2026-11-13T08:33:34.543352+00:00"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/compose.env",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "compose.control.yaml",
+        "-f",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/stage13/crypto/research.compose.json",
+        "--profile",
+        "control",
+        "--profile",
+        "web",
+        "--profile",
+        "policy",
+        "run",
+        "--rm",
+        "-T",
+        "--no-deps",
+        "-v",
+        "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy13_probe.py:/app/scripts/policy13_probe.py:ro",
+        "--entrypoint",
+        "python",
+        "tests",
+        "-m",
+        "scripts.policy13_probe",
+        "snapshot"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-11-13T08:33:34.543456+00:00",
+      "finished_at": "2026-11-13T08:33:35.366756+00:00"
+    }
+  ],
+  "exit_code": 0
+}

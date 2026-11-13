@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy_lab.py", line 116, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy_lab.py", line 104, in main
+    lab.run('run','--rm','--no-deps','control-init')
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy_lab.py", line 26, in run
+    if check:raise RuntimeError('Lab command '+args[0]+' failed ('+str(r.returncode)+'); private last-failure.txt')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Lab command run failed (1); private last-failure.txt

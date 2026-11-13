@@ -1,0 +1,43 @@
+........................................................................ [  7%]
+........................................................................ [ 15%]
+........................................................................ [ 23%]
+........................................................................ [ 31%]
+........................................................................ [ 39%]
+........................................................................ [ 47%]
+........................................................................ [ 54%]
+........................................................................ [ 62%]
+........FF.............................................................. [ 70%]
+........................................................................ [ 78%]
+........................................................................ [ 86%]
+........................................................................ [ 94%]
+.......................................................                  [100%]
+=================================== FAILURES ===================================
+________________________ test_schema_and_web_read_write ________________________
+tests/test_postgres.py:40: in test_schema_and_web_read_write
+    assert len(inspect(web.db.engine).get_table_names()) == 45
+E   AssertionError: assert 47 == 45
+E    +  where 47 = len(['Users', 'Algorithms', 'Algorithm_Type', 'Algorithm_Scheme', 'Parameters', 'Device_Configuration', ...])
+E    +    where ['Users', 'Algorithms', 'Algorithm_Type', 'Algorithm_Scheme', 'Parameters', 'Device_Configuration', ...] = get_table_names()
+E    +      where get_table_names = <sqlalchemy.dialects.postgresql.base.PGInspector object at 0x7f33b9a11850>.get_table_names
+E    +        where <sqlalchemy.dialects.postgresql.base.PGInspector object at 0x7f33b9a11850> = inspect(Engine(postgresql+psycopg://lightcrypto:***@postgres:5432/lightcrypto?options=-csearch_path%3Dlcm_test_d365599035a24a2695e433b3f05f62f9))
+E    +          where Engine(postgresql+psycopg://lightcrypto:***@postgres:5432/lightcrypto?options=-csearch_path%3Dlcm_test_d365599035a24a2695e433b3f05f62f9) = <SQLAlchemy postgresql+psycopg://lightcrypto:***@postgres:5432/lightcrypto?options=-csearch_path%3Dlcm_test_d365599035a24a2695e433b3f05f62f9>.engine
+E    +            where <SQLAlchemy postgresql+psycopg://lightcrypto:***@postgres:5432/lightcrypto?options=-csearch_path%3Dlcm_test_d365599035a24a2695e433b3f05f62f9> = <module 'src.web.app' from '/app/src/web/app.py'>.db
+________________________ test_init_db_cli_is_idempotent ________________________
+tests/test_postgres.py:72: in test_init_db_cli_is_idempotent
+    assert len(inspect(postgres_db.db.engine).get_table_names()) == 45
+E   AssertionError: assert 47 == 45
+E    +  where 47 = len(['Users', 'Algorithms', 'Algorithm_Type', 'Algorithm_Scheme', 'Parameters', 'Device_Configuration', ...])
+E    +    where ['Users', 'Algorithms', 'Algorithm_Type', 'Algorithm_Scheme', 'Parameters', 'Device_Configuration', ...] = get_table_names()
+E    +      where get_table_names = <sqlalchemy.dialects.postgresql.base.PGInspector object at 0x7f33bb9d74a0>.get_table_names
+E    +        where <sqlalchemy.dialects.postgresql.base.PGInspector object at 0x7f33bb9d74a0> = inspect(Engine(postgresql+psycopg://lightcrypto:***@postgres:5432/lightcrypto?options=-csearch_path%3Dlcm_test_d365599035a24a2695e433b3f05f62f9))
+E    +          where Engine(postgresql+psycopg://lightcrypto:***@postgres:5432/lightcrypto?options=-csearch_path%3Dlcm_test_d365599035a24a2695e433b3f05f62f9) = <SQLAlchemy postgresql+psycopg://lightcrypto:***@postgres:5432/lightcrypto?options=-csearch_path%3Dlcm_test_d365599035a24a2695e433b3f05f62f9>.engine
+E    +            where <SQLAlchemy postgresql+psycopg://lightcrypto:***@postgres:5432/lightcrypto?options=-csearch_path%3Dlcm_test_d365599035a24a2695e433b3f05f62f9> = <module 'src.web.app' from '/app/src/web/app.py'>.db
+=========================== short test summary info ============================
+FAILED tests/test_postgres.py::test_schema_and_web_read_write - AssertionErro...
+FAILED tests/test_postgres.py::test_init_db_cli_is_idempotent - AssertionErro...
+2 failed, 917 passed in 50.24s
+
+ Container lcm-stage13-policy-qa-tests-run-5944a5d771b5 Creating 
+ Container lcm-stage13-policy-qa-tests-run-5944a5d771b5 Created 
+
+

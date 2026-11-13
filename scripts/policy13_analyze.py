@@ -10,7 +10,7 @@ def dt(value):return datetime.fromisoformat(value)
 
 
 def one(folder):
-    r=json.loads((folder/'result.json').read_text());samples=json.loads((folder/'samples.json').read_text());ledger=read_json(folder/'ledger-final.json');agents=read_json(folder/'agents.json')
+    r=json.loads((folder/'result.json').read_text());samples=read_json(folder/'samples.json');ledger=read_json(folder/'ledger-final.json');agents=read_json(folder/'agents.json')
     start,end=dt(r['start_wall']),dt(r['end_wall']);s0,s1=r['before'],r['inflight'];interval=(dt(s1['at'])-dt(s0['at'])).total_seconds()
     source_in=s1['security']['total']-s0['security']['total'];processed=s1['security']['consumed']-s0['security']['consumed']
     assert s1['security']['pending']==s0['security']['pending']+source_in-processed

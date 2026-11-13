@@ -1,0 +1,19 @@
+................FF......................                                 [100%]
+=================================== FAILURES ===================================
+_______ test_version_activation_waits_for_batch_and_retains_all_sources ________
+tests/test_policy_throughput.py:119: in test_version_activation_waits_for_batch_and_retains_all_sources
+    assert c.scalar(select(m.states.c.state).where(m.states.c.version=='v2'))['guard'] in ['WATCH','ALERT']
+E   AssertionError: assert 'NORMAL' in ['WATCH', 'ALERT']
+_________ test_retention_never_removes_pending_and_preserves_identity __________
+tests/test_policy_throughput.py:133: in test_retention_never_removes_pending_and_preserves_identity
+    assert prune_journal(c,1,T+timedelta(days=3))==2
+E   assert 0 == 2
+E    +  where 0 = <function prune_journal at 0x7f4cb2c7ec00>(<sqlalchemy.engine.base.Connection object at 0x7f4cad9f2a80>, 1, (datetime.datetime(2026, 1, 1, 0, 0, tzinfo=datetime.timezone.utc) + datetime.timedelta(days=3)))
+E    +    where datetime.timedelta(days=3) = timedelta(days=3)
+=========================== short test summary info ============================
+FAILED tests/test_policy_throughput.py::test_version_activation_waits_for_batch_and_retains_all_sources
+FAILED tests/test_policy_throughput.py::test_retention_never_removes_pending_and_preserves_identity
+2 failed, 38 passed in 4.84s
+ Container lcm-stage13-policy-qa-tests-run-4c58de1289fa Creating 
+ Container lcm-stage13-policy-qa-tests-run-4c58de1289fa Created 
+

@@ -1,0 +1,61 @@
+{
+  "baseline_sha": "649a80ff7f7d66f72f5f483b384754ae594f221e",
+  "source_sha": "63d7476f67a820c5def7ae83f05e6e10d2ac24f6",
+  "baseline_regression": {
+    "passed": 882,
+    "skipped": 0,
+    "seconds": 41.8,
+    "exit_code": 0
+  },
+  "final_regression": {
+    "passed": 922,
+    "skipped": 0,
+    "seconds": 52.09,
+    "exit_code": 0
+  },
+  "golden_traces": 13,
+  "behavioral_mutations_detected": 24,
+  "unchanged_critical_sources": {
+    "src/policy/engine.py": "86310ec8fb3cf92fd42b4063a6dfa92a8d5744a142a8ff01a9d626d955348297",
+    "src/policy/rules.py": "5af6a6bb04db8bb2489c4f307fd2789a8c302f2caf8c3318dd8383f696453b5e",
+    "src/crypto_profiles.py": "3de200ea41838b77e3e656c49165cbb691de4b4b6dda72992f3f06e1a79ac76c",
+    "src/telemetry.py": "8a0f239b5b059c89bb5a56aa34c2190b2a2103bdee37876e25c501b398e2a1a0",
+    "src/kuz_provider.py": "c8c8f6c51e92949ad3e6aec9d430a6ffa6ed0319b933e2cbcd1fc94670aa75c2",
+    "src/kuz_usage.py": "5b7ef946f581913ff877577cd83b9d9e75401fcc2e703bed6043ac6d0b5c8d28",
+    "src/device_control/agent.py": "8daf4d9b88554fa734a77ee7d1a2ecc75f936859fe71434df221b2e3382a3a9d",
+    "src/device_control/state.py": "84011ca676ad2592e6569807e084eaf448cefce371835e115747056e4738c373",
+    "src/device_control/server.py": "47c52e8e0e0870d79c78c657428dfcf2a8889f6230dadf8b97cd13f5df3bacdd",
+    "src/device_control/worker.py": "127959da07084a267fa434f475588029388405a7064b1523c785d71af105d086",
+    "src/ingestion.py": "e8a1835c25ff037f70338031859f7b484c360cd034da0320e22b3e6bc5e6cc51",
+    "src/outbox.py": "76de3944ace47c0b92f5486f4e25630ccc5d0cb78ceae7f96a1875c0ada841de",
+    "native/kuzprovider/main.go": "1c90bfffce0d5c54bb30ca0348de378f17753548adf7428f5713a812cd177c01"
+  },
+  "performance_runs_included": 17,
+  "performance_pg": 232843,
+  "performance_mongo": 232843,
+  "crypto_summary": {
+    "completed": 16,
+    "authenticated_ack": 30,
+    "receipts": 19,
+    "mongo_managed": 1814,
+    "unknown": 0,
+    "policy_applied": 0,
+    "ml_trusted": false
+  },
+  "policy": "DRY_RUN",
+  "control": "MANUAL_AUTHORIZED_CONTROL",
+  "preservation": {
+    "tracked_files": 850,
+    "archive_files": 764,
+    "old_private_files": 565,
+    "old_volumes": 308,
+    "new_keys": 2030,
+    "historical_key_values": 416
+  },
+  "audit": {
+    "stopped_containers": 783,
+    "images": 7,
+    "existing_service_environment_fields": "DB/Flask values withheld, not crypto keys"
+  },
+  "exit_code": 0
+}

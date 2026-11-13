@@ -1,0 +1,806 @@
+[
+  {
+    "elapsed": 0.9314484389979043,
+    "snapshot": {
+      "at": "2026-11-12T23:20:33.485097+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 1447,
+        "pending": 1114,
+        "oldest_pending_age": 24.229435
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1097,
+        "rate_limited": 350
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 1405
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:20:33.151330+00:00",
+        "evidence_at": "2026-11-12T23:20:09.241986+00:00"
+      },
+      "decisions": 1097,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 25847,
+        "xact_rollback": 29,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:20:33.157021+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 4.871428172002197,
+    "snapshot": {
+      "at": "2026-11-12T23:20:37.421385+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 1543,
+        "pending": 1018,
+        "oldest_pending_age": 26.222816
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1172,
+        "rate_limited": 371
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 1501
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:20:36.665790+00:00",
+        "evidence_at": "2026-11-12T23:20:11.162811+00:00"
+      },
+      "decisions": 1172,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 26249,
+        "xact_rollback": 31,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:20:36.670598+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 8.793707083998015,
+    "snapshot": {
+      "at": "2026-11-12T23:20:41.352440+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 1666,
+        "pending": 895,
+        "oldest_pending_age": 27.70097
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1272,
+        "rate_limited": 394
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 1624
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:20:41.345750+00:00",
+        "evidence_at": "2026-11-12T23:20:13.647451+00:00"
+      },
+      "decisions": 1272,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 26701,
+        "xact_rollback": 33,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:20:40.198440+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 12.725059219003015,
+    "snapshot": {
+      "at": "2026-11-12T23:20:45.291572+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 1767,
+        "pending": 794,
+        "oldest_pending_age": 29.61396
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1347,
+        "rate_limited": 420
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 1725
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:20:44.960470+00:00",
+        "evidence_at": "2026-11-12T23:20:15.674135+00:00"
+      },
+      "decisions": 1347,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 27087,
+        "xact_rollback": 35,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:20:44.965729+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 16.66079757099942,
+    "snapshot": {
+      "at": "2026-11-12T23:20:49.225581+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 1863,
+        "pending": 698,
+        "oldest_pending_age": 31.554342
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1422,
+        "rate_limited": 441
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 1821
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:20:48.516082+00:00",
+        "evidence_at": "2026-11-12T23:20:17.666999+00:00"
+      },
+      "decisions": 1422,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 27474,
+        "xact_rollback": 37,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:20:48.521948+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 20.595650367002236,
+    "snapshot": {
+      "at": "2026-11-12T23:20:53.161278+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 1972,
+        "pending": 589,
+        "oldest_pending_age": 33.314304
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1510,
+        "rate_limited": 462
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 1930
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:20:53.159342+00:00",
+        "evidence_at": "2026-11-12T23:20:19.849032+00:00"
+      },
+      "decisions": 1511,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 27888,
+        "xact_rollback": 39,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:20:52.079051+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 24.498549196003296,
+    "snapshot": {
+      "at": "2026-11-12T23:20:57.069734+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 2087,
+        "pending": 474,
+        "oldest_pending_age": 34.875977
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1597,
+        "rate_limited": 490
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 2045
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:20:56.886194+00:00",
+        "evidence_at": "2026-11-12T23:20:22.164407+00:00"
+      },
+      "decisions": 1597,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 28315,
+        "xact_rollback": 41,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:20:56.892120+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 28.470437950003543,
+    "snapshot": {
+      "at": "2026-11-12T23:21:01.021494+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 2183,
+        "pending": 378,
+        "oldest_pending_age": 36.962102
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1672,
+        "rate_limited": 511
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 2141
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:21:00.554028+00:00",
+        "evidence_at": "2026-11-12T23:20:24.050248+00:00"
+      },
+      "decisions": 1672,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 28701,
+        "xact_rollback": 43,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:21:00.561074+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 32.406996013000025,
+    "snapshot": {
+      "at": "2026-11-12T23:21:04.960164+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 2279,
+        "pending": 282,
+        "oldest_pending_age": 38.927598
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1747,
+        "rate_limited": 532
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 2237
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:21:04.164780+00:00",
+        "evidence_at": "2026-11-12T23:20:26.010433+00:00"
+      },
+      "decisions": 1747,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 29088,
+        "xact_rollback": 45,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:21:04.170576+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 36.35007675200177,
+    "snapshot": {
+      "at": "2026-11-12T23:21:08.911685+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 2391,
+        "pending": 170,
+        "oldest_pending_age": 40.656706
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1839,
+        "rate_limited": 553
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 2350
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:21:08.906910+00:00",
+        "evidence_at": "2026-11-12T23:20:28.257083+00:00"
+      },
+      "decisions": 1839,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 29542,
+        "xact_rollback": 47,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:21:07.802438+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 40.27410946100281,
+    "snapshot": {
+      "at": "2026-11-12T23:21:12.844927+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 2503,
+        "pending": 58,
+        "oldest_pending_age": 42.294775
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1922,
+        "rate_limited": 581
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 2461
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:21:12.638133+00:00",
+        "evidence_at": "2026-11-12T23:20:30.525963+00:00"
+      },
+      "decisions": 1922,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 29884,
+        "xact_rollback": 49,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:21:12.644179+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  },
+  {
+    "elapsed": 44.210269814997446,
+    "snapshot": {
+      "at": "2026-11-12T23:21:16.775595+00:00",
+      "version": "default-v1",
+      "sha256": "c722f5047c51a2e9e66d01fb12ca431c3db27edfc587c81f8d803fe0cdb6c9e7",
+      "security": {
+        "total": 2561,
+        "consumed": 2561,
+        "pending": 0,
+        "oldest_pending_age": null
+      },
+      "ml_pending": 0,
+      "signals": {
+        "accepted": 1972,
+        "rate_limited": 589
+      },
+      "sources": {
+        "rule": 42,
+        "protocol": 2519
+      },
+      "last_processed": {
+        "at": "2026-11-12T23:21:15.025515+00:00",
+        "evidence_at": "2026-11-12T23:20:31.697998+00:00"
+      },
+      "decisions": 1972,
+      "transitions": 18,
+      "intents": {},
+      "capacity": {
+        "id": 1,
+        "capacity": 100000,
+        "retained": 2561,
+        "overflow": 0
+      },
+      "db": {
+        "numbackends": 6,
+        "xact_commit": 30261,
+        "xact_rollback": 51,
+        "deadlocks": 0
+      },
+      "lock_waits": 0,
+      "admission": {
+        "incoming": 2519.0,
+        "delivered": 2519.0,
+        "accepted": 2519.0
+      },
+      "outbox": {
+        "delivered": 2519
+      },
+      "worker": [
+        {
+          "worker_id": "0eca1025e27c",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:21:16.049281+00:00",
+          "diagnostic": null
+        },
+        {
+          "worker_id": "bf704329bed1",
+          "status": "ready",
+          "mode": "DRY_RUN",
+          "heartbeat_at": "2026-11-12T23:19:52.404782+00:00",
+          "diagnostic": null
+        }
+      ]
+    }
+  }
+]

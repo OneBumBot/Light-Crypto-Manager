@@ -1,0 +1,2090 @@
+{
+  "migration": "0010_mgm_key_usage",
+  "columns": [
+    {
+      "table_name": "Algorithm_Scheme",
+      "column_name": "Algorithm_Scheme_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Algorithm_Scheme",
+      "column_name": "Algorithm_Scheme",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Algorithm_Type",
+      "column_name": "Algorithm_Type_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Algorithm_Type",
+      "column_name": "Algorithm_Name",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Algorithms",
+      "column_name": "Algorithm_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Algorithms",
+      "column_name": "Parameters_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Algorithms",
+      "column_name": "Algorithm_Name",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Algorithms",
+      "column_name": "Algorithm_Type_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Anomalies",
+      "column_name": "Anomaly_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Anomalies",
+      "column_name": "Anomaly_Date",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Anomalies",
+      "column_name": "Anomaly_Cause_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Anomalies",
+      "column_name": "Device_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Anomalies",
+      "column_name": "Configuration_Update_Date",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Anomaly_Causes",
+      "column_name": "Anomaly_Cause_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Anomaly_Causes",
+      "column_name": "Anomaly_Cause",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Device_Configuration",
+      "column_name": "Device_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Device_Configuration",
+      "column_name": "Algorithm_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Device_Configuration",
+      "column_name": "Tag_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Device_Configuration",
+      "column_name": "Configuration_Update_Date",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Global_Reports",
+      "column_name": "Creation_Date",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Global_Reports",
+      "column_name": "Report_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Global_Reports",
+      "column_name": "Report_Name",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Global_Reports",
+      "column_name": "Report_Type_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Global_Reports",
+      "column_name": "Record_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Log_Journal",
+      "column_name": "Record_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Log_Journal",
+      "column_name": "Log_Type_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Log_Journal",
+      "column_name": "Record_Date",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Log_Journal",
+      "column_name": "Anomaly_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Log_Type",
+      "column_name": "Log_Type_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Log_Type",
+      "column_name": "Log_Type",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Parameters",
+      "column_name": "Parameters_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Parameters",
+      "column_name": "Key_Size",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Parameters",
+      "column_name": "Rounds_Count",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Parameters",
+      "column_name": "Algorithm_Type_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Parameters",
+      "column_name": "Algorithm_Scheme_ID",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Report_Types",
+      "column_name": "Report_Type_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Report_Types",
+      "column_name": "Report_Type",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Sensor_Data",
+      "column_name": "Record_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Sensor_Data",
+      "column_name": "Temperature",
+      "data_type": "numeric",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Sensor_Data",
+      "column_name": "Humidity",
+      "data_type": "numeric",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Tag_Journal",
+      "column_name": "Tag_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Tag_Journal",
+      "column_name": "Tag_Name",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Tag_Journal",
+      "column_name": "Creation_Date",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Users",
+      "column_name": "User_ID",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Users",
+      "column_name": "Username",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Users",
+      "column_name": "Email",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Users",
+      "column_name": "Password_Hash",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Users",
+      "column_name": "Role",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "Users",
+      "column_name": "Is_Active",
+      "data_type": "boolean",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "Users",
+      "column_name": "Created_At",
+      "data_type": "timestamp without time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "alembic_version",
+      "column_name": "version_num",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "component_heartbeats",
+      "column_name": "component",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "component_heartbeats",
+      "column_name": "instance",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "component_heartbeats",
+      "column_name": "checked_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "component_heartbeats",
+      "column_name": "ready",
+      "data_type": "boolean",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "key_epoch",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "profile_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "key_reference",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "nonce_policy",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "reserved_invocations",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "reserved_blocks",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "max_invocations",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "max_blocks",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "verify_attempts",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "max_verify_attempts",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_key_usage",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_usage_reservations",
+      "column_name": "request_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_usage_reservations",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_usage_reservations",
+      "column_name": "key_epoch",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_usage_reservations",
+      "column_name": "profile_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_usage_reservations",
+      "column_name": "first_sequence",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_usage_reservations",
+      "column_name": "last_sequence",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_usage_reservations",
+      "column_name": "invocations",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_usage_reservations",
+      "column_name": "blocks",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "crypto_usage_reservations",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ingestion_metrics",
+      "column_name": "minute",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ingestion_metrics",
+      "column_name": "kind",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ingestion_metrics",
+      "column_name": "count",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_acks",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_acks",
+      "column_name": "command_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_acks",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_acks",
+      "column_name": "body",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_acks",
+      "column_name": "sha256",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_acks",
+      "column_name": "received_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_audit",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_audit",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_audit",
+      "column_name": "transition_id",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_audit",
+      "column_name": "action",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_audit",
+      "column_name": "detail",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_audit",
+      "column_name": "at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "transition_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "command_epoch",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "sequence",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "phase",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "body",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "wire",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "status",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "attempts",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "available_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "lease_until",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "claim",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_commands",
+      "column_name": "expires_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "key_epoch",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "capabilities",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "key_fingerprint",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "sequence_reserved",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "command_sequence",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "command_acknowledged",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "effective_profile",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "reported_profile",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "effective_event",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "pending_transition",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "effective_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_devices",
+      "column_name": "last_request_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_evidence",
+      "column_name": "event_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_evidence",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_evidence",
+      "column_name": "key_epoch",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_evidence",
+      "column_name": "sequence_number",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_evidence",
+      "column_name": "profile",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_evidence",
+      "column_name": "packet_sha256",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_evidence",
+      "column_name": "key_reference",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_evidence",
+      "column_name": "accepted_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_leases",
+      "column_name": "request_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_leases",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_leases",
+      "column_name": "boot_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_leases",
+      "column_name": "body",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_leases",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "old_profile",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "target_profile",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "phase",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "actor",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "correlation_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "deadline",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "activated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "acknowledged_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "confirmed_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "telemetry_event",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_transitions",
+      "column_name": "error",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_workers",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "live_control_workers",
+      "column_name": "heartbeat",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "live_control_workers",
+      "column_name": "status",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "observation_id",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "key_epoch",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "sequence_number",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "model_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "model_version",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "feature_version",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "detector",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "status",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "diagnostic",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "score",
+      "data_type": "double precision",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "threshold",
+      "data_type": "double precision",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "is_anomaly",
+      "data_type": "boolean",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "evaluated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "prepare_ms",
+      "data_type": "double precision",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "inference_ms",
+      "data_type": "double precision",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "delivery_ack_lag_seconds",
+      "data_type": "double precision",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "attempts",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "available_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "claim_token",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_anomaly_events",
+      "column_name": "lease_until",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_feed_state",
+      "column_name": "id",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_feed_state",
+      "column_name": "capacity",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_feed_state",
+      "column_name": "retained",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_feed_state",
+      "column_name": "published",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_feed_state",
+      "column_name": "overflow_skipped",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_feed_state",
+      "column_name": "pruned",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_feed_state",
+      "column_name": "last_gap_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "model_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "model_version",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "artifact_sha256",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "manifest_sha256",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "feature_version",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "detector",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "mode",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "score_semantics",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "score_upper_bound",
+      "data_type": "double precision",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "status",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "heartbeat_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_models",
+      "column_name": "diagnostic",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "ml_observations",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_observations",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_observations",
+      "column_name": "key_epoch",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_observations",
+      "column_name": "sequence_number",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "ml_observations",
+      "column_name": "mongo_confirmed_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "mqtt_replay_state",
+      "column_name": "consumer",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "mqtt_replay_state",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "mqtt_replay_state",
+      "column_name": "key_epoch",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "mqtt_replay_state",
+      "column_name": "last_sequence",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_admin_audit",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_admin_audit",
+      "column_name": "actor",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_admin_audit",
+      "column_name": "action",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_admin_audit",
+      "column_name": "version",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_admin_audit",
+      "column_name": "at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_control_counters",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_control_counters",
+      "column_name": "command_epoch",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_control_counters",
+      "column_name": "last_sequence",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_control_intents",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_control_intents",
+      "column_name": "decision_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_control_intents",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_control_intents",
+      "column_name": "command",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_control_intents",
+      "column_name": "status",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_control_intents",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_decisions",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_decisions",
+      "column_name": "event_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_decisions",
+      "column_name": "version",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_decisions",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "policy_decisions",
+      "column_name": "result",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_decisions",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_decisions",
+      "column_name": "compute_ms",
+      "data_type": "double precision",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_decisions",
+      "column_name": "source_lag_seconds",
+      "data_type": "double precision",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "version",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "state",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "observed_risk",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "recommended",
+      "data_type": "jsonb",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "requested",
+      "data_type": "jsonb",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "applied",
+      "data_type": "jsonb",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "effective_security_state",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "configured_profile",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "revision",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_device_states",
+      "column_name": "updated_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_signals",
+      "column_name": "event_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_signals",
+      "column_name": "version",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_signals",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "policy_signals",
+      "column_name": "source",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_signals",
+      "column_name": "payload",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_signals",
+      "column_name": "status",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_signals",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_transitions",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_transitions",
+      "column_name": "decision_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_transitions",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_transitions",
+      "column_name": "version",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_transitions",
+      "column_name": "from_state",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_transitions",
+      "column_name": "to_state",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_transitions",
+      "column_name": "at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_versions",
+      "column_name": "version",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_versions",
+      "column_name": "config",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_versions",
+      "column_name": "sha256",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_versions",
+      "column_name": "active",
+      "data_type": "boolean",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_versions",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_worker_status",
+      "column_name": "worker_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_worker_status",
+      "column_name": "status",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_worker_status",
+      "column_name": "mode",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_worker_status",
+      "column_name": "heartbeat_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "policy_worker_status",
+      "column_name": "diagnostic",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "security_observation_capacity",
+      "column_name": "id",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "security_observation_capacity",
+      "column_name": "capacity",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "security_observation_capacity",
+      "column_name": "retained",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "security_observation_capacity",
+      "column_name": "overflow",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "security_observations",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "security_observations",
+      "column_name": "source",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "security_observations",
+      "column_name": "category",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "security_observations",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "security_observations",
+      "column_name": "key_epoch",
+      "data_type": "integer",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "security_observations",
+      "column_name": "sequence_number",
+      "data_type": "bigint",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "security_observations",
+      "column_name": "occurred_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_devices",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_devices",
+      "column_name": "database_device_id",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_devices",
+      "column_name": "topic",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_devices",
+      "column_name": "key_epoch",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_devices",
+      "column_name": "crypto_profile",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_devices",
+      "column_name": "enabled",
+      "data_type": "boolean",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "device_id",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "key_epoch",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "sequence_number",
+      "data_type": "bigint",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "payload",
+      "data_type": "jsonb",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "created_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "status",
+      "data_type": "character varying",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "attempts",
+      "data_type": "integer",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "available_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "NO"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "lease_until",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "claim_token",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "delivered_at",
+      "data_type": "timestamp with time zone",
+      "is_nullable": "YES"
+    },
+    {
+      "table_name": "telemetry_outbox",
+      "column_name": "last_error",
+      "data_type": "character varying",
+      "is_nullable": "YES"
+    }
+  ],
+  "indexes": [
+    {
+      "tablename": "Algorithm_Scheme",
+      "indexname": "Algorithm_Scheme_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Algorithm_Scheme_pkey\" ON public.\"Algorithm_Scheme\" USING btree (\"Algorithm_Scheme_ID\")"
+    },
+    {
+      "tablename": "Algorithm_Type",
+      "indexname": "Algorithm_Type_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Algorithm_Type_pkey\" ON public.\"Algorithm_Type\" USING btree (\"Algorithm_Type_ID\")"
+    },
+    {
+      "tablename": "Algorithms",
+      "indexname": "Algorithms_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Algorithms_pkey\" ON public.\"Algorithms\" USING btree (\"Algorithm_ID\")"
+    },
+    {
+      "tablename": "Anomalies",
+      "indexname": "Anomalies_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Anomalies_pkey\" ON public.\"Anomalies\" USING btree (\"Anomaly_ID\")"
+    },
+    {
+      "tablename": "Anomaly_Causes",
+      "indexname": "Anomaly_Causes_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Anomaly_Causes_pkey\" ON public.\"Anomaly_Causes\" USING btree (\"Anomaly_Cause_ID\")"
+    },
+    {
+      "tablename": "Device_Configuration",
+      "indexname": "Device_Configuration_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Device_Configuration_pkey\" ON public.\"Device_Configuration\" USING btree (\"Device_ID\", \"Configuration_Update_Date\")"
+    },
+    {
+      "tablename": "Global_Reports",
+      "indexname": "Global_Reports_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Global_Reports_pkey\" ON public.\"Global_Reports\" USING btree (\"Creation_Date\", \"Report_ID\")"
+    },
+    {
+      "tablename": "Log_Journal",
+      "indexname": "Log_Journal_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Log_Journal_pkey\" ON public.\"Log_Journal\" USING btree (\"Record_ID\")"
+    },
+    {
+      "tablename": "Log_Type",
+      "indexname": "Log_Type_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Log_Type_pkey\" ON public.\"Log_Type\" USING btree (\"Log_Type_ID\")"
+    },
+    {
+      "tablename": "Parameters",
+      "indexname": "Parameters_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Parameters_pkey\" ON public.\"Parameters\" USING btree (\"Parameters_ID\", \"Algorithm_Type_ID\")"
+    },
+    {
+      "tablename": "Report_Types",
+      "indexname": "Report_Types_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Report_Types_pkey\" ON public.\"Report_Types\" USING btree (\"Report_Type_ID\")"
+    },
+    {
+      "tablename": "Sensor_Data",
+      "indexname": "Sensor_Data_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Sensor_Data_pkey\" ON public.\"Sensor_Data\" USING btree (\"Record_ID\")"
+    },
+    {
+      "tablename": "Tag_Journal",
+      "indexname": "Tag_Journal_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Tag_Journal_pkey\" ON public.\"Tag_Journal\" USING btree (\"Tag_ID\")"
+    },
+    {
+      "tablename": "Users",
+      "indexname": "Users_Email_key",
+      "indexdef": "CREATE UNIQUE INDEX \"Users_Email_key\" ON public.\"Users\" USING btree (\"Email\")"
+    },
+    {
+      "tablename": "Users",
+      "indexname": "Users_Username_key",
+      "indexdef": "CREATE UNIQUE INDEX \"Users_Username_key\" ON public.\"Users\" USING btree (\"Username\")"
+    },
+    {
+      "tablename": "Users",
+      "indexname": "Users_pkey",
+      "indexdef": "CREATE UNIQUE INDEX \"Users_pkey\" ON public.\"Users\" USING btree (\"User_ID\")"
+    },
+    {
+      "tablename": "alembic_version",
+      "indexname": "alembic_version_pkc",
+      "indexdef": "CREATE UNIQUE INDEX alembic_version_pkc ON public.alembic_version USING btree (version_num)"
+    },
+    {
+      "tablename": "component_heartbeats",
+      "indexname": "component_heartbeats_pkey",
+      "indexdef": "CREATE UNIQUE INDEX component_heartbeats_pkey ON public.component_heartbeats USING btree (component, instance)"
+    },
+    {
+      "tablename": "crypto_key_usage",
+      "indexname": "crypto_key_usage_pkey",
+      "indexdef": "CREATE UNIQUE INDEX crypto_key_usage_pkey ON public.crypto_key_usage USING btree (device_id, key_epoch, profile_id)"
+    },
+    {
+      "tablename": "crypto_usage_reservations",
+      "indexname": "crypto_usage_reservations_pkey",
+      "indexdef": "CREATE UNIQUE INDEX crypto_usage_reservations_pkey ON public.crypto_usage_reservations USING btree (request_id)"
+    },
+    {
+      "tablename": "ingestion_metrics",
+      "indexname": "ingestion_metrics_pkey",
+      "indexdef": "CREATE UNIQUE INDEX ingestion_metrics_pkey ON public.ingestion_metrics USING btree (minute, kind)"
+    },
+    {
+      "tablename": "live_control_acks",
+      "indexname": "live_control_acks_command_id_key",
+      "indexdef": "CREATE UNIQUE INDEX live_control_acks_command_id_key ON public.live_control_acks USING btree (command_id)"
+    },
+    {
+      "tablename": "live_control_acks",
+      "indexname": "live_control_acks_pkey",
+      "indexdef": "CREATE UNIQUE INDEX live_control_acks_pkey ON public.live_control_acks USING btree (id)"
+    },
+    {
+      "tablename": "live_control_audit",
+      "indexname": "ix_live_control_history",
+      "indexdef": "CREATE INDEX ix_live_control_history ON public.live_control_audit USING btree (device_id, at)"
+    },
+    {
+      "tablename": "live_control_audit",
+      "indexname": "live_control_audit_pkey",
+      "indexdef": "CREATE UNIQUE INDEX live_control_audit_pkey ON public.live_control_audit USING btree (id)"
+    },
+    {
+      "tablename": "live_control_commands",
+      "indexname": "ix_live_command_delivery",
+      "indexdef": "CREATE INDEX ix_live_command_delivery ON public.live_control_commands USING btree (status, available_at)"
+    },
+    {
+      "tablename": "live_control_commands",
+      "indexname": "live_control_commands_pkey",
+      "indexdef": "CREATE UNIQUE INDEX live_control_commands_pkey ON public.live_control_commands USING btree (id)"
+    },
+    {
+      "tablename": "live_control_commands",
+      "indexname": "uq_live_command_sequence",
+      "indexdef": "CREATE UNIQUE INDEX uq_live_command_sequence ON public.live_control_commands USING btree (device_id, command_epoch, sequence)"
+    },
+    {
+      "tablename": "live_control_commands",
+      "indexname": "uq_live_transition_phase",
+      "indexdef": "CREATE UNIQUE INDEX uq_live_transition_phase ON public.live_control_commands USING btree (transition_id, phase)"
+    },
+    {
+      "tablename": "live_control_devices",
+      "indexname": "live_control_devices_pkey",
+      "indexdef": "CREATE UNIQUE INDEX live_control_devices_pkey ON public.live_control_devices USING btree (device_id)"
+    },
+    {
+      "tablename": "live_control_evidence",
+      "indexname": "live_control_evidence_pkey",
+      "indexdef": "CREATE UNIQUE INDEX live_control_evidence_pkey ON public.live_control_evidence USING btree (event_id)"
+    },
+    {
+      "tablename": "live_control_evidence",
+      "indexname": "uq_live_evidence_identity",
+      "indexdef": "CREATE UNIQUE INDEX uq_live_evidence_identity ON public.live_control_evidence USING btree (device_id, key_epoch, sequence_number)"
+    },
+    {
+      "tablename": "live_control_leases",
+      "indexname": "live_control_leases_pkey",
+      "indexdef": "CREATE UNIQUE INDEX live_control_leases_pkey ON public.live_control_leases USING btree (request_id)"
+    },
+    {
+      "tablename": "live_control_leases",
+      "indexname": "uq_live_boot_lease",
+      "indexdef": "CREATE UNIQUE INDEX uq_live_boot_lease ON public.live_control_leases USING btree (device_id, boot_id)"
+    },
+    {
+      "tablename": "live_control_transitions",
+      "indexname": "live_control_transitions_correlation_id_key",
+      "indexdef": "CREATE UNIQUE INDEX live_control_transitions_correlation_id_key ON public.live_control_transitions USING btree (correlation_id)"
+    },
+    {
+      "tablename": "live_control_transitions",
+      "indexname": "live_control_transitions_pkey",
+      "indexdef": "CREATE UNIQUE INDEX live_control_transitions_pkey ON public.live_control_transitions USING btree (id)"
+    },
+    {
+      "tablename": "live_control_workers",
+      "indexname": "live_control_workers_pkey",
+      "indexdef": "CREATE UNIQUE INDEX live_control_workers_pkey ON public.live_control_workers USING btree (id)"
+    },
+    {
+      "tablename": "ml_anomaly_events",
+      "indexname": "ix_ml_event_claim",
+      "indexdef": "CREATE INDEX ix_ml_event_claim ON public.ml_anomaly_events USING btree (model_id, model_version, status, available_at)"
+    },
+    {
+      "tablename": "ml_anomaly_events",
+      "indexname": "ix_ml_event_history",
+      "indexdef": "CREATE INDEX ix_ml_event_history ON public.ml_anomaly_events USING btree (device_id, evaluated_at)"
+    },
+    {
+      "tablename": "ml_anomaly_events",
+      "indexname": "ml_anomaly_events_pkey",
+      "indexdef": "CREATE UNIQUE INDEX ml_anomaly_events_pkey ON public.ml_anomaly_events USING btree (id)"
+    },
+    {
+      "tablename": "ml_anomaly_events",
+      "indexname": "uq_ml_evaluation_identity",
+      "indexdef": "CREATE UNIQUE INDEX uq_ml_evaluation_identity ON public.ml_anomaly_events USING btree (device_id, key_epoch, sequence_number, model_id, model_version)"
+    },
+    {
+      "tablename": "ml_feed_state",
+      "indexname": "ml_feed_state_pkey",
+      "indexdef": "CREATE UNIQUE INDEX ml_feed_state_pkey ON public.ml_feed_state USING btree (id)"
+    },
+    {
+      "tablename": "ml_models",
+      "indexname": "ml_models_pkey",
+      "indexdef": "CREATE UNIQUE INDEX ml_models_pkey ON public.ml_models USING btree (model_id, model_version)"
+    },
+    {
+      "tablename": "ml_observations",
+      "indexname": "ix_ml_feed_order",
+      "indexdef": "CREATE INDEX ix_ml_feed_order ON public.ml_observations USING btree (mongo_confirmed_at, id)"
+    },
+    {
+      "tablename": "ml_observations",
+      "indexname": "ml_observations_pkey",
+      "indexdef": "CREATE UNIQUE INDEX ml_observations_pkey ON public.ml_observations USING btree (id)"
+    },
+    {
+      "tablename": "ml_observations",
+      "indexname": "uq_ml_observation",
+      "indexdef": "CREATE UNIQUE INDEX uq_ml_observation ON public.ml_observations USING btree (device_id, key_epoch, sequence_number)"
+    },
+    {
+      "tablename": "mqtt_replay_state",
+      "indexname": "mqtt_replay_state_pkey",
+      "indexdef": "CREATE UNIQUE INDEX mqtt_replay_state_pkey ON public.mqtt_replay_state USING btree (consumer, device_id, key_epoch)"
+    },
+    {
+      "tablename": "policy_admin_audit",
+      "indexname": "policy_admin_audit_pkey",
+      "indexdef": "CREATE UNIQUE INDEX policy_admin_audit_pkey ON public.policy_admin_audit USING btree (id)"
+    },
+    {
+      "tablename": "policy_control_counters",
+      "indexname": "policy_control_counters_pkey",
+      "indexdef": "CREATE UNIQUE INDEX policy_control_counters_pkey ON public.policy_control_counters USING btree (device_id)"
+    },
+    {
+      "tablename": "policy_control_intents",
+      "indexname": "policy_control_intents_decision_id_key",
+      "indexdef": "CREATE UNIQUE INDEX policy_control_intents_decision_id_key ON public.policy_control_intents USING btree (decision_id)"
+    },
+    {
+      "tablename": "policy_control_intents",
+      "indexname": "policy_control_intents_pkey",
+      "indexdef": "CREATE UNIQUE INDEX policy_control_intents_pkey ON public.policy_control_intents USING btree (id)"
+    },
+    {
+      "tablename": "policy_decisions",
+      "indexname": "ix_policy_decision_history",
+      "indexdef": "CREATE INDEX ix_policy_decision_history ON public.policy_decisions USING btree (created_at, id)"
+    },
+    {
+      "tablename": "policy_decisions",
+      "indexname": "policy_decisions_pkey",
+      "indexdef": "CREATE UNIQUE INDEX policy_decisions_pkey ON public.policy_decisions USING btree (id)"
+    },
+    {
+      "tablename": "policy_decisions",
+      "indexname": "uq_policy_decision_event",
+      "indexdef": "CREATE UNIQUE INDEX uq_policy_decision_event ON public.policy_decisions USING btree (event_id, version)"
+    },
+    {
+      "tablename": "policy_device_states",
+      "indexname": "policy_device_states_pkey",
+      "indexdef": "CREATE UNIQUE INDEX policy_device_states_pkey ON public.policy_device_states USING btree (device_id, version)"
+    },
+    {
+      "tablename": "policy_signals",
+      "indexname": "ix_policy_signal_history",
+      "indexdef": "CREATE INDEX ix_policy_signal_history ON public.policy_signals USING btree (device_id, created_at)"
+    },
+    {
+      "tablename": "policy_signals",
+      "indexname": "policy_signals_pkey",
+      "indexdef": "CREATE UNIQUE INDEX policy_signals_pkey ON public.policy_signals USING btree (event_id, version)"
+    },
+    {
+      "tablename": "policy_transitions",
+      "indexname": "policy_transitions_decision_id_key",
+      "indexdef": "CREATE UNIQUE INDEX policy_transitions_decision_id_key ON public.policy_transitions USING btree (decision_id)"
+    },
+    {
+      "tablename": "policy_transitions",
+      "indexname": "policy_transitions_pkey",
+      "indexdef": "CREATE UNIQUE INDEX policy_transitions_pkey ON public.policy_transitions USING btree (id)"
+    },
+    {
+      "tablename": "policy_versions",
+      "indexname": "policy_versions_pkey",
+      "indexdef": "CREATE UNIQUE INDEX policy_versions_pkey ON public.policy_versions USING btree (version)"
+    },
+    {
+      "tablename": "policy_versions",
+      "indexname": "uq_policy_active",
+      "indexdef": "CREATE UNIQUE INDEX uq_policy_active ON public.policy_versions USING btree (active) WHERE (active IS TRUE)"
+    },
+    {
+      "tablename": "policy_worker_status",
+      "indexname": "policy_worker_status_pkey",
+      "indexdef": "CREATE UNIQUE INDEX policy_worker_status_pkey ON public.policy_worker_status USING btree (worker_id)"
+    },
+    {
+      "tablename": "security_observation_capacity",
+      "indexname": "security_observation_capacity_pkey",
+      "indexdef": "CREATE UNIQUE INDEX security_observation_capacity_pkey ON public.security_observation_capacity USING btree (id)"
+    },
+    {
+      "tablename": "security_observations",
+      "indexname": "ix_security_observation_order",
+      "indexdef": "CREATE INDEX ix_security_observation_order ON public.security_observations USING btree (occurred_at, id)"
+    },
+    {
+      "tablename": "security_observations",
+      "indexname": "security_observations_pkey",
+      "indexdef": "CREATE UNIQUE INDEX security_observations_pkey ON public.security_observations USING btree (id)"
+    },
+    {
+      "tablename": "telemetry_devices",
+      "indexname": "telemetry_devices_database_device_id_key",
+      "indexdef": "CREATE UNIQUE INDEX telemetry_devices_database_device_id_key ON public.telemetry_devices USING btree (database_device_id)"
+    },
+    {
+      "tablename": "telemetry_devices",
+      "indexname": "telemetry_devices_pkey",
+      "indexdef": "CREATE UNIQUE INDEX telemetry_devices_pkey ON public.telemetry_devices USING btree (device_id)"
+    },
+    {
+      "tablename": "telemetry_devices",
+      "indexname": "telemetry_devices_topic_key",
+      "indexdef": "CREATE UNIQUE INDEX telemetry_devices_topic_key ON public.telemetry_devices USING btree (topic)"
+    },
+    {
+      "tablename": "telemetry_outbox",
+      "indexname": "ix_outbox_ready",
+      "indexdef": "CREATE INDEX ix_outbox_ready ON public.telemetry_outbox USING btree (status, available_at, lease_until)"
+    },
+    {
+      "tablename": "telemetry_outbox",
+      "indexname": "ix_outbox_retention",
+      "indexdef": "CREATE INDEX ix_outbox_retention ON public.telemetry_outbox USING btree (status, delivered_at)"
+    },
+    {
+      "tablename": "telemetry_outbox",
+      "indexname": "telemetry_outbox_pkey",
+      "indexdef": "CREATE UNIQUE INDEX telemetry_outbox_pkey ON public.telemetry_outbox USING btree (id)"
+    },
+    {
+      "tablename": "telemetry_outbox",
+      "indexname": "uq_outbox_identity",
+      "indexdef": "CREATE UNIQUE INDEX uq_outbox_identity ON public.telemetry_outbox USING btree (device_id, key_epoch, sequence_number)"
+    }
+  ],
+  "settings": {
+    "lock_timeout": "0",
+    "max_connections": "100",
+    "shared_buffers": "16384",
+    "statement_timeout": "0",
+    "work_mem": "4096"
+  }
+}

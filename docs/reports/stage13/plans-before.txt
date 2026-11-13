@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/stage13_plans_launch.py", line 8, in <module>
+    r=lab.run('run','--rm','-T','--no-deps','-v',str(Path('scripts/policy13_plans.py').resolve())+':/app/scripts/policy13_plans.py:ro','-v',str(Path('docs/reports/stage13').resolve())+':/reports','--entrypoint','python','tests','-m','scripts.policy13_plans','--output','/reports/query-plans-before.json',timeout=150)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy_lab.py", line 26, in run
+    if check:raise RuntimeError('Lab command '+args[0]+' failed ('+str(r.returncode)+'); private last-failure.txt')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Lab command run failed (1); private last-failure.txt

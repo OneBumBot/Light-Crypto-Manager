@@ -1,0 +1,61 @@
+{
+  "project": "lcm-stage13-policy-ba25r3retry",
+  "url": "http://127.0.0.1:32773",
+  "devices": 25,
+  "policy": "DRY_RUN",
+  "control": "MANUAL_AUTHORIZED_CONTROL",
+  "ml_trusted": false
+}
+{"project": "lcm-stage13-policy-ba25r3retry", "variant": "baseline", "inflight_pending": 1196, "drained": true, "stop_reason": "duration_complete"}
+Private Compose configuration created; secrets withheld
+Private MongoDB credentials generated (0700/0600); values withheld
+Fresh isolated performance inputs prepared: lcm-stage13-policy-oa25r3retry devices: 25 secrets withheld
+{
+  "project": "lcm-stage13-policy-oa25r3retry",
+  "url": "http://127.0.0.1:32775",
+  "devices": 25,
+  "policy": "DRY_RUN",
+  "control": "MANUAL_AUTHORIZED_CONTROL",
+  "ml_trusted": false
+}
+{"project": "lcm-stage13-policy-oa25r3retry", "variant": "optimized", "inflight_pending": 25, "drained": true, "stop_reason": "duration_complete"}
+lcm-stage13-policy-ba25r1 census exit0
+lcm-stage13-policy-ba25r2 census exit0
+lcm-stage13-policy-ba25r3retry census exit0
+lcm-stage13-policy-oa25r1 census exit0
+lcm-stage13-policy-oa25r2 census exit0
+lcm-stage13-policy-oa25r3retry census exit0
+lcm-stage13-policy-b10r1 census exit0
+lcm-stage13-policy-b25r1 census exit0
+lcm-stage13-policy-b25r2 census exit0
+lcm-stage13-policy-b25r3 census exit0
+lcm-stage13-policy-base3 census exit0
+lcm-stage13-policy-b50r1 census exit0
+lcm-stage13-policy-o10r1 census exit0
+lcm-stage13-policy-o25r1 census exit0
+lcm-stage13-policy-o25r2 census exit0
+lcm-stage13-policy-o25r3 census exit0
+lcm-stage13-policy-o25r4 census exit0
+lcm-stage13-policy-o3r1 census exit0
+lcm-stage13-policy-o50r1 census exit0
+Derived 17 measured run summaries; exit0
+{
+  "project": "lcm-stage13-policy-crypto",
+  "url": "http://127.0.0.1:32779",
+  "devices": 3,
+  "policy": "DRY_RUN",
+  "control": "MANUAL_AUTHORIZED_CONTROL",
+  "ml_trusted": false
+}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy13_reliability.py", line 8, in <module>
+    from playwright.sync_api import sync_playwright,expect
+ModuleNotFoundError: No module named 'playwright'
+Traceback (most recent call last):
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/docs/reports/stage13/resume-after-interruption.py", line 23, in <module>
+    subprocess.run(['.venv/bin/python','-m','scripts.policy13_reliability','--directory',str(root/'crypto'),'--output',str(reports/'policy-reliability.json')],check=True)
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['.venv/bin/python', '-m', 'scripts.policy13_reliability', '--directory', '.local-runtime/stage13/crypto', '--output', 'docs/reports/stage13/policy-reliability.json']' returned non-zero exit status 1.

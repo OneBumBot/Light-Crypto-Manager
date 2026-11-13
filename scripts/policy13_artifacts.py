@@ -13,7 +13,7 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--reports',type=Path,default=Path('docs/reports/stage13'));a=p.parse_args()
  if a.reports.resolve()!=Path('docs/reports/stage13').resolve():p.error('Only new Stage13 reports')
  records=[]
- for name in ['agents.json','sources.json','ledger-final.json']:
+ for name in ['agents.json','sources.json','ledger-final.json','samples.json']:
   for path in a.reports.glob('*/'+name):
    data=path.read_bytes();target=path.with_suffix('.json.gz')
    compressed=gzip.compress(data,mtime=0);assert gzip.decompress(compressed)==data

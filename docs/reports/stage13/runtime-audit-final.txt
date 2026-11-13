@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy13_runtime_audit.py", line 69, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy13_runtime_audit.py", line 66, in main
+    result=json.loads(command(['docker','run','--rm','-i','--network','none','--read-only','--cpus','.5','--memory','256m','--entrypoint','python',identity,'-c',code],input=image_inputs));image_results.append(dict(image=identity,**result))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy13_runtime_audit.py", line 6, in command
+    def command(argv,**kw):return subprocess.run(argv,capture_output=True,check=True,**kw).stdout
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['docker', 'run', '--rm', '-i', '--network', 'none', '--read-only', '--cpus', '.5', '--memory', '256m', '--entrypoint', 'python', 'sha256:20543d63baa8d7cbaaa2abe2dce2b17f8f94330ac5e2135337d49260ef948f4c', '-c', "import sys,json,pathlib\nvalues=json.load(sys.stdin);needles=[v.encode() for v in values if len(v)>=16];protected_needles=[v.encode() for v in values-service_values if len(v)>=16];n=0\nfor p in pathlib.Path('/app').rglob('*'):\n if p.is_file():\n  data=p.read_bytes();assert not any(v in data for v in needles),'Private material in image';n+=1\nprint(json.dumps({'files_scanned':n,'private_material_found':False}))\n"]' returned non-zero exit status 1.

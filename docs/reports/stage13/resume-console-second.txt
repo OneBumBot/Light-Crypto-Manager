@@ -1,0 +1,21 @@
+Private Compose configuration created; secrets withheld
+Private MongoDB credentials generated (0700/0600); values withheld
+Fresh isolated performance inputs prepared: lcm-stage13-policy-ba25r3retry devices: 25 secrets withheld
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy_lab.py", line 118, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy_lab.py", line 105, in main
+    lab.run('up','-d','--wait','--wait-timeout','120','postgres','mongo','broker','receiver','outbox-relay','web','policy-worker')
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/scripts/policy_lab.py", line 26, in run
+    if check:raise RuntimeError('Lab command '+args[0]+' failed ('+str(r.returncode)+'); private last-failure.txt')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Lab command up failed (1); private last-failure.txt
+Traceback (most recent call last):
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/docs/reports/stage13/resume-after-interruption.py", line 16, in <module>
+    subprocess.run(['.venv/bin/python','-m','scripts.policy_lab','start','--directory',str(directory)],check=True)
+  File "/home/onebumbot/Projects/Light_Crypto_Manager/.local-runtime/python/cpython-3.12.16-linux-x86_64-gnu/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['.venv/bin/python', '-m', 'scripts.policy_lab', 'start', '--directory', '.local-runtime/stage13/admission-baseline25r3-resumed']' returned non-zero exit status 1.
